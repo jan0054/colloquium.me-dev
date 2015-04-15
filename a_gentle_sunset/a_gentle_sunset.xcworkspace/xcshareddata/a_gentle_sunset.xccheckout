@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A6F7E5AD-2967-4F3F-9979-21B7B2F650BD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>a_gentle_sunset</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AE2E8BE307BF3E7BFEF942CC21B8B6F411892F54</key>
+		<string>https://github.com/jan0054/SQuInt2014.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>a_gentle_sunset/a_gentle_sunset.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AE2E8BE307BF3E7BFEF942CC21B8B6F411892F54</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jan0054/SQuInt2014.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AE2E8BE307BF3E7BFEF942CC21B8B6F411892F54</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AE2E8BE307BF3E7BFEF942CC21B8B6F411892F54</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SQuInt2014</string>
+		</dict>
+	</array>
+</dict>
+</plist>

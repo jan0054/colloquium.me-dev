@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="background_info">#FFFFFF</color>
+    <color name="text">#333333</color>
+    <color name="apptheme_color">#3AAB48</color>
+    
+    
+    <color name="warning_background">#FFCE31</color>
+    <!-- Header -->
+    <!-- <color name="header_background">#EAEAEA</color> -->
+    <color name="header_background">#E8E2E6</color>
+	<color name="header_icon">#3AAB48</color>
+	<color name="header_icon_pressed">#FFFFFF</color>
+	<color name="header_icon_background_pressed">#3AAB48</color>	
+		
+	<color name="polyline">#3DC6F3</color>
+	<color name="route_outline">#80000000</color>
+	<!-- <color name="route">#8000B2DC</color>  -->
+	<color name="route">#DD5ACAF1</color>
+	<color name="circle">#803AAB48</color>
+	
+	<!-- Station List -->
+	<color name="list_body_background">#F2F2F2</color>
+	<color name="list_header_background">#FFFFFF</color>
+	<color name="list_footer_background">#FFFFFF</color>
+	<color name="list_unit">#959695</color>
+	<color name="list_district">#5ACAF1</color>
+	<color name="list_metro">#A9A49B</color>
+	<color name="list_name">#707070</color>	
+	<color name="list_space">#E9E9E9</color>	
+	<color name="list_text">#999999</color>
+						
+	
+	<!-- Settings -->
+	<color name="settings_item_title">#9FD0A3</color>	
+			
+	<!-- Weather -->
+	<color name="weather_bar">#373837</color>	
+	<color name="weather_desc">#FFFFFF</color>	
+	<color name="weather_icon">#EE3735</color>	
+	<color name="weather_icon_sub">#EE3735</color>	
+	<color name="weather_value">#FFFFFF</color>	
+	<color name="weather_unit">#D3D3D3</color>
+    <!-- indicator text -->
+    <color name="volume_close">#BCBCBC</color>	
+    <color name="volume_none">#EE4823</color>	
+	<color name="volume_low">#EA8B00</color>	
+	<color name="volume_high">#51A50F</color>	
+    <color name="volume_close_h">#898989</color>	
+    <color name="volume_none_h">#A82813</color>	
+	<color name="volume_low_h">#604B07</color>	
+	<color name="volume_high_h">#3E6024</color>	
+		
+	<color name="tab_selected">#EAEAEA</color>
+  	<color name="tab_unselected">#3AAB48</color>	
+</resources>

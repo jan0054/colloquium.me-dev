@@ -1,0 +1,39 @@
+PODS:
+  - Bolts (1.1.4)
+  - Facebook-iOS-SDK (3.23.1):
+    - Bolts (~> 1.0)
+  - MMDrawerController (0.5.7):
+    - MMDrawerController/Core (= 0.5.7)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
+    - MMDrawerController/MMDrawerVisualStates (= 0.5.7)
+    - MMDrawerController/Subclass (= 0.5.7)
+  - MMDrawerController/Core (0.5.7)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.7):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.5.7):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.5.7):
+    - MMDrawerController/Core
+  - Parse (1.6.5):
+    - Bolts (~> 1.1)
+  - ParseFacebookUtils (1.6.5):
+    - Facebook-iOS-SDK (~> 3.20)
+    - Parse (~> 1.6.5)
+  - ParseUI (1.1.1):
+    - Parse (~> 1.6)
+    - ParseFacebookUtils (~> 1.6)
+
+DEPENDENCIES:
+  - MMDrawerController
+  - Parse
+  - ParseUI
+
+SPEC CHECKSUMS:
+  Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
+  Facebook-iOS-SDK: 89dae50e975ebab95a01b0962d27277fc9cf08fd
+  MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
+  Parse: a21db4037d70a68a4ec64ecc0f327ed475cc14f8
+  ParseFacebookUtils: 4d58d0f133fa1af52f3a8d5caaa55cd435118ac4
+  ParseUI: f7e9e0e5271f75a19c74ead8fdd95d36160e268e
+
+COCOAPODS: 0.35.0
