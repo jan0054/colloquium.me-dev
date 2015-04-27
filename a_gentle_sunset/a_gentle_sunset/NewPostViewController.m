@@ -13,6 +13,7 @@
 @end
 
 BOOL is_new_photo;
+BOOL photo_is_set;
 
 @implementation NewPostViewController
 
@@ -39,7 +40,7 @@ BOOL is_new_photo;
 }
 
 - (IBAction)post_button_tap:(UIBarButtonItem *)sender {
-    
+    [self upload_post];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -86,6 +87,7 @@ BOOL is_new_photo;
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     //self.image_preview.contentMode = UIViewContentModeScaleAspectFill;
     self.image_preview.image = image;
+    photo_is_set = YES;
     if (is_new_photo)
     {
         UIImageWriteToSavedPhotosAlbum(image,
@@ -107,6 +109,23 @@ BOOL is_new_photo;
                               otherButtonTitles:nil];
         [alert show];
     }
+}
+
+- (void) upload_post
+{
+    PFObject *new_post = [PFObject objectWithClassName:@"post"];
+    new_post[@"post_date"] = [NSDate date];
+    //new_post[@"source_elder"] =
+    //new_post[@"source_elder_name"] =
+    PFUser *curu = [PFUser currentUser];
+    new_post[@"author_name"] = curu[@"username"];
+    new_post[@"author"] = curu;
+    new_post[@"content"] = self.post_content.text;
+    NSData *imageData = UIImagePNGRepresentation(self.image_preview.image);
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+    new_post[@"image"] = imageFile;
+    
+    [new_post saveInBackground];
 }
 
 
