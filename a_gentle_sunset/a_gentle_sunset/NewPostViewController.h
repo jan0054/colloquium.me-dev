@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "ChooseElderTableViewController.h"
 
-
-@interface NewPostViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface NewPostViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, selectionDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *image_preview;
 - (IBAction)camera_button_tap:(UIButton *)sender;
@@ -20,5 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *library_button;
 @property (strong, nonatomic) IBOutlet UIButton *camera_button;
 @property (strong, nonatomic) IBOutlet UITextView *post_content;
+- (IBAction)select_elder_button_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UILabel *elder_list_label;
 
 @end

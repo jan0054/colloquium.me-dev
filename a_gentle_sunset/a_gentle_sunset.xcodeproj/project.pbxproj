@@ -17,6 +17,8 @@
 		B460621C1AC4040000356BDF /* CustomLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B46062191AC4040000356BDF /* CustomLogInViewController.m */; };
 		B460621D1AC4040000356BDF /* CustomSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B460621B1AC4040000356BDF /* CustomSignUpViewController.m */; };
 		B46062201AC4044400356BDF /* UIColor+ProjectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = B460621F1AC4044400356BDF /* UIColor+ProjectColors.m */; };
+		B48F4D661AEF6EFB004EFA88 /* ElderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B48F4D651AEF6EFB004EFA88 /* ElderCell.m */; };
+		B48F4D691AEF70AF004EFA88 /* ChooseElderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B48F4D681AEF70AF004EFA88 /* ChooseElderTableViewController.m */; };
 		B4D8CD3C1AC16327004F7218 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D8CD3B1AC16327004F7218 /* main.m */; };
 		B4D8CD3F1AC16327004F7218 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D8CD3E1AC16327004F7218 /* AppDelegate.m */; };
 		B4D8CD421AC16327004F7218 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D8CD411AC16327004F7218 /* ViewController.m */; };
@@ -61,6 +63,10 @@
 		B460621B1AC4040000356BDF /* CustomSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSignUpViewController.m; sourceTree = "<group>"; };
 		B460621E1AC4044400356BDF /* UIColor+ProjectColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ProjectColors.h"; sourceTree = "<group>"; };
 		B460621F1AC4044400356BDF /* UIColor+ProjectColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ProjectColors.m"; sourceTree = "<group>"; };
+		B48F4D641AEF6EFB004EFA88 /* ElderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElderCell.h; sourceTree = "<group>"; };
+		B48F4D651AEF6EFB004EFA88 /* ElderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElderCell.m; sourceTree = "<group>"; };
+		B48F4D671AEF70AF004EFA88 /* ChooseElderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseElderTableViewController.h; sourceTree = "<group>"; };
+		B48F4D681AEF70AF004EFA88 /* ChooseElderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseElderTableViewController.m; sourceTree = "<group>"; };
 		B4D8CD361AC16327004F7218 /* a_gentle_sunset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = a_gentle_sunset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D8CD3A1AC16327004F7218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4D8CD3B1AC16327004F7218 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 				B4DC85D41AD505CC00966DFF /* PostDetailViewController.m */,
 				B46062111AC3F16E00356BDF /* NewPostViewController.h */,
 				B46062121AC3F16E00356BDF /* NewPostViewController.m */,
+				B48F4D671AEF70AF004EFA88 /* ChooseElderTableViewController.h */,
+				B48F4D681AEF70AF004EFA88 /* ChooseElderTableViewController.m */,
 				B43AB1321AC195B500FB107A /* NewsViewController.h */,
 				B43AB1331AC195B500FB107A /* NewsViewController.m */,
 				B43AB12C1AC1959800FB107A /* ConversationViewController.h */,
@@ -218,6 +226,8 @@
 				B4DC85D11AD4E99B00966DFF /* TimelineCell.m */,
 				B4DC85D61AD5088000966DFF /* PostCommentCell.h */,
 				B4DC85D71AD5088000966DFF /* PostCommentCell.m */,
+				B48F4D641AEF6EFB004EFA88 /* ElderCell.h */,
+				B48F4D651AEF6EFB004EFA88 /* ElderCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -368,7 +378,9 @@
 			files = (
 				B46062131AC3F16E00356BDF /* NewPostViewController.m in Sources */,
 				B4D8CD421AC16327004F7218 /* ViewController.m in Sources */,
+				B48F4D661AEF6EFB004EFA88 /* ElderCell.m in Sources */,
 				B46062161AC3F91500356BDF /* TimelineViewController.m in Sources */,
+				B48F4D691AEF70AF004EFA88 /* ChooseElderTableViewController.m in Sources */,
 				B460621D1AC4040000356BDF /* CustomSignUpViewController.m in Sources */,
 				B460621C1AC4040000356BDF /* CustomLogInViewController.m in Sources */,
 				B4DC85D81AD5088000966DFF /* PostCommentCell.m in Sources */,

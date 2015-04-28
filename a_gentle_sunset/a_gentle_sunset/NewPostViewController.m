@@ -14,22 +14,14 @@
 
 BOOL is_new_photo;
 BOOL photo_is_set;
+NSMutableArray *received_elder_list;
 
 @implementation NewPostViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    received_elder_list = [[NSMutableArray alloc] init];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-
 
 - (IBAction)camera_button_tap:(UIButton *)sender {
     [self newPhoto:nil];
@@ -115,8 +107,14 @@ BOOL photo_is_set;
 {
     PFObject *new_post = [PFObject objectWithClassName:@"post"];
     new_post[@"post_date"] = [NSDate date];
-    //new_post[@"source_elder"] =
-    //new_post[@"source_elder_name"] =
+    PFRelation *elder_relation = [new_post relationForKey:@"source_elder"];
+    NSString *elder_names = @"";
+    for (PFObject *elder in received_elder_list)
+    {
+        [elder_relation addObject:elder];
+        elder_names = [NSString stringWithFormat:@"%@ %@", elder_names, elder[@"name"]];
+    }
+    new_post[@"source_elder_name"] = elder_names;
     PFUser *curu = [PFUser currentUser];
     new_post[@"author_name"] = curu[@"username"];
     new_post[@"author"] = curu;
@@ -128,5 +126,34 @@ BOOL photo_is_set;
     [new_post saveInBackground];
 }
 
+
+- (IBAction)select_elder_button_tap:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"selecteldersegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"selecteldersegue"])
+    {
+        //going to select elder controller, set the delegate
+        UINavigationController *controller = [segue destinationViewController];
+        ChooseElderTableViewController *tvcon = [controller.viewControllers objectAtIndex:0];
+        tvcon.elder_delegate = self;
+    }
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+
+- (void) getElderList:(NSMutableArray *)elder_list
+{
+    [received_elder_list removeAllObjects];
+    received_elder_list = elder_list;
+    NSString *list = @"";
+    for (PFObject *elder in received_elder_list)
+    {
+        NSString *name = elder[@"name"];
+        list = [NSString stringWithFormat:@"%@ %@", list, name];
+    }
+    self.elder_list_label.text = [NSString stringWithFormat:@"照護對象:%@", list];
+}
 
 @end
