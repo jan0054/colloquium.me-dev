@@ -119,7 +119,9 @@ NSMutableArray *received_elder_list;
     new_post[@"author_name"] = curu[@"username"];
     new_post[@"author"] = curu;
     new_post[@"content"] = self.post_content.text;
-    NSData *imageData = UIImagePNGRepresentation(self.image_preview.image);
+    CGSize img_param = CGSizeMake(400.0, 400.0);
+    UIImage *smallpic = [self shrinkImage:self.image_preview.image withSize:img_param];
+    NSData *imageData = UIImagePNGRepresentation(smallpic);
     PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
     new_post[@"image"] = imageFile;
     
@@ -154,6 +156,14 @@ NSMutableArray *received_elder_list;
         list = [NSString stringWithFormat:@"%@ %@", list, name];
     }
     self.elder_list_label.text = [NSString stringWithFormat:@"照護對象:%@", list];
+}
+
+- (UIImage *)shrinkImage:(UIImage *)image withSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
 }
 
 @end
