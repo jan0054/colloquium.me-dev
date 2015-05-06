@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>04A51D30-A63B-497D-8A49-35A81601B05E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NCU_Math</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7BDEB7BFC25650B2265AF4439506E1349C514116</key>
+		<string>https://github.com/jan0054/colloquium.me-dev.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>cm_ncu_math_ios/NCU_Math.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7BDEB7BFC25650B2265AF4439506E1349C514116</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jan0054/colloquium.me-dev.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7BDEB7BFC25650B2265AF4439506E1349C514116</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7BDEB7BFC25650B2265AF4439506E1349C514116</string>
+			<key>IDESourceControlWCCName</key>
+			<string>colloquium.me-dev</string>
+		</dict>
+	</array>
+</dict>
+</plist>
