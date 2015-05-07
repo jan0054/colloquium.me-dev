@@ -15,8 +15,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //[Parse enableLocalDatastore];
-    [Parse setApplicationId:@"HBA2OJRhQrOzsn1hp2R2dWqHfsftvTuNWos00mJh"
-                  clientKey:@"NsG1plJC9sPVrCUx2pFnJPbkPg460nzpmwAX6xq7"];
+    [Parse setApplicationId:@"ZxpkBR4Fy9XQBQGhE4wfTnJTi5Fi4ZaQrw8wJzWZ"
+                  clientKey:@"9TM41ePCXeDHwRgjrVuQhjW29WRmQvLVDX2H6cUh"];
     
     //we don't do tracking analytics for now...
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
