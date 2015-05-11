@@ -27,7 +27,7 @@ int unread_total;
     [super viewDidLoad];
     
     self.career_array = [[NSMutableArray alloc] init];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor background];
     self.careertable.backgroundColor = [UIColor clearColor];
     
     self.empty_career_label.hidden = YES;
@@ -118,13 +118,13 @@ int unread_total;
     if ([careercell respondsToSelector:@selector(layoutMargins)]) {
         careercell.layoutMargins = UIEdgeInsetsZero;
     }
-    careercell.career_card_view.backgroundColor = [UIColor nu_deep_blue];
+    careercell.career_card_view.backgroundColor = [UIColor primary_color];
     careercell.career_card_view.alpha = 0.8;
-    careercell.career_trim_view.backgroundColor = [UIColor light_blue];
+    careercell.career_trim_view.backgroundColor = [UIColor light_primary];
     careercell.career_card_view.layer.cornerRadius = 2;
-    [careercell.career_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [careercell.career_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    careercell.career_type_label.textColor = [UIColor light_blue];
+    [careercell.career_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [careercell.career_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    careercell.career_type_label.textColor = [UIColor light_primary];
     //add shadow
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:careercell.career_card_view.bounds];
     careercell.career_card_view.layer.masksToBounds = NO;

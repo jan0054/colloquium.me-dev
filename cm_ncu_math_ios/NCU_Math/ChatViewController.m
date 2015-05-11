@@ -33,9 +33,9 @@ PFObject *conversation;
     self.chat_array = [[NSMutableArray alloc] init];
     self.chat_table_array = [[NSMutableArray alloc] init];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor background];
     self.chat_table.backgroundColor = [UIColor clearColor];
-    self.send_chat_button.titleLabel.textColor = [UIColor nu_bright_orange];
+    self.send_chat_button.titleLabel.textColor = [UIColor accent_color];
     
     //Pull To Refresh Controls
     self.pullrefresh = [[UIRefreshControl alloc] init];

@@ -24,8 +24,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     //self.settingstable.tableFooterView = [[UIView alloc] init];
     self.settingstable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    [self.settingstable setSeparatorColor:[UIColor nu_bright_orange]];
+    self.view.backgroundColor = [UIColor dark_primary];
+    [self.settingstable setSeparatorColor:[UIColor divider_color]];
     
 }
 
@@ -242,8 +242,8 @@
             logincell.login_subtitle_label.text = @"Log in to message users";
         }
         
-        [logincell.login_action_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-        [logincell.login_action_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+        [logincell.login_action_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+        [logincell.login_action_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
         logincell.login_name_label.text = name;
         logincell.selectionStyle = UITableViewCellSelectionStyleNone;
         logincell.backgroundColor = [UIColor clearColor];
@@ -317,8 +317,8 @@
         preferencecell.backgroundColor = [UIColor clearColor];
         preferencecell.preference_main_label.textColor = [UIColor whiteColor];
         preferencecell.preference_subtitle_label.textColor = [UIColor whiteColor];
-        [preferencecell.preference_change_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-        [preferencecell.preference_change_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+        [preferencecell.preference_change_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+        [preferencecell.preference_change_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
         preferencecell.selectionStyle = UITableViewCellSelectionStyleNone;
         return preferencecell;
     }
@@ -350,11 +350,11 @@
     }
     else if (indexPath.row ==1)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://ideutsch@unm.edu"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
     }
     else if (indexPath.row ==2)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://vbird@unm.edu"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
     }
     else if (indexPath.row==3)
     {

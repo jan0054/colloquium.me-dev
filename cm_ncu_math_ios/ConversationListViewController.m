@@ -39,7 +39,7 @@ NSString *ab_self;
     [super viewDidLoad];
     
     //init
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor background];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.conversation_list_table.tableFooterView = [[UIView alloc] init];
     self.conversation_array = [[NSMutableArray alloc] init];
@@ -108,7 +108,7 @@ NSString *ab_self;
     }
     conversationcell.selectionStyle = UITableViewCellSelectionStyleNone;
     conversationcell.conversation_card_view.backgroundColor = [UIColor whiteColor];
-    conversationcell.conversation_new_label.textColor = [UIColor nu_bright_orange];
+    conversationcell.conversation_new_label.textColor = [UIColor accent_color];
     
     //data
     PFObject *conv = [self.conversation_array objectAtIndex:indexPath.row];

@@ -19,15 +19,16 @@
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor dark_primary];
     [self.logInView setLogo:[[UIImageView alloc] initWithImage:nil]];
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateNormal];
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateHighlighted];
-    [self.logInView.signUpButton setBackgroundColor:[UIColor shade_blue]];
+    [self.logInView.signUpButton setBackgroundColor:[UIColor accent_color]];
     [self.logInView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];
     [self.logInView.signUpButton setBackgroundImage:nil forState:UIControlStateHighlighted];
     [self.logInView.signUpButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
-    [self.logInView.logInButton setBackgroundColor:[UIColor dark_blue]];
+    [self.logInView.logInButton setBackgroundColor:[UIColor accent_color]];
     [self.logInView.logInButton setBackgroundImage:nil forState:UIControlStateNormal];
     [self.logInView.logInButton setBackgroundImage:nil forState:UIControlStateHighlighted];
     [self.logInView.logInButton setImage:nil forState:UIControlStateNormal];
@@ -55,7 +56,7 @@
     UILabel *notice_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 95, 280, 60)];
     [notice_label setBackgroundColor:[UIColor clearColor]];
     [notice_label setTextColor:[UIColor whiteColor]];
-    [notice_label setText:@"Welcome to the SQuInT workshop. Please log in or create a new account to connect with other attendees."];
+    [notice_label setText:@"Welcome to the NCU Workshop on Hydrodynamic Escape Problems."];
     [notice_label setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
     [notice_label setLineBreakMode:NSLineBreakByWordWrapping];
     notice_label.numberOfLines = 0;

@@ -27,7 +27,7 @@ BOOL keyboard_up;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor background];
     self.discussion_table.tableFooterView = [[UIView alloc] init];
     discussion_array = [[NSMutableArray alloc] init];
     //Pull To Refresh Controls
@@ -36,8 +36,8 @@ BOOL keyboard_up;
     [self.discussion_table addSubview:pullrefresh];
     self.discussion_table.rowHeight = UITableViewAutomaticDimension;
     self.discussion_table.estimatedRowHeight = 60;
-    [self.discussion_send_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.discussion_send_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [self.discussion_send_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.discussion_send_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     self.empty_label.hidden = YES;
     
     //if someone is logged in, get the associated person
@@ -137,7 +137,7 @@ BOOL keyboard_up;
     if ([discussioncell respondsToSelector:@selector(layoutMargins)]) {
         discussioncell.layoutMargins = UIEdgeInsetsZero;
     }
-    discussioncell.author_label.textColor = [UIColor light_blue];
+    discussioncell.author_label.textColor = [UIColor light_primary];
     discussioncell.content_label.textColor = [UIColor whiteColor];
     discussioncell.content_label.numberOfLines = 0;
     

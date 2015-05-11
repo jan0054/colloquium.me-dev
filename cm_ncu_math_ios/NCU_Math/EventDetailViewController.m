@@ -51,28 +51,28 @@ int discuss_on;  //enable-disable the discussion button
         if (isperson_int == 1)
         {
             //ok, its a registered attendee, we can let him into discussion
-            [self.discuss_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-            [self.discuss_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+            [self.discuss_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+            [self.discuss_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
             discuss_on = 1;
         }
     }
     
     //styling
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    [self.eventdetail_card_view setBackgroundColor:[UIColor nu_deep_blue]];
+    self.view.backgroundColor = [UIColor background];
+    [self.eventdetail_card_view setBackgroundColor:[UIColor primary_color]];
     self.eventdetail_card_view.alpha = 0.8;
-    [self.eventdetail_trim_view setBackgroundColor:[UIColor light_blue]];
-    [self.eventdetail_description_card_view setBackgroundColor:[UIColor main_blue]];
-    [self.eventdetail_description_textview setBackgroundColor:[UIColor main_blue]];
-    self.eventdetail_location_label.textColor = [UIColor reallylight_blue];
-    self.eventdetail_time_label.textColor = [UIColor reallylight_blue];
-    self.eventdetail_author_label.textColor = [UIColor reallylight_blue];
+    [self.eventdetail_trim_view setBackgroundColor:[UIColor light_primary]];
+    [self.eventdetail_description_card_view setBackgroundColor:[UIColor primary_color]];
+    [self.eventdetail_description_textview setBackgroundColor:[UIColor primary_color]];
+    self.eventdetail_location_label.textColor = [UIColor divider_color];
+    self.eventdetail_time_label.textColor = [UIColor divider_color];
+    self.eventdetail_author_label.textColor = [UIColor divider_color];
     self.eventdetail_card_view.layer.cornerRadius = 2;
     self.eventdetail_description_card_view.layer.cornerRadius = 2;
-    [self.eventdetail_authordetail_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.eventdetail_authordetail_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    [self.eventdetail_abstract_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.eventdetail_abstract_button setTitleColor: [UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [self.eventdetail_authordetail_button setTitleColor: [UIColor accent_color] forState:UIControlStateNormal];
+    [self.eventdetail_authordetail_button setTitleColor: [UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.eventdetail_abstract_button setTitleColor: [UIColor accent_color] forState:UIControlStateNormal];
+    [self.eventdetail_abstract_button setTitleColor: [UIColor accent_color] forState:UIControlStateHighlighted];
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.eventdetail_card_view.bounds];
     self.eventdetail_card_view.layer.masksToBounds = NO;

@@ -48,18 +48,18 @@ NSString *ab_self;
     
     //styling
     self.person_detail_table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    self.person_card_view.backgroundColor = [UIColor nu_deep_blue];
+    self.view.backgroundColor = [UIColor background];
+    self.person_card_view.backgroundColor = [UIColor primary_color];
     self.person_card_view.alpha = 0.8;
-    self.person_trim_view.backgroundColor = [UIColor light_blue];
+    self.person_trim_view.backgroundColor = [UIColor light_primary];
     self.person_detail_seg.tintColor = [UIColor whiteColor];
     self.person_card_view.layer.cornerRadius = 2;
-    [self.person_chat_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.person_chat_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    [self.person_email_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.person_email_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    [self.person_link_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.person_link_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [self.person_chat_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.person_chat_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.person_email_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.person_email_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.person_link_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.person_link_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.person_card_view.bounds];

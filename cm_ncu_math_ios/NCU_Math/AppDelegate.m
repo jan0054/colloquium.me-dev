@@ -18,7 +18,7 @@
     [Parse setApplicationId:@"ZxpkBR4Fy9XQBQGhE4wfTnJTi5Fi4ZaQrw8wJzWZ"
                   clientKey:@"9TM41ePCXeDHwRgjrVuQhjW29WRmQvLVDX2H6cUh"];
     
-    //we don't do tracking analytics for now...
+    //Parse tracking analytics
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     // Register for Push Notitications, if running iOS 8
@@ -40,16 +40,16 @@
      }
     
     // This sets the background color of the navigation
-    [[UINavigationBar appearance] setBarTintColor:[UIColor main_blue]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor nav_bar]];
     
     // This sets the text color of the navigation links
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor button_text]];
     
     // This sets the title color of the navigation bar
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Light" size:19.0]}];
     
-    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setBarTintColor:[UIColor dark_blue]];
+    [[UITabBar appearance] setTintColor:[UIColor button_text]];
+    [[UITabBar appearance] setBarTintColor:[UIColor tab_bar]];
     //crashes ios 7 + iphone 4s for some reason
     //[[UITabBar appearance] setTranslucent:NO];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];

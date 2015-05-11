@@ -38,7 +38,7 @@ PFObject *self_person;
     self.link_tf.delegate = self;
     
     //styling
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor background];
     
     //adjust label text according to post type
     if ( self.career_post_type == 1)

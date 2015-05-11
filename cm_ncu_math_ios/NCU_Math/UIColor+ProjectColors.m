@@ -10,72 +10,58 @@
 
 @implementation UIColor (ProjectColors)
 
-+ (UIColor*)main_blue {
-    return [UIColor colorWithRed:45.0/255.0 green:70.0/255.0 blue:113.0/255.0 alpha:1];
++ (UIColor*) accent_color
+{
+    return [UIColor colorWithRed:0.0/255.0 green:150.0/255.0 blue:136.0/255.0 alpha:1];
+}
++ (UIColor*) primary_text
+{
+    return [UIColor colorWithRed:33.0/255.0 green:33.0/255.0 blue:33.0/255.0 alpha:1];
+}
++ (UIColor*) secondary_text
+{
+    return [UIColor colorWithRed:114.0/255.0 green:114.0/255.0 blue:114.0/255.0 alpha:1];
+}
++ (UIColor*) divider_color
+{
+    return [UIColor colorWithRed:182.0/255.0 green:182.0/255.0 blue:182.0/255.0 alpha:1];
+}
++ (UIColor*) primary_color
+{
+    return [UIColor colorWithRed:158.0/255.0 green:158.0/255.0 blue:158.0/255.0 alpha:1];
+}
++ (UIColor*) dark_primary
+{
+    return [UIColor colorWithRed:97.0/255.0 green:97.0/255.0 blue:97.0/255.0 alpha:1];
+}
++ (UIColor*) light_primary
+{
+    return [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1];
+}
++ (UIColor*) dark_accent
+{
+    return [UIColor colorWithRed:0.0/255.0 green:121.0/255.0 blue:107.0/255.0 alpha:1];
+}
++ (UIColor*) light_accent
+{
+    return [UIColor colorWithRed:178.0/255.0 green:223.0/255.0 blue:219.0/255.0 alpha:1];
 }
 
-+ (UIColor*)light_blue {
-    return [UIColor colorWithRed:162.0/255.0 green:177.0/255.0 blue:204.0/255.0 alpha:1];
++ (UIColor*) background
+{
+    return [UIColor colorWithRed:158.0/255.0 green:158.0/255.0 blue:158.0/255.0 alpha:1];
 }
-
-+ (UIColor*)dark_blue {
-    return [UIColor colorWithRed:14.0/255.0 green:36.0/255.0 blue:73.0/255.0 alpha:1];
++ (UIColor*) nav_bar
+{
+    return [UIColor colorWithRed:0.0/255.0 green:150.0/255.0 blue:136.0/255.0 alpha:1];
 }
-
-+ (UIColor*)shade_blue {
-    return [UIColor colorWithRed:91.0/255.0 green:113.0/255.0 blue:152.0/255.0 alpha:1];
++ (UIColor*) tab_bar
+{
+    return [UIColor colorWithRed:0.0/255.0 green:121.0/255.0 blue:107.0/255.0 alpha:1];
 }
-
-+ (UIColor*)main_orange {
-    return [UIColor colorWithRed:170.0/255.0 green:100.0/255.0 blue:57.0/255.0 alpha:1];
-}
-
-+ (UIColor*)shade_orange {
-    return [UIColor colorWithRed:110.0/255.0 green:50.0/255.0 blue:13.0/255.0 alpha:1];
-}
-
-+ (UIColor*)light_orange {
-    return [UIColor colorWithRed:230.0/255.0 green:166.0/255.0 blue:127.0/255.0 alpha:1];
-}
-
-+ (UIColor*)bright_orange {
-    return [UIColor colorWithRed:255.0/255.0 green:131.0/255.0 blue:71.0/255.0 alpha:1];
-}
-
-+ (UIColor*)border_blue {
-    return [UIColor colorWithRed:128.0/255.0 green:174.0/255.0 blue:216.0/255.0 alpha:1];
-}
-
-+ (UIColor*)reallylight_blue {
-    return [UIColor colorWithRed:154.0/255.0 green:169.0/255.0 blue:189.0/255.0 alpha:1];
-}
-
-+ (UIColor*)red_orange {
-    return [UIColor colorWithRed:234.0/255.0 green:48.0/255.0 blue:36.0/255.0 alpha:1];
-}
-
-+ (UIColor*)nu_main_orange {
-    return [UIColor colorWithRed:172.0/255.0 green:138.0/255.0 blue:100.0/255.0 alpha:1];
-}
-
-+ (UIColor*)nu_bright_orange {
-    return [UIColor colorWithRed:246.0/255.0 green:190.0/255.0 blue:19.0/255.0 alpha:1];
-}
-
-+ (UIColor*)nu_shade_blue {
-    return [UIColor colorWithRed:29.0/255.0 green:60.0/255.0 blue:81.0/255.0 alpha:1];
-}
-
-+ (UIColor*)nu_deep_blue {
-    return [UIColor colorWithRed:9.0/255.0 green:20.0/255.0 blue:26.0/255.0 alpha:1];
-}
-
-+ (UIColor*)nu_bright_blue {
-    return [UIColor colorWithRed:0.0/255.0 green:97.0/255.0 blue:132.0/255.0 alpha:1];
-}
-
-+ (UIColor*)main_green {
-    return [UIColor colorWithRed:44.0/255.0 green:132.0/255.0 blue:55.0/255.0 alpha:1];
++ (UIColor*) button_text
+{
+    return [UIColor whiteColor];
 }
 
 @end

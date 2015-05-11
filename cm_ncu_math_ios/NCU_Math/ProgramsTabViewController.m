@@ -67,8 +67,8 @@ NSMutableArray *search_array;
     [self.abstracttable addSubview:pullrefreshabstract];
 
     //styling
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    self.bottom_view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor background];
+    self.bottom_view.backgroundColor = [UIColor background];
     self.talkview.backgroundColor = [UIColor clearColor];
     self.posterview.backgroundColor = [UIColor clearColor];
     self.abstractview.backgroundColor = [UIColor clearColor];
@@ -361,16 +361,16 @@ NSMutableArray *search_array;
         }
         talkcell.selectionStyle = UITableViewCellSelectionStyleNone;
         talkcell.backgroundColor = [UIColor clearColor];
-        talkcell.talk_card_view.backgroundColor = [UIColor nu_deep_blue];
+        talkcell.talk_card_view.backgroundColor = [UIColor primary_color];
         talkcell.talk_card_view.alpha = 0.8;
         //talkcell.talk_detail_button.titleLabel.textColor = [UIColor bright_orange];
-        [talkcell.talk_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-        [talkcell.talk_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-        talkcell.talk_trim_view.backgroundColor = [UIColor light_blue];
-        talkcell.talk_location_label.textColor = [UIColor light_blue];
-        talkcell.talk_time_label.textColor = [UIColor light_blue];
+        [talkcell.talk_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+        [talkcell.talk_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+        talkcell.talk_trim_view.backgroundColor = [UIColor light_primary];
+        talkcell.talk_location_label.textColor = [UIColor light_primary];
+        talkcell.talk_time_label.textColor = [UIColor light_primary];
         talkcell.talk_card_view.layer.cornerRadius = 2;
-        talkcell.talk_author_label.textColor = [UIColor light_blue];
+        talkcell.talk_author_label.textColor = [UIColor light_primary];
         
         //add shadow to views
         UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:talkcell.talk_card_view.bounds];
@@ -404,15 +404,15 @@ NSMutableArray *search_array;
         }
         postercell.selectionStyle = UITableViewCellSelectionStyleNone;
         postercell.backgroundColor = [UIColor clearColor];
-        postercell.poster_card_view.backgroundColor = [UIColor nu_deep_blue];
+        postercell.poster_card_view.backgroundColor = [UIColor primary_color];
         postercell.poster_card_view.alpha = 0.8;
         //postercell.poster_detail_button.titleLabel.textColor = [UIColor bright_orange];
-        [postercell.poster_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-        [postercell.poster_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-        postercell.poster_trim_view.backgroundColor = [UIColor light_blue];
-        postercell.poster_location_label.textColor = [UIColor light_blue];
+        [postercell.poster_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+        [postercell.poster_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+        postercell.poster_trim_view.backgroundColor = [UIColor primary_color];
+        postercell.poster_location_label.textColor = [UIColor light_primary];
         postercell.poster_card_view.layer.cornerRadius = 2;
-        postercell.poster_author_label.textColor = [UIColor light_blue];
+        postercell.poster_author_label.textColor = [UIColor light_primary];
         
         //add shadow to views
         UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:postercell.poster_card_view.bounds];
@@ -442,13 +442,13 @@ NSMutableArray *search_array;
         }
         abstractcell.selectionStyle = UITableViewCellSelectionStyleNone;
         abstractcell.backgroundColor = [UIColor clearColor];
-        abstractcell.abstract_card_view.backgroundColor = [UIColor nu_deep_blue];
+        abstractcell.abstract_card_view.backgroundColor = [UIColor primary_color];
         abstractcell.abstract_card_view.alpha = 0.8;
         //abstractcell.abstract_detail_button.titleLabel.textColor = [UIColor bright_orange];
-        [abstractcell.abstract_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-        [abstractcell.abstract_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-        abstractcell.abstract_trim_view.backgroundColor = [UIColor light_blue];
-        abstractcell.abstract_author_label.textColor = [UIColor light_blue];
+        [abstractcell.abstract_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+        [abstractcell.abstract_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+        abstractcell.abstract_trim_view.backgroundColor = [UIColor light_primary];
+        abstractcell.abstract_author_label.textColor = [UIColor light_primary];
         abstractcell.abstract_card_view.layer.cornerRadius = 2;
         
         //add shadow to views

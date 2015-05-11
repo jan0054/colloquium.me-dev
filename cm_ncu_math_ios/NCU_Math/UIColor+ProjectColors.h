@@ -9,21 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface UIColor (ProjectColors)
-+ (UIColor *) main_blue;
-+ (UIColor *) light_blue;
-+ (UIColor *) dark_blue;
-+ (UIColor *) shade_blue;
-+ (UIColor *) main_orange;
-+ (UIColor *) shade_orange;
-+ (UIColor *) light_orange;
-+ (UIColor *) bright_orange;
-+ (UIColor *) border_blue;
-+ (UIColor *) reallylight_blue;
-+ (UIColor *) red_orange;
-+ (UIColor*) nu_main_orange;
-+ (UIColor*) nu_bright_orange;
-+ (UIColor*) nu_shade_blue;
-+ (UIColor*) nu_deep_blue;
-+ (UIColor*) nu_bright_blue;
-+ (UIColor*) main_green;
++ (UIColor*) accent_color;
++ (UIColor*) primary_text;
++ (UIColor*) secondary_text;
++ (UIColor*) divider_color;
++ (UIColor*) primary_color;
++ (UIColor*) dark_primary;
++ (UIColor*) light_primary;
++ (UIColor*) dark_accent;
++ (UIColor*) light_accent;
+
++ (UIColor*) background;
++ (UIColor*) nav_bar;
++ (UIColor*) tab_bar;
++ (UIColor*) button_text;
+
 @end

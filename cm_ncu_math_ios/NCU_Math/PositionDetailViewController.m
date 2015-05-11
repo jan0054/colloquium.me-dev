@@ -32,17 +32,17 @@ NSString *weblink;
     self.contact_poster_button.hidden = YES;
     
     //styling
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    self.career_card_view.backgroundColor = [UIColor nu_deep_blue];
+    self.view.backgroundColor = [UIColor background];
+    self.career_card_view.backgroundColor = [UIColor primary_color];
     self.career_card_view.alpha = 0.8;
-    self.career_trim_view.backgroundColor =[UIColor light_blue];
-    self.note_card_view.backgroundColor = [UIColor main_blue];
+    self.career_trim_view.backgroundColor =[UIColor light_primary];
+    self.note_card_view.backgroundColor = [UIColor primary_color];
     self.career_card_view.layer.cornerRadius = 2;
     self.note_card_view.layer.cornerRadius = 2;
-    [self.contact_poster_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.contact_poster_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    [self.career_notes_textfield setBackgroundColor:[UIColor main_blue]];
-    self.career_posted_by.textColor = [UIColor light_blue];
+    [self.contact_poster_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.contact_poster_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.career_notes_textfield setBackgroundColor:[UIColor primary_color]];
+    self.career_posted_by.textColor = [UIColor light_primary];
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.career_card_view.bounds];
     self.career_card_view.layer.masksToBounds = NO;

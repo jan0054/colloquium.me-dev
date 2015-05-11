@@ -27,19 +27,19 @@ NSString *url_to_open;
     [super viewDidLoad];
     
     //styling
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    self.pdf_trim_view.backgroundColor = [UIColor light_blue];
-    self.abstract_trim_view.backgroundColor = [UIColor light_blue];
-    self.abstract_card_view.backgroundColor = [UIColor nu_deep_blue];
+    self.view.backgroundColor = [UIColor background];
+    self.pdf_trim_view.backgroundColor = [UIColor primary_color];
+    self.abstract_trim_view.backgroundColor = [UIColor light_primary];
+    self.abstract_card_view.backgroundColor = [UIColor dark_primary];
     self.abstract_card_view.alpha = 0.8;
-    self.abstract_author_label.textColor = [UIColor reallylight_blue];
+    self.abstract_author_label.textColor = [UIColor divider_color];
     self.abstract_card_view.layer.cornerRadius = 2;
     self.abstract_detail_card_view.layer.cornerRadius = 2;
-    self.abstract_detail_card_view.backgroundColor = [UIColor main_blue];
-    [self.author_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.author_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    [self.abstract_open_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [self.abstract_open_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    self.abstract_detail_card_view.backgroundColor = [UIColor primary_color];
+    [self.author_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.author_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.abstract_open_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.abstract_open_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.abstract_card_view.bounds];
@@ -88,8 +88,8 @@ NSString *url_to_open;
         NSLog(@"attachment URL: %@", url_to_open );
         if (url_to_open.length >=1)
         {
-            [self.abstract_open_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-            [self.abstract_open_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+            [self.abstract_open_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+            [self.abstract_open_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
         }
         else
         {

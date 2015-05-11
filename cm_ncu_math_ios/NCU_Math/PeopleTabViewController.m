@@ -44,7 +44,7 @@ NSMutableArray *search_array;
     self.person_array = [[NSMutableArray alloc] init];
     search_array = [[NSMutableArray alloc] init];
     self.peopletable.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor background];
     self.chat_float.layer.cornerRadius = 15;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.peopletable.tableFooterView = [[UIView alloc] init];
@@ -162,12 +162,12 @@ NSMutableArray *search_array;
         personcell.layoutMargins = UIEdgeInsetsZero;
     }
     personcell.selectionStyle = UITableViewCellSelectionStyleNone;
-    personcell.person_trim_view.backgroundColor = [UIColor light_blue];
-    personcell.person_card_view.backgroundColor = [UIColor nu_deep_blue];
+    personcell.person_trim_view.backgroundColor = [UIColor primary_color];
+    personcell.person_card_view.backgroundColor = [UIColor dark_primary];
     personcell.person_card_view.alpha = 0.8;
     personcell.person_card_view.layer.cornerRadius = 2;
-    [personcell.person_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [personcell.person_detail_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [personcell.person_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [personcell.person_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:personcell.person_card_view.bounds];

@@ -23,7 +23,7 @@
     [super viewDidLoad];
     
     self.venue_array = [[NSMutableArray alloc] init];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor background];
     self.venuetable.backgroundColor = [UIColor clearColor];
     
     //Pull To Refresh Controls
@@ -98,10 +98,10 @@
     venuecell.venue_address_label.textColor = [UIColor whiteColor];
     venuecell.venue_trim_view.backgroundColor = [UIColor clearColor];
     //venuecell.card_view.layer.cornerRadius = 2;
-    [venuecell.venue_call_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [venuecell.venue_call_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
-    [venuecell.venue_navigate_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
-    [venuecell.venue_navigate_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
+    [venuecell.venue_call_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [venuecell.venue_call_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [venuecell.venue_navigate_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [venuecell.venue_navigate_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     
     //[venuecell.venue_website_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateNormal];
     //[venuecell.venue_website_button setTitleColor:[UIColor nu_bright_orange] forState:UIControlStateHighlighted];
