@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "cm_math"
+        }, 
+        "cm_math": {
+            "applicationId": "ZxpkBR4Fy9XQBQGhE4wfTnJTi5Fi4ZaQrw8wJzWZ", 
+            "masterKey": "fOtSMMyczYbIoZlrlZH18v86RtJzJbb813n11NR3"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.4.2"
+    }
+}
