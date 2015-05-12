@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="My Parse Web">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+
+  <script language="javascript">
+  function addVenue()
+  {
+  	if(venue_name.value==""){
+		alert(STR_name+AL_empty);
+		venue_name.focus();
+		return false;
+	}
+  	if(venue_description.value==""){
+		alert(STR_description+AL_empty);
+		venue_description.focus();
+		return false;
+	}
+  	/*if(venue_coordinates.value==""){
+		alert(STR_coordinates+AL_empty);
+		venue_coordinates.focus();
+		return false;
+	}*/
+	Parse.initialize("PLlbyPCGMrfHvghx1sllgLmNRIwz00l7PHYZdAvd", "Qkfl1VnB7ksIXOQAT5sV5uPFVVCehOVUoSLC0pmx");
+	ListItem = Parse.Object.extend("poi");
+	newItem = new ListItem();
+
+	newItem.set("name", venue_name.value);
+	newItem.set("description", venue_description.value);
+	newItem.set("phone", venue_phone.value);
+	newItem.set("address", venue_address.value);
+	newItem.set("url", venue_website.value);
+
+//	newItem.set("coord", venue_coordinates.value);
+
+	if(venue_photo.value!=""){
+		alert(venue_photo.value);
+		var fileUploadControl = venue_photo.value[0];
+		if (fileUploadControl.files.length > 0) {
+			var file = fileUploadControl.files[0];
+			var fileName = abstract_pdf.value;
+			var parseFile = new Parse.File(fileName, file);
+			newItem.set("photo", parseFile);
+		}
+	}
+	
+	newItem.save(null, {
+		success: function(newItem){
+			window.location.reload();
+		},
+		error: function(newItem, error){
+			alert('Failed to create new object, with error code: ' + error.message);
+		}
+	});
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addvenue)</script></h1>
+	<h2><script>dw(STR_1)</script></h2>
+
+	<div id="add_venue">
+		<table>
+			<tr>
+				<td class="tb1">*<script>dw(STR_name)</script></td>
+				<td><input class="InputSize"type="text" id="venue_name"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_description)</script></td>
+				<td><input class="InputSize" type="text" id="venue_description"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_coordinates)</script></td>
+				<td><input class="InputSize" type="text" id="venue_coordinates"></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_phone)</script></td>
+				<td><input class="InputSize" type="text" id="venue_phone"></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_photo)</script></td>
+				<td><input type="file" class="FileSize" id="venue_photo"></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_address)</script></td>
+				<td><input class="InputSize" type="text" id="venue_address"></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_website)</script></td>
+				<td><input class="InputSize" type="text" id="venue_website"></td>
+			</tr>
+			<tr>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_venue_submit" value="'+BT_add+'" onClick="addVenue();">')</script></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	</div>
+</body>
+ 

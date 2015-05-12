@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0630"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,23 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B43D265918FFC9980072B753"
-               BuildableName = "SQuInT2015.app"
-               BlueprintName = "SQuInT2015"
-               ReferencedContainer = "container:SQuInT2015.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B43D267D18FFC9980072B753"
-               BuildableName = "SQuInT2015.temp_caseinsensitive_renameTests.xctest"
-               BlueprintName = "SQuInT2015.Tests"
-               ReferencedContainer = "container:SQuInT2015.xcodeproj">
+               BuildableName = "HEP Workshop.app"
+               BlueprintName = "HEP Workshop"
+               ReferencedContainer = "container:HEP Workshop.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B43D267D18FFC9980072B753"
-               BuildableName = "SQuInT2015.temp_caseinsensitive_renameTests.xctest"
-               BlueprintName = "SQuInT2015.Tests"
-               ReferencedContainer = "container:SQuInT2015.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "SQuInT2015.app"
-            BlueprintName = "SQuInT2015"
-            ReferencedContainer = "container:SQuInT2015.xcodeproj">
+            BuildableName = "HEP Workshop.app"
+            BlueprintName = "HEP Workshop"
+            ReferencedContainer = "container:HEP Workshop.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,13 +48,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "SQuInT2015.app"
-            BlueprintName = "SQuInT2015"
-            ReferencedContainer = "container:SQuInT2015.xcodeproj">
+            BuildableName = "HEP Workshop.app"
+            BlueprintName = "HEP Workshop"
+            ReferencedContainer = "container:HEP Workshop.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -90,13 +67,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "SQuInT2015.app"
-            BlueprintName = "SQuInT2015"
-            ReferencedContainer = "container:SQuInT2015.xcodeproj">
+            BuildableName = "HEP Workshop.app"
+            BlueprintName = "HEP Workshop"
+            ReferencedContainer = "container:HEP Workshop.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
