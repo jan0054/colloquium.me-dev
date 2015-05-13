@@ -33,9 +33,10 @@ PFObject *conversation;
     self.chat_array = [[NSMutableArray alloc] init];
     self.chat_table_array = [[NSMutableArray alloc] init];
     
-    self.view.backgroundColor = [UIColor background];
+    self.view.backgroundColor = [UIColor dark_primary];
     self.chat_table.backgroundColor = [UIColor clearColor];
-    self.send_chat_button.titleLabel.textColor = [UIColor accent_color];
+    [self.send_chat_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateNormal];
+    [self.send_chat_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateHighlighted];
     
     //Pull To Refresh Controls
     self.pullrefresh = [[UIRefreshControl alloc] init];
@@ -225,7 +226,7 @@ PFObject *conversation;
 - (void) get_chat_info
 {
     //first check if the other participant still has their chat_on set
-    NSNumber *chat_on_num = otherguy[@"chat_on"];
+    NSNumber *chat_on_num = otherguy[@"chat_status"];
     int chat_on = [chat_on_num intValue];
     if (chat_on != 1)
     {
@@ -244,10 +245,10 @@ PFObject *conversation;
     
     self.chat_table_array = [[NSMutableArray alloc] init];
     
-    PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"conversation" objectId:self.conversation_objid];
+    PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"Conversation" objectId:self.conversation_objid];
     conversation = the_conv;
     
-    PFQuery *query = [PFQuery queryWithClassName:@"chat"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Chat"];
     [query whereKey:@"conversation" equalTo:the_conv];
     [query includeKey:@"from"];
     [query includeKey:@"to"];
@@ -319,7 +320,7 @@ PFObject *conversation;
     
     NSString *content = self.chat_input_box.text;
 
-    PFObject *new_chat = [PFObject objectWithClassName:@"chat"];
+    PFObject *new_chat = [PFObject objectWithClassName:@"Chat"];
     new_chat[@"content"] = content;
     new_chat[@"conversation"] = conversation;
     new_chat[@"from"] = [PFUser currentUser];

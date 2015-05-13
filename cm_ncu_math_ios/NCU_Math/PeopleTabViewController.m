@@ -40,18 +40,21 @@ NSMutableArray *search_array;
 
 - (void)viewDidLoad
 {
+    //initialize elements
+    
     [super viewDidLoad];
     self.person_array = [[NSMutableArray alloc] init];
     search_array = [[NSMutableArray alloc] init];
-    self.peopletable.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor background];
-    self.chat_float.layer.cornerRadius = 15;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.peopletable.tableFooterView = [[UIView alloc] init];
     self.search_input.delegate = self;
-    self.search_view.backgroundColor = [UIColor light_bg];
     search_str = @"";
     
+    //styling
+    self.peopletable.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor background];
+    self.chat_float.layer.cornerRadius = 5;
+    self.search_view.backgroundColor = [UIColor light_bg];
     
     UIImage *cross_img = [UIImage imageNamed:@"cross1.png"];
     cross_img = [cross_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -63,6 +66,13 @@ NSMutableArray *search_array;
     [self.do_search_button setTintColor:[UIColor dark_button_txt]];
     [self.do_search_button setImage:search_img forState:UIControlStateNormal];
     [self.do_search_button setImage:search_img forState:UIControlStateSelected];
+    
+    UIImage *chat_img = [UIImage imageNamed:@"chatfloat_orange.png"];
+    chat_img = [chat_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.chat_float setTintColor:[UIColor dark_button_txt]];
+    [self.chat_float setImage:chat_img forState:UIControlStateNormal];
+    [self.chat_float setImage:chat_img forState:UIControlStateSelected];
+
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.chat_float.bounds];
     self.chat_float.layer.masksToBounds = NO;
@@ -83,10 +93,7 @@ NSMutableArray *search_array;
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.peopletable addSubview:pullrefresh];
 
-    
     [self get_person_info];
-    
-
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -105,7 +112,7 @@ NSMutableArray *search_array;
     else
     {
         PFUser *self_obj = [PFUser currentUser];
-        NSNumber *is_person = self_obj[@"isperson"];
+        NSNumber *is_person = self_obj[@"is_person"];
         int is_person_int = [is_person intValue];
         if (is_person_int ==1)
         {

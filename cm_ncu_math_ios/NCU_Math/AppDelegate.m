@@ -51,11 +51,17 @@
     
     [[UITabBar appearance] setTintColor:[UIColor light_button_txt]];
     [[UITabBar appearance] setBarTintColor:[UIColor tab_bar]];
+
+    //[[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor light_accent], NSForegroundColorAttributeName, nil]
+                                             //forState:UIControlStateNormal];
+    
+    
+    
     //crashes ios 7 + iphone 4s for some reason
     //[[UITabBar appearance] setTranslucent:NO];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateHighlighted];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor lightGrayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateHighlighted];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor light_button_txt], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
     
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     

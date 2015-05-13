@@ -33,5 +33,13 @@
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textfieldbottom;
 @property (strong, nonatomic) IBOutlet UIScrollView *background_scroll_view;
+@property (weak, nonatomic) IBOutlet UIButton *confirm_attendee_button;
+
+- (IBAction)confirm_attendee_button_tap:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UITextField *first_name_input;
+@property (weak, nonatomic) IBOutlet UITextField *last_name_input;
+@property (weak, nonatomic) IBOutlet UITextField *institution_input;
+
+
 
 @end

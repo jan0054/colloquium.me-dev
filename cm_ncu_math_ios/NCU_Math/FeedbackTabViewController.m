@@ -37,11 +37,6 @@
 
 -(void) log_out
 {
-    //turn off notifications (push)  ***currently not in use
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:0 forKey:@"notifications"];
-    [defaults synchronize];
-    
     [PFUser logOut];
     
     // DIS-Associate the device with logged out user
@@ -99,13 +94,9 @@
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED: %@ to %@",[PFUser currentUser].objectId, installation.objectId);
     
-    //turn on notifications (push)  ***not used in current ver
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:1 forKey:@"notifications"];
-    [defaults synchronize];
-    
     [self.settingstable reloadData];
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    //[self dismissViewControllerAnimated:YES completion:NULL];
+    [self completed_signup];
 }
 
 // Sent to the delegate when the log in attempt fails.
@@ -148,15 +139,18 @@
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     
     // Associate the device with a user
+    /*
     PFInstallation *installation = [PFInstallation currentInstallation];
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
+    */
     
     //refresh login status after signing up
-    [self.settingstable reloadData];
+    //[self.settingstable reloadData];
     
     // Dismiss the PFSignUpViewController
+    /*
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"sign up controller dismissed");
         //pop up the user options controller to set chat/email settings
@@ -166,7 +160,51 @@
         [self presentViewController:controller animated:YES completion:nil];
 
     }];
+    */
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                    message:@"Please log in using your username/password"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Done"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    [PFUser logOut];
+    [self signup_to_login];
 }
+
+- (void) completed_signup
+{
+    // Dismiss the PFSignUpViewController
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"sign up controller dismissed");
+        //pop up the user options controller to set chat/email settings
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UserOptionsViewController *controller = (UserOptionsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"usersetupview"];
+        controller.isnew = 1;
+        [self presentViewController:controller animated:YES completion:nil];
+    }];
+}
+
+- (void) signup_to_login
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // Customize the Log In View Controller
+    CustomLogInViewController *logInViewController = [[CustomLogInViewController alloc] init];
+    [logInViewController setDelegate:self];
+    [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ];
+    
+    // Create the sign up view controller
+    CustomSignUpViewController *signUpViewController = [[CustomSignUpViewController alloc] init];
+    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+    
+    // Assign our sign up controller to be displayed from the login controller
+    [logInViewController setSignUpController:signUpViewController];
+    
+    // Present the log in view controller
+    [self presentViewController:logInViewController animated:YES completion:NULL];
+}
+
 
 // Sent to the delegate when the sign up attempt fails.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error

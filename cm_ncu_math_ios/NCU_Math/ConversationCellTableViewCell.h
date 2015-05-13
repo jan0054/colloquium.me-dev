@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *conversation_new_label;
 
 @property (strong, nonatomic) IBOutlet UIView *conversation_card_view;
+@property (weak, nonatomic) IBOutlet UIView *conversation_bottom_view;
 
 @end

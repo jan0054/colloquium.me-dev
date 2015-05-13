@@ -69,7 +69,6 @@ NSString *ab_self;
         NSLog(@"non-direct chat, loading conv list");
         [self get_conversations];
     }
-    
 }
 
 - (void) viewDidLayoutSubviews
@@ -109,6 +108,18 @@ NSString *ab_self;
     conversationcell.selectionStyle = UITableViewCellSelectionStyleNone;
     conversationcell.conversation_card_view.backgroundColor = [UIColor whiteColor];
     conversationcell.conversation_new_label.textColor = [UIColor accent_color];
+    UIImage *msg_img = [UIImage imageNamed:@"new_msg.png"];
+    msg_img = [msg_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [conversationcell.conversation_new_image setTintColor:[UIColor accent_color]];
+    conversationcell.conversation_new_image.image = msg_img;
+    conversationcell.conversation_new_label.textColor = [UIColor light_txt];
+    //add shadow to views
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:conversationcell.conversation_bottom_view.bounds];
+    conversationcell.conversation_bottom_view.layer.masksToBounds = NO;
+    conversationcell.conversation_bottom_view.layer.shadowColor = [UIColor blackColor].CGColor;
+    conversationcell.conversation_bottom_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    conversationcell.conversation_bottom_view.layer.shadowOpacity = 0.3f;
+    conversationcell.conversation_bottom_view.layer.shadowPath = shadowPath.CGPath;
     
     //data
     PFObject *conv = [self.conversation_array objectAtIndex:indexPath.row];
@@ -207,10 +218,10 @@ NSString *ab_self;
     
     PFUser *currentuser = [PFUser currentUser];
     //subquery where user_a matches currentuser
-    PFQuery *subquery_a = [PFQuery queryWithClassName:@"conversation"];
+    PFQuery *subquery_a = [PFQuery queryWithClassName:@"Conversation"];
     [subquery_a whereKey:@"user_a" equalTo:currentuser];
     //subquery where user_b matches currentuser
-    PFQuery *subquery_b = [PFQuery queryWithClassName:@"conversation"];
+    PFQuery *subquery_b = [PFQuery queryWithClassName:@"Conversation"];
     [subquery_b whereKey:@"user_b" equalTo:currentuser];
     //compound query
     PFQuery *conv_query = [PFQuery orQueryWithSubqueries:@[subquery_a, subquery_b]];

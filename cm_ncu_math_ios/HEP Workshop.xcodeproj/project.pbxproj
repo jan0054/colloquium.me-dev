@@ -94,6 +94,7 @@
 		FD0F46991A6A4419005CF133 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0F46981A6A4419005CF133 /* libsqlite3.dylib */; };
 		FD1D71231A7AB5F400235F57 /* DiscussionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1D71221A7AB5F400235F57 /* DiscussionViewController.m */; };
 		FD1D71261A7AB64800235F57 /* DiscussionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1D71251A7AB64800235F57 /* DiscussionTableViewCell.m */; };
+		FD7C9F7F1B040AC80024100F /* UIImage+ImageTint.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7C9F7E1B040AC80024100F /* UIImage+ImageTint.m */; };
 		FDEAF23A1A6BDCA00067A56D /* UserOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAF2391A6BDCA00067A56D /* UserOptionsViewController.m */; };
 		FDEAF23D1A6D48400067A56D /* UserPreferenceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAF23C1A6D48400067A56D /* UserPreferenceTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -227,6 +228,8 @@
 		FD1D71251A7AB64800235F57 /* DiscussionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscussionTableViewCell.m; sourceTree = "<group>"; };
 		FD366E7A1A318EEA001E335D /* HEP Workshop-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HEP Workshop-Info.plist"; sourceTree = "<group>"; };
 		FD366E7B1A318EEA001E335D /* HEP Workshop-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HEP Workshop-Prefix.pch"; sourceTree = "<group>"; };
+		FD7C9F7D1B040AC80024100F /* UIImage+ImageTint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageTint.h"; sourceTree = "<group>"; };
+		FD7C9F7E1B040AC80024100F /* UIImage+ImageTint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageTint.m"; sourceTree = "<group>"; };
 		FDEAF2381A6BDCA00067A56D /* UserOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOptionsViewController.h; sourceTree = "<group>"; };
 		FDEAF2391A6BDCA00067A56D /* UserOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOptionsViewController.m; sourceTree = "<group>"; };
 		FDEAF23B1A6D48400067A56D /* UserPreferenceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceTableViewCell.h; sourceTree = "<group>"; };
@@ -414,6 +417,8 @@
 		B4BC89DF19D0B4EA00F1A9AD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				FD7C9F7D1B040AC80024100F /* UIImage+ImageTint.h */,
+				FD7C9F7E1B040AC80024100F /* UIImage+ImageTint.m */,
 				B4BC89AA19D005F200F1A9AD /* UIColor+ProjectColors.h */,
 				B4BC89AB19D005F200F1A9AD /* UIColor+ProjectColors.m */,
 				B4F74E5B19B461C000F3A565 /* CustomLogInViewController.h */,
@@ -664,6 +669,7 @@
 				B43D26A218FFD0E20072B753 /* PeopleTabViewController.m in Sources */,
 				B43D26A818FFD1050072B753 /* FeedbackTabViewController.m in Sources */,
 				B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */,
+				FD7C9F7F1B040AC80024100F /* UIImage+ImageTint.m in Sources */,
 				B499BD091904ED0C00C99CFE /* ChatViewController.m in Sources */,
 				B43D26A518FFD0F10072B753 /* PositionsTabViewController.m in Sources */,
 				B450DDBD1A83555C00054FAC /* PositionPostViewController.m in Sources */,
@@ -710,8 +716,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -729,7 +735,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2402e13f-56ae-4582-a03f-616f31d75c17";
+				PROVISIONING_PROFILE = "0d364176-d53c-4901-a707-19cbff5fa9dd";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -750,8 +756,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -762,7 +768,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "2402e13f-56ae-4582-a03f-616f31d75c17";
+				PROVISIONING_PROFILE = "0d364176-d53c-4901-a707-19cbff5fa9dd";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -774,13 +780,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NCU_Math/HEP Workshop-Prefix.pch";
 				INFOPLIST_FILE = "NCU_Math/HEP Workshop-Info.plist";
 				PRODUCT_NAME = "HEP Workshop";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0d364176-d53c-4901-a707-19cbff5fa9dd";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -791,13 +797,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NCU_Math/HEP Workshop-Prefix.pch";
 				INFOPLIST_FILE = "NCU_Math/HEP Workshop-Info.plist";
 				PRODUCT_NAME = "HEP Workshop";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0d364176-d53c-4901-a707-19cbff5fa9dd";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

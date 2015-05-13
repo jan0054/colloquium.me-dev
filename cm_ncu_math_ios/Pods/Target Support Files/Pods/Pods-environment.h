@@ -47,7 +47,7 @@
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 1.7.2.1.
+// Version: 1.7.2.2.
 
 // ParseUI
 #define COCOAPODS_POD_AVAILABLE_ParseUI

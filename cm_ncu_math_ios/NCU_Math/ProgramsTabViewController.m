@@ -17,6 +17,7 @@
 #import "AbstractPdfViewController.h"
 #import "AppDelegate.h"
 #import "UserOptionsViewController.h"
+#import "UIImage+ImageTint.h"
 
 @interface ProgramsTabViewController ()
 
@@ -138,6 +139,10 @@ NSMutableArray *search_array;
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    // generate a tinted unselected image based on image passed via the storyboard
+    for(UITabBarItem *item in self.tabBarController.tabBar.items) {
+        item.image = [[item.selectedImage imageWithColor:[UIColor lightGrayColor]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
     [self check_selected_seg];
 }
 
@@ -237,13 +242,9 @@ NSMutableArray *search_array;
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED: %@ to %@",[PFUser currentUser].objectId, installation.objectId);
-    
-    //turn on notifications (push)
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:1 forKey:@"notifications"];
-    [defaults synchronize];
-    
-    [self dismissViewControllerAnimated:YES completion:NULL];
+
+    //[self dismissViewControllerAnimated:YES completion:NULL];
+    [self completed_signup];
 }
 
 // Sent to the delegate when the log in attempt fails.
@@ -290,14 +291,25 @@ NSMutableArray *search_array;
 
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                    message:@"Please log in using your username/password"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Done"
+                                          otherButtonTitles:nil];
+    [alert show];
+
+    [PFUser logOut];
+    [self signup_to_login];
     
     // Associate the device with a user
+    /*
     PFInstallation *installation = [PFInstallation currentInstallation];
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
+    */
     
-    [self completed_signup];
+    //[self completed_signup];
     
     //create the corresponding person object and set person/user properties
     /*
@@ -338,6 +350,25 @@ NSMutableArray *search_array;
         controller.isnew = 1;
         [self presentViewController:controller animated:YES completion:nil];
     }];
+}
+
+- (void) signup_to_login
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // Customize the Log In View Controller
+    CustomLogInViewController *logInViewController = [[CustomLogInViewController alloc] init];
+    [logInViewController setDelegate:self];
+    [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ];
+    
+    // Create the sign up view controller
+    CustomSignUpViewController *signUpViewController = [[CustomSignUpViewController alloc] init];
+    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+    
+    // Assign our sign up controller to be displayed from the login controller
+    [logInViewController setSignUpController:signUpViewController];
+    
+    // Present the log in view controller
+    [self presentViewController:logInViewController animated:YES completion:NULL];
 }
 
 // Sent to the delegate when the sign up attempt fails.
