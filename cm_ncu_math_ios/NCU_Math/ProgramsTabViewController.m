@@ -76,6 +76,26 @@ NSMutableArray *search_array;
     self.postertable.backgroundColor = [UIColor clearColor];
     self.abstracttable.backgroundColor = [UIColor clearColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.show_search_button setTintColor:[UIColor light_button_txt]];
+    self.search_view.backgroundColor = [UIColor light_bg];
+    
+    UIBezierPath *shadowPath2 = [UIBezierPath bezierPathWithRect:self.search_view.bounds];
+    self.search_view.layer.masksToBounds = NO;
+    self.search_view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.search_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.search_view.layer.shadowOpacity = 0.3f;
+    self.search_view.layer.shadowPath = shadowPath2.CGPath;
+    
+    UIImage *cross_img = [UIImage imageNamed:@"cross1.png"];
+    cross_img = [cross_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.cancel_search_button setTintColor:[UIColor dark_button_txt]];
+    [self.cancel_search_button setImage:cross_img forState:UIControlStateNormal];
+    [self.cancel_search_button setImage:cross_img forState:UIControlStateSelected];
+    UIImage *search_img = [UIImage imageNamed:@"search3.png"];
+    search_img = [search_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.do_search_button setTintColor:[UIColor dark_button_txt]];
+    [self.do_search_button setImage:search_img forState:UIControlStateNormal];
+    [self.do_search_button setImage:search_img forState:UIControlStateSelected];
     
     //get data
     [self get_session_and_talk_data_for_day:self.talk_day_seg.selectedSegmentIndex];

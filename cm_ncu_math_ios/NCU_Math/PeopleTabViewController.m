@@ -49,14 +49,34 @@ NSMutableArray *search_array;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.peopletable.tableFooterView = [[UIView alloc] init];
     self.search_input.delegate = self;
+    self.search_view.backgroundColor = [UIColor light_bg];
     search_str = @"";
     
+    
+    UIImage *cross_img = [UIImage imageNamed:@"cross1.png"];
+    cross_img = [cross_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.cancel_search_button setTintColor:[UIColor dark_button_txt]];
+    [self.cancel_search_button setImage:cross_img forState:UIControlStateNormal];
+    [self.cancel_search_button setImage:cross_img forState:UIControlStateSelected];
+    UIImage *search_img = [UIImage imageNamed:@"search3.png"];
+    search_img = [search_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.do_search_button setTintColor:[UIColor dark_button_txt]];
+    [self.do_search_button setImage:search_img forState:UIControlStateNormal];
+    [self.do_search_button setImage:search_img forState:UIControlStateSelected];
+    //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.chat_float.bounds];
     self.chat_float.layer.masksToBounds = NO;
     self.chat_float.layer.shadowColor = [UIColor blackColor].CGColor;
     self.chat_float.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     self.chat_float.layer.shadowOpacity = 0.3f;
     self.chat_float.layer.shadowPath = shadowPath.CGPath;
+    UIBezierPath *shadowPath2 = [UIBezierPath bezierPathWithRect:self.search_view.bounds];
+    self.search_view.layer.masksToBounds = NO;
+    self.search_view.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.search_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.search_view.layer.shadowOpacity = 0.3f;
+    self.search_view.layer.shadowPath = shadowPath2.CGPath;
+
     
     //Pull To Refresh Controls
     self.pullrefresh = [[UIRefreshControl alloc] init];
@@ -162,12 +182,14 @@ NSMutableArray *search_array;
         personcell.layoutMargins = UIEdgeInsetsZero;
     }
     personcell.selectionStyle = UITableViewCellSelectionStyleNone;
-    personcell.person_trim_view.backgroundColor = [UIColor primary_color];
-    personcell.person_card_view.backgroundColor = [UIColor dark_primary];
-    personcell.person_card_view.alpha = 0.8;
+    personcell.person_trim_view.backgroundColor = [UIColor accent_color];
+    personcell.person_card_view.backgroundColor = [UIColor light_bg];
+    personcell.person_card_view.alpha = 1;
     personcell.person_card_view.layer.cornerRadius = 2;
-    [personcell.person_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [personcell.person_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [personcell.person_detail_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    [personcell.person_detail_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateHighlighted];
+    personcell.name_label.textColor = [UIColor dark_txt];
+    personcell.institution_label.textColor = [UIColor secondary_text];
     
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:personcell.person_card_view.bounds];
@@ -176,7 +198,7 @@ NSMutableArray *search_array;
     personcell.person_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     personcell.person_card_view.layer.shadowOpacity = 0.3f;
     personcell.person_card_view.layer.shadowPath = shadowPath.CGPath;
-
+    
     
     return personcell;
 }

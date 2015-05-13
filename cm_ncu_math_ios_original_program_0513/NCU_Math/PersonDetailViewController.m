@@ -49,17 +49,19 @@ NSString *ab_self;
     //styling
     self.person_detail_table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor background];
-    self.person_card_view.backgroundColor = [UIColor primary_color];
-    self.person_card_view.alpha = 0.8;
-    self.person_trim_view.backgroundColor = [UIColor light_primary];
+    self.person_card_view.backgroundColor = [UIColor light_bg];
+    self.person_card_view.alpha = 1.0;
+    self.person_trim_view.backgroundColor = [UIColor accent_color];
     self.person_detail_seg.tintColor = [UIColor whiteColor];
     self.person_card_view.layer.cornerRadius = 2;
-    [self.person_chat_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [self.person_chat_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
-    [self.person_email_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [self.person_email_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
-    [self.person_link_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [self.person_link_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.person_chat_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    [self.person_chat_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateHighlighted];
+    [self.person_email_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    [self.person_email_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateHighlighted];
+    [self.person_link_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    [self.person_link_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateHighlighted];
+    self.person_name_label.textColor = [UIColor dark_txt];
+    self.person_institution_label.textColor = [UIColor secondary_text];
     
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.person_card_view.bounds];
@@ -124,12 +126,12 @@ NSString *ab_self;
 {
     //get current user 1. isperson 2. chat_on
     PFUser *cur_user = [PFUser currentUser];
-    NSNumber *cur_user_chat_num = cur_user[@"chat_on"];
+    NSNumber *cur_user_chat_num = cur_user[@"chat_status"];
     int cur_user_chat = [cur_user_chat_num intValue];
-    NSNumber *cur_user_isperson_num = cur_user[@"isperson"];
+    NSNumber *cur_user_isperson_num = cur_user[@"is_person"];
     int cur_user_isperson = [cur_user_isperson_num intValue];
     
-    PFQuery *personquery = [PFQuery queryWithClassName:@"person"];
+    PFQuery *personquery = [PFQuery queryWithClassName:@"Person"];
     [personquery includeKey:@"user"];
     [personquery getObjectInBackgroundWithId:self.person_objid block:^(PFObject *object, NSError *error) {
         NSLog(@"detail person query success");
@@ -143,8 +145,8 @@ NSString *ab_self;
         //get this person's email and chat preferences
         NSString *mailstr = the_person[@"email"];
         NSString *linkstr = the_person[@"link"];
-        NSNumber *email_on = the_person[@"email_on"];
-        NSNumber *chat_on = the_person[@"chat_on"];
+        NSNumber *email_on = the_person[@"email_status"];
+        NSNumber *chat_on = the_person[@"chat_status"];
         int email_int = [email_on intValue];
         int chat_int = [chat_on intValue];
         
@@ -252,7 +254,7 @@ NSString *ab_self;
 
 - (void) get_person_talks
 {
-    PFQuery *person_talk_query = [PFQuery queryWithClassName:@"talk"];
+    PFQuery *person_talk_query = [PFQuery queryWithClassName:@"Talk"];
     [person_talk_query whereKey:@"author" equalTo:the_person];
     [person_talk_query orderByDescending:@"start_time"];
     [person_talk_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -272,7 +274,7 @@ NSString *ab_self;
 
 - (void) get_person_posters
 {
-    PFQuery *person_poster_query = [PFQuery queryWithClassName:@"poster"];
+    PFQuery *person_poster_query = [PFQuery queryWithClassName:@"Poster"];
     [person_poster_query whereKey:@"author" equalTo:the_person];
     [person_poster_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
@@ -291,12 +293,12 @@ NSString *ab_self;
 
 - (void) get_person_abstracts
 {
-    PFQuery *person_abstract_query = [PFQuery queryWithClassName:@"abstract"];
+    PFQuery *person_abstract_query = [PFQuery queryWithClassName:@"Attachment"];
     [person_abstract_query whereKey:@"author" equalTo:the_person];
     [person_abstract_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
-            NSLog(@"Successfully retrieved %lu abstracts for the person.", (unsigned long)objects.count);
+            NSLog(@"Successfully retrieved %lu attachments for the person.", (unsigned long)objects.count);
             person_abstracts = [objects mutableCopy];
             [self.person_detail_table reloadData];
         }
@@ -473,7 +475,7 @@ NSString *ab_self;
 - (void) check_conv_exist
 {
     PFUser *cur_user = [PFUser currentUser];
-    PFQuery *query_a = [PFQuery queryWithClassName:@"conversation"];
+    PFQuery *query_a = [PFQuery queryWithClassName:@"Conversation"];
     [query_a whereKey:@"user_a" equalTo:cur_user];
     [query_a whereKey:@"user_b" equalTo:the_user];
     [query_a findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -489,7 +491,7 @@ NSString *ab_self;
         }
         else if ([objects count]==0)
         {
-            PFQuery *query_b = [PFQuery queryWithClassName:@"conversation"];
+            PFQuery *query_b = [PFQuery queryWithClassName:@"Conversation"];
             [query_b whereKey:@"user_a" equalTo:the_user];
             [query_b whereKey:@"user_b" equalTo:cur_user];
             [query_b findObjectsInBackgroundWithBlock:^(NSArray *objects_b, NSError *error) {
@@ -508,7 +510,7 @@ NSString *ab_self;
                 {
                     NSLog(@"no existing conversation");
                     is_new_conv=1;
-                    PFObject *new_conv = [PFObject objectWithClassName:@"conversation"];
+                    PFObject *new_conv = [PFObject objectWithClassName:@"Conversation"];
                     new_conv[@"user_a"] = cur_user;
                     new_conv[@"user_b"] = the_user;
                     new_conv[@"last_msg"] = @"no messages yet";
