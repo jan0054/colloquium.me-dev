@@ -17,6 +17,7 @@
     //[Parse enableLocalDatastore];
     [Parse setApplicationId:@"ZxpkBR4Fy9XQBQGhE4wfTnJTi5Fi4ZaQrw8wJzWZ"
                   clientKey:@"9TM41ePCXeDHwRgjrVuQhjW29WRmQvLVDX2H6cUh"];
+    [PFUser enableRevocableSessionInBackground];
     
     //Parse tracking analytics
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

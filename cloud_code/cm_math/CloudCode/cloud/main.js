@@ -160,7 +160,7 @@ Parse.Cloud.afterSave("Person", function(request, response) {
     }
 });
 
-//after a new user signs up, check persons for the same email and link, or create new person
+//after a new user signs up, check persons for the same email and link
 Parse.Cloud.afterSave(Parse.User, function(request) {
     //grab email of the newly signed up user
     var user_email = request.object.get("email");
@@ -190,19 +190,19 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
             }
             
             //query done but nothing found, create new person
-            if (results.length == 0) {
+            //if (results.length == 0) {
             	//set stuff for the new person object
-            	var person_obj = new Person();
-            	person_obj.set("user", request.object);
-            	person_obj.set("is_user", 1);
-            	person_obj.set("email", user_email);
-            	person_obj.save();
+            	//var person_obj = new Person();
+            	//person_obj.set("user", request.object);
+            	//person_obj.set("is_user", 1);
+            	//person_obj.set("email", user_email);
+            	//person_obj.save();
             	
             	//set user properties
-            	request.object.set("person", person_obj);
-                request.object.set("is_person", 1);
-                request.object.save();
-            }
+            	//request.object.set("person", person_obj);
+                //request.object.set("is_person", 1);
+                //request.object.save();
+            //}
         },
         error: function(error) {
             //something went wrong with the query

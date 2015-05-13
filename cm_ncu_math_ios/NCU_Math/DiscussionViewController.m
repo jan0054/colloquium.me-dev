@@ -27,7 +27,7 @@ BOOL keyboard_up;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = [UIColor background];
+    self.view.backgroundColor = [UIColor dark_bg];
     self.discussion_table.tableFooterView = [[UIView alloc] init];
     discussion_array = [[NSMutableArray alloc] init];
     //Pull To Refresh Controls
@@ -36,8 +36,8 @@ BOOL keyboard_up;
     [self.discussion_table addSubview:pullrefresh];
     self.discussion_table.rowHeight = UITableViewAutomaticDimension;
     self.discussion_table.estimatedRowHeight = 60;
-    [self.discussion_send_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [self.discussion_send_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.discussion_send_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateNormal];
+    [self.discussion_send_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateHighlighted];
     self.empty_label.hidden = YES;
     
     //if someone is logged in, get the associated person
@@ -179,7 +179,7 @@ BOOL keyboard_up;
 
 - (void) get_discussion_data
 {
-    PFQuery *discussion_query = [PFQuery queryWithClassName:@"forum"];
+    PFQuery *discussion_query = [PFQuery queryWithClassName:@"Forum"];
     [discussion_query orderByAscending:@"createdAt"];
     switch (self.event_type) {
         case 0:
@@ -205,6 +205,10 @@ BOOL keyboard_up;
         {
             self.empty_label.hidden = NO;
         }
+        else
+        {
+            self.empty_label.hidden = YES;
+        }
         [discussion_array removeAllObjects];
         discussion_array = [objects mutableCopy];
         [self.discussion_table reloadData];
@@ -213,7 +217,7 @@ BOOL keyboard_up;
 
 - (void) send_discussion_post
 {
-    PFObject *new_post = [PFObject objectWithClassName:@"forum"];
+    PFObject *new_post = [PFObject objectWithClassName:@"Forum"];
     if ([PFUser currentUser])
     {
         new_post[@"author_user"] = [PFUser currentUser];
@@ -258,7 +262,7 @@ BOOL keyboard_up;
 - (PFObject *) get_person_with_user: (PFUser *) user
 {
     // get the associated person *synchronously*
-    PFQuery *person_query = [PFQuery queryWithClassName:@"person"];
+    PFQuery *person_query = [PFQuery queryWithClassName:@"Person"];
     [person_query includeKey:@"user"];
     [person_query whereKey:@"user" equalTo:user];
     PFObject *person = [person_query getFirstObject];

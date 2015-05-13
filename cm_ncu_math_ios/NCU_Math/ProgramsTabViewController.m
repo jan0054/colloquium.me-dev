@@ -297,11 +297,38 @@ NSMutableArray *search_array;
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
     
-    //turn on notifications (push)
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:1 forKey:@"notifications"];
-    [defaults synchronize];
+    [self completed_signup];
     
+    //create the corresponding person object and set person/user properties
+    /*
+    PFUser *cur_user = user;
+    NSString *email = cur_user[@"email"];
+    cur_user[@"is_person"] = @1;
+    cur_user[@"chat_status"] = @1;
+    PFObject *person = [PFObject objectWithClassName:@"Person"];
+    person[@"user"] = cur_user;
+    person[@"is_user"] = @1;
+    person[@"chat_status"] = @1;
+    person[@"email"] = email;
+    //after completion, call the method to close signup view and go to user options view
+    [person saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"new person created successfully");
+            cur_user[@"person"] = person;
+            [cur_user saveInBackground];
+            [self completed_signup];
+        }
+        else
+        {
+            NSLog(@"new person creation error");
+        }
+    }];
+    */
+}
+
+- (void) completed_signup
+{
     // Dismiss the PFSignUpViewController
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"sign up controller dismissed");

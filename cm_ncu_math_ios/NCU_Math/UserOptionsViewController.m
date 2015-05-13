@@ -53,7 +53,7 @@ UITextField *activefield;
             {
                 NSLog(@"FOUND A MATCH");
                 //we have a matching person, this is a registered attendee
-                NSString *welcometext = [NSString stringWithFormat:@"Hello %@ %@, please set your email and chat preferences below, you can change these preferences anytime.", object[@"first_name"], object[@"last_name"]];
+                NSString *welcometext = [NSString stringWithFormat:@"Hello %@ %@, please set your preferences and info below, you can change these anytime.", object[@"first_name"], object[@"last_name"]];
                 self.user_status_label.text = welcometext;
                 self_user[@"is_person"] = @1;
                 self_user[@"chat_status"] = @1;
@@ -87,7 +87,7 @@ UITextField *activefield;
             {
                 NSLog(@"NO MATCHES FOUND");
                 // no matches for email, this is not an attendee
-                self.user_status_label.text = @"Sorry, you do not seem to be a registered attendee. Email and chat functions will not be available. Remember, you must use the same email address you used to register for the workshop.";
+                self.user_status_label.text = @"Hello, if you are an event attendee, please confirm using the button below. You can then access the social features of this app.";
                 //set "user is not a person"
                 self_user[@"is_person"] = @0;
                 [self_user saveInBackground];
@@ -118,7 +118,7 @@ UITextField *activefield;
             {
                 NSLog(@"FOUND A MATCH");
                 //we have a matching person, this is a registered attendee
-                NSString *welcometext = [NSString stringWithFormat:@"Hello %@ %@, please set your email and chat preferences below, then tap Done to leave this page.", object[@"first_name"], object[@"last_name"]];
+                NSString *welcometext = [NSString stringWithFormat:@"Hello %@ %@, please set your preferences and info below, then tap Done to leave this page.", object[@"first_name"], object[@"last_name"]];
                 self.user_status_label.text = welcometext;
                 person_obj = object;
                 NSNumber *per_email_num = person_obj[@"email_status"];
@@ -172,7 +172,7 @@ UITextField *activefield;
             {
                 NSLog(@"NO MATCHES FOUND");
                 // no matches for email, this is not an attendee
-                self.user_status_label.text = @"Sorry, you do not seem to be a registered attendee. Email and chat functions will not be available. Remember, you must use the same email address you used to register for the workshop.";
+                self.user_status_label.text = @"Hello, if you are an event attendee, please confirm using the button below. You can then access the social features of this app.";
                 //set "user is not a person"
                 self_user[@"is_person"] = @0;
                 [self_user saveInBackground];
