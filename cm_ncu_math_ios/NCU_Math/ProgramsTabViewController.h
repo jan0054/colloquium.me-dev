@@ -18,8 +18,8 @@
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *programseg;
 - (IBAction)segaction:(UISegmentedControl *)sender;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *talk_day_seg;
-- (IBAction)talk_day_seg_action:(UISegmentedControl *)sender;
+
+
 
 @property (strong, nonatomic) IBOutlet UIView *abstractview;
 @property (strong, nonatomic) IBOutlet UITableView *abstracttable;
@@ -43,5 +43,8 @@
 - (IBAction)do_search_button_tap:(UIButton *)sender;
 - (IBAction)cancel_search_button_tap:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIView *search_view;
+@property (weak, nonatomic) IBOutlet UILabel *no_poster_label;
+@property (weak, nonatomic) IBOutlet UILabel *no_attachment_label;
+
 
 @end

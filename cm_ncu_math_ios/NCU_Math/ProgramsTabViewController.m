@@ -54,6 +54,8 @@ NSMutableArray *search_array;
     self.abstracttable.tableFooterView = [[UIView alloc] init];
     search_array = [[NSMutableArray alloc] init];
     self.search_input.delegate = self;
+    self.no_attachment_label.hidden = YES;
+    self.no_poster_label.hidden = YES;
     
     //Pull To Refresh Controls
     self.pullrefreshtalk = [[UIRefreshControl alloc] init];
@@ -78,6 +80,17 @@ NSMutableArray *search_array;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.show_search_button setTintColor:[UIColor light_button_txt]];
     self.search_view.backgroundColor = [UIColor light_bg];
+    self.programseg.backgroundColor = [UIColor primary_color];
+    self.no_attachment_label.textColor = [UIColor light_txt];
+    self.no_poster_label.textColor = [UIColor light_txt];
+    
+    //add shadow to views
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.programseg.bounds];
+    self.programseg.layer.masksToBounds = NO;
+    self.programseg.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.programseg.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.programseg.layer.shadowOpacity = 0.3f;
+    self.programseg.layer.shadowPath = shadowPath.CGPath;
     
     UIBezierPath *shadowPath2 = [UIBezierPath bezierPathWithRect:self.search_view.bounds];
     self.search_view.layer.masksToBounds = NO;
@@ -98,7 +111,7 @@ NSMutableArray *search_array;
     [self.do_search_button setImage:search_img forState:UIControlStateSelected];
     
     //get data
-    [self get_session_and_talk_data_for_day:self.talk_day_seg.selectedSegmentIndex];
+    [self get_session_and_talk_data_for_day:0];
     [self get_poster_data];
     [self get_abstract_data];
     
@@ -178,7 +191,7 @@ NSMutableArray *search_array;
 - (void)refreshctrl:(id)sender
 {
     //refresh code here
-    [self get_session_and_talk_data_for_day:self.talk_day_seg.selectedSegmentIndex];
+    [self get_session_and_talk_data_for_day:0];
 
     // End Refreshing
     [(UIRefreshControl *)sender endRefreshing];
@@ -365,7 +378,7 @@ NSMutableArray *search_array;
         //fill data
         talkcell.talk_name_label.text = talk[@"name"];
         talkcell.talk_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
-        talkcell.talk_description_label.text = talk[@"description"];
+        talkcell.talk_description_label.text = talk[@"content"];
         talkcell.talk_location_label.text = location[@"name"];
         NSDate *date = talk[@"start_time"];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -381,16 +394,18 @@ NSMutableArray *search_array;
         }
         talkcell.selectionStyle = UITableViewCellSelectionStyleNone;
         talkcell.backgroundColor = [UIColor clearColor];
-        talkcell.talk_card_view.backgroundColor = [UIColor primary_color];
-        talkcell.talk_card_view.alpha = 0.8;
+        talkcell.talk_card_view.backgroundColor = [UIColor light_bg];
+        talkcell.talk_card_view.alpha = 1.0;
         //talkcell.talk_detail_button.titleLabel.textColor = [UIColor bright_orange];
-        [talkcell.talk_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-        [talkcell.talk_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
-        talkcell.talk_trim_view.backgroundColor = [UIColor light_primary];
-        talkcell.talk_location_label.textColor = [UIColor light_primary];
-        talkcell.talk_time_label.textColor = [UIColor light_primary];
+        [talkcell.talk_detail_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+        [talkcell.talk_detail_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateHighlighted];
+        talkcell.talk_trim_view.backgroundColor = [UIColor accent_color];
+        talkcell.talk_location_label.textColor = [UIColor secondary_text];
+        talkcell.talk_time_label.textColor = [UIColor secondary_text];
         talkcell.talk_card_view.layer.cornerRadius = 2;
-        talkcell.talk_author_label.textColor = [UIColor light_primary];
+        talkcell.talk_author_label.textColor = [UIColor dark_txt];
+        talkcell.talk_description_label.textColor = [UIColor dark_txt];
+        talkcell.talk_name_label.textColor = [UIColor dark_txt];
         
         //add shadow to views
         UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:talkcell.talk_card_view.bounds];
@@ -594,6 +609,14 @@ NSMutableArray *search_array;
         {
             [self.poster_array addObject:poster_obj];
         }
+        if ([self.poster_array count] == 0)
+        {
+            self.no_poster_label.hidden = NO;
+        }
+        else
+        {
+            self.no_poster_label.hidden = YES;
+        }
         [self.postertable reloadData];
     }];
 }
@@ -609,6 +632,14 @@ NSMutableArray *search_array;
         for (PFObject *abstract_obj in objects)
         {
             [self.abstract_array addObject:abstract_obj];
+        }
+        if ([self.abstract_array count] == 0)
+        {
+            self.no_attachment_label.hidden = NO;
+        }
+        else
+        {
+            self.no_attachment_label.hidden = YES;
         }
         [self.abstracttable reloadData];
     }];
@@ -750,10 +781,6 @@ NSMutableArray *search_array;
     return date;
 }
 
-- (IBAction)talk_day_seg_action:(UISegmentedControl *)sender {
-    [self get_session_and_talk_data_for_day:self.talk_day_seg.selectedSegmentIndex];
-}
-
 - (IBAction)show_search_button_tap:(UIBarButtonItem *)sender {
     if (search_on)
     {
@@ -763,7 +790,7 @@ NSMutableArray *search_array;
         search_str = @"";
         [search_array removeAllObjects];
         [self.search_input resignFirstResponder];
-        [self get_session_and_talk_data_for_day:self.talk_day_seg.selectedSegmentIndex];
+        [self get_session_and_talk_data_for_day:0];
         [self get_poster_data];
         [self.view layoutIfNeeded];
     }
@@ -785,7 +812,7 @@ NSMutableArray *search_array;
         NSArray *wordsAndEmptyStrings = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
         search_array = [words mutableCopy];
-        [self get_session_and_talk_data_for_day:self.talk_day_seg.selectedSegmentIndex];
+        [self get_session_and_talk_data_for_day:0];
         [self get_poster_data];
         [self.search_input resignFirstResponder];
     }
@@ -796,7 +823,7 @@ NSMutableArray *search_array;
     self.search_input.text = @"";
     search_str = @"";
     [search_array removeAllObjects];
-    [self get_session_and_talk_data_for_day:self.talk_day_seg.selectedSegmentIndex];
+    [self get_session_and_talk_data_for_day:0];
     [self get_poster_data];
     [self.search_input resignFirstResponder];
 }

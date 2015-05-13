@@ -46,7 +46,7 @@ int discuss_on;  //enable-disable the discussion button
     if ([PFUser currentUser])
     {
         //ok, there's someone logged in, check if it's a registered attendee
-        NSNumber *isperson = [PFUser currentUser][@"isperson"];
+        NSNumber *isperson = [PFUser currentUser][@"is_person"];
         int isperson_int = [isperson intValue];
         if (isperson_int == 1)
         {
@@ -59,20 +59,22 @@ int discuss_on;  //enable-disable the discussion button
     
     //styling
     self.view.backgroundColor = [UIColor background];
-    [self.eventdetail_card_view setBackgroundColor:[UIColor primary_color]];
-    self.eventdetail_card_view.alpha = 0.8;
-    [self.eventdetail_trim_view setBackgroundColor:[UIColor light_primary]];
-    [self.eventdetail_description_card_view setBackgroundColor:[UIColor primary_color]];
-    [self.eventdetail_description_textview setBackgroundColor:[UIColor primary_color]];
-    self.eventdetail_location_label.textColor = [UIColor divider_color];
-    self.eventdetail_time_label.textColor = [UIColor divider_color];
-    self.eventdetail_author_label.textColor = [UIColor divider_color];
-    self.eventdetail_card_view.layer.cornerRadius = 2;
-    self.eventdetail_description_card_view.layer.cornerRadius = 2;
-    [self.eventdetail_authordetail_button setTitleColor: [UIColor accent_color] forState:UIControlStateNormal];
-    [self.eventdetail_authordetail_button setTitleColor: [UIColor accent_color] forState:UIControlStateHighlighted];
-    [self.eventdetail_abstract_button setTitleColor: [UIColor accent_color] forState:UIControlStateNormal];
-    [self.eventdetail_abstract_button setTitleColor: [UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.eventdetail_card_view setBackgroundColor:[UIColor light_bg]];
+    self.eventdetail_card_view.alpha = 1.0;
+    [self.eventdetail_trim_view setBackgroundColor:[UIColor accent_color]];
+    [self.eventdetail_description_card_view setBackgroundColor:[UIColor clearColor]];
+    [self.eventdetail_description_textview setBackgroundColor:[UIColor clearColor]];
+    self.eventdetail_location_label.textColor = [UIColor secondary_text];
+    self.eventdetail_time_label.textColor = [UIColor secondary_text];
+    self.eventdetail_author_label.textColor = [UIColor dark_txt];
+    self.eventdetail_description_textview.textColor = [UIColor dark_txt];
+    self.eventdetail_name_label.textColor = [UIColor dark_txt];
+    //self.eventdetail_card_view.layer.cornerRadius = 2;
+    //self.eventdetail_description_card_view.layer.cornerRadius = 2;
+    [self.eventdetail_authordetail_button setTitleColor: [UIColor dark_button_txt] forState:UIControlStateNormal];
+    [self.eventdetail_authordetail_button setTitleColor: [UIColor dark_button_txt] forState:UIControlStateHighlighted];
+    [self.eventdetail_abstract_button setTitleColor: [UIColor dark_button_txt] forState:UIControlStateNormal];
+    [self.eventdetail_abstract_button setTitleColor: [UIColor dark_button_txt] forState:UIControlStateHighlighted];
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.eventdetail_card_view.bounds];
     self.eventdetail_card_view.layer.masksToBounds = NO;
@@ -80,13 +82,14 @@ int discuss_on;  //enable-disable the discussion button
     self.eventdetail_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     self.eventdetail_card_view.layer.shadowOpacity = 0.3f;
     self.eventdetail_card_view.layer.shadowPath = shadowPath.CGPath;
+    /*
     UIBezierPath *shadowPatha = [UIBezierPath bezierPathWithRect:self.eventdetail_description_card_view.bounds];
     self.eventdetail_description_card_view.layer.masksToBounds = NO;
     self.eventdetail_description_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
     self.eventdetail_description_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     self.eventdetail_description_card_view.layer.shadowOpacity = 0.3f;
     self.eventdetail_description_card_view.layer.shadowPath = shadowPatha.CGPath;
-    
+    */
     //get data
     if (self.event_type == 0)
     {
@@ -105,10 +108,9 @@ int discuss_on;  //enable-disable the discussion button
 
 -(void) get_talk_data
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"talk"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
     [query includeKey:@"author"];
     [query includeKey:@"location"];
-    [query includeKey:@"abstract"];
     [query includeKey:@"session"];
     [query getObjectInBackgroundWithId:self.event_objid block:^(PFObject *object, NSError *error) {
         NSLog(@"talk query success");
@@ -117,6 +119,7 @@ int discuss_on;  //enable-disable the discussion button
         PFObject *author = object[@"author"];
         self.eventdetail_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
         author_objid = author.objectId;
+        /*
         PFObject *abstract = object[@"abstract"];
         if (abstract != nil)
         {
@@ -124,7 +127,8 @@ int discuss_on;  //enable-disable the discussion button
             self.eventdetail_abstract_button.enabled = YES;
             self.eventdetail_abstract_button.hidden = NO;
         }
-        self.eventdetail_description_textview.text = object[@"description"];
+        */
+        self.eventdetail_description_textview.text = object[@"content"];
         PFObject *location = object[@"location"];
         self.eventdetail_location_label.text = location[@"name"];
         PFObject *session = object[@"session"];
@@ -143,16 +147,16 @@ int discuss_on;  //enable-disable the discussion button
 
 - (void) get_poster_data
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"poster"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Poster"];
     [query includeKey:@"author"];
     [query includeKey:@"location"];
-    [query includeKey:@"abstract"];
     [query getObjectInBackgroundWithId:self.event_objid block:^(PFObject *object, NSError *error) {
-        NSLog(@"talk query success");
+        NSLog(@"poster query success");
         event_obj = object;
         self.eventdetail_name_label.text = object[@"name"];
         PFObject *author = object[@"author"];
         author_objid = author.objectId;
+        /*
         PFObject *abstract = object[@"abstract"];
         if (abstract != nil)
         {
@@ -161,8 +165,9 @@ int discuss_on;  //enable-disable the discussion button
             self.eventdetail_abstract_button.hidden = NO;
         }
         abstract_id = abstract.objectId;
+        */
         self.eventdetail_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
-        self.eventdetail_description_textview.text = object[@"description"];
+        self.eventdetail_description_textview.text = object[@"content"];
         PFObject *location = object[@"location"];
         self.eventdetail_location_label.text = location[@"name"];
         self.eventdetail_time_label.text = @"";

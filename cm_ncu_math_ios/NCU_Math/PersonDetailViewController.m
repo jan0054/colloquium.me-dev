@@ -62,6 +62,7 @@ NSString *ab_self;
     [self.person_link_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateHighlighted];
     self.person_name_label.textColor = [UIColor dark_txt];
     self.person_institution_label.textColor = [UIColor secondary_text];
+    self.person_detail_seg.backgroundColor =[UIColor primary_color];
     
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.person_card_view.bounds];
@@ -70,6 +71,12 @@ NSString *ab_self;
     self.person_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     self.person_card_view.layer.shadowOpacity = 0.3f;
     self.person_card_view.layer.shadowPath = shadowPath.CGPath;
+    UIBezierPath *shadowPath1 = [UIBezierPath bezierPathWithRect:self.person_detail_seg.bounds];
+    self.person_detail_seg.layer.masksToBounds = NO;
+    self.person_detail_seg.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.person_detail_seg.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.person_detail_seg.layer.shadowOpacity = 0.3f;
+    self.person_detail_seg.layer.shadowPath = shadowPath1.CGPath;
     
     [self get_person_data];
     

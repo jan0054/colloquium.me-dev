@@ -78,6 +78,14 @@ NSMutableArray *search_array;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.show_search_button setTintColor:[UIColor light_button_txt]];
     self.search_view.backgroundColor = [UIColor light_bg];
+    self.programseg.backgroundColor = [UIColor primary_color];
+    //add shadow to views
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.programseg.bounds];
+    self.programseg.layer.masksToBounds = NO;
+    self.programseg.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.programseg.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.programseg.layer.shadowOpacity = 0.3f;
+    self.programseg.layer.shadowPath = shadowPath.CGPath;
     
     UIBezierPath *shadowPath2 = [UIBezierPath bezierPathWithRect:self.search_view.bounds];
     self.search_view.layer.masksToBounds = NO;
@@ -365,7 +373,7 @@ NSMutableArray *search_array;
         //fill data
         talkcell.talk_name_label.text = talk[@"name"];
         talkcell.talk_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
-        talkcell.talk_description_label.text = talk[@"description"];
+        talkcell.talk_description_label.text = talk[@"content"];
         talkcell.talk_location_label.text = location[@"name"];
         NSDate *date = talk[@"start_time"];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -381,16 +389,18 @@ NSMutableArray *search_array;
         }
         talkcell.selectionStyle = UITableViewCellSelectionStyleNone;
         talkcell.backgroundColor = [UIColor clearColor];
-        talkcell.talk_card_view.backgroundColor = [UIColor primary_color];
-        talkcell.talk_card_view.alpha = 0.8;
+        talkcell.talk_card_view.backgroundColor = [UIColor light_bg];
+        talkcell.talk_card_view.alpha = 1.0;
         //talkcell.talk_detail_button.titleLabel.textColor = [UIColor bright_orange];
-        [talkcell.talk_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-        [talkcell.talk_detail_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
-        talkcell.talk_trim_view.backgroundColor = [UIColor light_primary];
-        talkcell.talk_location_label.textColor = [UIColor light_primary];
-        talkcell.talk_time_label.textColor = [UIColor light_primary];
+        [talkcell.talk_detail_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+        [talkcell.talk_detail_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateHighlighted];
+        talkcell.talk_trim_view.backgroundColor = [UIColor accent_color];
+        talkcell.talk_location_label.textColor = [UIColor secondary_text];
+        talkcell.talk_time_label.textColor = [UIColor secondary_text];
         talkcell.talk_card_view.layer.cornerRadius = 2;
-        talkcell.talk_author_label.textColor = [UIColor light_primary];
+        talkcell.talk_author_label.textColor = [UIColor dark_txt];
+        talkcell.talk_description_label.textColor = [UIColor dark_txt];
+        talkcell.talk_name_label.textColor = [UIColor dark_txt];
         
         //add shadow to views
         UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:talkcell.talk_card_view.bounds];
