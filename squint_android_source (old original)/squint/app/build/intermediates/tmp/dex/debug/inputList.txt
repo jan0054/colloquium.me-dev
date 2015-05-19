@@ -1,0 +1,4 @@
+/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/build/intermediates/classes/debug
+/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-62664e0078e68caa25a80263f837d2fa7c9f3ebb.jar
+/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/android-support-v13-6a0ed885e5440c5854a2b287e6490ceaa00917a5.jar
+/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/Parse-1.8.0-00bb57d257aa1595addd7c06268d71590757e6aa.jar

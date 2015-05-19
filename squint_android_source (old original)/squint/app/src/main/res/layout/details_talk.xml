@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:background="@drawable/stage"
+			  android:orientation="vertical" >
+	<LinearLayout android:id="@+id/container"
+			      android:layout_width="match_parent"
+			      android:layout_height="wrap_content"
+			      android:layout_margin="12dp"
+			      android:background="@drawable/list_item"
+			      android:orientation="vertical" >
+		<View android:layout_width="match_parent"
+		      android:layout_height="3dp"
+		      android:background="@color/list_item_header" />
+
+		<TextView
+		    android:id="@+id/name"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="16dp"
+		    android:layout_marginRight="16dp"
+		    android:layout_marginTop="20dp"
+		    android:ellipsize="end"
+		    android:fontFamily="sans-serif-light"
+		    android:gravity="center|left"
+		    android:maxLines="4"
+		    android:text="@string/name"
+		    android:textColor="@color/list_item_level_1"
+		    android:textSize="18sp"
+		     />
+        <TextView
+            android:id="@+id/session"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:maxLines="4"
+            android:text="session"
+            android:textColor="@color/list_item_level_1"
+            android:textSize="14sp"
+            />
+
+		<TextView
+		    android:id="@+id/author"
+		    android:layout_width="match_parent"
+		    android:layout_height="24dp"
+		    android:layout_marginLeft="16dp"
+		    android:layout_marginRight="16dp"
+		    android:layout_marginTop="10dp"
+		    android:fontFamily="sans-serif-light"
+		    android:gravity="center|left"
+		    android:maxHeight="30dp"
+		    android:maxWidth="300dp"
+		    android:text="@string/author"
+            android:textColor="@color/light_blue"
+		    android:textSize="14sp" />
+        <TextView
+            android:id="@+id/author_details"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:text="@string/details"
+            android:textColor="@color/list_action_text"
+            android:textSize="12sp" />
+		<LinearLayout android:layout_width="match_parent"
+		    		  android:layout_height="24dp"
+		    		  android:layout_marginBottom="6dp"
+				      android:layout_marginLeft="16dp"
+				      android:layout_marginRight="16dp"
+				      android:layout_marginTop="12dp"
+				      android:weightSum="3"
+				      android:orientation="horizontal" >
+
+		<TextView
+		    android:id="@+id/location"
+		    android:layout_width="0dip"
+		    android:layout_height="24dp"
+		    android:layout_weight="2"
+		    android:fontFamily="sans-serif-light"
+		    android:gravity="center|left"
+		    android:text="@string/location"
+            android:textColor="@color/light_blue"
+		    android:textSize="12sp" />
+
+		<TextView
+		    android:id="@+id/start_time"
+		    android:layout_width="0dip"
+		    android:layout_height="24dp"
+		    android:layout_weight="1"
+		    android:fontFamily="sans-serif-light"
+		    android:gravity="center|right"
+		    android:text="@string/start_time"
+            android:textColor="@color/light_blue"
+		    android:textSize="12sp" />		
+		</LinearLayout>
+
+		<TextView
+		    android:id="@+id/description"
+		    android:layout_width="match_parent"
+		    android:layout_height="200dp"
+		    android:layout_marginBottom="5dp"
+		    android:layout_marginLeft="16dp"
+		    android:layout_marginRight="16dp"
+		    android:background="@drawable/diagram_roundcap"
+		    android:ellipsize="end"
+		    android:fontFamily="sans-serif-thin"
+		    android:maxLines="10"
+		    android:padding="16dp"
+		    android:text="@string/description"
+		    android:textColor="@color/list_item_level_1"
+            android:scrollbars = "vertical"
+		    android:textSize="14sp" />
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="12dp"
+            android:weightSum="3"
+            android:orientation="horizontal" >
+		<TextView
+		    android:id="@+id/btn_abstract"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:gravity="left"
+		    android:layout_marginBottom="5dp"
+		    android:layout_marginLeft="0dp"
+		    android:layout_marginRight="16dp"
+		    android:layout_marginTop="5dp"
+		    android:text="@string/abstract_btn"
+            android:fontFamily="sans-serif"
+		    android:textColor="@color/list_action_text"
+            android:layout_weight="2"
+		    android:textSize="16sp" />
+        <TextView
+            android:id="@+id/btn_discussion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="5dp"
+            android:text="Discuss"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/list_action_text"
+            android:onClick="goDiscuss"
+            android:layout_weight="1"
+            android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:text="Add to Calendar"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/list_action_text"
+            android:textSize="16sp" />
+    
+	</LinearLayout>
+</LinearLayout>
+	

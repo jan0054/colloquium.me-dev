@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stage"
+    android:orientation="vertical" >
+    <LinearLayout android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/list_item"
+        android:orientation="vertical" >
+        <View android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/list_item_header" />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:text="Sorry, you do not seem to be a registered attendee. Email and chat functions will not be available. Remember, you must use the same email address you used to register for the workshop."
+            android:textColor="@color/light_blue"
+            android:textSize="14sp" />
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="1dp"
+            android:weightSum="2"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/email_label"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center|left"
+                android:layout_gravity="center_vertical"
+                android:text="Allow attendees to Email you"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/email_switch"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="1dp"
+            android:weightSum="2"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/chat_label"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center|left"
+                android:text="Chat with other attendees"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
+
+            <Switch
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/chat_switch"
+                android:layout_weight="1"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/link_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:maxHeight="30dp"
+            android:maxWidth="300dp"
+            android:text="Webpage"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/link_input"
+            android:background="#32ffffff"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/link_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:text="Enter the URL of your personal webpage here, such as your deparment faculty/grad student page. (Optional)"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/save_preference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Done"
+            android:textColor="@color/list_action_text"
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal" />
+
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 16
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.squint.app"
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 120
+        versionName "1.20"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    
+    compile 'com.parse.bolts:bolts-android:1.1.2'
+        compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    compile files('libs/android-support-v13.jar')
+}

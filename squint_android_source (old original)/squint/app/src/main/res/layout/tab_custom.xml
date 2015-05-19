@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  xmlns:app="http://schemas.android.com/apk/res-auto"
+    		  android:id="@+id/tab_container"
+              android:layout_width="match_parent"
+              android:layout_height="56dp" 
+              android:orientation="vertical"
+              android:background="@drawable/tab_gradient_background" >
+        <View android:layout_width="match_parent"
+              android:layout_height="1dip"
+              android:background="@color/tab_divider" />
+		<com.squint.app.widget.TintableImageView android:id="@+id/icon" 
+			        android:layout_width="fill_parent"
+			        android:layout_height="32dp"
+			        android:layout_marginTop="1dp"
+			        android:src="@drawable/tab_program"
+			        app:tint="@color/tab_color_selector"
+			        android:contentDescription="@string/empty" />
+	    <TextView android:id="@+id/title" 
+			      android:layout_width="fill_parent"
+			      android:layout_height="13dp"
+			      android:layout_gravity="center"
+			      android:layout_marginBottom="4dp"
+			      android:gravity="center"
+			      android:textColor="@color/tab_color_selector"
+			      android:text="@string/title_section5"
+			      android:textSize="10sp" />
+</LinearLayout>

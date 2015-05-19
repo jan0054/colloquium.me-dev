@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stage"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/discussioncontent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="0" >
+
+        <EditText
+            android:id="@+id/discussioninput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textCursorDrawable="@null"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:layout_marginLeft="10dp"
+            android:background="#32ffffff" />
+
+        <Button
+            android:id="@+id/senddiscussion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:onClick="sendDiscussion"
+            android:textColor="@color/list_action_text"
+            android:text="Send"
+            android:background="#00ffffff" />
+
+    </LinearLayout>
+
+</LinearLayout>

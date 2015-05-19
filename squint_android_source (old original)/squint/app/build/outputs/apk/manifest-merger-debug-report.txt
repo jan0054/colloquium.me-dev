@@ -1,0 +1,309 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:5:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionCode
+		ADDED from AndroidManifest.xml:4:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+uses-sdk
+ADDED from AndroidManifest.xml:7:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:8:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.CALL_PHONE
+ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:13:5
+	android:name
+		ADDED from AndroidManifest.xml:13:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:14:5
+	android:name
+		ADDED from AndroidManifest.xml:14:22
+uses-permission#android.permission.WAKE_LOCK
+ADDED from AndroidManifest.xml:15:5
+	android:name
+		ADDED from AndroidManifest.xml:15:22
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from AndroidManifest.xml:16:5
+	android:name
+		ADDED from AndroidManifest.xml:16:22
+uses-permission#android.permission.VIBRATE
+ADDED from AndroidManifest.xml:17:5
+	android:name
+		ADDED from AndroidManifest.xml:17:22
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from AndroidManifest.xml:18:5
+	android:name
+		ADDED from AndroidManifest.xml:18:22
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from AndroidManifest.xml:19:5
+	android:name
+		ADDED from AndroidManifest.xml:19:22
+uses-permission#android.permission.GET_TASKS
+ADDED from AndroidManifest.xml:20:5
+	android:name
+		ADDED from AndroidManifest.xml:20:22
+permission#com.squint.app.permission.C2D_MESSAGE
+ADDED from AndroidManifest.xml:22:5
+	android:protectionLevel
+		ADDED from AndroidManifest.xml:24:9
+	android:name
+		ADDED from AndroidManifest.xml:23:9
+uses-permission#com.squint.app.permission.C2D_MESSAGE
+ADDED from AndroidManifest.xml:26:5
+	android:name
+		ADDED from AndroidManifest.xml:26:22
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from AndroidManifest.xml:27:5
+	android:name
+		ADDED from AndroidManifest.xml:27:22
+uses-permission#android.permission.READ_CALENDAR
+ADDED from AndroidManifest.xml:28:5
+	android:name
+		ADDED from AndroidManifest.xml:28:22
+uses-permission#android.permission.WRITE_CALENDAR
+ADDED from AndroidManifest.xml:29:5
+	android:name
+		ADDED from AndroidManifest.xml:29:22
+android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:31:5
+	android:maxSdkVersion
+		ADDED from AndroidManifest.xml:33:9
+	android:name
+		ADDED from AndroidManifest.xml:32:9
+application
+ADDED from AndroidManifest.xml:35:5
+	android:label
+		ADDED from AndroidManifest.xml:39:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:37:9
+	android:icon
+		ADDED from AndroidManifest.xml:38:9
+	android:theme
+		ADDED from AndroidManifest.xml:40:9
+	android:name
+		ADDED from AndroidManifest.xml:36:9
+activity#com.squint.app.LoginActivity
+ADDED from AndroidManifest.xml:41:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:45:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:44:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:43:13
+	android:name
+		ADDED from AndroidManifest.xml:42:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:46:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:47:17
+	android:name
+		ADDED from AndroidManifest.xml:47:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:49:17
+	android:name
+		ADDED from AndroidManifest.xml:49:27
+activity#com.squint.app.SignupActivity
+ADDED from AndroidManifest.xml:52:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:56:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:55:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:54:13
+	android:name
+		ADDED from AndroidManifest.xml:53:13
+activity#com.squint.app.MainActivity
+ADDED from AndroidManifest.xml:58:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:63:13
+	android:label
+		ADDED from AndroidManifest.xml:61:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:62:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:60:13
+	android:name
+		ADDED from AndroidManifest.xml:59:13
+activity#com.squint.app.SettingsDetailsActivity
+ADDED from AndroidManifest.xml:65:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:69:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:68:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:67:13
+	android:name
+		ADDED from AndroidManifest.xml:66:13
+activity#com.squint.app.CareerDetailsActivity
+ADDED from AndroidManifest.xml:71:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:75:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:74:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:73:13
+	android:name
+		ADDED from AndroidManifest.xml:72:13
+activity#com.squint.app.PeopleDetailsActivity
+ADDED from AndroidManifest.xml:77:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:81:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:80:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:79:13
+	android:name
+		ADDED from AndroidManifest.xml:78:13
+activity#com.squint.app.TalkDetailsActivity
+ADDED from AndroidManifest.xml:83:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:87:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:86:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:85:13
+	android:name
+		ADDED from AndroidManifest.xml:84:13
+activity#com.squint.app.PosterDetailsActivity
+ADDED from AndroidManifest.xml:89:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:93:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:92:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:91:13
+	android:name
+		ADDED from AndroidManifest.xml:90:13
+activity#com.squint.app.AbstractDetailsActivity
+ADDED from AndroidManifest.xml:95:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:99:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:98:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:97:13
+	android:name
+		ADDED from AndroidManifest.xml:96:13
+activity#com.squint.app.ConversationActivity
+ADDED from AndroidManifest.xml:101:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:105:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:104:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:103:13
+	android:name
+		ADDED from AndroidManifest.xml:102:13
+activity#com.squint.app.ChatActivity
+ADDED from AndroidManifest.xml:107:9
+	android:label
+		ADDED from AndroidManifest.xml:109:13
+	android:parentActivityName
+		ADDED from AndroidManifest.xml:110:13
+	android:name
+		ADDED from AndroidManifest.xml:108:13
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from AndroidManifest.xml:111:13
+	android:value
+		ADDED from AndroidManifest.xml:113:17
+	android:name
+		ADDED from AndroidManifest.xml:112:17
+service#com.parse.PushService
+ADDED from AndroidManifest.xml:116:9
+	android:name
+		ADDED from AndroidManifest.xml:116:18
+receiver#com.parse.ParseBroadcastReceiver
+ADDED from AndroidManifest.xml:118:9
+	android:name
+		ADDED from AndroidManifest.xml:118:19
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT
+ADDED from AndroidManifest.xml:119:13
+action#android.intent.action.BOOT_COMPLETED
+ADDED from AndroidManifest.xml:120:17
+	android:name
+		ADDED from AndroidManifest.xml:120:25
+action#android.intent.action.USER_PRESENT
+ADDED from AndroidManifest.xml:121:17
+	android:name
+		ADDED from AndroidManifest.xml:121:25
+receiver#com.parse.GcmBroadcastReceiver
+ADDED from AndroidManifest.xml:124:9
+	android:permission
+		ADDED from AndroidManifest.xml:126:13
+	android:name
+		ADDED from AndroidManifest.xml:125:13
+intent-filter#com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION+com.squint.app
+ADDED from AndroidManifest.xml:127:13
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from AndroidManifest.xml:128:17
+	android:name
+		ADDED from AndroidManifest.xml:128:25
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from AndroidManifest.xml:129:17
+	android:name
+		ADDED from AndroidManifest.xml:129:25
+category#com.squint.app
+ADDED from AndroidManifest.xml:131:17
+	android:name
+		ADDED from AndroidManifest.xml:131:27
+receiver#com.squint.app.ChatReceiver
+ADDED from AndroidManifest.xml:134:9
+	android:exported
+		ADDED from AndroidManifest.xml:136:13
+	android:name
+		ADDED from AndroidManifest.xml:135:13
+intent-filter#com.parse.push.intent.DELETE+com.parse.push.intent.OPEN+com.parse.push.intent.RECEIVE
+ADDED from AndroidManifest.xml:137:13
+action#com.parse.push.intent.RECEIVE
+ADDED from AndroidManifest.xml:138:17
+	android:name
+		ADDED from AndroidManifest.xml:138:25
+action#com.parse.push.intent.DELETE
+ADDED from AndroidManifest.xml:139:17
+	android:name
+		ADDED from AndroidManifest.xml:139:25
+action#com.parse.push.intent.OPEN
+ADDED from AndroidManifest.xml:140:17
+	android:name
+		ADDED from AndroidManifest.xml:140:25
+activity#com.squint.app.UserPreferenceActivity
+ADDED from AndroidManifest.xml:144:9
+	android:label
+		ADDED from AndroidManifest.xml:146:13
+	android:name
+		ADDED from AndroidManifest.xml:145:13
+activity#com.squint.app.DiscussionActivity
+ADDED from AndroidManifest.xml:148:9
+	android:label
+		ADDED from AndroidManifest.xml:150:13
+	android:name
+		ADDED from AndroidManifest.xml:149:13
+activity#com.squint.app.UploadCareerActivity
+ADDED from AndroidManifest.xml:152:9
+	android:label
+		ADDED from AndroidManifest.xml:154:13
+	android:name
+		ADDED from AndroidManifest.xml:153:13
