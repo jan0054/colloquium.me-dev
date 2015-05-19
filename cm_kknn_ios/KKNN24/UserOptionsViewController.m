@@ -413,7 +413,12 @@ UITextField *activefield;
 
 - (IBAction)confirm_attendee_button_tap:(UIButton *)sender {
     if (self.first_name_input.text.length>0 && self.last_name_input.text.length>0 && self.institution_input.text.length>0)
-    [self create_person];
+    {
+        self.confirm_attendee_button.enabled = NO;
+        self.confirm_attendee_button.userInteractionEnabled = NO;
+        [self create_person];
+    }
+    
 }
 
 - (void) create_person
@@ -438,10 +443,14 @@ UITextField *activefield;
             cur_user[@"person"] = person;
             [cur_user saveInBackground];
             [self process_info];
+            self.confirm_attendee_button.enabled = YES;
+            self.confirm_attendee_button.userInteractionEnabled = YES;
         }
         else
         {
             NSLog(@"new person creation error");
+            self.confirm_attendee_button.enabled = YES;
+            self.confirm_attendee_button.userInteractionEnabled = YES;
         }
     }];
 

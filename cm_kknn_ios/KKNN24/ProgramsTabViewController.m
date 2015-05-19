@@ -291,6 +291,9 @@ NSMutableArray *search_array;
 
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    
+    //log out and go back to login view because of parse bug in 1.7.x (hopefully fixed in 1.7.3) 0519 update: nope! not fixed!
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
                                                     message:@"Please log in using your username/password"
                                                    delegate:self
@@ -301,15 +304,16 @@ NSMutableArray *search_array;
     [PFUser logOut];
     [self signup_to_login];
     
-    // Associate the device with a user
+    
+    // Associate the device with a user (normal procedure with no bugs)
     /*
     PFInstallation *installation = [PFInstallation currentInstallation];
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
-    */
     
-    //[self completed_signup];
+    [self completed_signup];
+    */
     
     //create the corresponding person object and set person/user properties
     /*

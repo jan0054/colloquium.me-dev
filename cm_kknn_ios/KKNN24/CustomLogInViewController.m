@@ -56,7 +56,7 @@
     UILabel *notice_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 95, 280, 60)];
     [notice_label setBackgroundColor:[UIColor clearColor]];
     [notice_label setTextColor:[UIColor whiteColor]];
-    [notice_label setText:@"Welcome to the NCU Workshop on Hydrodynamic Escape Problems."];
+    [notice_label setText:@"Welcome to the 24th Joint Kaist-Kyoto-NTU-NUS Symposium on Environmental Engineering."];
     [notice_label setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
     [notice_label setLineBreakMode:NSLineBreakByWordWrapping];
     notice_label.numberOfLines = 0;

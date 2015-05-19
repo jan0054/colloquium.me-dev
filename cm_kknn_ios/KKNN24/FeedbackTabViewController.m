@@ -144,22 +144,11 @@
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION ASSOCIATED");
-    */
     
     //refresh login status after signing up
-    //[self.settingstable reloadData];
+    [self.settingstable reloadData];
     
-    // Dismiss the PFSignUpViewController
-    /*
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"sign up controller dismissed");
-        //pop up the user options controller to set chat/email settings
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UserOptionsViewController *controller = (UserOptionsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"usersetupview"];
-        controller.isnew = 1;
-        [self presentViewController:controller animated:YES completion:nil];
-
-    }];
+    [self completed_signup];
     */
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
@@ -168,9 +157,9 @@
                                           cancelButtonTitle:@"Done"
                                           otherButtonTitles:nil];
     [alert show];
-    
     [PFUser logOut];
     [self signup_to_login];
+    
 }
 
 - (void) completed_signup
@@ -374,7 +363,7 @@
     }
     else if (indexPath.row ==1)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://yenchang.huang1@gmail.com "]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://htung@ntu.edu.tw"]];
     }
     else if (indexPath.row ==2)
     {

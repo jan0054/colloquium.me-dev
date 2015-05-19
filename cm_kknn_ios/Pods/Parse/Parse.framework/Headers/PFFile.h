@@ -55,8 +55,7 @@ PF_ASSUME_NONNULL_BEGIN
  spaces, underscores, or dashes.
  @param path The path to the file that will be uploaded to Parse.
  */
-+ (instancetype)fileWithName:(PF_NULLABLE NSString *)name
-              contentsAtPath:(NSString *)path;
++ (instancetype)fileWithName:(PF_NULLABLE NSString *)name contentsAtPath:(NSString *)path;
 
 /*!
  @abstract Creates a file with given data, name and content type.

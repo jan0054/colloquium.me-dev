@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B43D265918FFC9980072B753"
-               BuildableName = "HEP Workshop.app"
+               BuildableName = "KKNN24.app"
                BlueprintName = "KKNN24"
                ReferencedContainer = "container:KKNN24.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "HEP Workshop.app"
+            BuildableName = "KKNN24.app"
             BlueprintName = "KKNN24"
             ReferencedContainer = "container:KKNN24.xcodeproj">
          </BuildableReference>
@@ -63,7 +63,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "HEP Workshop.app"
+            BuildableName = "KKNN24.app"
             BlueprintName = "KKNN24"
             ReferencedContainer = "container:KKNN24.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "HEP Workshop.app"
+            BuildableName = "KKNN24.app"
             BlueprintName = "KKNN24"
             ReferencedContainer = "container:KKNN24.xcodeproj">
          </BuildableReference>

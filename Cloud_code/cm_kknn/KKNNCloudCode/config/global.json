@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "cm_envi"
+        }, 
+        "cm_envi": {
+            "applicationId": "HBA2OJRhQrOzsn1hp2R2dWqHfsftvTuNWos00mJh", 
+            "masterKey": "uCZrTAE1k0QDuAf2cZei5wLGD6vecCTHYdKWbMHD"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.4.2"
+    }
+}
