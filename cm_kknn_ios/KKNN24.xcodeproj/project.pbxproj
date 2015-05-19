@@ -11,6 +11,9 @@
 		B4163D7A1A023E290064B68E /* chatfloat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D791A023E290064B68E /* chatfloat@2x.png */; };
 		B4163D7D1A023FA70064B68E /* chatfloat_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D7B1A023FA70064B68E /* chatfloat_grey@2x.png */; };
 		B4163D7E1A023FA70064B68E /* chatfloat_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D7C1A023FA70064B68E /* chatfloat_orange@2x.png */; };
+		B43900131B0B2C0F006FF07D /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43900121B0B2C0F006FF07D /* TimelineViewController.m */; };
+		B43900161B0B2C2D006FF07D /* TimelineDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43900151B0B2C2D006FF07D /* TimelineDetailViewController.m */; };
+		B43900191B0B2C4A006FF07D /* TimelinePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43900181B0B2C4A006FF07D /* TimelinePostViewController.m */; };
 		B43D265E18FFC9980072B753 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D265D18FFC9980072B753 /* Foundation.framework */; };
 		B43D266018FFC9980072B753 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D265F18FFC9980072B753 /* CoreGraphics.framework */; };
 		B43D266218FFC9980072B753 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D266118FFC9980072B753 /* UIKit.framework */; };
@@ -106,6 +109,12 @@
 		B4163D7B1A023FA70064B68E /* chatfloat_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat_grey@2x.png"; sourceTree = "<group>"; };
 		B4163D7C1A023FA70064B68E /* chatfloat_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat_orange@2x.png"; sourceTree = "<group>"; };
 		B42BDB0AB407E196B3BA8744 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B43900111B0B2C0F006FF07D /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
+		B43900121B0B2C0F006FF07D /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		B43900141B0B2C2D006FF07D /* TimelineDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineDetailViewController.h; sourceTree = "<group>"; };
+		B43900151B0B2C2D006FF07D /* TimelineDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineDetailViewController.m; sourceTree = "<group>"; };
+		B43900171B0B2C4A006FF07D /* TimelinePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelinePostViewController.h; sourceTree = "<group>"; };
+		B43900181B0B2C4A006FF07D /* TimelinePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelinePostViewController.m; sourceTree = "<group>"; };
 		B43D265A18FFC9980072B753 /* KKNN24.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKNN24.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43D265D18FFC9980072B753 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B43D265F18FFC9980072B753 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -323,6 +332,12 @@
 				B4B71A1019C053BA0036811A /* AbstractPdfViewController.m */,
 				B495C44419C9876A008D5D5F /* AboutViewController.h */,
 				B495C44519C9876A008D5D5F /* AboutViewController.m */,
+				B43900111B0B2C0F006FF07D /* TimelineViewController.h */,
+				B43900121B0B2C0F006FF07D /* TimelineViewController.m */,
+				B43900141B0B2C2D006FF07D /* TimelineDetailViewController.h */,
+				B43900151B0B2C2D006FF07D /* TimelineDetailViewController.m */,
+				B43900171B0B2C4A006FF07D /* TimelinePostViewController.h */,
+				B43900181B0B2C4A006FF07D /* TimelinePostViewController.m */,
 				B4EFF6B61B00C6ED00EFC738 /* data_upload */,
 				B4BC89DF19D0B4EA00F1A9AD /* Utilities */,
 				B495C44319C7022A008D5D5F /* DataObjects */,
@@ -645,6 +660,7 @@
 				B4F74E5D19B461C000F3A565 /* CustomLogInViewController.m in Sources */,
 				B4B71A0819C046200036811A /* SelfCellTableViewCell.m in Sources */,
 				B4B71A0B19C0528D0036811A /* PersonDetailEventCellTableViewCell.m in Sources */,
+				B43900131B0B2C0F006FF07D /* TimelineViewController.m in Sources */,
 				B4B719FC19C02DEE0036811A /* PosterCellTableViewCell.m in Sources */,
 				B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */,
 				B4D230F519EE5F93006FC2A6 /* ChatMeCellTableViewCell.m in Sources */,
@@ -673,8 +689,10 @@
 				B499BD091904ED0C00C99CFE /* ChatViewController.m in Sources */,
 				B43D26A518FFD0F10072B753 /* PositionsTabViewController.m in Sources */,
 				B450DDBD1A83555C00054FAC /* PositionPostViewController.m in Sources */,
+				B43900161B0B2C2D006FF07D /* TimelineDetailViewController.m in Sources */,
 				B4D230F219EE5F84006FC2A6 /* ChatYouCellTableViewCell.m in Sources */,
 				B499BD131905186300C99CFE /* VenueCellTableViewCell.m in Sources */,
+				B43900191B0B2C4A006FF07D /* TimelinePostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
