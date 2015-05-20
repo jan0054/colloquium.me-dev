@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent"
-			  android:background="@drawable/stage"
+			  android:background="@color/background"
 			  android:orientation="vertical" >
 	<LinearLayout android:id="@+id/feed_container"
 			      android:layout_width="match_parent"
@@ -12,7 +12,7 @@
 			      android:orientation="vertical" >
 		<View android:layout_width="match_parent"
 		      android:layout_height="3dp"
-		      android:background="@color/list_item_header" />
+		      android:background="@color/dark_accent" />
         <TextView
             android:id="@+id/type"
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:gravity="center|left"
             android:text="Position available:"
             android:fontFamily="sans-serif-light"
-            android:textColor="@color/list_item_header"
+            android:textColor="@color/primary_text"
             android:textSize="14sp" />
 		<TextView
 		    android:id="@+id/position"
@@ -36,7 +36,7 @@
 		    android:fontFamily="sans-serif"
 		    android:gravity="center|left"
 		    android:text="Position:"
-		    android:textColor="@color/list_item_level_1"
+		    android:textColor="@color/primary_text"
 		    android:textSize="18sp"
 		     />
 
@@ -52,7 +52,7 @@
 		    android:maxHeight="30dp"
 		    android:maxWidth="300dp"
 		    android:text="Institution:"
-		    android:textColor="@color/list_item_level_2"
+		    android:textColor="@color/primary_text"
 		    android:textSize="14sp" />
 		<TextView
 		    android:id="@+id/datetime"

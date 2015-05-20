@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/stage"
+    android:background="@color/background"
     android:orientation="vertical" >
     <LinearLayout android:id="@+id/container"
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:orientation="vertical" >
         <View android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@color/list_item_header" />
+            android:background="@color/background" />
         <TextView
             android:id="@+id/status"
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center|left"
             android:text="Sorry, you do not seem to be a registered attendee. Email and chat functions will not be available. Remember, you must use the same email address you used to register for the workshop."
-            android:textColor="@color/light_blue"
+            android:textColor="@color/primary_text"
             android:textSize="14sp" />
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,9 +43,8 @@
                 android:gravity="center|left"
                 android:layout_gravity="center_vertical"
                 android:text="Allow attendees to Email you"
-                android:textColor="@color/white"
+                android:textColor="@color/primary_text"
                 android:textSize="14sp" />
-
 
 
             <Switch
@@ -72,9 +71,8 @@
                 android:gravity="center|left"
                 android:text="Chat with other attendees"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/white"
+                android:textColor="@color/primary_text"
                 android:textSize="14sp" />
-
 
 
             <Switch
@@ -96,18 +94,18 @@
             android:gravity="center|left"
             android:maxHeight="30dp"
             android:maxWidth="300dp"
-            android:text="Webpage"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:text="@string/website"
+            android:textColor="@color/primary_text"
+            android:textSize="14dp" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/link_input"
-            android:background="#32ffffff"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_text"
+            android:textColorHighlight="@color/light_primary"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -121,7 +119,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center|left"
             android:text="Enter the URL of your personal webpage here, such as your deparment faculty/grad student page. (Optional)"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_text"
             android:textSize="14sp" />
 
         <TextView
@@ -132,7 +130,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Done"
-            android:textColor="@color/list_action_text"
+            android:textColor="@color/dark_accent"
             android:textSize="16sp"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"

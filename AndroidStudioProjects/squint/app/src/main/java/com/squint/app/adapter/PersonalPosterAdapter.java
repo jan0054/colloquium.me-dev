@@ -84,32 +84,32 @@ public class PersonalPosterAdapter extends BaseAdapter {
 				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_NAME, getName(item));
 				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_AUTHOR, getAuthor(item));
 				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_AUTHOR_ID, getAuthorId(item));
-				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_DESCRIPTION, getDescription(item));
+				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_CONTENT, getDescription(item));
 				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_LOCATION_NAME, getLocationName(item));
 
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_ID, getAbstractId(item));
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_ID, getAbstractId(item));
                 }
                 else
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_ID, "");
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_ID, "");
                 }
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_CONTENT, getAbstractContent(item));
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_CONTENT, getAbstractContent(item));
                 }
                 else
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_CONTENT, "");
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_CONTENT, "");
                 }
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_PDF, getAbstractPdf(item));
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_PDF, getAbstractPdf(item));
                 }
                 else
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_PDF, "");
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_PDF, "");
                 }
 				context.sendBroadcast(intent);							
 			}
@@ -140,7 +140,7 @@ public class PersonalPosterAdapter extends BaseAdapter {
 	}
 	
 	private String getDescription(ParseObject object) {
-		return object.getString("description");		
+		return object.getString("content");
 	}
 	
 	private String getLocationName(ParseObject object) {
@@ -149,18 +149,18 @@ public class PersonalPosterAdapter extends BaseAdapter {
 
     private boolean getAbstractExist (ParseObject object)
     {
-        return object.containsKey("abstract");
+        return object.containsKey("attachment");
     }
 
     private String getAbstractId(ParseObject object) {
-        return object.getParseObject("abstract").getObjectId();
+        return object.getParseObject("attachment").getObjectId();
     }
 
     private String getAbstractPdf(ParseObject object) {
-        return object.getParseObject("abstract").getParseFile("pdf").getUrl();
+        return object.getParseObject("attachment").getParseFile("pdf").getUrl();
     }
 
     private String getAbstractContent(ParseObject object) {
-        return object.getParseObject("abstract").getString("content");
+        return object.getParseObject("attachment").getString("content");
     }
 }

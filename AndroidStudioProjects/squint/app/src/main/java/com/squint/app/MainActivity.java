@@ -35,12 +35,12 @@ public class MainActivity extends BaseActivity {
 	// Tab
 	public static final int[] TAB_TITLES = {R.string.title_section1,
 											R.string.title_section2,
-											R.string.title_section3,
+											//R.string.title_section3,	//for HEP
 											R.string.title_section4,
 											R.string.title_section5 };
 	public static final int[] TAB_ICONS = { R.drawable.tab_program,
 											R.drawable.tab_people,
-											R.drawable.tab_career,
+											//R.drawable.tab_career,
 											R.drawable.tab_travel,
 											R.drawable.tab_settings };
 	
@@ -143,20 +143,20 @@ public class MainActivity extends BaseActivity {
       	  // Configure title and options
       	  switch(id) {
       	  case 0:
-              configOptions(OPTION_NONE, OPTION_DAYS);
-      		  //clearOptions();
+              //configOptions(OPTION_NONE, OPTION_DAYS);
+      		  clearOptions();
       		  break;
       	  case 1:
       		  configOptions(OPTION_NONE, OPTION_TALK);          	  
           	  break;
-      	  case 2:
+      	  //case 2:
       		  //clearOptions();
-              configOptions(OPTION_NONE, OPTION_CAREER);
-          	  break;
-      	  case 3:
+          	//configOptions(OPTION_NONE, OPTION_CAREER);
+          	//break;
+      	  case 2:
       		  clearOptions();
           	  break;
-      	  case 4:
+      	  case 3:
       		  if (!isLogin()) configOptions(OPTION_NONE, OPTION_LOGIN);          	  
       		  else configOptions(OPTION_USER, OPTION_LOGOUT);
           	  break;          	  
@@ -198,16 +198,17 @@ public class MainActivity extends BaseActivity {
                 //return pf;
                 return ProgramFragment.newInstance(getBaseContext());
             case 1: return PeopleFragment.newInstance(getBaseContext());
-            case 2: return CareerFragment.newInstance(getBaseContext());
-            case 3: return VenueFragment.newInstance(getBaseContext());
-            case 4: return SettingsFragment.newInstance(getBaseContext());
-            default: return CareerFragment.newInstance(getBaseContext());
-            }			
+            //case 2: return CareerFragment.newInstance(getBaseContext());
+            case 2: return VenueFragment.newInstance(getBaseContext());
+            case 3: return SettingsFragment.newInstance(getBaseContext());
+            //default: return CareerFragment.newInstance(getBaseContext());
+            default:return ProgramFragment.newInstance(getBaseContext());
+			}
 		}
 
 		@Override
 		public int getCount() { 
-			return 5;	// Tab amount
+			return 4;	// Tab amount
 		}
 
 		@Override
@@ -218,11 +219,11 @@ public class MainActivity extends BaseActivity {
 				return getString(R.string.title_section1).toUpperCase(l);
 			case 1:
 				return getString(R.string.title_section2).toUpperCase(l);
+			//case 2:
+			//	return getString(R.string.title_section3).toUpperCase(l);
 			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
-			case 3:
 				return getString(R.string.title_section4).toUpperCase(l);
-			case 4:
+			case 3:
 				return getString(R.string.title_section5).toUpperCase(l);
 			}
 			return null;
@@ -269,7 +270,7 @@ public class MainActivity extends BaseActivity {
              case OPTION_USER:
                  ParseUser selfuser = ParseUser.getCurrentUser();
                  if (selfuser != null) {
-                     toPage(new Intent(), UserPreferenceActivity.class);
+                     toPage(new Intent(), UserAttendeeActivity.class);
                  } else {
                      toast("Please log in first!");
                      toLoginPage(ConversationActivity.class);

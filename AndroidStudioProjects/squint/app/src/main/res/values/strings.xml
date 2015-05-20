@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SQuInT2015</string>
+    <string name="app_name">HEP Workshop</string>
     <string name="empty"></string>
 
     <!-- LOGIN & SIGNUP -->
@@ -15,6 +15,8 @@
     <string name="signup">Sign up</string>
     <string name="skip"><u>Skip</u></string>
     <string name="title_signup">Sign Up</string>
+    <string name="login_notice">Welcome to the NCU Workshop on Hydrodynamic Escape Problems.</string>
+    <string name="signup_notice">Your information is kept secure and private on our servers. To view our privacy policy please go to Settings, or contact us if you have any questions.</string>
 
     <!-- TAB SECTION -->
     <string name="title_section1">Program</string>
@@ -35,8 +37,8 @@
     <!-- DETAILS -->
     <string name="details">Details</string>
     <string name="contact">Contact</string>
-    <string name="e_mail">E-mail</string>
-    <string name="website">Website</string>
+    <string name="e_mail">Send email</string>
+    <string name="website">Webpage</string>
     <string name="message">Message</string>
     <string name="abstract_btn">Attachment</string>
     <string name="more">more</string>
@@ -103,5 +105,6 @@
     <string name="title_activity_user_preference">UserPreferenceActivity</string>
     <string name="title_activity_discussion">DiscussionActivity</string>
     <string name="title_activity_upload_career">UploadCareerActivity</string>
+    <string name="title_activity_user_attendee">UserAttendeeActivity</string>
 
 </resources>

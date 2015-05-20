@@ -25,9 +25,9 @@ public class DiscussionPosterAdapter extends ParseQueryAdapter<ParseObject> {
 
         super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery<ParseObject> create() {
-                ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("poster");
+                ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Poster");
                 innerQuery.whereEqualTo("objectId", event_objid);
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("forum");
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Forum");
                 query.whereMatchesQuery("source_poster", innerQuery);
                 query.include("author_person");
                 query.include("source_poster");

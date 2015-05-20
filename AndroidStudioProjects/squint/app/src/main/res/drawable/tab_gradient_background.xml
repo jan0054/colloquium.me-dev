@@ -3,6 +3,6 @@
 	   android:shape="rectangle" 
 	   android:id="@+id/round_field">
 	   <gradient android:angle="-90"
-	       		 android:startColor="@color/tab_background"
-				 android:endColor="@color/tab_background"/>
+	       		 android:startColor="@color/tab_bar"
+				 android:endColor="@color/tab_bar"/>
 </shape>

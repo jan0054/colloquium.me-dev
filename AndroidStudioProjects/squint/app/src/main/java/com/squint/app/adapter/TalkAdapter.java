@@ -34,7 +34,7 @@ public class TalkAdapter extends BaseAdapter {
 	private static class ViewHolder {
 		  //public ImageView image;
 		  public TextView name;
-		  public TextView description;
+		  public TextView content;
 		  public TextView author_name;
 		  public TextView location_name;
 		  public TextView start_time;
@@ -72,7 +72,7 @@ public class TalkAdapter extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.item_talk, null);
 			holder = new ViewHolder();
 			holder.name = (TextView) convertView.findViewById(R.id.name);
-			holder.description = (TextView) convertView.findViewById(R.id.description);
+			holder.content = (TextView) convertView.findViewById(R.id.content);
 			holder.author_name = (TextView) convertView.findViewById(R.id.author_name);
 			holder.location_name = (TextView) convertView.findViewById(R.id.location_name);
 			holder.start_time = (TextView) convertView.findViewById(R.id.start_time);
@@ -82,7 +82,7 @@ public class TalkAdapter extends BaseAdapter {
 		ParseObject item = data.get(position);
 		holder.name.setText(getName(item));
 		holder.author_name.setText(getAuthor(item));
-		holder.description.setText(getDescription(item));
+		holder.content.setText(getDescription(item));
 		holder.location_name.setText(getLocationName(item));
 		holder.start_time.setText(getStartTime(item));		
 		convertView.setTag(holder);
@@ -102,32 +102,32 @@ public class TalkAdapter extends BaseAdapter {
                 intent.putExtra(TalkDetailsActivity.EXTRA_TALK_AUTHOR_EMAIL, getAuthorEmail(item));
                 intent.putExtra(TalkDetailsActivity.EXTRA_TALK_AUTHOR_WEBSITE, getAuthorWebsite(item));
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_START_TIME, getStartTime(item));
-				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_DESCRIPTION, getDescription(item));
+				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_CONTENT, getDescription(item));
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_LOCATION_NAME, getLocationName(item));
                 intent.putExtra(TalkDetailsActivity.EXTRA_TALK_SESSION, getSessionName(item));
 				if (getAbstractExist(item))
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_ID, getAbstractId(item));
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_ID, getAbstractId(item));
                 }
                 else
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_ID, "");
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_ID, "");
                 }
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_CONTENT, getAbstractContent(item));
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_CONTENT, getAbstractContent(item));
                 }
                 else
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_CONTENT, "");
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_CONTENT, "");
                 }
 				if (getAbstractExist(item))
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_PDF, getAbstractPdf(item));
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_PDF, getAbstractPdf(item));
                 }
                 else
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_PDF, "");
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_PDF, "");
                 }
 
 
@@ -163,7 +163,7 @@ public class TalkAdapter extends BaseAdapter {
 	
 	
 	private String getDescription(ParseObject object) {
-		return object.getString("description");		
+		return object.getString("content");
 	}
 	
 	private String getLocationName(ParseObject object) {
@@ -181,7 +181,7 @@ public class TalkAdapter extends BaseAdapter {
     }
 
 	private String getAbstractId(ParseObject object) {
-		String result = object.getParseObject("abstract").getObjectId();
+		String result = object.getParseObject("attachment").getObjectId();
         if (result.length()>=1)
         {
             return result;
@@ -193,7 +193,7 @@ public class TalkAdapter extends BaseAdapter {
 	}
 
 	private String getAbstractPdf(ParseObject object) {
-		String result =  object.getParseObject("abstract").getParseFile("pdf").getUrl();
+		String result =  object.getParseObject("attachment").getParseFile("pdf").getUrl();
         if (result.length()>=1)
         {
             return result;
@@ -205,7 +205,7 @@ public class TalkAdapter extends BaseAdapter {
 	}
 	
 	private String getAbstractContent(ParseObject object) {
-		String result =  object.getParseObject("abstract").getString("content");
+		String result =  object.getParseObject("attachment").getString("content");
         if (result.length()>=1)
         {
             return result;

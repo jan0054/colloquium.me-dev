@@ -85,7 +85,7 @@ public class PosterAdapter extends BaseAdapter {
 				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_NAME, getName(item));
 				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_AUTHOR, getAuthor(item));
 				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_AUTHOR_ID, getAuthorId(item));
-				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_DESCRIPTION, getDescription(item));
+				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_CONTENT, getDescription(item));
 				intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_LOCATION_NAME, getLocationName(item));
                 intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_AUTHOR_INSTITUTION, getAuthorInstitution(item));
                 intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_AUTHOR_EMAIL, getAuthorEmail(item));
@@ -93,27 +93,27 @@ public class PosterAdapter extends BaseAdapter {
 
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_ID, getAbstractId(item));
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_ID, getAbstractId(item));
                 }
                 else
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_ID, "");
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_ID, "");
                 }
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_CONTENT, getAbstractContent(item));
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_CONTENT, getAbstractContent(item));
                 }
                 else
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_CONTENT, "");
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_CONTENT, "");
                 }
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_PDF, getAbstractPdf(item));
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_PDF, getAbstractPdf(item));
                 }
                 else
                 {
-                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ABSTRACT_PDF, "");
+                    intent.putExtra(PosterDetailsActivity.EXTRA_POSTER_ATTACHMENT_PDF, "");
                 }
 
 

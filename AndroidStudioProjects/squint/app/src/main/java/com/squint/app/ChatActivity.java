@@ -57,7 +57,7 @@ public class ChatActivity extends BaseActivity implements  AdapterView.OnItemCli
         //get the conversation id from the intent extras
         conversationid = this.getIntent().getExtras().getString("selected_conv");
         //get the conversation object
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("conversation");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Conversation");
         query.include("user_a");
         query.include("user_b");
         query.getInBackground(conversationid, new GetCallback<ParseObject>() {
@@ -155,7 +155,7 @@ public class ChatActivity extends BaseActivity implements  AdapterView.OnItemCli
         }
 
         //create and save the chat object
-        ParseObject chatmsg = new ParseObject("chat");
+        ParseObject chatmsg = new ParseObject("Chat");
         chatmsg.put("content",message);
         chatmsg.put("conversation", pfconversation);
         chatmsg.put("from", currentUser);

@@ -45,9 +45,9 @@ public class VenueAdapter extends BaseAdapter {
 	private List<ParseObject>	 		data;
 
 	private static class ViewHolder {
-		  public ImageView photo;
+		  public ImageView image;
 		  public TextView name;
-		  public TextView description;
+		  public TextView content;
 		  public TextView address;
 		  public ImageView website;
 		  public ImageView navigate;
@@ -85,9 +85,9 @@ public class VenueAdapter extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.item_venue, null);
 			holder = new ViewHolder();
 			holder.name = (TextView) convertView.findViewById(R.id.name);
-			holder.description = (TextView) convertView.findViewById(R.id.description);
+			holder.content = (TextView) convertView.findViewById(R.id.content);
 			holder.address = (TextView) convertView.findViewById(R.id.address);
-			holder.photo = (ImageView) convertView.findViewById(R.id.photo);
+			holder.image = (ImageView) convertView.findViewById(R.id.image);
 			holder.website = (ImageView) convertView.findViewById(R.id.website);
 			holder.call = (ImageView) convertView.findViewById(R.id.call);
 			holder.navigate = (ImageView) convertView.findViewById(R.id.navigate);			
@@ -96,8 +96,8 @@ public class VenueAdapter extends BaseAdapter {
 		
 		ParseObject item = data.get(position);
 		holder.name.setText(getName(item));
-		holder.description.setText(getDescription(item));
-        holder.description.setMovementMethod(new ScrollingMovementMethod());
+		holder.content.setText(getContent(item));
+        holder.content.setMovementMethod(new ScrollingMovementMethod());
 		holder.address.setText(getAddress(item));
 		
 		holder.website.setTag(getUrl(item));
@@ -151,7 +151,7 @@ public class VenueAdapter extends BaseAdapter {
 		});
 		*/
 		
-		BitmapManager.INSTANCE.loadBitmap(getPhotoUrl(item), holder.photo, 0, 0);
+		BitmapManager.INSTANCE.loadBitmap(getPhotoUrl(item), holder.image, 0, 0);
 		
 		return convertView;
 	}
@@ -168,8 +168,8 @@ public class VenueAdapter extends BaseAdapter {
 		return object.getString("name");		
 	}
 	
-	private String getDescription(ParseObject object) {
-		return object.getString("description");
+	private String getContent(ParseObject object) {
+		return object.getString("content");
 	}
 	
 	private String getAddress(ParseObject object) {
@@ -177,7 +177,7 @@ public class VenueAdapter extends BaseAdapter {
 	}
 	
 	private String getPhotoUrl(ParseObject object) {
-		return object.getParseFile("photo").getUrl();		
+		return object.getParseFile("image").getUrl();
 	}
 	
 	private String getUrl(ParseObject object) {
@@ -186,7 +186,7 @@ public class VenueAdapter extends BaseAdapter {
 	}
 	
 	private String getCall(ParseObject object) {
-		return object.getString("phone");		
+		return object.getString("image");
 	}
 	
 	private ParseGeoPoint getGeoPoint(ParseObject object) {	

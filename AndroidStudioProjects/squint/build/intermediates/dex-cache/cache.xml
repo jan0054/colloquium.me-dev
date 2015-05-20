@@ -2,25 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/Users/chishengjan/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.2/91c20388c9a45f62b5ed8fe0502bb76ff6251fc7/bolts-android-1.1.2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
-        <dex dex="/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/release/bolts-android-1.1.2-62664e0078e68caa25a80263f837d2fa7c9f3ebb.jar" />
-    </item>
-    <item
-        jar="/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/libs/android-support-v13.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0c39cec0634e45ef67a1041708cf2d63b1a816b7">
-        <dex dex="/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/release/android-support-v13-6a0ed885e5440c5854a2b287e6490ceaa00917a5.jar" />
-    </item>
-    <item
-        jar="/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/libs/Parse-1.8.0.jar"
+        jar="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/libs/Parse-1.8.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="61cf79e2775b882ac0ea32d60ea2dbbf6f245cea">
-        <dex dex="/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/release/Parse-1.8.0-00bb57d257aa1595addd7c06268d71590757e6aa.jar" />
+        <dex dex="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/Parse-1.8.0-d0f4d204ecb53ef75896025aa8723bdda0ed3e8b.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.2/91c20388c9a45f62b5ed8fe0502bb76ff6251fc7/bolts-android-1.1.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-9f59a112ef0932c8c0303ce8bd7f20da98f01af9.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/libs/android-support-v13.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0c39cec0634e45ef67a1041708cf2d63b1a816b7">
+        <dex dex="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/android-support-v13-4d3c5d500210c40e8fffd0d075bb68d6a5780007.jar" />
     </item>
 
 </items>

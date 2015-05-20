@@ -18,14 +18,16 @@ public class VenueDAO {
 	public static final String 	DATA_POI					= "data.poi";
 	// Column Name
 	public static String		ADDRESS						= "address";
-	public static String		DESCRIPTION					= "description";
+	public static String		DESCRIPTION					= "content";
 	public static String		NAME 						= "name";
 	public static String		PHONE						= "phone";
 	public static String		COORD						= "coord";		// GeoPoint
-	public static String		PHOTO						= "photo";		// File
+	public static String		IMAGE						= "image";		// File
 	public static String		CREATEDAT					= "createdAt";	// Date
 	public static String		UPDATEDAT					= "updatedAt";	// Date
-	
+	public static String        ORDER                       = "order";
+	public static String        EVENT                       = "event";
+
 	private Context				mContext;
 	private List<ParseObject> 	mData;
 	

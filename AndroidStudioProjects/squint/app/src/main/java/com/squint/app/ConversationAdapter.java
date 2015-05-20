@@ -33,10 +33,10 @@ public class ConversationAdapter extends ParseQueryAdapter<ParseObject> {
             public ParseQuery<ParseObject> create() {
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                ParseQuery<ParseObject> usera_conv = ParseQuery.getQuery("conversation");
+                ParseQuery<ParseObject> usera_conv = ParseQuery.getQuery("Conversation");
                 usera_conv.whereEqualTo("user_a", currentUser);
 
-                ParseQuery<ParseObject> userb_conv = ParseQuery.getQuery("conversation");
+                ParseQuery<ParseObject> userb_conv = ParseQuery.getQuery("Conversation");
                 userb_conv.whereEqualTo("user_b", currentUser);
 
                 List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();

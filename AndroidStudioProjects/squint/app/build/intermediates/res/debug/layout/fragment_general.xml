@@ -7,7 +7,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:background="@color/light_bg">
 
 
         <Button
@@ -16,26 +17,25 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:onClick="sendChat"
-            android:textColor="@color/list_action_text"
+            android:textColor="@color/accent_color"
             android:text="Cancel"
-            android:background="#00ffffff" />
+            android:background="@color/light_bg" />
         <EditText
             android:id="@+id/searchinput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#32ffffff"
             android:textCursorDrawable="@null"
-            android:textColor="@color/white"/>
+            android:textColor="@color/accent_color"/>
         <Button
             android:id="@+id/dosearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:onClick="sendChat"
-            android:textColor="@color/list_action_text"
+            android:textColor="@color/accent_color"
             android:text="Search"
-            android:background="#00ffffff" />
+            android:background="@color/light_bg" />
 
 
     </LinearLayout>
@@ -43,17 +43,17 @@
 	     	  android:layout_width="match_parent"
 	     	  android:layout_height="wrap_content"
 	     	  android:paddingTop="6dp"
-	     	  android:layout_marginLeft="6dp"
-	     	  android:layout_marginRight="6dp"
-	     	  android:divider="@color/list_divider"
-	     	  android:dividerHeight="10dp" />
+	     	  android:layout_marginLeft="0dp"
+	     	  android:layout_marginRight="0dp"
+	     	  android:divider="@color/background"
+	     	  android:dividerHeight="0dp" />
     <TextView android:id="@android:id/empty"
 		      android:layout_width="match_parent"
 		      android:layout_height="match_parent"
 		      android:layout_marginLeft="16dp"
 	     	  android:layout_marginRight="16dp"
 	     	  android:gravity="center"
-		      android:textColor="@android:color/white"
+		      android:textColor="@color/dark_txt"
 		      android:textSize="18sp"
 		      android:text="@string/list_empty" />  
-</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/fragment_general.xml -->
+</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/fragment_general.xml -->

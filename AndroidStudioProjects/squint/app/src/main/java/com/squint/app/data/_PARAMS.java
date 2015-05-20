@@ -10,11 +10,11 @@ public class _PARAMS {
 	 */
 	// Settings
 	public static final String FEEDBACK_EMAIL = "jan0054@gmail.com";
-    public static final String TECH_EMAIL = "ideutsch@unm.edu";
-    public static final String ADMIN_EMAIL = "vbird@unm.edu";
-	public static final String FEEDBACK_TITLE = "Suggestions for SQuInT app:";
-    public static final String TECH_TITLE = "Technical assistance for SQuInT app:";
-    public static final String ADMIN_TITLE = "Administrative assistance for SQuInT workshop:";
+    public static final String TECH_EMAIL = "jan0054@gmail.com";
+    public static final String ADMIN_EMAIL = "jan0054@gmail.com";
+	public static final String FEEDBACK_TITLE = "Suggestions for this app:";
+    public static final String TECH_TITLE = "Technical assistance for this app:";
+    public static final String ADMIN_TITLE = "Administrative assistance for this event:";
 	public static final String FEEDBACK_CONTENT = "";
     public static final String TECH_CONTENT = "";
     public static final String ADMIN_CONTENT = "";
@@ -24,16 +24,16 @@ public class _PARAMS {
 	
 	
 	// Parse
-	public static final String APPLICATION_ID 		= "PLlbyPCGMrfHvghx1sllgLmNRIwz00l7PHYZdAvd";
-	public static final String CLIENT_KEY 			= "9LIHOaADcFXDINWNOvCO5Rr9XYKd1jV2A3aB70Ca";
-	public static final String TABLE_PERSON 		= "person";
-	public static final String TABLE_POI 			= "poi";
-	public static final String TABLE_CAREER 		= "career";
-	public static final String TABLE_CONVERSATION	= "conversation";
-	public static final String TABLE_LOCATION		= "location";
-	public static final String TABLE_ABSTRACT		= "abstract";
-	public static final String TABLE_POSTER			= "poster";
-	public static final String TABLE_SESSION		= "session";
-	public static final String TABLE_TALK			= "talk";
+	public static final String APPLICATION_ID 		= "ZxpkBR4Fy9XQBQGhE4wfTnJTi5Fi4ZaQrw8wJzWZ";
+	public static final String CLIENT_KEY 			= "9TM41ePCXeDHwRgjrVuQhjW29WRmQvLVDX2H6cUh";
+	public static final String TABLE_PERSON 		= "Person";
+	public static final String TABLE_POI 			= "Venue";
+	public static final String TABLE_CAREER 		= "Career";
+	public static final String TABLE_CONVERSATION	= "Conversation";
+	public static final String TABLE_LOCATION		= "Location";
+	public static final String TABLE_ABSTRACT		= "Attachment";
+	public static final String TABLE_POSTER			= "Poster";
+	public static final String TABLE_SESSION		= "Session";
+	public static final String TABLE_TALK			= "Talk";
 	
 }

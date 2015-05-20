@@ -64,12 +64,12 @@ public class DiscussionActivity extends BaseActivity {
         }
 
         ParseUser cur_user = ParseUser.getCurrentUser();
-        cur_person = cur_user.getParseObject("person");
+        cur_person = cur_user.getParseObject("Person");
         switch (event_type)
         {
             case 0:
                 //talk
-                ParseQuery<ParseObject> tquery = ParseQuery.getQuery("talk");
+                ParseQuery<ParseObject> tquery = ParseQuery.getQuery("Talk");
                 tquery.getInBackground(event_objid, new GetCallback<ParseObject>() {
                     @Override
                     public void done(ParseObject object, ParseException e) {
@@ -79,7 +79,7 @@ public class DiscussionActivity extends BaseActivity {
                 break;
             case 1:
                 //poster
-                ParseQuery<ParseObject> pquery = ParseQuery.getQuery("poster");
+                ParseQuery<ParseObject> pquery = ParseQuery.getQuery("Poster");
                 pquery.getInBackground(event_objid, new GetCallback<ParseObject>() {
                     @Override
                     public void done(ParseObject object, ParseException e) {
@@ -95,7 +95,7 @@ public class DiscussionActivity extends BaseActivity {
         final String message = editText.getText().toString();
         Log.i("sendDiscussion", message);
 
-        ParseObject discussion_msg = new ParseObject("forum");
+        ParseObject discussion_msg = new ParseObject("Forum");
         discussion_msg.put("content", message);
         discussion_msg.put("author_user", ParseUser.getCurrentUser());
         discussion_msg.put("author_person", cur_person);

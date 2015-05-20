@@ -25,7 +25,7 @@ public class PeopleAdapter extends BaseAdapter {
 	public static final String 			EXTRA_PERSON_NAME			= "com.squint.data.person.NAME";
 	public static final String 			EXTRA_PERSON_INSTITUTION	= "com.squint.data.person.INSTITUTION";
 	public static final String 			EXTRA_PERSON_EMAIL			= "com.squint.data.person.EMAIL";
-	public static final String 			EXTRA_PERSON_WEBSITE		= "com.squint.data.person.WEBSITE";
+	public static final String 			EXTRA_PERSON_LINK			= "com.squint.data.person.LINK";
     public static final String 			EXTRA_PERSON_CHATON		    = "com.squint.data.person.CHATON";
     public static final String 			EXTRA_PERSON_EMAILON		= "com.squint.data.person.EMAILON";
     public static final String 			EXTRA_PERSON_ISUSER		    = "com.squint.data.person.ISUSER";
@@ -87,7 +87,7 @@ public class PeopleAdapter extends BaseAdapter {
 				intent.putExtra(EXTRA_PERSON_NAME, getName(item));
 				intent.putExtra(EXTRA_PERSON_INSTITUTION, getInstitution(item));
 				intent.putExtra(EXTRA_PERSON_EMAIL, getEmail(item));
-				intent.putExtra(EXTRA_PERSON_WEBSITE, getWebsite(item));
+				intent.putExtra(EXTRA_PERSON_LINK, getWebsite(item));
                 intent.putExtra(EXTRA_PERSON_CHATON, getChat_on(item));
                 intent.putExtra(EXTRA_PERSON_EMAILON, getEmail_on(item));
                 intent.putExtra(EXTRA_PERSON_ISUSER, getIs_user(item));

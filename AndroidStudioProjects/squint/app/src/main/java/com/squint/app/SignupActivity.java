@@ -89,8 +89,7 @@ public class SignupActivity extends BaseActivity {
 
     private void toPreferencePage()
     {
-        Intent intent = new Intent(this, UserPreferenceActivity.class);
+        Intent intent = new Intent(this, UserAttendeeActivity.class);
         startActivity(intent);
     }
-	
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.parse.ParseObject;
-import com.squint.app.AbstractDetailsActivity;
+import com.squint.app.AttachmentDetailsActivity;
 import com.squint.app.R;
 
 import android.content.Context;
@@ -70,13 +70,13 @@ public class PersonalAbstractAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				ViewHolder h = (ViewHolder)v.getTag();				
 				ParseObject item = (ParseObject)h.name.getTag();			
-				Intent intent = new Intent(AbstractDetailsActivity.ACTION_SELECT);
-				intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_ID, item.getObjectId());
-				intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_NAME, getName(item));
-				intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_AUTHOR, getAuthor(item));
-				intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_AUTHOR_ID, getAuthorId(item));
-				intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_PDF, getPdfUrl(item));
-				intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_CONTENT, getContent(item));
+				Intent intent = new Intent(AttachmentDetailsActivity.ACTION_SELECT);
+				intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_ID, item.getObjectId());
+				intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_NAME, getName(item));
+				intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_AUTHOR, getAuthor(item));
+				intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_AUTHOR_ID, getAuthorId(item));
+				intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_PDF, getPdfUrl(item));
+				intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_CONTENT, getContent(item));
 				context.sendBroadcast(intent);							
 			}
 		});

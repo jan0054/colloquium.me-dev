@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.parse.ParseObject;
 import com.parse.codec.binary.StringUtils;
-import com.squint.app.adapter.AbstractAdapter;
+import com.squint.app.adapter.AttachmentAdapter;
 import com.squint.app.adapter.PosterAdapter;
 import com.squint.app.adapter.TalkAdapter;
 import com.squint.app.data.AbstractDAO;
@@ -41,19 +41,19 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 	
 	private TalkDAO 				mTalkDAO;
 	private PosterDAO 				mPosterDAO;
-	private AbstractDAO 			mAbstractDAO;
+	private AbstractDAO 			mAttachmentDAO;
 	public static List<ParseObject> mTalkData;
 	public static List<ParseObject> mPosterData;
-	public static List<ParseObject> mAbstractData;
+	public static List<ParseObject> mAttachmentData;
 	
 	public static TalkAdapter		mTalkAdapter;
 	public static PosterAdapter		mPosterAdapter;
-	public static AbstractAdapter	mAbstractAdapter;
+	public static AttachmentAdapter	mAttachmentAdapter;
 
 	public ListView 				mList;
 	private Button mTalk;
 	private Button mPoster;
-	private Button mAbstract;
+	private Button mAttachment;
 
     //search and day filter stuff
     public int selected_seg;
@@ -72,17 +72,17 @@ public class ProgramFragment extends Fragment implements OnClickListener {
         searcharray = new ArrayList<String>();
 		mTalkDAO = new TalkDAO(mContext, searcharray, talkday);
 		mPosterDAO = new PosterDAO(mContext, searcharray);
-		mAbstractDAO = new AbstractDAO(mContext);
+		mAttachmentDAO = new AbstractDAO(mContext);
 		mTalkData	= new ArrayList<ParseObject>();
 		mPosterData	= new ArrayList<ParseObject>();	
-		mAbstractData = new ArrayList<ParseObject>();
+		mAttachmentData = new ArrayList<ParseObject>();
 		View v = inflater.inflate(R.layout.fragment_program, container, false);
 		mTalk = (Button)v.findViewById(R.id.switch_talk);
 		mPoster = (Button)v.findViewById(R.id.switch_poster);
-		mAbstract = (Button)v.findViewById(R.id.switch_abstract);
+		mAttachment = (Button)v.findViewById(R.id.switch_attachment);
 		mTalk.setOnClickListener(this);
 		mPoster.setOnClickListener(this);
-		mAbstract.setOnClickListener(this);
+		mAttachment.setOnClickListener(this);
 
         searchinput = (EditText)v.findViewById(R.id.searchinput);
         dosearch = (Button)v.findViewById(R.id.dosearch);
@@ -124,7 +124,7 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 		mList.setEmptyView(v.findViewById(android.R.id.empty));
 		mTalkAdapter = new TalkAdapter(mContext, mTalkData);
 		mPosterAdapter = new PosterAdapter(mContext, mPosterData);
-		mAbstractAdapter = new AbstractAdapter(mContext, mAbstractData);
+		mAttachmentAdapter = new AttachmentAdapter(mContext, mAttachmentData);
 		onClick(mTalk);
 		
         return v;	
@@ -156,7 +156,7 @@ public class ProgramFragment extends Fragment implements OnClickListener {
         	filter = new IntentFilter();  
         	filter.addAction(TalkDetailsActivity.ACTION_SELECT);
         	filter.addAction(PosterDetailsActivity.ACTION_SELECT);
-        	filter.addAction(AbstractDetailsActivity.ACTION_SELECT);
+        	filter.addAction(AttachmentDetailsActivity.ACTION_SELECT);
         	filter.addAction(TalkDAO.ACTION_LOAD_DATA);
         	filter.addAction(PosterDAO.ACTION_LOAD_DATA);
         	filter.addAction(AbstractDAO.ACTION_LOAD_DATA);
@@ -177,8 +177,8 @@ public class ProgramFragment extends Fragment implements OnClickListener {
             } else if (action.equals(PosterDetailsActivity.ACTION_SELECT)) {
             	toPage(intent, PosterDetailsActivity.class);
             	
-            } else if (action.equals(AbstractDetailsActivity.ACTION_SELECT)) {
-            	toPage(intent, AbstractDetailsActivity.class);
+            } else if (action.equals(AttachmentDetailsActivity.ACTION_SELECT)) {
+            	toPage(intent, AttachmentDetailsActivity.class);
             	//toast(intent.getStringExtra(AbstractAdapter.EXTRA_ABSTRACT_ID));
             	
             } else if (action.equals(TalkDAO.ACTION_LOAD_DATA)) {
@@ -193,8 +193,8 @@ public class ProgramFragment extends Fragment implements OnClickListener {
             	} catch (Exception e) { Log.d(TAG, "Poster data is null!"); }
             } else if (action.equals(AbstractDAO.ACTION_LOAD_DATA)) {
             	try {
-            		mAbstractData = mAbstractDAO.getData();
-            		mAbstractAdapter.update(mAbstractData);
+            		mAttachmentData = mAttachmentDAO.getData();
+            		mAttachmentAdapter.update(mAttachmentData);
             	} catch (Exception e) { Log.d(TAG, "Abstract data is null!"); }
             	
             }         
@@ -234,10 +234,10 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 			mList.setAdapter(mTalkAdapter);
 			mTalk.setSelected(true);
 			mPoster.setSelected(false);
-			mAbstract.setSelected(false);
+			mAttachment.setSelected(false);
 			mTalk.setEnabled(false);
 			mPoster.setEnabled(true);
-			mAbstract.setEnabled(true);
+			mAttachment.setEnabled(true);
             selected_seg = 0;
             searchinput.setText("");
             searcharray.clear();
@@ -247,23 +247,23 @@ public class ProgramFragment extends Fragment implements OnClickListener {
 			mList.setAdapter(mPosterAdapter);
 			mTalk.setSelected(false);
 			mPoster.setSelected(true);
-			mAbstract.setSelected(false);
+			mAttachment.setSelected(false);
 			mTalk.setEnabled(true);
 			mPoster.setEnabled(false);
-			mAbstract.setEnabled(true);
+			mAttachment.setEnabled(true);
             selected_seg = 1;
             searchinput.setText("");
             searcharray.clear();
 			//toast("Poster");
 			break;
-		case R.id.switch_abstract:
-			mList.setAdapter(mAbstractAdapter);
+		case R.id.switch_attachment:
+			mList.setAdapter(mAttachmentAdapter);
 			mTalk.setSelected(false);
 			mPoster.setSelected(false);
-			mAbstract.setSelected(true);
+			mAttachment.setSelected(true);
 			mTalk.setEnabled(true);
 			mPoster.setEnabled(true);
-			mAbstract.setEnabled(false);
+			mAttachment.setEnabled(false);
             selected_seg = 2;
             searchinput.setText("");
             searcharray.clear();

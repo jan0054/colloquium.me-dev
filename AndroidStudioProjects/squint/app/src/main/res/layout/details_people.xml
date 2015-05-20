@@ -2,31 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent"
-			  android:background="@drawable/stage"
+			  android:background="@color/background"
 			  android:orientation="vertical" >
 	<LinearLayout android:id="@+id/container"
 			      android:layout_width="match_parent"
 			      android:layout_height="wrap_content"
-			      android:layout_margin="16dp"
+			      android:layout_margin="0dp"
 			      android:background="@drawable/list_item"
 			      android:orientation="vertical" >
-		<View android:layout_width="match_parent"
-		      android:layout_height="3dp"
-		      android:background="@color/list_item_header" />
+		<LinearLayout android:layout_width="match_parent"
+					  android:layout_height="wrap_content"
+					  android:layout_marginTop="5dp"
+					  android:layout_marginBottom="5dp"
+					  android:orientation="horizontal">
+			<View android:layout_width="3dp"
+				  android:layout_height="match_parent"
+				  android:background="@color/dark_accent" />
 
-		<TextView
-		    android:id="@+id/author"
-		    android:layout_width="match_parent"
-		    android:layout_height="24dp"
-		    android:layout_marginLeft="16dp"
-		    android:layout_marginRight="16dp"
-		    android:layout_marginTop="20dp"
-		    android:fontFamily="sans-serif-light"
-		    android:gravity="center|left"
-		    android:text="@string/author"
-		    android:textColor="@color/list_item_level_1"
-		    android:textSize="18sp"
-		    android:textStyle="bold" />
+			<TextView
+				android:id="@+id/author"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="13dp"
+				android:layout_marginRight="16dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:fontFamily="sans-serif-light"
+				android:gravity="center|left"
+				android:text="@string/author"
+				android:textColor="@color/primary_text"
+				android:textSize="18sp"
+				android:textStyle="bold" />
+		</LinearLayout>
 		<TextView android:id="@+id/institution"
 			      android:layout_width="match_parent"
 			      android:layout_height="24dp"
@@ -38,7 +45,7 @@
 			      android:maxHeight="30dp"
 			      android:maxWidth="300dp"
 			      android:text="@string/institution"
-			      android:textColor="@color/list_item_level_2"
+			      android:textColor="@color/primary_text"
 			      android:textSize="14sp" />
 		<LinearLayout android:layout_width="match_parent"
 		    		  android:layout_height="24dp"
@@ -55,16 +62,16 @@
 		    android:gravity="center"
 		    android:layout_weight="1"
 		    android:text="@string/e_mail"
-		    android:textColor="@color/list_action_text"
+		    android:textColor="@color/dark_accent"
 		    android:textSize="14sp" />
 		<TextView
-		    android:id="@+id/website"
+		    android:id="@+id/link"
 		    android:layout_width="wrap_content"
 		    android:layout_height="24dp"
 		    android:gravity="center"
 		    android:layout_weight="1"
 		    android:text="@string/website"
-		    android:textColor="@color/list_action_text"
+		    android:textColor="@color/dark_accent"
 		    android:textSize="14sp" />
 		<TextView
 		    android:id="@+id/message"
@@ -73,7 +80,7 @@
 		    android:gravity="center"
 		    android:layout_weight="1"
 		    android:text="@string/message"
-		    android:textColor="@color/list_action_text"
+		    android:textColor="@color/dark_accent"
 		    android:textSize="14sp" />  		    
 		</LinearLayout>
 	</LinearLayout>
@@ -84,7 +91,7 @@
 	     	  android:paddingTop="6dp"
 	     	  android:layout_marginLeft="@dimen/activity_vertical_margin"
 	     	  android:layout_marginRight="@dimen/activity_vertical_margin"
-	     	  android:divider="@color/list_divider"
+	     	  android:divider="@color/divider_color"
 	     	  android:dividerHeight="1dp" />
     <TextView android:id="@android:id/empty"
 		      android:layout_width="match_parent"
@@ -92,7 +99,7 @@
 		      android:layout_marginLeft="16dp"
 	     	  android:layout_marginRight="16dp"
 	     	  android:gravity="center"
-		      android:textColor="@android:color/white"
+		      android:textColor="@color/dark_accent"
 		      android:textSize="18sp"
 		      android:text="@string/list_empty" />    
 </LinearLayout>

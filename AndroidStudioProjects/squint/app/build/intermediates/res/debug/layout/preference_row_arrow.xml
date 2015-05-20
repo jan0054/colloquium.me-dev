@@ -51,4 +51,4 @@
 	       		  android:layout_gravity="right"
 	       		  android:contentDescription="@string/empty"
 	       		  android:src="@drawable/preference_arrow" />
-</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/preference_row_arrow.xml -->
+</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/preference_row_arrow.xml -->

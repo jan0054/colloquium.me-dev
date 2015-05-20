@@ -79,32 +79,32 @@ public class PersonalTalkAdapter extends BaseAdapter {
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_NAME, getName(item));
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_AUTHOR, getAuthor(item));
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_START_TIME, getStartTime(item));
-				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_DESCRIPTION, getDescription(item));
+				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_CONTENT, getDescription(item));
 				intent.putExtra(TalkDetailsActivity.EXTRA_TALK_LOCATION_NAME, getLocationName(item));
 
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_ID, getAbstractId(item));
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_ID, getAbstractId(item));
                 }
                 else
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_ID, "");
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_ID, "");
                 }
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_CONTENT, getAbstractContent(item));
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_CONTENT, getAbstractContent(item));
                 }
                 else
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_CONTENT, "");
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_CONTENT, "");
                 }
                 if (getAbstractExist(item))
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_PDF, getAbstractPdf(item));
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_PDF, getAbstractPdf(item));
                 }
                 else
                 {
-                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ABSTRACT_PDF, "");
+                    intent.putExtra(TalkDetailsActivity.EXTRA_TALK_ATTACHMENT_PDF, "");
                 }
 				context.sendBroadcast(intent);						
 			}
@@ -132,7 +132,7 @@ public class PersonalTalkAdapter extends BaseAdapter {
 	}
 	
 	private String getDescription(ParseObject object) {
-		return object.getString("description");		
+		return object.getString("content");
 	}
 	
 	private String getLocationName(ParseObject object) {
@@ -145,11 +145,11 @@ public class PersonalTalkAdapter extends BaseAdapter {
 
     private boolean getAbstractExist (ParseObject object)
     {
-        return object.containsKey("abstract");
+        return object.containsKey("attachment");
     }
 
     private String getAbstractId(ParseObject object) {
-        String result = object.getParseObject("abstract").getObjectId();
+        String result = object.getParseObject("attachment").getObjectId();
         if (result.length()>=1)
         {
             return result;
@@ -161,7 +161,7 @@ public class PersonalTalkAdapter extends BaseAdapter {
     }
 
     private String getAbstractPdf(ParseObject object) {
-        String result =  object.getParseObject("abstract").getParseFile("pdf").getUrl();
+        String result =  object.getParseObject("attachment").getParseFile("pdf").getUrl();
         if (result.length()>=1)
         {
             return result;
@@ -173,7 +173,7 @@ public class PersonalTalkAdapter extends BaseAdapter {
     }
 
     private String getAbstractContent(ParseObject object) {
-        String result =  object.getParseObject("abstract").getString("content");
+        String result =  object.getParseObject("attachment").getString("content");
         if (result.length()>=1)
         {
             return result;

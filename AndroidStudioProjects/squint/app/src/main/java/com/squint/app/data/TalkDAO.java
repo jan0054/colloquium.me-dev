@@ -23,7 +23,7 @@ public class TalkDAO {
 	public static final String 	DATA						= "data.talk";
 	// Column Name
 	public static String		NAME						= "name";
-	public static String		DESCRIPTION					= "description";
+	public static String		DESCRIPTION					= "content";
 	public static String		START_TIME					= "start_time";
 	// Pointers
 	public static String		AUTHOR						= "author";    	// "first_name" of author

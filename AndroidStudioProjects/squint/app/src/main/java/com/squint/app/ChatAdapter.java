@@ -29,10 +29,10 @@ public class ChatAdapter extends ParseQueryAdapter<ParseObject> {
     public ChatAdapter(Context context) {
         super(context, new ParseQueryAdapter.QueryFactory<ParseObject>() {
             public ParseQuery<ParseObject> create() {
-                ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("conversation");
+                ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Conversation");
                 innerQuery.whereEqualTo("objectId", convid);
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("chat");
-                query.whereMatchesQuery("conversation", innerQuery);
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Chat");
+                query.whereMatchesQuery("Conversation", innerQuery);
                 query.include("from");
                 query.include("to");
                 query.orderByAscending("createdAt");

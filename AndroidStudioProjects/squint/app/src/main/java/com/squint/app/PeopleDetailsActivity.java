@@ -52,9 +52,9 @@ public class PeopleDetailsActivity extends BaseActivity {
 	public static final String 			EXTRA_PERSON_NAME			= "com.squint.data.person.NAME";
 	public static final String 			EXTRA_PERSON_INSTITUTION	= "com.squint.data.person.INSTITUTION";
 	public static final String 			EXTRA_PERSON_EMAIL			= "com.squint.data.person.EMAIL";
-	public static final String 			EXTRA_PERSON_WEBSITE		= "com.squint.data.person.WEBSITE";
-    public static final String 			EXTRA_PERSON_CHATON		    = "com.squint.data.person.CHATON";
-    public static final String 			EXTRA_PERSON_EMAILON		= "com.squint.data.person.EMAILON";
+	public static final String 			EXTRA_PERSON_LINK			= "com.squint.data.person.LINK";
+    public static final String 			EXTRA_PERSON_CHATSTATUS		= "com.squint.data.person.CHATSTATUS";
+    public static final String 			EXTRA_PERSON_EMAILSTATUS	= "com.squint.data.person.EMAILSTATUS";
     public static final String 			EXTRA_PERSON_ISUSER		    = "com.squint.data.person.ISUSER";
 
 	
@@ -64,12 +64,12 @@ public class PeopleDetailsActivity extends BaseActivity {
 	private TextView mAuthor;
 	private TextView mInstitution;
 	private TextView mEmail;
-	private TextView mWebsite;
+	private TextView mLink;
 	private TextView mMessage;
 
     public String conv_objid;
-    public int chat_on;
-    public int email_on;
+    public int chat_status;
+    public int email_status;
     private String email;
 	
 	// ParseObject
@@ -80,7 +80,7 @@ public class PeopleDetailsActivity extends BaseActivity {
 	// List
 	private TalkDAO 					  mTalkDAO;
 	private PosterDAO 					  mPosterDAO;
-	private AbstractDAO 				  mAbstractDAO;
+	private AbstractDAO 				  mAttachmentDAO;
 	public static List<ParseObject> 	  mTalkData;
 	public static List<ParseObject> 	  mPosterData;
 	public static List<ParseObject> 	  mAbstractData;
@@ -92,7 +92,7 @@ public class PeopleDetailsActivity extends BaseActivity {
 	public ListView 					  mList;
 	private Button 						  mTalk;
 	private Button 						  mPoster;
-	private Button 						  mAbstract;
+	private Button 						  mAttachment;
 
 	
 	@Override
@@ -108,9 +108,9 @@ public class PeopleDetailsActivity extends BaseActivity {
 		Intent intent 	= getIntent();
 		oId	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_ID);
 		email 		            = intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_EMAIL);
-		final String website 	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_WEBSITE);
-        chat_on                 = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_CHATON);
-        email_on                = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_EMAILON);
+		final String link 	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_LINK);
+        chat_status             = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_CHATON);
+        email_status            = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_EMAILON);
 
 		// Retrieve the person data
 		//mPeopleDAO = new PeopleDAO(this, oid);	
@@ -122,10 +122,10 @@ public class PeopleDetailsActivity extends BaseActivity {
 		mAbstractData = new ArrayList<ParseObject>();
 		mTalk = (Button)findViewById(R.id.switch_talk);
 		mPoster = (Button)findViewById(R.id.switch_poster);
-		mAbstract = (Button)findViewById(R.id.switch_abstract);
+		mAttachment = (Button)findViewById(R.id.switch_attachment);
 		mTalk.setOnClickListener(this);
 		mPoster.setOnClickListener(this);
-		mAbstract.setOnClickListener(this);
+		mAttachment.setOnClickListener(this);
 		mList = (ListView)findViewById(android.R.id.list);
 		mList.setEmptyView(findViewById(android.R.id.empty));
 		
@@ -136,24 +136,24 @@ public class PeopleDetailsActivity extends BaseActivity {
 	
 		mInstitution 	= (TextView)findViewById(R.id.institution);
 		mAuthor	 		= (TextView)findViewById(R.id.author);
-		mWebsite 		= (TextView)findViewById(R.id.website);
+		mLink 			= (TextView)findViewById(R.id.link);
 		mMessage 		= (TextView)findViewById(R.id.message);
 		mEmail			= (TextView)findViewById(R.id.email);
 		
 		mAuthor.setText(intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_NAME));
 		mInstitution.setText(intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_INSTITUTION));
 
-        if (website.length()<=1)
+        if (link.length()<=1)
         {
             //no valid website
-            mWebsite.setTextColor(getResources().getColor(R.color.button_title));
+            mLink.setTextColor(getResources().getColor(R.color.button_title));
         }
         else
         {
-            mWebsite.setOnClickListener(new OnClickListener() {
+            mLink.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (website != null && !website.isEmpty()) getSite(website);
+                    if (link != null && !link.isEmpty()) getSite(link);
                 }
             });
         }
@@ -178,7 +178,7 @@ public class PeopleDetailsActivity extends BaseActivity {
         	Log.d(TAG, "Refresh: " + mPerson.getObjectId());
 	        mTalkDAO.refresh();		// = new TalkDAO(this, mPerson);
 			mPosterDAO.refresh();	// = new PosterDAO(this, mPerson);
-			mAbstractDAO.refresh();	// = new AbstractDAO(this, mPerson); 
+			mAttachmentDAO.refresh();	// = new AbstractDAO(this, mPerson);
         } else {
         	if (mPeopleDAO == null) mPeopleDAO = new PeopleDAO(this, oId);
         	else mPeopleDAO.refresh(oId);
@@ -270,28 +270,28 @@ public class PeopleDetailsActivity extends BaseActivity {
 			mList.setAdapter(mTalkAdapter);
 			mTalk.setSelected(true);
 			mPoster.setSelected(false);
-			mAbstract.setSelected(false);
+			mAttachment.setSelected(false);
 			mTalk.setEnabled(false);
 			mPoster.setEnabled(true);
-			mAbstract.setEnabled(true);
+			mAttachment.setEnabled(true);
 			break;
 		case R.id.switch_poster:
 			mList.setAdapter(mPosterAdapter);
 			mTalk.setSelected(false);
 			mPoster.setSelected(true);
-			mAbstract.setSelected(false);
+			mAttachment.setSelected(false);
 			mTalk.setEnabled(true);
 			mPoster.setEnabled(false);
-			mAbstract.setEnabled(true);			
+			mAttachment.setEnabled(true);
 			break;
-		case R.id.switch_abstract:
+		case R.id.switch_attachment:
 			mList.setAdapter(mAbstractAdapter);
 			mTalk.setSelected(false);
 			mPoster.setSelected(false);
-			mAbstract.setSelected(true);
+			mAttachment.setSelected(true);
 			mTalk.setEnabled(true);
 			mPoster.setEnabled(true);
-			mAbstract.setEnabled(false);			
+			mAttachment.setEnabled(false);
 			break;
 		}
 		
@@ -306,7 +306,7 @@ public class PeopleDetailsActivity extends BaseActivity {
         	filter.addAction(PeopleDAO.ACTION_QUERY_DATA);
         	filter.addAction(TalkDetailsActivity.ACTION_SELECT);
         	filter.addAction(PosterDetailsActivity.ACTION_SELECT);
-        	filter.addAction(AbstractDetailsActivity.ACTION_SELECT);   	
+        	filter.addAction(AttachmentDetailsActivity.ACTION_SELECT);
         }  
         return filter;
     }
@@ -320,7 +320,7 @@ public class PeopleDetailsActivity extends BaseActivity {
             	mPerson = mPeopleDAO.getPersonData();
         		mTalkDAO = new TalkDAO(context, mPerson);
         		mPosterDAO = new PosterDAO(context, mPerson);
-        		mAbstractDAO = new AbstractDAO(context, mPerson); 
+        		mAttachmentDAO = new AbstractDAO(context, mPerson);
         		
             } else if (action.equals(TalkDAO.ACTION_LOAD_DATA)) {
             	//mTalkData.clear();
@@ -340,17 +340,17 @@ public class PeopleDetailsActivity extends BaseActivity {
             	//mAbstractData.clear();
             	//mAbstractData.addAll(mAbstractDAO.getData());
             	try {
-            	mAbstractData = mAbstractDAO.getData();
+            	mAbstractData = mAttachmentDAO.getData();
             	mAbstractAdapter.update(mAbstractData);
-            	} catch (Exception e) { Log.d(TAG, "Abstract data is null!"); }
+            	} catch (Exception e) { Log.d(TAG, "Attachment data is null!"); }
             } else if (action.equals(TalkDetailsActivity.ACTION_SELECT)) {
             	toPage(intent, TalkDetailsActivity.class);
 
             } else if (action.equals(PosterDetailsActivity.ACTION_SELECT)) {
             	toPage(intent, PosterDetailsActivity.class);
             	
-            } else if (action.equals(AbstractDetailsActivity.ACTION_SELECT)) {
-            	toPage(intent, AbstractDetailsActivity.class);
+            } else if (action.equals(AttachmentDetailsActivity.ACTION_SELECT)) {
+            	toPage(intent, AttachmentDetailsActivity.class);
             	
             }       
         }  
@@ -359,7 +359,7 @@ public class PeopleDetailsActivity extends BaseActivity {
     public void checkIsUser()
     {
         //check if target person is user
-        ParseQuery<ParseObject> personquery = ParseQuery.getQuery("person");
+        ParseQuery<ParseObject> personquery = ParseQuery.getQuery("Person");
         personquery.include("user");
         personquery.getInBackground(oId, new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
@@ -374,7 +374,7 @@ public class PeopleDetailsActivity extends BaseActivity {
                         if (currentUser != null)
                         {
                             self_id= currentUser.getObjectId();
-                            self_chat_on = currentUser.getInt("chat_on");
+                            self_chat_on = currentUser.getInt("chat_status");
                         }
                         personuser = object.getParseUser("user");
                         String personuser_id = personuser.getObjectId();
@@ -387,7 +387,7 @@ public class PeopleDetailsActivity extends BaseActivity {
                         else
                         {
                             //target person is user and not self, check both chat_on to see if can chat
-                            if (chat_on==1 && self_chat_on==1)
+                            if (chat_status==1 && self_chat_on==1)
                             {
                                 //both sides chat_on=1, set onclick for chat button
                                 mMessage.setOnClickListener(new OnClickListener() {
@@ -441,7 +441,7 @@ public class PeopleDetailsActivity extends BaseActivity {
         else
         {
             //logged in, check if is person
-            int isperson = currentUser.getInt("isperson");
+            int isperson = currentUser.getInt("is_person");
             if (isperson != 1)
             {
                 //not a person, can't use email
@@ -450,7 +450,7 @@ public class PeopleDetailsActivity extends BaseActivity {
             else
             {
                 //finally, check if target person wants to share email
-                if (email_on == 1 && email.length()>1)
+                if (email_status == 1 && email.length()>1)
                 {
                     mEmail.setOnClickListener(new OnClickListener() {
                         @Override
@@ -484,11 +484,11 @@ public class PeopleDetailsActivity extends BaseActivity {
     public void processConversation (final ParseUser theguy)
     {
         final ParseUser currentUser = ParseUser.getCurrentUser();
-        ParseQuery<ParseObject> me_to_him = ParseQuery.getQuery("conversation");
+        ParseQuery<ParseObject> me_to_him = ParseQuery.getQuery("Conversation");
         me_to_him.whereEqualTo("user_a", currentUser);
         me_to_him.whereEqualTo("user_b", theguy);
 
-        ParseQuery<ParseObject> him_to_me = ParseQuery.getQuery("conversation");
+        ParseQuery<ParseObject> him_to_me = ParseQuery.getQuery("Conversation");
         him_to_me.whereEqualTo("user_b", currentUser);
         him_to_me.whereEqualTo("user_a", theguy);
 
@@ -512,7 +512,7 @@ public class PeopleDetailsActivity extends BaseActivity {
                     if (e.getMessage().equals("no results found for query"))
                     {
                         //no existing conversation, create new
-                        ParseObject new_conv = new ParseObject("conversation");
+                        ParseObject new_conv = new ParseObject("Conversation");
                         new_conv.put("last_msg", "no messages yet");
                         Date date = new Date();
                         new_conv.put("last_time", date);
@@ -526,7 +526,7 @@ public class PeopleDetailsActivity extends BaseActivity {
                                 if (ee==null)
                                 {
                                     //new conversation created, get the id
-                                    ParseQuery<ParseObject> newconvquery = ParseQuery.getQuery("conversation");
+                                    ParseQuery<ParseObject> newconvquery = ParseQuery.getQuery("Conversation");
                                     newconvquery.whereEqualTo("user_a", currentUser);
                                     newconvquery.whereEqualTo("user_b", theguy);
                                     newconvquery.getFirstInBackground(new GetCallback<ParseObject>() {

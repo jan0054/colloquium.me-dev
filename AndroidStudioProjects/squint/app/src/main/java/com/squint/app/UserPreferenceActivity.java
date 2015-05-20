@@ -65,7 +65,7 @@ public class UserPreferenceActivity extends BaseActivity {
         {
             selfuser = ParseUser.getCurrentUser();
         }
-        ParseQuery<ParseObject> personquery = ParseQuery.getQuery("person");
+        ParseQuery<ParseObject> personquery = ParseQuery.getQuery("Person");
         personquery.whereEqualTo("email", selfuser.getEmail());
         personquery.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
@@ -95,17 +95,17 @@ public class UserPreferenceActivity extends BaseActivity {
             chat_switch.setEnabled(true);
             link_input.setEnabled(true);
             //set email/chat variables
-            if (selfuser.containsKey("email_on"))
+            if (selfuser.containsKey("email_status"))
             {
-                email_on = selfuser.getInt("email_on");
+                email_on = selfuser.getInt("email_status");
             }
             else
             {
                 email_on = 0;
             }
-            if (selfuser.containsKey("chat_on"))
+            if (selfuser.containsKey("chat_status"))
             {
-                chat_on = selfuser.getInt("chat_on");
+                chat_on = selfuser.getInt("chat_status");
             }
             else
             {
@@ -182,13 +182,13 @@ public class UserPreferenceActivity extends BaseActivity {
         if (is_person == 1)
         {
             link_str = link_input.getText().toString();
-            selfuser.put("email_on", email_on);
-            selfuser.put("chat_on", chat_on);
-            selfuser.put("isperson", is_person);
+            selfuser.put("email_status", email_on);
+            selfuser.put("chat_status", chat_on);
+            selfuser.put("is_person", is_person);
             selfuser.put("person", selfperson);
             selfuser.saveInBackground();
-            selfperson.put("email_on", email_on);
-            selfperson.put("chat_on", chat_on);
+            selfperson.put("email_status", email_on);
+            selfperson.put("chat_status", chat_on);
             selfperson.put("is_user", is_person);
             selfperson.put("user", selfuser);
             selfperson.put("link", link_str);

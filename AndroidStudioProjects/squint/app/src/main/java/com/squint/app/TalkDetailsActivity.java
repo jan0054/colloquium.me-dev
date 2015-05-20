@@ -21,12 +21,12 @@ public class TalkDetailsActivity extends BaseActivity {
 	public static final String 		EXTRA_TALK_NAME	  			    = "com.squint.data.talk.NAME";
 	public static final String 		EXTRA_TALK_AUTHOR	  		    = "com.squint.data.talk.AUTHOR";
 	public static final String 		EXTRA_TALK_AUTHOR_ID	  		= "com.squint.data.talk.AUTHOR_ID";
-	public static final String 		EXTRA_TALK_DESCRIPTION	  	    = "com.squint.data.talk.DESCRIPTION";	
+	public static final String 		EXTRA_TALK_CONTENT	  	        = "com.squint.data.talk.CONTENT";
 	public static final String 		EXTRA_TALK_START_TIME		    = "com.squint.data.talk.START_TIME";
 	public static final String 		EXTRA_TALK_LOCATION_NAME 	    = "com.squint.data.talk.LOCATION.NAME";
-	public static final String 		EXTRA_TALK_ABSTRACT_ID 	    	= "com.squint.data.talk.ABSTRACT_ID";
-	public static final String 		EXTRA_TALK_ABSTRACT_PDF	    	= "com.squint.data.talk.ABSTRACT_PDF";
-	public static final String 		EXTRA_TALK_ABSTRACT_CONTENT   	= "com.squint.data.talk.ABSTRACT_CONTENT";
+	public static final String 		EXTRA_TALK_ATTACHMENT_ID 	    = "com.squint.data.talk.ATTACHMENT_ID";
+	public static final String 		EXTRA_TALK_ATTACHMENT_PDF	    = "com.squint.data.talk.ATTACHMENT_PDF";
+	public static final String 		EXTRA_TALK_ATTACHMENT_CONTENT   = "com.squint.data.talk.ATTACHMENT_CONTENT";
     public static final String 		EXTRA_TALK_AUTHOR_INSTITUTION   = "com.squint.data.talk.AUTHOR_INSITUTION";
     public static final String 		EXTRA_TALK_AUTHOR_EMAIL		    = "com.squint.data.talk.AUTHOR_EMAIL";
     public static final String 		EXTRA_TALK_AUTHOR_WEBSITE	    = "com.squint.data.talk.AUTHOR_WEBSITE";
@@ -41,8 +41,8 @@ public class TalkDetailsActivity extends BaseActivity {
 	private TextView 		mAuthor;
 	private TextView 		mLocation;
 	private TextView 		mTime;
-	private TextView 		mDescription;
-	private TextView 		mAbstract;
+	private TextView 		mContent;
+	private TextView 		mAttachment;
     private TextView 		mDetails;
     private TextView        mCalendar;
 	private TextView        mSession;
@@ -70,19 +70,19 @@ public class TalkDetailsActivity extends BaseActivity {
 		mName 			= (TextView)findViewById(R.id.name);
 		mAuthor	 		= (TextView)findViewById(R.id.author);
 		mLocation 		= (TextView)findViewById(R.id.location);
-		mDescription 	= (TextView)findViewById(R.id.description);
+		mContent 	= (TextView)findViewById(R.id.content);
 		mTime 			= (TextView)findViewById(R.id.start_time);
-		mAbstract		= (TextView)findViewById(R.id.btn_abstract);
+		mAttachment		= (TextView)findViewById(R.id.btn_attachment);
         mDetails 		= (TextView)findViewById(R.id.author_details);
         mCalendar       = (TextView)findViewById(R.id.btn_calendar);
         mSession        = (TextView)findViewById(R.id.session);
-        mDescription.setMovementMethod(new ScrollingMovementMethod());
+        mContent.setMovementMethod(new ScrollingMovementMethod());
 
         TextView mDiscuss = (TextView)findViewById(R.id.btn_discussion);
         ParseUser cur_user = ParseUser.getCurrentUser();
         if (cur_user != null)
         {
-            int isperson = cur_user.getInt("isperson");
+            int isperson = cur_user.getInt("is_person");
             if (isperson != 1)
             {
                 mDiscuss.setTextColor(getResources().getColor(R.color.button_title));
@@ -113,7 +113,7 @@ public class TalkDetailsActivity extends BaseActivity {
 		mName.setText(intent.getStringExtra(EXTRA_TALK_NAME));
 		mAuthor.setText(intent.getStringExtra(EXTRA_TALK_AUTHOR));
 		mLocation.setText(intent.getStringExtra(EXTRA_TALK_LOCATION_NAME));
-		mDescription.setText(intent.getStringExtra(EXTRA_TALK_DESCRIPTION));
+		mContent.setText(intent.getStringExtra(EXTRA_TALK_CONTENT));
 		mTime.setText(intent.getStringExtra(EXTRA_TALK_START_TIME));
 
         authorId	= intent.getStringExtra(EXTRA_TALK_AUTHOR_ID);
@@ -131,41 +131,41 @@ public class TalkDetailsActivity extends BaseActivity {
             intent.putExtra(PeopleDetailsActivity.EXTRA_PERSON_NAME, author);
             intent.putExtra(PeopleDetailsActivity.EXTRA_PERSON_INSTITUTION, institution);
             intent.putExtra(PeopleDetailsActivity.EXTRA_PERSON_EMAIL, email);
-            intent.putExtra(PeopleDetailsActivity.EXTRA_PERSON_WEBSITE, website);
+            intent.putExtra(PeopleDetailsActivity.EXTRA_PERSON_LINK, website);
             toPage(intent, PeopleDetailsActivity.class);
             }
         });
 
-        String absid = intent.getStringExtra(EXTRA_TALK_ABSTRACT_ID);
+        String absid = intent.getStringExtra(EXTRA_TALK_ATTACHMENT_ID);
         //check to see if the abstract isn't set and the intents are empty strings
         if (absid.length()>=1)
         {
-            absPdf = intent.getStringExtra(EXTRA_TALK_ABSTRACT_PDF);
-            absContent = intent.getStringExtra(EXTRA_TALK_ABSTRACT_CONTENT);
-            mAbstract.setContentDescription(intent.getStringExtra(EXTRA_TALK_ABSTRACT_ID));
-            mAbstract.setOnClickListener(new OnClickListener() {
+            absPdf = intent.getStringExtra(EXTRA_TALK_ATTACHMENT_PDF);
+            absContent = intent.getStringExtra(EXTRA_TALK_ATTACHMENT_CONTENT);
+            mAttachment.setContentDescription(intent.getStringExtra(EXTRA_TALK_ATTACHMENT_ID));
+            mAttachment.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //String abstractId = v.getContentDescription().toString();
                     //Log.d(TAG, "oid/abstract: " + oid + "/ " + abstractId);
 
-                    Intent intent = new Intent(AbstractDetailsActivity.ACTION_SELECT);
+                    Intent intent = new Intent(AttachmentDetailsActivity.ACTION_SELECT);
 
-                    intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_ID, getAbstractId());
-                    intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_NAME, getName());
-                    intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_AUTHOR, getAuthor());
-                    intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_AUTHOR_ID, getAuthorId());
-                    intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_PDF, getAbstractPdf());
-                    intent.putExtra(AbstractDetailsActivity.EXTRA_ABSTRACT_CONTENT, getAbstractContent());
+                    intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_ID, getAbstractId());
+                    intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_NAME, getName());
+                    intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_AUTHOR, getAuthor());
+                    intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_AUTHOR_ID, getAuthorId());
+                    intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_PDF, getAbstractPdf());
+                    intent.putExtra(AttachmentDetailsActivity.EXTRA_ATTACHMENT_CONTENT, getAbstractContent());
 
-                    toPage(intent, AbstractDetailsActivity.class);
+                    toPage(intent, AttachmentDetailsActivity.class);
                 }
             });
         }
         else
         {
             //abstract wasn't set! disable the abstract button
-            mAbstract.setTextColor(getResources().getColor(R.color.button_title));
+            mAttachment.setTextColor(getResources().getColor(R.color.button_title));
         }
 
         mCalendar.setOnClickListener(new OnClickListener() {
@@ -205,7 +205,7 @@ public class TalkDetailsActivity extends BaseActivity {
 	}
 	
 	private String getAbstractId() {
-		return mAbstract.getContentDescription().toString();
+		return mAttachment.getContentDescription().toString();
 	}
 	
 	private String getAbstractContent() {
@@ -220,7 +220,7 @@ public class TalkDetailsActivity extends BaseActivity {
         ParseUser cur_user = ParseUser.getCurrentUser();
         if (cur_user != null)
         {
-            int isperson = cur_user.getInt("isperson");
+            int isperson = cur_user.getInt("is_person");
             if (isperson == 1)
             {
                 Log.d(TAG, "DISCUSS: " + oid);

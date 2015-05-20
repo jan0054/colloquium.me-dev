@@ -3,29 +3,29 @@
 
  <item android:state_pressed="true">
     <shape  >
-    <solid android:color="@color/button_pressed" />
+    <solid android:color="@color/dark_accent" />
     <corners android:radius="6dp" />
     </shape>
  </item>
 
  <item android:state_focused="true" >
     <shape xmlns:android="http://schemas.android.com/apk/res/android" >
-    <solid android:color="@color/button_pressed" />
+    <solid android:color="@color/dark_accent" />
     <corners android:radius="6dp" />
     </shape>
  </item>
 
  <item android:state_focused="false" >
     <shape xmlns:android="http://schemas.android.com/apk/res/android" >
-    <solid android:color="@color/login_button_background" />
+    <solid android:color="@color/dark_accent" />
     <corners android:radius="6dp" />
     </shape>   
  </item>
 
  <item android:state_pressed="false" >
     <shape xmlns:android="http://schemas.android.com/apk/res/android" >
-    <solid android:color="@color/button" />
+    <solid android:color="@color/light_button_txt" />
     <corners android:radius="7dp" />
     </shape>
  </item> 
-</selector><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/drawable/btn_login_bg_selector.xml -->
+</selector><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/drawable/btn_login_bg_selector.xml -->

@@ -5,6 +5,6 @@
     android:layout_height="wrap_content"
     android:textSize="16sp"
     android:gravity="center"
-    android:textColor="@color/white"
+    android:textColor="@color/light_txt"
     android:padding="5dip"
-    /><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/spinner_item.xml -->
+    /><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/spinner_item.xml -->

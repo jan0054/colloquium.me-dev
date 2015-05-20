@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stage"
+    android:orientation="vertical" >
+    <LinearLayout android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="@drawable/list_item"
+        android:orientation="vertical" >
+        <View android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/list_item_header" />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:text="Hi, please wait while we search for you in the attendee listing."
+            android:textColor="@color/light_blue"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/fname_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:maxHeight="30dp"
+            android:maxWidth="300dp"
+            android:text="First Name"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/fname_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#32ffffff"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/lname_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:maxHeight="30dp"
+            android:maxWidth="300dp"
+            android:text="Last Name"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/lname_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#32ffffff"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/inst_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:maxHeight="30dp"
+            android:maxWidth="300dp"
+            android:text="Institution"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/inst_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#32ffffff"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/link_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:text="Select save below to confirm that you are an attendee, or skip this step if you're just looking around. "
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:id="@+id/skip_attendee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="Skip"
+                android:textColor="@color/list_action_text"
+                android:textSize="16sp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal" />
+            <TextView
+                android:id="@+id/save_attendee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="Save"
+                android:textColor="@color/dark_accent"
+                android:textSize="16sp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

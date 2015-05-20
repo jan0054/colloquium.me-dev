@@ -4,7 +4,7 @@
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"
 		    android:padding="10dp"
-		    android:background="@drawable/stage"
+		    android:background="@color/background"
 		    android:orientation="horizontal" >
 <RelativeLayout android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="@string/pref_title_about"
-        android:textColor="@android:color/white"
+        android:textColor="@color/primary_text"
         android:textSize="18sp" />
 
     <TextView android:id="@+id/content"
@@ -31,7 +31,7 @@
 	          android:fontFamily="sans-serif-thin"
 	          android:gravity="center|left"
 	          android:text="@string/content"
-	          android:textColor="@android:color/white"
+	          android:textColor="@color/primary_text"
 	          android:textSize="14sp" />
 
     <TextView
@@ -43,13 +43,13 @@
         android:gravity="center"
         android:padding="20dp"
         android:text="@string/action_email_us"
-        android:textColor="@color/list_action_text"
+        android:textColor="@color/dark_accent"
         android:textSize="14sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/list_item_header" />
+        android:background="@color/dark_accent" />
 
 </RelativeLayout>		    
     
