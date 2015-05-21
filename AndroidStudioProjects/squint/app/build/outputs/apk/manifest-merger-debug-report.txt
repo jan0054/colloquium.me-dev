@@ -73,7 +73,7 @@ ADDED from AndroidManifest.xml:22:5
 		ADDED from AndroidManifest.xml:24:9
 	android:name
 		ADDED from AndroidManifest.xml:23:9
-uses-permission#com.squint.app.permission.C2D_MESSAGE
+uses-permission#com.cmmath.app.permission.C2D_MESSAGE
 ADDED from AndroidManifest.xml:26:5
 	android:name
 		ADDED from AndroidManifest.xml:26:22
@@ -89,12 +89,6 @@ uses-permission#android.permission.WRITE_CALENDAR
 ADDED from AndroidManifest.xml:29:5
 	android:name
 		ADDED from AndroidManifest.xml:29:22
-android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from AndroidManifest.xml:31:5
-	android:maxSdkVersion
-		ADDED from AndroidManifest.xml:33:9
-	android:name
-		ADDED from AndroidManifest.xml:32:9
 application
 ADDED from AndroidManifest.xml:35:5
 MERGED from com.android.support:support-v13:21.0.3:16:5
@@ -201,7 +195,7 @@ ADDED from AndroidManifest.xml:89:9
 		ADDED from AndroidManifest.xml:90:13
 	android:launchMode
 		ADDED from AndroidManifest.xml:92:13
-activity#com.cmmath.app.AbstractDetailsActivity
+activity#com.cmmath.app.AttachmentDetailsActivity
 ADDED from AndroidManifest.xml:95:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:99:13
@@ -259,7 +253,7 @@ ADDED from AndroidManifest.xml:124:9
 		ADDED from AndroidManifest.xml:126:13
 	android:name
 		ADDED from AndroidManifest.xml:125:13
-intent-filter#com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION+com.squint.app
+intent-filter#com.cmmath.app+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
 ADDED from AndroidManifest.xml:127:13
 action#com.google.android.c2dm.intent.RECEIVE
 ADDED from AndroidManifest.xml:128:17
@@ -269,7 +263,7 @@ action#com.google.android.c2dm.intent.REGISTRATION
 ADDED from AndroidManifest.xml:129:17
 	android:name
 		ADDED from AndroidManifest.xml:129:25
-category#com.squint.app
+category#com.cmmath.app
 ADDED from AndroidManifest.xml:131:17
 	android:name
 		ADDED from AndroidManifest.xml:131:27
@@ -317,3 +311,9 @@ ADDED from AndroidManifest.xml:156:9
 		ADDED from AndroidManifest.xml:158:13
 	android:name
 		ADDED from AndroidManifest.xml:157:13
+meta-data#com.parse.push.notification_icon
+ADDED from AndroidManifest.xml:162:9
+	android:resource
+		ADDED from AndroidManifest.xml:162:68
+	android:name
+		ADDED from AndroidManifest.xml:162:20

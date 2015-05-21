@@ -3,24 +3,24 @@
     		android:id="@+id/feed_container"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"
-		    android:padding="10dp"
+		    android:padding="0dp"
 		    android:background="@color/background"
 		    android:orientation="horizontal" >
-<RelativeLayout android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:background="@drawable/list_item"
-			    android:orientation="horizontal" >
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:text="@string/pref_title_about"
-        android:textColor="@color/primary_text"
-        android:textSize="18sp" />
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/list_item"
+                    android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/pref_title_about"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp" />
 
     <TextView android:id="@+id/content"
 	          android:layout_width="match_parent"
@@ -51,8 +51,7 @@
         android:layout_height="3dp"
         android:background="@color/dark_accent" />
 
-</RelativeLayout>		    
-    
-    
+</RelativeLayout>
+
 </ScrollView>
       <!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/activity_details.xml -->

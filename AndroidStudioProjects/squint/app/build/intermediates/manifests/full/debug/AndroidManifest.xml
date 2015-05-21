@@ -23,17 +23,18 @@
         android:name="com.cmmath.app.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.squint.app.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.cmmath.app.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
-    <android:uses-permission
+    <!--
+    android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-
+        android:maxSdkVersion="18" /
+    -->
     <application
-        android:name="com.cmmath.app.squintApplication"
+        android:name="com.cmmath.app.cmmathApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -93,7 +94,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.cmmath.app.AbstractDetailsActivity"
+            android:name="com.cmmath.app.AttachmentDetailsActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
@@ -128,7 +129,7 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <category android:name="com.squint.app" />
+                <category android:name="com.cmmath.app" />
             </intent-filter>
         </receiver>
         <receiver
@@ -157,6 +158,11 @@
             android:name="com.cmmath.app.UserAttendeeActivity"
             android:label="@string/title_activity_user_attendee" >
         </activity>
+
+        <!-- replace @drawable/push_icon with your push icon identifier -->
+        <meta-data
+            android:name="com.parse.push.notification_icon"
+            android:resource="@drawable/ic_stat_name" />
     </application>
 
 </manifest>

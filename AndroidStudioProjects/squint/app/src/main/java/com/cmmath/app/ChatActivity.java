@@ -35,13 +35,14 @@ public class ChatActivity extends BaseActivity implements  AdapterView.OnItemCli
     private ChatAdapter chatAdapter;
     public String conversationid;
     protected static boolean isChat = false;
-    protected squintApplication app;
+    protected cmmathApplication app;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_chat);
+        mTitle.setText(getString(R.string.title_conversation));
 
         //get the conversation id from the intent extras
         conversationid = this.getIntent().getExtras().getString("selected_conv");
@@ -95,7 +96,7 @@ public class ChatActivity extends BaseActivity implements  AdapterView.OnItemCli
     protected void onResume()
     {
         super.onResume();
-        app=(squintApplication)getApplication();
+        app=(cmmathApplication)getApplication();
         app.isChat=true;
     }
 
@@ -103,7 +104,7 @@ public class ChatActivity extends BaseActivity implements  AdapterView.OnItemCli
     protected void onPause()
     {
         super.onPause();
-        app=(squintApplication)getApplication();
+        app=(cmmathApplication)getApplication();
         app.isChat = false;
         this.unregisterReceiver(mMessageReceiver);
     }

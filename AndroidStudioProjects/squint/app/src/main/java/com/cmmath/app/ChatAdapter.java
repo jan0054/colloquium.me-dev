@@ -28,7 +28,7 @@ public class ChatAdapter extends ParseQueryAdapter<ParseObject> {
                 ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Conversation");
                 innerQuery.whereEqualTo("objectId", convid);
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Chat");
-                query.whereMatchesQuery("Conversation", innerQuery);
+                query.whereMatchesQuery("conversation", innerQuery);
                 query.include("from");
                 query.include("to");
                 query.orderByAscending("createdAt");

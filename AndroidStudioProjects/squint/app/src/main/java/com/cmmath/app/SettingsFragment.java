@@ -69,10 +69,10 @@ public class SettingsFragment extends PreferenceFragment
 
 		View v = super.onCreateView(inflater, container, savedInstanceState);
 		if(v != null) {
-		
+		v.setBackgroundColor(getResources().getColor(R.color.dark_bg));
 		lv = (ListView) v.findViewById(android.R.id.list);
 		lv.setPadding(0, 0, 0, 0);
-		lv.setDivider(new ColorDrawable(mContext.getResources().getColor(R.color.pref_divider)));
+		lv.setDivider(new ColorDrawable(mContext.getResources().getColor(R.color.light_bg)));
 		lv.setDividerHeight(1);
 		}
 		

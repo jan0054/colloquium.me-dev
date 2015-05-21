@@ -9,7 +9,7 @@ import com.cmmath.app.LoginActivity;
 import com.cmmath.app.R;
 import com.cmmath.app.UploadCareerActivity;
 import com.cmmath.app.data._PARAMS;
-import com.cmmath.app.squintApplication;
+import com.cmmath.app.cmmathApplication;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -45,10 +45,10 @@ public class BaseActivity extends FragmentActivity implements OnClickListener, A
 
 	public final static int OPTION_NONE			= 0;
 	public final static int OPTION_BACK			= R.drawable.actionbar_back;
-	public final static int OPTION_TALK			= R.drawable.actionbar_message;
-	public final static int OPTION_LOGIN 		= R.drawable.actionbar_login;
-	public final static int OPTION_LOGOUT		= R.drawable.actionbar_logout;
-    public final static int OPTION_USER         = R.drawable.actionbar_list;
+	public final static int OPTION_TALK			= R.drawable.chat_64_white;
+	public final static int OPTION_LOGIN 		= R.drawable.login_64_white;
+	public final static int OPTION_LOGOUT		= R.drawable.logout_64_white;
+    public final static int OPTION_USER         = R.drawable.preference_64_white;
 	public final static int OPTION_DAYS         = 98;
     public final static int OPTION_CAREER       = 99;
 
@@ -57,7 +57,7 @@ public class BaseActivity extends FragmentActivity implements OnClickListener, A
 	public static final String USER_TO = "com.squint.app.user.to";
 	public static final String USER_FROM = "user";
 
-    protected squintApplication app;
+    protected cmmathApplication app;
 
 	//private LayoutInflater 	layoutInflater;
 	//private View 				progress_layout;
@@ -211,7 +211,7 @@ public class BaseActivity extends FragmentActivity implements OnClickListener, A
 	  {
 	    super.onResume();
 
-        app=(squintApplication)getApplication();
+        app=(cmmathApplication)getApplication();
         app.isVisible = true;
 
 	    //opening transition animations
@@ -222,7 +222,7 @@ public class BaseActivity extends FragmentActivity implements OnClickListener, A
 	  protected void onPause()
 	  {
 	    super.onPause();
-          app=(squintApplication)getApplication();
+          app=(cmmathApplication)getApplication();
           app.isVisible = false;
 	    //closing transition animations
 	    //overridePendingTransition(R.anim.page_scale_open,R.anim.page_translate_close);

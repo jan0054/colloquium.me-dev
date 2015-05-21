@@ -9,6 +9,6 @@
 <item android:state_pressed="true" android:color="@color/light_bg" />
 <item android:state_focused="true"  android:color="@color/light_bg" />
 <item android:state_selected="true" android:color="@color/light_bg" />
-<item android:color="@color/background"/>
+<item android:color="@color/divider_color"/>
 </selector>
 <!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/color/tab_color_selector.xml -->

@@ -12,7 +12,7 @@ import com.cmmath.app.data._PARAMS;
 /**
  * Created by chishengjan on 12/16/14.
  */
-public class squintApplication extends Application {
+public class cmmathApplication extends Application {
 
     public boolean isVisible;
     public boolean isChat;

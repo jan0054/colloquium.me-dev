@@ -24,7 +24,7 @@ public class ChatReceiver extends ParsePushBroadcastReceiver {
     public void onPushReceive(Context context, Intent intent) {
 
         Log.e("Push", "Received");
-        squintApplication app = ((squintApplication)context.getApplicationContext());
+        cmmathApplication app = ((cmmathApplication)context.getApplicationContext());
         if (app.isVisible==false)
         {
             super.onPushReceive(context, intent);
