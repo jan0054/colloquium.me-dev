@@ -7,7 +7,7 @@
     <LinearLayout android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="0dp"
         android:background="@drawable/list_item"
         android:orientation="vertical" >
         <View android:layout_width="match_parent"
@@ -104,6 +104,7 @@
             android:id="@+id/link_input"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:backgroundTint="@color/dark_accent"
             android:textColor="@color/primary_text"
             android:textColorHighlight="@color/light_primary"
             android:layout_gravity="center_horizontal" />

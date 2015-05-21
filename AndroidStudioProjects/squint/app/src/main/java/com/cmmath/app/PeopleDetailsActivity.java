@@ -109,8 +109,8 @@ public class PeopleDetailsActivity extends BaseActivity {
 		oId	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_ID);
 		email 		            = intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_EMAIL);
 		final String link 	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_LINK);
-        chat_status             = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_CHATON);
-        email_status            = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_EMAILON);
+        chat_status             = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_CHATSTATUS);
+        email_status            = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_EMAILSTATUS);
 
 		// Retrieve the person data
 		//mPeopleDAO = new PeopleDAO(this, oid);	

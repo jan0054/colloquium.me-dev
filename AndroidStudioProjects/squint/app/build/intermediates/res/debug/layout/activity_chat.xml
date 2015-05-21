@@ -29,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textCursorDrawable="@null"
-            android:textColor="@color/light_txt"
+            android:textColor="@color/primary_text"
+            android:backgroundTint="@color/dark_accent"
             android:ems="10"
             android:layout_marginLeft="10dp"/>
 

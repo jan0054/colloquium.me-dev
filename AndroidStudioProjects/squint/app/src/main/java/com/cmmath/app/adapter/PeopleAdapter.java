@@ -25,8 +25,8 @@ public class PeopleAdapter extends BaseAdapter {
 	public static final String 			EXTRA_PERSON_INSTITUTION	= "com.squint.data.person.INSTITUTION";
 	public static final String 			EXTRA_PERSON_EMAIL			= "com.squint.data.person.EMAIL";
 	public static final String 			EXTRA_PERSON_LINK			= "com.squint.data.person.LINK";
-    public static final String 			EXTRA_PERSON_CHATON		    = "com.squint.data.person.CHATON";
-    public static final String 			EXTRA_PERSON_EMAILON		= "com.squint.data.person.EMAILON";
+    public static final String 			EXTRA_PERSON_CHATSTATUS	    = "com.squint.data.person.CHATSTATUS";
+    public static final String 			EXTRA_PERSON_EMAILSTATUS	= "com.squint.data.person.EMAILSTATUS";
     public static final String 			EXTRA_PERSON_ISUSER		    = "com.squint.data.person.ISUSER";
 	
 	private Context 					context;
@@ -87,8 +87,8 @@ public class PeopleAdapter extends BaseAdapter {
 				intent.putExtra(EXTRA_PERSON_INSTITUTION, getInstitution(item));
 				intent.putExtra(EXTRA_PERSON_EMAIL, getEmail(item));
 				intent.putExtra(EXTRA_PERSON_LINK, getWebsite(item));
-                intent.putExtra(EXTRA_PERSON_CHATON, getChat_on(item));
-                intent.putExtra(EXTRA_PERSON_EMAILON, getEmail_on(item));
+                intent.putExtra(EXTRA_PERSON_CHATSTATUS, getChat_status(item));
+                intent.putExtra(EXTRA_PERSON_EMAILSTATUS, getEmail_status(item));
                 intent.putExtra(EXTRA_PERSON_ISUSER, getIs_user(item));
 				context.sendBroadcast(intent);						
 			}
@@ -121,12 +121,12 @@ public class PeopleAdapter extends BaseAdapter {
 		return object.getString("link");		
 	}
 
-    private int getChat_on(ParseObject object) {
-        return object.getInt("chat_on");
+    private int getChat_status(ParseObject object) {
+        return object.getInt("chat_status");
     }
 
-    private int getEmail_on(ParseObject object) {
-        return object.getInt("email_on");
+    private int getEmail_status(ParseObject object) {
+        return object.getInt("email_status");
     }
 
     private int getIs_user(ParseObject object) { return object.getInt("is_user");}
