@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.squint.app;
+package com.cmmath.app;
 
 public final class R {
     public static final class anim {
@@ -445,7 +445,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f010000
         };
         /**
-          <p>This symbol is the offset where the {@link com.squint.app.R.attr#tint}
+          <p>This symbol is the offset where the {@link com.cmmath.app.R.attr#tint}
           attribute's value can be found in the {@link #TintableImageView} array.
 
 

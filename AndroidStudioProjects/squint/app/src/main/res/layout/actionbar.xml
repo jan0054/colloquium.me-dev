@@ -32,7 +32,8 @@
 
         />
 
-    <com.squint.app.widget.TintableImageView android:id="@+id/opt_left"
+    <com.cmmath.app.widget.TintableImageView
+		android:id="@+id/opt_left"
 									        android:layout_width="52dp"
 									        android:layout_height="52dp"
 									        android:padding="6dp"
@@ -42,7 +43,8 @@
 									        android:visibility="gone"
 									        android:src="@drawable/actionbar_list"
 									        app:tint="@color/light_button_txt" />
-    <com.squint.app.widget.TintableImageView android:id="@+id/opt_extra_left"
+    <com.cmmath.app.widget.TintableImageView
+		android:id="@+id/opt_extra_left"
 									        android:layout_width="52dp"
 									        android:layout_height="52dp"
 									        android:padding="6dp"
@@ -52,7 +54,8 @@
 									        android:visibility="gone"
 									        android:src="@drawable/actionbar_back"
 											app:tint="@color/light_button_txt" />
-    <com.squint.app.widget.TintableImageView android:id="@+id/opt_right"
+    <com.cmmath.app.widget.TintableImageView
+		android:id="@+id/opt_right"
 									        android:layout_width="52dp"
 									        android:layout_height="52dp"
 									        android:padding="6dp"
@@ -62,7 +65,8 @@
 									        android:visibility="gone"
 									        android:src="@drawable/actionbar_map"
 									        app:tint="@color/tint_color_selector" />
-    <com.squint.app.widget.TintableImageView android:id="@+id/opt_extra_right"
+    <com.cmmath.app.widget.TintableImageView
+		android:id="@+id/opt_extra_right"
 									        android:layout_width="52dp"
 									        android:layout_height="52dp"
 									        android:padding="6dp"
