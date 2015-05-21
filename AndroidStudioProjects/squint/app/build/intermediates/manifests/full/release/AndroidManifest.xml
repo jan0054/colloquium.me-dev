@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.squint.app"
-    android:versionCode="120"
-    android:versionName="1.20" >
+    package="com.cmmath.app"
+    android:versionCode="150"
+    android:versionName="1.50" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -20,26 +20,27 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
 
     <permission
-        android:name="com.squint.app.permission.C2D_MESSAGE"
+        android:name="com.cmmath.app.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.squint.app.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.cmmath.app.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
-    <android:uses-permission
+    <!--
+    android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-
+        android:maxSdkVersion="18" /
+    -->
     <application
-        android:name="com.squint.app.squintApplication"
+        android:name="com.cmmath.app.cmmathApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.squint.app.LoginActivity"
+            android:name="com.cmmath.app.LoginActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
@@ -50,67 +51,67 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.squint.app.SignupActivity"
+            android:name="com.cmmath.app.SignupActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.MainActivity"
+            android:name="com.cmmath.app.MainActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.SettingsDetailsActivity"
+            android:name="com.cmmath.app.SettingsDetailsActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.CareerDetailsActivity"
+            android:name="com.cmmath.app.CareerDetailsActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.PeopleDetailsActivity"
+            android:name="com.cmmath.app.PeopleDetailsActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.TalkDetailsActivity"
+            android:name="com.cmmath.app.TalkDetailsActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.PosterDetailsActivity"
+            android:name="com.cmmath.app.PosterDetailsActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.AbstractDetailsActivity"
+            android:name="com.cmmath.app.AttachmentDetailsActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.ConversationActivity"
+            android:name="com.cmmath.app.ConversationActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.squint.app.ChatActivity"
+            android:name="com.cmmath.app.ChatActivity"
             android:label="@string/title_activity_chat"
-            android:parentActivityName="com.squint.app.ConversationActivity" >
+            android:parentActivityName="com.cmmath.app.ConversationActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.squint.app.ConversationActivity" />
+                android:value="com.cmmath.app.ConversationActivity" />
         </activity>
 
         <service android:name="com.parse.PushService" />
@@ -128,11 +129,11 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <category android:name="com.squint.app" />
+                <category android:name="com.cmmath.app" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.squint.app.ChatReceiver"
+            android:name="com.cmmath.app.ChatReceiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -142,17 +143,26 @@
         </receiver>
 
         <activity
-            android:name="com.squint.app.UserPreferenceActivity"
+            android:name="com.cmmath.app.UserPreferenceActivity"
             android:label="@string/title_activity_user_preference" >
         </activity>
         <activity
-            android:name="com.squint.app.DiscussionActivity"
+            android:name="com.cmmath.app.DiscussionActivity"
             android:label="@string/title_activity_discussion" >
         </activity>
         <activity
-            android:name="com.squint.app.UploadCareerActivity"
+            android:name="com.cmmath.app.UploadCareerActivity"
             android:label="@string/title_activity_upload_career" >
         </activity>
+        <activity
+            android:name="com.cmmath.app.UserAttendeeActivity"
+            android:label="@string/title_activity_user_attendee" >
+        </activity>
+
+        <!-- replace @drawable/push_icon with your push icon identifier -->
+        <meta-data
+            android:name="com.parse.push.notification_icon"
+            android:resource="@drawable/ic_stat_name" />
     </application>
 
 </manifest>

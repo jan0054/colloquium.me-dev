@@ -18,7 +18,7 @@
         android:gravity="center|left"
         android:singleLine="true"
         android:text="@string/name"
-        android:textColor="@color/list_item_level_1"
+        android:textColor="@color/primary_text"
         android:textSize="14sp"
         />
 
@@ -30,4 +30,4 @@
         android:scaleType="centerInside"
         android:src="@drawable/list_arrow" />
 
-</RelativeLayout><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/item_program_personal.xml -->
+</RelativeLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/item_program_personal.xml -->

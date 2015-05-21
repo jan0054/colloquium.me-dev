@@ -8,8 +8,9 @@
               android:background="@drawable/tab_gradient_background" >
         <View android:layout_width="match_parent"
               android:layout_height="1dip"
-              android:background="@color/tab_divider" />
-		<com.squint.app.widget.TintableImageView android:id="@+id/icon" 
+              android:background="@color/accent_color" />
+		<com.cmmath.app.widget.TintableImageView
+			android:id="@+id/icon"
 			        android:layout_width="fill_parent"
 			        android:layout_height="32dp"
 			        android:layout_marginTop="1dp"
@@ -25,4 +26,4 @@
 			      android:textColor="@color/tab_color_selector"
 			      android:text="@string/title_section5"
 			      android:textSize="10sp" />
-</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/tab_custom.xml -->
+</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/tab_custom.xml -->

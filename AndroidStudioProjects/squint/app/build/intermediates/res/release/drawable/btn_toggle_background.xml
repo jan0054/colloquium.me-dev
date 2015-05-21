@@ -4,4 +4,4 @@
     <item android:state_checked="true" android:drawable="@drawable/preference_toggle_bg_on" />
 </selector>
 
-<!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/drawable/btn_toggle_background.xml -->
+<!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/drawable/btn_toggle_background.xml -->

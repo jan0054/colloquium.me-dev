@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="career_array">
         <item>New</item>
@@ -25,11 +25,13 @@
         <item>@string/pref_title_about</item>
         <item>@string/pref_title_terms</item>
     </string-array>
-    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/values/colors.xml -->
     <eat-comment/>
+    <color name="accent_color">#009688</color>
     <color name="actionbar_bottom">#3E5378</color>
     <color name="actionbar_divider">#2B394F</color>
     <color name="actionbar_top">#3E5378</color>
+    <color name="background">#9E9E9E</color>
     <color name="black">#000000</color>
     <color name="body_background">#D3D3D3</color>
     <color name="button">#FFFFFF</color>
@@ -51,12 +53,23 @@
     <color name="company_gray_light">#DDDDDD</color>
     <color name="company_green">#33BB33</color>
     <color name="company_green_dark">#009900</color>
+    <color name="dark_accent">#00796B</color>
+    <color name="dark_bg">#616161</color>
+    <color name="dark_button_txt">#00796B</color>
+    <color name="dark_primary">#616161</color>
+    <color name="dark_txt">#212121</color>
     <color name="details_desc_bg">#33496F</color>
+    <color name="divider_color">#B6B6B6</color>
     <color name="edittext">#666666</color>
     <color name="footer_background">#EFEEEF</color>
     <color name="frame_unselected">#70000000</color>
     <color name="grid_title">#1F3D83</color>
+    <color name="light_accent">#B2DFDB</color>
+    <color name="light_bg">#FFFFFF</color>
     <color name="light_blue">#A2B1CC</color>
+    <color name="light_button_txt">#FFFFFF</color>
+    <color name="light_primary">#F5F5F5</color>
+    <color name="light_txt">#FFFFFF</color>
     <color name="list_action_text">#FF9700</color>
     <color name="list_background">#17222A</color>
     <color name="list_divider">#00000000</color>
@@ -66,14 +79,18 @@
     <color name="list_item_level_2">#DDDDDD</color>
     <color name="login_button_background">#0D2449</color>
     <color name="login_button_text">#FFFFFF</color>
+    <color name="nav_bar">#009688</color>
     <color name="popup_background">#80000000</color>
     <color name="pref_divider">#F6BE12</color>
     <color name="pref_selected">#2B4674</color>
     <color name="pref_title">#FFFFFF</color>
     <color name="pref_unselected">#2B4674</color>
     <color name="pref_value">#CCCCCC</color>
+    <color name="primary_color">#9E9E9E</color>
+    <color name="primary_text">#212121</color>
     <color name="red">#DD1111</color>
     <color name="search_container">#C9C9CE</color>
+    <color name="secondary_text">#727272</color>
     <color name="section_background">#DDDDDD</color>
     <color name="section_text">#000000</color>
     <color name="signup_button_background">#5B7198</color>
@@ -81,6 +98,7 @@
     <color name="stage_background">#48515C</color>
     <color name="status_red">#CC3333</color>
     <color name="tab_background">#1F3252</color>
+    <color name="tab_bar">#00796B</color>
     <color name="tab_divider">#939393</color>
     <color name="tab_selected">#FFFFFF</color>
     <color name="tab_unselected">#929292</color>
@@ -93,21 +111,21 @@
     <color name="warning">#DD7777</color>
     <color name="white">#FFFFFF</color>
     <declare-styleable name="TintableImageView"><attr format="reference|color" name="tint"/></declare-styleable>
-    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="padding_horizontal">40dp</dimen>
     <dimen name="preference_item_height">56dp</dimen>
     <dimen name="preference_title">16sp</dimen>
-    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="abstract_btn">Attachment</string>
     <string name="action_close">Close</string>
     <string name="action_email_us">Email Us</string>
     <string name="action_settings">Settings</string>
     <string name="address">1172–-1188 S San Pedro St, Los Angeles, CA 90015</string>
-    <string name="app_name">SQuInT2015</string>
+    <string name="app_name">HEP Workshop</string>
     <string name="author">AUTHOR</string>
     <string name="cancel">Cancel</string>
     <string name="contact">Contact</string>
@@ -116,7 +134,7 @@
     <string name="details">Details</string>
     <string name="dialog_network_error_content">No internet connection. Please check your network settings</string>
     <string name="dialog_network_error_title">Network connection error</string>
-    <string name="e_mail">E-mail</string>
+    <string name="e_mail">Send email</string>
     <string name="email">Email</string>
     <string name="empty"/>
     <string name="error_payment_failed">The Payment is failed!</string>
@@ -125,6 +143,7 @@
     <string name="list_empty">--  No Result  --</string>
     <string name="location">LOCATION</string>
     <string name="login">Log in</string>
+    <string name="login_notice">Welcome to the NCU Workshop on Hydrodynamic Escape Problems.</string>
     <string name="message">Message</string>
     <string name="more">more</string>
     <string name="name">NAME</string>
@@ -142,6 +161,7 @@
     <string name="pref_title_terms">Privacy and Terms</string>
     <string name="pref_title_user">User Preferences</string>
     <string name="signup">Sign up</string>
+    <string name="signup_notice">Your information is kept secure and private on our servers. To view our privacy policy please go to Settings, or contact us if you have any questions.</string>
     <string name="signup_reminder">Don\'t have an account yet?</string>
     <string name="skip"><u>Skip</u></string>
     <string name="start_time">START TIME</string>
@@ -151,6 +171,7 @@
     <string name="title_activity_chat">ChatActivity</string>
     <string name="title_activity_discussion">DiscussionActivity</string>
     <string name="title_activity_upload_career">UploadCareerActivity</string>
+    <string name="title_activity_user_attendee">UserAttendeeActivity</string>
     <string name="title_activity_user_preference">UserPreferenceActivity</string>
     <string name="title_conversation">Conversation</string>
     <string name="title_login">Login</string>
@@ -162,8 +183,8 @@
     <string name="title_signup">Sign Up</string>
     <string name="unknown">(Unknown)</string>
     <string name="username">Username</string>
-    <string name="website">Website</string>
-    <!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/values/styles.xml -->
+    <string name="website">Webpage</string>
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
 		<item name="android:background">@drawable/actionbar_gradient_background</item>

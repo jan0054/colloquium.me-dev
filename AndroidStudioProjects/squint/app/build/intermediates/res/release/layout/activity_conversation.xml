@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/stage"
+        android:background="@color/background"
         android:orientation="vertical" >
 
         <ListView
@@ -26,4 +26,4 @@
 
     </LinearLayout>
 
-</FrameLayout><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/activity_conversation.xml -->
+</FrameLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/activity_conversation.xml -->

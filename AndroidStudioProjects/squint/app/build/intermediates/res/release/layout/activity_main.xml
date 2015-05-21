@@ -7,7 +7,7 @@
     <LinearLayout android:orientation="vertical"
 			      android:layout_width="fill_parent"
 			      android:layout_height="fill_parent"
-			      android:background="@drawable/stage" >
+			      android:background="@color/background" >
         <FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_width="0dp"
@@ -20,7 +20,7 @@
 			<android.support.v4.view.ViewPager android:id="@+id/pager"
 											   android:layout_width="match_parent"
 											   android:layout_height="match_parent"
-											   tools:context="com.squint.app.MainActivity" />
+											   tools:context="com.cmmath.app.MainActivity" />
 		    <!-- 
 			<android.support.v4.view.ViewPager android:id="@+id/pager"
 											   android:layout_width="match_parent"
@@ -47,4 +47,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.squint.app.MainActivity" />
---><!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/activity_main.xml -->
+--><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/activity_main.xml -->

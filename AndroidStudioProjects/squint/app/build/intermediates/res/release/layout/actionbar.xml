@@ -12,7 +12,7 @@
         	  android:gravity="center"
         	  android:text="@string/app_name"
         	  android:textSize="16sp"
-        	  android:textColor="#FFFFFF" />
+        	  android:textColor="@color/light_txt" />
 
     <Spinner
         android:layout_width="70dp"
@@ -32,17 +32,19 @@
 
         />
 
-    <com.squint.app.widget.TintableImageView android:id="@+id/opt_left"
+    <com.cmmath.app.widget.TintableImageView
+		android:id="@+id/opt_left"
 									        android:layout_width="52dp"
 									        android:layout_height="52dp"
-									        android:padding="6dp"
+									        android:padding="12dp"
 									        android:layout_alignParentLeft="true"
 									        android:contentDescription="@string/empty"
 									        android:clickable="true"
 									        android:visibility="gone"
 									        android:src="@drawable/actionbar_list"
-									        app:tint="@color/tint_color_selector" />
-    <com.squint.app.widget.TintableImageView android:id="@+id/opt_extra_left"
+									        app:tint="@color/light_button_txt" />
+    <com.cmmath.app.widget.TintableImageView
+		android:id="@+id/opt_extra_left"
 									        android:layout_width="52dp"
 									        android:layout_height="52dp"
 									        android:padding="6dp"
@@ -51,18 +53,20 @@
 									        android:clickable="true"
 									        android:visibility="gone"
 									        android:src="@drawable/actionbar_back"
-									        app:tint="@color/tint_color_selector" />    
-    <com.squint.app.widget.TintableImageView android:id="@+id/opt_right"
+											app:tint="@color/light_button_txt" />
+    <com.cmmath.app.widget.TintableImageView
+		android:id="@+id/opt_right"
 									        android:layout_width="52dp"
 									        android:layout_height="52dp"
-									        android:padding="6dp"
+									        android:padding="12dp"
 									        android:layout_alignParentRight="true"
 									        android:contentDescription="@string/empty"
 									        android:clickable="true"
 									        android:visibility="gone"
 									        android:src="@drawable/actionbar_map"
 									        app:tint="@color/tint_color_selector" />
-    <com.squint.app.widget.TintableImageView android:id="@+id/opt_extra_right"
+    <com.cmmath.app.widget.TintableImageView
+		android:id="@+id/opt_extra_right"
 									        android:layout_width="52dp"
 									        android:layout_height="52dp"
 									        android:padding="6dp"
@@ -95,6 +99,6 @@
     <View android:layout_width="match_parent"
           android:layout_height="1dip"
           android:layout_alignParentBottom="true"
-          android:background="@color/actionbar_divider" />
+          android:background="@color/primary_color" />
 </RelativeLayout>
-<!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/actionbar.xml -->
+<!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/actionbar.xml -->

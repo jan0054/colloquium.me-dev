@@ -70,4 +70,4 @@
 	    	android:onClick="toLoginPage"	    	
 	    	android:textColor="@color/light_button_txt"
 	    	android:text="@string/cancel" />	    	
-</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/activity_signup.xml -->
+</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/activity_signup.xml -->

@@ -4,7 +4,7 @@
     android:id="@+id/feed_container"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="#EEEEEE"
+    android:background="@color/light_bg"
     android:orientation="horizontal" >
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_marginBottom="15dp"
         android:layout_alignLeft="@+id/convauthor"
         android:layout_below="@+id/convauthor"
-        android:textColor="@color/tab_unselected"
+        android:textColor="@color/secondary_text"
         android:textSize="13sp"
         android:fontFamily="sans-serif"
         android:text="last_msg" />
@@ -36,7 +36,7 @@
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="28dp"
         android:layout_below="@+id/lastmsg"
-        android:background="#CC000000"
+        android:background="@color/dark_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:weightSum="5" >
@@ -47,7 +47,7 @@
             android:layout_alignLeft="@+id/lastmsg"
             android:layout_below="@+id/lastmsg"
             android:layout_marginLeft="20dp"
-            android:textColor="@color/white"
+            android:textColor="@color/light_txt"
             android:gravity="center|left"
             android:fontFamily="sans-serif-light"
             android:text="last_msg_time" />
@@ -64,7 +64,7 @@
 
 
             android:layout_marginRight="15dp"
-            android:textColor="@color/list_action_text"
+            android:textColor="@color/light_txt"
             android:text="new message" />
 
 
@@ -73,4 +73,4 @@
     </LinearLayout>
 
 </RelativeLayout>
-<!-- From: file:/Users/chishengjan/Desktop/AndroidStudioProjects/squint/app/src/main/res/layout/conversation_row.xml -->
+<!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/conversation_row.xml -->

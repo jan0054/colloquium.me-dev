@@ -1,8 +1,8 @@
-/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/classes/debug
-/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-0dff35653984856fb6c8713ee7ce001c7d6810e0.jar
-/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-375e78bc2328b5243a7a853eff1fd93b3c81d595.jar
-/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/classes-566d662ceec6b56840b8b92885f4045b85512df5.jar
-/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-4c9cc50ab6919141e068014705fc7dd857aa2d0b.jar
-/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-7f5120f59f6fd3ac058a549c9afff5d2d7095bdb.jar
-/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/classes-43fec2b4908a86fef729b231d1ab9e0f3a59bca4.jar
-/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/Parse-1.9.2-88f1e68417b7f10a6850f1ccca2e919f3c8abfcb.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/classes/debug
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-e8d0f95159c318e84d5b4d802bb546e26ec69a62.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-94a1b362d632f85daf779170a7f0e5126f49debc.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/classes-6a57bedd8e4c49382e685e88b49a20f914533a69.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-ef5a666e56e10b199aca9b27e5128be4cb2e4462.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-b542fe5339fc2e30f7473217288e7253cd948cd7.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/classes-63ad3b22f857eeef4156d9d65ca25f57777bd603.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/build/intermediates/pre-dexed/debug/Parse-1.9.2-2ef61a1c4776f38fc03544b6b640255000f3d457.jar
