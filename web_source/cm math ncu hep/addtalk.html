@@ -40,12 +40,12 @@
 	newItem.set("name", talk_name.value);
 	newItem.set("content", talk_description.value);
 
-	Person = Parse.Object.extend("person");
+	Person = Parse.Object.extend("Person");
 	var person = new Person();
 	person.id = talk_author.value;
 	newItem.set("author", person);
 
-	Session = Parse.Object.extend("session");
+	Session = Parse.Object.extend("Session");
 	var session = new Session();
 	session.id = talk_session.value;
 	newItem.set("session", session);
@@ -56,7 +56,7 @@
 	var ed=talk_dateend.value+'T'+talk_timeend.value+':00.000';
 	var endd = new Date(ed);
 
-	Loca = Parse.Object.extend("location");
+	Loca = Parse.Object.extend("Location");
 	var loca = new Loca();
 	loca.id = talk_location.value;
 	newItem.set("location", loca);
