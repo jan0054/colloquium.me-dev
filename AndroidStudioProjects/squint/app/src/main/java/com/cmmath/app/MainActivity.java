@@ -43,7 +43,9 @@ public class MainActivity extends BaseActivity {
 											//R.drawable.tab_career,
 											R.drawable.tab_travel,
 											R.drawable.tab_settings };
-	
+
+	protected cmmathApplication app;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -242,8 +244,10 @@ public class MainActivity extends BaseActivity {
 				break;
 			case OPTION_LOGOUT:
 				ParseUser.logOut();
+				app = (cmmathApplication) getApplication();
+				app.isPerson = false;
 
-                //after logging out, remove user from installation so this phone doesn't get push notifications anymore
+				//after logging out, remove user from installation so this phone doesn't get push notifications anymore
                 ParseInstallation installation = ParseInstallation.getCurrentInstallation();
                 installation.remove("user");
                 installation.saveInBackground();
@@ -270,7 +274,12 @@ public class MainActivity extends BaseActivity {
              case OPTION_USER:
                  ParseUser selfuser = ParseUser.getCurrentUser();
                  if (selfuser != null) {
-                     toPage(new Intent(), UserAttendeeActivity.class);
+					 app = (cmmathApplication) getApplication();
+					 if (!app.isPerson) {
+						 toPage(new Intent(), UserAttendeeActivity.class);
+					 } else {
+						 toPage(new Intent(), UserPreferenceActivity.class);
+					 }
                  } else {
                      toast("Please log in first!");
                      toLoginPage(ConversationActivity.class);

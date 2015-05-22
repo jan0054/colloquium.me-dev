@@ -87,9 +87,15 @@ public class SignupActivity extends BaseActivity {
 	    overridePendingTransition (R.anim.page_left_slide_in, R.anim.page_left_slide_out);
 	}
 
-    private void toPreferencePage()
-    {
-        Intent intent = new Intent(this, UserAttendeeActivity.class);
-        startActivity(intent);
+	protected cmmathApplication app;
+    private void toPreferencePage() {
+		app = (cmmathApplication) getApplication();
+		if(!app.isPerson) {
+			Intent intent = new Intent(this, UserAttendeeActivity.class);
+			startActivity(intent);
+		} else {
+			Intent intent = new Intent(this, UserPreferenceActivity.class);
+			startActivity(intent);
+		}
     }
 }

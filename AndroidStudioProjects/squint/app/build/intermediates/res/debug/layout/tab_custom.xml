@@ -26,4 +26,4 @@
 			      android:textColor="@color/tab_color_selector"
 			      android:text="@string/title_section5"
 			      android:textSize="10sp" />
-</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/tab_custom.xml -->
+</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/tab_custom.xml -->

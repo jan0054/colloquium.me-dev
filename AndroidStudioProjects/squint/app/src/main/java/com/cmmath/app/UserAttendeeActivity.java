@@ -30,9 +30,11 @@ public class UserAttendeeActivity extends BaseActivity {
     public String lname;
     public String inst;
     public String user_email;
+    protected cmmathApplication app;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         //initialize and setup
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_attendee);
@@ -45,11 +47,11 @@ public class UserAttendeeActivity extends BaseActivity {
         status_label = (TextView) findViewById(R.id.status);
         save_attendee = (TextView) findViewById(R.id.save_attendee);
         save_attendee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveAttendee();
-            }
-        });
+                @Override
+                public void onClick(View v) {
+                    saveAttendee();
+                }
+            });
         skip_attendee = (TextView) findViewById(R.id.skip_attendee);
         skip_attendee.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,9 +65,8 @@ public class UserAttendeeActivity extends BaseActivity {
         save_attendee.setTextColor(getResources().getColor(R.color.button_title));
         Toast.makeText(this, "Searching attendees...", Toast.LENGTH_LONG).show();
 
-        //get user info (and check if is person)
-        if (ParseUser.getCurrentUser() != null)
-        {
+         //get user info (and check if is person)
+        if (ParseUser.getCurrentUser() != null) {
             selfuser = ParseUser.getCurrentUser();
         }
         user_email = selfuser.getEmail();
@@ -74,13 +75,12 @@ public class UserAttendeeActivity extends BaseActivity {
         personquery.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject parseObject, ParseException e) {
-                if (parseObject != null)
-                {
+                if (parseObject != null) {
                     //found a match, user is person: skip to user preference activity
+                    app = (cmmathApplication) getApplication();
+                    app.isPerson = true;
                     toUserPreference();
-                }
-                else
-                {
+                } else {
                     //no match, user not a person
                     status_label.setText("Sorry, we couldn't find you in the attendee list, if you are attending this event, please provide your information below.");
                     save_attendee.setEnabled(true);
@@ -125,6 +125,8 @@ public class UserAttendeeActivity extends BaseActivity {
                     //created person successfully, go to chat/email preference setup page
                     save_attendee.setEnabled(true);
                     save_attendee.setTextColor(getResources().getColor(R.color.dark_accent));
+                    app = (cmmathApplication) getApplication();
+                    app.isPerson = true;
                     toUserPreference();
                 }
             });

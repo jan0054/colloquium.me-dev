@@ -102,4 +102,4 @@
 		      android:textColor="@color/dark_accent"
 		      android:textSize="18sp"
 		      android:text="@string/list_empty" />    
-</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/details_people.xml -->
+</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/squint/app/src/main/res/layout/details_people.xml -->

@@ -16,12 +16,14 @@ public class cmmathApplication extends Application {
 
     public boolean isVisible;
     public boolean isChat;
+    public boolean isPerson;
 
     @Override
     public void onCreate() {
         super.onCreate();
         isVisible = false;
         isChat = false;
+        isPerson = false;
         Parse.initialize(getBaseContext(), _PARAMS.APPLICATION_ID, _PARAMS.CLIENT_KEY);
         ParsePush.subscribeInBackground("", new SaveCallback() {
             @Override
