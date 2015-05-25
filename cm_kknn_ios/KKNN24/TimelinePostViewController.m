@@ -34,4 +34,12 @@
 }
 */
 
+- (IBAction)confirm_post_button_tap:(UIBarButtonItem *)sender {
+}
+- (IBAction)cancel_post_button_tap:(UIBarButtonItem *)sender {
+}
+- (IBAction)cancel_image_button_tap:(UIButton *)sender {
+}
+- (IBAction)camera_button_tap:(UIButton *)sender {
+}
 @end
