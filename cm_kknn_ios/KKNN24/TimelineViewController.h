@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TimelineViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *timeline_table;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addpost_button;
+- (IBAction)addpost_button_tap:(UIBarButtonItem *)sender;
+
+@property UIRefreshControl *pullrefresh;
 
 @end

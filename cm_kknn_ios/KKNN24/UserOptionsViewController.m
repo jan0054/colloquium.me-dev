@@ -337,7 +337,7 @@ UITextField *activefield;
         NSLog(@"CHAT SWITCH OFF");
         //switched email sharing to off
         person_obj[@"chat_status"] = @0;
-        self_user[@"chat_Status"] = @0;
+        self_user[@"chat_status"] = @0;
         [person_obj saveInBackground];
         [self_user saveInBackground];
         self.chat_current_label.text = @"Current Off";

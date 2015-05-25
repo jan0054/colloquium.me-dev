@@ -39,6 +39,8 @@
 		B4632EEB19D5395F00A9B743 /* tab_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4632EE719D5395F00A9B743 /* tab_settings@2x.png */; };
 		B4632EEC19D5395F00A9B743 /* tab_travel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4632EE819D5395F00A9B743 /* tab_travel@2x.png */; };
 		B4632EEE19D5399D00A9B743 /* tab_program@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4632EED19D5399D00A9B743 /* tab_program@2x.png */; };
+		B469AF781B13264200186022 /* PostCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B469AF771B13264200186022 /* PostCellTableViewCell.m */; };
+		B469AF7B1B13265400186022 /* CommentCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B469AF7A1B13265400186022 /* CommentCellTableViewCell.m */; };
 		B47888B91B0B0AC0009A53CF /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = B47888AF1B0B0AC0009A53CF /* AppIcon.appiconset */; };
 		B47888BA1B0B0AC0009A53CF /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = B47888B01B0B0AC0009A53CF /* Icon-60.png */; };
 		B47888BB1B0B0AC0009A53CF /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = B47888B11B0B0AC0009A53CF /* Icon-72.png */; };
@@ -149,6 +151,10 @@
 		B4632EE719D5395F00A9B743 /* tab_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_settings@2x.png"; sourceTree = "<group>"; };
 		B4632EE819D5395F00A9B743 /* tab_travel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_travel@2x.png"; sourceTree = "<group>"; };
 		B4632EED19D5399D00A9B743 /* tab_program@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_program@2x.png"; sourceTree = "<group>"; };
+		B469AF761B13264200186022 /* PostCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCellTableViewCell.h; sourceTree = "<group>"; };
+		B469AF771B13264200186022 /* PostCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCellTableViewCell.m; sourceTree = "<group>"; };
+		B469AF791B13265400186022 /* CommentCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCellTableViewCell.h; sourceTree = "<group>"; };
+		B469AF7A1B13265400186022 /* CommentCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCellTableViewCell.m; sourceTree = "<group>"; };
 		B47888AF1B0B0AC0009A53CF /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
 		B47888B01B0B0AC0009A53CF /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		B47888B11B0B0AC0009A53CF /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -481,6 +487,10 @@
 				FDEAF23C1A6D48400067A56D /* UserPreferenceTableViewCell.m */,
 				FD1D71241A7AB64800235F57 /* DiscussionTableViewCell.h */,
 				FD1D71251A7AB64800235F57 /* DiscussionTableViewCell.m */,
+				B469AF761B13264200186022 /* PostCellTableViewCell.h */,
+				B469AF771B13264200186022 /* PostCellTableViewCell.m */,
+				B469AF791B13265400186022 /* CommentCellTableViewCell.h */,
+				B469AF7A1B13265400186022 /* CommentCellTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -658,10 +668,12 @@
 				FDEAF23A1A6BDCA00067A56D /* UserOptionsViewController.m in Sources */,
 				B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */,
 				B4F74E5D19B461C000F3A565 /* CustomLogInViewController.m in Sources */,
+				B469AF7B1B13265400186022 /* CommentCellTableViewCell.m in Sources */,
 				B4B71A0819C046200036811A /* SelfCellTableViewCell.m in Sources */,
 				B4B71A0B19C0528D0036811A /* PersonDetailEventCellTableViewCell.m in Sources */,
 				B43900131B0B2C0F006FF07D /* TimelineViewController.m in Sources */,
 				B4B719FC19C02DEE0036811A /* PosterCellTableViewCell.m in Sources */,
+				B469AF781B13264200186022 /* PostCellTableViewCell.m in Sources */,
 				B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */,
 				B4D230F519EE5F93006FC2A6 /* ChatMeCellTableViewCell.m in Sources */,
 				B4B71A0219C039120036811A /* CareerCellTableViewCell.m in Sources */,

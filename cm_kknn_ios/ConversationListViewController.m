@@ -69,6 +69,13 @@ NSString *ab_self;
         NSLog(@"non-direct chat, loading conv list");
         [self get_conversations];
     }
+    
+    //clear badge count
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveInBackground];
+    }
 }
 
 - (void) viewDidLayoutSubviews
