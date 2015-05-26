@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TimelinePostViewController : UIViewController<UITextViewDelegate>
+@interface TimelinePostViewController : UIViewController<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *confirm_post_button;
 - (IBAction)confirm_post_button_tap:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancel_post_button;
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *camera_button;
 - (IBAction)camera_button_tap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *library_button;
-@property (strong, nonatomic) IBOutlet UIButton *library_button_tap;
+- (IBAction)library_button_tap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIView *bottom_view_trim;
 
 @end

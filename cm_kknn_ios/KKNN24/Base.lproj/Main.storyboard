@@ -121,10 +121,10 @@
                                     <constraint firstItem="GFF-hz-RCW" firstAttribute="top" secondItem="eVf-h0-pTy" secondAttribute="top" id="cJ8-XS-9Iw"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bid-qU-Oyw">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bid-qU-Oyw">
                                 <rect key="frame" x="320" y="118" width="320" height="405"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="160" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-P9-aCD">
+                                    <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="160" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-P9-aCD">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="405"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1102,28 +1102,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" keyboardDismissMode="onDrag" text="Share your thoughts here..." translatesAutoresizingMaskIntoConstraints="NO" id="frL-Zs-urw">
-                                <rect key="frame" x="0.0" y="64" width="320" height="208"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="143"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-qB-ZZg">
-                                <rect key="frame" x="0.0" y="523" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrJ-go-tJ6">
-                                        <rect key="frame" x="226" y="8" width="57" height="30"/>
+                                        <rect key="frame" x="229" y="10" width="57" height="30"/>
                                         <state key="normal" title="Library">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="library_button_tap:" destination="am5-Jb-BYE" eventType="touchUpInside" id="Gv2-Ln-BxA"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Photo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1a-qM-3ZZ">
-                                        <rect key="frame" x="8" y="12" width="89" height="21"/>
+                                        <rect key="frame" x="8" y="14" width="89" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H0-ED-ffh">
-                                        <rect key="frame" x="126" y="8" width="69" height="30"/>
+                                        <rect key="frame" x="126" y="10" width="69" height="30"/>
                                         <state key="normal" title="Camera">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1131,11 +1134,15 @@
                                             <action selector="camera_button_tap:" destination="am5-Jb-BYE" eventType="touchUpInside" id="WIa-d1-Ln1"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRo-Yh-CB0">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w5d-kY-dPR">
-                                <rect key="frame" x="0.0" y="204" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="204" width="320" height="318"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABl-5e-xTE">
                                 <rect key="frame" x="284" y="215" width="20" height="20"/>
@@ -1164,13 +1171,13 @@
                     <connections>
                         <outlet property="add_photo_label" destination="b1a-qM-3ZZ" id="aNd-DS-IUj"/>
                         <outlet property="bottom_view" destination="pcb-qB-ZZg" id="jQe-2F-s8c"/>
+                        <outlet property="bottom_view_trim" destination="wRo-Yh-CB0" id="Xd4-qW-AMC"/>
                         <outlet property="camera_button" destination="6H0-ED-ffh" id="10X-DW-dno"/>
                         <outlet property="cancel_image_button" destination="ABl-5e-xTE" id="JoN-QO-e66"/>
                         <outlet property="cancel_post_button" destination="0rj-Hn-f9K" id="Azj-1S-veF"/>
                         <outlet property="confirm_post_button" destination="qzi-7G-ScQ" id="BuC-sH-AcJ"/>
                         <outlet property="content_textview" destination="frL-Zs-urw" id="WAZ-vd-cFi"/>
                         <outlet property="library_button" destination="NrJ-go-tJ6" id="FFO-Fg-3J4"/>
-                        <outlet property="library_button_tap" destination="NrJ-go-tJ6" id="HOO-N4-1hh"/>
                         <outlet property="post_image" destination="w5d-kY-dPR" id="Lra-8h-uTy"/>
                     </connections>
                 </viewController>
@@ -1311,7 +1318,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="lDI-Dv-g5x">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="lDI-Dv-g5x">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJp-jf-0Rx">
