@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/feed_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item"
+    android:orientation="horizontal" >
+    <View
+        android:layout_width="3dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:background="@color/dark_accent" />
+    <RelativeLayout
+        android:id="@+id/item_talk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="left"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:singleLine="true"
+            android:text="@string/name"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp"
+            />
+
+        <LinearLayout android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_alignRight="@+id/name"
+            android:gravity="center"
+            android:weightSum="4"
+            android:orientation="horizontal"
+            android:layout_below="@+id/name"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_weight="2"
+                android:fontFamily="sans-serif-thin"
+                android:gravity="center|left"
+                android:text="@string/author"
+                android:textColor="@color/secondary_text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView android:id="@+id/createdAt"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center|right"
+                android:layout_weight="2"
+                android:text="@string/date"
+                android:textColor="@color/secondary_text"
+                android:maxLines="1"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_alignRight="@+id/name"
+            android:layout_margin="8dp"
+            android:layout_below="@+id/header"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:lineSpacingExtra="2sp"
+            android:maxLines="3"
+            android:text="@string/content"
+            android:textColor="@color/primary_text"
+            android:textSize="12sp" />
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/content"
+            android:contentDescription="@string/empty"
+            android:scaleType="centerCrop"
+            android:src="@drawable/poi_01" />
+    </RelativeLayout>
+</LinearLayout>
+<!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/layout/item_post.xml -->

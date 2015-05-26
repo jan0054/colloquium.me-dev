@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c2071dcaf7a008c3b01a6381a33be55396bab09">
+        <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/classes-2f07e7fb21d5c5840e89b11e74edc77002fcd00d.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0dcc55e70f7ebf7238fe2ec53f662eb378ab2668">
+        <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-d2a3509036fb54806364ae33645019c7a7580077.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/classes-6e1a44c0c85e9b8797ccdbebd3deae5c872ecbb9.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-127295ad9be7b872e5762105a979a433ce7da386.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/libs/Parse-1.9.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fe739334780fe321141e62720822c2d456061899">
+        <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/Parse-1.9.2-b1aa3f80d968b46ba6e329dfc0fb376aa44c1c2d.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-375e78bc2328b5243a7a853eff1fd93b3c81d595.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-4c9cc50ab6919141e068014705fc7dd857aa2d0b.jar" />
+    </item>
+
+</items>

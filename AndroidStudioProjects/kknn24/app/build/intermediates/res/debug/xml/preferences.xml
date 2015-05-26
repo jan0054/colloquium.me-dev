@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Section Title if necessary 
+<Preference android:key="TITLE_PERSONAL" android:title="@string/cate_title_personal" android:icon="@drawable/icon_friend_default"
+      		android:layout="@layout/preference_section" android:enabled="false" />
+-->
+    <!--  csj:don't need toggle in ver 1.0
+    <com.squint.app.widget.TogglePreference android:key="PREF_NOTIFICATION"
+        android:title="@string/pref_title_notification"
+        android:defaultValue="false" />
+	-->
+	    	    
+	    <Preference android:key="PREF_ABOUT"
+       			    android:layout="@layout/preference_row_arrow"
+		            android:title="@string/pref_title_about"
+		            android:icon="@drawable/preference_arrow" />
+	    
+	    <Preference android:key="PREF_FEEDBACK"
+       			    android:layout="@layout/preference_row_arrow"
+		            android:title="@string/pref_title_feedback"
+		            android:icon="@drawable/preference_arrow" />
+        <Preference android:key="PREF_TECH"
+                    android:layout="@layout/preference_row_arrow"
+                    android:title="@string/pref_title_tech"
+                    android:icon="@drawable/preference_arrow" />
+        <Preference android:key="PREF_ADMIN"
+                    android:layout="@layout/preference_row_arrow"
+                    android:title="@string/pref_title_admin"
+                    android:icon="@drawable/preference_arrow" />
+	    <Preference android:key="PREF_TERMS"
+       			    android:layout="@layout/preference_row_arrow"
+		            android:title="@string/pref_title_terms"
+		            android:icon="@drawable/preference_arrow" />
+
+
+</PreferenceScreen>
+<!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/xml/preferences.xml -->
