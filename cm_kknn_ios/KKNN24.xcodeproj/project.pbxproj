@@ -54,6 +54,7 @@
 		B489AFA51A6FB97E00E42581 /* twitter1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489AFA31A6FB97E00E42581 /* twitter1@2x.png */; };
 		B489AFA61A6FB97E00E42581 /* twitter2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489AFA41A6FB97E00E42581 /* twitter2@2x.png */; };
 		B495C44619C9876A008D5D5F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B495C44519C9876A008D5D5F /* AboutViewController.m */; };
+		B4981AB81B148225003630C1 /* cancel_64_indigo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4981AB71B148225003630C1 /* cancel_64_indigo@2x.png */; };
 		B499BD061904EAB700C99CFE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B499BD051904EAB700C99CFE /* QuartzCore.framework */; };
 		B499BD091904ED0C00C99CFE /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD081904ED0C00C99CFE /* ChatViewController.m */; };
 		B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B499BD0B1904EDE600C99CFE /* PositionDetailViewController.m */; };
@@ -169,6 +170,7 @@
 		B489AFA41A6FB97E00E42581 /* twitter2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter2@2x.png"; sourceTree = "<group>"; };
 		B495C44419C9876A008D5D5F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		B495C44519C9876A008D5D5F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		B4981AB71B148225003630C1 /* cancel_64_indigo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_64_indigo@2x.png"; sourceTree = "<group>"; };
 		B499BD051904EAB700C99CFE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B499BD071904ED0C00C99CFE /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		B499BD081904ED0C00C99CFE /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 		B43D269618FFD03A0072B753 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B4981AB71B148225003630C1 /* cancel_64_indigo@2x.png */,
 				B47888AF1B0B0AC0009A53CF /* AppIcon.appiconset */,
 				B47888B01B0B0AC0009A53CF /* Icon-60.png */,
 				B47888B11B0B0AC0009A53CF /* Icon-72.png */,
@@ -583,6 +586,7 @@
 				B4163D7E1A023FA70064B68E /* chatfloat_orange@2x.png in Resources */,
 				B4F74E6219B5A1FD00F3A565 /* settings@2x.png in Resources */,
 				FD0ABD8B1A716E440062BFD2 /* cross1@2x.png in Resources */,
+				B4981AB81B148225003630C1 /* cancel_64_indigo@2x.png in Resources */,
 				B4BC89DE19D0AC2B00F1A9AD /* cancelwhite@2x.png in Resources */,
 				B4163D7D1A023FA70064B68E /* chatfloat_grey@2x.png in Resources */,
 				B499BD1519051DDA00C99CFE /* profile_pic@2x.png in Resources */,

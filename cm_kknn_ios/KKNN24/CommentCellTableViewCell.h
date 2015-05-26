@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CommentCellTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *comment_author_label;
+@property (strong, nonatomic) IBOutlet UILabel *comment_time_label;
+@property (strong, nonatomic) IBOutlet UILabel *comment_content_label;
 
 @end

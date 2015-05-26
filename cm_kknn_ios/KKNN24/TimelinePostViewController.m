@@ -31,7 +31,12 @@ BOOL photo_is_set;
     [self.camera_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     [self.library_button setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     [self.library_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
-    
+    self.cancel_image_button.layer.masksToBounds = NO;
+    self.cancel_image_button.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.cancel_image_button.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
+    self.cancel_image_button.layer.shadowOpacity = 0.3f;
+    self.cancel_image_button.layer.shadowRadius = 0.5f;
+
     //init
     self.cancel_image_button.hidden = YES;
     self.cancel_image_button.userInteractionEnabled = NO;
@@ -51,8 +56,11 @@ BOOL photo_is_set;
 - (IBAction)cancel_image_button_tap:(UIButton *)sender {
     self.post_image.image = nil;
     photo_is_set = NO;
-    self.cancel_image_button.hidden = YES;
-    self.cancel_image_button.userInteractionEnabled = NO;
+    //self.cancel_image_button.hidden = YES;
+    //self.cancel_image_button.userInteractionEnabled = NO;
+    [self.view setNeedsLayout];
+    [self.view setNeedsUpdateConstraints];
+    [self.view setNeedsDisplay];
 }
 
 - (IBAction)camera_button_tap:(UIButton *)sender {
