@@ -28,5 +28,9 @@
 - (IBAction)library_button_tap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIView *bottom_view_trim;
 @property (strong, nonatomic) IBOutlet UIView *cancel_image_button_guide;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottom_keyboard_spacing;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textview_keyboard_spacing;
+
+
 
 @end

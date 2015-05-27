@@ -10,15 +10,25 @@
 #import "UIColor+ProjectColors.h"
 #import <Parse/Parse.h>
 #import "PostCellTableViewCell.h"
+#import "TimelineDetailViewController.h"
 
 @interface TimelineViewController ()
 
 @end
 
 NSMutableArray *post_array;
+NSString *selected_post_id;
+PFObject *selected_post;
+NSString *selected_post_content;
+NSString *selected_post_time;
+NSString *selected_author_name;
+PFUser *selected_author;
+UIImage *selected_image;
 
 @implementation TimelineViewController
 @synthesize pullrefresh;
+
+#pragma mark - UI
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,7 +44,6 @@ NSMutableArray *post_array;
     self.view.backgroundColor = [UIColor background];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.timeline_table.tableFooterView = [[UIView alloc] init];
-
 
 }
 
@@ -57,9 +66,12 @@ NSMutableArray *post_array;
     [self get_post_data];
 }
 
+#pragma mark - Data
+
 - (void) get_post_data {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    [query orderByAscending:@"content"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
     [query setLimit:500];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Post query success: %lu", (unsigned long)[objects count]);
@@ -71,6 +83,8 @@ NSMutableArray *post_array;
         [self.timeline_table reloadData];
     }];
 }
+
+#pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -126,16 +140,36 @@ NSMutableArray *post_array;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    PFObject *post = [post_array objectAtIndex: indexPath.row];
+    selected_post = post;
+    selected_post_id = post.objectId;
+    selected_post_content = post[@"content"];
+    selected_author = post[@"author"];
+    selected_author_name = post[@"author_name"];
+    NSDate *time = post.createdAt;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat: @"MM-dd HH:mm"];
+    selected_post_time = [dateFormat stringFromDate:time];
+    PostCellTableViewCell *cell = (PostCellTableViewCell *) [self.timeline_table cellForRowAtIndexPath:indexPath];
+    selected_image = cell.timeline_image.image;
+    [self performSegueWithIdentifier:@"timelinedetailsegue" sender:self];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"timelinedetailsegue"])
+    {
+        TimelineDetailViewController *controller = [segue destinationViewController];
+        controller.post = selected_post;
+        controller.post_id = selected_post_id;
+        controller.author = selected_author;
+        controller.post_author_name = selected_author_name;
+        controller.post_content = selected_post_content;
+        controller.post_time = selected_post_time;
+        controller.image = selected_image;
+    }
 }
-
 
 - (IBAction)addpost_button_tap:(UIBarButtonItem *)sender {
     [self performSegueWithIdentifier:@"newpostsegue" sender:self];

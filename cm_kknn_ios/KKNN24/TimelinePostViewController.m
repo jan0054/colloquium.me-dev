@@ -36,11 +36,29 @@ BOOL photo_is_set;
     self.cancel_image_button.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
     self.cancel_image_button.layer.shadowOpacity = 0.3f;
     self.cancel_image_button.layer.shadowRadius = 0.5f;
-
+    
     //init
     self.cancel_image_button.hidden = YES;
     self.cancel_image_button.userInteractionEnabled = NO;
+    self.textview_keyboard_spacing.active = NO;
+
 }
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
 
 #pragma mark - UI Actions
 
@@ -56,8 +74,9 @@ BOOL photo_is_set;
 - (IBAction)cancel_image_button_tap:(UIButton *)sender {
     self.post_image.image = nil;
     photo_is_set = NO;
-    //self.cancel_image_button.hidden = YES;
-    //self.cancel_image_button.userInteractionEnabled = NO;
+    self.cancel_image_button.hidden = YES;
+    self.cancel_image_button.userInteractionEnabled = NO;
+    [self.content_textview resignFirstResponder];
     [self.view setNeedsLayout];
     [self.view setNeedsUpdateConstraints];
     [self.view setNeedsDisplay];
@@ -80,7 +99,7 @@ BOOL photo_is_set;
     post[@"author_name"] = user[@"username"];
     post[@"author"] = user;
     post[@"content"] = self.content_textview.text;
-    CGSize img_param = CGSizeMake(400.0, 400.0);
+    CGSize img_param = CGSizeMake(640.0, 320.0);
     UIImage *smallpic = [self shrinkImage:self.post_image.image withSize:img_param];
     NSData *imageData = UIImagePNGRepresentation(smallpic);
     PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
@@ -162,6 +181,55 @@ BOOL photo_is_set;
         [alert show];
     }
 }
+
+#pragma mark - Keyboard
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSLog(@"keyboard will show");
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    CGFloat height = keyboardFrame.size.height;
+    if (photo_is_set)
+    {
+        self.textview_keyboard_spacing.active = YES;
+        self.textview_keyboard_spacing.constant = height+30;
+    }
+    else
+    {
+        self.bottom_keyboard_spacing.constant = height;
+    }
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSLog(@"keyboard will hide");
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    CGFloat height = keyboardFrame.size.height;
+    if (photo_is_set)
+    {
+        self.textview_keyboard_spacing.active = NO;
+    }
+    else
+    {
+        self.textview_keyboard_spacing.active = NO;
+        self.bottom_keyboard_spacing.constant = 0;
+    }
+    
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+
+}
+
 
 
 @end

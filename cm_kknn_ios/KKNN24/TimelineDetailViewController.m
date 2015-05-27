@@ -12,18 +12,195 @@
 
 @end
 
+NSMutableArray *comment_array;
+
 @implementation TimelineDetailViewController
+@synthesize post;
+@synthesize post_author_name;
+@synthesize post_content;
+@synthesize post_time;
+@synthesize image;
+
+#pragma mark - Interface
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //init
+    comment_array = [[NSMutableArray alloc] init];
+    
+    //styling
+    [self fill_post_data];
+    [self get_comment_data];
+    self.comment_table.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor background];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.comment_table.tableFooterView = [[UIView alloc] init];
+    self.post_background.backgroundColor = [UIColor light_bg];
+    self.author_label.textColor = [UIColor dark_txt];
+    self.time_label.textColor = [UIColor secondary_text];
+    self.content_textview.textColor = [UIColor dark_txt];
+    self.content_textview.backgroundColor = [UIColor clearColor];
+    self.input_background.backgroundColor = [UIColor light_bg];
+    [self.post_comment_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    [self.post_comment_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.input_background.bounds];
+    self.input_background.layer.masksToBounds = NO;
+    self.input_background.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.input_background.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
+    self.input_background.layer.shadowOpacity = 0.3f;
+    self.input_background.layer.shadowPath = shadowPath.CGPath;
+    UIBezierPath *shadowPath1 = [UIBezierPath bezierPathWithRect:self.post_background.bounds];
+    self.post_background.layer.masksToBounds = NO;
+    self.post_background.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.post_background.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.post_background.layer.shadowOpacity = 0.3f;
+    self.post_background.layer.shadowPath = shadowPath1.CGPath;
+
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    //[self.content_textview scrollRangeToVisible:NSMakeRange(0, 1)];
+    /*
+    self.bottom_scrollview.delegate = self;
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGSize size = self.bottom_scrollview.contentSize;
+    size.width = screenBounds.size.width;
+    NSLog(@"WIDTH:%f", screenBounds.size.width);
+    self.bottom_scrollview.contentSize = size;
+    self.bottom_scrollview.alwaysBounceHorizontal = NO;
+    [self.view setNeedsLayout];
+    [self.view setNeedsUpdateConstraints];
+    [self.view setNeedsDisplay];
+     */
+}
 
+- (void) viewDidLayoutSubviews
+{
+    //styling
+    if ([self.comment_table respondsToSelector:@selector(layoutMargins)]) {
+        self.comment_table.layoutMargins = UIEdgeInsetsZero;
+    }
+}
 
 
 - (IBAction)post_comment_button_tap:(UIButton *)sender {
-    
+    if (self.comment_input.text.length >= 1)
+    {
+        [self send_new_comment];
+    }
 }
+
+#pragma mark - Data
+
+- (void) fill_post_data {
+    self.author_label.text = [NSString stringWithFormat:@"%@:", post_author_name];
+    self.content_textview.text = post_content;
+    self.time_label.text = post_time;
+    if (image != nil)
+    {
+        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.post_image.bounds];
+        self.post_image.layer.masksToBounds = NO;
+        self.post_image.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.post_image.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+        self.post_image.layer.shadowOpacity = 0.3f;
+        self.post_image.layer.shadowPath = shadowPath.CGPath;
+        
+    }
+    else
+    {
+        self.imageaspect.active = NO;
+        [self.view setNeedsLayout];
+        [self.view setNeedsUpdateConstraints];
+        [self.view setNeedsDisplay];
+    }
+    self.post_image.image = image;
+}
+
+- (void) get_comment_data {
+    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    [query whereKey:@"post" equalTo:post];
+    [query orderByDescending:@"createdAt"];
+    [query setLimit:500];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            [comment_array removeAllObjects];
+            NSLog(@"Successfully retrieved %lu comments for the post.", (unsigned long)objects.count);
+            comment_array = [objects mutableCopy];
+            [self.comment_table reloadData];
+        }
+        else
+        {
+            // Log details of the failure if there's an error
+            NSLog(@"Error fetching comments: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+- (void) send_new_comment {
+    NSString *content = self.comment_input.text;
+    PFObject *comment = [PFObject objectWithClassName:@"Comment"];
+    comment[@"content"] = content;
+    PFUser *user = [PFUser currentUser];
+    comment[@"author"] = user;
+    comment[@"author_name"] = user[@"username"];
+    [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"Successfully published new comment");
+            self.comment_input.text = @"";
+            [self get_comment_data];
+        }
+        else
+        {
+            NSLog(@"Error posting comment: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+#pragma mark - Tableview
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return comment_array.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CommentCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentcell"];
+    
+    //data source
+    PFObject *comment = [comment_array objectAtIndex:indexPath.row];
+    NSString *authorname = comment[@"author_name"];
+    NSString *content = comment[@"content"];
+    NSDate *time = comment.createdAt;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat: @"MM-dd HH:mm"];
+    NSString *timeString = [dateFormat stringFromDate:time];
+    NSLog(@"TIME:%@",timeString);
+    cell.comment_author_label.text = [NSString stringWithFormat:@"%@:",authorname];
+    cell.comment_content_label.text = content;
+    cell.comment_time_label.text = timeString;
+    
+    //styling
+    if ([cell respondsToSelector:@selector(layoutMargins)]) {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.comment_author_label.textColor = [UIColor light_txt];
+    cell.comment_content_label.textColor = [UIColor light_txt];
+    cell.comment_time_label.textColor = [UIColor light_txt];
+    
+    return cell;
+}
+
 
 @end
