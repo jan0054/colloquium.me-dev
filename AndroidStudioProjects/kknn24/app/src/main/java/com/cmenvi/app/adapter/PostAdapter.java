@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.cmenvi.app.R;
 import com.cmenvi.app.data.PostDAO;
 import com.cmenvi.app.widget.BitmapManager;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 import java.text.SimpleDateFormat;
@@ -80,7 +81,6 @@ public class PostAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.item_post, null);
 			holder = new ViewHolder();
-			holder.name = (TextView) convertView.findViewById(R.id.name);
 			holder.authorname = (TextView) convertView.findViewById(R.id.author_name);
 			holder.createdAt = (TextView) convertView.findViewById(R.id.createdAt);
 			holder.content = (TextView) convertView.findViewById(R.id.content);
@@ -88,24 +88,23 @@ public class PostAdapter extends BaseAdapter {
 		} else holder = (ViewHolder) convertView.getTag();
 
 		ParseObject item = data.get(position);
-		holder.name.setText(getName(item));
 		holder.authorname.setText(getAuthorname(item));
 		holder.createdAt.setText(getCreatedAt(item));
 		holder.content.setText(getContent(item));
 		convertView.setTag(holder);
-		holder.name.setTag(item);
+		holder.authorname.setTag(item);
 
 		convertView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				ViewHolder h = (ViewHolder) v.getTag();
-				ParseObject item = (ParseObject) h.name.getTag();
+				ParseObject item = (ParseObject) h.authorname.getTag();
 				Intent intent = new Intent(ACTION_POST_SELECT);
 				intent.putExtra(EXTRA_POST_ID, item.getObjectId());
-				intent.putExtra(EXTRA_POST_NAME, getName(item));
 				intent.putExtra(EXTRA_POST_AUTHORNAME, getAuthorname(item));
 				intent.putExtra(EXTRA_POST_CREATEDAT, getCreatedAt(item));
 				intent.putExtra(EXTRA_POST_CONTENT, getContent(item));
+				intent.putExtra(EXTRA_POST_IMAGE, getPhotoUrl(item));
 				context.sendBroadcast(intent);
 			}
 		});
@@ -130,7 +129,7 @@ public class PostAdapter extends BaseAdapter {
 	}
 
 	private String getCreatedAt(ParseObject object) {
-		return sdf.format(object.getDate(PostDAO.CREATEDAT));
+		return sdf.format(object.getCreatedAt());
 	}
 
 	private String getContent(ParseObject object) {
@@ -138,7 +137,10 @@ public class PostAdapter extends BaseAdapter {
 	}
 
 	private String getPhotoUrl(ParseObject object) {
-		return object.getParseFile(PostDAO.IMAGE).getUrl();
+		ParseFile postImage = object.getParseFile(PostDAO.IMAGE);
+		if(postImage != null)
+			return postImage.getUrl();
+		else
+			return null;
 	}
-
 }

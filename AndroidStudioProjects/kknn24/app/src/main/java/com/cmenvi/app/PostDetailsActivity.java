@@ -1,362 +1,188 @@
 package com.cmenvi.app;
 
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.LabeledIntent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cmenvi.app.adapter.PeopleAdapter;
-import com.cmenvi.app.adapter.PersonalAbstractAdapter;
-import com.cmenvi.app.adapter.PersonalPosterAdapter;
-import com.cmenvi.app.adapter.PersonalTalkAdapter;
+import com.cmenvi.app.adapter.CommentAdapter;
+import com.cmenvi.app.adapter.PostAdapter;
 import com.cmenvi.app.data.AttachmentDAO;
+import com.cmenvi.app.data.CommentDAO;
 import com.cmenvi.app.data.PeopleDAO;
+import com.cmenvi.app.data.PostDAO;
 import com.cmenvi.app.data.PosterDAO;
 import com.cmenvi.app.data.TalkDAO;
 import com.cmenvi.app.widget.BaseActivity;
-import com.parse.GetCallback;
-import com.parse.ParseException;
+import com.cmenvi.app.widget.BitmapManager;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
-import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class PostDetailsActivity extends BaseActivity {
 	
 	public static final String TAG = PostDetailsActivity.class.getSimpleName();
 	
-	public static final String ACTION_TALK     = "com.squint.app.action.talk";
-	public static final String EXTRA_FROM_USER = "com.squint.app.talk.FROM_USER";
-	public static final String EXTRA_TO_USER   = "com.squint.app.talk.TO_USER";
+	public static final String ACTION_TALK     = "com.cmenvi.app.action.talk";
+	public static final String EXTRA_FROM_USER = "com.cmenvi.app.talk.FROM_USER";
+	public static final String EXTRA_TO_USER   = "com.cmenvi.app.talk.TO_USER";
 
-	
-	public static final String 			ACTION_PERSON_SELECT 		= "com.squint.action.person.select";
-	public static final String 			EXTRA_PERSON_ID	  			= "com.squint.data.person.ID";
-	public static final String 			EXTRA_PERSON_NAME			= "com.squint.data.person.NAME";
-	public static final String 			EXTRA_PERSON_INSTITUTION	= "com.squint.data.person.INSTITUTION";
-	public static final String 			EXTRA_PERSON_EMAIL			= "com.squint.data.person.EMAIL";
-	public static final String 			EXTRA_PERSON_LINK			= "com.squint.data.person.LINK";
-    public static final String 			EXTRA_PERSON_CHATSTATUS		= "com.squint.data.person.CHATSTATUS";
-    public static final String 			EXTRA_PERSON_EMAILSTATUS	= "com.squint.data.person.EMAILSTATUS";
-    public static final String 			EXTRA_PERSON_ISUSER		    = "com.squint.data.person.ISUSER";
+	public static final String 			ACTION_POST_SELECT 		= "com.cmenvi.action.post.select";
+	public static final String 			EXTRA_POST_ID	  		= "com.cmenvi.data.post.ID";
+	public static final String 			EXTRA_POST_NAME			= "com.cmenvi.data.post.NAME";
+	public static final String 			EXTRA_POST_ATTACHMENT	= "com.cmenvi.data.post.ATTACHMENT";
+	public static final String 			EXTRA_POST_AUTHORNAME	= "com.cmenvi.data.post.AUTHORNAME";
+	public static final String 			EXTRA_POST_CONTENT		= "com.cmenvi.data.post.CONTENT";
+	public static final String 			EXTRA_POST_IMAGE	    = "com.cmenvi.data.post.IMAGE";
+	public static final String 			EXTRA_POST_CREATEDAT	= "com.cmenvi.data.post.CREATEDAT";
+	public static final String 			EXTRA_POST_DATE		    = "com.cmenvi.data.post.DATE";
+
+	private Context 					context;
+	private SimpleDateFormat 			sdf;
+	private List<ParseObject>	 		data;
 
 	
 	private IntentFilter			filter	 = null;  
     private BroadcastReceiver 		receiver = null;
-    
-	private TextView mAuthor;
-	private TextView mInstitution;
-	private TextView mEmail;
-	private TextView mLink;
-	private TextView mMessage;
 
-    public String conv_objid;
-    public int chat_status;
-    public int email_status;
-    private String email;
-	
+	private TextView mAuthorname;
+	private TextView mCreatedAt;
+	private TextView mContent;
+	private ImageView mImage;
+
+    public String post_objid;
+
 	// ParseObject
-    public ParseUser                      personuser;
-	private ParseObject					  mPerson = null;
-	private String						  oId;
-	private PeopleDAO					  mPeopleDAO;
+    public ParseUser                    personuser;
+	private ParseObject					mPost;
+	private String						oId;
+	private PostDAO						mPostDAO;
+	private CommentDAO					mCommentDAO;
 	// List
-	private TalkDAO 					  mTalkDAO;
-	private PosterDAO 					  mPosterDAO;
-	private AttachmentDAO 				  mAttachmentDAO;
-	public static List<ParseObject> 	  mTalkData;
-	public static List<ParseObject> 	  mPosterData;
-	public static List<ParseObject> 	  mAttachmentData;
-	
-	public static PersonalTalkAdapter	  mTalkAdapter;
-	public static PersonalPosterAdapter	  mPosterAdapter;
-	public static PersonalAbstractAdapter mAttachmentAdapter;
-	
-	public ListView 					  mList;
-	private Button 						  mTalk;
-	private Button 						  mPoster;
-	private Button 						  mAttachment;
+	public static List<ParseObject> 	  mData;
 
-	
+	public static CommentAdapter mAdapter;
+	public static Context mContext;
+
+	public ListView 					  mList;
+	private Button 						  mSendComment;
+	public ArrayList<String> searcharray;
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.details_people);
+		setContentView(R.layout.details_post);
 		// Header Configuration
-		mTitle.setText(getString(R.string.title_people));
+		mTitle.setText(getString(R.string.title_timeline));
 		configOptions(OPTION_BACK, OPTION_NONE);
-		
-		
+        Log.d(TAG, "onCreate");
+
 		Intent intent 	= getIntent();
-		oId	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_ID);
-		email 		            = intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_EMAIL);
-		final String link 	= intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_LINK);
-        chat_status             = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_CHATSTATUS);
-        email_status            = intent.getExtras().getInt(PeopleAdapter.EXTRA_PERSON_EMAILSTATUS);
-
+		oId	= intent.getStringExtra(PostAdapter.EXTRA_POST_ID);
 		// Retrieve the person data
-		//mPeopleDAO = new PeopleDAO(this, oid);	
-		
-		// Switcher, List, and its data
+		mAuthorname 	= (TextView)findViewById(R.id.author_name);
+		mCreatedAt		= (TextView)findViewById(R.id.createdAt);
+		mContent 		= (TextView)findViewById(R.id.content);
+		mImage	 		= (ImageView)findViewById(R.id.image);
 
-		mTalkData	= new ArrayList<ParseObject>();
-		mPosterData	= new ArrayList<ParseObject>();	
-		mAttachmentData = new ArrayList<ParseObject>();
-		mTalk = (Button)findViewById(R.id.switch_talk);
-		mPoster = (Button)findViewById(R.id.switch_poster);
-		mAttachment = (Button)findViewById(R.id.switch_attachment);
-		mTalk.setOnClickListener(this);
-		mPoster.setOnClickListener(this);
-		mAttachment.setOnClickListener(this);
+		mAuthorname.setText(intent.getStringExtra(PostAdapter.EXTRA_POST_AUTHORNAME));
+		mCreatedAt.setText(intent.getStringExtra(PostAdapter.EXTRA_POST_CREATEDAT));
+		mContent.setText(intent.getStringExtra(PostAdapter.EXTRA_POST_CONTENT));
+		BitmapManager.INSTANCE.loadBitmap(intent.getStringExtra(PostAdapter.EXTRA_POST_IMAGE), mImage, 0, 0);
+
+		mPostDAO = new PostDAO(this, oId);
+		mPost = mPostDAO.getPostData();
+		mData	= new ArrayList<ParseObject>();
+//		mCommentDAO = new CommentDAO(this, mPost);
+		mCommentDAO = new CommentDAO(mContext, searcharray);
+
 		mList = (ListView)findViewById(android.R.id.list);
 		mList.setEmptyView(findViewById(android.R.id.empty));
-		
-		mTalkAdapter = new PersonalTalkAdapter(this, mTalkData);
-		mPosterAdapter = new PersonalPosterAdapter(this, mPosterData);
-		mAttachmentAdapter = new PersonalAbstractAdapter(this, mAttachmentData);
-		onClick(mTalk);		
-	
-		mInstitution 	= (TextView)findViewById(R.id.institution);
-		mAuthor	 		= (TextView)findViewById(R.id.author);
-		mLink 			= (TextView)findViewById(R.id.link);
-		mMessage 		= (TextView)findViewById(R.id.message);
-		mEmail			= (TextView)findViewById(R.id.email);
-		
-		mAuthor.setText(intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_NAME));
-		mInstitution.setText(intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_INSTITUTION));
 
-        if (link.length()<=1)
-        {
-            //no valid website
-            mLink.setTextColor(getResources().getColor(R.color.button_title));
-        }
-        else
-        {
-            mLink.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (link != null && !link.isEmpty()) getSite(link);
-                }
-            });
-        }
+		mAdapter = new CommentAdapter(this, mData);
 
-        //set up email stuff
-        checkSelfPriv();
-        //set up chat stuff
-        checkIsUser();
+		mList.setAdapter(mAdapter);
 
+		mSendComment = (Button)findViewById(R.id.sendcomment);
 	}
 	
 
 	@Override  
     public void onResume() {
+        Log.d(TAG, "onResume");
         super.onResume();
-        
-        if (receiver == null) receiver = new IntentReceiver();  
+
+        if (receiver == null) receiver = new IntentReceiver();
         registerReceiver(receiver, getIntentFilter());
         Log.d(TAG, "onResume");
         if (oId == null) return;
-        if (mPerson != null) {
-        	Log.d(TAG, "Refresh: " + mPerson.getObjectId());
-	        mTalkDAO.refresh();		// = new TalkDAO(this, mPerson);
-			mPosterDAO.refresh();	// = new PosterDAO(this, mPerson);
-			mAttachmentDAO.refresh();	// = new AttachmentDAO(this, mPerson);
+        if (mPost != null) {
+            Log.d(TAG, "Refresh: " + mPost.getObjectId());
+            mCommentDAO.refresh();		// = new CommentDAO(this, mPerson);
         } else {
-        	if (mPeopleDAO == null) mPeopleDAO = new PeopleDAO(this, oId);
-        	else mPeopleDAO.refresh(oId);
+            if (mPostDAO == null) mPostDAO = new PostDAO(this, oId);
+            else mPostDAO.refresh(oId);
         }
     }
 	
 	@Override  
-    public void onPause() {  
-        super.onPause();  
+    public void onPause() {
+        Log.d(TAG, "onPause");
+        super.onPause();
         unregisterReceiver(receiver);
     }
 	
-	private void sendEmail(String title, String content, String[] emails, Uri imageUri) throws IOException {
-		
-	    Intent emailIntent = new Intent();
-	    emailIntent.setAction(Intent.ACTION_SEND);
-    	emailIntent.setType("application/image");
-	    if (imageUri != null) {
-	    	emailIntent.putExtra(Intent.EXTRA_STREAM, imageUri);	   
-	    }
-	    
-	    Intent openInChooser = Intent.createChooser(emailIntent, "Share");
-	    
-	    // Extract all package labels
-	    PackageManager pm = getPackageManager();
-	    
-	    Intent sendIntent = new Intent(Intent.ACTION_SEND);     
-	    sendIntent.setType("text/plain");
-	    
-	    List<ResolveInfo> resInfo = pm.queryIntentActivities(sendIntent, 0);
-	    List<LabeledIntent> intentList = new ArrayList<LabeledIntent>();
-	    
-	    for (int i = 0; i < resInfo.size(); i++) {
-	        ResolveInfo ri = resInfo.get(i);
-	        String packageName = ri.activityInfo.packageName;		        
-	        Log.d(TAG, "package: " + packageName);
-	        // Append and repackage the packages we want into a LabeledIntent
-	        if(packageName.contains("android.email")) {
-	            emailIntent.setPackage(packageName);
-	        } else if (packageName.contains("android.gm")) 	{		
-	            Intent intent = new Intent();
-	            intent.setComponent(new ComponentName(packageName, ri.activityInfo.name));
-	            intent.setAction(Intent.ACTION_SEND);
-	            intent.setType("text/plain");
-	            intent.putExtra(Intent.EXTRA_EMAIL,  emails);
-				intent.putExtra(Intent.EXTRA_SUBJECT, title);
-				intent.putExtra(Intent.EXTRA_TEXT, content);
-				if (imageUri != null) {
-					intent.setType("message/rfc822");
-					intent.putExtra(Intent.EXTRA_STREAM, imageUri);	
-				}
-	            intentList.add(new LabeledIntent(intent, packageName, ri.loadLabel(pm), ri.icon));
-	        }
-	    }
-	    // convert intentList to array
-	    LabeledIntent[] extraIntents = intentList.toArray( new LabeledIntent[ intentList.size() ]);
-
-	    openInChooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents);
-	    startActivity(openInChooser);
-	    
-	}
-	
-    private void getSite(String url) {
-        Intent ie = new Intent(Intent.ACTION_VIEW,Uri.parse(url));
-        startActivity(ie);
-    }
-    
-    private void getConversation(String fromId, String toId) {
-    	Log.d(TAG, fromId + " wants to talk with " + toId);
-    	/* TODO
-    	 * 1) Put extra values about device user id and another person id
-    	 * 2) Redefine target Class
-    	 */
-    	//Intent intent = new Intent(ACTION_TALK);
-    	//intent.putExtra(EXTRA_FROM_USER, fromId);
-    	//intent.putExtra(EXTRA_TO_USER, toId);
-    	//toPage(intent, ConversationActivity.class);
-
-
-    }
-    
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.opt_left:
 			onBackPressed();
 			break;
-		case R.id.switch_talk:
-			mList.setAdapter(mTalkAdapter);
-			mTalk.setSelected(true);
-			mPoster.setSelected(false);
-			mAttachment.setSelected(false);
-			mTalk.setEnabled(false);
-			mPoster.setEnabled(true);
-			mAttachment.setEnabled(true);
-			break;
-		case R.id.switch_poster:
-			mList.setAdapter(mPosterAdapter);
-			mTalk.setSelected(false);
-			mPoster.setSelected(true);
-			mAttachment.setSelected(false);
-			mTalk.setEnabled(true);
-			mPoster.setEnabled(false);
-			mAttachment.setEnabled(true);
-			break;
-		case R.id.switch_attachment:
-			mList.setAdapter(mAttachmentAdapter);
-			mTalk.setSelected(false);
-			mPoster.setSelected(false);
-			mAttachment.setSelected(true);
-			mTalk.setEnabled(true);
-			mPoster.setEnabled(true);
-			mAttachment.setEnabled(false);
-			break;
 		}
 		
 	}
 	
-	private IntentFilter getIntentFilter() {  
+	private IntentFilter getIntentFilter() {
+        Log.d(TAG, "getIntentFilte");
         if (filter == null) {  
         	filter = new IntentFilter();  
-        	filter.addAction(TalkDAO.ACTION_LOAD_DATA);
-        	filter.addAction(PosterDAO.ACTION_LOAD_DATA);
-        	filter.addAction(AttachmentDAO.ACTION_LOAD_DATA);
-        	filter.addAction(PeopleDAO.ACTION_QUERY_DATA);
-        	filter.addAction(TalkDetailsActivity.ACTION_SELECT);
-        	filter.addAction(PosterDetailsActivity.ACTION_SELECT);
-        	filter.addAction(AttachmentDetailsActivity.ACTION_SELECT);
-        }  
+        	filter.addAction(CommentDAO.ACTION_LOAD_DATA);
+            filter.addAction(CommentAdapter.ACTION_COMMENT_SELECT);
+        }
         return filter;
     }
 	
-	class IntentReceiver extends BroadcastReceiver {		  
+	class IntentReceiver extends BroadcastReceiver {
         @Override  
         public void onReceive(Context context, Intent intent) {
         	Log.d(TAG, "onReceive");	
-        	String action = intent.getAction(); 
-        	if (action.equals(PeopleDAO.ACTION_QUERY_DATA)) {
-            	mPerson = mPeopleDAO.getPersonData();
-        		mTalkDAO = new TalkDAO(context, mPerson);
-        		mPosterDAO = new PosterDAO(context, mPerson);
-        		mAttachmentDAO = new AttachmentDAO(context, mPerson);
-        		
-            } else if (action.equals(TalkDAO.ACTION_LOAD_DATA)) {
+        	String action = intent.getAction();
+            if (action.equals(CommentDAO.ACTION_LOAD_DATA)) {
             	//mTalkData.clear();
             	//mTalkData.addAll(mTalkDAO.getData());
             	try {
-	            	mTalkData = mTalkDAO.getData();
-	            	mTalkAdapter.update(mTalkData);
-            	} catch (Exception e) { Log.d(TAG, "Talk data is null!"); }
-            } else if (action.equals(PosterDAO.ACTION_LOAD_DATA)) {
-            	//mPosterData.clear();
-            	//mPosterData.addAll(mPosterDAO.getData());
-            	try {
-            	mPosterData = mPosterDAO.getData();
-            	mPosterAdapter.update(mPosterData);
-            	} catch (Exception e) { Log.d(TAG, "Poster data is null!"); }
-            } else if (action.equals(AttachmentDAO.ACTION_LOAD_DATA)) {
-            	//mAttachmentData.clear();
-            	//mAttachmentData.addAll(mAttachmentDAO.getData());
-            	try {
-            	mAttachmentData = mAttachmentDAO.getData();
-            	mAttachmentAdapter.update(mAttachmentData);
-            	} catch (Exception e) { Log.d(TAG, "Attachment data is null!"); }
-            } else if (action.equals(TalkDetailsActivity.ACTION_SELECT)) {
-            	toPage(intent, TalkDetailsActivity.class);
-
-            } else if (action.equals(PosterDetailsActivity.ACTION_SELECT)) {
-            	toPage(intent, PosterDetailsActivity.class);
-            	
-            } else if (action.equals(AttachmentDetailsActivity.ACTION_SELECT)) {
-            	toPage(intent, AttachmentDetailsActivity.class);
-            	
-            }       
+	            	mData = mCommentDAO.getData();
+	            	mAdapter.update(mData);
+            	} catch (Exception e) { Log.d(TAG, "Comment data is null!"); }
+            }
         }  
     }
 
-    public void checkIsUser()
+/*    public void checkIsUser()
     {
         //check if target person is user
         ParseQuery<ParseObject> personquery = ParseQuery.getQuery("Person");
@@ -498,65 +324,56 @@ public class PostDetailsActivity extends BaseActivity {
 
         ParseQuery<ParseObject> mainQuery = ParseQuery.or(queries);
         mainQuery.getFirstInBackground(new GetCallback<ParseObject>() {
-            @Override
-            public void done(ParseObject object, final ParseException e) {
-                if (e == null) {
+			@Override
+			public void done(ParseObject object, final ParseException e) {
+				if (e == null) {
 
-                    //found existing conversation
-                    conv_objid = object.getObjectId();
-                    goChat(conv_objid);
-                }
-                else
-                {
-                    Log.d(TAG, "conversation search error: "+e);
-                    if (e.getMessage().equals("no results found for query"))
-                    {
-                        //no existing conversation, create new
-                        ParseObject new_conv = new ParseObject("Conversation");
-                        new_conv.put("last_msg", "no messages yet");
-                        Date date = new Date();
-                        new_conv.put("last_time", date);
-                        new_conv.put("user_a_unread", 0);
-                        new_conv.put("user_b_unread", 0);
-                        new_conv.put("user_a", currentUser);
-                        new_conv.put("user_b", theguy);
-                        new_conv.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(ParseException ee) {
-                                if (ee==null)
-                                {
-                                    //new conversation created, get the id
-                                    ParseQuery<ParseObject> newconvquery = ParseQuery.getQuery("Conversation");
-                                    newconvquery.whereEqualTo("user_a", currentUser);
-                                    newconvquery.whereEqualTo("user_b", theguy);
-                                    newconvquery.getFirstInBackground(new GetCallback<ParseObject>() {
-                                        @Override
-                                        public void done(ParseObject object, ParseException eee) {
-                                            if (eee == null)
-                                            {
-                                                //retrieved the newly created conv
-                                                conv_objid = object.getObjectId();
-                                                goChat(conv_objid);
-                                            }
-                                            else
-                                            {
-                                                //something went wrong with fetching the new conv
-                                                Log.d(TAG, "conversation fetch error");
-                                            }
-                                        }
-                                    });
-                                }
-                                else
-                                {
-                                    //something went wrong creating the conversation
-                                    Log.d(TAG, "conversation create error");
-                                }
-                            }
-                        });
-                    }
-                }
-            }
-        });
-    }
-	
+					//found existing conversation
+					conv_objid = object.getObjectId();
+					goChat(conv_objid);
+				} else {
+					Log.d(TAG, "conversation search error: " + e);
+					if (e.getMessage().equals("no results found for query")) {
+						//no existing conversation, create new
+						ParseObject new_conv = new ParseObject("Conversation");
+						new_conv.put("last_msg", "no messages yet");
+						Date date = new Date();
+						new_conv.put("last_time", date);
+						new_conv.put("user_a_unread", 0);
+						new_conv.put("user_b_unread", 0);
+						new_conv.put("user_a", currentUser);
+						new_conv.put("user_b", theguy);
+						new_conv.saveInBackground(new SaveCallback() {
+							@Override
+							public void done(ParseException ee) {
+								if (ee == null) {
+									//new conversation created, get the id
+									ParseQuery<ParseObject> newconvquery = ParseQuery.getQuery("Conversation");
+									newconvquery.whereEqualTo("user_a", currentUser);
+									newconvquery.whereEqualTo("user_b", theguy);
+									newconvquery.getFirstInBackground(new GetCallback<ParseObject>() {
+										@Override
+										public void done(ParseObject object, ParseException eee) {
+											if (eee == null) {
+												//retrieved the newly created conv
+												conv_objid = object.getObjectId();
+												goChat(conv_objid);
+											} else {
+												//something went wrong with fetching the new conv
+												Log.d(TAG, "conversation fetch error");
+											}
+										}
+									});
+								} else {
+									//something went wrong creating the conversation
+									Log.d(TAG, "conversation create error");
+								}
+							}
+						});
+					}
+				}
+			}
+		});
+    }*/
+
 }

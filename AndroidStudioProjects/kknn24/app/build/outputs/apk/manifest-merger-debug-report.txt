@@ -205,7 +205,7 @@ ADDED from AndroidManifest.xml:95:9
 		ADDED from AndroidManifest.xml:96:13
 	android:launchMode
 		ADDED from AndroidManifest.xml:98:13
-activity#com.cmenvi.app.ConversationActivity
+activity#com.cmenvi.app.PostDetailsActivity
 ADDED from AndroidManifest.xml:101:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:105:13
@@ -215,105 +215,115 @@ ADDED from AndroidManifest.xml:101:9
 		ADDED from AndroidManifest.xml:102:13
 	android:launchMode
 		ADDED from AndroidManifest.xml:104:13
-activity#com.cmenvi.app.ChatActivity
+activity#com.cmenvi.app.ConversationActivity
 ADDED from AndroidManifest.xml:107:9
-	android:label
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:111:13
+	android:configChanges
 		ADDED from AndroidManifest.xml:109:13
-	android:parentActivityName
-		ADDED from AndroidManifest.xml:110:13
 	android:name
 		ADDED from AndroidManifest.xml:108:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:110:13
+activity#com.cmenvi.app.ChatActivity
+ADDED from AndroidManifest.xml:113:9
+	android:label
+		ADDED from AndroidManifest.xml:115:13
+	android:parentActivityName
+		ADDED from AndroidManifest.xml:116:13
+	android:name
+		ADDED from AndroidManifest.xml:114:13
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from AndroidManifest.xml:111:13
+ADDED from AndroidManifest.xml:117:13
 	android:name
-		ADDED from AndroidManifest.xml:112:17
+		ADDED from AndroidManifest.xml:118:17
 	android:value
-		ADDED from AndroidManifest.xml:113:17
+		ADDED from AndroidManifest.xml:119:17
 service#com.parse.PushService
-ADDED from AndroidManifest.xml:116:9
+ADDED from AndroidManifest.xml:122:9
 	android:name
-		ADDED from AndroidManifest.xml:116:18
+		ADDED from AndroidManifest.xml:122:18
 receiver#com.parse.ParseBroadcastReceiver
-ADDED from AndroidManifest.xml:118:9
-	android:name
-		ADDED from AndroidManifest.xml:118:19
-intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT
-ADDED from AndroidManifest.xml:119:13
-action#android.intent.action.BOOT_COMPLETED
-ADDED from AndroidManifest.xml:120:17
-	android:name
-		ADDED from AndroidManifest.xml:120:25
-action#android.intent.action.USER_PRESENT
-ADDED from AndroidManifest.xml:121:17
-	android:name
-		ADDED from AndroidManifest.xml:121:25
-receiver#com.parse.GcmBroadcastReceiver
 ADDED from AndroidManifest.xml:124:9
+	android:name
+		ADDED from AndroidManifest.xml:124:19
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT
+ADDED from AndroidManifest.xml:125:13
+action#android.intent.action.BOOT_COMPLETED
+ADDED from AndroidManifest.xml:126:17
+	android:name
+		ADDED from AndroidManifest.xml:126:25
+action#android.intent.action.USER_PRESENT
+ADDED from AndroidManifest.xml:127:17
+	android:name
+		ADDED from AndroidManifest.xml:127:25
+receiver#com.parse.GcmBroadcastReceiver
+ADDED from AndroidManifest.xml:130:9
 	android:permission
-		ADDED from AndroidManifest.xml:126:13
+		ADDED from AndroidManifest.xml:132:13
 	android:name
-		ADDED from AndroidManifest.xml:125:13
+		ADDED from AndroidManifest.xml:131:13
 intent-filter#com.cmenvi.app+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
-ADDED from AndroidManifest.xml:127:13
+ADDED from AndroidManifest.xml:133:13
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from AndroidManifest.xml:128:17
+ADDED from AndroidManifest.xml:134:17
 	android:name
-		ADDED from AndroidManifest.xml:128:25
+		ADDED from AndroidManifest.xml:134:25
 action#com.google.android.c2dm.intent.REGISTRATION
-ADDED from AndroidManifest.xml:129:17
+ADDED from AndroidManifest.xml:135:17
 	android:name
-		ADDED from AndroidManifest.xml:129:25
+		ADDED from AndroidManifest.xml:135:25
 category#com.cmenvi.app
-ADDED from AndroidManifest.xml:131:17
+ADDED from AndroidManifest.xml:137:17
 	android:name
-		ADDED from AndroidManifest.xml:131:27
+		ADDED from AndroidManifest.xml:137:27
 receiver#com.cmenvi.app.ChatReceiver
-ADDED from AndroidManifest.xml:134:9
+ADDED from AndroidManifest.xml:140:9
 	android:exported
-		ADDED from AndroidManifest.xml:136:13
+		ADDED from AndroidManifest.xml:142:13
 	android:name
-		ADDED from AndroidManifest.xml:135:13
+		ADDED from AndroidManifest.xml:141:13
 intent-filter#com.parse.push.intent.DELETE+com.parse.push.intent.OPEN+com.parse.push.intent.RECEIVE
-ADDED from AndroidManifest.xml:137:13
+ADDED from AndroidManifest.xml:143:13
 action#com.parse.push.intent.RECEIVE
-ADDED from AndroidManifest.xml:138:17
+ADDED from AndroidManifest.xml:144:17
 	android:name
-		ADDED from AndroidManifest.xml:138:25
+		ADDED from AndroidManifest.xml:144:25
 action#com.parse.push.intent.DELETE
-ADDED from AndroidManifest.xml:139:17
+ADDED from AndroidManifest.xml:145:17
 	android:name
-		ADDED from AndroidManifest.xml:139:25
+		ADDED from AndroidManifest.xml:145:25
 action#com.parse.push.intent.OPEN
-ADDED from AndroidManifest.xml:140:17
+ADDED from AndroidManifest.xml:146:17
 	android:name
-		ADDED from AndroidManifest.xml:140:25
+		ADDED from AndroidManifest.xml:146:25
 activity#com.cmenvi.app.UserPreferenceActivity
-ADDED from AndroidManifest.xml:144:9
+ADDED from AndroidManifest.xml:150:9
 	android:label
-		ADDED from AndroidManifest.xml:146:13
+		ADDED from AndroidManifest.xml:152:13
 	android:name
-		ADDED from AndroidManifest.xml:145:13
+		ADDED from AndroidManifest.xml:151:13
 activity#com.cmenvi.app.DiscussionActivity
-ADDED from AndroidManifest.xml:148:9
+ADDED from AndroidManifest.xml:154:9
 	android:label
-		ADDED from AndroidManifest.xml:150:13
+		ADDED from AndroidManifest.xml:156:13
 	android:name
-		ADDED from AndroidManifest.xml:149:13
+		ADDED from AndroidManifest.xml:155:13
 activity#com.cmenvi.app.UploadCareerActivity
-ADDED from AndroidManifest.xml:152:9
+ADDED from AndroidManifest.xml:158:9
 	android:label
-		ADDED from AndroidManifest.xml:154:13
+		ADDED from AndroidManifest.xml:160:13
 	android:name
-		ADDED from AndroidManifest.xml:153:13
+		ADDED from AndroidManifest.xml:159:13
 activity#com.cmenvi.app.UserAttendeeActivity
-ADDED from AndroidManifest.xml:156:9
-	android:label
-		ADDED from AndroidManifest.xml:158:13
-	android:name
-		ADDED from AndroidManifest.xml:157:13
-meta-data#com.parse.push.notification_icon
 ADDED from AndroidManifest.xml:162:9
-	android:resource
-		ADDED from AndroidManifest.xml:162:68
+	android:label
+		ADDED from AndroidManifest.xml:164:13
 	android:name
-		ADDED from AndroidManifest.xml:162:20
+		ADDED from AndroidManifest.xml:163:13
+meta-data#com.parse.push.notification_icon
+ADDED from AndroidManifest.xml:168:9
+	android:resource
+		ADDED from AndroidManifest.xml:168:68
+	android:name
+		ADDED from AndroidManifest.xml:168:20

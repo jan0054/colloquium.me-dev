@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -22,8 +23,10 @@ import java.util.TimeZone;
 public class PostDAO {
     public static final String 	TAG 						= PostDAO.class.getSimpleName();
     public static final String 	ACTION_LOAD_DATA		 	= "action.load.data.post";
+    public static final String 	ACTION_QUERY_DATA		 	= "action.query.data.post";
     public static final String 	DATA						= "data.post";
     // Column Name
+    public static String        OBJECTID                    = "objectId";
     public static String		NAME						= "name";
     public static String        ATTACHMENT                  = "attachment"; // (parseObject - attachment)
     public static String		AUTHOR						= "author";     // (parseObject - user)
@@ -36,8 +39,8 @@ public class PostDAO {
     public static String		UPDATEDAT					= "updatedAt";	// Date
 
     private Context mContext;
-    private ParseObject mUser;
     private List<ParseObject> mData;
+    private ParseObject mObject;
 
     public ArrayList<String> search_array;
 
@@ -45,36 +48,23 @@ public class PostDAO {
         mContext = context;
         mData = new ArrayList<ParseObject>();
         search_array = searcharray;
-        query(null);
+        loadData();
     }
 
-    public PostDAO(Context context, ParseObject object) {
+    public PostDAO(Context context, String objectId) {
         mContext = context;
-        mUser = object;
-        mData = new ArrayList<ParseObject>();
-        query(mUser);
+        query(objectId);
     }
 
-
-    private void query(ParseObject object) {
+//    private void query(ParseObject object) {
+    private void query(String objectId) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_POST);
-        query.orderByAscending(NAME);
-        //query.setLimit(ITEM_LIMIT);
-        if (object != null) query.whereEqualTo(NAME, object);
-        if (search_array != null && search_array.size()>0)
-        {
-            query.whereContainsAll("words", search_array);
-        }
-        query.include(NAME);
-        query.include(AUTHORNAME);
-        query.include(CONTENT);
-        query.include(IMAGE);
-        query.include(CREATEDAT);
-        query.include(COMMENTS);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, ParseException e) {
+        query.orderByDescending(CREATEDAT);
+        if (objectId != null) query.whereEqualTo(OBJECTID, objectId);
+        query.getInBackground(objectId, new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
                 if (e == null) {
-                    onReceived(objects);
+                    onReceived(object);
 
                 } else {
                     Log.d(TAG, "Error Data: " + e.getMessage());
@@ -86,13 +76,9 @@ public class PostDAO {
 
     private void loadData() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_POST);
-        query.orderByAscending(CREATEDAT);
+        query.orderByDescending(CREATEDAT);
         query.whereNotEqualTo("debug", 1);
         query.setLimit(500);
-        if (search_array != null && search_array.size()>0)
-        {
-            query.whereContainsAll("words", search_array);
-        }
         //query.whereNear(key, point);
         //query.whereContains(key, substring);
         //String[] names = {"userid"};
@@ -110,12 +96,16 @@ public class PostDAO {
         });
     }
 
-    public void refresh() {
-        query(mUser);
+    public void refresh(String objectId) {
+        query(objectId);
     }
 
     public List<ParseObject> getData() {
         return mData;
+    }
+
+    public ParseObject getPostData() {
+        return mObject;
     }
 
     // Send intent as callback for finished tasks
@@ -129,6 +119,18 @@ public class PostDAO {
             mData = objects;
             Intent intent = new Intent(ACTION_LOAD_DATA);
             if (objects.size() > 0) intent.putExtra(DATA, mData.get(0).getObjectId());
+            mContext.sendBroadcast(intent);
+        }
+    }
+
+    private void onReceived(ParseObject object) {
+        if (object == null) {
+            onFailed(_ERROR.PARSE_ERROR.ERROR_GET_POST);
+            return;
+        } else {
+            mObject = object;
+            Intent intent = new Intent(ACTION_QUERY_DATA);
+            intent.putExtra(DATA, mObject.getObjectId());
             mContext.sendBroadcast(intent);
         }
     }

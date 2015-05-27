@@ -100,6 +100,12 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="com.cmenvi.app.PostDetailsActivity"
+            android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="com.cmenvi.app.ConversationActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"

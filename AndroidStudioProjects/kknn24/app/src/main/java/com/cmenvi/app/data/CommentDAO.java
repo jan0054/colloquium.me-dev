@@ -29,12 +29,12 @@ public class CommentDAO {
     public static String		UPDATEDAT					= "updatedAt";	// Date
 
     private Context mContext;
-    private ParseObject mUser;
+    private ParseObject mPost;
     private List<ParseObject> mData;
 
     public ArrayList<String> search_array;
 
-    public CommentDAO(Context context, ArrayList<String> searcharray, int talkday) {
+    public CommentDAO(Context context, ArrayList<String> searcharray) {
         mContext = context;
         mData = new ArrayList<ParseObject>();
         search_array = searcharray;
@@ -43,29 +43,22 @@ public class CommentDAO {
 
     public CommentDAO(Context context, ParseObject object) {
         mContext = context;
-        mUser = object;
+        mPost = object;
         mData = new ArrayList<ParseObject>();
-        query(mUser);
+        query(mPost);
     }
 
 
     private void query(ParseObject object) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_COMMENT);
-        query.orderByAscending(CREATEDAT);
+        //query.orderByDescending(CREATEDAT);
         //query.setLimit(ITEM_LIMIT);
         if (object != null) query.whereEqualTo(POST, object);
-        if (search_array != null && search_array.size()>0)
-        {
-            query.whereContainsAll("words", search_array);
-        }
-        query.include(AUTHORNAME);
-        query.include(CONTENT);
-        query.include(CREATEDAT);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
                     onReceived(objects);
-
+                    Log.d(TAG, "Get comments " + objects.size());
                 } else {
                     Log.d(TAG, "Error Data: " + e.getMessage());
                     onFailed(_ERROR.PARSE_ERROR.ERROR_GET_COMMENT);
@@ -75,7 +68,7 @@ public class CommentDAO {
     }
 
     public void refresh() {
-        query(mUser);
+        query(mPost);
     }
 
     public List<ParseObject> getData() {
@@ -93,7 +86,6 @@ public class CommentDAO {
             mData = objects;
             Intent intent = new Intent(ACTION_LOAD_DATA);
             if (objects.size() > 0) intent.putExtra(DATA, mData.get(0).getObjectId());
-            mContext.sendBroadcast(intent);
         }
     }
 

@@ -59,35 +59,15 @@ public class TimelineFragment extends Fragment implements View.OnClickListener {
         searchinput = (EditText)v.findViewById(R.id.searchinput);
         dosearch = (Button)v.findViewById(R.id.dosearch);
         cancelsearch = (Button)v.findViewById(R.id.cancelsearch);
-        dosearch.setOnClickListener(this);
-        cancelsearch.setOnClickListener(this);
-        searchinput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {}
+        searchinput.setVisibility(View.GONE);
+        dosearch.setVisibility(View.GONE);
+        cancelsearch.setVisibility(View.GONE);
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
+        mAdapter = new PostAdapter(mContext, mData);
+        mList.setAdapter(mAdapter);
+        return v;
 
-            @Override
-            public void onTextChanged(CharSequence s, int start,
-                                      int before, int count) {
-                if(s.length() == 0)
-                {
-                    Log.d(TAG, "Backspaced to empty");
-                    searcharray.clear();
-                    mPostDAO = new PostDAO(mContext, searcharray);
-                    mList.setAdapter(mAdapter);
-                }
-            }
-        });
-
-		mAdapter = new PostAdapter(mContext, mData);
-		mList.setAdapter(mAdapter);	
-        return v;	
-        
-	}
+    }
 	
 	public static TimelineFragment newInstance(Context context) {
 		mContext = context;

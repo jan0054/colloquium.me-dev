@@ -143,20 +143,19 @@ public class PeopleDetailsActivity extends BaseActivity {
 		mAuthor.setText(intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_NAME));
 		mInstitution.setText(intent.getStringExtra(PeopleAdapter.EXTRA_PERSON_INSTITUTION));
 
-        if (link.length()<=1)
-        {
-            //no valid website
-            mLink.setTextColor(getResources().getColor(R.color.button_title));
-        }
-        else
-        {
-            mLink.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (link != null && !link.isEmpty()) getSite(link);
-                }
-            });
-        }
+		if(link != null) {
+			if (link.length() <= 1) {
+				//no valid website
+				mLink.setTextColor(getResources().getColor(R.color.button_title));
+			} else {
+				mLink.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						if (link != null && !link.isEmpty()) getSite(link);
+					}
+				});
+			}
+		}
 
         //set up email stuff
         checkSelfPriv();

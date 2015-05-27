@@ -10,7 +10,7 @@
 		android:layout_margin="0dp"
 		android:background="@drawable/list_item"
 		android:orientation="vertical" >
-		<LinearLayout android:layout_width="match_parent"
+		<!--LinearLayout android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="5dp"
 			android:layout_marginBottom="5dp"
@@ -33,19 +33,18 @@
 				android:textColor="@color/primary_text"
 				android:textSize="18sp"
 				android:textStyle="bold" />
-		</LinearLayout>
+		</LinearLayout-->
 		<LinearLayout android:id="@+id/header"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_alignLeft="@+id/name"
-			android:layout_alignRight="@+id/name"
-			android:layout_marginLeft="16dp"
-			android:layout_marginRight="16dp"
-			android:gravity="center"
-			android:weightSum="4"
-			android:orientation="horizontal"
-			android:layout_below="@+id/name"
-			android:layout_centerHorizontal="true">
+					  android:layout_width="match_parent"
+					  android:layout_height="wrap_content"
+					  android:layout_marginLeft="13dp"
+					  android:layout_marginRight="16dp"
+					  android:layout_marginTop="10dp"
+					  android:gravity="center"
+					  android:weightSum="4"
+					  android:orientation="horizontal"
+					  android:layout_below="@+id/name"
+					  android:layout_centerHorizontal="true">
 
 			<TextView
 				android:id="@+id/author_name"
@@ -90,6 +89,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_below="@+id/content"
+			android:layout_marginBottom="10dp"
 			android:contentDescription="@string/empty"
 			android:scaleType="centerCrop"
 			android:src="@drawable/poi_01" />
@@ -116,7 +116,7 @@
 		android:gravity="center"
 		android:textColor="@color/dark_accent"
 		android:textSize="18sp"
-		android:text="@string/list_empty" />
+		android:text="@string/list_empty"/>
 	<LinearLayout
 		android:id="@+id/footer"
 		android:layout_width="match_parent"
