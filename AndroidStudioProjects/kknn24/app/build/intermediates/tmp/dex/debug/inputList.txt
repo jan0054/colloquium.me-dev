@@ -1,8 +1,8 @@
-/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/classes/debug
-/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-d2a3509036fb54806364ae33645019c7a7580077.jar
-/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-375e78bc2328b5243a7a853eff1fd93b3c81d595.jar
-/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/classes-2f07e7fb21d5c5840e89b11e74edc77002fcd00d.jar
-/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-4c9cc50ab6919141e068014705fc7dd857aa2d0b.jar
-/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-127295ad9be7b872e5762105a979a433ce7da386.jar
-/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/classes-6e1a44c0c85e9b8797ccdbebd3deae5c872ecbb9.jar
-/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/build/intermediates/pre-dexed/debug/Parse-1.9.2-b1aa3f80d968b46ba6e329dfc0fb376aa44c1c2d.jar
+/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/classes/debug
+/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-6f8646c2af312a04c788bc9ce7017cd8ff710a2d.jar
+/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-375e78bc2328b5243a7a853eff1fd93b3c81d595.jar
+/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/debug/classes-60a889465a1d19f011dcded48dbc5e1ce01b2df2.jar
+/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-4c9cc50ab6919141e068014705fc7dd857aa2d0b.jar
+/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-9e82642fadfec0a5e7d5ace17855ca1c69bd6e08.jar
+/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/debug/classes-62bfe91d271a716b93019922b520824b9d6531f0.jar
+/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/debug/Parse-1.9.2-6ff5b8da4f1a06f15db7e75b4cc22d50ccb7dee6.jar

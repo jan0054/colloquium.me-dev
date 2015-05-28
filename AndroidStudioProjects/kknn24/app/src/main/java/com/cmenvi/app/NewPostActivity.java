@@ -98,17 +98,19 @@ public class NewPostActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (resultCode == RESULT_OK ) {
             ImageView imageView = (ImageView) findViewById(R.id.post_image);
             switch (requestCode) {
                 case PICK_IMAGE_REQUEST:
-                    Uri uri = data.getData();
-                    try {
-                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                        // Log.d(TAG, String.valueOf(bitmap));
-                        imageView.setImageBitmap(bitmap);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if( data != null && data.getData() != null) {
+                        Uri uri = data.getData();
+                        try {
+                            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                            // Log.d(TAG, String.valueOf(bitmap));
+                            imageView.setImageBitmap(bitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                     break;
                 case TAKE_PIC:
@@ -119,10 +121,6 @@ public class NewPostActivity extends BaseActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-//                    Bundle extras = data.getExtras();
-//                    bitmap = (Bitmap) extras.get("data");
-                    //載入ImageView
-//                    imageView.setImageBitmap(bitmap);
                     break;
                 default:
                     break;

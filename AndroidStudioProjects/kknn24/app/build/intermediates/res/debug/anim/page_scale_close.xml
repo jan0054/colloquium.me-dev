@@ -14,4 +14,4 @@
           android:toAlpha="0.5"
           android:duration="@android:integer/config_mediumAnimTime"/>
 
-</set><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/anim/page_scale_close.xml -->
+</set><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/anim/page_scale_close.xml -->
