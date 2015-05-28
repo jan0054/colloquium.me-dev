@@ -7,12 +7,15 @@
 //
 
 #import "TimelineDetailViewController.h"
+#import "CommentCellTableViewCell.h"
+#import "CommentParentCellTableViewCell.h"
 
 @interface TimelineDetailViewController ()
 
 @end
 
 NSMutableArray *comment_array;
+BOOL image_set;
 
 @implementation TimelineDetailViewController
 @synthesize post;
@@ -25,12 +28,21 @@ NSMutableArray *comment_array;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //init
     comment_array = [[NSMutableArray alloc] init];
+    if (image == nil)
+    {
+        image_set = NO;
+    }
+    else
+    {
+        image_set = YES;
+    }
+    self.comment_table.rowHeight = UITableViewAutomaticDimension;
+    self.comment_table.estimatedRowHeight = 320.0;
     
     //styling
-    [self fill_post_data];
-    [self get_comment_data];
     self.comment_table.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor background];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -38,8 +50,8 @@ NSMutableArray *comment_array;
     self.post_background.backgroundColor = [UIColor light_bg];
     self.author_label.textColor = [UIColor dark_txt];
     self.time_label.textColor = [UIColor secondary_text];
-    self.content_textview.textColor = [UIColor dark_txt];
-    self.content_textview.backgroundColor = [UIColor clearColor];
+    self.content_label.textColor = [UIColor dark_txt];
+    self.content_label.backgroundColor = [UIColor clearColor];
     self.input_background.backgroundColor = [UIColor light_bg];
     [self.post_comment_button setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
     [self.post_comment_button setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
@@ -49,31 +61,14 @@ NSMutableArray *comment_array;
     self.input_background.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
     self.input_background.layer.shadowOpacity = 0.3f;
     self.input_background.layer.shadowPath = shadowPath.CGPath;
-    UIBezierPath *shadowPath1 = [UIBezierPath bezierPathWithRect:self.post_background.bounds];
-    self.post_background.layer.masksToBounds = NO;
-    self.post_background.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.post_background.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
-    self.post_background.layer.shadowOpacity = 0.3f;
-    self.post_background.layer.shadowPath = shadowPath1.CGPath;
 
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    //[self.content_textview scrollRangeToVisible:NSMakeRange(0, 1)];
-    /*
-    self.bottom_scrollview.delegate = self;
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    CGSize size = self.bottom_scrollview.contentSize;
-    size.width = screenBounds.size.width;
-    NSLog(@"WIDTH:%f", screenBounds.size.width);
-    self.bottom_scrollview.contentSize = size;
-    self.bottom_scrollview.alwaysBounceHorizontal = NO;
-    [self.view setNeedsLayout];
-    [self.view setNeedsUpdateConstraints];
-    [self.view setNeedsDisplay];
-     */
+    [self fill_post_data];
+    [self get_comment_data];
 }
 
 - (void) viewDidLayoutSubviews
@@ -96,26 +91,8 @@ NSMutableArray *comment_array;
 
 - (void) fill_post_data {
     self.author_label.text = [NSString stringWithFormat:@"%@:", post_author_name];
-    self.content_textview.text = post_content;
+    self.content_label.text = post_content;
     self.time_label.text = post_time;
-    if (image != nil)
-    {
-        UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.post_image.bounds];
-        self.post_image.layer.masksToBounds = NO;
-        self.post_image.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.post_image.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
-        self.post_image.layer.shadowOpacity = 0.3f;
-        self.post_image.layer.shadowPath = shadowPath.CGPath;
-        
-    }
-    else
-    {
-        self.imageaspect.active = NO;
-        [self.view setNeedsLayout];
-        [self.view setNeedsUpdateConstraints];
-        [self.view setNeedsDisplay];
-    }
-    self.post_image.image = image;
 }
 
 - (void) get_comment_data {
@@ -169,15 +146,38 @@ NSMutableArray *comment_array;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return comment_array.count;
+    if (image_set == NO)
+    {
+        return comment_array.count;
+    }
+    else
+    {
+        return comment_array.count+1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CommentCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentcell"];
+    CommentParentCellTableViewCell *imagecell = [tableView dequeueReusableCellWithIdentifier:@"commentparentcell"];
+    
+    if (image_set == YES && indexPath.row == 0)
+    {
+        imagecell.post_image.image = image;
+        imagecell.post_image.clipsToBounds = YES;
+        return imagecell;
+    }
     
     //data source
-    PFObject *comment = [comment_array objectAtIndex:indexPath.row];
+    PFObject *comment = [PFObject alloc];
+    if (image_set == NO)
+    {
+        comment = [comment_array objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        comment = [comment_array objectAtIndex:indexPath.row-1];
+    }
     NSString *authorname = comment[@"author_name"];
     NSString *content = comment[@"content"];
     NSDate *time = comment.createdAt;
@@ -201,6 +201,5 @@ NSMutableArray *comment_array;
     
     return cell;
 }
-
 
 @end

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "UIColor+ProjectColors.h"
 #import <Parse/Parse.h>
-#import "CommentCellTableViewCell.h"
+
+
 
 @interface TimelineDetailViewController : UIViewController<UITextViewDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *post_background;
@@ -17,13 +18,10 @@
 @property (strong, nonatomic) IBOutlet UITableView *comment_table;
 @property (strong, nonatomic) IBOutlet UILabel *author_label;
 @property (strong, nonatomic) IBOutlet UILabel *time_label;
-@property (strong, nonatomic) IBOutlet UIImageView *post_image;
 @property (strong, nonatomic) IBOutlet UIButton *post_comment_button;
 - (IBAction)post_comment_button_tap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UITextField *comment_input;
-@property (strong, nonatomic) IBOutlet UITextView *content_textview;
-@property (strong, nonatomic) IBOutlet UIScrollView *bottom_scrollview;
-@property (strong, nonatomic) IBOutlet UIView *bottom_paddingview;
+@property (strong, nonatomic) IBOutlet UILabel *content_label;
 
 @property PFObject *post;
 @property NSString *post_id;
@@ -32,7 +30,5 @@
 @property NSString *post_time;
 @property PFUser *author;
 @property UIImage *image;
-
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageaspect;
 
 @end

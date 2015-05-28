@@ -54,6 +54,7 @@
 		B47DBB361B16FD2F0034A7AF /* camera64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47DBB351B16FD2F0034A7AF /* camera64@2x.png */; };
 		B47DBB381B1704800034A7AF /* camera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47DBB371B1704800034A7AF /* camera48@2x.png */; };
 		B47DBB3A1B1705B00034A7AF /* key_down48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47DBB391B1705B00034A7AF /* key_down48@2x.png */; };
+		B47DE9931B17185D00946CC6 /* CommentParentCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B47DE9921B17185D00946CC6 /* CommentParentCellTableViewCell.m */; };
 		B489AFA51A6FB97E00E42581 /* twitter1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489AFA31A6FB97E00E42581 /* twitter1@2x.png */; };
 		B489AFA61A6FB97E00E42581 /* twitter2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489AFA41A6FB97E00E42581 /* twitter2@2x.png */; };
 		B495C44619C9876A008D5D5F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B495C44519C9876A008D5D5F /* AboutViewController.m */; };
@@ -172,6 +173,8 @@
 		B47DBB351B16FD2F0034A7AF /* camera64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera64@2x.png"; sourceTree = "<group>"; };
 		B47DBB371B1704800034A7AF /* camera48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera48@2x.png"; sourceTree = "<group>"; };
 		B47DBB391B1705B00034A7AF /* key_down48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_down48@2x.png"; sourceTree = "<group>"; };
+		B47DE9911B17185D00946CC6 /* CommentParentCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentParentCellTableViewCell.h; sourceTree = "<group>"; };
+		B47DE9921B17185D00946CC6 /* CommentParentCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentParentCellTableViewCell.m; sourceTree = "<group>"; };
 		B489AFA31A6FB97E00E42581 /* twitter1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter1@2x.png"; sourceTree = "<group>"; };
 		B489AFA41A6FB97E00E42581 /* twitter2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter2@2x.png"; sourceTree = "<group>"; };
 		B495C44419C9876A008D5D5F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -503,6 +506,8 @@
 				B469AF771B13264200186022 /* PostCellTableViewCell.m */,
 				B469AF791B13265400186022 /* CommentCellTableViewCell.h */,
 				B469AF7A1B13265400186022 /* CommentCellTableViewCell.m */,
+				B47DE9911B17185D00946CC6 /* CommentParentCellTableViewCell.h */,
+				B47DE9921B17185D00946CC6 /* CommentParentCellTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -720,6 +725,7 @@
 				B43900161B0B2C2D006FF07D /* TimelineDetailViewController.m in Sources */,
 				B4D230F219EE5F84006FC2A6 /* ChatYouCellTableViewCell.m in Sources */,
 				B499BD131905186300C99CFE /* VenueCellTableViewCell.m in Sources */,
+				B47DE9931B17185D00946CC6 /* CommentParentCellTableViewCell.m in Sources */,
 				B43900191B0B2C4A006FF07D /* TimelinePostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
