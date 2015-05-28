@@ -171,7 +171,6 @@ public class PeopleDetailsActivity extends BaseActivity {
         
         if (receiver == null) receiver = new IntentReceiver();  
         registerReceiver(receiver, getIntentFilter());
-        Log.d(TAG, "onResume");
         if (oId == null) return;
         if (mPerson != null) {
         	Log.d(TAG, "Refresh: " + mPerson.getObjectId());
@@ -313,8 +312,7 @@ public class PeopleDetailsActivity extends BaseActivity {
 	class IntentReceiver extends BroadcastReceiver {		  
         @Override  
         public void onReceive(Context context, Intent intent) {
-        	Log.d(TAG, "onReceive");	
-        	String action = intent.getAction(); 
+        	String action = intent.getAction();
         	if (action.equals(PeopleDAO.ACTION_QUERY_DATA)) {
             	mPerson = mPeopleDAO.getPersonData();
         		mTalkDAO = new TalkDAO(context, mPerson);

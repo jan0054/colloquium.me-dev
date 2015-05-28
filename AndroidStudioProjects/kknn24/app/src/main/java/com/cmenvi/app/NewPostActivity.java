@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.cmenvi.app.adapter.PostAdapter;
+import com.cmenvi.app.data.PostDAO;
 import com.cmenvi.app.widget.BaseActivity;
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -35,7 +37,7 @@ public class NewPostActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_preference);
         mTitle.setText(getString(R.string.title_conversation));
-        configOptions(OPTION_NONE, OPTION_NONE);
+        configOptions(OPTION_BACK, OPTION_SAVE);
 
         save_preference = (TextView) findViewById(R.id.save_preference);
         save_preference.setOnClickListener(new View.OnClickListener() {
@@ -173,8 +175,15 @@ public class NewPostActivity extends BaseActivity {
 
     }
 
+    public void saveNewPost()
+    {
+        Intent intent = new Intent(PostDAO.ACTION_LOAD_DATA);
+        this.sendBroadcast(intent);
+        onBackPressed();
+    }
     public void savePreferences()
     {
+
         if (is_person == 1)
         {
             link_str = link_input.getText().toString();
@@ -215,10 +224,5 @@ public class NewPostActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 */
-    private void toMainPage() {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        overridePendingTransition (R.anim.page_left_slide_in, R.anim.page_left_slide_out);
-    }
+
 }

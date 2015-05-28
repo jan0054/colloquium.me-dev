@@ -1,7 +1,12 @@
 package com.cmenvi.app.widget;
 
+import com.cmenvi.app.MainActivity;
+import com.cmenvi.app.UserAttendeeActivity;
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.ParsePush;
 import com.parse.SaveCallback;
@@ -53,6 +58,7 @@ public class BaseActivity extends FragmentActivity implements OnClickListener, A
     public final static int OPTION_CAREER       = 99;
 	public final static int OPTION_NEWPOST		= 90;
 	public final static int OPTION_NEWCOMMENT	= 91;
+	public final static int OPTION_SAVE			= 92;
 
 	public static final String ACTION_FROM = "com.squint.app.action.from";
 	public static final String ACTION_TO = "com.squint.app.action.to";
@@ -358,5 +364,31 @@ public class BaseActivity extends FragmentActivity implements OnClickListener, A
 	
 	public void toast(String message) {
     	Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+	}
+
+	public void updateIsPerson(ParseUser selfuser) {
+		String user_email = selfuser.getEmail();
+		ParseQuery<ParseObject> personquery = ParseQuery.getQuery("Person");
+		personquery.whereEqualTo("email", user_email);
+		personquery.getFirstInBackground(new GetCallback<ParseObject>() {
+			@Override
+			public void done(ParseObject parseObject, ParseException e) {
+				if (parseObject != null) {
+					//found a match, user is person: skip to user preference activity
+					app = (cmenviApplication) getApplication();
+					app.isPerson = true;
+				} else {
+					toPage(new Intent(), UserAttendeeActivity.class);
+					return;
+				}
+			}
+		});
+	}
+
+	public void toMainPage() {
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
+		overridePendingTransition(R.anim.page_left_slide_in, R.anim.page_left_slide_out);
 	}
 }

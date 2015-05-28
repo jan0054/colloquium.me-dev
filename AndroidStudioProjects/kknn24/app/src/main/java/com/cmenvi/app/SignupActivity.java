@@ -79,13 +79,6 @@ public class SignupActivity extends BaseActivity {
 	public void toLoginPage(View view) {
 		onBackPressed();
 	}
-	
-	private void toMainPage() {
-		Intent intent = new Intent(this, MainActivity.class);	
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-	    startActivity(intent);
-	    overridePendingTransition (R.anim.page_left_slide_in, R.anim.page_left_slide_out);
-	}
 
 	protected cmenviApplication app;
     private void toPreferencePage() {

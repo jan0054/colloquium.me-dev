@@ -276,7 +276,7 @@ public class MainActivity extends BaseActivity {
 					if (selfuser != null) {
 						app = (cmenviApplication) getApplication();
 						if (!app.isPerson) {
-							toPage(new Intent(), UserAttendeeActivity.class);
+							updateIsPerson(selfuser);
 						} else {
 							toPage(new Intent(), UserPreferenceActivity.class);
 						}
@@ -290,16 +290,20 @@ public class MainActivity extends BaseActivity {
 					if (thisuser != null) {
 						app = (cmenviApplication) getApplication();
 						if (!app.isPerson) {
-							toPage(new Intent(), UserAttendeeActivity.class);
+							updateIsPerson(thisuser);
 						} else {
-							toPage(new Intent(), UserPreferenceActivity.class);
 						}
 					} else {
-						toast(getString(R.string.error_not_login));
+						toast("Please log in first!");
 						toLoginPage(ConversationActivity.class);
+						return;
 					}
+					toPage(new Intent(), NewPostActivity.class);
 					break;
 				case OPTION_NEWCOMMENT:
+					break;
+				case OPTION_SAVE:
+					toMainPage();
 					break;
 			}
 		}

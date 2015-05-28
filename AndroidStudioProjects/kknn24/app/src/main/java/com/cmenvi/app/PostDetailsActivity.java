@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,12 +24,24 @@ import com.cmenvi.app.data.PosterDAO;
 import com.cmenvi.app.data.TalkDAO;
 import com.cmenvi.app.widget.BaseActivity;
 import com.cmenvi.app.widget.BitmapManager;
+import com.parse.GetCallback;
+import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class PostDetailsActivity extends BaseActivity {
@@ -39,7 +52,7 @@ public class PostDetailsActivity extends BaseActivity {
 	public static final String EXTRA_FROM_USER = "com.cmenvi.app.talk.FROM_USER";
 	public static final String EXTRA_TO_USER   = "com.cmenvi.app.talk.TO_USER";
 
-	public static final String 			ACTION_POST_SELECT 		= "com.cmenvi.action.post.select";
+	public static final String 			ACTION_SELECT 		= "com.cmenvi.action.post.select";
 	public static final String 			EXTRA_POST_ID	  		= "com.cmenvi.data.post.ID";
 	public static final String 			EXTRA_POST_NAME			= "com.cmenvi.data.post.NAME";
 	public static final String 			EXTRA_POST_ATTACHMENT	= "com.cmenvi.data.post.ATTACHMENT";
@@ -53,7 +66,8 @@ public class PostDetailsActivity extends BaseActivity {
 	private SimpleDateFormat 			sdf;
 	private List<ParseObject>	 		data;
 
-	
+    protected cmenviApplication app;
+
 	private IntentFilter			filter	 = null;  
     private BroadcastReceiver 		receiver = null;
 
@@ -71,14 +85,14 @@ public class PostDetailsActivity extends BaseActivity {
 	private PostDAO						mPostDAO;
 	private CommentDAO					mCommentDAO;
 	// List
-	public static List<ParseObject> 	  mData;
+	public static List<ParseObject> 	  mCommentData;
 
-	public static CommentAdapter mAdapter;
-	public static Context mContext;
+	public static CommentAdapter mCommentAdapter;
 
 	public ListView 					  mList;
 	private Button 						  mSendComment;
-	public ArrayList<String> searcharray;
+    private EditText                      mCommentInput;
+    public ArrayList<String> searcharray;
 
 
 	@Override
@@ -89,7 +103,6 @@ public class PostDetailsActivity extends BaseActivity {
 		// Header Configuration
 		mTitle.setText(getString(R.string.title_timeline));
 		configOptions(OPTION_BACK, OPTION_NONE);
-        Log.d(TAG, "onCreate");
 
 		Intent intent 	= getIntent();
 		oId	= intent.getStringExtra(PostAdapter.EXTRA_POST_ID);
@@ -104,31 +117,23 @@ public class PostDetailsActivity extends BaseActivity {
 		mContent.setText(intent.getStringExtra(PostAdapter.EXTRA_POST_CONTENT));
 		BitmapManager.INSTANCE.loadBitmap(intent.getStringExtra(PostAdapter.EXTRA_POST_IMAGE), mImage, 0, 0);
 
-		mPostDAO = new PostDAO(this, oId);
-		mPost = mPostDAO.getPostData();
-		mData	= new ArrayList<ParseObject>();
-//		mCommentDAO = new CommentDAO(this, mPost);
-		mCommentDAO = new CommentDAO(mContext, searcharray);
-
+		mCommentData	= new ArrayList<ParseObject>();
 		mList = (ListView)findViewById(android.R.id.list);
 		mList.setEmptyView(findViewById(android.R.id.empty));
+		mCommentAdapter = new CommentAdapter(this, mCommentData);
+		mList.setAdapter(mCommentAdapter);
 
-		mAdapter = new CommentAdapter(this, mData);
-
-		mList.setAdapter(mAdapter);
-
-		mSendComment = (Button)findViewById(R.id.sendcomment);
+//        mCommentInput = (EditText)findViewById(R.id.commentinput);
+//        mSendComment = (Button)findViewById(R.id.sendcomment);
+//        mSendComment.setOnClickListener(this);
 	}
-	
 
 	@Override  
     public void onResume() {
-        Log.d(TAG, "onResume");
         super.onResume();
 
         if (receiver == null) receiver = new IntentReceiver();
         registerReceiver(receiver, getIntentFilter());
-        Log.d(TAG, "onResume");
         if (oId == null) return;
         if (mPost != null) {
             Log.d(TAG, "Refresh: " + mPost.getObjectId());
@@ -141,27 +146,98 @@ public class PostDetailsActivity extends BaseActivity {
 	
 	@Override  
     public void onPause() {
-        Log.d(TAG, "onPause");
         super.onPause();
         unregisterReceiver(receiver);
     }
 	
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.opt_left:
-			onBackPressed();
-			break;
-		}
-		
-	}
-	
+        switch (v.getId()) {
+            case R.id.opt_left:
+                onBackPressed();
+                break;
+/*            case R.id.sendcomment:
+                ParseUser selfuser = ParseUser.getCurrentUser();
+                if (selfuser != null) {
+                    app = (cmenviApplication) getApplication();
+                    if (!app.isPerson) { // not person, can not comment
+                        toPage(new Intent(), UserAttendeeActivity.class);
+                    } else {
+                        sendComment();
+                    }
+                } else {
+                    toast("Please log in first!");
+                    toLoginPage(ConversationActivity.class);
+                }
+                break;*/
+        }
+
+    }
+
+    public void sendComment(View view) {
+        Log.i(TAG, "send comment button pressed");
+        ParseUser selfuser = ParseUser.getCurrentUser();
+        if (selfuser != null) {
+            app = (cmenviApplication) getApplication();
+            if (!app.isPerson) { // not person, can not comment
+                updateIsPerson(selfuser);
+            } else {
+            }
+        } else {
+            toast("Please log in first!");
+            toLoginPage(ConversationActivity.class);
+            return;
+        }
+        //setup all the data for the new comment object
+        EditText editText = (EditText) findViewById(R.id.commentinput);
+        final String message = editText.getText().toString();
+        Log.i(TAG, message);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        //get the other guy
+        final String cid = currentUser.getObjectId();
+
+        if(message.length()<1) {
+            toast("Empty imput.");
+            return;
+        }
+        //create and save the chat object
+        ParseObject chatmsg = new ParseObject("Comment");
+        chatmsg.put(CommentDAO.CONTENT,message);
+        chatmsg.put(CommentDAO.POST, mPost);
+        chatmsg.put(CommentDAO.AUTHOR, currentUser);
+        chatmsg.put(CommentDAO.AUTHORNAME, currentUser.getUsername());
+        ParseACL commentACL = new ParseACL(ParseUser.getCurrentUser());
+        commentACL.setPublicReadAccess(true);
+        commentACL.setPublicWriteAccess(true);
+        chatmsg.setACL(commentACL);
+        chatmsg.saveInBackground(new SaveCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    //saved complete
+                    EditText edt = (EditText) findViewById(R.id.commentinput);
+                    edt.setText("");
+                    Log.i(TAG, "new comment save success");
+                    Intent intent = getIntent();
+//                    intent.putExtra(EXTRA_POST_ID, item.getObjectId());
+//                    intent.putExtra(EXTRA_POST_AUTHORNAME, getAuthorname(item));
+//                    intent.putExtra(EXTRA_POST_CREATEDAT, getCreatedAt(item));
+//                    intent.putExtra(EXTRA_POST_CONTENT, getContent(item));
+//                    intent.putExtra(EXTRA_POST_IMAGE, getPhotoUrl(item));
+                    toPage(intent, PostDetailsActivity.class);
+                }
+                else {
+                    Log.i(TAG, "sendComment save fail");
+                    //did not save successfully
+                }
+            }
+        });
+    }
 	private IntentFilter getIntentFilter() {
-        Log.d(TAG, "getIntentFilte");
-        if (filter == null) {  
+        if (filter == null) {
         	filter = new IntentFilter();  
         	filter.addAction(CommentDAO.ACTION_LOAD_DATA);
-            filter.addAction(CommentAdapter.ACTION_COMMENT_SELECT);
+            filter.addAction(PostDAO.ACTION_QUERY_DATA);
+            filter.addAction(PostDetailsActivity.ACTION_SELECT);
         }
         return filter;
     }
@@ -169,14 +245,16 @@ public class PostDetailsActivity extends BaseActivity {
 	class IntentReceiver extends BroadcastReceiver {
         @Override  
         public void onReceive(Context context, Intent intent) {
-        	Log.d(TAG, "onReceive");	
         	String action = intent.getAction();
-            if (action.equals(CommentDAO.ACTION_LOAD_DATA)) {
+            if (action.equals(PostDAO.ACTION_QUERY_DATA)) {
+                mPost = mPostDAO.getPostData();
+                mCommentDAO = new CommentDAO(context, mPost);
+            } else if (action.equals(CommentDAO.ACTION_LOAD_DATA)) {
             	//mTalkData.clear();
             	//mTalkData.addAll(mTalkDAO.getData());
             	try {
-	            	mData = mCommentDAO.getData();
-	            	mAdapter.update(mData);
+	            	mCommentData = mCommentDAO.getData();
+	            	mCommentAdapter.update(mCommentData);
             	} catch (Exception e) { Log.d(TAG, "Comment data is null!"); }
             }
         }  
@@ -375,5 +453,4 @@ public class PostDetailsActivity extends BaseActivity {
 			}
 		});
     }*/
-
 }

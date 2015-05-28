@@ -109,6 +109,7 @@ public class TimelineFragment extends Fragment implements View.OnClickListener {
             } else if (action.equals(PostDAO.ACTION_LOAD_DATA)) {
             	mData = mPostDAO.getData();
             	mAdapter.update(mData);
+                Log.d(TAG, "onReceive "+action);
             	//toast(intent.getStringExtra(PostAdapter.EXTRA_POST_ID));
             }
         }  

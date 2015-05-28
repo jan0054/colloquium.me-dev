@@ -71,7 +71,6 @@ public class CommentAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Log.d(TAG, "GetView");
 		ViewHolder holder;
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.item_comment, null);
@@ -107,7 +106,6 @@ public class CommentAdapter extends BaseAdapter {
 	}
 
 	private String getCreatedAt(ParseObject object) {
-		Log.d(TAG, "AAA");
 		return sdf.format(object.getCreatedAt());
 	}
 

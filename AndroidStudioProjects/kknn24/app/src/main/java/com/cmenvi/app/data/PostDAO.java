@@ -64,6 +64,7 @@ public class PostDAO {
         query.getInBackground(objectId, new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (e == null) {
+                    Log.d(TAG, "e == null");
                     onReceived(object);
 
                 } else {

@@ -18,6 +18,7 @@ import java.util.List;
 public class CommentDAO {
     public static final String 	TAG 						= CommentDAO.class.getSimpleName();
     public static final String 	ACTION_LOAD_DATA		 	= "action.load.data.comment";
+    public static final String  ACTION_QUERY_DATA           = "action.query.data.comment";
     public static final String 	DATA						= "data.comment";
     // Column Name
     public static String        POST                        = "post";       // (parseObject - post)
@@ -51,7 +52,7 @@ public class CommentDAO {
 
     private void query(ParseObject object) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_COMMENT);
-        //query.orderByDescending(CREATEDAT);
+        query.orderByDescending(CREATEDAT);
         //query.setLimit(ITEM_LIMIT);
         if (object != null) query.whereEqualTo(POST, object);
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -86,6 +87,7 @@ public class CommentDAO {
             mData = objects;
             Intent intent = new Intent(ACTION_LOAD_DATA);
             if (objects.size() > 0) intent.putExtra(DATA, mData.get(0).getObjectId());
+            mContext.sendBroadcast(intent);
         }
     }
 
