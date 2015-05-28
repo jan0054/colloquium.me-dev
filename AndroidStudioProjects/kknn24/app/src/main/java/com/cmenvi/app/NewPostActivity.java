@@ -1,21 +1,34 @@
 package com.cmenvi.app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Camera;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cmenvi.app.adapter.PostAdapter;
 import com.cmenvi.app.data.PostDAO;
 import com.cmenvi.app.widget.BaseActivity;
-import com.parse.GetCallback;
+import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 public class NewPostActivity extends BaseActivity {
@@ -27,179 +40,152 @@ public class NewPostActivity extends BaseActivity {
     public String link_str;
     public ParseObject selfperson;
 
-    public Switch email_switch;
-    public Switch chat_switch;
-    public EditText link_input;
-    public TextView save_preference;
+    public EditText post_input;
+    public TextView save_post;
+    public ImageButton photo_camera;
+    public Bitmap bitmap = null;
+    private Uri imageUri;
+
+    private final static int PICK_IMAGE_REQUEST = 1;
+    private final static int TAKE_PIC = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_preference);
-        mTitle.setText(getString(R.string.title_conversation));
-        configOptions(OPTION_BACK, OPTION_SAVE);
+        setContentView(R.layout.activity_newpost);
+        mTitle.setText(getString(R.string.title_newpost));
+        configOptions(OPTION_BACK, OPTION_NONE);
 
-        save_preference = (TextView) findViewById(R.id.save_preference);
-        save_preference.setOnClickListener(new View.OnClickListener() {
+        save_post = (TextView) findViewById(R.id.save_post);
+        save_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                savePreferences();
+                saveNewPost();
             }
         });
         //default disable stuff
-        email_switch = (Switch) findViewById(R.id.email_switch);
-        chat_switch = (Switch) findViewById(R.id.chat_switch);
-        link_input = (EditText) findViewById(R.id.link_input);
-        email_switch.setEnabled(false);
-        chat_switch.setEnabled(false);
-        link_input.setEnabled(false);
-        is_person = 0;
-        email_on = 0;
-        chat_on = 0;
-        link_str = "";
+        post_input = (EditText) findViewById(R.id.post_input);
+        post_input.setEnabled(true);
+
+        imageUri=Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "test.jpg"));
 
         //check if current user is person
         if (ParseUser.getCurrentUser() != null)
         {
             selfuser = ParseUser.getCurrentUser();
         }
-        ParseQuery<ParseObject> personquery = ParseQuery.getQuery("Person");
-        personquery.whereEqualTo("email", selfuser.getEmail());
-        personquery.getFirstInBackground(new GetCallback<ParseObject>() {
-            @Override
-            public void done(ParseObject parseObject, ParseException e) {
-                if (parseObject != null)
-                {
-                    //found a match, user is person
-                    is_person = 1;
-                    selfperson = parseObject;
-                }
-                else
-                {
-                    //no match, user not a person
-                    is_person = 0;
-                }
-                setupData();
-            }
-        });
     }
 
-    public void setupData()
+    public void selectPhoto(View view)
     {
-        if (is_person == 1)
-        {
-            //user is person
-            email_switch.setEnabled(true);
-            chat_switch.setEnabled(true);
-            link_input.setEnabled(true);
-            //set email/chat variables
-            if (selfuser.containsKey("email_status"))
-            {
-                email_on = selfuser.getInt("email_status");
-            }
-            else
-            {
-                email_on = 0;
-            }
-            if (selfuser.containsKey("chat_status"))
-            {
-                chat_on = selfuser.getInt("chat_status");
-            }
-            else
-            {
-                chat_on = 1;
-            }
-            //set email/chat switch initial position
-            if (email_on == 1)
-            {
-                email_switch.setChecked(true);
-            }
-            else
-            {
-                email_switch.setChecked(false);
-            }
-            if (chat_on == 1)
-            {
-                chat_switch.setChecked(true);
-            }
-            else
-            {
-                chat_switch.setChecked(false);
-            }
-            //set listener and callback for the switches
-            email_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked)
-                    {
-                        //email set to public
-                        email_on = 1;
-                    }
-                    else if (!isChecked)
-                    {
-                        //email set to private
-                        email_on = 0;
-                    }
-                }
-            });
-            chat_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked)
-                    {
-                        //chat set to on
-                        chat_on = 1;
-                    }
-                    else if (!isChecked)
-                    {
-                        //chat set to off
-                        chat_on = 0;
-                    }
-                }
-            });
-            //get link if exist and set as default text in url input
-            if (selfperson.containsKey("link"))
-            {
-                link_str = selfperson.getString("link");
-            }
-            link_input.setText(link_str);
-            //set status text with name included;
-            String lname = selfperson.getString("last_name");
-            String fname = selfperson.getString("first_name");
-            String status_str = String.format("Hello %s %s, please set your email and chat preferences below, you can change these preferences anytime.", fname, lname);
-            TextView status_tv = (TextView) findViewById(R.id.status);
-            status_tv.setText(status_str);
-        }
-        else
-        {
-            //user is not person
-        }
-
+        Intent intent = new Intent();
+        // Show only images, no videos or anything else
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_PICK);
+        // Always show the chooser (if there are multiple options available)
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 
+    public void selectCamera(View view)
+    {
+        Intent intent = new Intent();
+        // Show only images, no videos or anything else
+        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        // Always show the chooser (if there are multiple options available)
+        startActivityForResult(intent, TAKE_PIC);
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+            ImageView imageView = (ImageView) findViewById(R.id.post_image);
+            switch (requestCode) {
+                case PICK_IMAGE_REQUEST:
+                    Uri uri = data.getData();
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        // Log.d(TAG, String.valueOf(bitmap));
+                        imageView.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case TAKE_PIC:
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        // Log.d(TAG, String.valueOf(bitmap));
+                        imageView.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+//                    Bundle extras = data.getExtras();
+//                    bitmap = (Bitmap) extras.get("data");
+                    //載入ImageView
+//                    imageView.setImageBitmap(bitmap);
+                    break;
+                default:
+                    break;
+            }
+            //覆蓋原來的Activity
+        super.onActivityResult(requestCode, resultCode, data);
+
+        }
+    }
     public void saveNewPost()
     {
-        Intent intent = new Intent(PostDAO.ACTION_LOAD_DATA);
-        this.sendBroadcast(intent);
+        Log.i(TAG, "send post button pressed");
+        //setup all the data for the new post object
+        EditText editText = (EditText) findViewById(R.id.post_input);
+        ImageView imageView = (ImageView) findViewById(R.id.post_image);
+        final String message = editText.getText().toString();
+        Log.i(TAG, message);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        if(message.length()<1) {
+            toast("Empty imput.");
+            return;
+        }
+        ParseObject postmsg = new ParseObject("Post");
+        postmsg.put(PostDAO.CONTENT, message);
+        postmsg.put(PostDAO.AUTHOR, currentUser);
+        postmsg.put(PostDAO.AUTHORNAME, currentUser.getUsername());
+        if(bitmap!=null) {
+            Calendar c = Calendar.getInstance();
+            System.out.println("Current time => "+c.getTime());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+            String formattedDate = sdf.format(c.getTime());
+            String filename = selfuser.getUsername()+formattedDate+".jpg";
+            toast(filename);
+            ParseFile image = new ParseFile(filename, bitmapToByteArray(bitmap));
+            postmsg.put(PostDAO.IMAGE, image);
+        }
+        ParseACL commentACL = new ParseACL(ParseUser.getCurrentUser());
+        commentACL.setPublicReadAccess(true);
+        commentACL.setPublicWriteAccess(true);
+        postmsg.setACL(commentACL);
+        postmsg.saveInBackground(new SaveCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    //saved complete
+                    EditText edt = (EditText) findViewById(R.id.post_input);
+                    edt.setText("");
+                    Log.i(TAG, "new post save success");
+                } else {
+                    Log.i(TAG, "sendPost save fail");
+                    //did not save successfully
+                }
+            }
+        });
         onBackPressed();
     }
-    public void savePreferences()
+    public static byte[] bitmapToByteArray(Bitmap bmp)
     {
-
-        if (is_person == 1)
-        {
-            link_str = link_input.getText().toString();
-            selfuser.put("email_status", email_on);
-            selfuser.put("chat_status", chat_on);
-            selfuser.put("is_person", is_person);
-            selfuser.put("person", selfperson);
-            selfuser.saveInBackground();
-            selfperson.put("email_status", email_on);
-            selfperson.put("chat_status", chat_on);
-            selfperson.put("is_user", is_person);
-            selfperson.put("user", selfuser);
-            selfperson.put("link", link_str);
-            selfperson.saveInBackground();
-        }
-        toMainPage();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        Log.d("NEWPost", byteArray.toString());
+        return byteArray;
     }
 /*
     @Override

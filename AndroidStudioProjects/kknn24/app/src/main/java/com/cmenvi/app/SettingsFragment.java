@@ -41,11 +41,11 @@ public class SettingsFragment extends PreferenceFragment
 		private static Context 		mContext;
 		private SharedPreferences 	prefs;
 		private ListView 			lv;
-		public static final String SETTINGS_ABOUT = "com.squint.app.settings.about";
-		public static final String SETTINGS_TERMS = "com.squint.app.settings.terms";
-		public static final String SETTINGS_FEEDBACK = "com.squint.app.settings.feedback";
-        public static final String SETTINGS_TECH = "com.squint.app.settings.tech";
-        public static final String SETTINGS_ADMIN = "com.squint.app.settings.admin";
+		public static final String SETTINGS_ABOUT = "com.cmenvi.app.settings.about";
+		public static final String SETTINGS_TERMS = "com.cmenvi.app.settings.terms";
+		public static final String SETTINGS_FEEDBACK = "com.cmenvi.app.settings.feedback";
+        public static final String SETTINGS_TECH = "com.cmenvi.app.settings.tech";
+        public static final String SETTINGS_ADMIN = "com.cmenvi.app.settings.admin";
 		
 		@Override
 		public void onCreate(Bundle savedInstanceState) {

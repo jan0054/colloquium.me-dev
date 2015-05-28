@@ -22,10 +22,10 @@ import android.widget.TextView;
 public class SettingsDetailsActivity extends BaseActivity {
 	
 	public static final String TAG = SettingsDetailsActivity.class.getSimpleName();
-	public static final String TITLE = "com.squint.app.details.title";
-	public static final String SUBJECT = "com.squint.app.details.subject";
-	public static final String CONTENT = "com.squint.app.details.content";
-	public static final String ACTION = "com.squint.app.details.action";
+	public static final String TITLE = "com.cmenvi.app.details.title";
+	public static final String SUBJECT = "com.cmenvi.app.details.subject";
+	public static final String CONTENT = "com.cmenvi.app.details.content";
+	public static final String ACTION = "com.cmenvi.app.details.action";
 	private TextView mSubject;
 	private TextView mContent;
 	private TextView mAction;

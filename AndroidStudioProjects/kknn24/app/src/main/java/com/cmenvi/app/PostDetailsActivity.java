@@ -201,16 +201,16 @@ public class PostDetailsActivity extends BaseActivity {
             return;
         }
         //create and save the chat object
-        ParseObject chatmsg = new ParseObject("Comment");
-        chatmsg.put(CommentDAO.CONTENT,message);
-        chatmsg.put(CommentDAO.POST, mPost);
-        chatmsg.put(CommentDAO.AUTHOR, currentUser);
-        chatmsg.put(CommentDAO.AUTHORNAME, currentUser.getUsername());
+        ParseObject commentmsg = new ParseObject("Comment");
+        commentmsg.put(CommentDAO.CONTENT, message);
+        commentmsg.put(CommentDAO.POST, mPost);
+        commentmsg.put(CommentDAO.AUTHOR, currentUser);
+        commentmsg.put(CommentDAO.AUTHORNAME, currentUser.getUsername());
         ParseACL commentACL = new ParseACL(ParseUser.getCurrentUser());
         commentACL.setPublicReadAccess(true);
         commentACL.setPublicWriteAccess(true);
-        chatmsg.setACL(commentACL);
-        chatmsg.saveInBackground(new SaveCallback() {
+        commentmsg.setACL(commentACL);
+        commentmsg.saveInBackground(new SaveCallback() {
             public void done(ParseException e) {
                 if (e == null) {
                     //saved complete
@@ -224,8 +224,7 @@ public class PostDetailsActivity extends BaseActivity {
 //                    intent.putExtra(EXTRA_POST_CONTENT, getContent(item));
 //                    intent.putExtra(EXTRA_POST_IMAGE, getPhotoUrl(item));
                     toPage(intent, PostDetailsActivity.class);
-                }
-                else {
+                } else {
                     Log.i(TAG, "sendComment save fail");
                     //did not save successfully
                 }

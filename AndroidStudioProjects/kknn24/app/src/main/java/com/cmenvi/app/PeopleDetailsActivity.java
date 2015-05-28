@@ -42,9 +42,9 @@ public class PeopleDetailsActivity extends BaseActivity {
 	
 	public static final String TAG = PeopleDetailsActivity.class.getSimpleName();
 	
-	public static final String ACTION_TALK     = "com.squint.app.action.talk";
-	public static final String EXTRA_FROM_USER = "com.squint.app.talk.FROM_USER";
-	public static final String EXTRA_TO_USER   = "com.squint.app.talk.TO_USER";
+	public static final String ACTION_TALK     = "com.cmenvi.app.action.talk";
+	public static final String EXTRA_FROM_USER = "com.cmenvi.app.talk.FROM_USER";
+	public static final String EXTRA_TO_USER   = "com.cmenvi.app.talk.TO_USER";
 
 	
 	public static final String 			ACTION_PERSON_SELECT 		= "com.squint.action.person.select";

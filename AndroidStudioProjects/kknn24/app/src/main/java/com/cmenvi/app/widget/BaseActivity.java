@@ -56,13 +56,13 @@ public class BaseActivity extends FragmentActivity implements OnClickListener, A
     public final static int OPTION_USER         = R.drawable.preference_64_white;
 	public final static int OPTION_DAYS         = 98;
     public final static int OPTION_CAREER       = 99;
-	public final static int OPTION_NEWPOST		= 90;
+	public final static int OPTION_NEWPOST		= R.drawable.actionbar_new;
 	public final static int OPTION_NEWCOMMENT	= 91;
 	public final static int OPTION_SAVE			= 92;
 
-	public static final String ACTION_FROM = "com.squint.app.action.from";
-	public static final String ACTION_TO = "com.squint.app.action.to";
-	public static final String USER_TO = "com.squint.app.user.to";
+	public static final String ACTION_FROM = "com.cmenvi.app.action.from";
+	public static final String ACTION_TO = "com.cmenvi.app.action.to";
+	public static final String USER_TO = "com.cmenvi.app.user.to";
 	public static final String USER_FROM = "user";
 
     protected cmenviApplication app;

@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.cmenvi.app.adapter.PeopleAdapter;
 import com.cmenvi.app.adapter.PostAdapter;
-import com.cmenvi.app.adapter.PosterAdapter;
-import com.cmenvi.app.data.PeopleDAO;
 import com.cmenvi.app.data.PostDAO;
 import com.parse.ParseObject;
 
@@ -78,7 +73,7 @@ public class TimelineFragment extends Fragment implements View.OnClickListener {
 	@Override  
     public void onResume() {
         super.onResume();
-        if (receiver == null) receiver = new IntentReceiver();  
+        if (receiver == null) receiver = new IntentReceiver();
         mContext.registerReceiver(receiver, getIntentFilter());
     }
 	
