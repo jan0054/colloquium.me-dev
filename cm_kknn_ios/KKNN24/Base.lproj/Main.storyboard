@@ -42,10 +42,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVf-h0-pTy">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVf-h0-pTy">
                                 <rect key="frame" x="320" y="118" width="320" height="405"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" tag="3" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GFF-hz-RCW">
+                                    <tableView clipsSubviews="YES" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GFF-hz-RCW">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="405"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -125,7 +125,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bid-qU-Oyw">
                                 <rect key="frame" x="320" y="118" width="320" height="405"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="160" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-P9-aCD">
+                                    <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="160" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-P9-aCD">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="405"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1105,6 +1105,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w5d-kY-dPR">
+                                <rect key="frame" x="0.0" y="359" width="171" height="171"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="w5d-kY-dPR" secondAttribute="height" multiplier="1:1" id="DAf-bv-aK0"/>
+                                </constraints>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="frL-Zs-urw" customClass="SZTextView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1119,24 +1126,16 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-qB-ZZg">
-                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <rect key="frame" x="0.0" y="530" width="320" height="38"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrJ-go-tJ6">
-                                        <rect key="frame" x="230" y="10" width="48" height="30"/>
-                                        <state key="normal" title="Library">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrJ-go-tJ6">
+                                        <rect key="frame" x="8" y="7" width="95" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title=" Add Photo" image="camera48.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="library_button_tap:" destination="am5-Jb-BYE" eventType="touchUpInside" id="Gv2-Ln-BxA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H0-ED-ffh">
-                                        <rect key="frame" x="133" y="10" width="54" height="30"/>
-                                        <state key="normal" title="Camera">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="camera_button_tap:" destination="am5-Jb-BYE" eventType="touchUpInside" id="WIa-d1-Ln1"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRo-Yh-CB0">
@@ -1146,26 +1145,31 @@
                                             <constraint firstAttribute="height" constant="2" id="LoV-Zg-fbv"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Photo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1a-qM-3ZZ">
-                                        <rect key="frame" x="25" y="16" width="74" height="18"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7w-zC-I5A">
+                                        <rect key="frame" x="288" y="7" width="24" height="24"/>
+                                        <state key="normal" image="key_down48.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismiss_beyboard_button_tap:" destination="am5-Jb-BYE" eventType="touchUpInside" id="gtQ-5l-jOT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="wRo-Yh-CB0" firstAttribute="leading" secondItem="pcb-qB-ZZg" secondAttribute="leading" id="AQz-Bn-jby"/>
-                                    <constraint firstAttribute="centerX" secondItem="6H0-ED-ffh" secondAttribute="centerX" id="BzA-X5-GuH"/>
-                                    <constraint firstAttribute="centerY" secondItem="6H0-ED-ffh" secondAttribute="centerY" id="GQD-Jh-8XZ"/>
-                                    <constraint firstAttribute="centerY" secondItem="NrJ-go-tJ6" secondAttribute="centerY" id="OSC-Z2-K3g"/>
-                                    <constraint firstAttribute="centerY" secondItem="b1a-qM-3ZZ" secondAttribute="centerY" id="QB4-dy-0iw"/>
-                                    <constraint firstAttribute="height" constant="49" id="bwe-A1-04Y"/>
+                                    <constraint firstItem="NrJ-go-tJ6" firstAttribute="leading" secondItem="pcb-qB-ZZg" secondAttribute="leading" constant="8" id="OSE-kG-7g6"/>
+                                    <constraint firstAttribute="centerY" secondItem="NrJ-go-tJ6" secondAttribute="centerY" id="QMU-ql-ag8"/>
+                                    <constraint firstAttribute="trailing" secondItem="p7w-zC-I5A" secondAttribute="trailing" constant="8" id="bhp-km-w07"/>
+                                    <constraint firstAttribute="height" constant="38" id="bwe-A1-04Y"/>
                                     <constraint firstAttribute="trailing" secondItem="wRo-Yh-CB0" secondAttribute="trailing" id="dbd-m6-jg5"/>
-                                    <constraint firstItem="b1a-qM-3ZZ" firstAttribute="leading" secondItem="pcb-qB-ZZg" secondAttribute="leading" constant="25" id="gGd-hV-aF4"/>
+                                    <constraint firstAttribute="centerY" secondItem="p7w-zC-I5A" secondAttribute="centerY" id="rWL-2g-R8f"/>
                                     <constraint firstItem="wRo-Yh-CB0" firstAttribute="top" secondItem="pcb-qB-ZZg" secondAttribute="top" id="xLc-Xm-9JN"/>
-                                    <constraint firstAttribute="trailing" secondItem="NrJ-go-tJ6" secondAttribute="trailing" constant="42" id="yvY-Ev-nvD"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBv-mD-CvX">
+                                <rect key="frame" x="34" y="359" width="85" height="0.0"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABl-5e-xTE">
                                 <rect key="frame" x="280" y="347" width="24" height="24"/>
@@ -1180,17 +1184,6 @@
                                     <action selector="cancel_image_button_tap:" destination="am5-Jb-BYE" eventType="touchUpInside" id="hby-Ib-LFp"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBv-mD-CvX">
-                                <rect key="frame" x="34" y="359" width="56" height="0.0"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w5d-kY-dPR">
-                                <rect key="frame" x="0.0" y="359" width="320" height="160"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="w5d-kY-dPR" secondAttribute="height" multiplier="2:1" priority="750" id="DAf-bv-aK0"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1224,16 +1217,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="add_photo_label" destination="b1a-qM-3ZZ" id="aNd-DS-IUj"/>
+                        <outlet property="bottom_bar_height" destination="bwe-A1-04Y" id="Cv8-Mj-R0L"/>
                         <outlet property="bottom_keyboard_spacing" destination="gsy-lj-aCe" id="kG5-0Y-xXu"/>
                         <outlet property="bottom_view" destination="pcb-qB-ZZg" id="jQe-2F-s8c"/>
                         <outlet property="bottom_view_trim" destination="wRo-Yh-CB0" id="Xd4-qW-AMC"/>
-                        <outlet property="camera_button" destination="6H0-ED-ffh" id="10X-DW-dno"/>
                         <outlet property="cancel_image_button" destination="ABl-5e-xTE" id="JoN-QO-e66"/>
                         <outlet property="cancel_image_button_guide" destination="RBv-mD-CvX" id="aXb-dm-d9E"/>
                         <outlet property="cancel_post_button" destination="0rj-Hn-f9K" id="Azj-1S-veF"/>
                         <outlet property="confirm_post_button" destination="qzi-7G-ScQ" id="BuC-sH-AcJ"/>
                         <outlet property="content_textview" destination="frL-Zs-urw" id="7R8-5B-IZ1"/>
+                        <outlet property="dismiss_keyboard_button" destination="p7w-zC-I5A" id="Wbz-oh-3N1"/>
+                        <outlet property="image_ratio" destination="DAf-bv-aK0" id="Cl8-yg-yYV"/>
+                        <outlet property="image_to_bottom_bar" destination="YqV-fI-QuB" id="Jq2-5V-hmq"/>
                         <outlet property="library_button" destination="NrJ-go-tJ6" id="FFO-Fg-3J4"/>
                         <outlet property="post_image" destination="w5d-kY-dPR" id="Lra-8h-uTy"/>
                         <outlet property="textview_keyboard_spacing" destination="hiR-JL-7jj" id="jml-BG-mqa"/>
@@ -3111,9 +3106,11 @@
         <image name="action_call.png" width="350" height="350"/>
         <image name="action_navigation.png" width="350" height="350"/>
         <image name="action_website.png" width="350" height="350"/>
+        <image name="camera48.png" width="24" height="24"/>
         <image name="cancel_64_indigo.png" width="124" height="125"/>
         <image name="chatfloat_orange.png" width="24" height="24"/>
         <image name="cross1.png" width="16" height="16"/>
+        <image name="key_down48.png" width="24" height="24"/>
         <image name="new_msg.png" width="64" height="64"/>
         <image name="poi_placeholder.png" width="64" height="64"/>
         <image name="search3.png" width="16" height="16"/>

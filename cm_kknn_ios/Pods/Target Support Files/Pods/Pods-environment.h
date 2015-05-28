@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_Bolts_Tasks 1
 #define COCOAPODS_VERSION_PATCH_Bolts_Tasks 5
 
+// GKImagePicker@robseward
+#define COCOAPODS_POD_AVAILABLE_GKImagePicker_robseward
+#define COCOAPODS_VERSION_MAJOR_GKImagePicker_robseward 0
+#define COCOAPODS_VERSION_MINOR_GKImagePicker_robseward 0
+#define COCOAPODS_VERSION_PATCH_GKImagePicker_robseward 7
+
 // MMDrawerController
 #define COCOAPODS_POD_AVAILABLE_MMDrawerController
 #define COCOAPODS_VERSION_MAJOR_MMDrawerController 0

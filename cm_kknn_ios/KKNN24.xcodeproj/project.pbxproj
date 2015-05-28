@@ -51,6 +51,9 @@
 		B47888C01B0B0AC0009A53CF /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47888B61B0B0AC0009A53CF /* Icon@2x.png */; };
 		B47888C11B0B0AC0009A53CF /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B47888B71B0B0AC0009A53CF /* iTunesArtwork.png */; };
 		B47888C21B0B0AC0009A53CF /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47888B81B0B0AC0009A53CF /* iTunesArtwork@2x.png */; };
+		B47DBB361B16FD2F0034A7AF /* camera64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47DBB351B16FD2F0034A7AF /* camera64@2x.png */; };
+		B47DBB381B1704800034A7AF /* camera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47DBB371B1704800034A7AF /* camera48@2x.png */; };
+		B47DBB3A1B1705B00034A7AF /* key_down48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47DBB391B1705B00034A7AF /* key_down48@2x.png */; };
 		B489AFA51A6FB97E00E42581 /* twitter1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489AFA31A6FB97E00E42581 /* twitter1@2x.png */; };
 		B489AFA61A6FB97E00E42581 /* twitter2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489AFA41A6FB97E00E42581 /* twitter2@2x.png */; };
 		B495C44619C9876A008D5D5F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B495C44519C9876A008D5D5F /* AboutViewController.m */; };
@@ -166,6 +169,9 @@
 		B47888B61B0B0AC0009A53CF /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		B47888B71B0B0AC0009A53CF /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		B47888B81B0B0AC0009A53CF /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		B47DBB351B16FD2F0034A7AF /* camera64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera64@2x.png"; sourceTree = "<group>"; };
+		B47DBB371B1704800034A7AF /* camera48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera48@2x.png"; sourceTree = "<group>"; };
+		B47DBB391B1705B00034A7AF /* key_down48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_down48@2x.png"; sourceTree = "<group>"; };
 		B489AFA31A6FB97E00E42581 /* twitter1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter1@2x.png"; sourceTree = "<group>"; };
 		B489AFA41A6FB97E00E42581 /* twitter2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter2@2x.png"; sourceTree = "<group>"; };
 		B495C44419C9876A008D5D5F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -378,6 +384,9 @@
 		B43D269618FFD03A0072B753 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B47DBB391B1705B00034A7AF /* key_down48@2x.png */,
+				B47DBB371B1704800034A7AF /* camera48@2x.png */,
+				B47DBB351B16FD2F0034A7AF /* camera64@2x.png */,
 				B4981AB71B148225003630C1 /* cancel_64_indigo@2x.png */,
 				B47888AF1B0B0AC0009A53CF /* AppIcon.appiconset */,
 				B47888B01B0B0AC0009A53CF /* Icon-60.png */,
@@ -578,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B489AFA51A6FB97E00E42581 /* twitter1@2x.png in Resources */,
+				B47DBB361B16FD2F0034A7AF /* camera64@2x.png in Resources */,
 				B43D267918FFC9980072B753 /* Images.xcassets in Resources */,
 				B47888BE1B0B0AC0009A53CF /* Icon-Small-50@2x.png in Resources */,
 				B4CD801919E3CF7F009B416F /* action_navigation.png in Resources */,
@@ -586,6 +596,7 @@
 				B4163D7E1A023FA70064B68E /* chatfloat_orange@2x.png in Resources */,
 				B4F74E6219B5A1FD00F3A565 /* settings@2x.png in Resources */,
 				FD0ABD8B1A716E440062BFD2 /* cross1@2x.png in Resources */,
+				B47DBB3A1B1705B00034A7AF /* key_down48@2x.png in Resources */,
 				B4981AB81B148225003630C1 /* cancel_64_indigo@2x.png in Resources */,
 				B4BC89DE19D0AC2B00F1A9AD /* cancelwhite@2x.png in Resources */,
 				B4163D7D1A023FA70064B68E /* chatfloat_grey@2x.png in Resources */,
@@ -606,6 +617,7 @@
 				B4632EEB19D5395F00A9B743 /* tab_settings@2x.png in Resources */,
 				B489AFA61A6FB97E00E42581 /* twitter2@2x.png in Resources */,
 				B43D26D4190130020072B753 /* travel@2x.png in Resources */,
+				B47DBB381B1704800034A7AF /* camera48@2x.png in Resources */,
 				B43D26D3190130020072B753 /* program@2x.png in Resources */,
 				B43D26D0190130020072B753 /* feedback@2x.png in Resources */,
 				B4632EEA19D5395F00A9B743 /* tab_people@2x.png in Resources */,
