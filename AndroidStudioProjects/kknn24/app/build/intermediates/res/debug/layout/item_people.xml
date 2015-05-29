@@ -3,7 +3,7 @@
     android:id="@+id/feed_container"
     android:layout_width="match_parent"
     android:layout_height="104dp"
-    android:background="@drawable/list_item"
+    android:background="@drawable/list_item_gradient"
     android:orientation="horizontal" >
 
     <View
@@ -59,4 +59,4 @@
             android:textColor="@color/dark_accent"
             android:textSize="14sp" />
     </RelativeLayout>
-</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/item_people.xml -->
+</LinearLayout><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/layout/item_people.xml -->

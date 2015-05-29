@@ -8,7 +8,7 @@
 		    android:orientation="horizontal" >
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/list_item"
+                    android:background="@drawable/list_item_gradient"
                     android:orientation="horizontal" >
         <TextView
             android:id="@+id/title"
@@ -54,4 +54,4 @@
 </RelativeLayout>
 
 </ScrollView>
-      <!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/activity_details.xml -->
+      <!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/layout/activity_details.xml -->

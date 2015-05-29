@@ -6,4 +6,4 @@
                android:toXDelta="0%"
                android:duration="@android:integer/config_mediumAnimTime" />
 
-</set><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/anim/page_translate_open.xml -->
+</set><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/anim/page_translate_open.xml -->

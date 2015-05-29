@@ -8,7 +8,7 @@
 			      android:layout_width="match_parent"
 			      android:layout_height="wrap_content"
 			      android:layout_margin="12dp"
-			      android:background="@drawable/list_item"
+			      android:background="@drawable/list_item_gradient"
 			      android:orientation="vertical" >
 		<View android:layout_width="match_parent"
 		      android:layout_height="3dp"
@@ -135,4 +135,4 @@
             android:textColor="@color/list_action_text"
             android:textSize="14sp" />
 	</LinearLayout>
-</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/details_career.xml -->
+</LinearLayout><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/layout/details_career.xml -->

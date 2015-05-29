@@ -57,4 +57,4 @@
 		      android:textColor="@color/dark_accent"
 		      android:textSize="18sp"
 		      android:text="@string/list_empty" />  
-</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/fragment_general.xml -->
+</LinearLayout><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/layout/fragment_general.xml -->

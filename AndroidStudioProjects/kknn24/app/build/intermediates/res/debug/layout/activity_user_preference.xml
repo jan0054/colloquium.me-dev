@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
-        android:background="@drawable/list_item"
+        android:background="@drawable/list_item_gradient"
         android:orientation="vertical" >
         <View android:layout_width="match_parent"
             android:layout_height="3dp"
@@ -141,4 +141,4 @@
 
     </LinearLayout>
 </LinearLayout>
-<!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/activity_user_preference.xml -->
+<!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/layout/activity_user_preference.xml -->

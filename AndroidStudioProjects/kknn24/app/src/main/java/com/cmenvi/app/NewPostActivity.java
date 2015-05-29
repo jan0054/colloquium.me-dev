@@ -44,10 +44,11 @@ public class NewPostActivity extends BaseActivity {
     public TextView save_post;
     public ImageButton photo_camera;
     public Bitmap bitmap = null;
-    private Uri imageUri;
+    private Uri imageUri, imageUri2;
 
     private final static int PICK_IMAGE_REQUEST = 1;
     private final static int TAKE_PIC = 2;
+    private final static int CROP_PHOTO = 3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,13 @@ public class NewPostActivity extends BaseActivity {
 
         imageUri=Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "test.jpg"));
 
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+c.getTime());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String formattedDate = sdf.format(c.getTime());
+        String filename = "IMG_"+formattedDate+".jpg";
+        imageUri2=Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), filename));
+
         //check if current user is person
         if (ParseUser.getCurrentUser() != null)
         {
@@ -82,6 +90,9 @@ public class NewPostActivity extends BaseActivity {
         // Show only images, no videos or anything else
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_PICK);
+        intent.putExtra("crop", "true");// crop=true 有這句才能叫出裁剪頁面.
+        intent.putExtra("aspectX", 1);// 这兩項為裁剪框的比例.
+        intent.putExtra("aspectY", 1);// x:y=1:1
         // Always show the chooser (if there are multiple options available)
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
@@ -95,6 +106,18 @@ public class NewPostActivity extends BaseActivity {
         // Always show the chooser (if there are multiple options available)
         startActivityForResult(intent, TAKE_PIC);
     }
+
+    private void cropPhoto()
+    {
+        Intent intent = new Intent();
+        intent.setAction("com.android.camera.action.CROP");
+        intent.setDataAndType(imageUri2, "image/*");
+        intent.putExtra("crop", "true");// crop=true 有這句才能叫出裁剪頁面.
+        intent.putExtra("aspectX", 1);// 这兩項為裁剪框的比例.
+        intent.putExtra("aspectY", 1);// x:y=1:1
+        startActivityForResult(intent, CROP_PHOTO);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -114,8 +137,11 @@ public class NewPostActivity extends BaseActivity {
                     }
                     break;
                 case TAKE_PIC:
+                    cropPhoto();
+                    break;
+                case CROP_PHOTO:
                     try {
-                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri2);
                         // Log.d(TAG, String.valueOf(bitmap));
                         imageView.setImageBitmap(bitmap);
                     } catch (IOException e) {
@@ -185,6 +211,21 @@ public class NewPostActivity extends BaseActivity {
         Log.d("NEWPost", byteArray.toString());
         return byteArray;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(bitmap != null) {
+            bitmap.recycle();
+            bitmap = null;
+        }
+    }
+
 /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

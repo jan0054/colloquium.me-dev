@@ -3,4 +3,4 @@
     <item android:state_checked="false" android:drawable="@drawable/preference_toggle_off" />
     <item android:state_checked="true" android:drawable="@drawable/preference_toggle_on" />
     </selector>
-<!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/btn_toggle_ball.xml -->
+<!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/drawable/btn_toggle_ball.xml -->

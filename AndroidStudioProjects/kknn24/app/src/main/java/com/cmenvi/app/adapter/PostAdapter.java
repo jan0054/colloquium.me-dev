@@ -108,7 +108,14 @@ public class PostAdapter extends BaseAdapter {
 				context.sendBroadcast(intent);
 			}
 		});
-		BitmapManager.INSTANCE.loadBitmap(getPhotoUrl(item), holder.image, 0, 0);
+		String string = getPhotoUrl(item);
+		BitmapManager.INSTANCE.loadBitmap(string, holder.image, 0, 0);
+		if(string != null) {
+			holder.image.setVisibility(View.VISIBLE);
+		}
+		else {
+			holder.image.setVisibility(View.GONE);
+		}
 		return convertView;
 	}
 
