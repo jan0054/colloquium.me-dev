@@ -12,7 +12,8 @@
 
 
 
-@interface TimelineDetailViewController : UIViewController<UITextViewDelegate, UIScrollViewDelegate>
+@interface TimelineDetailViewController : UIViewController<UITextFieldDelegate, UIScrollViewDelegate>
+//ui elements
 @property (strong, nonatomic) IBOutlet UIView *post_background;
 @property (strong, nonatomic) IBOutlet UIView *input_background;
 @property (strong, nonatomic) IBOutlet UITableView *comment_table;
@@ -23,6 +24,11 @@
 @property (strong, nonatomic) IBOutlet UITextField *comment_input;
 @property (strong, nonatomic) IBOutlet UILabel *content_label;
 
+//ui constraints
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottom_tabbar_spacing;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottom_screen_spacing;
+
+//data objects
 @property PFObject *post;
 @property NSString *post_id;
 @property NSString *post_content;

@@ -363,11 +363,11 @@
     }
     else if (indexPath.row ==1)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://htung@ntu.edu.tw"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
     }
     else if (indexPath.row ==2)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://htung@ntu.edu.tw"]];
     }
     else if (indexPath.row==3)
     {

@@ -16,6 +16,7 @@
 
 NSMutableArray *comment_array;
 BOOL image_set;
+BOOL is_person;
 
 @implementation TimelineDetailViewController
 @synthesize post;
@@ -41,10 +42,12 @@ BOOL image_set;
     }
     self.comment_table.rowHeight = UITableViewAutomaticDimension;
     self.comment_table.estimatedRowHeight = 320.0;
+    self.bottom_screen_spacing.active = NO;
+    is_person = [self check_is_person];
     
     //styling
     self.comment_table.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor background];
+    self.view.backgroundColor = [UIColor dark_primary];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.comment_table.tableFooterView = [[UIView alloc] init];
     self.post_background.backgroundColor = [UIColor light_bg];
@@ -66,9 +69,18 @@ BOOL image_set;
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [super viewDidAppear:animated];
     [self fill_post_data];
     [self get_comment_data];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void) viewDidLayoutSubviews
@@ -81,10 +93,24 @@ BOOL image_set;
 
 
 - (IBAction)post_comment_button_tap:(UIButton *)sender {
-    if (self.comment_input.text.length >= 1)
+    if (is_person)
     {
-        [self send_new_comment];
+        if (self.comment_input.text.length >= 1)
+        {
+            [self send_new_comment];
+            [self.comment_input resignFirstResponder];
+        }
     }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Sorry, You need to be an event attendee to comment on posts."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Done"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    
 }
 
 #pragma mark - Data
@@ -123,6 +149,7 @@ BOOL image_set;
     PFUser *user = [PFUser currentUser];
     comment[@"author"] = user;
     comment[@"author_name"] = user[@"username"];
+    comment[@"post"] = post;
     [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
@@ -135,6 +162,24 @@ BOOL image_set;
             NSLog(@"Error posting comment: %@ %@", error, [error userInfo]);
         }
     }];
+}
+
+- (BOOL) check_is_person {
+    if ([PFUser currentUser]) {
+        PFUser *user = [PFUser currentUser];
+        NSNumber *is_person = user[@"is_person"];
+        int is_person_int = [is_person intValue];
+        if (is_person_int == 1) {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    else {
+        return NO;
+    }
 }
 
 #pragma mark - Tableview
@@ -200,6 +245,41 @@ BOOL image_set;
     cell.comment_time_label.textColor = [UIColor light_txt];
     
     return cell;
+}
+
+#pragma mark - Keyboard
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSLog(@"keyboard will show");
+    //self.dismiss_keyboard_button.hidden = NO;
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    CGFloat height = keyboardFrame.size.height;
+    self.bottom_tabbar_spacing.active = NO;
+    self.bottom_screen_spacing.active = YES;
+    self.bottom_screen_spacing.constant = height;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSLog(@"keyboard will hide");
+    //self.dismiss_keyboard_button.hidden = YES;
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    CGFloat height = keyboardFrame.size.height;
+    self.bottom_screen_spacing.active = NO;
+    self.bottom_tabbar_spacing.active = YES;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 @end

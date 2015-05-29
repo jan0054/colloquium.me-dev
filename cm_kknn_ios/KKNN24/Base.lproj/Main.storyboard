@@ -21,14 +21,14 @@
                     <connections>
                         <segue destination="GjQ-SC-Aqc" kind="relationship" relationship="viewControllers" id="woa-Yt-5Qk"/>
                         <segue destination="xVS-Oh-Aro" kind="relationship" relationship="viewControllers" id="Sbg-jp-hEo"/>
-                        <segue destination="aKr-F5-8MA" kind="relationship" relationship="viewControllers" id="emy-Ry-CUn"/>
                         <segue destination="w9I-OX-fZu" kind="relationship" relationship="viewControllers" id="4PD-18-sIV"/>
+                        <segue destination="aKr-F5-8MA" kind="relationship" relationship="viewControllers" id="emy-Ry-CUn"/>
                         <segue destination="Vgu-2E-QVR" kind="relationship" relationship="viewControllers" id="PsA-m0-gPM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="-717"/>
+            <point key="canvasLocation" x="-38" y="-732"/>
         </scene>
         <!--Program-->
         <scene sceneID="dkT-SD-UcD">
@@ -42,10 +42,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVf-h0-pTy">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVf-h0-pTy">
                                 <rect key="frame" x="320" y="118" width="320" height="405"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" tag="3" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GFF-hz-RCW">
+                                    <tableView clipsSubviews="YES" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GFF-hz-RCW">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="405"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1250,7 +1250,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SEV-9q-cuM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SEV-9q-cuM">
                                 <rect key="frame" x="0.0" y="223" width="320" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1398,7 +1398,7 @@
                             <constraint firstItem="VR9-nd-8cQ" firstAttribute="top" secondItem="QtJ-w1-2sG" secondAttribute="bottom" id="4RV-rN-QBK"/>
                             <constraint firstItem="N6O-ax-Xyc" firstAttribute="top" secondItem="Gu5-q8-wKq" secondAttribute="bottom" id="7s7-Bu-zYD"/>
                             <constraint firstItem="SEV-9q-cuM" firstAttribute="leading" secondItem="Dyp-h9-29B" secondAttribute="leadingMargin" constant="-16" id="8RJ-89-s4X"/>
-                            <constraint firstItem="QtJ-w1-2sG" firstAttribute="top" secondItem="SEV-9q-cuM" secondAttribute="bottom" id="DBf-RI-tnK"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="QtJ-w1-2sG" secondAttribute="bottom" constant="49" id="LEX-G9-tsp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SEV-9q-cuM" secondAttribute="trailing" constant="-16" id="OmI-sq-qsN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="N6O-ax-Xyc" secondAttribute="trailing" constant="-16" id="Pgo-zc-1Oa"/>
                             <constraint firstItem="SEV-9q-cuM" firstAttribute="top" secondItem="N6O-ax-Xyc" secondAttribute="bottom" id="SjA-c5-1Ll"/>
@@ -1410,6 +1410,8 @@
                     <navigationItem key="navigationItem" id="H3B-sd-pLj"/>
                     <connections>
                         <outlet property="author_label" destination="I8B-Vb-0aH" id="AM5-Gh-lxs"/>
+                        <outlet property="bottom_screen_spacing" destination="LEX-G9-tsp" id="vWN-SA-DOk"/>
+                        <outlet property="bottom_tabbar_spacing" destination="4RV-rN-QBK" id="b6Q-ZJ-cqp"/>
                         <outlet property="comment_input" destination="7a1-D1-Apu" id="oJv-rV-ZzP"/>
                         <outlet property="comment_table" destination="SEV-9q-cuM" id="kEW-YU-GgI"/>
                         <outlet property="content_label" destination="gsJ-dA-XHU" id="4nc-c3-eOL"/>
@@ -2941,13 +2943,13 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-YB-WLI">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vy-YB-WLI">
                                         <rect key="frame" x="10" y="0.0" width="300" height="100"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRy-w2-saH">
-                                        <rect key="frame" x="60" y="309" width="200" height="27"/>
+                                        <rect key="frame" x="40" y="309" width="240" height="27"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="I am an attendee at this event">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2963,17 +2965,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pje-S1-xPM">
-                                        <rect key="frame" x="20" y="120" width="280" height="30"/>
+                                        <rect key="frame" x="10" y="120" width="300" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVL-7b-VaX">
-                                        <rect key="frame" x="20" y="180" width="280" height="30"/>
+                                        <rect key="frame" x="10" y="180" width="300" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Institution" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AS2-Rd-ohN">
-                                        <rect key="frame" x="20" y="240" width="280" height="30"/>
+                                        <rect key="frame" x="10" y="240" width="300" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>

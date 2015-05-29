@@ -94,11 +94,7 @@ BOOL photo_is_set;
     [self.view setNeedsUpdateConstraints];
     [self.view setNeedsDisplay];
 }
-/*
-- (IBAction)camera_button_tap:(UIButton *)sender {
-    [self newPhoto:nil];
-}
-*/
+
 - (IBAction)library_button_tap:(UIButton *)sender {
     //[self useLibrary:nil];
     self.imagePicker = [[GKImagePicker alloc] init];
@@ -107,14 +103,6 @@ BOOL photo_is_set;
     self.imagePicker.useFrontCameraAsDefault = NO;
 
     [self.imagePicker showActionSheetOnViewController:self onPopoverFromView:sender];
-}
-
-- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
-    self.post_image.image = image;
-    photo_is_set = YES;
-    self.cancel_image_button.hidden = NO;
-    self.cancel_image_button.userInteractionEnabled = YES;
-    self.image_ratio.active = YES;
 }
 
 #pragma mark - Data
@@ -126,51 +114,38 @@ BOOL photo_is_set;
     post[@"author_name"] = user[@"username"];
     post[@"author"] = user;
     post[@"content"] = self.content_textview.text;
-    CGSize img_param = CGSizeMake(640.0, 640.0);
-    UIImage *smallpic = [self shrinkImage:self.post_image.image withSize:img_param];
-    NSData *imageData = UIImagePNGRepresentation(smallpic);
-    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-    post[@"image"] = imageFile;
-    
+    if (photo_is_set)
+    {
+        CGSize img_param = CGSizeMake(1080.0, 1080.0);
+        UIImage *smallpic = [self shrinkImage:self.post_image.image withSize:img_param];
+        NSData *imageData = UIImagePNGRepresentation(smallpic);
+        PFFile *imageFile = [PFFile fileWithName:[self generate_filename] data:imageData];
+        post[@"image"] = imageFile;
+    }
+
     [post saveInBackground];
 }
 
-#pragma mark - Imaging
-/*
-- (void) newPhoto:(id)sender
-{
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypeCamera;
-        imagePicker.allowsEditing = NO;
-        is_new_photo = YES;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
-    }
+- (NSString *) generate_filename {
+    PFUser *user = [PFUser currentUser];
+    NSString *uname = user.username;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat: @"yyyyMMddHHmm"];
+    NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
+    NSString *filename = [NSString stringWithFormat:@"%@%@.png",uname,dateString];
+    return filename;
 }
 
-- (void) useLibrary:(id)sender
-{
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.allowsEditing = NO;
-        is_new_photo = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
-    }
+#pragma mark - Imaging
+
+- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    self.post_image.image = image;
+    photo_is_set = YES;
+    self.cancel_image_button.hidden = NO;
+    self.cancel_image_button.userInteractionEnabled = YES;
+    self.image_ratio.active = YES;
 }
-*/
+
 - (UIImage *)shrinkImage:(UIImage *)image withSize:(CGSize)size {
     UIGraphicsBeginImageContext(size);
     [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
@@ -178,40 +153,6 @@ BOOL photo_is_set;
     UIGraphicsEndImageContext();
     return destImage;
 }
-
-//called after setting photo
-/*
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    self.post_image.image = image;
-    photo_is_set = YES;
-    self.cancel_image_button.hidden = NO;
-    self.cancel_image_button.userInteractionEnabled = YES;
-    self.image_ratio.active = YES;
-    if (is_new_photo)
-    {
-        UIImageWriteToSavedPhotosAlbum(image,
-                                       self,
-                                       @selector(image:didFinishSavingWithError:contextInfo:),
-                                       nil);
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo
-{
-    if (error) {
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: @"Save failed"
-                              message: @"Failed to save image"
-                              delegate: nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
-        [alert show];
-    }
-}
- */
 
 #pragma mark - Keyboard
 

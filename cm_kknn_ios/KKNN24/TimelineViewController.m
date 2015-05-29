@@ -24,6 +24,7 @@ NSString *selected_post_time;
 NSString *selected_author_name;
 PFUser *selected_author;
 UIImage *selected_image;
+BOOL is_person;
 
 @implementation TimelineViewController
 @synthesize pullrefresh;
@@ -38,6 +39,7 @@ UIImage *selected_image;
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.timeline_table addSubview:pullrefresh];
+    is_person = [self check_is_person];
     
     //styling
     self.timeline_table.backgroundColor = [UIColor clearColor];
@@ -82,6 +84,24 @@ UIImage *selected_image;
         }
         [self.timeline_table reloadData];
     }];
+}
+
+- (BOOL) check_is_person {
+    if ([PFUser currentUser]) {
+        PFUser *user = [PFUser currentUser];
+        NSNumber *is_person = user[@"is_person"];
+        int is_person_int = [is_person intValue];
+        if (is_person_int == 1) {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    else {
+        return NO;
+    }
 }
 
 #pragma mark - TableView
@@ -172,8 +192,19 @@ UIImage *selected_image;
 }
 
 - (IBAction)addpost_button_tap:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"newpostsegue" sender:self];
-    
+    if (is_person)
+    {
+        [self performSegueWithIdentifier:@"newpostsegue" sender:self];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Sorry, You need to be an event attendee to post on the timeline."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Done"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 @end

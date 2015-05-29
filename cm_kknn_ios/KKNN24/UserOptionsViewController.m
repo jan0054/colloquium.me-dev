@@ -24,11 +24,11 @@ UITextField *activefield;
     [super viewDidLoad];
     
     keyboard_is_up = NO;
-    
     //self.webpage_input_textview.delegate = self;
     self.background_scroll_view.delegate = self;
     CGSize scrollContentSize = CGSizeMake(320, 504);
     self.background_scroll_view.contentSize = scrollContentSize;
+    [self hide_all];
     
     //styling
     self.view.backgroundColor = [UIColor dark_primary];
@@ -85,23 +85,7 @@ UITextField *activefield;
                 person_obj[@"is_user"] = @1;
                 [person_obj saveInBackground];
                 
-                //display webpage controls
-                self.webpage_content_label.hidden = FALSE;
-                self.webpage_input_textview.hidden = FALSE;
-                self.webpage_title_label.hidden = FALSE;
-                self.chat_switch.hidden = NO;
-                self.chat_label.hidden = NO;
-                self.chat_current_label.hidden = NO;
-                self.email_switch.hidden = NO;
-                self.email_label.hidden = NO;
-                self.email_current_label.hidden = NO;
-                
-                //hide attendence controls
-                self.confirm_attendee_button.hidden = YES;
-                self.confirm_attendee_button.userInteractionEnabled = NO;
-                self.first_name_input.hidden = YES;
-                self.last_name_input.hidden = YES;
-                self.institution_input.hidden = YES;
+                [self show_web_hide_attendence];
                 
                 NSString *linkstr = person_obj[@"link"];
                 if ( linkstr == (id)[NSNull null] ||linkstr.length == 0 )
@@ -133,27 +117,11 @@ UITextField *activefield;
                 self.chat_current_label.textColor = [UIColor grayColor];
                 */
                 
-                //hide webpage controls
-                self.webpage_content_label.hidden = YES;
-                self.webpage_input_textview.hidden = YES;
-                self.webpage_title_label.hidden = YES;
-                self.chat_switch.hidden = YES;
-                self.chat_label.hidden = YES;
-                self.chat_current_label.hidden = YES;
-                self.email_switch.hidden = YES;
-                self.email_label.hidden = YES;
-                self.email_current_label.hidden = YES;
-                
-                //display attendence controls
-                self.confirm_attendee_button.hidden = NO;
-                self.confirm_attendee_button.userInteractionEnabled = YES;
-                self.first_name_input.hidden = NO;
-                self.last_name_input.hidden = NO;
-                self.institution_input.hidden = NO;
+                [self hide_web_show_attendence];
             }
         }];
     }
-    else if (self.isnew == 0)
+    else if (self.isnew != 1)
     {
         PFUser *self_user = [PFUser currentUser];
         NSString *user_email_str = self_user.email;
@@ -198,24 +166,7 @@ UITextField *activefield;
                     self.chat_current_label.text = @"Current: Off";
                 }
                 
-                //display webpage controls
-                self.webpage_content_label.hidden = FALSE;
-                self.webpage_input_textview.hidden = FALSE;
-                self.webpage_title_label.hidden = FALSE;
-                self.chat_switch.hidden = NO;
-                self.chat_label.hidden = NO;
-                self.chat_current_label.hidden = NO;
-                self.email_switch.hidden = NO;
-                self.email_label.hidden = NO;
-                self.email_current_label.hidden = NO;
-                
-                //hide attendence controls
-                self.confirm_attendee_button.hidden = YES;
-                self.confirm_attendee_button.userInteractionEnabled = NO;
-                self.first_name_input.hidden = YES;
-                self.last_name_input.hidden = YES;
-                self.institution_input.hidden = YES;
-
+                [self show_web_hide_attendence];
                 
                 NSString *linkstr = person_obj[@"link"];
                 if ( linkstr == (id)[NSNull null] ||linkstr.length == 0 )
@@ -247,27 +198,71 @@ UITextField *activefield;
                 self.chat_current_label.textColor = [UIColor grayColor];
                  */
                 
-                //hide webpage controls
-                self.webpage_content_label.hidden = YES;
-                self.webpage_input_textview.hidden = YES;
-                self.webpage_title_label.hidden = YES;
-                self.chat_switch.hidden = YES;
-                self.chat_label.hidden = YES;
-                self.chat_current_label.hidden = YES;
-                self.email_switch.hidden = YES;
-                self.email_label.hidden = YES;
-                self.email_current_label.hidden = YES;
-                
-                //display attendence controls
-                self.confirm_attendee_button.hidden = NO;
-                self.confirm_attendee_button.userInteractionEnabled = YES;
-                self.first_name_input.hidden = NO;
-                self.last_name_input.hidden = NO;
-                self.institution_input.hidden = NO;
+                [self hide_web_show_attendence];
             }
         }];
     }
 
+}
+
+#pragma mark - User Interface
+
+- (void) hide_web_show_attendence {
+    //hide webpage controls
+    self.webpage_content_label.hidden = YES;
+    self.webpage_input_textview.hidden = YES;
+    self.webpage_title_label.hidden = YES;
+    self.chat_switch.hidden = YES;
+    self.chat_label.hidden = YES;
+    self.chat_current_label.hidden = YES;
+    self.email_switch.hidden = YES;
+    self.email_label.hidden = YES;
+    self.email_current_label.hidden = YES;
+    //display attendence controls
+    self.confirm_attendee_button.hidden = NO;
+    self.confirm_attendee_button.userInteractionEnabled = YES;
+    self.first_name_input.hidden = NO;
+    self.last_name_input.hidden = NO;
+    self.institution_input.hidden = NO;
+}
+
+- (void) show_web_hide_attendence {
+    //display webpage controls
+    self.webpage_content_label.hidden = FALSE;
+    self.webpage_input_textview.hidden = FALSE;
+    self.webpage_title_label.hidden = FALSE;
+    self.chat_switch.hidden = NO;
+    self.chat_label.hidden = NO;
+    self.chat_current_label.hidden = NO;
+    self.email_switch.hidden = NO;
+    self.email_label.hidden = NO;
+    self.email_current_label.hidden = NO;
+    //hide attendence controls
+    self.confirm_attendee_button.hidden = YES;
+    self.confirm_attendee_button.userInteractionEnabled = NO;
+    self.first_name_input.hidden = YES;
+    self.last_name_input.hidden = YES;
+    self.institution_input.hidden = YES;
+}
+
+- (void) hide_all
+{
+    //hide webpage controls
+    self.webpage_content_label.hidden = YES;
+    self.webpage_input_textview.hidden = YES;
+    self.webpage_title_label.hidden = YES;
+    self.chat_switch.hidden = YES;
+    self.chat_label.hidden = YES;
+    self.chat_current_label.hidden = YES;
+    self.email_switch.hidden = YES;
+    self.email_label.hidden = YES;
+    self.email_current_label.hidden = YES;
+    //hide attendence controls
+    self.confirm_attendee_button.hidden = YES;
+    self.confirm_attendee_button.userInteractionEnabled = NO;
+    self.first_name_input.hidden = YES;
+    self.last_name_input.hidden = YES;
+    self.institution_input.hidden = YES;
 }
 
 - (IBAction)setup_done_button_tap:(UIBarButtonItem *)sender {
