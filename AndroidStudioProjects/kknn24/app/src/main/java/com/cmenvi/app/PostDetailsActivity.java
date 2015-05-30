@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -122,7 +123,6 @@ public class PostDetailsActivity extends BaseActivity {
 		mList.setEmptyView(findViewById(android.R.id.empty));
 		mCommentAdapter = new CommentAdapter(this, mCommentData);
 		mList.setAdapter(mCommentAdapter);
-
 //        mCommentInput = (EditText)findViewById(R.id.commentinput);
 //        mSendComment = (Button)findViewById(R.id.sendcomment);
 //        mSendComment.setOnClickListener(this);
@@ -174,6 +174,24 @@ public class PostDetailsActivity extends BaseActivity {
 
     }
 
+    public void getListHeight(ListView listView)
+    {
+        int totalHeight = 0;
+        View view = null;
+        for (int i =0; i < listView.getAdapter().getCount(); i++) {
+            int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+            view = listView.getAdapter().getView(i, view, listView);
+            if(i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.MATCH_PARENT));
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        Log.d(TAG, "getcount "+listView.getAdapter().getCount());
+        Log.d(TAG, "totalHeight "+totalHeight);
+        listView.getLayoutParams().height = totalHeight + (listView.getDividerHeight() * listView.getAdapter().getCount());
+        listView.setLayoutParams(listView.getLayoutParams());
+        listView.requestLayout();
+    }
     public void sendComment(View view) {
         Log.i(TAG, "send comment button pressed");
         ParseUser selfuser = ParseUser.getCurrentUser();
@@ -254,6 +272,7 @@ public class PostDetailsActivity extends BaseActivity {
             	try {
 	            	mCommentData = mCommentDAO.getData();
 	            	mCommentAdapter.update(mCommentData);
+                    getListHeight(mList);
             	} catch (Exception e) { Log.d(TAG, "Comment data is null!"); }
             }
         }  

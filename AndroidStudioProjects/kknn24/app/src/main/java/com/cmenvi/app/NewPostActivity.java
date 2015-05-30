@@ -68,14 +68,26 @@ public class NewPostActivity extends BaseActivity {
         post_input = (EditText) findViewById(R.id.post_input);
         post_input.setEnabled(true);
 
-        imageUri=Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "test.jpg"));
-
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Colloquium_Me");
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                Log.d("Colloquium_Me", "failed to create directory");
+            }
+        }
         Calendar c = Calendar.getInstance();
         System.out.println("Current time => "+c.getTime());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String formattedDate = sdf.format(c.getTime());
-        String filename = "IMG_"+formattedDate+".jpg";
-        imageUri2=Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), filename));
+        String filename = "Colloquium_Me/IMG_"+formattedDate+".jpg";
+        imageUri=Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), filename));
+//        imageUri=Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "test.jpg"));
+
+        c = Calendar.getInstance();
+        System.out.println("Current time => "+c.getTime());
+        sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        formattedDate = sdf.format(c.getTime());
+        String filename2 = "Colloquium_Me/IMG_"+formattedDate+".jpg";
+        imageUri2=Uri.fromFile(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), filename2));
 
         //check if current user is person
         if (ParseUser.getCurrentUser() != null)
@@ -90,9 +102,6 @@ public class NewPostActivity extends BaseActivity {
         // Show only images, no videos or anything else
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_PICK);
-        intent.putExtra("crop", "true");// crop=true 有這句才能叫出裁剪頁面.
-        intent.putExtra("aspectX", 1);// 这兩項為裁剪框的比例.
-        intent.putExtra("aspectY", 1);// x:y=1:1
         // Always show the chooser (if there are multiple options available)
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
@@ -107,14 +116,20 @@ public class NewPostActivity extends BaseActivity {
         startActivityForResult(intent, TAKE_PIC);
     }
 
-    private void cropPhoto()
+    private void cropPhoto(Uri uri)
     {
+        Log.d("TAG", "in cropPhoto " + uri.toString());
+
         Intent intent = new Intent();
         intent.setAction("com.android.camera.action.CROP");
-        intent.setDataAndType(imageUri2, "image/*");
+        intent.setDataAndType(uri, "image/*");
         intent.putExtra("crop", "true");// crop=true 有這句才能叫出裁剪頁面.
         intent.putExtra("aspectX", 1);// 这兩項為裁剪框的比例.
         intent.putExtra("aspectY", 1);// x:y=1:1
+        intent.putExtra("outpuX", 1080);//圖片尺寸
+        intent.putExtra("outputY", 1080);
+//        intent.putExtra("return-data", false);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri2);
         startActivityForResult(intent, CROP_PHOTO);
     }
 
@@ -127,17 +142,12 @@ public class NewPostActivity extends BaseActivity {
                 case PICK_IMAGE_REQUEST:
                     if( data != null && data.getData() != null) {
                         Uri uri = data.getData();
-                        try {
-                            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                            // Log.d(TAG, String.valueOf(bitmap));
-                            imageView.setImageBitmap(bitmap);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        Log.d(TAG, "cropPhoto uri="+uri.toString());
+                        cropPhoto(uri);
                     }
                     break;
                 case TAKE_PIC:
-                    cropPhoto();
+                    cropPhoto(imageUri);
                     break;
                 case CROP_PHOTO:
                     try {
