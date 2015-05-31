@@ -40,6 +40,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *last_name_input;
 @property (weak, nonatomic) IBOutlet UITextField *institution_input;
 
+@property (weak, nonatomic) IBOutlet UILabel *or_label;
+@property (weak, nonatomic) IBOutlet UIButton *not_attendee_button;
+- (IBAction)not_attendee_button_tap:(UIButton *)sender;
 
 
 @end

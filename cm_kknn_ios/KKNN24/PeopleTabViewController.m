@@ -231,7 +231,7 @@ NSMutableArray *search_array;
         for (PFObject *person_obj in objects)
         {
             //check if the person is for debug purposes only and not to be displayed
-            NSNumber *dbug_person = person_obj[@"debug"];
+            NSNumber *dbug_person = person_obj[@"debug_status"];
             int dbug_person_intval = [dbug_person intValue];
             if ( dbug_person_intval != 1)
             {

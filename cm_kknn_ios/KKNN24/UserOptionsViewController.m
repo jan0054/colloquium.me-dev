@@ -44,7 +44,12 @@ UITextField *activefield;
     [self.confirm_attendee_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateHighlighted];
     [self.confirm_attendee_button setBackgroundColor:[UIColor accent_color]];
     self.confirm_attendee_button.layer.cornerRadius = 2;
-    
+    [self.not_attendee_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateNormal];
+    [self.not_attendee_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateHighlighted];
+    [self.not_attendee_button setBackgroundColor:[UIColor accent_color]];
+    self.not_attendee_button.layer.cornerRadius = 2;
+    self.or_label.textColor = [UIColor whiteColor];
+
     //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.confirm_attendee_button.bounds];
     self.confirm_attendee_button.layer.masksToBounds = NO;
@@ -52,7 +57,12 @@ UITextField *activefield;
     self.confirm_attendee_button.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.confirm_attendee_button.layer.shadowOpacity = 0.3f;
     self.confirm_attendee_button.layer.shadowPath = shadowPath.CGPath;
-
+    UIBezierPath *shadowPath1 = [UIBezierPath bezierPathWithRect:self.confirm_attendee_button.bounds];
+    self.not_attendee_button.layer.masksToBounds = NO;
+    self.not_attendee_button.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.not_attendee_button.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.not_attendee_button.layer.shadowOpacity = 0.3f;
+    self.not_attendee_button.layer.shadowPath = shadowPath1.CGPath;
     
     [self process_info];
 }
@@ -102,20 +112,10 @@ UITextField *activefield;
             {
                 NSLog(@"NO MATCHES FOUND");
                 // no matches for email, this is not an attendee
-                self.user_status_label.text = @"Hello, if you are an event attendee, please confirm using the button below. You can then access the social features of this app.";
+                self.user_status_label.text = @"Hello, if you are an event attendee, please confirm using the button below. You can then connect with other attendees.";
                 //set "user is not a person"
                 self_user[@"is_person"] = @0;
                 [self_user saveInBackground];
-                //gray out and disable controls on this page
-                /*
-                [self.chat_switch setOn:FALSE animated:FALSE];
-                self.email_switch.enabled = FALSE;
-                self.chat_switch.enabled = FALSE;
-                self.email_label.textColor = [UIColor grayColor];
-                self.chat_label.textColor = [UIColor grayColor];
-                self.email_current_label.textColor = [UIColor grayColor];
-                self.chat_current_label.textColor = [UIColor grayColor];
-                */
                 
                 [self hide_web_show_attendence];
             }
@@ -183,20 +183,10 @@ UITextField *activefield;
             {
                 NSLog(@"NO MATCHES FOUND");
                 // no matches for email, this is not an attendee
-                self.user_status_label.text = @"Hello, if you are an event attendee, please confirm using the button below. You can then access the social features of this app.";
+                self.user_status_label.text = @"Hello, if you are an event attendee, please confirm using the button below. You can then connect with other attendees.";
                 //set "user is not a person"
                 self_user[@"is_person"] = @0;
                 [self_user saveInBackground];
-                //gray out and disable controls on this page
-                /*
-                [self.chat_switch setOn:FALSE animated:FALSE];
-                self.email_switch.enabled = FALSE;
-                self.chat_switch.enabled = FALSE;
-                self.email_label.textColor = [UIColor grayColor];
-                self.chat_label.textColor = [UIColor grayColor];
-                self.email_current_label.textColor = [UIColor grayColor];
-                self.chat_current_label.textColor = [UIColor grayColor];
-                 */
                 
                 [self hide_web_show_attendence];
             }
@@ -218,12 +208,16 @@ UITextField *activefield;
     self.email_switch.hidden = YES;
     self.email_label.hidden = YES;
     self.email_current_label.hidden = YES;
+    self.setup_done_button.enabled = NO;
     //display attendence controls
     self.confirm_attendee_button.hidden = NO;
     self.confirm_attendee_button.userInteractionEnabled = YES;
     self.first_name_input.hidden = NO;
     self.last_name_input.hidden = NO;
     self.institution_input.hidden = NO;
+    self.not_attendee_button.hidden = NO;
+    self.not_attendee_button.userInteractionEnabled = YES;
+    self.or_label.hidden = NO;
 }
 
 - (void) show_web_hide_attendence {
@@ -237,12 +231,16 @@ UITextField *activefield;
     self.email_switch.hidden = NO;
     self.email_label.hidden = NO;
     self.email_current_label.hidden = NO;
+    self.setup_done_button.enabled = YES;
     //hide attendence controls
     self.confirm_attendee_button.hidden = YES;
     self.confirm_attendee_button.userInteractionEnabled = NO;
     self.first_name_input.hidden = YES;
     self.last_name_input.hidden = YES;
     self.institution_input.hidden = YES;
+    self.not_attendee_button.hidden = YES;
+    self.not_attendee_button.userInteractionEnabled = NO;
+    self.or_label.hidden = YES;
 }
 
 - (void) hide_all
@@ -263,6 +261,9 @@ UITextField *activefield;
     self.first_name_input.hidden = YES;
     self.last_name_input.hidden = YES;
     self.institution_input.hidden = YES;
+    self.not_attendee_button.hidden = YES;
+    self.not_attendee_button.userInteractionEnabled = NO;
+    self.or_label.hidden = YES;
 }
 
 - (IBAction)setup_done_button_tap:(UIBarButtonItem *)sender {
@@ -413,7 +414,6 @@ UITextField *activefield;
         self.confirm_attendee_button.userInteractionEnabled = NO;
         [self create_person];
     }
-    
 }
 
 - (void) create_person
@@ -449,6 +449,10 @@ UITextField *activefield;
         }
     }];
 
+}
+
+- (IBAction)not_attendee_button_tap:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

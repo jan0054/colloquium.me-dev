@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B43D265918FFC9980072B753"
-               BuildableName = "HEP Workshop.app"
-               BlueprintName = "HEP Workshop"
-               ReferencedContainer = "container:HEP Workshop.xcodeproj">
+               BlueprintIdentifier = "D203678DE517A3BA4C49AE92"
+               BuildableName = "libPods-GKImagePicker@robseward.a"
+               BlueprintName = "Pods-GKImagePicker@robseward"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "HEP Workshop.app"
-            BlueprintName = "HEP Workshop"
-            ReferencedContainer = "container:HEP Workshop.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -48,16 +39,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "HEP Workshop.app"
-            BlueprintName = "HEP Workshop"
-            ReferencedContainer = "container:HEP Workshop.xcodeproj">
+            BlueprintIdentifier = "D203678DE517A3BA4C49AE92"
+            BuildableName = "libPods-GKImagePicker@robseward.a"
+            BlueprintName = "Pods-GKImagePicker@robseward"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -67,16 +57,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B43D265918FFC9980072B753"
-            BuildableName = "HEP Workshop.app"
-            BlueprintName = "HEP Workshop"
-            ReferencedContainer = "container:HEP Workshop.xcodeproj">
+            BlueprintIdentifier = "D203678DE517A3BA4C49AE92"
+            BuildableName = "libPods-GKImagePicker@robseward.a"
+            BlueprintName = "Pods-GKImagePicker@robseward"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

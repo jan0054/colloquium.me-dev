@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *eventdetail_author_label;
 @property (strong, nonatomic) IBOutlet UILabel *eventdetail_location_label;
 @property (strong, nonatomic) IBOutlet UILabel *eventdetail_time_label;
+@property (weak, nonatomic) IBOutlet UILabel *eventdetail_session_label;
 
 @property (weak, nonatomic) IBOutlet UITextView *eventdetail_description_textview;
 
@@ -29,10 +30,6 @@
 - (IBAction)eventdetail_authordetail_button_tap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *eventdetail_abstract_button;
 - (IBAction)eventdetail_abstract_button_tap:(UIButton *)sender;
-@property (strong, nonatomic) IBOutlet UIView *eventdetail_description_card_view;
-
-@property (weak, nonatomic) IBOutlet UILabel *session_label;
-
 @property (strong, nonatomic) IBOutlet UIButton *discuss_button;
 - (IBAction)discuss_button_tap:(UIButton *)sender;
 

@@ -62,34 +62,24 @@ int discuss_on;  //enable-disable the discussion button
     [self.eventdetail_card_view setBackgroundColor:[UIColor light_bg]];
     self.eventdetail_card_view.alpha = 1.0;
     [self.eventdetail_trim_view setBackgroundColor:[UIColor accent_color]];
-    [self.eventdetail_description_card_view setBackgroundColor:[UIColor clearColor]];
     [self.eventdetail_description_textview setBackgroundColor:[UIColor clearColor]];
     self.eventdetail_location_label.textColor = [UIColor secondary_text];
     self.eventdetail_time_label.textColor = [UIColor secondary_text];
     self.eventdetail_author_label.textColor = [UIColor dark_txt];
     self.eventdetail_description_textview.textColor = [UIColor dark_txt];
     self.eventdetail_name_label.textColor = [UIColor dark_txt];
-    //self.eventdetail_card_view.layer.cornerRadius = 2;
-    //self.eventdetail_description_card_view.layer.cornerRadius = 2;
+    self.eventdetail_session_label.textColor = [UIColor secondary_text];
     [self.eventdetail_authordetail_button setTitleColor: [UIColor dark_button_txt] forState:UIControlStateNormal];
     [self.eventdetail_authordetail_button setTitleColor: [UIColor dark_button_txt] forState:UIControlStateHighlighted];
     [self.eventdetail_abstract_button setTitleColor: [UIColor dark_button_txt] forState:UIControlStateNormal];
     [self.eventdetail_abstract_button setTitleColor: [UIColor dark_button_txt] forState:UIControlStateHighlighted];
-    //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.eventdetail_card_view.bounds];
     self.eventdetail_card_view.layer.masksToBounds = NO;
     self.eventdetail_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
     self.eventdetail_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     self.eventdetail_card_view.layer.shadowOpacity = 0.3f;
     self.eventdetail_card_view.layer.shadowPath = shadowPath.CGPath;
-    /*
-    UIBezierPath *shadowPatha = [UIBezierPath bezierPathWithRect:self.eventdetail_description_card_view.bounds];
-    self.eventdetail_description_card_view.layer.masksToBounds = NO;
-    self.eventdetail_description_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.eventdetail_description_card_view.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
-    self.eventdetail_description_card_view.layer.shadowOpacity = 0.3f;
-    self.eventdetail_description_card_view.layer.shadowPath = shadowPatha.CGPath;
-    */
+
     //get data
     if (self.event_type == 0)
     {
@@ -119,20 +109,11 @@ int discuss_on;  //enable-disable the discussion button
         PFObject *author = object[@"author"];
         self.eventdetail_author_label.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
         author_objid = author.objectId;
-        /*
-        PFObject *abstract = object[@"abstract"];
-        if (abstract != nil)
-        {
-            abstract_id = abstract.objectId;
-            self.eventdetail_abstract_button.enabled = YES;
-            self.eventdetail_abstract_button.hidden = NO;
-        }
-        */
         self.eventdetail_description_textview.text = object[@"content"];
         PFObject *location = object[@"location"];
         self.eventdetail_location_label.text = location[@"name"];
         PFObject *session = object[@"session"];
-        self.session_label.text = session[@"name"];
+        self.eventdetail_session_label.text = session[@"name"];
         NSDate *date = object[@"start_time"];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateStyle:NSDateFormatterMediumStyle];

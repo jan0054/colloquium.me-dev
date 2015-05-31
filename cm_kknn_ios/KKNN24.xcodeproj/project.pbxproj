@@ -787,7 +787,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0d364176-d53c-4901-a707-19cbff5fa9dd";
+				PROVISIONING_PROFILE = "62f3a79c-cc45-44ff-92ee-634297e52381";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -820,7 +820,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "0d364176-d53c-4901-a707-19cbff5fa9dd";
+				PROVISIONING_PROFILE = "62f3a79c-cc45-44ff-92ee-634297e52381";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -832,13 +832,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KKNN24/KKNN24-Prefix.pch";
 				INFOPLIST_FILE = "KKNN24/KKNN24-Info.plist";
 				PRODUCT_NAME = KKNN24;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "62f3a79c-cc45-44ff-92ee-634297e52381";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -849,13 +849,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KKNN24/KKNN24-Prefix.pch";
 				INFOPLIST_FILE = "KKNN24/KKNN24-Info.plist";
 				PRODUCT_NAME = KKNN24;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "62f3a79c-cc45-44ff-92ee-634297e52381";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
