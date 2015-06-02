@@ -10,6 +10,8 @@
 #import "TravelTabViewController.h"
 #import "PeopleTabViewController.h"
 #import "ConversationListViewController.h"
+#import "PersonDetailViewController.h"
+#import "ChatViewController.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -54,8 +56,8 @@
     
 }
 
-- (void)getConversations:(id)caller withPerson:(PFObject *)person {
-    PFRelation *relation = [person relationForKey:@"conversation"];
+- (void)getConversations:(id)caller withUser:(PFUser *)user {
+    PFRelation *relation = [user relationForKey:@"conversation"];
     PFQuery *query = [relation query];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
@@ -63,6 +65,66 @@
         } else {
             [caller processData:objects];
         }
+    }];
+}
+
+- (void)getTalks: (id)caller forAuthor: (PFObject *)person {
+    PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
+    [query whereKey:@"author" equalTo:person];
+    [query orderByDescending:@"start_time"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu talks for the person.", (unsigned long)objects.count);
+        [caller processTalkData:objects];
+    }];
+}
+
+- (void)getPosters: (id)caller forAuthor: (PFObject *)person {
+    PFQuery *query = [PFQuery queryWithClassName:@"Poster"];
+    [query whereKey:@"author" equalTo:person];
+    [query orderByDescending:@"name"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu posters for the person.", (unsigned long)objects.count);
+        [caller processPosterData:objects];
+    }];
+}
+
+- (void)getAttachments: (id)caller forAuthor: (PFObject *)person {
+    PFQuery *query = [PFQuery queryWithClassName:@"Attachment"];
+    [query whereKey:@"author" equalTo:person];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu talks for the person.", (unsigned long)objects.count);
+        [caller processAttachmentData:objects];
+    }];
+}
+
+- (void)sendChat:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation {
+    PFObject *chat = [PFObject objectWithClassName:@"Chat"];
+    chat[@"content"] = content;
+    chat[@"author"] = user;
+    chat[@"conversation"] = conversation;
+    [chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"new chat uploaded successfully");
+            conversation[@"last_time"] = [NSDate date];
+            conversation[@"last_msg"] = content;
+            [conversation saveInBackground];
+            [caller processChatUploadWithConversation:conversation withContent:content];
+        }
+        else
+        {
+            NSLog(@"chat push error:%@",error);
+        }
+    }];
+}
+
+- (void)getChat:(id)caller withConversation:(PFObject *)conversation {
+    PFQuery *query = [PFQuery queryWithClassName:@"Chat"];
+    [query whereKey:@"conversation" equalTo:conversation];
+    [query orderByAscending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"chat query success with # of chats: %ld", (unsigned long)[objects count]);
+        [caller processChatList:objects];
     }];
 }
 

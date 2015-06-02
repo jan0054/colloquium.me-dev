@@ -10,6 +10,7 @@
 #import "UIColor+ProjectColors.h"
 #import "ChatMeCellTableViewCell.h"
 #import "ChatYouCellTableViewCell.h"
+#import "UIViewController+ParseQueries.h"
 
 @interface ChatViewController ()
 
@@ -25,6 +26,9 @@ PFObject *conversation;
 @synthesize otherguy;
 @synthesize pullrefresh;
 @synthesize ab_self;
+@synthesize participants;
+
+#pragma mark - Interface
 
 - (void)viewDidLoad
 {
@@ -45,8 +49,6 @@ PFObject *conversation;
     
     self.chat_table.estimatedRowHeight = 69;
     self.chat_table.rowHeight = UITableViewAutomaticDimension;
-    
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -68,61 +70,9 @@ PFObject *conversation;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGRect keyboardFrame = [kbFrame CGRectValue];
-    
-    CGFloat height = keyboardFrame.size.height;
-    
-    NSLog(@"Updating constraints: keyboard up");
-
-    self.textfieldbottom.constant = height+5;
-    self.sendmessagebottom.constant = height+5;
-    self.tablebottom.constant = height+50;
-    
-    [UIView animateWithDuration:animationDuration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-    
-    //scroll the table to bottom row (if not empty table)
-    if ([self.chat_table_array count] >=1)
-    {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
-        [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
-    
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    NSLog(@"Updating constraints: keyboard down");
-    
-    self.textfieldbottom.constant = 5;
-    self.sendmessagebottom.constant = 5;
-    self.tablebottom.constant = 50;
-    
-    [UIView animateWithDuration:animationDuration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-    
-    //scroll the table to bottom row (if not empty table)
-    if ([self.chat_table_array count] >=1)
-    {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
-        [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
-}
-
-//called when pulling downward on the tableview
 - (void)refreshctrl:(id)sender
 {
-    //refresh code here
     [self get_chat_info];
-    // End Refreshing
     [(UIRefreshControl *)sender endRefreshing];
 }
 
@@ -136,29 +86,13 @@ PFObject *conversation;
     [super touchesBegan:touches withEvent:event];
 }
 
-//controls view sliding up when editing text field
-- (void) textFieldDidBeginEditing:(UITextField *)textView
-{
-    [self animateTextField: textView up: YES];
-}
-- (void) textFieldDidEndEditing:(UITextField *)textView
-{
-    [self animateTextField: textView up: NO];
-}
-- (void) animateTextField: (UITextField *) textView up: (BOOL) up
-{
-    /*
-    const int movementDistance = 197; // sliding distance
-    const float movementDuration = 0.3f;
-    int movement = (up ? -movementDistance : movementDistance);
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
-    */
+- (IBAction)send_chat_button_tap:(UIButton *)sender {
+    PFUser *user = [PFUser currentUser];
+    NSString *content = self.chat_input_box.text;
+    [self sendChat:self withAuthor:user withContent:content withConversation:conversation];
 }
 
+#pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -218,33 +152,15 @@ PFObject *conversation;
     [self.chat_input_box resignFirstResponder];
 }
 
+#pragma mark - Data
+
+//in-app push receiver
 - (void) pushreload: (id) sender
 {
     [self get_chat_info];
 }
 
-- (void) get_chat_info
-{
-    //first check if the other participant still has their chat_on set
-    NSNumber *chat_on_num = otherguy[@"chat_status"];
-    int chat_on = [chat_on_num intValue];
-    if (chat_on != 1)
-    {
-        self.send_chat_button.enabled = NO;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                        message:@"This user has turned off chat"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Done"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
-    else
-    {
-        self.send_chat_button.enabled = YES;
-    }
-    
-    self.chat_table_array = [[NSMutableArray alloc] init];
-    
+- (void) get_chat_info {
     PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"Conversation" objectId:self.conversation_objid];
     conversation = the_conv;
     
@@ -311,81 +227,90 @@ PFObject *conversation;
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
             [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
-
     }];
-   
 }
 
-- (IBAction)send_chat_button_tap:(UIButton *)sender {
-    
-    NSString *content = self.chat_input_box.text;
+- (void)processChatList: (NSArray *)results {
+    NSLog(@"received chat list callback, refreshing table");
+    [self.chat_table_array removeAllObjects];
+    self.chat_table_array = [results mutableCopy];
+    [self.chat_table reloadData];
+}
 
-    PFObject *new_chat = [PFObject objectWithClassName:@"Chat"];
-    new_chat[@"content"] = content;
-    new_chat[@"conversation"] = conversation;
-    new_chat[@"from"] = [PFUser currentUser];
-    new_chat[@"to"] = otherguy;
-    [new_chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded)
-        {
-            NSLog(@"new chat uploaded successfully");
-            
-            //now send the push notification
-            NSString *pushstr = [NSString stringWithFormat:@"%@: %@",otherguy.username,content];
-            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  pushstr, @"alert",
-                                  @"Increment", @"badge",
-                                  @"default", @"sound",
-                                  nil];
-            // Create our Installation query
-            PFQuery *pushQuery = [PFInstallation query];
-            [pushQuery whereKey:@"user" equalTo:otherguy];
-            
-            // Send push notification to query
-            PFPush *push = [[PFPush alloc] init];
-            [push setQuery:pushQuery]; // Set our Installation query
-            //[push setMessage:pushstr];
-            [push setData:data];
-            [push sendPushInBackground];
-        }
-        else
-        {
-            NSLog(@"push error:%@",error);
-        }
-        
-        [self get_chat_info];
-    }];
+- (void)processChatUploadWithConversation:(PFObject *)conversation withContent:(NSString *)content {
+    NSLog(@"received chat upload callback, sending push");
+
+    PFUser *user = [PFUser currentUser];
+    NSString *pushstr = [NSString stringWithFormat:@"%@: %@",user.username,content];
+    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                          pushstr, @"alert",
+                          @"Increment", @"badge",
+                          @"default", @"sound",
+                          nil];
+    // Create our Installation query
+    PFQuery *pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"user" containedIn:participants];
+    // Send push notification to query
+    PFPush *push = [[PFPush alloc] init];
+    [push setQuery:pushQuery]; // Set our Installation query
+    //[push setMessage:pushstr];
+    [push setData:data];
+    [push sendPushInBackground];
     
+    //interface
+    [self get_chat_info];
     self.chat_input_box.text = @"";
     self.chat_input_box.placeholder = @"Type message here..";
-    
-    //change the parent conversation, last message, last message time, and unread count
-    conversation[@"last_time"] = [NSDate date];
-    conversation[@"last_msg"] = content;
-    if ([ab_self isEqualToString:@"a"])
-    {
-        [conversation incrementKey:@"user_b_unread"];
-    }
-    else if ([ab_self isEqualToString:@"b"])
-    {
-        [conversation incrementKey:@"user_a_unread"];
-    }
-
-    [conversation saveInBackgroundWithBlock:^(BOOL succeededa, NSError *errora) {
-        if (succeededa)
-        {
-            NSLog(@"new chat changed conversation successfully");
-        }
-        else
-        {
-            NSLog(@"error:%@",errora);
-        }
-
-    }];
-    
 }
 
+#pragma mark - Keyboard
 
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    
+    CGFloat height = keyboardFrame.size.height;
+    
+    NSLog(@"Updating constraints: keyboard up");
+    
+    self.textfieldbottom.constant = height+5;
+    self.sendmessagebottom.constant = height+5;
+    self.tablebottom.constant = height+50;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    //scroll the table to bottom row (if not empty table)
+    if ([self.chat_table_array count] >=1)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
+        [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+}
 
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    NSLog(@"Updating constraints: keyboard down");
+    
+    self.textfieldbottom.constant = 5;
+    self.sendmessagebottom.constant = 5;
+    self.tablebottom.constant = 50;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    //scroll the table to bottom row (if not empty table)
+    if ([self.chat_table_array count] >=1)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
+        [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+}
 
 @end

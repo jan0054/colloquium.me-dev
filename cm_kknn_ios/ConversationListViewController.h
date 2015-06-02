@@ -20,7 +20,7 @@
 
 @property UIRefreshControl *pullrefresh;
 
-@property int from_preloaded;
+@property int fromPersonDetailChat;
 @property NSString *preloaded_conv_id;
 @property NSString *preloaded_otherguy_objid;
 @property PFUser *preloaded_otherguy;

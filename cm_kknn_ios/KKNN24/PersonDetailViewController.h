@@ -27,4 +27,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *person_chat_button;
 - (IBAction)person_chat_button_tap:(UIButton *)sender;
 
+- (void)processTalkData: (NSArray *)results;
+- (void)processPosterData: (NSArray *)results;
+- (void)processAttachmentData: (NSArray *)results;
+
 @end

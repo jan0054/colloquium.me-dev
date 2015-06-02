@@ -13,6 +13,7 @@
 #import "AbstractPdfViewController.h"
 #import "ChatViewController.h"
 #import "PeopleTabViewController.h"
+#import "UIViewController+ParseQueries.h"
 
 @interface PersonDetailViewController ()
 
@@ -35,6 +36,8 @@ NSString *ab_self;
 
 @implementation PersonDetailViewController
 @synthesize person_objid;
+
+#pragma mark - Interface
 
 - (void)viewDidLoad
 {
@@ -63,8 +66,6 @@ NSString *ab_self;
     self.person_name_label.textColor = [UIColor dark_txt];
     self.person_institution_label.textColor = [UIColor secondary_text];
     self.person_detail_seg.backgroundColor =[UIColor primary_color];
-    
-    //add shadow to views
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.person_card_view.bounds];
     self.person_card_view.layer.masksToBounds = NO;
     self.person_card_view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -79,7 +80,6 @@ NSString *ab_self;
     self.person_detail_seg.layer.shadowPath = shadowPath1.CGPath;
     
     [self get_person_data];
-    
 }
 
 - (void) viewDidLayoutSubviews
@@ -129,6 +129,43 @@ NSString *ab_self;
     }
 }
 
+- (IBAction)person_chat_button_tap:(UIButton *)sender {
+    seg_index = 99;
+    if (chat_enabled == YES)
+    {
+        NSLog(@"going to chat interface");
+        [self check_conv_exist];
+        
+    }
+    else
+    {
+        if (is_self==1)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:@"Cannot message self"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Done"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:@"This person is not signed in or has turned off chat"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Done"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        
+    }
+    
+}
+
+
+#pragma mark - Data
+
 - (void) get_person_data
 {
     //get current user 1. isperson 2. chat_on
@@ -145,9 +182,9 @@ NSString *ab_self;
         the_person = object;
         self.person_name_label.text = [NSString stringWithFormat:@"%@, %@", the_person[@"last_name"], the_person[@"first_name"]];
         self.person_institution_label.text = the_person[@"institution"];
-        [self get_person_talks];
-        [self get_person_posters];
-        [self get_person_abstracts];
+        [self getTalks:self forAuthor:the_person];
+        [self getPosters:self forAuthor:the_person];
+        [self getAttachments:self forAuthor:the_person];
         
         //get this person's email and chat preferences
         NSString *mailstr = the_person[@"email"];
@@ -259,63 +296,67 @@ NSString *ab_self;
     }];
 }
 
-- (void) get_person_talks
+- (void)processTalkData: (NSArray *)results {
+    NSLog(@"received talk data for person");
+    person_talks = [results mutableCopy];
+    [self.person_detail_table reloadData];
+}
+- (void)processPosterData: (NSArray *)results {
+    NSLog(@"received poster data for person");
+    person_posters = [results mutableCopy];
+    [self.person_detail_table reloadData];
+}
+- (void)processAttachmentData: (NSArray *)results {
+    NSLog(@"received attachment data for person");
+    person_abstracts = [results mutableCopy];
+    [self.person_detail_table reloadData];
+}
+
+//before triggering chat, check if self has messaged this user before
+- (void) check_conv_exist
 {
-    PFQuery *person_talk_query = [PFQuery queryWithClassName:@"Talk"];
-    [person_talk_query whereKey:@"author" equalTo:the_person];
-    [person_talk_query orderByDescending:@"start_time"];
-    [person_talk_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            NSLog(@"Successfully retrieved %lu talks for the person.", (unsigned long)objects.count);
-            person_talks = [objects mutableCopy];
-            [self.person_detail_table reloadData];
-        }
-        else
-        {
-            // Log details of the failure if there's an error
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+    PFUser *cur_user = [PFUser currentUser];
+    PFRelation *relation1 = [cur_user relationForKey:@"conversation"];
+    PFQuery *innerQuery1 = [relation1 query];
+    [innerQuery1 whereKey:@"is_group" notEqualTo:@1];
+    
+    PFRelation *relation2 = [the_user relationForKey:@"conversation"];
+    PFQuery *innerQuery2 = [relation2 query];
+    [innerQuery2 whereKey:@"is_group" notEqualTo:@1];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
+    [query whereKey:@"objectId" matchesKey:@"objectId" inQuery:innerQuery1];
+    [query whereKey:@"objectId" matchesKey:@"objectId" inQuery:innerQuery2];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"conversation query error");
+        } else {
+            if (objects.count == 0)
+            {
+                NSLog(@"no existing conversation, creating new...");
+                is_new_conv=1;
+                PFObject *new_conv = [PFObject objectWithClassName:@"Conversation"];
+                new_conv[@"last_msg"] = @"no messages yet";
+                new_conv[@"last_time"] = [NSDate date];
+                [new_conv saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    NSLog(@"new conversation successfully created");
+                    conv_objid = new_conv.objectId;
+                    [self nav_to_chat];
+                }];
+            }
+            else
+            {
+                //found conversation between these two people
+                PFObject *conversation = [objects objectAtIndex:0];
+                conv_objid = conversation.objectId;
+                [self nav_to_chat];
+            }
         }
     }];
 }
 
-- (void) get_person_posters
-{
-    PFQuery *person_poster_query = [PFQuery queryWithClassName:@"Poster"];
-    [person_poster_query whereKey:@"author" equalTo:the_person];
-    [person_poster_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            NSLog(@"Successfully retrieved %lu posters for the person.", (unsigned long)objects.count);
-            person_posters = [objects mutableCopy];
-            [self.person_detail_table reloadData];
-        }
-        else
-        {
-            // Log details of the failure if there's an error
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-}
-
-- (void) get_person_abstracts
-{
-    PFQuery *person_abstract_query = [PFQuery queryWithClassName:@"Attachment"];
-    [person_abstract_query whereKey:@"author" equalTo:the_person];
-    [person_abstract_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            NSLog(@"Successfully retrieved %lu attachments for the person.", (unsigned long)objects.count);
-            person_abstracts = [objects mutableCopy];
-            [self.person_detail_table reloadData];
-        }
-        else
-        {
-            // Log details of the failure if there's an error
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-}
+#pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -391,6 +432,8 @@ NSString *ab_self;
     }
 }
 
+#pragma mark - Navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if (seg_index == 0)
@@ -443,126 +486,20 @@ NSString *ab_self;
 
 }
 
-
-- (IBAction)person_chat_button_tap:(UIButton *)sender {
-    seg_index = 99;
-    if (chat_enabled == YES)
-    {
-        NSLog(@"going to chat interface");
-        [self check_conv_exist];
-        
-    }
-    else
-    {
-        if (is_self==1)
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                            message:@"Cannot message self"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Done"
-                                                  otherButtonTitles:nil];
-            [alert show];
-
-        }
-        else
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                            message:@"This person is not signed in or has turned off chat"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Done"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }
-        
-    }
-
-}
-
-//before triggering chat, check if self has messaged this user before
-- (void) check_conv_exist
-{
-    PFUser *cur_user = [PFUser currentUser];
-    PFQuery *query_a = [PFQuery queryWithClassName:@"Conversation"];
-    [query_a whereKey:@"user_a" equalTo:cur_user];
-    [query_a whereKey:@"user_b" equalTo:the_user];
-    [query_a findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if ([objects count] >=1)
-        {
-            NSLog(@"conversation found (query a)");
-            is_new_conv=0;
-            PFObject *the_conv = [objects objectAtIndex:0];
-            conv_objid = the_conv.objectId;
-            ab_self = @"a";
-            //[self performSegueWithIdentifier:@"personchatsegue" sender:self];
-            [self nav_to_chat];
-        }
-        else if ([objects count]==0)
-        {
-            PFQuery *query_b = [PFQuery queryWithClassName:@"Conversation"];
-            [query_b whereKey:@"user_a" equalTo:the_user];
-            [query_b whereKey:@"user_b" equalTo:cur_user];
-            [query_b findObjectsInBackgroundWithBlock:^(NSArray *objects_b, NSError *error) {
-                if ([objects_b count] >=1)
-                {
-                    NSLog(@"conversation found (query b)");
-                    is_new_conv=0;
-                    PFObject *the_conv = [objects_b objectAtIndex:0];
-                    conv_objid = the_conv.objectId;
-                    ab_self = @"b";
-                    //[self performSegueWithIdentifier:@"personchatsegue" sender:self];
-                    [self nav_to_chat];
-
-                }
-                else if ([objects_b count]==0)
-                {
-                    NSLog(@"no existing conversation");
-                    is_new_conv=1;
-                    PFObject *new_conv = [PFObject objectWithClassName:@"Conversation"];
-                    new_conv[@"user_a"] = cur_user;
-                    new_conv[@"user_b"] = the_user;
-                    new_conv[@"last_msg"] = @"no messages yet";
-                    new_conv[@"last_time"] = [NSDate date];
-                    new_conv[@"user_a_unread"] = @0;
-                    new_conv[@"user_b_unread"] = @0;
-                    [new_conv saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        NSLog(@"new conversation successfully created");
-                        /*
-                        PFQuery *findnewconv = [PFQuery queryWithClassName:@"conversation"];
-                        [findnewconv whereKey:@"user_a" equalTo:cur_user];
-                        [findnewconv whereKey:@"user_b" equalTo:the_person];
-                        [findnewconv findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                            PFObject *conv = [objects objectAtIndex:0];
-                            conv_objid = conv.objectId;
-                        }];
-                        */
-                        conv_objid = new_conv.objectId;
-                        ab_self = @"a";
-                        //[self performSegueWithIdentifier:@"personchatsegue" sender:self];
-                        [self nav_to_chat];
-                    }];
-                }
-            }];
-
-        }
-    }];
-}
-
 //pop the push segue back to ppl list, enter conversation view, then select appropriate conversation
 - (void) nav_to_chat
 {
     UINavigationController *navcon = [self.tabBarController.viewControllers objectAtIndex:1];
     [navcon popToRootViewControllerAnimated:NO];
     PeopleTabViewController *ppltabcon = (PeopleTabViewController *)[navcon topViewController];
-    ppltabcon.from_message=1;
+    ppltabcon.fromInitiateChatEvent=1;
     ppltabcon.conv_id = conv_objid;
-    ppltabcon.preload_chat_abself = ab_self;
+    //ppltabcon.preload_chat_abself = ab_self;
     ppltabcon.preload_chat_isnewconv = is_new_conv;
-    ppltabcon.preload_chat_otherguy = the_user;
-    ppltabcon.preload_chat_otherguy_name = the_user[@"username"];
-    ppltabcon.preload_chat_otherguy_objid = the_user.objectId;
+    //ppltabcon.preload_chat_otherguy = the_user;
+    //ppltabcon.preload_chat_otherguy_name = the_user[@"username"];
+    //ppltabcon.preload_chat_otherguy_objid = the_user.objectId;
     [self.tabBarController setSelectedIndex:1];
 }
-
-
 
 @end

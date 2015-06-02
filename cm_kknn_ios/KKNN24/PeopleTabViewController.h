@@ -20,7 +20,7 @@
 @property int from_event;
 
 //used for passing info when going from person detail straight to chat
-@property int from_message;
+@property int fromInitiateChatEvent;
 @property NSString *conv_id;
 @property PFUser *preload_chat_otherguy;
 @property NSString *preload_chat_otherguy_objid;

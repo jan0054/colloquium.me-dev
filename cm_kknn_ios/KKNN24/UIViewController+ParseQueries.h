@@ -13,10 +13,15 @@
 
 - (void)getVenue: (id)caller;
 - (void)getTalks: (id)caller;
+- (void)getTalks: (id)caller forAuthor: (PFObject *)person;
 - (void)getPosters: (id)caller;
+- (void)getPosters: (id)caller forAuthor: (PFObject *)person;
 - (void)getAttachments: (id)caller;
+- (void)getAttachments: (id)caller forAuthor: (PFObject *)person;
 - (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray;
 - (void)getPosts: (id)caller;
-- (void)getConversations: (id)caller withPerson: (PFObject *)person;
+- (void)getConversations: (id)caller withUser: (PFUser *)user;
+- (void)sendChat: (id)caller withAuthor: (PFUser *)user withContent: (NSString *)content withConversation: (PFObject *)conversation;
+- (void)getChat: (id)caller withConversation: (PFObject *)conversation;
 
 @end

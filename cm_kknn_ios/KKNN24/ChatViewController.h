@@ -28,5 +28,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textfieldbottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *sendmessagebottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tablebottom;
+- (void) processChatUploadWithConversation: (PFObject *)conversation withContent: (NSString *)content;
+- (void)processChatList: (NSArray *)results
+@property NSMutableArray *participants;
 
 @end

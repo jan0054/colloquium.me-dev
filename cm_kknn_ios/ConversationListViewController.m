@@ -28,7 +28,7 @@ NSString *ab_self;
 @synthesize talked_to_array;
 @synthesize talked_from_array;
 @synthesize pullrefresh;
-@synthesize from_preloaded;
+@synthesize fromPersonDetailChat;
 @synthesize preloaded_conv_id;
 @synthesize preloaded_abself;
 @synthesize preloaded_isnewconv;
@@ -62,9 +62,9 @@ NSString *ab_self;
     [super viewDidAppear:YES];
     self.conversation_list_table.userInteractionEnabled = NO;
     self.no_conv_label.hidden = YES;
-    if (self.from_preloaded==1)
+    if (self.fromPersonDetailChat==1)
     {
-        NSLog(@"bypassing conv list: direct to chat");
+        NSLog(@"bypassing conversation list: direct to chat");
         [self preload_chat_with_conv_id:preloaded_conv_id];
     }
     else
@@ -208,7 +208,7 @@ NSString *ab_self;
 
 - (void) preload_chat_with_conv_id: (NSString *) conv_id_from_preload
 {
-    from_preloaded = 0;
+    fromPersonDetailChat = 0;
     chosen_conv_id = conv_id_from_preload;
     chosen_conv_other_guy_id = self.preloaded_otherguy_objid;
     chosen_guy = self.preloaded_otherguy;
@@ -222,8 +222,7 @@ NSString *ab_self;
 - (void) get_conversations
 {
     PFUser *currentuser = [PFUser currentUser];
-    PFObject *person = currentuser[@"person"];
-    [self getConversations:self withPerson:person];
+    [self getConversations:self withUser:currentuser];
 }
 
 - (void)processData:(NSArray *)results {

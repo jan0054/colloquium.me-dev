@@ -29,7 +29,7 @@ NSMutableArray *search_array;
 @implementation PeopleTabViewController
 @synthesize person_array;
 @synthesize from_event;
-@synthesize from_message;
+@synthesize fromInitiateChatEvent;
 @synthesize event_author_id;
 @synthesize conv_id;
 @synthesize pullrefresh;
@@ -133,7 +133,7 @@ NSMutableArray *search_array;
     {
         [self chose_person_with_id:event_author_id];
     }
-    else if (from_message==1)
+    else if (fromInitiateChatEvent==1)
     {
         [self chose_conv_with_id:conv_id];
     }
@@ -421,12 +421,12 @@ NSMutableArray *search_array;
     }
     else if ([segue.identifier isEqualToString:@"conversationsegue"])
     {
-        if (self.from_message==1)
+        if (self.fromInitiateChatEvent==1)
         {
-            self.from_message = 0;
+            self.fromInitiateChatEvent = 0;
             UINavigationController *destination_navcon = [segue destinationViewController];
             ConversationListViewController *destination = [destination_navcon.viewControllers objectAtIndex:0];
-            destination.from_preloaded = 1;
+            destination.fromPersonDetailChat = 1;
             destination.preloaded_conv_id = conv_id;
             destination.preloaded_abself = self.preload_chat_abself;
             destination.preloaded_isnewconv = self.preload_chat_isnewconv;
