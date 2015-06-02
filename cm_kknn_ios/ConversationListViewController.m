@@ -11,6 +11,7 @@
 #import "ConversationCellTableViewCell.h"
 #import "ChatViewController.h"
 #import "UIColor+ProjectColors.h"
+#import "UIViewController+ParseQueries.h"
 
 @interface ConversationListViewController ()
 
@@ -35,6 +36,8 @@ NSString *ab_self;
 @synthesize preloaded_otherguy_name;
 @synthesize preloaded_otherguy_objid;
 
+#pragma mark - Interface
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -47,7 +50,7 @@ NSString *ab_self;
     self.talked_from_array = [[NSMutableArray alloc] init];
     self.no_conv_label.hidden = YES;
     
-    //Pull To Refresh Controls
+    //tableview refresh controls
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.conversation_list_table addSubview:pullrefresh];
@@ -92,6 +95,12 @@ NSString *ab_self;
     // End Refreshing
     [(UIRefreshControl *)sender endRefreshing];
 }
+
+- (IBAction)back_to_people_button_tap:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -195,16 +204,7 @@ NSString *ab_self;
     [self performSegueWithIdentifier:@"chatsegue" sender:self];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    ChatViewController *destination = [segue destinationViewController];
-    destination.conversation_objid = chosen_conv_id;
-    destination.is_new_conv = 0;
-    destination.other_guy_objid = chosen_conv_other_guy_id;
-    destination.other_guy_name = chosen_conv_other_guy_name;
-    destination.otherguy = chosen_guy;
-    destination.ab_self = ab_self;
-}
+#pragma mark - Data
 
 - (void) preload_chat_with_conv_id: (NSString *) conv_id_from_preload
 {
@@ -221,24 +221,15 @@ NSString *ab_self;
 //get conversations and put into conversation_array, or if none, display the empty label
 - (void) get_conversations
 {
-    NSLog(@"getting conversation data");
-    
     PFUser *currentuser = [PFUser currentUser];
-    //subquery where user_a matches currentuser
-    PFQuery *subquery_a = [PFQuery queryWithClassName:@"Conversation"];
-    [subquery_a whereKey:@"user_a" equalTo:currentuser];
-    //subquery where user_b matches currentuser
-    PFQuery *subquery_b = [PFQuery queryWithClassName:@"Conversation"];
-    [subquery_b whereKey:@"user_b" equalTo:currentuser];
-    //compound query
-    PFQuery *conv_query = [PFQuery orQueryWithSubqueries:@[subquery_a, subquery_b]];
-    [conv_query orderByDescending:@"last_time"];
-    [conv_query includeKey:@"user_a"];
-    [conv_query includeKey:@"user_b"];
-    /*
+    PFObject *person = currentuser[@"person"];
+    [self getConversations:self withPerson:person];
+}
+
+- (void)processData:(NSArray *)results {
+    NSLog(@"received conversation data");
     [self.conversation_array removeAllObjects];
-    self.conversation_array = [[conv_query findObjects] mutableCopy];
-    if ([self.conversation_array count] == 0)
+    if ([results count] == 0)
     {
         self.no_conv_label.hidden = NO;
     }
@@ -246,30 +237,22 @@ NSString *ab_self;
     {
         self.no_conv_label.hidden = YES;
     }
+    self.conversation_array = [results mutableCopy];
     [self.conversation_list_table reloadData];
     self.conversation_list_table.userInteractionEnabled = YES;
-     */
-    
-    [conv_query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        [self.conversation_array removeAllObjects];
-        if ([objects count] == 0)
-        {
-            self.no_conv_label.hidden = NO;
-        }
-        else
-        {
-            self.no_conv_label.hidden = YES;
-        }
-        self.conversation_array = [objects mutableCopy];
-        [self.conversation_list_table reloadData];
-        self.conversation_list_table.userInteractionEnabled = YES;
-    }];
 }
 
-//close conversation list view
-- (IBAction)back_to_people_button_tap:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    ChatViewController *destination = [segue destinationViewController];
+    destination.conversation_objid = chosen_conv_id;
+    destination.is_new_conv = 0;
+    destination.other_guy_objid = chosen_conv_other_guy_id;
+    destination.other_guy_name = chosen_conv_other_guy_name;
+    destination.otherguy = chosen_guy;
+    destination.ab_self = ab_self;
 }
 
 @end

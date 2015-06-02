@@ -15,12 +15,8 @@
 @property (strong, nonatomic) IBOutlet UIView *posterview;
 @property (strong, nonatomic) IBOutlet UITableView *postertable;
 @property (strong, nonatomic) IBOutlet UITableView *talktable;
-
 @property (strong, nonatomic) IBOutlet UISegmentedControl *programseg;
 - (IBAction)segaction:(UISegmentedControl *)sender;
-
-
-
 @property (strong, nonatomic) IBOutlet UIView *abstractview;
 @property (strong, nonatomic) IBOutlet UITableView *abstracttable;
 @property NSMutableArray *session_array;
@@ -45,6 +41,5 @@
 @property (weak, nonatomic) IBOutlet UIView *search_view;
 @property (weak, nonatomic) IBOutlet UILabel *no_poster_label;
 @property (weak, nonatomic) IBOutlet UILabel *no_attachment_label;
-
 
 @end

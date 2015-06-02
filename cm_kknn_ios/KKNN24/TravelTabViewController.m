@@ -9,6 +9,9 @@
 #import "TravelTabViewController.h"
 #import "UIColor+ProjectColors.h"
 #import "VenueCellTableViewCell.h"
+#import <Parse/Parse.h>
+#import <Bolts/Bolts.h>
+#import "UIViewController+ParseQueries.h"
 
 @interface TravelTabViewController ()
 
@@ -31,7 +34,8 @@
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.venuetable addSubview:pullrefresh];
     
-    [self get_venue_data];
+    //[self get_venue_data];
+    [self getVenue:self];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.venuetable.tableFooterView = [[UIView alloc] init];
@@ -125,12 +129,16 @@
     
 }
 
-- (void) get_venue_data
+- (void)get_venue_data
 {
-    PFQuery *venuequery = [PFQuery queryWithClassName:@"Venue"];
-    [venuequery orderByDescending:@"order"];
-    [venuequery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"poi query success");
+    /*
+    PFQuery *query = [PFQuery queryWithClassName:@"Venue"];
+    [query orderByDescending:@"order"];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    query.maxCacheAge = 86400;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"venue query success");
         [self.venue_array removeAllObjects];
         for (PFObject *poi_obj in objects)
         {
@@ -138,7 +146,13 @@
         }
         [self.venuetable reloadData];
     }];
+     */
+}
 
+- (void)processData: (NSArray *) results {
+    NSLog(@"venue results received");
+    self.venue_array = [results mutableCopy];
+    [self.venuetable reloadData];
 }
 
 - (IBAction)venue_call_tap:(UIButton *)sender {

@@ -619,6 +619,8 @@ NSMutableArray *search_array;
         [talk_subquery includeKey:@"location"];
         [talk_subquery includeKey:@"author"];
         [talk_subquery orderByAscending:@"start_time"];
+        talk_subquery.cachePolicy = kPFCachePolicyCacheElseNetwork;
+        talk_subquery.maxCacheAge = 86400;
         if (search_on && search_str.length>0)
         {
             [talk_subquery whereKey:@"words" containsAllObjectsInArray:search_array];
@@ -636,6 +638,8 @@ NSMutableArray *search_array;
         [talk_subquery includeKey:@"location"];
         [talk_subquery includeKey:@"author"];
         [talk_subquery orderByAscending:@"start_time"];
+        talk_subquery.cachePolicy = kPFCachePolicyCacheElseNetwork;
+        talk_subquery.maxCacheAge = 86400;
         NSDate *start = [self get_start_time_for_day:day];
         NSDate *end = [self get_start_time_for_day:day+1];
         [talk_subquery whereKey:@"start_time" greaterThan:start];
@@ -660,6 +664,8 @@ NSMutableArray *search_array;
     [posterquery orderByDescending:@"name"];
     [posterquery includeKey:@"author"];
     [posterquery includeKey:@"location"];
+    posterquery.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    posterquery.maxCacheAge = 86400;
     if (search_on && search_str.length>0)
     {
         [posterquery whereKey:@"words" containsAllObjectsInArray:search_array];
@@ -688,6 +694,8 @@ NSMutableArray *search_array;
     PFQuery *abstractquery = [PFQuery queryWithClassName:@"Attachments"];
     [abstractquery orderByDescending:@"name"];
     [abstractquery includeKey:@"author"];
+    abstractquery.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    abstractquery.maxCacheAge = 86400;
     [abstractquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"abstract query success");
         [self.abstract_array removeAllObjects];

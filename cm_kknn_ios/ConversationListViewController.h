@@ -28,5 +28,6 @@
 @property NSString *preloaded_abself;
 @property int preloaded_isnewconv;
 @property (weak, nonatomic) IBOutlet UILabel *no_conv_label;
+- (void) processData: (NSArray *)results;
 
 @end

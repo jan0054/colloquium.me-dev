@@ -11,6 +11,7 @@
 #import "UIColor+ProjectColors.h"
 #include <math.h>
 #include "ConversationListViewController.h"
+#include "UIViewController+ParseQueries.h"
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
@@ -37,6 +38,8 @@ NSMutableArray *search_array;
 @synthesize preload_chat_otherguy;
 @synthesize preload_chat_otherguy_name;
 @synthesize preload_chat_otherguy_objid;
+
+#pragma mark - Interface
 
 - (void)viewDidLoad
 {
@@ -150,7 +153,6 @@ NSMutableArray *search_array;
     }
 }
 
-//called when pulling downward on the tableview
 - (void)refreshctrl:(id)sender
 {
     //refresh code here
@@ -165,6 +167,83 @@ NSMutableArray *search_array;
 {
     [self check_unread_count];
 }
+
+- (IBAction)chat_float_tap:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"conversationsegue" sender:self];
+}
+
+- (IBAction)person_detail_button_tap:(UIButton *)sender {
+    PersonCellTableViewCell *cell = (PersonCellTableViewCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.peopletable indexPathForCell:cell];
+    NSLog(@"people_detail_tap: %ld", (long)tapped_path.row);
+    PFObject *tapped_person = [self.person_array objectAtIndex:tapped_path.row];
+    [self chose_person_with_id:tapped_person.objectId];
+    
+}
+
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
+    
+    CGPoint translation = [recognizer translationInView:self.view];
+    float newx = recognizer.view.center.x + translation.x;
+    float newy = recognizer.view.center.y + translation.y;
+    if (newx*2 < recognizer.view.frame.size.width)
+    {
+        newx = (recognizer.view.frame.size.width)/2.0f;
+    }
+    else if (newx+((recognizer.view.frame.size.width)/2.0f) > 320 )
+    {
+        newx = 320 - ((recognizer.view.frame.size.width)/2.0f) ;
+    }
+    
+    if( IS_IPHONE_5 )
+    {
+        if (newy + ((recognizer.view.frame.size.height)/2.0f)> 520)
+        {
+            newy = 520 - ((recognizer.view.frame.size.height)/2.0f) ;
+        }
+        else if ( newy < 64+((recognizer.view.frame.size.height)/2.0f))
+        {
+            newy = 64+((recognizer.view.frame.size.height)/2.0f) ;
+        }
+    }
+    else
+    {
+        if (newy + ((recognizer.view.frame.size.height)/2.0f)> 432)
+        {
+            newy = 432 - ((recognizer.view.frame.size.height)/2.0f) ;
+        }
+        else if ( newy < 64+((recognizer.view.frame.size.height)/2.0f))
+        {
+            newy = 64+((recognizer.view.frame.size.height)/2.0f) ;
+        }
+    }
+    
+    recognizer.view.center = CGPointMake(newx,
+                                         newy);
+    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+}
+
+- (IBAction)cancel_search_button_tap:(UIButton *)sender {
+    [self.search_input resignFirstResponder];
+    self.search_input.text = @"";
+    search_str = @"";
+    [search_array removeAllObjects];
+    [self get_person_info];
+}
+
+- (IBAction)do_search_button_tap:(UIButton *)sender {
+    if (self.search_input.text.length >1)
+    {
+        search_str = self.search_input.text.lowercaseString;
+        NSArray *wordsAndEmptyStrings = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+        search_array = [words mutableCopy];
+        [self get_person_info];
+    }
+    [self.search_input resignFirstResponder];
+}
+
+#pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -215,41 +294,26 @@ NSMutableArray *search_array;
 
 }
 
+#pragma mark - Data(people)
+
 - (void) get_person_info
 {
-    PFQuery *personquery = [PFQuery queryWithClassName:@"Person"];
-    [personquery orderByAscending:@"last_name"];
-    [personquery setLimit:500];
-    if (search_str.length > 1)
-    {
-        [personquery whereKey:@"words" containsAllObjectsInArray:search_array];
-        NSLog(@"PERSONQUERY did do search");
-    }
-    [personquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"person query success: %lu", (unsigned long)[objects count]);
-        [self.person_array removeAllObjects];
-        for (PFObject *person_obj in objects)
-        {
-            //check if the person is for debug purposes only and not to be displayed
-            NSNumber *dbug_person = person_obj[@"debug_status"];
-            int dbug_person_intval = [dbug_person intValue];
-            if ( dbug_person_intval != 1)
-            {
-                [self.person_array addObject:person_obj];
-            }
-        }
-        [self.peopletable reloadData];
-    }];
-
+    [self getPeople:self withSearch:search_array];
 }
 
-- (IBAction)person_detail_button_tap:(UIButton *)sender {
-    PersonCellTableViewCell *cell = (PersonCellTableViewCell *)[[[sender superview] superview] superview];
-    NSIndexPath *tapped_path = [self.peopletable indexPathForCell:cell];
-    NSLog(@"people_detail_tap: %ld", (long)tapped_path.row);
-    PFObject *tapped_person = [self.person_array objectAtIndex:tapped_path.row];
-    [self chose_person_with_id:tapped_person.objectId];
-    
+- (void)processData: (NSArray *)results {
+    [self.person_array removeAllObjects];
+    for (PFObject *person_obj in results)
+    {
+        //check if the person is for debug purposes only and not to be displayed
+        NSNumber *dbug_person = person_obj[@"debug_status"];
+        int dbug_person_intval = [dbug_person intValue];
+        if ( dbug_person_intval != 1)
+        {
+            [self.person_array addObject:person_obj];
+        }
+    }
+    [self.peopletable reloadData];
 }
 
 - (void) chose_person_with_id: (NSString *)objid
@@ -259,37 +323,11 @@ NSMutableArray *search_array;
     [self performSegueWithIdentifier:@"persondetailsegue" sender:self];
 }
 
+#pragma mark - Data(chat)
+
 - (void) chose_conv_with_id: (NSString *)objid
 {
     [self performSegueWithIdentifier:@"conversationsegue" sender:self];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"persondetailsegue"])
-    {
-        PersonDetailViewController *destination = [segue destinationViewController];
-        destination.person_objid = tapped_person_objid;
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Attendees" style:UIBarButtonItemStyleBordered target:nil action:nil];
-        [backButton setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0] , NSFontAttributeName, nil] forState:UIControlStateNormal];
-        self.navigationItem.backBarButtonItem = backButton;
-    }
-    else if ([segue.identifier isEqualToString:@"conversationsegue"])
-    {
-        if (self.from_message==1)
-        {
-            self.from_message = 0;
-            UINavigationController *destination_navcon = [segue destinationViewController];
-            ConversationListViewController *destination = [destination_navcon.viewControllers objectAtIndex:0];
-            destination.from_preloaded = 1;
-            destination.preloaded_conv_id = conv_id;
-            destination.preloaded_abself = self.preload_chat_abself;
-            destination.preloaded_isnewconv = self.preload_chat_isnewconv;
-            destination.preloaded_otherguy = self.preload_chat_otherguy;
-            destination.preloaded_otherguy_name = self.preload_chat_otherguy_name;
-            destination.preloaded_otherguy_objid = self.preload_chat_otherguy_objid;
-        }
-    }
 }
 
 - (void) check_unread_count
@@ -369,70 +407,34 @@ NSMutableArray *search_array;
     }
 }
 
-- (IBAction)chat_float_tap:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"conversationsegue" sender:self];
-}
+#pragma mark - Navigation
 
-- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
-    
-    CGPoint translation = [recognizer translationInView:self.view];
-    float newx = recognizer.view.center.x + translation.x;
-    float newy = recognizer.view.center.y + translation.y;
-    if (newx*2 < recognizer.view.frame.size.width)
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"persondetailsegue"])
     {
-        newx = (recognizer.view.frame.size.width)/2.0f;
+        PersonDetailViewController *destination = [segue destinationViewController];
+        destination.person_objid = tapped_person_objid;
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Attendees" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        [backButton setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0] , NSFontAttributeName, nil] forState:UIControlStateNormal];
+        self.navigationItem.backBarButtonItem = backButton;
     }
-    else if (newx+((recognizer.view.frame.size.width)/2.0f) > 320 )
+    else if ([segue.identifier isEqualToString:@"conversationsegue"])
     {
-        newx = 320 - ((recognizer.view.frame.size.width)/2.0f) ;
-    }
-    
-    if( IS_IPHONE_5 )
-    {
-        if (newy + ((recognizer.view.frame.size.height)/2.0f)> 520)
+        if (self.from_message==1)
         {
-            newy = 520 - ((recognizer.view.frame.size.height)/2.0f) ;
-        }
-        else if ( newy < 64+((recognizer.view.frame.size.height)/2.0f))
-        {
-            newy = 64+((recognizer.view.frame.size.height)/2.0f) ;
-        }
-    }
-    else
-    {
-        if (newy + ((recognizer.view.frame.size.height)/2.0f)> 432)
-        {
-            newy = 432 - ((recognizer.view.frame.size.height)/2.0f) ;
-        }
-        else if ( newy < 64+((recognizer.view.frame.size.height)/2.0f))
-        {
-            newy = 64+((recognizer.view.frame.size.height)/2.0f) ;
+            self.from_message = 0;
+            UINavigationController *destination_navcon = [segue destinationViewController];
+            ConversationListViewController *destination = [destination_navcon.viewControllers objectAtIndex:0];
+            destination.from_preloaded = 1;
+            destination.preloaded_conv_id = conv_id;
+            destination.preloaded_abself = self.preload_chat_abself;
+            destination.preloaded_isnewconv = self.preload_chat_isnewconv;
+            destination.preloaded_otherguy = self.preload_chat_otherguy;
+            destination.preloaded_otherguy_name = self.preload_chat_otherguy_name;
+            destination.preloaded_otherguy_objid = self.preload_chat_otherguy_objid;
         }
     }
-    
-    recognizer.view.center = CGPointMake(newx,
-                                         newy);
-    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
-}
-
-- (IBAction)cancel_search_button_tap:(UIButton *)sender {
-    [self.search_input resignFirstResponder];
-    self.search_input.text = @"";
-    search_str = @"";
-    [search_array removeAllObjects];
-    [self get_person_info];
-}
-
-- (IBAction)do_search_button_tap:(UIButton *)sender {
-    if (self.search_input.text.length >1)
-    {
-        search_str = self.search_input.text.lowercaseString;
-        NSArray *wordsAndEmptyStrings = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
-        search_array = [words mutableCopy];
-        [self get_person_info];
-    }
-    [self.search_input resignFirstResponder];
 }
 
 @end

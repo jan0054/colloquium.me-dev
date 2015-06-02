@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VenueCellTableViewCell.h"
-#import <Parse/Parse.h>
+
 
 @interface TravelTabViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *venuetable;
@@ -17,4 +17,6 @@
 - (IBAction)venue_navigate_tap:(UIButton *)sender;
 - (IBAction)venue_website_tap:(UIButton *)sender;
 @property UIRefreshControl *pullrefresh;
+
+- (void)processData: (NSArray *) results;
 @end
