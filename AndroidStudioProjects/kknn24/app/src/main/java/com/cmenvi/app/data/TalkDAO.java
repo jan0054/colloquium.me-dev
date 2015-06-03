@@ -60,6 +60,8 @@ public class TalkDAO {
 	
 	private void query(ParseObject object) {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_TALK);
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
+		query.setMaxCacheAge(_PARAMS.MILLISEC_ONEDAY);
 		query.orderByAscending(START_TIME);
 		//query.setLimit(ITEM_LIMIT);
 		if (object != null) query.whereEqualTo(AUTHOR, object);

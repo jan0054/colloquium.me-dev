@@ -64,6 +64,7 @@
     <color name="footer_background">#EFEEEF</color>
     <color name="frame_unselected">#70000000</color>
     <color name="grid_title">#1F3D83</color>
+    <color name="hint_color">#B6B6B6</color>
     <color name="light_accent">#B3CAE9</color>
     <color name="light_bg">#FFFFFF</color>
     <color name="light_blue">#A2B1CC</color>
@@ -142,11 +143,16 @@
     <string name="error_not_login">Please log in first.</string>
     <string name="error_payment_failed">The Payment is failed!</string>
     <string name="hello_world">Hello world!</string>
+    <string name="hint_comment">Comment..</string>
+    <string name="hint_newpost">Share your thoughts..</string>
+    <string name="hint_search">Enter keywords here..</string>
     <string name="institution">INSTITUTION</string>
     <string name="list_empty">--  No Result  --</string>
+    <string name="list_empty_empty"/>
+    <string name="list_empty_event">--No result for this event--</string>
     <string name="location">LOCATION</string>
     <string name="login">Log in</string>
-    <string name="login_notice">Welcome to the NCU Workshop on Hydrodynamic Escape Problems.</string>
+    <string name="login_notice">Welcome to the 24th Joint Kaist-Kyoto-NTU-NUS Symposium on Environmental Engineering.</string>
     <string name="message">Message</string>
     <string name="more">more</string>
     <string name="name">NAME</string>
@@ -192,7 +198,8 @@
     <!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
-		<item name="android:background">@drawable/actionbar_gradient_background</item>
+		<!--item name="android:background">@drawable/actionbar_gradient_background</item-->
+        <item name="android:background">@color/accent_color</item>
         <item name="android:windowActionBarOverlay">true</item>
     </style>
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">

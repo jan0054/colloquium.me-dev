@@ -15,8 +15,11 @@
     <string name="signup">Sign up</string>
     <string name="skip"><u>Skip</u></string>
     <string name="title_signup">Sign Up</string>
-    <string name="login_notice">Welcome to the NCU Workshop on Hydrodynamic Escape Problems.</string>
+    <string name="login_notice">Welcome to the 24th Joint Kaist-Kyoto-NTU-NUS Symposium on Environmental Engineering.</string>
     <string name="signup_notice">Your information is kept secure and private on our servers. To view our privacy policy please go to Settings, or contact us if you have any questions.</string>
+    <string name="hint_search">Enter keywords here..</string>
+    <string name="hint_comment">Comment..</string>
+    <string name="hint_newpost">Share your thoughts..</string>
 
     <!-- TAB SECTION -->
     <string name="title_program">Program</string>
@@ -35,6 +38,8 @@
     <!-- LIST -->
     <string name="list_empty">--  No Result  --</string>
     <string name="title_conversation">Conversation</string>
+    <string name="list_empty_empty"></string>
+    <string name="list_empty_event">--No result for this event--</string>
 
     <!-- DETAILS -->
     <string name="details">Details</string>

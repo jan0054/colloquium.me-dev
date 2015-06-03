@@ -366,6 +366,26 @@ public class BaseActivity extends FragmentActivity implements OnClickListener, A
     	Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 	}
 
+	public void checkIsPerson(ParseUser selfuser) {
+		String user_email = selfuser.getEmail();
+		ParseQuery<ParseObject> personquery = ParseQuery.getQuery("Person");
+		personquery.whereEqualTo("email", user_email);
+		personquery.getFirstInBackground(new GetCallback<ParseObject>() {
+			@Override
+			public void done(ParseObject parseObject, ParseException e) {
+				if (parseObject != null) {
+					//found a match, user is person: skip to user preference activity
+					app = (cmenviApplication) getApplication();
+					app.isPerson = true;
+				} else {
+					app = (cmenviApplication) getApplication();
+					app.isPerson = false;
+					return;
+				}
+			}
+		});
+	}
+
 	public void updateIsPerson(ParseUser selfuser) {
 		String user_email = selfuser.getEmail();
 		ParseQuery<ParseObject> personquery = ParseQuery.getQuery("Person");

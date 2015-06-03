@@ -28,7 +28,7 @@
 				android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
 				android:ellipsize="end"
-				android:fontFamily="sans-serif-light"
+				android:fontFamily="sans-serif"
 				android:gravity="center|left"
 				android:maxLines="4"
 				android:text="@string/name"
@@ -77,7 +77,7 @@
             android:gravity="center|left"
             android:text="@string/details"
             android:textColor="@color/dark_accent"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 		<LinearLayout android:layout_width="match_parent"
 		    		  android:layout_height="24dp"
 		    		  android:layout_marginBottom="6dp"
@@ -96,7 +96,7 @@
 		    android:gravity="center|left"
 		    android:text="@string/location"
             android:textColor="@color/primary_text"
-		    android:textSize="12sp" />
+		    android:textSize="14sp" />
 
 		<TextView
 		    android:id="@+id/start_time"
@@ -107,7 +107,7 @@
 		    android:gravity="center|right"
 		    android:text="@string/start_time"
             android:textColor="@color/primary_text"
-		    android:textSize="12sp" />		
+		    android:textSize="14sp" />
 		</LinearLayout>
 
 		<TextView
@@ -125,7 +125,7 @@
 		    android:text="@string/description"
 		    android:textColor="@color/primary_text"
             android:scrollbars = "vertical"
-		    android:textSize="14sp" />
+		    android:textSize="16sp" />
 
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"

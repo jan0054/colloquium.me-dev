@@ -10,7 +10,6 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/light_bg">
 
-
         <Button
             android:id="@+id/cancelsearch"
             android:layout_width="wrap_content"
@@ -25,6 +24,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="@string/hint_search"
+            android:textColorHint="@color/hint_color"
             android:textCursorDrawable="@null"
             android:backgroundTint="@color/accent_color"
             android:textColor="@color/accent_color"/>
@@ -56,5 +57,5 @@
 	     	  android:gravity="center"
 		      android:textColor="@color/dark_accent"
 		      android:textSize="18sp"
-		      android:text="@string/list_empty" />  
+		      android:text="@string/list_empty" />
 </LinearLayout><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24/app/src/main/res/layout/fragment_general.xml -->

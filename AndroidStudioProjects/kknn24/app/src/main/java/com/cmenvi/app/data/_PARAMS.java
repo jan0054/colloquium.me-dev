@@ -1,6 +1,8 @@
 package com.cmenvi.app.data;
 
 public class _PARAMS {
+	//int
+	public static final int MILLISEC_ONEDAY = 86400000;
 
 	// Google Docs URL
 	public static final String GOOGLE_DOCS_URL_EXTERNAL = "http://docs.google.com/viewer?url=";
@@ -11,7 +13,7 @@ public class _PARAMS {
 	// Settings
 	public static final String FEEDBACK_EMAIL = "jan0054@gmail.com";
     public static final String TECH_EMAIL = "jan0054@gmail.com";
-    public static final String ADMIN_EMAIL = "jan0054@gmail.com";
+    public static final String ADMIN_EMAIL = "htung@ntu.edu.tw";
 	public static final String FEEDBACK_TITLE = "Suggestions for this app:";
     public static final String TECH_TITLE = "Technical assistance for this app:";
     public static final String ADMIN_TITLE = "Administrative assistance for this event:";

@@ -102,6 +102,7 @@ public class LoginActivity<T> extends BaseActivity {
 											            public void run() {
 											            	  if (isFrom && nextTo != null) {
 											            		  getIntent().putExtra(USER_FROM, uid);
+																  checkIsPerson(ParseUser.getCurrentUser());
 											            		  toNext();
 											            	  } else skip(null);
 											            }

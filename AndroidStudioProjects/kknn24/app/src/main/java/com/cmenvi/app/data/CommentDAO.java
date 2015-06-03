@@ -53,6 +53,8 @@ public class CommentDAO {
     private void query(ParseObject object) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_COMMENT);
         query.orderByDescending(CREATEDAT);
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.setMaxCacheAge(_PARAMS.MILLISEC_ONEDAY);
         //query.setLimit(ITEM_LIMIT);
         if (object != null) query.whereEqualTo(POST, object);
         query.findInBackground(new FindCallback<ParseObject>() {

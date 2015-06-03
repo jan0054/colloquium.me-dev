@@ -45,6 +45,8 @@ public class AttachmentDAO {
 	private void query(ParseObject object) {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_ABSTRACT);
 		query.orderByDescending("name");
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
+		query.setMaxCacheAge(_PARAMS.MILLISEC_ONEDAY);
 		if (object != null) query.whereEqualTo(AUTHOR, object);
 		query.include(AUTHOR);
 		//query.setLimit(ITEM_LIMIT);		

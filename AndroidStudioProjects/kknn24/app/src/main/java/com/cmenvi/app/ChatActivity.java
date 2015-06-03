@@ -89,7 +89,7 @@ public class ChatActivity extends BaseActivity implements  AdapterView.OnItemCli
         listview.setAdapter(chatAdapter);
         listview.setOnItemClickListener(this);
 
-        this.registerReceiver(mMessageReceiver, new IntentFilter("got_chat_intent"));
+        //this.registerReceiver(mMessageReceiver, new IntentFilter("got_chat_intent"));
     }
 
     @Override
@@ -98,6 +98,7 @@ public class ChatActivity extends BaseActivity implements  AdapterView.OnItemCli
         super.onResume();
         app=(cmenviApplication)getApplication();
         app.isChat=true;
+        this.registerReceiver(mMessageReceiver, new IntentFilter("got_chat_intent"));
     }
 
     @Override

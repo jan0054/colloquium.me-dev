@@ -40,6 +40,8 @@ public class CareerDAO {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_CAREER);
 		//query.orderByDescending(NEWS_ORDERBY);
 		//query.setLimit(ITEM_LIMIT);
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
+		query.setMaxCacheAge(_PARAMS.MILLISEC_ONEDAY);
         query.orderByDescending(CREATEDAT);
 		query.include(POSTEDBY);
 		query.findInBackground(new FindCallback<ParseObject>() {

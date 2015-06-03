@@ -26,6 +26,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:hint="@string/hint_search"
+            android:textColorHint="@color/hint_color"
             android:backgroundTint="@color/dark_accent"
             android:textCursorDrawable="@null"
             android:textColor="@color/accent_color"/>
@@ -58,5 +60,5 @@
 	     	  android:gravity="center"
 		      android:textColor="@color/accent_color"
 		      android:textSize="18sp"
-		      android:text="@string/list_empty" />  
+		      android:text="@string/list_empty_event" />
 </LinearLayout>

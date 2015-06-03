@@ -24,7 +24,7 @@
 				android:layout_height="40dp"
 				android:background="#00000000"
 				android:onClick="selectPhoto"
-				android:src="@drawable/icon_camera"/>
+				android:src="@drawable/icon_gallery"/>
 			<ImageButton
 				android:id="@+id/btn_camera"
 				android:layout_width="40dp"
@@ -53,6 +53,8 @@
 			android:id="@+id/post_input"
 			android:layout_marginLeft="16dp"
 			android:layout_marginRight="16dp"
+			android:hint="@string/hint_newpost"
+			android:textColorHint="@color/hint_color"
 			android:textColor="@color/primary_text"
 			android:background="#00000000"
 			android:textColorHighlight="@color/light_primary"

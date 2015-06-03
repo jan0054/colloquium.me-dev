@@ -71,6 +71,8 @@ public class PeopleDAO {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_PERSON);
         query.orderByAscending("last_name");
         query.whereNotEqualTo("debug", 1);
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+		query.setMaxCacheAge(_PARAMS.MILLISEC_ONEDAY);
 		query.setLimit(500);
         if (search_array != null && search_array.size()>0)
         {

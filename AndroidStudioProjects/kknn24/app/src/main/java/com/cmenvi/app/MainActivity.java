@@ -278,12 +278,12 @@ public class MainActivity extends BaseActivity {
 						if (!app.isPerson) {
 							updateIsPerson(selfuser);
 						} else {
-							toPage(new Intent(), UserPreferenceActivity.class);
 						}
 					} else {
 						toast("Please log in first!");
 						toLoginPage(ConversationActivity.class);
 					}
+					toPage(new Intent(), UserPreferenceActivity.class);
 					break;
 				case OPTION_NEWPOST:
 					ParseUser thisuser = ParseUser.getCurrentUser();
@@ -299,11 +299,6 @@ public class MainActivity extends BaseActivity {
 						return;
 					}
 					toPage(new Intent(), NewPostActivity.class);
-					break;
-				case OPTION_NEWCOMMENT:
-					break;
-				case OPTION_SAVE:
-					toMainPage();
 					break;
 			}
 		}

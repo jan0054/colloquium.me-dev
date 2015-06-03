@@ -39,6 +39,8 @@ public class VenueDAO {
 	private void loadData() {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_POI);
 		query.orderByDescending("order");
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
+		query.setMaxCacheAge(_PARAMS.MILLISEC_ONEDAY);
 		//query.setLimit(ITEM_LIMIT);		
 		query.findInBackground(new FindCallback<ParseObject>() {
 		     public void done(List<ParseObject> objects, ParseException e) {

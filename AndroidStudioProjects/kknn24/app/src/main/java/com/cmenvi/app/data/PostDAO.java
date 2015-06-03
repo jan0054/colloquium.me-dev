@@ -79,6 +79,8 @@ public class PostDAO {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(_PARAMS.TABLE_POST);
         query.orderByDescending(CREATEDAT);
         query.whereNotEqualTo("debug", 1);
+        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+        query.setMaxCacheAge(_PARAMS.MILLISEC_ONEDAY);
         query.setLimit(500);
         //query.whereNear(key, point);
         //query.whereContains(key, substring);
