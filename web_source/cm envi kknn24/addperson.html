@@ -40,10 +40,10 @@
     personcheck.equalTo("email", person_email.value);
 	personcheck.find({
 		success: function(results){
-			if(results.length>0) {
+			/*if(results.length>0) {
 				alert('Email already in use, please enter another.');
 			}
-			else{
+			else{*/
 				var newItem = new ListItem();
 				newItem.set("first_name", person_firstname.value);
 				newItem.set("last_name", person_lastname.value);
@@ -59,7 +59,7 @@
 						alert('Failed to create new object, with error code: ' + error.message);
 					}
 				});
-			}
+			//}
 		},
 		error: function(error){
 			alert('Failed to search object, with error code: ' + error.message);
