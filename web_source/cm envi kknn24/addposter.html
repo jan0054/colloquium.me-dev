@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+
+  <script language="javascript">
+  function addPoster()
+  {
+  	if(poster_name.value==""){
+		alert(STR_name+AL_empty);
+		poster_name.focus();
+		return false;
+	}
+  	if(poster_description.value==""){
+		alert(STR_description+AL_empty);
+		poster_content.focus();
+		return false;
+	}
+  	if(poster_author.value==""){
+		alert(STR_author+AL_empty);
+		poster_author.focus();
+		return false;
+	}
+  	if(poster_location.value==""){
+		alert(STR_location+AL_empty);
+		poster_location.focus();
+		return false;
+	}
+	Parse.initialize(applicationId, jsKey);
+	ListItem = Parse.Object.extend("poster");
+	newItem = new ListItem();
+
+	newItem.set("name", poster_name.value);
+	newItem.set("description", poster_description.value);
+
+	Person = Parse.Object.extend("person");
+	var person = new Person();
+	person.id = poster_author.value;
+	newItem.set("author", person);
+
+	LocationSt = Parse.Object.extend("location");
+	var locationst = new LocationSt();
+	locationst.id = poster_location.value;
+	newItem.set("location", locationst);
+
+	if(poster_pdf.value!=""){
+		alert(poster_pdf.value);
+		var fileUploadControl = poster_pdf;
+		if (fileUploadControl.files.length > 0) {
+			var pdfFile = fileUploadControl.files[0];
+			var pdfFileName = "poster_pdf";
+			var parseFile = new Parse.File(pdfFileName, pdfFile);
+			newItem.set("pdf", parseFile);
+		}
+	}
+	
+	newItem.save(null, {
+		success: function(newItem){
+			window.location.reload();
+		},
+		error: function(newItem, error){
+			alert('Failed to create new object, with error code: ' + error.message);
+		}
+	});
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addposter)</script></h1>
+	<h2><script>dw(STR_1)</script></h2>
+
+	<div id="add_poster">
+		<table>
+			<tr>
+				<td class="tb1">*<script>dw(STR_name)</script></td>
+				<td><input class="InputSize"type="text" id="poster_name"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_description)</script></td>
+				<td><input class="InputSize" type="text" id="poster_description"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_author)</script></td>
+				<td><select class="SelectSize" id="poster_author"><script>getAllAuthor('poster_author')</script></select></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_location)</script></td>
+				<td><select class="SelectSize" id="poster_location"><script>getAllLocation('poster_location')</script></select></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_pdffile)</script></td>
+				<td><input type="file" class="FileSize" id="poster_pdf"></td>
+			</tr>
+			<tr>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_poster_submit" value="'+BT_add+'" onClick="addPoster();">')</script></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	</div>
+</body>
+ 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="My Parse Web">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+
+  <script language="javascript">
+  function addPerson()
+  {
+  	if(person_firstname.value==""){
+		alert(STR_firstname+AL_empty);
+		person_firstname.focus();
+		return false;
+	}
+  	if(person_lastname.value==""){
+		alert(STR_lastname+AL_empty);
+		person_lastname.focus();
+		return false;
+	}
+  	if(person_institution.value==""){
+		alert(STR_institution+AL_empty);
+		person_institution.focus();
+		return false;
+	}
+  	if(person_email.value==""){
+		alert(STR_email+AL_empty);
+		person_email.focus();
+		return false;
+	}
+	Parse.initialize(applicationId, jsKey);
+	ListItem = Parse.Object.extend("Person");
+
+	var personcheck = new Parse.Query(ListItem);
+    personcheck.equalTo("email", person_email.value);
+	personcheck.find({
+		success: function(results){
+			if(results.length>0) {
+				alert('Email already in use, please enter another.');
+			}
+			else{
+				var newItem = new ListItem();
+				newItem.set("first_name", person_firstname.value);
+				newItem.set("last_name", person_lastname.value);
+				newItem.set("institution", person_institution.value);
+				newItem.set("email", person_email.value);
+				newItem.set("link", person_webpage.value);
+				//newItem.set("on_site", 1);
+				newItem.save(null, {
+				success: function(newItem){
+					window.location.reload();
+					},
+					error: function(newItem, error){
+						alert('Failed to create new object, with error code: ' + error.message);
+					}
+				});
+			}
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addperson)</script></h1>
+	<h2><script>dw(STR_1)</script></h2>
+
+	<div id="add_person">
+		<table>
+			<tr>
+				<td class="tb1">*<script>dw(STR_firstname)</script></td>
+				<td><input class="InputSize" type="text" id="person_firstname"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_lastname)</script></td>
+				<td><input class="InputSize" type="text" id="person_lastname"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_institution)</script></td>
+				<td><input class="InputSize" type="text" id="person_institution"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_email)</script></td>
+				<td><input class="InputSize" type="text" id="person_email"></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_webpage)</script></td>
+				<td><input class="InputSize" type="text" id="person_webpage"></td>
+			</tr>
+			<tr>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_person_submit" value="'+BT_add+'" onClick="addPerson();">')</script></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	</div>
+</body>
+ 
