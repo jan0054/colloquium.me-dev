@@ -19,6 +19,7 @@
 
 @end
 
+PFUser *currentUser;
 PFUser *the_user;
 PFObject *the_person;
 NSMutableArray *person_talks;
@@ -33,6 +34,7 @@ int is_new_conv;
 NSString *conv_objid;
 int is_self;
 NSString *ab_self;
+NSMutableArray *chatParticipants;
 
 @implementation PersonDetailViewController
 @synthesize person_objid;
@@ -47,7 +49,12 @@ NSString *ab_self;
     person_talks = [[NSMutableArray alloc] init];
     person_posters = [[NSMutableArray alloc] init];
     person_abstracts = [[NSMutableArray alloc] init];
+    chatParticipants = [[NSMutableArray alloc] init];
     seg_index=0;
+    if ([PFUser currentUser])
+    {
+        currentUser = [PFUser currentUser];
+    }
     
     //styling
     self.person_detail_table.backgroundColor = [UIColor clearColor];
@@ -135,7 +142,6 @@ NSString *ab_self;
     {
         NSLog(@"going to chat interface");
         [self check_conv_exist];
-        
     }
     else
     {
@@ -147,7 +153,6 @@ NSString *ab_self;
                                                   cancelButtonTitle:@"Done"
                                                   otherButtonTitles:nil];
             [alert show];
-            
         }
         else
         {
@@ -158,21 +163,16 @@ NSString *ab_self;
                                                   otherButtonTitles:nil];
             [alert show];
         }
-        
     }
-    
 }
-
 
 #pragma mark - Data
 
 - (void) get_person_data
 {
-    //get current user 1. isperson 2. chat_on
-    PFUser *cur_user = [PFUser currentUser];
-    NSNumber *cur_user_chat_num = cur_user[@"chat_status"];
+    NSNumber *cur_user_chat_num = currentUser[@"chat_status"];
     int cur_user_chat = [cur_user_chat_num intValue];
-    NSNumber *cur_user_isperson_num = cur_user[@"is_person"];
+    NSNumber *cur_user_isperson_num = currentUser[@"is_person"];
     int cur_user_isperson = [cur_user_isperson_num intValue];
     
     PFQuery *personquery = [PFQuery queryWithClassName:@"Person"];
@@ -276,7 +276,7 @@ NSString *ab_self;
         else
         {
             the_user = the_person[@"user"];
-            if ([the_user.objectId isEqualToString:cur_user.objectId])
+            if ([the_user.objectId isEqualToString:currentUser.objectId])
             {
                 chat_enabled= NO;
                 is_self = 1;
@@ -294,6 +294,21 @@ NSString *ab_self;
             }
         }
     }];
+}
+
+- (void)processConversationData: (NSArray *)results {
+    NSLog(@"received conversation search results");
+    if (results.count == 0)
+    {
+        //no existing private conversation between self and this person
+        is_new_conv = 1;
+    }
+    else
+    {
+        is_new_conv = 0;
+        PFObject *conversation = [results objectAtIndex:0];
+        conv_objid = conversation.objectId;
+    }
 }
 
 - (void)processTalkData: (NSArray *)results {
@@ -353,6 +368,22 @@ NSString *ab_self;
                 [self nav_to_chat];
             }
         }
+    }];
+}
+
+- (void) startNewConversationWithUser: (PFUser *)user
+{
+    PFObject *conversation = [PFObject objectWithClassName:@"Conversation"];
+    conversation[@"last_time"] = [NSDate date];
+    conversation[@"last_msg"] = @"no messages yet";
+    conversation[@"is_group"] = @0;
+    PFRelation *relation = [conversation relationForKey:@"participants"];
+    [relation addObject:user];
+    [relation addObject:currentUser];
+    [conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"new conversation successfully created");
+        conv_objid = conversation.objectId;
+        [self nav_to_chat];
     }];
 }
 
@@ -463,20 +494,11 @@ NSString *ab_self;
         {
             controller.is_new_conv = 0;
             controller.conversation_objid = conv_objid;
-            controller.other_guy_objid = the_user.objectId;
-            controller.other_guy_name = the_user[@"username"];
-            controller.otherguy = the_user;
-            controller.ab_self = ab_self;
-
         }
         else if (is_new_conv==1)
         {
             controller.is_new_conv = 1;
             controller.conversation_objid = conv_objid;
-            controller.other_guy_objid = the_user.objectId;
-            controller.other_guy_name = the_user[@"username"];
-            controller.otherguy = the_user;
-            controller.ab_self = ab_self;
         }
     }
     
@@ -489,16 +511,15 @@ NSString *ab_self;
 //pop the push segue back to ppl list, enter conversation view, then select appropriate conversation
 - (void) nav_to_chat
 {
+    [chatParticipants addObject:currentUser];
+    [chatParticipants addObject:the_user];
     UINavigationController *navcon = [self.tabBarController.viewControllers objectAtIndex:1];
     [navcon popToRootViewControllerAnimated:NO];
     PeopleTabViewController *ppltabcon = (PeopleTabViewController *)[navcon topViewController];
     ppltabcon.fromInitiateChatEvent=1;
     ppltabcon.conv_id = conv_objid;
-    //ppltabcon.preload_chat_abself = ab_self;
     ppltabcon.preload_chat_isnewconv = is_new_conv;
-    //ppltabcon.preload_chat_otherguy = the_user;
-    //ppltabcon.preload_chat_otherguy_name = the_user[@"username"];
-    //ppltabcon.preload_chat_otherguy_objid = the_user.objectId;
+    ppltabcon.chatParticipants = chatParticipants;
     [self.tabBarController setSelectedIndex:1];
 }
 

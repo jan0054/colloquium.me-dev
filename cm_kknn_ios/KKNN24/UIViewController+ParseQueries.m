@@ -15,7 +15,8 @@
 
 @implementation UIViewController (ParseQueries)
 
-- (void) getVenue:(id)caller {
+- (void) getVenue:(id)caller
+{
     PFQuery *query = [PFQuery queryWithClassName:@"Venue"];
     [query orderByDescending:@"order"];
     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
@@ -27,16 +28,20 @@
     }];
 }
 
-- (void)getTalks: (id)caller{
+- (void)getTalks: (id)caller
+{
     
 }
-- (void)getPosters: (id)caller{
+- (void)getPosters: (id)caller
+{
     
 }
-- (void)getAttachments: (id)caller{
+- (void)getAttachments: (id)caller
+{
     
 }
-- (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray {
+- (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray
+{
     PFQuery *personquery = [PFQuery queryWithClassName:@"Person"];
     [personquery orderByAscending:@"last_name"];
     [personquery setLimit:500];
@@ -52,11 +57,13 @@
         [caller processData:objects];
     }];
 }
-- (void)getPosts: (id)caller{
+- (void)getPosts: (id)caller
+{
     
 }
 
-- (void)getConversations:(id)caller withUser:(PFUser *)user {
+- (void)getConversations:(id)caller withUser:(PFUser *)user
+{
     PFRelation *relation = [user relationForKey:@"conversation"];
     PFQuery *query = [relation query];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -68,7 +75,8 @@
     }];
 }
 
-- (void)getTalks: (id)caller forAuthor: (PFObject *)person {
+- (void)getTalks: (id)caller forAuthor: (PFObject *)person
+{
     PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
     [query whereKey:@"author" equalTo:person];
     [query orderByDescending:@"start_time"];
@@ -78,7 +86,8 @@
     }];
 }
 
-- (void)getPosters: (id)caller forAuthor: (PFObject *)person {
+- (void)getPosters: (id)caller forAuthor: (PFObject *)person
+{
     PFQuery *query = [PFQuery queryWithClassName:@"Poster"];
     [query whereKey:@"author" equalTo:person];
     [query orderByDescending:@"name"];
@@ -88,7 +97,8 @@
     }];
 }
 
-- (void)getAttachments: (id)caller forAuthor: (PFObject *)person {
+- (void)getAttachments: (id)caller forAuthor: (PFObject *)person
+{
     PFQuery *query = [PFQuery queryWithClassName:@"Attachment"];
     [query whereKey:@"author" equalTo:person];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -97,7 +107,8 @@
     }];
 }
 
-- (void)sendChat:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation {
+- (void)sendChat:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation
+{
     PFObject *chat = [PFObject objectWithClassName:@"Chat"];
     chat[@"content"] = content;
     chat[@"author"] = user;
@@ -118,13 +129,26 @@
     }];
 }
 
-- (void)getChat:(id)caller withConversation:(PFObject *)conversation {
+- (void)getChat:(id)caller withConversation:(PFObject *)conversation
+{
     PFQuery *query = [PFQuery queryWithClassName:@"Chat"];
     [query whereKey:@"conversation" equalTo:conversation];
     [query orderByAscending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"chat query success with # of chats: %ld", (unsigned long)[objects count]);
         [caller processChatList:objects];
+    }];
+}
+
+- (void)getPrivateChat: (id)caller withUser: (PFUser *)user alongWithSelf: (PFUser *) currentUser
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
+    [query whereKey:@"is_group" notEqualTo:@1];
+    [query whereKey:@"participants" equalTo:user];
+    [query whereKey:@"participants" equalTo:currentUser];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu conversations for these users.", (unsigned long)objects.count);
+        [caller processConversationData:objects];
     }];
 }
 

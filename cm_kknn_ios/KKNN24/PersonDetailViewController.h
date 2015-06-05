@@ -30,5 +30,6 @@
 - (void)processTalkData: (NSArray *)results;
 - (void)processPosterData: (NSArray *)results;
 - (void)processAttachmentData: (NSArray *)results;
+- (void)processConversationData: (NSArray *)results;
 
 @end

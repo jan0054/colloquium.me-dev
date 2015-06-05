@@ -40,12 +40,11 @@
          NSLog(@"IOS<=7 PUSH");
      }
     
+    //styling
     // This sets the background color of the navigation
     [[UINavigationBar appearance] setBarTintColor:[UIColor nav_bar]];
-    
     // This sets the text color of the navigation links
     [[UINavigationBar appearance] setTintColor:[UIColor light_button_txt]];
-    
     // This sets the title color of the navigation bar
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Light" size:19.0]}];
     
@@ -54,15 +53,11 @@
 
     //[[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor light_accent], NSForegroundColorAttributeName, nil]
                                              //forState:UIControlStateNormal];
-    
-    
-    
     //crashes ios 7 + iphone 4s for some reason
     //[[UITabBar appearance] setTranslucent:NO];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor lightGrayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateHighlighted];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor light_button_txt], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
-    
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;
@@ -108,6 +103,8 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    //clear icon badge
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     if (currentInstallation.badge != 0) {
         currentInstallation.badge = 0;

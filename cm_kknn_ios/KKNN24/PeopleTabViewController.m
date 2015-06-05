@@ -33,11 +33,8 @@ NSMutableArray *search_array;
 @synthesize event_author_id;
 @synthesize conv_id;
 @synthesize pullrefresh;
-@synthesize preload_chat_abself;
 @synthesize preload_chat_isnewconv;
-@synthesize preload_chat_otherguy;
-@synthesize preload_chat_otherguy_name;
-@synthesize preload_chat_otherguy_objid;
+@synthesize chatParticipants;
 
 #pragma mark - Interface
 

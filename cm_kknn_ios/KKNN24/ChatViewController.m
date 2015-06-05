@@ -21,11 +21,8 @@ PFObject *conversation;
 @implementation ChatViewController
 @synthesize is_new_conv;
 @synthesize conversation_objid;
-@synthesize chat_array;
 @synthesize chat_table_array;
-@synthesize otherguy;
 @synthesize pullrefresh;
-@synthesize ab_self;
 @synthesize participants;
 
 #pragma mark - Interface
@@ -33,22 +30,23 @@ PFObject *conversation;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //init
     self.chat_input_box.delegate = self;
-    self.chat_array = [[NSMutableArray alloc] init];
     self.chat_table_array = [[NSMutableArray alloc] init];
     
+    //styling
     self.view.backgroundColor = [UIColor dark_primary];
     self.chat_table.backgroundColor = [UIColor clearColor];
     [self.send_chat_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateNormal];
     [self.send_chat_button setTitleColor:[UIColor light_button_txt] forState:UIControlStateHighlighted];
+    self.chat_table.estimatedRowHeight = 69;
+    self.chat_table.rowHeight = UITableViewAutomaticDimension;
     
     //Pull To Refresh Controls
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.chat_table addSubview:pullrefresh];
-    
-    self.chat_table.estimatedRowHeight = 69;
-    self.chat_table.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -65,6 +63,7 @@ PFObject *conversation;
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotchatinapp" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
@@ -89,7 +88,9 @@ PFObject *conversation;
 - (IBAction)send_chat_button_tap:(UIButton *)sender {
     PFUser *user = [PFUser currentUser];
     NSString *content = self.chat_input_box.text;
-    [self sendChat:self withAuthor:user withContent:content withConversation:conversation];
+    if (content.length >=1) {
+        [self sendChat:self withAuthor:user withContent:content withConversation:conversation];
+    }
 }
 
 #pragma mark - TableView
@@ -110,40 +111,42 @@ PFObject *conversation;
     ChatMeCellTableViewCell *chatmecell = [tableView dequeueReusableCellWithIdentifier:@"chatmecell"];
     ChatYouCellTableViewCell *chatyoucell = [tableView dequeueReusableCellWithIdentifier:@"chatyoucell"];
     
+    //styling
     chatmecell.selectionStyle = UITableViewCellSelectionStyleNone;
     chatyoucell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSMutableDictionary *chat_dict = [self.chat_table_array objectAtIndex:indexPath.row];
-    NSNumber *fromme_nsnum = [chat_dict valueForKey:@"fromme"];
-    int fromme = [fromme_nsnum intValue];
-    if (fromme==0)
+    PFUser *user = [PFUser currentUser];
+    PFObject *chat = [self.chat_table_array objectAtIndex:indexPath.row];
+    PFUser *author = chat[@"author"];
+    NSDate *date = chat.createdAt;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat: @"MMM-d HH:mm"];
+    NSString *dateString = [dateFormat stringFromDate:date];
+    NSString *contentString = chat[@"content"];
+    BOOL theySaid;
+    if ([author.objectId isEqualToString:user.objectId])
+    {
+        theySaid = NO;
+    }
+    else
+    {
+        theySaid = YES;
+    }
+    if (theySaid)
     {
         //msg is them to me
-        chatyoucell.chat_content_label.text = [chat_dict objectForKey:@"content"];
-        chatyoucell.chat_time_label.text = [chat_dict objectForKey:@"time"];
-        chatyoucell.chat_person_label.text = [NSString stringWithFormat:@"%@:",self.other_guy_name];
-        
-
-        //chatyoucell.chat_content_label.backgroundColor = [UIColor whiteColor];
-        //chatyoucell.chat_content_label.layer.cornerRadius = 5;
-        //[chatyoucell.chat_content_label sizeToFit];
+        chatyoucell.chat_content_label.text = contentString;
+        chatyoucell.chat_time_label.text = dateString;
+        chatyoucell.chat_person_label.text = author.username;
         return chatyoucell;
     }
     else
     {
         //msg is me to them
-        chatmecell.chat_content_label.text = [chat_dict objectForKey:@"content"];
-        chatmecell.chat_time_label.text = [chat_dict objectForKey:@"time"];
-        
-
-        
-        //chatmecell.chat_content_label.backgroundColor = [UIColor whiteColor];
-        //chatmecell.chat_content_label.layer.cornerRadius = 5;
-        
-        //[chatmecell.chat_content_label sizeToFit];
+        chatmecell.chat_content_label.text = contentString;
+        chatmecell.chat_time_label.text = dateString;
         return chatmecell;
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -163,71 +166,7 @@ PFObject *conversation;
 - (void) get_chat_info {
     PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"Conversation" objectId:self.conversation_objid];
     conversation = the_conv;
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Chat"];
-    [query whereKey:@"conversation" equalTo:the_conv];
-    [query includeKey:@"from"];
-    [query includeKey:@"to"];
-    [query orderByAscending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        NSLog(@"chat query success with # of chat elements: %ld", (unsigned long)[objects count]);
-        //reset the arrays used to store chat elements
-        [self.chat_table_array removeAllObjects];
-        
-        //loop for each chat element
-        for (PFObject *chat_obj in objects)
-        {
-            NSLog(@"FOR LOOP - chat objects");
-            
-            NSDate *msg_time = chat_obj.createdAt;
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat: @"MM-dd HH:mm"];
-            NSString *dateString = [dateFormat stringFromDate:msg_time];
-            NSLog(@"DATE:%@", dateString);
-            NSMutableDictionary *chat_dict = [[NSMutableDictionary alloc] init];
-            
-            [chat_dict setObject:chat_obj[@"content"] forKey:@"content"];
-            [chat_dict setObject:dateString forKey:@"time"];
-            PFUser *from_person = chat_obj[@"from"];
-            PFUser *to_person = chat_obj[@"to"];
-            NSString *from_id = from_person.objectId;
-            PFUser *self_user = [PFUser currentUser];
-            NSString *self_id =self_user.objectId;
-            if ([from_id isEqualToString:self_id])
-            {
-                [chat_dict setValue:[NSNumber numberWithInt:1] forKey:@"fromme"];
-                NSLog(@"msg is from me");
-            }
-            else
-            {
-                [chat_dict setValue:[NSNumber numberWithInt:0] forKey:@"fromme"];
-                NSLog(@"msg is from other guy");
-            }
-            
-            [self.chat_table_array addObject:chat_dict];
-        }
-        
-        [self.chat_table reloadData];
-        
-        //clear unread count
-        if ([ab_self isEqualToString:@"a"])
-        {
-            conversation[@"user_a_unread"] = @0;
-        }
-        else if ([ab_self isEqualToString:@"b"])
-        {
-            conversation[@"user_b_unread"] = @0;
-        }
-        [conversation saveInBackground];
-
-        //scroll the table to bottom row (if not empty table)
-        if ([self.chat_table_array count] >=1)
-        {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
-            [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-        }
-    }];
+    [self getChat:self withConversation:conversation];
 }
 
 - (void)processChatList: (NSArray *)results {
@@ -235,11 +174,18 @@ PFObject *conversation;
     [self.chat_table_array removeAllObjects];
     self.chat_table_array = [results mutableCopy];
     [self.chat_table reloadData];
+    
+    //scroll the table to bottom row (if not empty table)
+    if ([self.chat_table_array count] >=1)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
+        [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 - (void)processChatUploadWithConversation:(PFObject *)conversation withContent:(NSString *)content {
     NSLog(@"received chat upload callback, sending push");
-
+    
     PFUser *user = [PFUser currentUser];
     NSString *pushstr = [NSString stringWithFormat:@"%@: %@",user.username,content];
     NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
