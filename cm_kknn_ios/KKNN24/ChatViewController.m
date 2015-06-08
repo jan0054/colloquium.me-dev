@@ -17,9 +17,10 @@
 @end
 
 PFObject *conversation;
+PFUser *currentUser;
 
 @implementation ChatViewController
-@synthesize is_new_conv;
+
 @synthesize conversation_objid;
 @synthesize chat_table_array;
 @synthesize pullrefresh;
@@ -34,6 +35,7 @@ PFObject *conversation;
     //init
     self.chat_input_box.delegate = self;
     self.chat_table_array = [[NSMutableArray alloc] init];
+    currentUser = [PFUser currentUser];
     
     //styling
     self.view.backgroundColor = [UIColor dark_primary];
@@ -86,10 +88,10 @@ PFObject *conversation;
 }
 
 - (IBAction)send_chat_button_tap:(UIButton *)sender {
-    PFUser *user = [PFUser currentUser];
     NSString *content = self.chat_input_box.text;
     if (content.length >=1) {
-        [self sendChat:self withAuthor:user withContent:content withConversation:conversation];
+        NSLog(@"sending chat...");
+        [self sendChat:self withAuthor:currentUser withContent:content withConversation:conversation];
     }
 }
 
@@ -115,7 +117,7 @@ PFObject *conversation;
     chatmecell.selectionStyle = UITableViewCellSelectionStyleNone;
     chatyoucell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    PFUser *user = [PFUser currentUser];
+    //data
     PFObject *chat = [self.chat_table_array objectAtIndex:indexPath.row];
     PFUser *author = chat[@"author"];
     NSDate *date = chat.createdAt;
@@ -124,7 +126,7 @@ PFObject *conversation;
     NSString *dateString = [dateFormat stringFromDate:date];
     NSString *contentString = chat[@"content"];
     BOOL theySaid;
-    if ([author.objectId isEqualToString:user.objectId])
+    if ([author.objectId isEqualToString:currentUser.objectId])
     {
         theySaid = NO;
     }
@@ -186,8 +188,7 @@ PFObject *conversation;
 - (void)processChatUploadWithConversation:(PFObject *)conversation withContent:(NSString *)content {
     NSLog(@"received chat upload callback, sending push");
     
-    PFUser *user = [PFUser currentUser];
-    NSString *pushstr = [NSString stringWithFormat:@"%@: %@",user.username,content];
+    NSString *pushstr = [NSString stringWithFormat:@"%@: %@",currentUser.username,content];
     NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
                           pushstr, @"alert",
                           @"Increment", @"badge",
@@ -199,7 +200,6 @@ PFObject *conversation;
     // Send push notification to query
     PFPush *push = [[PFPush alloc] init];
     [push setQuery:pushQuery]; // Set our Installation query
-    //[push setMessage:pushstr];
     [push setData:data];
     [push sendPushInBackground];
     

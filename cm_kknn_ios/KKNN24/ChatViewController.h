@@ -11,11 +11,12 @@
 
 
 @interface ChatViewController : UIViewController<UITextFieldDelegate, UIScrollViewDelegate>
-@property NSString *conversation_objid;
-@property int is_new_conv;
-@property NSMutableArray *chat_table_array;
-@property NSMutableArray *participants;
 
+@property NSString *conversation_objid;      //required: conversation id to get the chats from
+@property NSMutableArray *chat_table_array;  //main array to hold chat objects
+@property NSMutableArray *participants;      //chat participant array
+
+//ui
 @property (strong, nonatomic) IBOutlet UITextField *chat_input_box;
 @property (strong, nonatomic) IBOutlet UIButton *send_chat_button;
 - (IBAction)send_chat_button_tap:(UIButton *)sender;
@@ -24,6 +25,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textfieldbottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *sendmessagebottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tablebottom;
+
+//data
 - (void) processChatUploadWithConversation: (PFObject *)conversation withContent: (NSString *)content;
 - (void)processChatList: (NSArray *)results;
 

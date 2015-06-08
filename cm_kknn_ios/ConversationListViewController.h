@@ -9,25 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+//ui
 @interface ConversationListViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *back_to_people_button;
 - (IBAction)back_to_people_button_tap:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) IBOutlet UITableView *conversation_list_table;
-
-@property NSMutableArray *conversation_array;
-@property NSMutableArray *talked_to_array;
-@property NSMutableArray *talked_from_array;
-
 @property UIRefreshControl *pullrefresh;
-
-@property int fromPersonDetailChat;
-@property NSString *preloaded_conv_id;
-@property NSString *preloaded_otherguy_objid;
-@property PFUser *preloaded_otherguy;
-@property NSString *preloaded_otherguy_name;
-@property NSString *preloaded_abself;
-@property int preloaded_isnewconv;
 @property (weak, nonatomic) IBOutlet UILabel *no_conv_label;
+
+//data
 - (void) processData: (NSArray *)results;
+
+@property NSMutableArray *conversation_array;  //main array holding conversation list
+@property int fromPersonDetailChat;            //=1 if coming from tapping chat in person detail view
+@property NSString *preloaded_conv_id;         //conversation id to pass on to chat
+@property NSMutableArray *preloadedChatParticipants;     //participant list to pass on to chat
 
 @end

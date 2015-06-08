@@ -14,6 +14,7 @@
 
 @interface PeopleTabViewController : UIViewController <UITextFieldDelegate>
 
+//ui
 @property (strong, nonatomic) IBOutlet UITableView *peopletable;
 - (IBAction)person_detail_button_tap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *chat_float;
@@ -27,14 +28,13 @@
 - (IBAction)do_search_button_tap:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *search_input;
 
+//data
 @property int from_event;
 @property NSMutableArray *person_array;
 @property NSString *event_author_id;
 
-//used for passing info when going from person detail straight to chat
-@property int fromInitiateChatEvent;
-@property NSString *conv_id;
-@property int preload_chat_isnewconv;
-@property NSMutableArray *chatParticipants;
+@property int fromInitiateChatEvent;         //used for passing info when going from person detail straight to chat
+@property NSString *conv_id;                 //conversation id to be passed to conversation view then chat view
+@property NSMutableArray *preloadedChatParticipants;  //participant array to be passed to conversation view then chat view
 
 @end

@@ -19,20 +19,15 @@
 
 NSString *chosen_conv_id;            //the selected conversation id
 NSMutableArray *chosenParticipants;  //the participants to pass to chat
-NSMutableDictionary *participantsList;    //list of participant arrays for all conversations
+NSMutableDictionary *totalParticipantsList;    //list of participant arrays for all conversations
+PFUser *currentUser;
 
 @implementation ConversationListViewController
 @synthesize conversation_array;
-@synthesize talked_to_array;
-@synthesize talked_from_array;
 @synthesize pullrefresh;
 @synthesize fromPersonDetailChat;
 @synthesize preloaded_conv_id;
-@synthesize preloaded_abself;
-@synthesize preloaded_isnewconv;
-@synthesize preloaded_otherguy;
-@synthesize preloaded_otherguy_name;
-@synthesize preloaded_otherguy_objid;
+@synthesize preloadedChatParticipants;
 
 #pragma mark - Interface
 
@@ -44,13 +39,14 @@ NSMutableDictionary *participantsList;    //list of participant arrays for all c
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.conversation_list_table.tableFooterView = [[UIView alloc] init];
     self.conversation_array = [[NSMutableArray alloc] init];
-    self.talked_to_array = [[NSMutableArray alloc] init];
-    self.talked_from_array = [[NSMutableArray alloc] init];
     self.no_conv_label.hidden = YES;
     chosenParticipants = [[NSMutableArray alloc] init];
-    participantsList = [[NSMutableDictionary alloc] init];
+    totalParticipantsList = [[NSMutableDictionary alloc] init];
+    if ([PFUser currentUser])
+    {
+        currentUser = [PFUser currentUser];
+    }
     
-    //tableview refresh controls
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.conversation_list_table addSubview:pullrefresh];
@@ -136,11 +132,14 @@ NSMutableDictionary *participantsList;    //list of participant arrays for all c
         if (error) {
             NSLog(@"participant query failed");
         } else {
-            [participantsList setObject:objects forKey:conversation.objectId];
+            [totalParticipantsList setObject:objects forKey:conversation.objectId];
             NSString *name = @"";
             for (PFUser *user in objects)
             {
-                name = [NSString stringWithFormat:@"%@, %@", name, user.username];
+                if (![user.objectId isEqualToString:currentUser.objectId])
+                {
+                    name = [NSString stringWithFormat:@"%@, %@", name, user.username];
+                }
             }
             NSRange range = NSMakeRange(0, 2);
             name = [name stringByReplacingCharactersInRange:range withString:@""];
@@ -171,7 +170,7 @@ NSMutableDictionary *participantsList;    //list of participant arrays for all c
 {
     PFObject *conversation = [self.conversation_array objectAtIndex:indexPath.row];
     chosen_conv_id = conversation.objectId;
-    chosenParticipants = [participantsList objectForKey:chosen_conv_id];
+    chosenParticipants = [totalParticipantsList objectForKey:chosen_conv_id];
     [self performSegueWithIdentifier:@"chatsegue" sender:self];
 }
 
@@ -181,6 +180,7 @@ NSMutableDictionary *participantsList;    //list of participant arrays for all c
 {
     fromPersonDetailChat = 0;
     chosen_conv_id = conv_id_from_preload;
+    chosenParticipants = self.preloadedChatParticipants;
     
     [self performSegueWithIdentifier:@"chatsegue" sender:self];
 }
@@ -195,7 +195,7 @@ NSMutableDictionary *participantsList;    //list of participant arrays for all c
 - (void)processData:(NSArray *)results {
     NSLog(@"received conversation data");
     [self.conversation_array removeAllObjects];
-    [participantsList removeAllObjects];
+    [totalParticipantsList removeAllObjects];
     if ([results count] == 0)
     {
         self.no_conv_label.hidden = NO;
@@ -224,7 +224,6 @@ NSMutableDictionary *participantsList;    //list of participant arrays for all c
 {
     ChatViewController *controller = [segue destinationViewController];
     controller.conversation_objid = chosen_conv_id;
-    controller.is_new_conv = 0;
     controller.participants = chosenParticipants;
 }
 

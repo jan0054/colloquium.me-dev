@@ -64,8 +64,8 @@
 
 - (void)getConversations:(id)caller withUser:(PFUser *)user
 {
-    PFRelation *relation = [user relationForKey:@"conversation"];
-    PFQuery *query = [relation query];
+    PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
+    [query whereKey:@"participants" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSLog(@"conversation query error");
