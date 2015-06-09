@@ -7,6 +7,7 @@
 //
 
 #import "GroupChatOptions.h"
+#import "GroupChatInviteCell.h"
 
 @implementation GroupChatOptions
 
@@ -16,5 +17,31 @@
 - (IBAction)addConversationButtonTap:(UIButton *)sender {
     NSLog(@"add people tapped");
 }
+
+#pragma mark - TableView
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GroupChatInviteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"invitecell"];
+    
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+
 
 @end

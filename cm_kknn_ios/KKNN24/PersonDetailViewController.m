@@ -378,7 +378,7 @@ int emailStatus;                     //1=enabled, 0=other person not user or not
 }
 
 - (void)processConversationData: (NSArray *)results {
-    NSLog(@"received conversation search results");
+    NSLog(@"Received conversation search results for this person: %lu", (unsigned long)results.count);
     if (results.count == 0)
     {
         //no existing private conversation between self and this person
