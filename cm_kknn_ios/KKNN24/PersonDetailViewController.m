@@ -333,48 +333,6 @@ int emailStatus;                     //1=enabled, 0=other person not user or not
 - (void) checkConversationForSelfAndUser: (PFUser *)user
 {
     [self getPrivateChat:self withUser:user alongWithSelf:currentUser];
-    
-    //old way to build the query
-    /*
-     PFRelation *relation1 = [currentUser relationForKey:@"conversation"];
-     PFQuery *innerQuery1 = [relation1 query];
-     [innerQuery1 whereKey:@"is_group" notEqualTo:@1];
-     
-     PFRelation *relation2 = [the_user relationForKey:@"conversation"];
-     PFQuery *innerQuery2 = [relation2 query];
-     [innerQuery2 whereKey:@"is_group" notEqualTo:@1];
-     
-     PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
-     [query whereKey:@"objectId" matchesKey:@"objectId" inQuery:innerQuery1];
-     [query whereKey:@"objectId" matchesKey:@"objectId" inQuery:innerQuery2];
-     [query whereKey:@"is_group" notEqualTo:@1];
-     
-     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-     if (error) {
-     NSLog(@"conversation query error");
-     } else {
-     if (objects.count == 0)
-     {
-     NSLog(@"no existing conversation, creating new...");
-     PFObject *new_conv = [PFObject objectWithClassName:@"Conversation"];
-     new_conv[@"last_msg"] = @"no messages yet";
-     new_conv[@"last_time"] = [NSDate date];
-     [new_conv saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-     NSLog(@"new conversation successfully created");
-     conv_objid = new_conv.objectId;
-     [self navigateToChat];
-     }];
-     }
-     else
-     {
-     //found conversation between these two people
-     PFObject *conversation = [objects objectAtIndex:0];
-     conv_objid = conversation.objectId;
-     [self navigateToChat];
-     }
-     }
-     }];
-     */
 }
 
 - (void)processConversationData: (NSArray *)results {
@@ -398,9 +356,8 @@ int emailStatus;                     //1=enabled, 0=other person not user or not
     conversation[@"last_time"] = [NSDate date];
     conversation[@"last_msg"] = @"no messages yet";
     conversation[@"is_group"] = @0;
-    PFRelation *relation = [conversation relationForKey:@"participants"];
-    [relation addObject:user];
-    [relation addObject:currentUser];
+    [conversation addObject:user forKey:@"participants"];
+    [conversation addObject:currentUser forKey:@"participants"];
     [conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"new conversation successfully created");
         conv_objid = conversation.objectId;

@@ -126,26 +126,22 @@ PFUser *currentUser;
     
     //data
     PFObject *conversation = [self.conversation_array objectAtIndex:indexPath.row];
+    
     //get the participant list
-    PFRelation *relation = [conversation relationForKey:@"participants"];
-    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error) {
-            NSLog(@"participant query failed");
-        } else {
-            [totalParticipantsList setObject:objects forKey:conversation.objectId];
-            NSString *name = @"";
-            for (PFUser *user in objects)
-            {
-                if (![user.objectId isEqualToString:currentUser.objectId])
-                {
-                    name = [NSString stringWithFormat:@"%@, %@", name, user.username];
-                }
-            }
-            NSRange range = NSMakeRange(0, 2);
-            name = [name stringByReplacingCharactersInRange:range withString:@""];
-            [self setConversationName:name forCellAtIndexPath:indexPath];
+    NSArray *participants = [conversation objectForKey:@"participants"];
+    [totalParticipantsList setObject:participants forKey:conversation.objectId];
+    NSString *name = @"";
+    for (PFUser *user in participants)
+    {
+        if (![user.objectId isEqualToString:currentUser.objectId])
+        {
+            name = [NSString stringWithFormat:@"%@, %@", name, user.username];
         }
-    }];
+    }
+    NSRange range = NSMakeRange(0, 2);
+    name = [name stringByReplacingCharactersInRange:range withString:@""];
+    cell.conversation_name_label.text = name;
+    
     NSDate *date = conversation[@"last_time"];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat: @"MMM-d HH:mm"];
@@ -158,12 +154,6 @@ PFUser *currentUser;
     cell.conversation_new_label.hidden=YES;
     
     return cell;
-}
-
-- (void) setConversationName: (NSString *)name forCellAtIndexPath: (NSIndexPath *)indexPath
-{
-    ConversationCellTableViewCell *cell = (ConversationCellTableViewCell *)[self.conversation_list_table cellForRowAtIndexPath:indexPath];
-    cell.conversation_name_label.text = name;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

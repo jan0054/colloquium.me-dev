@@ -66,6 +66,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
     [query whereKey:@"participants" equalTo:user];
+    [query includeKey:@"participants"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSLog(@"conversation query error");
@@ -134,6 +135,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Chat"];
     [query whereKey:@"conversation" equalTo:conversation];
     [query orderByAscending:@"createdAt"];
+    [query includeKey:@"read"];
     [query includeKey:@"author"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"chat query success with # of chats: %ld", (unsigned long)[objects count]);
@@ -145,8 +147,8 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
     [query whereKey:@"is_group" notEqualTo:@1];
-    [query whereKey:@"participants" equalTo:currentUser];
-    [query whereKey:@"participants" equalTo:user];
+    [query includeKey:@"participants"];
+    [query whereKey:@"participants" containsAllObjectsInArray:@[user, currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu conversations for these users.", (unsigned long)objects.count);
         [caller processConversationData:objects];
