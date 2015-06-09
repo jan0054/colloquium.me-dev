@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>           
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+		 xmlns:tools="http://schemas.android.com/tools"
+    	 android:id="@android:id/tabhost"
+    	 android:layout_width="fill_parent"
+    	 android:layout_height="fill_parent" >
+    <LinearLayout android:orientation="vertical"
+			      android:layout_width="fill_parent"
+			      android:layout_height="fill_parent"
+			      android:background="@color/background" >
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0"/>
+		<FrameLayout android:id="@+id/realtabcontent"
+		             android:layout_width="fill_parent"
+		             android:layout_height="0dp"
+		             android:layout_weight="1" >
+			<android.support.v4.view.ViewPager android:id="@+id/pager"
+											   android:layout_width="match_parent"
+											   android:layout_height="match_parent"
+											   tools:context="com.cmenvi.app.MainActivity" />
+		    <!-- 
+			<android.support.v4.view.ViewPager android:id="@+id/pager"
+											   android:layout_width="match_parent"
+											   android:layout_height="match_parent"
+											   tools:context="com.example.domiso.MainActivity" />
+			 -->
+		</FrameLayout>
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:divider="#111111"
+            android:dividerPadding="0dip"/>
+
+    </LinearLayout>
+</TabHost>
+
+<!--
+<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.squint.app.MainActivity" />
+--><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/src/main/res/layout/activity_main.xml -->

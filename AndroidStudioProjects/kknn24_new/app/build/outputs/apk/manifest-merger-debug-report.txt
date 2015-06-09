@@ -1,0 +1,351 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:5:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionCode
+		ADDED from AndroidManifest.xml:4:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-sdk
+ADDED from AndroidManifest.xml:7:5
+MERGED from com.android.support:support-v13:21.0.3:15:5
+MERGED from com.android.support:support-v4:21.0.3:15:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:8:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.CALL_PHONE
+ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:13:5
+	android:name
+		ADDED from AndroidManifest.xml:13:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:14:5
+	android:name
+		ADDED from AndroidManifest.xml:14:22
+uses-permission#android.permission.WAKE_LOCK
+ADDED from AndroidManifest.xml:15:5
+	android:name
+		ADDED from AndroidManifest.xml:15:22
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from AndroidManifest.xml:16:5
+	android:name
+		ADDED from AndroidManifest.xml:16:22
+uses-permission#android.permission.VIBRATE
+ADDED from AndroidManifest.xml:17:5
+	android:name
+		ADDED from AndroidManifest.xml:17:22
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from AndroidManifest.xml:18:5
+	android:name
+		ADDED from AndroidManifest.xml:18:22
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from AndroidManifest.xml:19:5
+	android:name
+		ADDED from AndroidManifest.xml:19:22
+uses-permission#android.permission.GET_TASKS
+ADDED from AndroidManifest.xml:20:5
+	android:name
+		ADDED from AndroidManifest.xml:20:22
+permission#com.cmenvi.app.permission.C2D_MESSAGE
+ADDED from AndroidManifest.xml:22:5
+	android:protectionLevel
+		ADDED from AndroidManifest.xml:24:9
+	android:name
+		ADDED from AndroidManifest.xml:23:9
+uses-permission#com.cmenvi.app.permission.C2D_MESSAGE
+ADDED from AndroidManifest.xml:26:5
+	android:name
+		ADDED from AndroidManifest.xml:26:22
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from AndroidManifest.xml:27:5
+	android:name
+		ADDED from AndroidManifest.xml:27:22
+uses-permission#android.permission.READ_CALENDAR
+ADDED from AndroidManifest.xml:28:5
+	android:name
+		ADDED from AndroidManifest.xml:28:22
+uses-permission#android.permission.WRITE_CALENDAR
+ADDED from AndroidManifest.xml:29:5
+	android:name
+		ADDED from AndroidManifest.xml:29:22
+uses-permission#android.permission.CAMERA
+ADDED from AndroidManifest.xml:32:5
+	android:name
+		ADDED from AndroidManifest.xml:32:22
+uses-feature#android.hardware.camera
+ADDED from AndroidManifest.xml:33:5
+	android:name
+		ADDED from AndroidManifest.xml:33:19
+uses-feature#android.hardware.camera.autofocus
+ADDED from AndroidManifest.xml:34:5
+	android:name
+		ADDED from AndroidManifest.xml:34:19
+application
+ADDED from AndroidManifest.xml:39:5
+MERGED from com.android.support:support-v13:21.0.3:16:5
+MERGED from com.android.support:support-v4:21.0.3:16:5
+	android:label
+		ADDED from AndroidManifest.xml:43:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:41:9
+	android:icon
+		ADDED from AndroidManifest.xml:42:9
+	android:theme
+		ADDED from AndroidManifest.xml:44:9
+	android:name
+		ADDED from AndroidManifest.xml:40:9
+activity#com.cmenvi.app.LoginActivity
+ADDED from AndroidManifest.xml:45:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:49:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:47:13
+	android:name
+		ADDED from AndroidManifest.xml:46:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:48:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:50:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:51:17
+	android:name
+		ADDED from AndroidManifest.xml:51:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:53:17
+	android:name
+		ADDED from AndroidManifest.xml:53:27
+activity#com.cmenvi.app.SignupActivity
+ADDED from AndroidManifest.xml:56:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:60:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:58:13
+	android:name
+		ADDED from AndroidManifest.xml:57:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:59:13
+activity#com.cmenvi.app.MainActivity
+ADDED from AndroidManifest.xml:62:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:67:13
+	android:label
+		ADDED from AndroidManifest.xml:65:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:64:13
+	android:name
+		ADDED from AndroidManifest.xml:63:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:66:13
+activity#com.cmenvi.app.SettingsDetailsActivity
+ADDED from AndroidManifest.xml:69:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:73:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:71:13
+	android:name
+		ADDED from AndroidManifest.xml:70:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:72:13
+activity#com.cmenvi.app.CareerDetailsActivity
+ADDED from AndroidManifest.xml:75:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:79:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:77:13
+	android:name
+		ADDED from AndroidManifest.xml:76:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:78:13
+activity#com.cmenvi.app.PeopleDetailsActivity
+ADDED from AndroidManifest.xml:81:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:85:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:83:13
+	android:name
+		ADDED from AndroidManifest.xml:82:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:84:13
+activity#com.cmenvi.app.TalkDetailsActivity
+ADDED from AndroidManifest.xml:87:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:91:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:89:13
+	android:name
+		ADDED from AndroidManifest.xml:88:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:90:13
+activity#com.cmenvi.app.PosterDetailsActivity
+ADDED from AndroidManifest.xml:93:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:97:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:95:13
+	android:name
+		ADDED from AndroidManifest.xml:94:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:96:13
+activity#com.cmenvi.app.AttachmentDetailsActivity
+ADDED from AndroidManifest.xml:99:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:103:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:101:13
+	android:name
+		ADDED from AndroidManifest.xml:100:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:102:13
+activity#com.cmenvi.app.PostDetailsActivity
+ADDED from AndroidManifest.xml:105:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:109:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:107:13
+	android:name
+		ADDED from AndroidManifest.xml:106:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:108:13
+activity#com.cmenvi.app.ConversationActivity
+ADDED from AndroidManifest.xml:111:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:115:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:113:13
+	android:name
+		ADDED from AndroidManifest.xml:112:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:114:13
+activity#com.cmenvi.app.NewPostActivity
+ADDED from AndroidManifest.xml:117:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:121:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:119:13
+	android:name
+		ADDED from AndroidManifest.xml:118:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:120:13
+activity#com.cmenvi.app.ChatActivity
+ADDED from AndroidManifest.xml:123:9
+	android:label
+		ADDED from AndroidManifest.xml:125:13
+	android:parentActivityName
+		ADDED from AndroidManifest.xml:126:13
+	android:name
+		ADDED from AndroidManifest.xml:124:13
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from AndroidManifest.xml:127:13
+	android:name
+		ADDED from AndroidManifest.xml:128:17
+	android:value
+		ADDED from AndroidManifest.xml:129:17
+service#com.parse.PushService
+ADDED from AndroidManifest.xml:132:9
+	android:name
+		ADDED from AndroidManifest.xml:132:18
+receiver#com.parse.ParseBroadcastReceiver
+ADDED from AndroidManifest.xml:134:9
+	android:name
+		ADDED from AndroidManifest.xml:134:19
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.USER_PRESENT
+ADDED from AndroidManifest.xml:135:13
+action#android.intent.action.BOOT_COMPLETED
+ADDED from AndroidManifest.xml:136:17
+	android:name
+		ADDED from AndroidManifest.xml:136:25
+action#android.intent.action.USER_PRESENT
+ADDED from AndroidManifest.xml:137:17
+	android:name
+		ADDED from AndroidManifest.xml:137:25
+receiver#com.parse.GcmBroadcastReceiver
+ADDED from AndroidManifest.xml:140:9
+	android:permission
+		ADDED from AndroidManifest.xml:142:13
+	android:name
+		ADDED from AndroidManifest.xml:141:13
+intent-filter#com.cmenvi.app+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
+ADDED from AndroidManifest.xml:143:13
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from AndroidManifest.xml:144:17
+	android:name
+		ADDED from AndroidManifest.xml:144:25
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from AndroidManifest.xml:145:17
+	android:name
+		ADDED from AndroidManifest.xml:145:25
+category#com.cmenvi.app
+ADDED from AndroidManifest.xml:147:17
+	android:name
+		ADDED from AndroidManifest.xml:147:27
+receiver#com.cmenvi.app.ChatReceiver
+ADDED from AndroidManifest.xml:150:9
+	android:exported
+		ADDED from AndroidManifest.xml:152:13
+	android:name
+		ADDED from AndroidManifest.xml:151:13
+intent-filter#com.parse.push.intent.DELETE+com.parse.push.intent.OPEN+com.parse.push.intent.RECEIVE
+ADDED from AndroidManifest.xml:153:13
+action#com.parse.push.intent.RECEIVE
+ADDED from AndroidManifest.xml:154:17
+	android:name
+		ADDED from AndroidManifest.xml:154:25
+action#com.parse.push.intent.DELETE
+ADDED from AndroidManifest.xml:155:17
+	android:name
+		ADDED from AndroidManifest.xml:155:25
+action#com.parse.push.intent.OPEN
+ADDED from AndroidManifest.xml:156:17
+	android:name
+		ADDED from AndroidManifest.xml:156:25
+activity#com.cmenvi.app.UserPreferenceActivity
+ADDED from AndroidManifest.xml:160:9
+	android:label
+		ADDED from AndroidManifest.xml:162:13
+	android:name
+		ADDED from AndroidManifest.xml:161:13
+activity#com.cmenvi.app.DiscussionActivity
+ADDED from AndroidManifest.xml:164:9
+	android:label
+		ADDED from AndroidManifest.xml:166:13
+	android:name
+		ADDED from AndroidManifest.xml:165:13
+activity#com.cmenvi.app.UploadCareerActivity
+ADDED from AndroidManifest.xml:168:9
+	android:label
+		ADDED from AndroidManifest.xml:170:13
+	android:name
+		ADDED from AndroidManifest.xml:169:13
+activity#com.cmenvi.app.UserAttendeeActivity
+ADDED from AndroidManifest.xml:172:9
+	android:label
+		ADDED from AndroidManifest.xml:174:13
+	android:name
+		ADDED from AndroidManifest.xml:173:13
+meta-data#com.parse.push.notification_icon
+ADDED from AndroidManifest.xml:178:9
+	android:resource
+		ADDED from AndroidManifest.xml:178:68
+	android:name
+		ADDED from AndroidManifest.xml:178:20

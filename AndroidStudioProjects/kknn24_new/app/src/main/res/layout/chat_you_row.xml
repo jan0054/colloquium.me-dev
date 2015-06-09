@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/chatTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="13dp"
+        android:textColor="@color/light_primary"
+        android:layout_alignParentRight="true"
+        android:textSize="11sp"
+        android:fontFamily="sans-serif-light"
+        android:text="time" />
+
+    <TextView
+        android:id="@+id/chatAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_alignTop="@+id/chatTime"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/light_txt"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:text="author" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_txt"
+        android:layout_marginBottom="13dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_below="@+id/chatAuthor"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:text="content" />
+
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/feed_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_gradient"
+    android:orientation="horizontal" >
+    <View
+        android:layout_width="3dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:background="@color/dark_accent" />
+    <RelativeLayout
+        android:id="@+id/item_talk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="left"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:gravity="center|left"
+            android:singleLine="true"
+            android:text="@string/name"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/author_name"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_alignLeft="@+id/name"
+            android:layout_alignRight="@+id/name"
+            android:layout_below="@+id/name"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center|left"
+            android:text="@string/author"
+            android:textColor="@color/primary_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/author_name"
+            android:layout_alignRight="@+id/name"
+            android:layout_below="@+id/author_name"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:lineSpacingExtra="2sp"
+            android:maxLines="3"
+            android:text="@string/description"
+            android:textColor="@color/primary_text"
+            android:textSize="14sp" />
+
+        <LinearLayout android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:layout_below="@+id/content"
+            android:weightSum="4"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/location_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-thin"
+                android:gravity="center|left"
+                android:text="@string/location"
+                android:textColor="@color/secondary_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_weight="2"
+                android:fontFamily="sans-serif-thin"
+                android:gravity="center"
+                android:text="@string/start_time"
+                android:textColor="@color/secondary_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView android:id="@+id/more"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center|right"
+                android:layout_weight="1"
+                android:text="@string/more"
+                android:textColor="@color/dark_accent"
+                android:maxLines="1"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
