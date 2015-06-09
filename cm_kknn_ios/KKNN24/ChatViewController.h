@@ -25,6 +25,10 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textfieldbottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *sendmessagebottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tablebottom;
+@property (strong, nonatomic) IBOutlet UIView *curtainView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
+- (IBAction)editButtonTap:(UIBarButtonItem *)sender;
+@property (strong, nonatomic) IBOutlet UIView *optionsContainer;
 
 //data
 - (void) processChatUploadWithConversation: (PFObject *)conversation withContent: (NSString *)content;

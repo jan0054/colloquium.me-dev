@@ -36,6 +36,10 @@ PFUser *currentUser;
     self.chat_input_box.delegate = self;
     self.chat_table_array = [[NSMutableArray alloc] init];
     currentUser = [PFUser currentUser];
+    self.curtainView.hidden = YES;
+    self.curtainView.userInteractionEnabled = NO;
+    self.optionsContainer.hidden = YES;
+    self.optionsContainer.userInteractionEnabled = NO;
     
     //styling
     self.view.backgroundColor = [UIColor dark_primary];
@@ -93,6 +97,10 @@ PFUser *currentUser;
         NSLog(@"sending chat...");
         [self sendChat:self withAuthor:currentUser withContent:content withConversation:conversation];
     }
+}
+
+- (IBAction)editButtonTap:(UIBarButtonItem *)sender {
+    [self toggleOptionView];
 }
 
 #pragma mark - TableView
@@ -209,6 +217,24 @@ PFUser *currentUser;
     self.chat_input_box.placeholder = @"Type message here..";
 }
 
+- (void)toggleOptionView
+{
+    if (self.optionsContainer.hidden)
+    {
+        self.optionsContainer.hidden = NO;
+        self.curtainView.hidden = NO;
+        self.optionsContainer.userInteractionEnabled = YES;
+        self.curtainView.userInteractionEnabled = YES;
+    }
+    else
+    {
+        self.optionsContainer.hidden = YES;
+        self.curtainView.hidden = YES;
+        self.optionsContainer.userInteractionEnabled = NO;
+        self.curtainView.userInteractionEnabled = NO;
+    }
+}
+
 #pragma mark - Keyboard
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -258,5 +284,6 @@ PFUser *currentUser;
         [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
 }
+
 
 @end

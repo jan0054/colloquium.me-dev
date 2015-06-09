@@ -11,6 +11,8 @@
 		B4163D7A1A023E290064B68E /* chatfloat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D791A023E290064B68E /* chatfloat@2x.png */; };
 		B4163D7D1A023FA70064B68E /* chatfloat_grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D7B1A023FA70064B68E /* chatfloat_grey@2x.png */; };
 		B4163D7E1A023FA70064B68E /* chatfloat_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4163D7C1A023FA70064B68E /* chatfloat_orange@2x.png */; };
+		B41916071B26FC3700080392 /* GroupChatOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = B41916061B26FC3700080392 /* GroupChatOptions.m */; };
+		B419160D1B270C0F00080392 /* GroupChatInviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B419160C1B270C0F00080392 /* GroupChatInviteCell.m */; };
 		B43900131B0B2C0F006FF07D /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43900121B0B2C0F006FF07D /* TimelineViewController.m */; };
 		B43900161B0B2C2D006FF07D /* TimelineDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43900151B0B2C2D006FF07D /* TimelineDetailViewController.m */; };
 		B43900191B0B2C4A006FF07D /* TimelinePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43900181B0B2C4A006FF07D /* TimelinePostViewController.m */; };
@@ -116,6 +118,10 @@
 		B4163D791A023E290064B68E /* chatfloat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat@2x.png"; sourceTree = "<group>"; };
 		B4163D7B1A023FA70064B68E /* chatfloat_grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat_grey@2x.png"; sourceTree = "<group>"; };
 		B4163D7C1A023FA70064B68E /* chatfloat_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatfloat_orange@2x.png"; sourceTree = "<group>"; };
+		B41916051B26FC3700080392 /* GroupChatOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatOptions.h; sourceTree = "<group>"; };
+		B41916061B26FC3700080392 /* GroupChatOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatOptions.m; sourceTree = "<group>"; };
+		B419160B1B270C0F00080392 /* GroupChatInviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatInviteCell.h; sourceTree = "<group>"; };
+		B419160C1B270C0F00080392 /* GroupChatInviteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatInviteCell.m; sourceTree = "<group>"; };
 		B42BDB0AB407E196B3BA8744 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B43900111B0B2C0F006FF07D /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		B43900121B0B2C0F006FF07D /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
@@ -344,6 +350,8 @@
 				B4D230E919EBB852006FC2A6 /* ConversationListViewController.m */,
 				B499BD071904ED0C00C99CFE /* ChatViewController.h */,
 				B499BD081904ED0C00C99CFE /* ChatViewController.m */,
+				B41916051B26FC3700080392 /* GroupChatOptions.h */,
+				B41916061B26FC3700080392 /* GroupChatOptions.m */,
 				B4B71A0C19C0539B0036811A /* EventDetailViewController.h */,
 				B4B71A0D19C0539B0036811A /* EventDetailViewController.m */,
 				FD1D71211A7AB5F400235F57 /* DiscussionViewController.h */,
@@ -513,6 +521,8 @@
 				B469AF7A1B13265400186022 /* CommentCellTableViewCell.m */,
 				B47DE9911B17185D00946CC6 /* CommentParentCellTableViewCell.h */,
 				B47DE9921B17185D00946CC6 /* CommentParentCellTableViewCell.m */,
+				B419160B1B270C0F00080392 /* GroupChatInviteCell.h */,
+				B419160C1B270C0F00080392 /* GroupChatInviteCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -699,10 +709,12 @@
 				B4B71A0B19C0528D0036811A /* PersonDetailEventCellTableViewCell.m in Sources */,
 				B43900131B0B2C0F006FF07D /* TimelineViewController.m in Sources */,
 				B4B719FC19C02DEE0036811A /* PosterCellTableViewCell.m in Sources */,
+				B419160D1B270C0F00080392 /* GroupChatInviteCell.m in Sources */,
 				B469AF781B13264200186022 /* PostCellTableViewCell.m in Sources */,
 				B499BD0C1904EDE600C99CFE /* PositionDetailViewController.m in Sources */,
 				B4D230F519EE5F93006FC2A6 /* ChatMeCellTableViewCell.m in Sources */,
 				B4B71A0219C039120036811A /* CareerCellTableViewCell.m in Sources */,
+				B41916071B26FC3700080392 /* GroupChatOptions.m in Sources */,
 				B43D266E18FFC9980072B753 /* AppDelegate.m in Sources */,
 				B4BC89AC19D005F200F1A9AD /* UIColor+ProjectColors.m in Sources */,
 				B43D269C18FFD0C50072B753 /* ProgramsTabViewController.m in Sources */,
