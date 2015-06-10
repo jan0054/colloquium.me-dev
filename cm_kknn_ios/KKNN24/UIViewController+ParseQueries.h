@@ -24,5 +24,6 @@
 - (void)sendChat: (id)caller withAuthor: (PFUser *)user withContent: (NSString *)content withConversation: (PFObject *)conversation;
 - (void)getChat: (id)caller withConversation: (PFObject *)conversation;
 - (void)getPrivateChat: (id)caller withUser: (PFUser *)user alongWithSelf: (PFUser *) currentUser;
+- (void)getInviteeList: (id)caller withoutUsers: (NSArray *)users;
 
 @end

@@ -20,9 +20,9 @@
 //data
 - (void) processData: (NSArray *)results;
 
-@property NSMutableArray *conversation_array;  //main array holding conversation list
-@property int fromPersonDetailChat;            //=1 if coming from tapping chat in person detail view
-@property NSString *preloaded_conv_id;         //conversation id to pass on to chat
+@property NSMutableArray *conversation_array;            //main array holding conversation list
+@property int fromPersonDetailChat;                      //=1 if coming from tapping chat in person detail view
+@property PFObject *preloadedConversation;               //preloaded conversation object from person detail view
 @property NSMutableArray *preloadedChatParticipants;     //participant list to pass on to chat
 
 @end

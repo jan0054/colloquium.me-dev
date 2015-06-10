@@ -36,5 +36,5 @@
 @property int fromInitiateChatEvent;         //used for passing info when going from person detail straight to chat
 @property NSString *conv_id;                 //conversation id to be passed to conversation view then chat view
 @property NSMutableArray *preloadedChatParticipants;  //participant array to be passed to conversation view then chat view
-
+@property PFObject *preloadedConversation;
 @end

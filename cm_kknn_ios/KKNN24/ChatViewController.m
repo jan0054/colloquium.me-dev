@@ -16,15 +16,14 @@
 
 @end
 
-PFObject *conversation;
 PFUser *currentUser;
 
 @implementation ChatViewController
 
-@synthesize conversation_objid;
 @synthesize chat_table_array;
 @synthesize pullrefresh;
 @synthesize participants;
+@synthesize conversation;
 
 #pragma mark - Interface
 
@@ -95,7 +94,7 @@ PFUser *currentUser;
     NSString *content = self.chat_input_box.text;
     if (content.length >=1) {
         NSLog(@"sending chat...");
-        [self sendChat:self withAuthor:currentUser withContent:content withConversation:conversation];
+        [self sendChat:self withAuthor:currentUser withContent:content withConversation:self.conversation];
     }
 }
 
@@ -174,9 +173,7 @@ PFUser *currentUser;
 }
 
 - (void) get_chat_info {
-    PFObject *the_conv = [PFObject objectWithoutDataWithClassName:@"Conversation" objectId:self.conversation_objid];
-    conversation = the_conv;
-    [self getChat:self withConversation:conversation];
+    [self getChat:self withConversation:self.conversation];
 }
 
 - (void)processChatList: (NSArray *)results {
@@ -283,6 +280,43 @@ PFUser *currentUser;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.chat_table_array count] - 1) inSection:0];
         [self.chat_table scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"chatoptionsegue"])
+    {
+        GroupChatOptions *controller = [segue destinationViewController];
+        controller.data_delegate = self;
+        controller.conversation = self.conversation;
+        controller.participants = self.participants;
+    }
+}
+
+- (void) gotParticipantsFromDelegate:(NSArray *)results
+{
+    [participants removeAllObjects];
+    participants = [results mutableCopy];
+}
+
+- (void) leaveConversationFromDelegate
+{
+    //tapped leave conversation in option view
+    
+    [conversation removeObject:currentUser forKey:@"participants"];
+    [conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"left conversation successfully");
+            UINavigationController *navCon = self.navigationController;
+            [navCon popViewControllerAnimated:YES];
+        }
+        else
+        {
+            NSLog(@"leave conversation error:%@",error);
+        }
+    }];
 }
 
 @end

@@ -34,6 +34,7 @@ NSMutableArray *search_array;
 @synthesize conv_id;
 @synthesize pullrefresh;
 @synthesize preloadedChatParticipants;
+@synthesize preloadedConversation;
 
 #pragma mark - Interface
 
@@ -418,7 +419,7 @@ NSMutableArray *search_array;
             UINavigationController *navigationControlller = [segue destinationViewController];
             ConversationListViewController *conversationlistviewcontroller = (ConversationListViewController *)[navigationControlller.viewControllers objectAtIndex:0];
             conversationlistviewcontroller.fromPersonDetailChat = 1;
-            conversationlistviewcontroller.preloaded_conv_id = conv_id;
+            conversationlistviewcontroller.preloadedConversation = self.preloadedConversation;
             conversationlistviewcontroller.preloadedChatParticipants = self.preloadedChatParticipants;
         }
     }

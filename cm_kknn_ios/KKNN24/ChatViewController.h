@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "GroupChatOptions.h"
 
 
-@interface ChatViewController : UIViewController<UITextFieldDelegate, UIScrollViewDelegate>
+@interface ChatViewController : UIViewController<UITextFieldDelegate, UIScrollViewDelegate, delegateProtocol>
 
-@property NSString *conversation_objid;      //required: conversation id to get the chats from
+@property PFObject *conversation;
 @property NSMutableArray *chat_table_array;  //main array to hold chat objects
 @property NSMutableArray *participants;      //chat participant array
 

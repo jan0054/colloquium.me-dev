@@ -29,7 +29,7 @@ NSMutableArray *person_posters;
 NSMutableArray *person_abstracts;
 int seg_index;                       //holds currently selected segment index
 NSString *chosen_event_id;
-NSString *conv_objid;                //conversation id to be passed to chat
+PFObject *conversation;              //conversation object to be passed to chat
 NSMutableArray *chatParticipants;    //chat participants to pass on to chat view (eventually..)
 int chatStatus;                      //1=enabled, 0=other person not user or not set to public, 2=this person is self
 int linkStatus;                      //1=enabled, 0=other person not user or didn't set link
@@ -344,23 +344,23 @@ int emailStatus;                     //1=enabled, 0=other person not user or not
     }
     else
     {
-        PFObject *conversation = [results objectAtIndex:0];
-        conv_objid = conversation.objectId;
+        PFObject *foundConversation = [results objectAtIndex:0];
+        conversation = foundConversation;
         [self navigateToChat];
     }
 }
 
 - (void) startNewConversationWithUser: (PFUser *)user
 {
-    PFObject *conversation = [PFObject objectWithClassName:@"Conversation"];
-    conversation[@"last_time"] = [NSDate date];
-    conversation[@"last_msg"] = @"no messages yet";
-    conversation[@"is_group"] = @0;
-    [conversation addObject:user forKey:@"participants"];
-    [conversation addObject:currentUser forKey:@"participants"];
-    [conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    PFObject *newConversation = [PFObject objectWithClassName:@"Conversation"];
+    newConversation[@"last_time"] = [NSDate date];
+    newConversation[@"last_msg"] = @"no messages yet";
+    newConversation[@"is_group"] = @0;
+    [newConversation addObject:user forKey:@"participants"];
+    [newConversation addObject:currentUser forKey:@"participants"];
+    [newConversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         NSLog(@"new conversation successfully created");
-        conv_objid = conversation.objectId;
+        conversation = newConversation;
         [self navigateToChat];
     }];
 }
@@ -500,8 +500,8 @@ int emailStatus;                     //1=enabled, 0=other person not user or not
     [navcon popToRootViewControllerAnimated:NO];
     PeopleTabViewController *peopleTabViewController = (PeopleTabViewController *)[navcon topViewController];
     peopleTabViewController.fromInitiateChatEvent=1;
-    peopleTabViewController.conv_id = conv_objid;
     peopleTabViewController.preloadedChatParticipants = chatParticipants;
+    peopleTabViewController.preloadedConversation = conversation;
     [self.tabBarController setSelectedIndex:1];
 }
 

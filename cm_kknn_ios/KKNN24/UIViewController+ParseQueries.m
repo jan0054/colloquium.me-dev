@@ -12,6 +12,7 @@
 #import "ConversationListViewController.h"
 #import "PersonDetailViewController.h"
 #import "ChatViewController.h"
+#import "GroupChatOptions.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -152,6 +153,19 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu conversations for these users.", (unsigned long)objects.count);
         [caller processConversationData:objects];
+    }];
+}
+
+- (void)getInviteeList: (id)caller withoutUsers:(NSArray *)users
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Person"];
+    [query whereKey:@"chat_status" equalTo:@1];
+    [query whereKey:@"debug_status" notEqualTo:@1];
+    [query includeKey:@"user"];
+    [query whereKey:@"user" notContainedIn:users];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu invitees.(persons)", (unsigned long)objects.count);
+        [caller processInviteeData:objects];
     }];
 }
 

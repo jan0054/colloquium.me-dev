@@ -17,7 +17,7 @@
 
 @end
 
-NSString *chosen_conv_id;            //the selected conversation id
+PFObject *chosenConversation;
 NSMutableArray *chosenParticipants;  //the participants to pass to chat
 NSMutableDictionary *totalParticipantsList;    //list of participant arrays for all conversations
 PFUser *currentUser;
@@ -26,7 +26,7 @@ PFUser *currentUser;
 @synthesize conversation_array;
 @synthesize pullrefresh;
 @synthesize fromPersonDetailChat;
-@synthesize preloaded_conv_id;
+@synthesize preloadedConversation;
 @synthesize preloadedChatParticipants;
 
 #pragma mark - Interface
@@ -61,11 +61,11 @@ PFUser *currentUser;
     if (self.fromPersonDetailChat==1)
     {
         NSLog(@"bypassing conversation list: direct to chat");
-        [self preload_chat_with_conv_id:preloaded_conv_id];
+        [self preloadChatWithConversation:self.preloadedConversation];
     }
     else
     {
-        NSLog(@"non-direct chat, loading conv list");
+        NSLog(@"non-direct chat, loading conversation list");
         [self getConversations];
     }
     [self clearBadge];
@@ -128,8 +128,8 @@ PFUser *currentUser;
     PFObject *conversation = [self.conversation_array objectAtIndex:indexPath.row];
     
     //get the participant list
-    NSArray *participants = [conversation objectForKey:@"participants"];
-    [totalParticipantsList setObject:participants forKey:conversation.objectId];
+    NSArray *participants = conversation[@"participants"];
+    //[totalParticipantsList setObject:participants forKey:conversation.objectId];
     NSString *name = @"";
     for (PFUser *user in participants)
     {
@@ -158,21 +158,22 @@ PFUser *currentUser;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFObject *conversation = [self.conversation_array objectAtIndex:indexPath.row];
-    chosen_conv_id = conversation.objectId;
-    chosenParticipants = [totalParticipantsList objectForKey:chosen_conv_id];
+    chosenConversation = [self.conversation_array objectAtIndex:indexPath.row];
+    //chosenParticipants = [totalParticipantsList objectForKey:chosenConversation.objectId];
+    chosenParticipants = chosenConversation[@"participants"];
     [self performSegueWithIdentifier:@"chatsegue" sender:self];
 }
 
 #pragma mark - Data
 
-- (void) preload_chat_with_conv_id: (NSString *) conv_id_from_preload
+- (void) preloadChatWithConversation: (PFObject *)conversation
 {
     fromPersonDetailChat = 0;
-    chosen_conv_id = conv_id_from_preload;
+    chosenConversation = conversation;
     chosenParticipants = self.preloadedChatParticipants;
     
     [self performSegueWithIdentifier:@"chatsegue" sender:self];
+
 }
 
 //get conversations and put into conversation_array, or if none, display the empty label
@@ -213,7 +214,7 @@ PFUser *currentUser;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     ChatViewController *controller = [segue destinationViewController];
-    controller.conversation_objid = chosen_conv_id;
+    controller.conversation = chosenConversation;
     controller.participants = chosenParticipants;
 }
 
