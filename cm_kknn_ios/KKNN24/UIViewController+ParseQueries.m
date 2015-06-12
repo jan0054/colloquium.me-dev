@@ -126,7 +126,40 @@
         }
         else
         {
-            NSLog(@"chat push error:%@",error);
+            NSLog(@"chat upload error:%@",error);
+        }
+    }];
+}
+
+- (void)sendBroadcast:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation withParticipants:(NSArray *)participants
+{
+    PFObject *chat = [PFObject objectWithClassName:@"Chat"];
+    chat[@"content"] = content;
+    chat[@"author"] = user;
+    chat[@"broadcast"] = @1;
+    chat[@"conversation"] = conversation;
+    [chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"new broadcast uploaded successfully, sending push");
+            NSString *pushstr = content;
+            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  pushstr, @"alert",
+                                  @"Increment", @"badge",
+                                  @"default", @"sound",
+                                  nil];
+            // Create our Installation query
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"user" containedIn:participants];
+            // Send push notification to query
+            PFPush *push = [[PFPush alloc] init];
+            [push setQuery:pushQuery]; // Set our Installation query
+            [push setData:data];
+            [push sendPushInBackground];
+        }
+        else
+        {
+            NSLog(@"broadcast upload error:%@",error);
         }
     }];
 }

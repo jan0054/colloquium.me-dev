@@ -118,9 +118,17 @@ NSMutableArray *inviteeList;
         PFObject *object = [inviteeList objectAtIndex:place];
         [selectedList addObject:object];
     }
-    [self addInviteesToGroup];
+    [self addInviteesToGroup:selectedList];
 }
 
+- (void) deselectAllRows
+{
+    NSArray *selected_paths = (NSArray *)[self.inviteTable indexPathsForSelectedRows];
+    for ( NSIndexPath *ip in selected_paths)
+    {
+        [self.inviteTable deselectRowAtIndexPath:ip animated:YES];
+    }
+}
 
 #pragma mark - Data
 
@@ -171,9 +179,32 @@ NSMutableArray *inviteeList;
     }
 }
 
-- (void)addInviteesToGroup
+- (void)addInviteesToGroup: (NSArray *)selectedPeople
 {
-    
+    [self deselectAllRows];
+    NSMutableArray *usersToAdd = [[NSMutableArray alloc] init];
+    for (PFObject *person in selectedPeople)
+    {
+        PFUser *user = person[@"user"];
+        [usersToAdd addObject:user];
+    }
+    [self.conversation addObjectsFromArray:usersToAdd forKey:@"participants"];
+    self.conversation[@"is_group"] = @1;
+    [self.conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"Conversation added participants successfully");
+            self.participants = self.conversation[@"participants"];
+            [self getInviteeList:self withoutUsers:self.participants];
+            [self updateIsGroup];
+            [self updateSelectedInvitees];
+            [data_delegate gotParticipantsFromDelegate:self.participants withNewPeople:selectedPeople withConversation:self.conversation];
+        }
+        else
+        {
+            NSLog(@"Conversation add participants error:%@",error);
+        }
+    }];
 }
 
 @end

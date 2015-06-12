@@ -10,6 +10,7 @@
 #import "UIColor+ProjectColors.h"
 #import "ChatMeCellTableViewCell.h"
 #import "ChatYouCellTableViewCell.h"
+#import "ChatBroadcastCell.h"
 #import "UIViewController+ParseQueries.h"
 
 @interface ChatViewController ()
@@ -119,10 +120,12 @@ PFUser *currentUser;
 {
     ChatMeCellTableViewCell *chatmecell = [tableView dequeueReusableCellWithIdentifier:@"chatmecell"];
     ChatYouCellTableViewCell *chatyoucell = [tableView dequeueReusableCellWithIdentifier:@"chatyoucell"];
+    ChatBroadcastCell *broadcastcell = [tableView dequeueReusableCellWithIdentifier:@"broadcastcell"];
     
     //styling
     chatmecell.selectionStyle = UITableViewCellSelectionStyleNone;
     chatyoucell.selectionStyle = UITableViewCellSelectionStyleNone;
+    broadcastcell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //data
     PFObject *chat = [self.chat_table_array objectAtIndex:indexPath.row];
@@ -133,6 +136,7 @@ PFUser *currentUser;
     NSString *dateString = [dateFormat stringFromDate:date];
     NSString *contentString = chat[@"content"];
     BOOL theySaid;
+    
     if ([author.objectId isEqualToString:currentUser.objectId])
     {
         theySaid = NO;
@@ -141,7 +145,15 @@ PFUser *currentUser;
     {
         theySaid = YES;
     }
-    if (theySaid)
+    
+    NSNumber *bc = chat[@"broadcast"];
+    int bcInt = [bc intValue];
+    if (bcInt == 1)
+    {
+        broadcastcell.broadcastContentLabel.text = contentString;
+        return broadcastcell;
+    }
+    else if (theySaid)
     {
         //msg is them to me
         chatyoucell.chat_content_label.text = contentString;
@@ -169,6 +181,7 @@ PFUser *currentUser;
 //in-app push receiver
 - (void) pushreload: (id) sender
 {
+    [self.conversation fetchIfNeededInBackground];
     [self get_chat_info];
 }
 
@@ -190,7 +203,8 @@ PFUser *currentUser;
     }
 }
 
-- (void)processChatUploadWithConversation:(PFObject *)conversation withContent:(NSString *)content {
+- (void)processChatUploadWithConversation:(PFObject *)conversation withContent:(NSString *)content
+{
     NSLog(@"received chat upload callback, sending push");
     
     NSString *pushstr = [NSString stringWithFormat:@"%@: %@",currentUser.username,content];
@@ -213,6 +227,8 @@ PFUser *currentUser;
     self.chat_input_box.text = @"";
     self.chat_input_box.placeholder = @"Type message here..";
 }
+
+
 
 - (void)toggleOptionView
 {
@@ -294,21 +310,35 @@ PFUser *currentUser;
     }
 }
 
-- (void) gotParticipantsFromDelegate:(NSArray *)results
+- (void) gotParticipantsFromDelegate:(NSArray *)totalParticipants withNewPeople: (NSArray *)newPeople withConversation: (PFObject *)updatedConversation
 {
-    [participants removeAllObjects];
-    participants = [results mutableCopy];
+    [self toggleOptionView];
+    [self.participants removeAllObjects];
+    self.participants = [totalParticipants mutableCopy];
+    self.conversation = updatedConversation;
+    [self.conversation fetchInBackground];
+    NSString *names = @"";
+    for (PFObject *person in newPeople)
+    {
+        names = [NSString stringWithFormat:@"%@, %@ %@", names, person[@"first_name"], person[@"last_name"]];
+    }
+    NSRange range = NSMakeRange(0, 2);
+    names = [names stringByReplacingCharactersInRange:range withString:@""];
+
+    NSString *broadcast = [NSString stringWithFormat:@"The following people: %@ have been added to the conversation.", names];
+    [self sendBroadcast:self withAuthor:currentUser withContent:broadcast withConversation:self.conversation withParticipants:self.participants];
 }
 
 - (void) leaveConversationFromDelegate
 {
     //tapped leave conversation in option view
-    
     [conversation removeObject:currentUser forKey:@"participants"];
     [conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
             NSLog(@"left conversation successfully");
+            NSString *broadcast = [NSString stringWithFormat:@"%@ has left the conversation.", currentUser.username];
+            [self sendBroadcast:self withAuthor:currentUser withContent:broadcast withConversation:self.conversation withParticipants:self.participants];
             UINavigationController *navCon = self.navigationController;
             [navCon popViewControllerAnimated:YES];
         }

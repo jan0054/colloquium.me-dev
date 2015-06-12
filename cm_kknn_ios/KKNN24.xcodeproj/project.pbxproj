@@ -99,6 +99,7 @@
 		B4EAF4E319BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E219BEE5BC0075E259 /* GeneralSettingCellTableViewCell.m */; };
 		B4EAF4E619BEE5D00075E259 /* SettingPushCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */; };
 		B4EAF4E919BEE5E00075E259 /* SettingLoginCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */; };
+		B4EDC2541B2AE8A8001196B5 /* ChatBroadcastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4EDC2531B2AE8A8001196B5 /* ChatBroadcastCell.m */; };
 		B4F74E5D19B461C000F3A565 /* CustomLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F74E5C19B461C000F3A565 /* CustomLogInViewController.m */; };
 		B4F74E6019B461D400F3A565 /* CustomSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F74E5F19B461D400F3A565 /* CustomSignUpViewController.m */; };
 		B4F74E6219B5A1FD00F3A565 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F74E6119B5A1FD00F3A565 /* settings@2x.png */; };
@@ -248,6 +249,8 @@
 		B4EAF4E519BEE5D00075E259 /* SettingPushCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPushCellTableViewCell.m; sourceTree = "<group>"; };
 		B4EAF4E719BEE5E00075E259 /* SettingLoginCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingLoginCellTableViewCell.h; sourceTree = "<group>"; };
 		B4EAF4E819BEE5E00075E259 /* SettingLoginCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingLoginCellTableViewCell.m; sourceTree = "<group>"; };
+		B4EDC2521B2AE8A8001196B5 /* ChatBroadcastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBroadcastCell.h; sourceTree = "<group>"; };
+		B4EDC2531B2AE8A8001196B5 /* ChatBroadcastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBroadcastCell.m; sourceTree = "<group>"; };
 		B4F74E5B19B461C000F3A565 /* CustomLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLogInViewController.h; sourceTree = "<group>"; };
 		B4F74E5C19B461C000F3A565 /* CustomLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLogInViewController.m; sourceTree = "<group>"; };
 		B4F74E5E19B461D400F3A565 /* CustomSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSignUpViewController.h; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 				B47DE9921B17185D00946CC6 /* CommentParentCellTableViewCell.m */,
 				B419160B1B270C0F00080392 /* GroupChatInviteCell.h */,
 				B419160C1B270C0F00080392 /* GroupChatInviteCell.m */,
+				B4EDC2521B2AE8A8001196B5 /* ChatBroadcastCell.h */,
+				B4EDC2531B2AE8A8001196B5 /* ChatBroadcastCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -728,6 +733,7 @@
 				B4B71A0E19C0539B0036811A /* EventDetailViewController.m in Sources */,
 				B4DA89D21B1D6CDE00A10CA5 /* UIViewController+ParseQueries.m in Sources */,
 				B4B71A1119C053BA0036811A /* AbstractPdfViewController.m in Sources */,
+				B4EDC2541B2AE8A8001196B5 /* ChatBroadcastCell.m in Sources */,
 				B4D230ED19EBB9BE006FC2A6 /* ConversationCellTableViewCell.m in Sources */,
 				B495C44619C9876A008D5D5F /* AboutViewController.m in Sources */,
 				B4B71A0519C0460C0036811A /* PersonCellTableViewCell.m in Sources */,

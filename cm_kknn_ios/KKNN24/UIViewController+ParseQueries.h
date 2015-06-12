@@ -22,6 +22,7 @@
 - (void)getPosts: (id)caller;
 - (void)getConversations: (id)caller withUser: (PFUser *)user;
 - (void)sendChat: (id)caller withAuthor: (PFUser *)user withContent: (NSString *)content withConversation: (PFObject *)conversation;
+- (void)sendBroadcast:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation withParticipants: (NSArray *)participants;
 - (void)getChat: (id)caller withConversation: (PFObject *)conversation;
 - (void)getPrivateChat: (id)caller withUser: (PFUser *)user alongWithSelf: (PFUser *) currentUser;
 - (void)getInviteeList: (id)caller withoutUsers: (NSArray *)users;
