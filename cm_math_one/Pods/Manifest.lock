@@ -1,0 +1,37 @@
+PODS:
+  - Bolts/Tasks (1.2.0)
+  - GKImagePicker@robseward (0.0.7)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
+  - Parse (1.7.4):
+    - Bolts/Tasks (>= 1.1.5)
+  - ParseUI (1.1.4):
+    - Parse (~> 1.7)
+  - SZTextView (1.2.1)
+
+DEPENDENCIES:
+  - GKImagePicker@robseward (~> 0.0)
+  - MMDrawerController
+  - Parse
+  - ParseUI
+  - SZTextView (~> 1.2)
+
+SPEC CHECKSUMS:
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  GKImagePicker@robseward: 800d33db9ee27eaa7f253ca2d4ff61a8ba290b1f
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  Parse: 6ca512c6e860b66739c95151b2f76ac4712b7842
+  ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
+
+COCOAPODS: 0.37.2
