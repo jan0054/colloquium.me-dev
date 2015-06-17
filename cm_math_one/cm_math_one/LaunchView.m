@@ -8,6 +8,8 @@
 
 #import "LaunchView.h"
 #import "MMDrawerController.h"
+#import "LoginView.h"
+#import "SignUpView.h"
 
 @implementation LaunchView
 

@@ -31,7 +31,7 @@ int currentIndex;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -39,7 +39,7 @@ int currentIndex;
     DrawerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"drawercell"];
     switch (indexPath.row) {
         case 0:
-            cell.drawerTitle.text = @"Choose Events";
+            cell.drawerTitle.text = @"Edit Events";
             break;
         case 1:
             cell.drawerTitle.text = @"Event";
@@ -48,6 +48,9 @@ int currentIndex;
             cell.drawerTitle.text = @"Chat";
             break;
         case 3:
+            cell.drawerTitle.text = @"Career";
+            break;
+        case 4:
             cell.drawerTitle.text = @"Settings";
             break;
         default:
@@ -76,6 +79,9 @@ int currentIndex;
             centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"conversation_nc"];
             break;
         case 3:
+            centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"career_nc"];
+            break;
+        case 4:
             centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settings_nc"];
             break;
         default:
