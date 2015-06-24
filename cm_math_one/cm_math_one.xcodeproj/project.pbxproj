@@ -27,6 +27,7 @@
 		B417561C1B3031A900E1E8A5 /* UIColor+ProjectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = B417561B1B3031A900E1E8A5 /* UIColor+ProjectColors.m */; };
 		B417561F1B3031D400E1E8A5 /* UIViewController+ParseQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = B417561E1B3031D400E1E8A5 /* UIViewController+ParseQueries.m */; };
 		B41756221B3052E600E1E8A5 /* EventListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B41756211B3052E600E1E8A5 /* EventListView.m */; };
+		B48A4B1B1B3AB79700250BFF /* UserPreferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B48A4B1A1B3AB79700250BFF /* UserPreferenceView.m */; };
 		B4BFB4E91B316D210035309E /* SignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4E81B316D210035309E /* SignUpView.m */; };
 		B4BFB4EC1B316D410035309E /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4EB1B316D410035309E /* LoginView.m */; };
 		B4BFB4EF1B3172090035309E /* CareerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4EE1B3172090035309E /* CareerView.m */; };
@@ -105,6 +106,8 @@
 		B417561E1B3031D400E1E8A5 /* UIViewController+ParseQueries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ParseQueries.m"; sourceTree = "<group>"; };
 		B41756201B3052E600E1E8A5 /* EventListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListView.h; sourceTree = "<group>"; };
 		B41756211B3052E600E1E8A5 /* EventListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListView.m; sourceTree = "<group>"; };
+		B48A4B191B3AB79700250BFF /* UserPreferenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceView.h; sourceTree = "<group>"; };
+		B48A4B1A1B3AB79700250BFF /* UserPreferenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceView.m; sourceTree = "<group>"; };
 		B4BFB4E71B316D210035309E /* SignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpView.h; sourceTree = "<group>"; };
 		B4BFB4E81B316D210035309E /* SignUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpView.m; sourceTree = "<group>"; };
 		B4BFB4EA1B316D410035309E /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				B4BFB4E81B316D210035309E /* SignUpView.m */,
 				B4BFB4EA1B316D410035309E /* LoginView.h */,
 				B4BFB4EB1B316D410035309E /* LoginView.m */,
+				B48A4B191B3AB79700250BFF /* UserPreferenceView.h */,
+				B48A4B1A1B3AB79700250BFF /* UserPreferenceView.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				B4BFB51D1B3181B40035309E /* CommentCell.m in Sources */,
 				B4BFB5291B3182030035309E /* ChatMeCell.m in Sources */,
 				B4BFB5201B3181C00035309E /* DiscussionCell.m in Sources */,
+				B48A4B1B1B3AB79700250BFF /* UserPreferenceView.m in Sources */,
 				B4BFB50B1B31810E0035309E /* VenueCell.m in Sources */,
 				B4BFB5141B31814A0035309E /* NewsCell.m in Sources */,
 				B40CCC1A1B3009B500BB11B9 /* main.m in Sources */,

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <ParseUI.h>
 
-@interface LaunchView : UIViewController
+@interface LaunchView : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @end

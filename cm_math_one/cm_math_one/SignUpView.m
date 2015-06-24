@@ -17,12 +17,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor dark_primary];
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    
-    //[self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"squint_logo_blue"]]];
     [self.signUpView setLogo:[[UIImageView alloc] initWithImage:nil]];
     
-    [self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateNormal];
-    [self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateHighlighted];
+    //[self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateNormal];
+    //[self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateHighlighted];
     
     [self.signUpView.signUpButton setBackgroundColor:[UIColor accent_color]];
     [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];
@@ -32,12 +30,12 @@
     //[self.signUpView.signUpButton setTitle:@"Sign Up" forState:UIControlStateHighlighted];
     
     // Remove text shadow
-    CALayer *layer = self.signUpView.usernameField.layer;
-    layer.shadowOpacity = 0.0;
-    layer = self.signUpView.passwordField.layer;
-    layer.shadowOpacity = 0.0;
-    layer = self.signUpView.emailField.layer;
-    layer.shadowOpacity = 0.0;
+    //CALayer *layer = self.signUpView.usernameField.layer;
+    //layer.shadowOpacity = 0.0;
+    //layer = self.signUpView.passwordField.layer;
+    //layer.shadowOpacity = 0.0;
+    //layer = self.signUpView.emailField.layer;
+    //layer.shadowOpacity = 0.0;
     
     [self.signUpView.usernameField setBackgroundColor:[UIColor whiteColor]];
     [self.signUpView.passwordField setBackgroundColor:[UIColor whiteColor]];
@@ -49,9 +47,9 @@
     
     //self.signUpView.usernameField.placeholder= @"Username";
     //self.signUpView.passwordField.placeholder=@"Password";
-    [self.signUpView.usernameField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
-    [self.signUpView.passwordField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
-    [self.signUpView.emailField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    //[self.signUpView.usernameField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    //[self.signUpView.passwordField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+    //[self.signUpView.emailField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     
     UILabel *notice_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 95, 280, 90)];
     [notice_label setBackgroundColor:[UIColor clearColor]];
