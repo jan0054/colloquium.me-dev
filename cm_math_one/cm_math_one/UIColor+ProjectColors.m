@@ -13,7 +13,7 @@
 
 + (UIColor*) accent_color
 {
-    return [UIColor colorWithRed:83.0/255.0 green:109.0/255.0 blue:254.0/255.0 alpha:1];
+    return [UIColor colorWithRed:225.0/255.0 green:152.0/255.0 blue:0.0/255.0 alpha:1];
 }
 + (UIColor*) primary_text
 {
@@ -41,11 +41,11 @@
 }
 + (UIColor*) dark_accent
 {
-    return [UIColor colorWithRed:48.0/255.0 green:63.0/255.0 blue:159.0/255.0 alpha:1];
+    return [UIColor colorWithRed:245.0/255.0 green:124.0/255.0 blue:0.0/255.0 alpha:1];
 }
 + (UIColor*) light_accent
 {
-    return [UIColor colorWithRed:197.0/255.0 green:202.0/255.0 blue:233.0/255.0 alpha:1];
+    return [UIColor colorWithRed:225.0/255.0 green:224.0/255.0 blue:178.0/255.0 alpha:1];
 }
 
 //ui elements
@@ -56,7 +56,7 @@
 }
 + (UIColor*) nav_bar
 {
-    return [UIColor colorWithRed:63.0/255.0 green:81.0/255.0 blue:181.0/255.0 alpha:1];
+    return [UIColor colorWithRed:245.0/255.0 green:124.0/255.0 blue:0.0/255.0 alpha:1];
 }
 + (UIColor*) tab_bar
 {
@@ -68,7 +68,7 @@
 }
 + (UIColor*) dark_button_txt
 {
-    return [UIColor colorWithRed:48.0/255.0 green:63.0/255.0 blue:159.0/255.0 alpha:1];
+    return [UIColor colorWithRed:245.0/255.0 green:124.0/255.0 blue:0.0/255.0 alpha:1];
 }
 + (UIColor*) light_bg
 {
