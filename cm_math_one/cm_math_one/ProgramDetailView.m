@@ -7,6 +7,9 @@
 //
 
 #import "ProgramDetailView.h"
+#import <Parse/Parse.h>
+#import "UIColor+ProjectColors.h"
+#import "UIViewController+ParseQueries.h"
 
 @implementation ProgramDetailView
 

@@ -7,15 +7,36 @@
 //
 
 #import "UserPreferenceView.h"
+#import <Parse/Parse.h>
+#import "UIColor+ProjectColors.h"
 
 @implementation UserPreferenceView
 
-- (IBAction)savePreferenceButtonTap:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+#pragma mark - TableView
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
-- (IBAction)cancelPreferenceButtonTap:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return 0;
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
 
 @end

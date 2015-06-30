@@ -27,6 +27,8 @@
 		B417561C1B3031A900E1E8A5 /* UIColor+ProjectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = B417561B1B3031A900E1E8A5 /* UIColor+ProjectColors.m */; };
 		B417561F1B3031D400E1E8A5 /* UIViewController+ParseQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = B417561E1B3031D400E1E8A5 /* UIViewController+ParseQueries.m */; };
 		B41756221B3052E600E1E8A5 /* EventListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B41756211B3052E600E1E8A5 /* EventListView.m */; };
+		B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */; };
+		B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */; };
 		B455D75E1B4110BA00DCB6E4 /* CareerDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D75D1B4110BA00DCB6E4 /* CareerDetailView.m */; };
 		B455D7611B4112C100DCB6E4 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7601B4112C100DCB6E4 /* ChatView.m */; };
 		B455D7641B41137F00DCB6E4 /* ProgramDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7631B41137F00DCB6E4 /* ProgramDetailView.m */; };
@@ -133,6 +135,10 @@
 		B417561E1B3031D400E1E8A5 /* UIViewController+ParseQueries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ParseQueries.m"; sourceTree = "<group>"; };
 		B41756201B3052E600E1E8A5 /* EventListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListView.h; sourceTree = "<group>"; };
 		B41756211B3052E600E1E8A5 /* EventListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListView.m; sourceTree = "<group>"; };
+		B44459A31B42A0CE00B200D0 /* UserPreferenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceCell.h; sourceTree = "<group>"; };
+		B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceCell.m; sourceTree = "<group>"; };
+		B44459A61B42A12200B200D0 /* UserPreferenceInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceInputCell.h; sourceTree = "<group>"; };
+		B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceInputCell.m; sourceTree = "<group>"; };
 		B455D75C1B4110BA00DCB6E4 /* CareerDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerDetailView.h; sourceTree = "<group>"; };
 		B455D75D1B4110BA00DCB6E4 /* CareerDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerDetailView.m; sourceTree = "<group>"; };
 		B455D75F1B4112C100DCB6E4 /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
@@ -368,6 +374,10 @@
 				B455D7AD1B413D4600DCB6E4 /* CareerPostCell.m */,
 				B4BFB5051B3174A40035309E /* EventCell.h */,
 				B4BFB5061B3174A40035309E /* EventCell.m */,
+				B44459A31B42A0CE00B200D0 /* UserPreferenceCell.h */,
+				B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */,
+				B44459A61B42A12200B200D0 /* UserPreferenceInputCell.h */,
+				B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -632,8 +642,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4BFB4FE1B31744D0035309E /* DrawerGenericCell.m in Sources */,
+				B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */,
 				B455D77C1B41229700DCB6E4 /* TimelineCommentCell.m in Sources */,
 				B41756161B30310400E1E8A5 /* NewsView.m in Sources */,
+				B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */,
 				B455D7AE1B413D4600DCB6E4 /* CareerPostCell.m in Sources */,
 				B4BFB4F21B31740C0035309E /* SettingUserCell.m in Sources */,
 				B41756131B3030EF00E1E8A5 /* TimelineView.m in Sources */,
