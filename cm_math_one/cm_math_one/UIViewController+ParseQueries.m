@@ -9,9 +9,11 @@
 #import "UIViewController+ParseQueries.h"
 
 @implementation UIViewController (ParseQueries)
-- (void) getVenue:(id)caller
+
+- (void) getVenue:(id)caller forEvent:(PFObject *)event
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Venue"];
+    [query whereKey:@"event" equalTo:event];
     [query orderByDescending:@"order"];
     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     query.maxCacheAge = 86400;
@@ -22,18 +24,6 @@
     }];
 }
 
-- (void)getTalks: (id)caller
-{
-    
-}
-- (void)getPosters: (id)caller
-{
-    
-}
-- (void)getAttachments: (id)caller
-{
-    
-}
 - (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray
 {
     PFQuery *personquery = [PFQuery queryWithClassName:@"Person"];
@@ -51,6 +41,7 @@
         //[caller processData:objects];
     }];
 }
+
 - (void)getPosts: (id)caller
 {
     
@@ -70,27 +61,7 @@
     }];
 }
 
-- (void)getTalks: (id)caller forAuthor: (PFObject *)person
-{
-    PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
-    [query whereKey:@"author" equalTo:person];
-    [query orderByDescending:@"start_time"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu talks for the person.", (unsigned long)objects.count);
-        //[caller processTalkData:objects];
-    }];
-}
 
-- (void)getPosters: (id)caller forAuthor: (PFObject *)person
-{
-    PFQuery *query = [PFQuery queryWithClassName:@"Poster"];
-    [query whereKey:@"author" equalTo:person];
-    [query orderByDescending:@"name"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu posters for the person.", (unsigned long)objects.count);
-        //[caller processPosterData:objects];
-    }];
-}
 
 - (void)getAttachments: (id)caller forAuthor: (PFObject *)person
 {
@@ -194,5 +165,39 @@
         //[caller processInviteeData:objects];
     }];
 }
+
+//type = 99 for all types, 0 = talk, 1 = poster (no start/end time), so don't use order = 0 with type = 1. Leave author = nil to not filter by specific person
+- (void)getProgram: (id)caller ofType: (int)type forAuthor: (PFObject *)person withOrdering: (int)order forEvent:(PFObject *)event
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
+    [query whereKey:@"event" equalTo:event];
+    if (person != nil)
+    {
+        [query whereKey:@"author" equalTo:person];
+    }
+    if (type != 99)
+    {
+        [query whereKey:@"type" equalTo:[NSNumber numberWithInt:type]];
+    }
+    //order = 0 start_time, order = 1 name, can add others in future if needed
+    if (order ==0)
+    {
+        [query orderByDescending:@"start_time"];
+    }
+    else if (order ==1)
+    {
+        [query orderByDescending:@"name"];
+    }
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    query.maxCacheAge = 86400;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu programs for the person.", (unsigned long)objects.count);
+        //[caller processTalkData:objects];
+    }];
+}
+
+
+
+
 
 @end

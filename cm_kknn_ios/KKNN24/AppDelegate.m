@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "UIColor+ProjectColors.h"
+#import "WatchViewController.h"
 
 @implementation AppDelegate
 
@@ -115,6 +116,16 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) application:(UIApplication *)application
+handleWatchKitExtensionRequest:(NSDictionary *)userInfo
+               reply:(void (^)(NSDictionary *))reply
+{
+    
+    NSDictionary *eventDict = @{@"name":@"Demo Event", @"location":@"main room", @"time":@"7/05/15 16:00" };
+    
+    reply(@{@"event": eventDict});
 }
 
 @end

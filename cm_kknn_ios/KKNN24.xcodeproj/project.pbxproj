@@ -57,6 +57,14 @@
 		B47DBB381B1704800034A7AF /* camera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47DBB371B1704800034A7AF /* camera48@2x.png */; };
 		B47DBB3A1B1705B00034A7AF /* key_down48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47DBB391B1705B00034A7AF /* key_down48@2x.png */; };
 		B47DE9931B17185D00946CC6 /* CommentParentCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B47DE9921B17185D00946CC6 /* CommentParentCellTableViewCell.m */; };
+		B4807B171B43EBF000F3D3AE /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4807B161B43EBF000F3D3AE /* InterfaceController.m */; };
+		B4807B1A1B43EBF000F3D3AE /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4807B191B43EBF000F3D3AE /* NotificationController.m */; };
+		B4807B1C1B43EBF000F3D3AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4807B1B1B43EBF000F3D3AE /* Images.xcassets */; };
+		B4807B201B43EBF000F3D3AE /* KKNN24 WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = B4807B1F1B43EBF000F3D3AE /* KKNN24 WatchKit App.app */; };
+		B4807B281B43EBF000F3D3AE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4807B261B43EBF000F3D3AE /* Interface.storyboard */; };
+		B4807B2A1B43EBF000F3D3AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4807B291B43EBF000F3D3AE /* Images.xcassets */; };
+		B4807B2D1B43EBF000F3D3AE /* KKNN24 WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B4807B101B43EBEF00F3D3AE /* KKNN24 WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B4807B3C1B43F1F100F3D3AE /* WatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4807B3B1B43F1F100F3D3AE /* WatchViewController.m */; };
 		B489AFA51A6FB97E00E42581 /* twitter1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489AFA31A6FB97E00E42581 /* twitter1@2x.png */; };
 		B489AFA61A6FB97E00E42581 /* twitter2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489AFA41A6FB97E00E42581 /* twitter2@2x.png */; };
 		B495C44619C9876A008D5D5F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B495C44519C9876A008D5D5F /* AboutViewController.m */; };
@@ -112,6 +120,37 @@
 		FDEAF23A1A6BDCA00067A56D /* UserOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAF2391A6BDCA00067A56D /* UserOptionsViewController.m */; };
 		FDEAF23D1A6D48400067A56D /* UserPreferenceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAF23C1A6D48400067A56D /* UserPreferenceTableViewCell.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B4807B211B43EBF000F3D3AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B43D265218FFC9980072B753 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4807B1E1B43EBF000F3D3AE;
+			remoteInfo = "KKNN24 WatchKit App";
+		};
+		B4807B2B1B43EBF000F3D3AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B43D265218FFC9980072B753 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4807B0F1B43EBEF00F3D3AE;
+			remoteInfo = "KKNN24 WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B4807B341B43EBF000F3D3AE /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B4807B2D1B43EBF000F3D3AE /* KKNN24 WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0A33F73A17AD29BBC99EB572 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +222,20 @@
 		B47DBB391B1705B00034A7AF /* key_down48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_down48@2x.png"; sourceTree = "<group>"; };
 		B47DE9911B17185D00946CC6 /* CommentParentCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentParentCellTableViewCell.h; sourceTree = "<group>"; };
 		B47DE9921B17185D00946CC6 /* CommentParentCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentParentCellTableViewCell.m; sourceTree = "<group>"; };
+		B4807B101B43EBEF00F3D3AE /* KKNN24 WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "KKNN24 WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4807B131B43EBF000F3D3AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4807B141B43EBF000F3D3AE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		B4807B151B43EBF000F3D3AE /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		B4807B161B43EBF000F3D3AE /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		B4807B181B43EBF000F3D3AE /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		B4807B191B43EBF000F3D3AE /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		B4807B1B1B43EBF000F3D3AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B4807B1F1B43EBF000F3D3AE /* KKNN24 WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KKNN24 WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4807B251B43EBF000F3D3AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4807B271B43EBF000F3D3AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		B4807B291B43EBF000F3D3AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B4807B3A1B43F1F100F3D3AE /* WatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchViewController.h; sourceTree = "<group>"; };
+		B4807B3B1B43F1F100F3D3AE /* WatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchViewController.m; sourceTree = "<group>"; };
 		B489AFA31A6FB97E00E42581 /* twitter1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter1@2x.png"; sourceTree = "<group>"; };
 		B489AFA41A6FB97E00E42581 /* twitter2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter2@2x.png"; sourceTree = "<group>"; };
 		B495C44419C9876A008D5D5F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -289,6 +342,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4807B0D1B43EBEF00F3D3AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -298,6 +358,8 @@
 				B43D269718FFD0410072B753 /* Include */,
 				B43D269518FFD02D0072B753 /* Resources */,
 				B43D266318FFC9980072B753 /* KKNN24 */,
+				B4807B111B43EBF000F3D3AE /* KKNN24 WatchKit Extension */,
+				B4807B231B43EBF000F3D3AE /* KKNN24 WatchKit App */,
 				B43D265C18FFC9980072B753 /* Frameworks */,
 				B43D265B18FFC9980072B753 /* Products */,
 				C4ACC7D08CCE7D36348AFE06 /* Pods */,
@@ -308,6 +370,8 @@
 			isa = PBXGroup;
 			children = (
 				B43D265A18FFC9980072B753 /* KKNN24.app */,
+				B4807B101B43EBEF00F3D3AE /* KKNN24 WatchKit Extension.appex */,
+				B4807B1F1B43EBF000F3D3AE /* KKNN24 WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -332,6 +396,8 @@
 			children = (
 				B43D266C18FFC9980072B753 /* AppDelegate.h */,
 				B43D266D18FFC9980072B753 /* AppDelegate.m */,
+				B4807B3A1B43F1F100F3D3AE /* WatchViewController.h */,
+				B4807B3B1B43F1F100F3D3AE /* WatchViewController.m */,
 				B43D266F18FFC9980072B753 /* Main.storyboard */,
 				B43D269A18FFD0C50072B753 /* ProgramsTabViewController.h */,
 				B43D269B18FFD0C50072B753 /* ProgramsTabViewController.m */,
@@ -457,6 +523,46 @@
 			name = Include;
 			sourceTree = "<group>";
 		};
+		B4807B111B43EBF000F3D3AE /* KKNN24 WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B4807B151B43EBF000F3D3AE /* InterfaceController.h */,
+				B4807B161B43EBF000F3D3AE /* InterfaceController.m */,
+				B4807B181B43EBF000F3D3AE /* NotificationController.h */,
+				B4807B191B43EBF000F3D3AE /* NotificationController.m */,
+				B4807B1B1B43EBF000F3D3AE /* Images.xcassets */,
+				B4807B121B43EBF000F3D3AE /* Supporting Files */,
+			);
+			path = "KKNN24 WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		B4807B121B43EBF000F3D3AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B4807B131B43EBF000F3D3AE /* Info.plist */,
+				B4807B141B43EBF000F3D3AE /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B4807B231B43EBF000F3D3AE /* KKNN24 WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				B4807B261B43EBF000F3D3AE /* Interface.storyboard */,
+				B4807B291B43EBF000F3D3AE /* Images.xcassets */,
+				B4807B241B43EBF000F3D3AE /* Supporting Files */,
+			);
+			path = "KKNN24 WatchKit App";
+			sourceTree = "<group>";
+		};
+		B4807B241B43EBF000F3D3AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B4807B251B43EBF000F3D3AE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B495C44319C7022A008D5D5F /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,15 +670,50 @@
 				B43D265718FFC9980072B753 /* Frameworks */,
 				B43D265818FFC9980072B753 /* Resources */,
 				8A1F21E4AED049CB8A03A98C /* Copy Pods Resources */,
+				B4807B341B43EBF000F3D3AE /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B4807B2C1B43EBF000F3D3AE /* PBXTargetDependency */,
 			);
 			name = KKNN24;
 			productName = SQuInt2014;
 			productReference = B43D265A18FFC9980072B753 /* KKNN24.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B4807B0F1B43EBEF00F3D3AE /* KKNN24 WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4807B331B43EBF000F3D3AE /* Build configuration list for PBXNativeTarget "KKNN24 WatchKit Extension" */;
+			buildPhases = (
+				B4807B0C1B43EBEF00F3D3AE /* Sources */,
+				B4807B0D1B43EBEF00F3D3AE /* Frameworks */,
+				B4807B0E1B43EBEF00F3D3AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4807B221B43EBF000F3D3AE /* PBXTargetDependency */,
+			);
+			name = "KKNN24 WatchKit Extension";
+			productName = "KKNN24 WatchKit Extension";
+			productReference = B4807B101B43EBEF00F3D3AE /* KKNN24 WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		B4807B1E1B43EBF000F3D3AE /* KKNN24 WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4807B321B43EBF000F3D3AE /* Build configuration list for PBXNativeTarget "KKNN24 WatchKit App" */;
+			buildPhases = (
+				B4807B1D1B43EBF000F3D3AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KKNN24 WatchKit App";
+			productName = "KKNN24 WatchKit App";
+			productReference = B4807B1F1B43EBF000F3D3AE /* KKNN24 WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
 		};
 /* End PBXNativeTarget section */
 
@@ -584,6 +725,14 @@
 				ORGANIZATIONNAME = tapgo;
 				TargetAttributes = {
 					B43D265918FFC9980072B753 = {
+						DevelopmentTeam = GW5Z7US9NS;
+					};
+					B4807B0F1B43EBEF00F3D3AE = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = GW5Z7US9NS;
+					};
+					B4807B1E1B43EBF000F3D3AE = {
+						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = GW5Z7US9NS;
 					};
 				};
@@ -602,6 +751,8 @@
 			projectRoot = "";
 			targets = (
 				B43D265918FFC9980072B753 /* KKNN24 */,
+				B4807B0F1B43EBEF00F3D3AE /* KKNN24 WatchKit Extension */,
+				B4807B1E1B43EBF000F3D3AE /* KKNN24 WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -659,6 +810,24 @@
 				B4CD801E19E3D7F4009B416F /* action_nav_yellow.png in Resources */,
 				B43D26D1190130020072B753 /* people@2x.png in Resources */,
 				B4CC765C1A70F94F0099C22C /* search3@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4807B0E1B43EBEF00F3D3AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4807B201B43EBF000F3D3AE /* KKNN24 WatchKit App.app in Resources */,
+				B4807B1C1B43EBF000F3D3AE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4807B1D1B43EBF000F3D3AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4807B281B43EBF000F3D3AE /* Interface.storyboard in Resources */,
+				B4807B2A1B43EBF000F3D3AE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +914,7 @@
 				FD7C9F7F1B040AC80024100F /* UIImage+ImageTint.m in Sources */,
 				B499BD091904ED0C00C99CFE /* ChatViewController.m in Sources */,
 				B43D26A518FFD0F10072B753 /* PositionsTabViewController.m in Sources */,
+				B4807B3C1B43F1F100F3D3AE /* WatchViewController.m in Sources */,
 				B450DDBD1A83555C00054FAC /* PositionPostViewController.m in Sources */,
 				B43900161B0B2C2D006FF07D /* TimelineDetailViewController.m in Sources */,
 				B4D230F219EE5F84006FC2A6 /* ChatYouCellTableViewCell.m in Sources */,
@@ -754,7 +924,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4807B0C1B43EBEF00F3D3AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4807B1A1B43EBF000F3D3AE /* NotificationController.m in Sources */,
+				B4807B171B43EBF000F3D3AE /* InterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4807B221B43EBF000F3D3AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4807B1E1B43EBF000F3D3AE /* KKNN24 WatchKit App */;
+			targetProxy = B4807B211B43EBF000F3D3AE /* PBXContainerItemProxy */;
+		};
+		B4807B2C1B43EBF000F3D3AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4807B0F1B43EBEF00F3D3AE /* KKNN24 WatchKit Extension */;
+			targetProxy = B4807B2B1B43EBF000F3D3AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B43D266618FFC9980072B753 /* InfoPlist.strings */ = {
@@ -771,6 +963,14 @@
 				B43D267018FFC9980072B753 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B4807B261B43EBF000F3D3AE /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4807B271B43EBF000F3D3AE /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -792,8 +992,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -809,9 +1009,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "62f3a79c-cc45-44ff-92ee-634297e52381";
+				PROVISIONING_PROFILE = "6fb97ca0-e468-44af-aa87-5249a9e90220";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -832,8 +1032,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -843,8 +1043,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "62f3a79c-cc45-44ff-92ee-634297e52381";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PROVISIONING_PROFILE = "6fb97ca0-e468-44af-aa87-5249a9e90220";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -856,13 +1056,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KKNN24/KKNN24-Prefix.pch";
 				INFOPLIST_FILE = "KKNN24/KKNN24-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = KKNN24;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6fb97ca0-e468-44af-aa87-5249a9e90220";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -873,14 +1074,107 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KKNN24/KKNN24-Prefix.pch";
 				INFOPLIST_FILE = "KKNN24/KKNN24-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = KKNN24;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6fb97ca0-e468-44af-aa87-5249a9e90220";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B4807B2E1B43EBF000F3D3AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "KKNN24 WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "50ef4057-6590-4732-9b79-09dee35ce537";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B4807B2F1B43EBF000F3D3AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "KKNN24 WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "50ef4057-6590-4732-9b79-09dee35ce537";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B4807B301B43EBF000F3D3AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = KKNN24_WatchKit_Extension;
+				INFOPLIST_FILE = "KKNN24 WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "00fdf65b-b5ec-4d8d-a9b3-9ea8df83bdae";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		B4807B311B43EBF000F3D3AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = KKNN24_WatchKit_Extension;
+				INFOPLIST_FILE = "KKNN24 WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "00fdf65b-b5ec-4d8d-a9b3-9ea8df83bdae";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
 			};
 			name = Release;
 		};
@@ -904,6 +1198,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		B4807B321B43EBF000F3D3AE /* Build configuration list for PBXNativeTarget "KKNN24 WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4807B301B43EBF000F3D3AE /* Debug */,
+				B4807B311B43EBF000F3D3AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B4807B331B43EBF000F3D3AE /* Build configuration list for PBXNativeTarget "KKNN24 WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4807B2E1B43EBF000F3D3AE /* Debug */,
+				B4807B2F1B43EBF000F3D3AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
