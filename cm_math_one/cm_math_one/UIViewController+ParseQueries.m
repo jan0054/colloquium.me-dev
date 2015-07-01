@@ -19,25 +19,25 @@
     query.maxCacheAge = 86400;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"venue query success: %lu", (unsigned long)[objects count]);
+        NSLog(@"venue query success with results: %lu", (unsigned long)[objects count]);
         //[caller processData:objects];
     }];
 }
 
-- (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray
+- (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray forEvent:(PFObject *)event
 {
-    PFQuery *personquery = [PFQuery queryWithClassName:@"Person"];
-    [personquery orderByAscending:@"last_name"];
-    [personquery setLimit:500];
-    personquery.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    personquery.maxCacheAge = 86400;
+    PFQuery *query = [PFQuery queryWithClassName:@"Person"];
+    [query orderByAscending:@"last_name"];
+    [query setLimit:500];
+    [query whereKey:@"event" equalTo:event];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     if (searchArray.count >=1)
     {
-        [personquery whereKey:@"words" containsAllObjectsInArray:searchArray];
+        [query whereKey:@"words" containsAllObjectsInArray:searchArray];
         NSLog(@"person query did do search");
     }
-    [personquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"person query success: %lu", (unsigned long)[objects count]);
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"person query success with results: %lu", (unsigned long)[objects count]);
         //[caller processData:objects];
     }];
 }
@@ -62,16 +62,6 @@
 }
 
 
-
-- (void)getAttachments: (id)caller forAuthor: (PFObject *)person
-{
-    PFQuery *query = [PFQuery queryWithClassName:@"Attachment"];
-    [query whereKey:@"author" equalTo:person];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu talks for the person.", (unsigned long)objects.count);
-        //[caller processAttachmentData:objects];
-    }];
-}
 
 - (void)sendChat:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation
 {
@@ -166,19 +156,12 @@
     }];
 }
 
-//type = 99 for all types, 0 = talk, 1 = poster (no start/end time), so don't use order = 0 with type = 1. Leave author = nil to not filter by specific person
-- (void)getProgram: (id)caller ofType: (int)type forAuthor: (PFObject *)person withOrdering: (int)order forEvent:(PFObject *)event
+- (void)getProgram: (id)caller ofType: (int)type withOrder: (int)order forEvent: (PFObject *)event
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
     [query whereKey:@"event" equalTo:event];
-    if (person != nil)
-    {
-        [query whereKey:@"author" equalTo:person];
-    }
-    if (type != 99)
-    {
-        [query whereKey:@"type" equalTo:[NSNumber numberWithInt:type]];
-    }
+    [query whereKey:@"type" equalTo:[NSNumber numberWithInt:type]];
+    
     //order = 0 start_time, order = 1 name, can add others in future if needed
     if (order ==0)
     {
@@ -191,13 +174,40 @@
     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     query.maxCacheAge = 86400;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu programs for the person.", (unsigned long)objects.count);
-        //[caller processTalkData:objects];
+        NSLog(@"Successfully retrieved %lu programs for type: %i", (unsigned long)objects.count, type);
+        //[caller processProgramData:objects];
     }];
 }
 
+- (void)getProgram: (id)caller forAuthor: (PFObject *)person forEvent: (PFObject *)event
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
+    [query whereKey:@"event" equalTo:event];
+    [query whereKey:@"author" equalTo:person];
+    [query orderByDescending:@"name"];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    query.maxCacheAge = 86400;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu programs for the person %@", (unsigned long)objects.count, person.objectId);
+        //[caller processProgramData:objects];
+    }];
+}
 
+- (void)getEvents: (id)caller
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    [query includeKey:@"admin"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu events", objects.count);
+        //[caller processEventData:objects];
+    }];
+}
 
-
+- (void)updateEventList: (id)caller forPerson: (PFObject *) person withList: (NSArray *) events
+{
+    person[@"events"] = events;
+    [person saveInBackground];
+}
 
 @end

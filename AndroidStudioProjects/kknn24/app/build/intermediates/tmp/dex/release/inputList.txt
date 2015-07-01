@@ -1,0 +1,8 @@
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/classes/release
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/release/internal_impl-21.0.3-0d1f8117e0ed50435c39c77d23f0bf4322eb0b84.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/release/support-annotations-21.0.3-94a1b362d632f85daf779170a7f0e5126f49debc.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/release/classes-8b94638fbe68b600271299a55fa14bf031c072c4.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/release/bolts-android-1.2.0-ef5a666e56e10b199aca9b27e5128be4cb2e4462.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/release/internal_impl-21.0.3-59382b9061de36d28dae9ee7cd7223a3808ecf4a.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/release/classes-b732c623509e6c0a7f2436e61f1b2523e9ebb74f.jar
+/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/intermediates/pre-dexed/release/Parse-1.9.2-fe563a2b05c833f495915019f6f3a6655731ea69.jar

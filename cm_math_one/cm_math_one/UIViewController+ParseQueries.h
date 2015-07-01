@@ -12,7 +12,7 @@
 @interface UIViewController (ParseQueries)
 - (void)getVenue: (id)caller forEvent: (PFObject *)event;
 - (void)getTalks: (id)caller;
-- (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray;
+- (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray forEvent: (PFObject *)event;
 - (void)getPosts: (id)caller;
 - (void)getConversations: (id)caller withUser: (PFUser *)user;
 - (void)sendChat: (id)caller withAuthor: (PFUser *)user withContent: (NSString *)content withConversation: (PFObject *)conversation;
@@ -20,6 +20,8 @@
 - (void)getChat: (id)caller withConversation: (PFObject *)conversation;
 - (void)getPrivateChat: (id)caller withUser: (PFUser *)user alongWithSelf: (PFUser *) currentUser;
 - (void)getInviteeList: (id)caller withoutUsers: (NSArray *)users;
-- (void)getProgram: (id)caller ofType: (int)type forAuthor: (PFObject *)person withOrdering: (int)order forEvent: (PFObject *)event;
-
+- (void)getProgram: (id)caller ofType: (int)type withOrder: (int)order forEvent: (PFObject *)event;
+- (void)getProgram: (id)caller forAuthor: (PFObject *)person forEvent: (PFObject *)event;
+- (void)getEvents: (id)caller;
+- (void)updateEventList: (id)caller forPerson: (PFObject *) person withList: (NSArray *) events;
 @end

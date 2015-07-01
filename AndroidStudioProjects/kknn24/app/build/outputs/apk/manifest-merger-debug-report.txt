@@ -1,8 +1,6 @@
 -- Merging decision tree log ---
 manifest
 ADDED from AndroidManifest.xml:2:1
-	xmlns:android
-		ADDED from AndroidManifest.xml:2:11
 	package
 		ADDED from AndroidManifest.xml:3:5
 		INJECTED from AndroidManifest.xml:0:0
@@ -15,6 +13,8 @@ ADDED from AndroidManifest.xml:2:1
 		ADDED from AndroidManifest.xml:4:5
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
 uses-sdk
 ADDED from AndroidManifest.xml:7:5
 MERGED from com.android.support:support-v13:21.0.3:15:5
@@ -119,12 +119,12 @@ activity#com.cmenvi.app.LoginActivity
 ADDED from AndroidManifest.xml:45:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:49:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:48:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:47:13
 	android:name
 		ADDED from AndroidManifest.xml:46:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:48:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:50:13
 action#android.intent.action.MAIN
@@ -139,114 +139,114 @@ activity#com.cmenvi.app.SignupActivity
 ADDED from AndroidManifest.xml:56:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:60:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:59:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:58:13
 	android:name
 		ADDED from AndroidManifest.xml:57:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:59:13
 activity#com.cmenvi.app.MainActivity
 ADDED from AndroidManifest.xml:62:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:67:13
 	android:label
 		ADDED from AndroidManifest.xml:65:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:66:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:64:13
 	android:name
 		ADDED from AndroidManifest.xml:63:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:66:13
 activity#com.cmenvi.app.SettingsDetailsActivity
 ADDED from AndroidManifest.xml:69:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:73:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:72:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:71:13
 	android:name
 		ADDED from AndroidManifest.xml:70:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:72:13
 activity#com.cmenvi.app.CareerDetailsActivity
 ADDED from AndroidManifest.xml:75:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:79:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:78:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:77:13
 	android:name
 		ADDED from AndroidManifest.xml:76:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:78:13
 activity#com.cmenvi.app.PeopleDetailsActivity
 ADDED from AndroidManifest.xml:81:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:85:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:84:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:83:13
 	android:name
 		ADDED from AndroidManifest.xml:82:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:84:13
 activity#com.cmenvi.app.TalkDetailsActivity
 ADDED from AndroidManifest.xml:87:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:91:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:90:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:89:13
 	android:name
 		ADDED from AndroidManifest.xml:88:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:90:13
 activity#com.cmenvi.app.PosterDetailsActivity
 ADDED from AndroidManifest.xml:93:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:97:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:96:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:95:13
 	android:name
 		ADDED from AndroidManifest.xml:94:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:96:13
 activity#com.cmenvi.app.AttachmentDetailsActivity
 ADDED from AndroidManifest.xml:99:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:103:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:102:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:101:13
 	android:name
 		ADDED from AndroidManifest.xml:100:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:102:13
 activity#com.cmenvi.app.PostDetailsActivity
 ADDED from AndroidManifest.xml:105:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:109:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:108:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:107:13
 	android:name
 		ADDED from AndroidManifest.xml:106:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:108:13
 activity#com.cmenvi.app.ConversationActivity
 ADDED from AndroidManifest.xml:111:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:115:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:114:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:113:13
 	android:name
 		ADDED from AndroidManifest.xml:112:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:114:13
 activity#com.cmenvi.app.NewPostActivity
 ADDED from AndroidManifest.xml:117:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:121:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:120:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:119:13
 	android:name
 		ADDED from AndroidManifest.xml:118:13
-	android:launchMode
-		ADDED from AndroidManifest.xml:120:13
 activity#com.cmenvi.app.ChatActivity
 ADDED from AndroidManifest.xml:123:9
 	android:label
@@ -257,10 +257,10 @@ ADDED from AndroidManifest.xml:123:9
 		ADDED from AndroidManifest.xml:124:13
 meta-data#android.support.PARENT_ACTIVITY
 ADDED from AndroidManifest.xml:127:13
-	android:name
-		ADDED from AndroidManifest.xml:128:17
 	android:value
 		ADDED from AndroidManifest.xml:129:17
+	android:name
+		ADDED from AndroidManifest.xml:128:17
 service#com.parse.PushService
 ADDED from AndroidManifest.xml:132:9
 	android:name
