@@ -64,7 +64,6 @@
 		B4BFB4EC1B316D410035309E /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4EB1B316D410035309E /* LoginView.m */; };
 		B4BFB4EF1B3172090035309E /* CareerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4EE1B3172090035309E /* CareerView.m */; };
 		B4BFB4F21B31740C0035309E /* SettingUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4F11B31740C0035309E /* SettingUserCell.m */; };
-		B4BFB4F51B31741A0035309E /* SettingPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4F41B31741A0035309E /* SettingPreferenceCell.m */; };
 		B4BFB4F81B3174280035309E /* SettingGenericCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4F71B3174280035309E /* SettingGenericCell.m */; };
 		B4BFB4FB1B31743C0035309E /* DrawerEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4FA1B31743C0035309E /* DrawerEventCell.m */; };
 		B4BFB4FE1B31744D0035309E /* DrawerGenericCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB4FD1B31744D0035309E /* DrawerGenericCell.m */; };
@@ -199,8 +198,6 @@
 		B4BFB4EE1B3172090035309E /* CareerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerView.m; sourceTree = "<group>"; };
 		B4BFB4F01B31740C0035309E /* SettingUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingUserCell.h; sourceTree = "<group>"; };
 		B4BFB4F11B31740C0035309E /* SettingUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingUserCell.m; sourceTree = "<group>"; };
-		B4BFB4F31B31741A0035309E /* SettingPreferenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPreferenceCell.h; sourceTree = "<group>"; };
-		B4BFB4F41B31741A0035309E /* SettingPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPreferenceCell.m; sourceTree = "<group>"; };
 		B4BFB4F61B3174280035309E /* SettingGenericCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingGenericCell.h; sourceTree = "<group>"; };
 		B4BFB4F71B3174280035309E /* SettingGenericCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingGenericCell.m; sourceTree = "<group>"; };
 		B4BFB4F91B31743C0035309E /* DrawerEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerEventCell.h; sourceTree = "<group>"; };
@@ -350,8 +347,6 @@
 				B41756051B30269A00E1E8A5 /* DrawerCell.m */,
 				B4BFB4F01B31740C0035309E /* SettingUserCell.h */,
 				B4BFB4F11B31740C0035309E /* SettingUserCell.m */,
-				B4BFB4F31B31741A0035309E /* SettingPreferenceCell.h */,
-				B4BFB4F41B31741A0035309E /* SettingPreferenceCell.m */,
 				B4BFB4F61B3174280035309E /* SettingGenericCell.h */,
 				B4BFB4F71B3174280035309E /* SettingGenericCell.m */,
 				B4BFB4F91B31743C0035309E /* DrawerEventCell.h */,
@@ -656,7 +651,6 @@
 				B455D76D1B4113B900DCB6E4 /* AttendeeDetailView.m in Sources */,
 				B41756221B3052E600E1E8A5 /* EventListView.m in Sources */,
 				B455D7611B4112C100DCB6E4 /* ChatView.m in Sources */,
-				B4BFB4F51B31741A0035309E /* SettingPreferenceCell.m in Sources */,
 				B455D78B1B412AF600DCB6E4 /* TimelineDetailImageCell.m in Sources */,
 				B4BFB5071B3174A40035309E /* EventCell.m in Sources */,
 				B4BFB5111B31813D0035309E /* TimelineCell.m in Sources */,
