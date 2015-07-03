@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ProgramForumCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *authorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end

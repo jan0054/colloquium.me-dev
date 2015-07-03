@@ -14,6 +14,7 @@
 #import "UIViewController+ParseQueries.h"
 
 @implementation EventListView
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];

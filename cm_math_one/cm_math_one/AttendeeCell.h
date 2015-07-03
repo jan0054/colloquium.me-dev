@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface AttendeeCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *moreLabel;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *institutionLabel;
 
 @end

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatMeCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end

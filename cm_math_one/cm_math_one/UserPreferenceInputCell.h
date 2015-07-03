@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UserPreferenceInputCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
+@property (strong, nonatomic) IBOutlet UITextField *textInput;
 
 @end

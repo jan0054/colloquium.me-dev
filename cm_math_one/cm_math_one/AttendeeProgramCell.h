@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AttendeeProgramCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *programLabel;
 
 @end

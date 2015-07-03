@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingUserCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *primaryLabel;
+@property (strong, nonatomic) IBOutlet UILabel *secondaryLabel;
+@property (strong, nonatomic) IBOutlet UIButton *userButton;
 
 @end

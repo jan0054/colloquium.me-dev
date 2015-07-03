@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHr-oH-jph">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHr-oH-jph">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -88,6 +88,15 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="NAS-Lm-fYj" id="DuK-f0-PrO"/>
+                                            <outlet property="bottomView" destination="wTf-S7-dWs" id="nLa-qK-Iua"/>
+                                            <outlet property="contentLabel" destination="vgM-K8-USZ" id="sLm-Ga-buD"/>
+                                            <outlet property="locationLabel" destination="ceE-ms-Y4J" id="66x-jH-Ljt"/>
+                                            <outlet property="moreLabel" destination="VXx-Xg-n0w" id="D55-pa-0VK"/>
+                                            <outlet property="nameLabel" destination="ncE-Vq-UH1" id="Dpv-0f-gst"/>
+                                            <outlet property="timeLabel" destination="Yje-VV-nFH" id="qUn-I1-CPT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -257,6 +266,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="4Qi-N5-eDY" id="8yZ-F0-gfg"/>
+                                            <outlet property="contentLabel" destination="eiU-5U-OnX" id="TSI-Ho-xpe"/>
+                                            <outlet property="timeLabel" destination="KBn-zX-2Ow" id="am7-ez-ccT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -309,20 +323,26 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-fL-SWm">
-                                                    <rect key="frame" x="36" y="53" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDi-t5-UZH">
                                                     <rect key="frame" x="36" y="85" width="81" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkl-fL-SWm">
+                                                    <rect key="frame" x="36" y="56" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="qDi-t5-UZH" id="CqC-oU-o5W"/>
+                                            <outlet property="nameLabel" destination="exb-ik-P1E" id="s6l-wQ-x5l"/>
+                                            <outlet property="organizerLabel" destination="zAh-hr-zUA" id="qEu-no-Aoh"/>
+                                            <outlet property="timeLabel" destination="kkl-fL-SWm" id="aNU-jB-2UX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -384,6 +404,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="dyb-6I-XZ0" id="ete-tl-8pM"/>
+                                            <outlet property="settingSwitch" destination="Gu5-dp-MA4" id="2s8-91-ilr"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userpreferenceinputcell" rowHeight="60" id="fAp-AU-BIC" customClass="UserPreferenceInputCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -404,6 +428,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="E5M-OT-K3v" id="Hlm-tK-LOO"/>
+                                            <outlet property="textInput" destination="pjN-Z5-gO6" id="E4u-BL-cNH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -442,26 +470,31 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r44-8i-VYq" id="Akt-4p-rDn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fx-IC-g8z">
-                                                    <rect key="frame" x="51" y="8" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="participants" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fx-IC-g8z">
+                                                    <rect key="frame" x="51" y="8" width="401" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4x-i2-JPu">
-                                                    <rect key="frame" x="51" y="30" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="last message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4x-i2-JPu">
+                                                    <rect key="frame" x="51" y="30" width="437" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flb-3g-RRC">
-                                                    <rect key="frame" x="550" y="8" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flb-3g-RRC">
+                                                    <rect key="frame" x="517" y="8" width="75" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageLabel" destination="V4x-i2-JPu" id="Jke-kV-wkH"/>
+                                            <outlet property="participantLabel" destination="7fx-IC-g8z" id="eO7-bE-7Da"/>
+                                            <outlet property="timeLabel" destination="flb-3g-RRC" id="tn5-c1-jdL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -523,6 +556,11 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="primaryLabel" destination="QsV-LD-7aa" id="fNK-7L-osa"/>
+                                            <outlet property="secondaryLabel" destination="NUk-Iq-rFK" id="F8w-2v-iH0"/>
+                                            <outlet property="userButton" destination="xie-zI-t7e" id="fJf-sV-dlr"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settinggenericcell" rowHeight="60" id="2OE-Fw-zyy" customClass="SettingGenericCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -544,6 +582,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="primaryLabel" destination="ZSA-GH-28s" id="9ma-9W-1bX"/>
+                                            <outlet property="secondaryLabel" destination="X5J-5I-LkI" id="k0D-hG-rts"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -588,6 +630,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="drawerBackground" destination="2Is-Qr-aQ9" id="058-Au-O6D"/>
+                                    <outlet property="drawerImage" destination="6vf-RK-yng" id="9qP-SW-QhT"/>
                                     <outlet property="drawerTitle" destination="8a7-q3-qB2" id="Bm4-kw-1ad"/>
                                 </connections>
                             </tableViewCell>
@@ -780,6 +824,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="institutionLabel" destination="tZx-qH-0J1" id="gmE-yK-JqQ"/>
+                                            <outlet property="moreLabel" destination="v1p-cB-OyC" id="bWo-4S-5Xb"/>
+                                            <outlet property="nameLabel" destination="L6G-4N-dZf" id="1Aj-r4-f7N"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -830,16 +879,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zyS-kb-id4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="168" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zyS-kb-id4">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newscell" id="l8L-SF-93r" customClass="NewsCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newscell" rowHeight="280" id="l8L-SF-93r" customClass="NewsCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l8L-SF-93r" id="bqw-nw-noE">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2s-og-ILr">
+                                                    <rect key="frame" x="27" y="32" width="144" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ba7-d5-NAc">
+                                                    <rect key="frame" x="27" y="70" width="547" height="68"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTD-m7-KLq">
+                                                    <rect key="frame" x="0.0" y="151" width="600" height="128"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-jk-t7o">
+                                                    <rect key="frame" x="476" y="32" width="87" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="h2s-og-ILr" id="tMe-4O-gyl"/>
+                                            <outlet property="contentLabel" destination="ba7-d5-NAc" id="wvn-Ag-DAa"/>
+                                            <outlet property="postImage" destination="nTD-m7-KLq" id="kco-PG-u9N"/>
+                                            <outlet property="timeLabel" destination="FCW-jk-t7o" id="mVh-6P-pXM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -931,6 +1009,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="programLabel" destination="LYf-dH-u8h" id="SVS-tG-IH6"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1034,7 +1115,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzZ-k1-FCg">
-                                                    <rect key="frame" x="511" y="17" width="42" height="21"/>
+                                                    <rect key="frame" x="511" y="17" width="66" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1050,6 +1131,12 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="XwE-Ib-949" id="zSS-tp-Hrf"/>
+                                            <outlet property="contentLabel" destination="RJf-3R-JFQ" id="Bam-Jd-L8K"/>
+                                            <outlet property="postImage" destination="hrv-ap-1wH" id="y4K-UM-mf0"/>
+                                            <outlet property="timeLabel" destination="jzZ-k1-FCg" id="4e8-Gn-AUy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1321,11 +1408,27 @@
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cm3-J7-waW">
+                                                            <rect key="frame" x="342" y="5" width="46" height="30"/>
+                                                            <state key="normal" title="Email">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bottomView" destination="oQH-1i-0Xm" id="J7g-ef-5xS"/>
+                                            <outlet property="callButton" destination="hZS-7n-WQa" id="mdv-IF-x1l"/>
+                                            <outlet property="contentLabel" destination="V5q-K4-uPH" id="5mE-tL-Scz"/>
+                                            <outlet property="mailButton" destination="cm3-J7-waW" id="GMa-Mu-pF4"/>
+                                            <outlet property="nameLabel" destination="rEv-hg-sxR" id="ZIq-a9-N2G"/>
+                                            <outlet property="navButton" destination="0v5-2H-bgH" id="8vf-rG-KfE"/>
+                                            <outlet property="venueImage" destination="4nJ-QC-mcZ" id="4jm-9m-LeS"/>
+                                            <outlet property="webButton" destination="k4g-Uh-pXA" id="Mv7-HY-z6z"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1395,6 +1498,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="AQM-6S-QUq" id="JuT-pT-NUg"/>
+                                            <outlet property="timeLabel" destination="4wS-lA-aYN" id="FkR-94-FCC"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatyoucell" rowHeight="60" id="RmJ-px-HAg" customClass="ChatYouCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -1409,7 +1516,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAb-La-KDl">
-                                                    <rect key="frame" x="52" y="30" width="42" height="21"/>
+                                                    <rect key="frame" x="52" y="30" width="497" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1422,6 +1529,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="CdD-cP-GfH" id="qWI-20-OHD"/>
+                                            <outlet property="contentLabel" destination="qAb-La-KDl" id="diN-Wi-VFc"/>
+                                            <outlet property="timeLabel" destination="v9W-H0-Q2O" id="jgK-k1-4oV"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatbroadcastcell" rowHeight="60" id="Kky-g1-oyK" customClass="ChatBroadcastCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -1429,7 +1541,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kky-g1-oyK" id="9NN-8Z-yNP">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DF0-sT-Cta">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="broadcast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DF0-sT-Cta">
                                                     <rect key="frame" x="82" y="19" width="437" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1437,6 +1549,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="DF0-sT-Cta" id="bKz-gl-nP9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1536,6 +1651,12 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="decriptionLabel" destination="cc8-7z-6fm" id="co9-fD-Obv"/>
+                                            <outlet property="institutionLabel" destination="2wd-9g-8v2" id="YZ7-fE-ux4"/>
+                                            <outlet property="moreLabel" destination="oBd-6z-c95" id="abD-Ri-y7M"/>
+                                            <outlet property="typeLabel" destination="6BD-NL-CdE" id="y80-2A-KOH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

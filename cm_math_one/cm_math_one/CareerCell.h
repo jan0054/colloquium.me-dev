@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CareerCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *moreLabel;
+@property (strong, nonatomic) IBOutlet UILabel *typeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *institutionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *decriptionLabel;
 
 @end

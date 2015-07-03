@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingGenericCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *primaryLabel;
+@property (strong, nonatomic) IBOutlet UILabel *secondaryLabel;
 
 @end

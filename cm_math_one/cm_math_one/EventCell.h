@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface EventCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *organizerLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end

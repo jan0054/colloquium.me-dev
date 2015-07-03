@@ -10,5 +10,7 @@
 
 @interface DrawerCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *drawerTitle;
+@property (strong, nonatomic) IBOutlet UIImageView *drawerImage;
+@property (strong, nonatomic) IBOutlet UIView *drawerBackground;
 
 @end

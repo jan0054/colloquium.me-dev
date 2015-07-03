@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UserPreferenceCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *settingSwitch;
 
 @end

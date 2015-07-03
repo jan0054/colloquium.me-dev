@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ConversationCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *participantLabel;
+@property (strong, nonatomic) IBOutlet UILabel *messageLabel;
 
 @end

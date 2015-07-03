@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatBroadcastCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end
