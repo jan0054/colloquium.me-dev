@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "UIColor+ProjectColors.h"
 
 @interface AppDelegate ()
 
@@ -17,12 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //[Parse enableLocalDatastore];
+    
     [Parse setApplicationId:@"2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV"
                   clientKey:@"9pGuToEnzGXInGk7vTtfKzpU5rfvNAU0EBHdMPsZ"];
     [PFUser enableRevocableSessionInBackground];
-    
-    //Parse tracking analytics
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     // Register for Push Notitications, if running iOS 8
@@ -42,6 +41,21 @@
                                                          UIRemoteNotificationTypeSound)];
         NSLog(@"iOS<=7 Push registration");
     }
+
+    //styling
+    // This sets the background color of the navigation
+    [[UINavigationBar appearance] setBarTintColor:[UIColor nav_bar]];
+    // This sets the text color of the navigation links
+    [[UINavigationBar appearance] setTintColor:[UIColor light_button_txt]];
+    // This sets the title color of the navigation bar
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:19.0]}];
+    
+    [[UITabBar appearance] setTintColor:[UIColor light_button_txt]];
+    [[UITabBar appearance] setBarTintColor:[UIColor tab_bar]];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor lightGrayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateHighlighted];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor light_button_txt], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
 
     return YES;
 }

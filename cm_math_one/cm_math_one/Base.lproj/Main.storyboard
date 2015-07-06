@@ -601,7 +601,7 @@
         <!--Drawer View-->
         <scene sceneID="y6c-6B-01d">
             <objects>
-                <tableViewController id="krQ-ir-Sok" customClass="DrawerView" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="drawer_vc" id="krQ-ir-Sok" customClass="DrawerView" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eky-jx-M2x">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -612,7 +612,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d7X-BR-BsK" id="ih7-hg-2yE">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Is-Qr-aQ9">
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Is-Qr-aQ9">
                                             <rect key="frame" x="150" y="0.0" width="300" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a7-q3-qB2">
@@ -628,6 +628,9 @@
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="2Is-Qr-aQ9" secondAttribute="centerX" id="4Ci-LV-jTz"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="drawerBackground" destination="2Is-Qr-aQ9" id="058-Au-O6D"/>
@@ -728,24 +731,6 @@
             <point key="canvasLocation" x="-1156" y="685"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="bQ9-jf-V6p">
-            <objects>
-                <navigationController storyboardIdentifier="drawer_nc" automaticallyAdjustsScrollViewInsets="NO" id="iQU-cs-gjN" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZcW-Bh-jgL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="krQ-ir-Sok" kind="relationship" relationship="rootViewController" id="UEQ-cR-5DD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="163-j7-XRm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1180" y="-1361"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="Nct-0R-igd">
             <objects>
                 <navigationController storyboardIdentifier="conversation_nc" automaticallyAdjustsScrollViewInsets="NO" id="aog-gr-Vdp" sceneMemberID="viewController">
@@ -767,7 +752,7 @@
         <scene sceneID="VB2-vA-dv7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vn5-bV-yul" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Program" id="Ndp-O9-ENd"/>
+                    <tabBarItem key="tabBarItem" title="Program" image="program48.png" id="Ndp-O9-ENd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CWP-k5-ZiT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -852,7 +837,7 @@
         <scene sceneID="eqr-mz-87D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Pu-yw-aXC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="People" id="X7D-SS-aAf"/>
+                    <tabBarItem key="tabBarItem" title="People" image="people48.png" id="X7D-SS-aAf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B3r-lX-3R1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1071,7 +1056,7 @@
         <scene sceneID="RIO-eY-dn5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wfa-FC-yfk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Announcement" id="M6Q-w3-1xY"/>
+                    <tabBarItem key="tabBarItem" title="Announcement" image="news48.png" id="M6Q-w3-1xY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oV3-F9-XCZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1335,7 +1320,7 @@
         <scene sceneID="N3c-zt-G1f">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oUy-fb-yaX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wall" id="nab-a1-Ze9"/>
+                    <tabBarItem key="tabBarItem" title="Wall" image="timeline48.png" id="nab-a1-Ze9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytb-u3-ZBB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1390,27 +1375,27 @@
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oQH-1i-0Xm">
                                                     <rect key="frame" x="0.0" y="160" width="600" height="39"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4g-Uh-pXA">
-                                                            <rect key="frame" x="100" y="5" width="84" height="30"/>
-                                                            <state key="normal" title="Website">
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4g-Uh-pXA">
+                                                            <rect key="frame" x="100" y="8" width="106" height="24"/>
+                                                            <state key="normal" title="Website" image="web48.png">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZS-7n-WQa">
-                                                            <rect key="frame" x="19" y="5" width="46" height="30"/>
-                                                            <state key="normal" title="Call">
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZS-7n-WQa">
+                                                            <rect key="frame" x="19" y="8" width="73" height="24"/>
+                                                            <state key="normal" title="Call" image="phone48.png">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0v5-2H-bgH">
-                                                            <rect key="frame" x="214" y="5" width="82" height="30"/>
-                                                            <state key="normal" title="Navigate">
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0v5-2H-bgH">
+                                                            <rect key="frame" x="214" y="8" width="114" height="24"/>
+                                                            <state key="normal" title="Navigate" image="nav48.png">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cm3-J7-waW">
-                                                            <rect key="frame" x="342" y="5" width="46" height="30"/>
-                                                            <state key="normal" title="Email">
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cm3-J7-waW">
+                                                            <rect key="frame" x="356" y="8" width="85" height="24"/>
+                                                            <state key="normal" title="Email" image="mail48.png">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
@@ -1570,7 +1555,7 @@
         <scene sceneID="cfv-rK-6OY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aTo-xQ-T6H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Venue" id="dnR-Pz-cQQ"/>
+                    <tabBarItem key="tabBarItem" title="Venue" image="venue48.png" id="dnR-Pz-cQQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nLu-jG-679">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1779,4 +1764,15 @@
             <point key="canvasLocation" x="-1156" y="2730"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mail48.png" width="24" height="24"/>
+        <image name="nav48.png" width="24" height="24"/>
+        <image name="news48.png" width="24" height="24"/>
+        <image name="people48.png" width="24" height="24"/>
+        <image name="phone48.png" width="24" height="24"/>
+        <image name="program48.png" width="24" height="24"/>
+        <image name="timeline48.png" width="24" height="24"/>
+        <image name="venue48.png" width="24" height="24"/>
+        <image name="web48.png" width="24" height="24"/>
+    </resources>
 </document>

@@ -1,6 +1,8 @@
 package com.ashvale.drawer_demo;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -96,7 +98,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -106,7 +108,7 @@ public class BaseActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_base, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -115,10 +117,13 @@ public class BaseActivity extends AppCompatActivity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
+        return super.onOptionsItemSelected(item);
+/*
         switch (item.getItemId()) {
             case R.id.action_program:
                 Toast.makeText(BaseActivity.this, "action bar program", Toast.LENGTH_SHORT).show();
+
+
                 return true;
             case R.id.action_people:
                 Toast.makeText(BaseActivity.this, "action bar people", Toast.LENGTH_SHORT).show();
@@ -135,7 +140,8 @@ public class BaseActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
+*/
 
     }
+
 }

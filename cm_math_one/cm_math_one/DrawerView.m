@@ -22,6 +22,7 @@ int currentIndex;
 - (void)viewDidLoad {
     [super viewDidLoad];
     currentIndex = 0;
+    [self.tableView setContentInset:UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

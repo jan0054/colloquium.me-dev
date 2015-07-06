@@ -56,7 +56,7 @@
         [destinationViewController setCenterViewController:centerViewController];
         
         // Instantiate and set the left drawer controller.
-        UIViewController *leftDrawerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"drawer_nc"];
+        UIViewController *leftDrawerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"drawer_vc"];
         [destinationViewController setLeftDrawerViewController:leftDrawerViewController];
         
         [destinationViewController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
