@@ -17,6 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];
+    
+    //styling
+    UIImage *img = [UIImage imageNamed:@"search48"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.searchButton setTintColor:[UIColor lightGrayColor]];
+    [self.searchButton setImage:img forState:UIControlStateNormal];
+    self.searchBackgroundView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setupLeftMenuButton {
@@ -55,4 +62,6 @@
     
 }
 
+- (IBAction)searchButtonTap:(UIButton *)sender {
+}
 @end

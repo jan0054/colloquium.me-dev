@@ -27,6 +27,8 @@
 		B417561C1B3031A900E1E8A5 /* UIColor+ProjectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = B417561B1B3031A900E1E8A5 /* UIColor+ProjectColors.m */; };
 		B417561F1B3031D400E1E8A5 /* UIViewController+ParseQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = B417561E1B3031D400E1E8A5 /* UIViewController+ParseQueries.m */; };
 		B41756221B3052E600E1E8A5 /* EventListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B41756211B3052E600E1E8A5 /* EventListView.m */; };
+		B42BBEE51B4A8A28005CAAB1 /* search48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE31B4A8A28005CAAB1 /* search48@2x.png */; };
+		B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */; };
 		B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */; };
 		B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */; };
 		B455D75E1B4110BA00DCB6E4 /* CareerDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D75D1B4110BA00DCB6E4 /* CareerDetailView.m */; };
@@ -168,6 +170,8 @@
 		B417561E1B3031D400E1E8A5 /* UIViewController+ParseQueries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ParseQueries.m"; sourceTree = "<group>"; };
 		B41756201B3052E600E1E8A5 /* EventListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListView.h; sourceTree = "<group>"; };
 		B41756211B3052E600E1E8A5 /* EventListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListView.m; sourceTree = "<group>"; };
+		B42BBEE31B4A8A28005CAAB1 /* search48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search48@2x.png"; sourceTree = "<group>"; };
+		B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search64@2x.png"; sourceTree = "<group>"; };
 		B44459A31B42A0CE00B200D0 /* UserPreferenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceCell.h; sourceTree = "<group>"; };
 		B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceCell.m; sourceTree = "<group>"; };
 		B44459A61B42A12200B200D0 /* UserPreferenceInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceInputCell.h; sourceTree = "<group>"; };
@@ -501,6 +505,8 @@
 				B46402681B4662B80074DD72 /* phone64@2x.png */,
 				B46402691B4662B80074DD72 /* program48@2x.png */,
 				B464026A1B4662B80074DD72 /* program64@2x.png */,
+				B42BBEE31B4A8A28005CAAB1 /* search48@2x.png */,
+				B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */,
 				B464026B1B4662B80074DD72 /* setting48@2x.png */,
 				B464026C1B4662B80074DD72 /* setting64@2x.png */,
 				B464026D1B4662B80074DD72 /* timeline48@2x.png */,
@@ -721,6 +727,8 @@
 				B464027F1B4662B80074DD72 /* kbdown48@2x.png in Resources */,
 				B46402891B4662B80074DD72 /* phone48@2x.png in Resources */,
 				B46402761B4662B80074DD72 /* addphoto64@2x.png in Resources */,
+				B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */,
+				B42BBEE51B4A8A28005CAAB1 /* search48@2x.png in Resources */,
 				B464027C1B4662B80074DD72 /* chat64@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
