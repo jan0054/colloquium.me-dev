@@ -3,4 +3,4 @@
     <item android:id="@+android:id/background" android:drawable="@drawable/btn_toggle_background" />
     <item android:id="@+android:id/toggle" android:drawable="@drawable/btn_toggle_ball" />
 </layer-list>
-<!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/src/main/res/drawable/btn_toggle_ball_bg.xml -->
+<!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/drawable/btn_toggle_ball_bg.xml -->

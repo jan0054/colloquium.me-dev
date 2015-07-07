@@ -9,4 +9,8 @@
         android:toYDelta="0"
         android:fillAfter="true"
         android:duration="150" />
+<<<<<<< Updated upstream
 </set><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/anim/move_down.xml -->
+=======
+</set><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/anim/move_down.xml -->
+>>>>>>> Stashed changes

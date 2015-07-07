@@ -11,4 +11,4 @@
 <item android:state_selected="true" android:color="@color/light_bg" />
 <item android:color="@color/divider_color"/>
 </selector>
-<!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/src/main/res/color/tab_color_selector.xml -->
+<!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/color/tab_color_selector.xml -->

@@ -135,4 +135,8 @@
             android:textColor="@color/list_action_text"
             android:textSize="14sp" />
 	</LinearLayout>
+<<<<<<< Updated upstream
 </LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/details_career.xml -->
+=======
+</LinearLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/details_career.xml -->
+>>>>>>> Stashed changes

@@ -25,4 +25,8 @@
         android:fromAlpha="1.0"
         android:toAlpha="0.0" />
 </set>
+<<<<<<< Updated upstream
 <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/anim/slide_out.xml -->
+=======
+<!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/anim/slide_out.xml -->
+>>>>>>> Stashed changes

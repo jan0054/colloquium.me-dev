@@ -17,4 +17,4 @@
         android:fromAlpha="0.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:toAlpha="1.0" />    
-</set><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/src/main/res/anim/popup_slideup.xml -->
+</set><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/anim/popup_slideup.xml -->

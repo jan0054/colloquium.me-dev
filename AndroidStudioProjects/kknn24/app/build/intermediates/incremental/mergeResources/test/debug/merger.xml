@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< Updated upstream
 <merger version="3"><dataSet config="main"><source path="/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/androidTest/res"/><source path="/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/generated/res/rs/test/debug"/><source path="/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/generated/res/generated/test/debug"/></dataSet><mergedItems/></merger>
+=======
+<merger version="3"><dataSet config="main"><source path="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/androidTest/res"/><source path="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/generated/res/rs/test/debug"/><source path="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/build/generated/res/generated/test/debug"/></dataSet><mergedItems/></merger>
+>>>>>>> Stashed changes

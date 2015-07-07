@@ -112,4 +112,4 @@
             android:src="@drawable/action_navigate"
             android:tint="@color/light_txt" />
     </LinearLayout>
-</RelativeLayout><!-- From: file:/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/src/main/res/layout/item_venue.xml -->
+</RelativeLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/item_venue.xml -->

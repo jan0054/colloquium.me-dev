@@ -9,4 +9,8 @@
         android:top="0dp"
         android:right="0dp"
         android:bottom="0dp" />
+<<<<<<< Updated upstream
 </shape><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/switch_checked.xml -->
+=======
+</shape><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/switch_checked.xml -->
+>>>>>>> Stashed changes

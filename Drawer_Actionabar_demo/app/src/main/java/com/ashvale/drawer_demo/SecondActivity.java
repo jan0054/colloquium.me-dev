@@ -34,7 +34,14 @@ public class SecondActivity extends BaseActivity implements ProgramFragment.OnFr
     {
         Toast.makeText(SecondActivity.this, "Program Fragment Passed Data: "+ fragmentstring, Toast.LENGTH_SHORT).show();
     }
+    public void functionone()
+    {
 
+    }
+    public void functiontwo()
+    {
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

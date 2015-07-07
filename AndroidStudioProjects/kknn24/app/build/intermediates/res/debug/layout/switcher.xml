@@ -52,4 +52,8 @@
 	            android:textStyle="bold" />
         		<!-- style="?android:attr/buttonBarButtonStyle" -->
 </LinearLayout>
+<<<<<<< Updated upstream
 <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/switcher.xml -->
+=======
+<!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/switcher.xml -->
+>>>>>>> Stashed changes

@@ -9,6 +9,13 @@
         <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/build/intermediates/pre-dexed/debug/Parse-1.9.2-c0bbbde3befb174defc4f2a50120fef6c38be84b.jar" />
     </item>
     <item
+        jar="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c2071dcaf7a008c3b01a6381a33be55396bab09">
+        <dex dex="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/pre-dexed/debug/classes-3fab5e8b17489c67d006240a14fba0dd5102b50a.jar" />
+    </item>
+    <item
         jar="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -23,11 +30,39 @@
         <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-949a47f26601236a36a3748e4623e5dab24812fb.jar" />
     </item>
     <item
+        jar="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/libs/Parse-1.9.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fe739334780fe321141e62720822c2d456061899">
+        <dex dex="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/pre-dexed/debug/Parse-1.9.2-686a708b4a3b3e192124bd642db32b0841ad677d.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0dcc55e70f7ebf7238fe2ec53f662eb378ab2668">
+        <dex dex="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-de9c041baff26ef0ca1cc7edfef5b19df223af37.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/pre-dexed/debug/classes-07e26c7ec205a2066bf9716613523945b63a2f18.jar" />
+    </item>
+    <item
         jar="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/build/intermediates/pre-dexed/debug/classes-15197f2b57cff4dd79736f7e3fc3fc48691144e9.jar" />
+    </item>
+    <item
+        jar="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-b35166fe415cc82490d3089f334e0bcf5c7b13d7.jar" />
     </item>
     <item
         jar="/Users/huangyueh-yi/Desktop/AndroidStudioProjects0520/kknn24_new/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/classes.jar"

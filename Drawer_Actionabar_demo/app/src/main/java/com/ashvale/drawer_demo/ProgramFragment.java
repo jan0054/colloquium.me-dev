@@ -115,6 +115,8 @@ public class ProgramFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(String string);
+        public void functionone();
+        public void functiontwo();
     }
 
 }

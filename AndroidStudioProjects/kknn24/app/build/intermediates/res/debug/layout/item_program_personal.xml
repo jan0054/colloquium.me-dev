@@ -30,4 +30,8 @@
         android:scaleType="centerInside"
         android:src="@drawable/list_arrow" />
 
+<<<<<<< Updated upstream
 </RelativeLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/item_program_personal.xml -->
+=======
+</RelativeLayout><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/item_program_personal.xml -->
+>>>>>>> Stashed changes

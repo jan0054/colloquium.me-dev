@@ -101,4 +101,8 @@
           android:layout_alignParentBottom="true"
           android:background="@color/primary_color" />
 </RelativeLayout>
+<<<<<<< Updated upstream
 <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/actionbar.xml -->
+=======
+<!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/layout/actionbar.xml -->
+>>>>>>> Stashed changes
