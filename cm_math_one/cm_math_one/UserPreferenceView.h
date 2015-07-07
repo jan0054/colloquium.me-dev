@@ -10,5 +10,6 @@
 
 @interface UserPreferenceView : UIViewController
 
+- (IBAction)cancelButtonTap:(UIBarButtonItem *)sender;
 
 @end

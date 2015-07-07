@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+ParseQueries.h"
+#import "VenueView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -20,7 +21,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"venue query success with results: %lu", (unsigned long)[objects count]);
-        //[caller processData:objects];
+        [caller processData:objects];
     }];
 }
 

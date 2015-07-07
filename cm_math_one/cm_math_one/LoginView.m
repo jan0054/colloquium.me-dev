@@ -19,8 +19,12 @@
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.view.backgroundColor = [UIColor dark_primary];
     [self.logInView setLogo:[[UIImageView alloc] initWithImage:nil]];
-    [self.logInView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateNormal];
-    [self.logInView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateHighlighted];
+    
+    UIImage *img = [UIImage imageNamed:@"cancel48"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.logInView.dismissButton setTintColor:[UIColor whiteColor]];
+    [self.logInView.dismissButton setImage:img forState:UIControlStateNormal];
+    
     [self.logInView.signUpButton setBackgroundColor:[UIColor accent_color]];
     [self.logInView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];
     [self.logInView.signUpButton setBackgroundImage:nil forState:UIControlStateHighlighted];
@@ -50,7 +54,7 @@
     [self.logInView.usernameField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     [self.logInView.passwordField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     
-    UILabel *notice_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 95, 280, 60)];
+    UILabel *notice_label = [[UILabel alloc] initWithFrame:CGRectMake(40, 95, 280, 60)];
     [notice_label setBackgroundColor:[UIColor clearColor]];
     [notice_label setTextColor:[UIColor whiteColor]];
     [notice_label setText:@"Welcome to Colloquium.me for Mathematics! Please sign up or log in below to start customizing your events."];
@@ -70,7 +74,7 @@
     //[self.logInView.passwordForgottenButton setBackgroundImage:[UIImage imageNamed:@"noreply.png"] forState:UIControlStateNormal];
     //[self.logInView.passwordForgottenButton setBackgroundImage:[UIImage imageNamed:@"noreply.png"] forState:UIControlStateHighlighted];
     //[self.logInView.passwordForgottenButton setBackgroundColor:[UIColor clearColor]];
-    //self.logInView.usernameField.placeholder=@"帳號";
+    self.logInView.usernameField.placeholder=@"Email";
     //self.logInView.passwordField.placeholder=@"密碼";
     
 }

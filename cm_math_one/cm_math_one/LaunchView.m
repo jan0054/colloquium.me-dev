@@ -18,12 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
     if (![PFUser currentUser])
     {
         // Customize the Log In View Controller
@@ -47,6 +41,12 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self performSegueWithIdentifier:@"drawersegue" sender:self];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"drawersegue"]) {
         MMDrawerController *destinationViewController = (MMDrawerController *) segue.destinationViewController;
@@ -63,6 +63,7 @@
         [destinationViewController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeTapCenterView];
         [destinationViewController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModePanningCenterView];
         [destinationViewController setMaximumLeftDrawerWidth:160.0];
+        destinationViewController.shouldStretchDrawer = NO;
     }
 }
 
@@ -95,7 +96,8 @@
 }
 
 // Sent to the delegate when the log in screen is dismissed.
-- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController
+{
     [self.navigationController popViewControllerAnimated:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:@"You can log in later from the Settings screen"

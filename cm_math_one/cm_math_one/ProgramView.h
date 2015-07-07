@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *searchInput;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
 - (IBAction)searchButtonTap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UITableView *programTable;
 
 @end

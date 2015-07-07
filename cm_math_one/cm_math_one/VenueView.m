@@ -12,11 +12,25 @@
 #import "UIViewController+MMDrawerController.h"
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
+#import "VenueCell.h"
+#import <MapKit/MapKit.h>
+
+NSMutableArray *venueArray;
 
 @implementation VenueView
+
+#pragma mark - Interface
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];
+    venueArray = [[NSMutableArray alloc] init];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currenteventid"];
+    //PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:@"haHYq7v0IS"];
+    [self getVenue:self forEvent:event];
 }
 
 - (void)setupLeftMenuButton {
@@ -28,6 +42,37 @@
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
+- (IBAction)callButtonTap:(UIButton *)sender {
+    VenueCell *cell = (VenueCell *)[[[[sender superview] superview] superview] superview];
+    NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
+    PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
+    NSString *rawphone = venue[@"phone"];
+    NSString *phonenumber = [@"tel:" stringByAppendingString:rawphone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
+}
+
+- (IBAction)webButtonTap:(UIButton *)sender {
+    VenueCell *cell = (VenueCell *)[[[[sender superview] superview] superview] superview];
+    NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
+    PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
+    NSString *urlstr = venue[@"url"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlstr]];
+}
+
+- (IBAction)navButtonTap:(UIButton *)sender {
+    VenueCell *cell = (VenueCell *)[[[[sender superview] superview] superview] superview];
+    NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
+    PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
+    PFGeoPoint *location = venue[@"coord"];
+    double lat = location.latitude;
+    double lon = location.longitude;
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(lat, lon) addressDictionary:nil];
+    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    [mapItem setName:venue[@"name"]];
+    [self displayRegionCenteredOnMapItem:mapItem];
+}
+
+
 #pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -38,20 +83,65 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 0;
+    return [venueArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    VenueCell *cell = [tableView dequeueReusableCellWithIdentifier:@"venuecell"];
+    PFObject *venue = [venueArray objectAtIndex:indexPath.row];
     
+    //data
+    PFFile *venueimage = venue[@"image"];
+    [venueimage getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            cell.venueImage.image = [UIImage imageWithData:imageData];
+        }
+    }];
+    cell.nameLabel.text = venue[@"name"];
+    cell.contentTextView.text = venue[@"content"];
+    
+    //styling
+    cell.bottomView.backgroundColor = [UIColor clearColor];
+    UIImage *img1 = [UIImage imageNamed:@"phone48"];
+    img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [cell.callButton setTintColor:[UIColor dark_button_txt]];
+    [cell.callButton setImage:img1 forState:UIControlStateNormal];
+    [cell.callButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    UIImage *img2 = [UIImage imageNamed:@"web48"];
+    img2 = [img2 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [cell.webButton setTintColor:[UIColor dark_button_txt]];
+    [cell.webButton setImage:img2 forState:UIControlStateNormal];
+    [cell.webButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    UIImage *img3 = [UIImage imageNamed:@"nav48"];
+    img3 = [img3 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [cell.navButton setTintColor:[UIColor dark_button_txt]];
+    [cell.navButton setImage:img3 forState:UIControlStateNormal];
+    [cell.navButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - Data
+
+- (void)processData: (NSArray *) results
 {
+    [venueArray removeAllObjects];
+    venueArray = [results mutableCopy];
+    [self.venueTable reloadData];
+}
+
+- (void)displayRegionCenteredOnMapItem:(MKMapItem*)from {
+    CLLocation* fromLocation = from.placemark.location;
     
+    // Create a region centered on the starting point with a 2km span
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(fromLocation.coordinate, 2000, 2000);
+    
+    // Open the item in Maps, specifying the map region to display.
+    [MKMapItem openMapsWithItems:[NSArray arrayWithObject:from]
+                   launchOptions:[NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSValue valueWithMKCoordinate:region.center], MKLaunchOptionsMapCenterKey,
+                                  [NSValue valueWithMKCoordinateSpan:region.span], MKLaunchOptionsMapSpanKey, nil]];
 }
 
 

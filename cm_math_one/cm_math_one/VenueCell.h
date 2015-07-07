@@ -11,12 +11,13 @@
 @interface VenueCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *venueImage;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
+@property (strong, nonatomic) IBOutlet UITextView *contentTextView;
+
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
 @property (strong, nonatomic) IBOutlet UIButton *callButton;
 @property (strong, nonatomic) IBOutlet UIButton *webButton;
 @property (strong, nonatomic) IBOutlet UIButton *navButton;
-@property (strong, nonatomic) IBOutlet UIButton *mailButton;
+
 
 
 @end

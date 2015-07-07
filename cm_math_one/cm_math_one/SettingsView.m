@@ -20,9 +20,21 @@
 
 @implementation SettingsView
 
+#pragma mark - Interface
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];
+    self.settingTable.tableFooterView = [[UIView alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+}
+
+- (void)viewDidLayoutSubviews
+{
+    if ([self.settingTable respondsToSelector:@selector(layoutMargins)]) {
+        self.settingTable.layoutMargins = UIEdgeInsetsZero;
+    }
 }
 
 - (void)setupLeftMenuButton {
@@ -34,6 +46,18 @@
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
+- (IBAction)userButtonTap:(UIButton *)sender
+{
+    if (![PFUser currentUser])
+    {
+        [self log_in];
+    }
+    else
+    {
+        [self log_out];
+    }
+}
+
 #pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -43,84 +67,120 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     if (![PFUser currentUser])
     {
         return 5;
     }
     else
     {
-        //add a user settings row
+        //add a user preference row
         return 6;
     }
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SettingUserCell *userCell = [tableView dequeueReusableCellWithIdentifier:@"settingusercell"];
     SettingGenericCell *genericCell = [tableView dequeueReusableCellWithIdentifier:@"settinggenericcell"];
+    if ([userCell respondsToSelector:@selector(layoutMargins)]) {
+        userCell.layoutMargins = UIEdgeInsetsZero;
+    }
+    if ([genericCell respondsToSelector:@selector(layoutMargins)]) {
+        genericCell.layoutMargins = UIEdgeInsetsZero;
+    }
     
+    //user account management
     NSString *userStatus = @"";
     NSString *secondaryStatus = @"";
     NSString *statusButton = @"";
     if ([PFUser currentUser])
     {
         PFUser *user = [PFUser currentUser];
-        userStatus = [NSString stringWithFormat:@"Logged in as %@ %@", user[@"first_name"], user[@"last_name"]];
-        secondaryStatus = @"Logout to switch users";
-        statusButton = @"Log Out";
+        userStatus = [NSString stringWithFormat:@"Signed in as %@ %@", user[@"first_name"], user[@"last_name"]];
+        secondaryStatus = @"Sign out to switch users";
+        statusButton = @"Sign Out";
     }
     else
     {
-        userStatus = @"Not logged in yet";
-        secondaryStatus = @"Log in to access social features";
-        statusButton = @"Log In";
+        userStatus = @"Not signed in yet";
+        secondaryStatus = @"Sign in to access social features";
+        statusButton = @"Sign In";
     }
     
     switch (indexPath.row) {
         case 0:
             userCell.primaryLabel.text = userStatus;
             userCell.secondaryLabel.text = secondaryStatus;
-            [userCell.userButton setTitle:statusButton forState:UIControlStateNormal | UIControlStateHighlighted];
+            [userCell.userButton setTitle:statusButton forState:UIControlStateNormal];
+            userCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [userCell.userButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
             return userCell;
             break;
         case 1:
+            genericCell.primaryLabel.text = @"App Feedback";
+            genericCell.secondaryLabel.text = @"Email us with app questions or feedback";
+            genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return genericCell;
             break;
-            
+        case 2:
+            genericCell.primaryLabel.text = @"Administrative Assistance";
+            genericCell.secondaryLabel.text = @"Email event organizers with event questions";
+            genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return genericCell;
+            break;
+        case 3:
+            genericCell.primaryLabel.text = @"Privacy & Terms";
+            genericCell.secondaryLabel.text = @"Info on how we protect and secure your data";
+            genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return genericCell;
+            break;
+        case 4:
+            genericCell.primaryLabel.text = @"About Us";
+            genericCell.secondaryLabel.text = @"Learn about the developers of this app";
+            genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return genericCell;
+            break;
+        case 5:
+            genericCell.primaryLabel.text = @"User Preferences";
+            genericCell.secondaryLabel.text = @"Setup or change user info and social options";
+            genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return genericCell;
+            break;
         default:
             return genericCell;
             break;
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
     
+    switch (indexPath.row) {
+        case 1:
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
+            break;
+        case 2:
+            //to-do: add view to choose event admins
+            break;
+        case 3:
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://colloquium.me/?page_id=3348"]];
+            break;
+        case 4:
+            [self performSegueWithIdentifier:@"aboutsegue" sender:self];
+            break;
+        case 5:
+            [self presentViewController:controller animated:YES completion:nil];
+            break;
+        default:
+            break;
+    }
 }
 
-- (IBAction)userButtonTap:(UIButton *)sender {
-    if ([PFUser currentUser])
-    {
-        PFUser *user = [PFUser currentUser];
 
-    }
-    else
-    {
-        if (![PFUser currentUser])
-        {
-            [self log_in];
-        }
-        else
-        {
-            [self log_out];
-            [self.settingTable reloadData];
-        }
-    }
 
-}
+#pragma mark - User Management
 
 -(void) log_out
 {
@@ -130,7 +190,7 @@
     [installation removeObjectForKey:@"user"];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION DIS-ASSOCIATED: %@", installation.objectId);
-    
+    [self.settingTable reloadData];
 }
 
 -(void) log_in
@@ -153,8 +213,6 @@
         [self presentViewController:logInViewController animated:YES completion:NULL];
     }
 }
-
-#pragma mark - User Management
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
@@ -186,12 +244,11 @@
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:@"You can log in later from the Settings screen"
+                                                    message:@"You can log in later under Settings"
                                                    delegate:self
                                           cancelButtonTitle:@"Done"
                                           otherButtonTitles:nil];
     [alert show];
-    
 }
 
 // Sent to the delegate to determine whether the sign up request should be submitted to the server.

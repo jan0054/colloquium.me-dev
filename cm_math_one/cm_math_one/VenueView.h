@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+ParseQueries.h"
 
 @interface VenueView : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *venueTable;
+- (IBAction)callButtonTap:(UIButton *)sender;
+- (IBAction)webButtonTap:(UIButton *)sender;
+- (IBAction)navButtonTap:(UIButton *)sender;
+- (void)processData: (NSArray *) results;
 
 @end
