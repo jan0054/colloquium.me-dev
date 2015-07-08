@@ -51,11 +51,11 @@
     if ([segue.identifier isEqualToString:@"drawersegue"]) {
         MMDrawerController *destinationViewController = (MMDrawerController *) segue.destinationViewController;
         
-        // Instantitate and set the center view controller.
+        // Instantitate and set the center view controller. (i.e. the default first view shown)
         UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
         [destinationViewController setCenterViewController:centerViewController];
         
-        // Instantiate and set the left drawer controller.
+        // Instantiate and set the left drawer controller. (the drawer view)
         UIViewController *leftDrawerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"drawer_vc"];
         [destinationViewController setLeftDrawerViewController:leftDrawerViewController];
         

@@ -27,7 +27,7 @@ NSMutableArray *venueArray;
     venueArray = [[NSMutableArray alloc] init];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *eventid = [defaults objectForKey:@"currenteventid"];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
     //PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:@"haHYq7v0IS"];
     [self getVenue:self forEvent:event];
@@ -103,6 +103,7 @@ NSMutableArray *venueArray;
     
     //styling
     cell.bottomView.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     UIImage *img1 = [UIImage imageNamed:@"phone48"];
     img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [cell.callButton setTintColor:[UIColor dark_button_txt]];

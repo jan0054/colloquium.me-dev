@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface EventListView : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *eventTable;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+- (IBAction)doneButtonTap:(UIBarButtonItem *)sender;
+- (IBAction)cancelButtonTap:(UIBarButtonItem *)sender;
+- (void)processData: (NSArray *) results;
+@property (strong, nonatomic) IBOutlet UIView *eventHeader;
+@property (strong, nonatomic) IBOutlet UILabel *eventHeaderLabel;
 
 @end

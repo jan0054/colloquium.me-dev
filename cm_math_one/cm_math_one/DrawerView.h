@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DrawerView : UITableViewController
-
+- (void)updateEvents;
 @end

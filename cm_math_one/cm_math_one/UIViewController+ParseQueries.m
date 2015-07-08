@@ -8,6 +8,7 @@
 
 #import "UIViewController+ParseQueries.h"
 #import "VenueView.h"
+#import "EventListView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -198,10 +199,10 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query includeKey:@"admin"];
-    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu events", objects.count);
-        //[caller processEventData:objects];
+        [caller processData:objects];
     }];
 }
 
