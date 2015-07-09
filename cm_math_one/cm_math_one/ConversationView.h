@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ConversationView : UIViewController
-
+@property (strong, nonatomic) IBOutlet UITableView *conversationTable;
+- (void)processData: (NSArray *) results;
 @end

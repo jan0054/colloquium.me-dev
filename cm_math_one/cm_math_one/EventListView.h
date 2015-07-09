@@ -15,7 +15,6 @@
 - (IBAction)doneButtonTap:(UIBarButtonItem *)sender;
 - (IBAction)cancelButtonTap:(UIBarButtonItem *)sender;
 - (void)processData: (NSArray *) results;
-@property (strong, nonatomic) IBOutlet UIView *eventHeader;
-@property (strong, nonatomic) IBOutlet UILabel *eventHeaderLabel;
+
 
 @end

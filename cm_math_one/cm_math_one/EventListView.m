@@ -112,6 +112,10 @@ NSMutableArray *selectedEventIDArray;
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
+    cell.nameLabel.backgroundColor = [UIColor clearColor];
+    cell.timeLabel.backgroundColor = [UIColor clearColor];
+    cell.nameLabel.backgroundColor = [UIColor clearColor];
+    cell.contentLabel.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -167,6 +171,7 @@ NSMutableArray *selectedEventIDArray;
     DrawerView *drawerViewController = (DrawerView *) self.mm_drawerController.leftDrawerViewController;
     [drawerViewController updateEvents];
 }
+
 
 
 @end

@@ -9,6 +9,7 @@
 #import "UIViewController+ParseQueries.h"
 #import "VenueView.h"
 #import "EventListView.h"
+#import "ConversationView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -58,12 +59,10 @@
         if (error) {
             NSLog(@"conversation query error");
         } else {
-            //[caller processData:objects];
+            [caller processData:objects];
         }
     }];
 }
-
-
 
 - (void)sendChat:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation
 {

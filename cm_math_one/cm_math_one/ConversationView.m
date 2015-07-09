@@ -12,12 +12,27 @@
 #import "UIViewController+MMDrawerController.h"
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
+#import "ConversationCell.h"
+
+NSMutableArray *conversationArray;
 
 @implementation ConversationView
+
+#pragma mark - Interface
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];
+    conversationArray = [[NSMutableArray alloc] init];
+    
+    if ([PFUser currentUser])
+    {
+        [self getConversations:self withUser:[PFUser currentUser]];
+    }
+    else
+    {
+        [self noUserYet];
+    }
 }
 
 - (void)setupLeftMenuButton {
@@ -44,15 +59,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationcell"];
+    PFObject *conversation = [conversationArray objectAtIndex:indexPath.row];
     
-    
+    cell.timeLabel.text = @"";
+    cell.participantLabel.text = @"";
+    cell.messageLabel.text = @"";
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+#pragma mark - Data
+
+- (void)processData: (NSArray *) results
+{
+    [conversationArray removeAllObjects];
+    conversationArray = [results mutableCopy];
+    [self.conversationTable reloadData];
+}
+
+- (void) noUserYet
+{
+    //to-do: ask user to sign up / log in
 }
 
 @end
