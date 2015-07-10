@@ -15,4 +15,6 @@
 - (IBAction)searchButtonTap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UITableView *programTable;
 
+- (void)processData: (NSArray *) results;
+
 @end

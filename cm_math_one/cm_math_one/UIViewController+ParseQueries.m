@@ -10,6 +10,7 @@
 #import "VenueView.h"
 #import "EventListView.h"
 #import "ConversationView.h"
+#import "ProgramView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -161,6 +162,10 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
     [query whereKey:@"event" equalTo:event];
+    [query includeKey:@"author"];
+    [query includeKey:@"session"];
+    [query includeKey:@"location"];
+    //type = 0 for talk, =1 for poster, can add others in future if needed
     [query whereKey:@"type" equalTo:[NSNumber numberWithInt:type]];
     
     //order = 0 start_time, order = 1 name, can add others in future if needed
@@ -176,7 +181,7 @@
     query.maxCacheAge = 86400;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu programs for type: %i", (unsigned long)objects.count, type);
-        //[caller processProgramData:objects];
+        [caller processData:objects];
     }];
 }
 
@@ -190,7 +195,7 @@
     query.maxCacheAge = 86400;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu programs for the person %@", (unsigned long)objects.count, person.objectId);
-        //[caller processProgramData:objects];
+        //[caller processData:objects];
     }];
 }
 

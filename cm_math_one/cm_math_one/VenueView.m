@@ -28,8 +28,7 @@ NSMutableArray *venueArray;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
-    //PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:@"haHYq7v0IS"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self getVenue:self forEvent:event];
 }
 
@@ -111,8 +110,8 @@ NSMutableArray *venueArray;
     [cell.callButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
     UIImage *img2 = [UIImage imageNamed:@"web48"];
     img2 = [img2 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [cell.webButton setTintColor:[UIColor dark_button_txt]];
-    [cell.webButton setImage:img2 forState:UIControlStateNormal];
+    //[cell.webButton setTintColor:[UIColor dark_button_txt]];
+    //[cell.webButton setImage:img2 forState:UIControlStateNormal];
     [cell.webButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
     UIImage *img3 = [UIImage imageNamed:@"nav48"];
     img3 = [img3 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
