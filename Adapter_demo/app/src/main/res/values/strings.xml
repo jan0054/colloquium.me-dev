@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Drawer_demo</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string-array name="drawer_array">
+        <item>Add Event</item>
+        <item>Event 1</item>
+        <item>Event 2</item>
+        <item>Chat</item>
+        <item>Setting</item>
+    </string-array>
+
+    <string-array name="setting_primary_label_array">
+        <item>App Feedback</item>
+        <item>Privacy &amp; Terms</item>
+        <item>About Us</item>
+        <item>User Preferences</item>
+    </string-array>
+
+    <string-array name="setting_secondary_label_array">
+        <item>Email us with app questions or feedback</item>
+        <item>Info on how we protect and secure your data</item>
+        <item>Learn about the developers of this app</item>
+        <item>Setup or change user info and social options</item>
+    </string-array>
+
+    <string name="title_activity_first">FirstActivity</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_third">ThirdActivity</string>
+    <string name="title_activity_fourth">FourthActivity</string>
+    <string name="title_activity_fifth">FifthActivity</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

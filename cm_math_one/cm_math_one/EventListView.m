@@ -116,6 +116,7 @@ NSMutableArray *selectedEventIDArray;
     cell.timeLabel.backgroundColor = [UIColor clearColor];
     cell.nameLabel.backgroundColor = [UIColor clearColor];
     cell.contentLabel.backgroundColor = [UIColor clearColor];
+    cell.organizerLabel.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
