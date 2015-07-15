@@ -51,9 +51,19 @@
     if ([segue.identifier isEqualToString:@"drawersegue"]) {
         MMDrawerController *destinationViewController = (MMDrawerController *) segue.destinationViewController;
         
-        // Instantitate and set the center view controller. (i.e. the default first view shown)
-        UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
-        [destinationViewController setCenterViewController:centerViewController];
+        // Instantitate and set the center view controller. (i.e. the default first view shown) depending on if there are events already chosen
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSArray *eventNames = [defaults objectForKey:@"eventNames"];
+        if (eventNames.count >=1)  //already exist previously selected events, show the tab controller
+        {
+            UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+            [destinationViewController setCenterViewController:centerViewController];
+        }
+        else  //no existing selected events, show the event picker
+        {
+            UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"eventchoose_nc"];
+            [destinationViewController setCenterViewController:centerViewController];
+        }
         
         // Instantiate and set the left drawer controller. (the drawer view)
         UIViewController *leftDrawerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"drawer_vc"];

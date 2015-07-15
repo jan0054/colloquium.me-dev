@@ -13,5 +13,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *organizerLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *contentLabel;
-
+@property NSString *eventId;
 @end

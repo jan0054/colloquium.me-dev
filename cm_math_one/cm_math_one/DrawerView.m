@@ -72,7 +72,7 @@ NSIndexPath *currentIndex;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *eventNames = [defaults objectForKey:@"eventNames"];
     NSString *name = @"";
-    if (indexPath.section == 0 &&indexPath.row != 0)
+    if (indexPath.section == 0 &&indexPath.row != 0)  //if dynamic event row, set name
     {
         name = [eventNames objectAtIndex:indexPath.row-1];
     }
@@ -103,7 +103,7 @@ NSIndexPath *currentIndex;
         }
         return cell;
     }
-    else     //dynamic event rows + first edit event row
+    else     //dynamic event rows + first "edit event" row
     {
         switch (indexPath.row) {
             case 0:
@@ -112,8 +112,8 @@ NSIndexPath *currentIndex;
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
                 break;
-            default:
                 
+            default:
                 cell.drawerTitle.text = name;
                 img = [UIImage imageNamed:@"event48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -128,7 +128,7 @@ NSIndexPath *currentIndex;
 {
     NSLog(@"DRAWER: selected indexpath %li - %li", (long)indexPath.section, (long)indexPath.row);
     
-    if (currentIndex.row == indexPath.row && currentIndex.section == indexPath.section)
+    if (currentIndex.row == indexPath.row && currentIndex.section == indexPath.section) //close drawer if we're already on whatever page we tapped
     {
         [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
         return;

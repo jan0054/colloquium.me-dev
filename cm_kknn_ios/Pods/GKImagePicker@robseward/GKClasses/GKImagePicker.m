@@ -164,7 +164,6 @@
     self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     self.imagePickerController.delegate = self;
     self.imagePickerController.allowsEditing = NO;
-
     [self presentImagePickerController];
 }
 
