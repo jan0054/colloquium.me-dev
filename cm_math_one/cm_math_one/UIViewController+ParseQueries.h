@@ -11,8 +11,8 @@
 
 @interface UIViewController (ParseQueries)
 - (void)getVenue: (id)caller forEvent: (PFObject *)event;
-- (void)getTalks: (id)caller;
 - (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray forEvent: (PFObject *)event;
+- (void)getPeople: (id)caller forEvent: (PFObject *)event;
 - (void)getPosts: (id)caller;
 - (void)getConversations: (id)caller withUser: (PFUser *)user;
 - (void)sendChat: (id)caller withAuthor: (PFUser *)user withContent: (NSString *)content withConversation: (PFObject *)conversation;

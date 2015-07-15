@@ -12,7 +12,8 @@
 @property (strong, nonatomic) IBOutlet UIView *searchBackgroundView;
 @property (strong, nonatomic) IBOutlet UITextField *searchInput;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet UITableView *attendeeTable;
 - (IBAction)searchButtonTap:(UIButton *)sender;
-
+- (void)processData: (NSArray *) results;
 
 @end

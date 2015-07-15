@@ -40,7 +40,6 @@ NSMutableArray *programArray;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-
     [self getProgram:self ofType:0 withOrder:0 forEvent:event];
 }
 

@@ -12,11 +12,18 @@
 #import "UIViewController+MMDrawerController.h"
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
+#import "AttendeeCell.h"
+
+NSMutableArray *attendeeArrray;
 
 @implementation AttendeeView
+
+#pragma mark - Interface
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];
+    attendeeArrray = [[NSMutableArray alloc] init];
     
     //styling
     UIImage *img = [UIImage imageNamed:@"search48"];
@@ -24,6 +31,12 @@
     [self.searchButton setTintColor:[UIColor lightGrayColor]];
     [self.searchButton setImage:img forState:UIControlStateNormal];
     self.searchBackgroundView.backgroundColor = [UIColor whiteColor];
+    
+    //data
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getPeople:self forEvent:event];
 }
 
 - (void)setupLeftMenuButton {
@@ -33,6 +46,11 @@
 
 - (void)leftDrawerButtonPress:(id)leftDrawerButtonPress {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (IBAction)searchButtonTap:(UIButton *)sender
+{
+    
 }
 
 #pragma mark - TableView
@@ -45,13 +63,25 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 0;
+    return [attendeeArrray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    AttendeeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"attendeecell"];
     
+    //data
+    PFObject *attendee = [attendeeArrray objectAtIndex:indexPath.row];
+    NSString *first_name = attendee[@"first_name"];
+    NSString *last_name = attendee[@"last_name"];
+    NSString *institution = attendee[@"institution"];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@, %@", last_name, first_name];
+    cell.institutionLabel.text = institution;
+    
+    //styling
+    cell.nameLabel.backgroundColor = [UIColor clearColor];
+    cell.institutionLabel.backgroundColor = [UIColor clearColor];
+    cell.moreLabel.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -61,7 +91,15 @@
     
 }
 
+#pragma mark - Data
 
-- (IBAction)searchButtonTap:(UIButton *)sender {
+- (void)processData: (NSArray *) results
+{
+    [attendeeArrray removeAllObjects];
+    attendeeArrray = [results mutableCopy];
+    [self.attendeeTable reloadData];
 }
+
+
+
 @end

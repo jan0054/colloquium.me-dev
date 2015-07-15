@@ -33,7 +33,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Person"];
     [query orderByAscending:@"last_name"];
     [query setLimit:500];
-    [query whereKey:@"event" equalTo:event];
+    [query whereKey:@"events" containsAllObjectsInArray:@[event]];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     if (searchArray.count >=1)
     {
@@ -41,8 +41,21 @@
         NSLog(@"person query did do search");
     }
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"person query success with results: %lu", (unsigned long)[objects count]);
-        //[caller processData:objects];
+        NSLog(@"person query with search, success with results: %lu", (unsigned long)[objects count]);
+        [caller processData:objects];
+    }];
+}
+
+- (void)getPeople: (id)caller forEvent: (PFObject *)event
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Person"];
+    [query orderByAscending:@"last_name"];
+    [query setLimit:500];
+    [query whereKey:@"events" containsAllObjectsInArray:@[event]];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Person query without search, success with results: %lu", (unsigned long)[objects count]);
+        [caller processData:objects];
     }];
 }
 

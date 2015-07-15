@@ -964,8 +964,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AFd-ut-sje">
-                                <rect key="frame" x="0.0" y="137" width="600" height="414"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsr-Fw-419">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search.." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-5Z-MUg">
+                                        <rect key="frame" x="8" y="7" width="530" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzC-Xi-tAw">
+                                        <rect key="frame" x="574" y="13" width="18" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="18" id="Vg0-q4-tGS"/>
+                                            <constraint firstAttribute="height" constant="18" id="iDl-Wc-uYd"/>
+                                        </constraints>
+                                        <state key="normal" image="search48.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchButtonTap:" destination="wrM-EG-c67" eventType="touchUpInside" id="uuf-tM-r73"/>
+                                            <action selector="searchButtonTap:" destination="Mce-Rg-kmL" eventType="touchUpInside" id="zgv-zs-4Ge"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BzC-Xi-tAw" firstAttribute="leading" secondItem="SJy-5Z-MUg" secondAttribute="trailing" constant="8" id="7z0-vj-ZlI"/>
+                                    <constraint firstAttribute="centerY" secondItem="SJy-5Z-MUg" secondAttribute="centerY" id="A40-ch-Zri"/>
+                                    <constraint firstAttribute="trailing" secondItem="BzC-Xi-tAw" secondAttribute="trailing" constant="8" id="Ixj-LU-F8T"/>
+                                    <constraint firstAttribute="centerY" secondItem="BzC-Xi-tAw" secondAttribute="centerY" id="fRs-LZ-r5X"/>
+                                    <constraint firstItem="SJy-5Z-MUg" firstAttribute="leading" secondItem="Vsr-Fw-419" secondAttribute="leading" constant="8" id="lHS-Qf-jKY"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AFd-ut-sje">
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="attendeecell" rowHeight="60" id="EVZ-fZ-HQv" customClass="AttendeeCell">
@@ -1021,48 +1053,21 @@
                                     <outlet property="delegate" destination="Mce-Rg-kmL" id="ZSk-Lb-U1t"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsr-Fw-419">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search.." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-5Z-MUg">
-                                        <rect key="frame" x="8" y="7" width="530" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzC-Xi-tAw">
-                                        <rect key="frame" x="574" y="13" width="18" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="18" id="Vg0-q4-tGS"/>
-                                            <constraint firstAttribute="height" constant="18" id="iDl-Wc-uYd"/>
-                                        </constraints>
-                                        <state key="normal" image="search48.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="searchButtonTap:" destination="wrM-EG-c67" eventType="touchUpInside" id="uuf-tM-r73"/>
-                                            <action selector="searchButtonTap:" destination="Mce-Rg-kmL" eventType="touchUpInside" id="zgv-zs-4Ge"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="BzC-Xi-tAw" firstAttribute="leading" secondItem="SJy-5Z-MUg" secondAttribute="trailing" constant="8" id="7z0-vj-ZlI"/>
-                                    <constraint firstAttribute="centerY" secondItem="SJy-5Z-MUg" secondAttribute="centerY" id="A40-ch-Zri"/>
-                                    <constraint firstAttribute="trailing" secondItem="BzC-Xi-tAw" secondAttribute="trailing" constant="8" id="Ixj-LU-F8T"/>
-                                    <constraint firstAttribute="centerY" secondItem="BzC-Xi-tAw" secondAttribute="centerY" id="fRs-LZ-r5X"/>
-                                    <constraint firstItem="SJy-5Z-MUg" firstAttribute="leading" secondItem="Vsr-Fw-419" secondAttribute="leading" constant="8" id="lHS-Qf-jKY"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vsr-Fw-419" firstAttribute="top" secondItem="0eT-7P-8Vd" secondAttribute="bottom" id="3Gb-Z8-hMH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AFd-ut-sje" secondAttribute="trailing" constant="-16" id="K0x-YQ-g3F"/>
+                            <constraint firstItem="AFd-ut-sje" firstAttribute="leading" secondItem="egV-l5-Kpg" secondAttribute="leadingMargin" constant="-16" id="UPK-HR-MzH"/>
+                            <constraint firstItem="U6F-cA-CzR" firstAttribute="top" secondItem="AFd-ut-sje" secondAttribute="bottom" id="WOp-qD-dqf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vsr-Fw-419" secondAttribute="trailing" constant="-16" id="YUj-Hh-xkB"/>
                             <constraint firstItem="Vsr-Fw-419" firstAttribute="leading" secondItem="egV-l5-Kpg" secondAttribute="leadingMargin" constant="-16" id="ZpA-lY-ITx"/>
+                            <constraint firstItem="AFd-ut-sje" firstAttribute="top" secondItem="Vsr-Fw-419" secondAttribute="bottom" id="tdW-4m-t3R"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="People" id="NUL-l3-wzU"/>
                     <connections>
+                        <outlet property="attendeeTable" destination="AFd-ut-sje" id="NZg-LD-ZIP"/>
                         <outlet property="searchBackgroundView" destination="Vsr-Fw-419" id="1mc-VI-0Ft"/>
                         <outlet property="searchButton" destination="BzC-Xi-tAw" id="eTC-Vu-boy"/>
                         <outlet property="searchInput" destination="SJy-5Z-MUg" id="VW8-wb-LlA"/>
