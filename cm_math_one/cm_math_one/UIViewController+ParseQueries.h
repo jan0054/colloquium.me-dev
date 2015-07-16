@@ -24,4 +24,5 @@
 - (void)getProgram: (id)caller forAuthor: (PFObject *)person forEvent: (PFObject *)event;
 - (void)getEvents: (id)caller;
 - (void)updateEventList: (id)caller forPerson: (PFObject *) person withList: (NSArray *) events;
+- (void)updateUserPreference: (id)caller forUser: (PFUser *)user;
 @end

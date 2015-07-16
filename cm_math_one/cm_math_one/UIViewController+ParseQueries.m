@@ -229,4 +229,24 @@
     [person saveInBackground];
 }
 
+- (void)updateUserPreference: (id)caller forUser: (PFUser *)user
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL mail = [defaults boolForKey:@"mailswitch"];
+    BOOL event = [defaults boolForKey:@"eventswitch"];
+    BOOL chat = [defaults boolForKey:@"chatswitch"];
+    NSString *fn = [defaults stringForKey:@"firstname"];
+    NSString *ln = [defaults stringForKey:@"lastname"];
+    NSString *inst = [defaults stringForKey:@"institution"];
+    NSString *link = [defaults stringForKey:@"link"];
+    
+    user[@"email_status"] = mail ? @1 : @0;
+    user[@"chat_status"] = chat ? @1 : @0;
+    user[@"event_status"] = event ? @1 : @0;
+    user[@"first_name"] = fn;
+    user[@"last_name"] = ln;
+    user[@"institution"] = inst;
+    user[@"link"] = link;
+}
+
 @end

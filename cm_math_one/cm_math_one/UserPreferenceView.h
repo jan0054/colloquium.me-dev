@@ -10,6 +10,9 @@
 
 @interface UserPreferenceView : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *preferenceTable;
 - (IBAction)cancelButtonTap:(UIBarButtonItem *)sender;
+- (IBAction)switchChanged:(UISwitch *)sender;
+- (IBAction)saveButtonTap:(UIBarButtonItem *)sender;
 
 @end
