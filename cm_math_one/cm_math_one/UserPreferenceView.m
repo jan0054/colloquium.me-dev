@@ -39,14 +39,8 @@ BOOL changed;
     }
 }
 
-- (IBAction)cancelButtonTap:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)switchChanged:(UISwitch *)sender {
-    //UserPreferenceCell *pcell = (UserPreferenceCell *)[[[[sender superview] superview] superview] superview];
-    //NSIndexPath *tapped_path = [self.preferenceTable indexPathForCell:pcell];
-    changed = YES;
+    changed = YES;  //keep track of unsaved changes, maybe need it in the future...
 }
 
 - (IBAction)saveButtonTap:(UIBarButtonItem *)sender {
