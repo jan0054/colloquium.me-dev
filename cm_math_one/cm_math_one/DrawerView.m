@@ -22,7 +22,7 @@ NSIndexPath *currentIndex;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    currentIndex = [NSIndexPath indexPathForRow:1 inSection:0];
+    //currentIndex = [NSIndexPath indexPathForRow:1 inSection:0];
     [self.tableView setContentInset:UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0)];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -131,6 +131,7 @@ NSIndexPath *currentIndex;
     if (currentIndex.row == indexPath.row && currentIndex.section == indexPath.section) //close drawer if we're already on whatever page we tapped
     {
         [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
+        NSLog(@"Close Drawer for Same Page");
         return;
     }
     
@@ -157,10 +158,12 @@ NSIndexPath *currentIndex;
         switch (indexPath.row) {
             case 0:
                 centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"eventchoose_nc"];
+                NSLog(@"Open Event Chooser");
                 break;
             default:
-                centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
                 [self setCurrentEventIdForRow:indexPath.row-1];
+                centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+                NSLog(@"Open Main Tab Controller");
                 break;
         }
     }
@@ -182,6 +185,7 @@ NSIndexPath *currentIndex;
     NSString *eid = [eventDictionary objectForKey:name];
     [defaults setObject:eid forKey:@"currentEventId"];
     [defaults synchronize];
+    NSLog(@"Current event id set to: %@", eid);
 }
 
 - (void)updateEvents
