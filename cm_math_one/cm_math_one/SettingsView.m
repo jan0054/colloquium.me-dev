@@ -37,6 +37,12 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.settingTable reloadData];
+}
+
 - (void)setupLeftMenuButton {
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton];
@@ -190,6 +196,7 @@
     [installation removeObjectForKey:@"user"];
     [installation saveInBackground];
     NSLog(@"USER INSTALLATION DIS-ASSOCIATED: %@", installation.objectId);
+    [self removeLocalStorage];
     [self.settingTable reloadData];
 }
 
@@ -204,6 +211,7 @@
         
         // Create the sign up view controller
         SignUpView *signUpViewController = [[SignUpView alloc] init];
+        signUpViewController.emailAsUsername = YES;
         [signUpViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Assign our sign up controller to be displayed from the login controller

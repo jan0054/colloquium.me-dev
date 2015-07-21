@@ -247,6 +247,15 @@
     user[@"last_name"] = ln;
     user[@"institution"] = inst;
     user[@"link"] = link;
+    
+    [user saveInBackground];
+}
+
+- (void) removeLocalStorage
+{
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    
 }
 
 @end

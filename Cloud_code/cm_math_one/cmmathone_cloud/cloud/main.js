@@ -110,8 +110,13 @@ Parse.Cloud.beforeSave("Person", function(request, response) {
     var lname = person.get("last_name").split(/\b/);
     lname = _.map(lname, toLowerCase);
     lname = _.filter(lname, function(w) { return w.match(/^\w+$/) && ! _.contains(stopWords, w); });
-       
-    var inst = person.get("institution").split(/\b/);
+    
+    var inststr = person.get("institution");
+    if (inststr.length == 0)
+    {
+    	inststr = " ";
+    }   
+    var inst = inststr.split(/\b/);
     inst = _.map(inst, toLowerCase);
     inst = _.filter(inst, function(w) { return w.match(/^\w+$/) && ! _.contains(stopWords, w); });
        
@@ -141,7 +146,8 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
     emailquery.equalTo("email", user_email);
     emailquery.find({
         success: function(results) {
-            
+        	console.log("Person query done:");
+            console.log(results.length);
             //query done, link the user and person here
             for (var i = 0; i < results.length; i++) {
                    
@@ -157,13 +163,12 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
                 person_obj.set("chat_status", user_chatswitch);
                 person_obj.set("event_status", user_eventswitch);
                 person_obj.save();
+                console.log("Existing Person updated");
             }
              
             //query done but nothing found, create new person
             if (results.length == 0) {
-            
-                //set stuff for the new person object
-                var person_obj = new Person();
+            	var person_obj = new Person();
                 person_obj.set("user", request.object);
                 person_obj.set("is_user", 1);
                 person_obj.set("email", user_email);
@@ -175,10 +180,13 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
                 person_obj.set("chat_status", user_chatswitch);
                 person_obj.set("event_status", user_eventswitch);
                 person_obj.save();
+                console.log("New Person created");
             }
         },
         error: function(error) {
+        	console.error("Got an error " + error.code + " : " + error.message);
             //something went wrong with the query
+            
         }
     });
 });

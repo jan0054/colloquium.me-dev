@@ -12,6 +12,8 @@
 #import "SignUpView.h"
 #import "UserPreferenceView.h"
 
+BOOL waitForPreference;  //used to pause launching the drawersegue to wait for the user preference view
+
 @implementation LaunchView
 
 #pragma mark - Interface
@@ -38,13 +40,22 @@
     else
     {
         [self performSegueWithIdentifier:@"drawersegue" sender:self];
+        NSLog(@"Drawer segue from viewdidload");
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self performSegueWithIdentifier:@"drawersegue" sender:self];
+    if (!waitForPreference)
+    {
+        [self performSegueWithIdentifier:@"drawersegue" sender:self];
+    }
+    else
+    {
+        waitForPreference = NO;
+    }
+    NSLog(@"Drawer segue from viewdidappear");
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -165,6 +176,11 @@
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"User associcated with Installation: %@ to %@",[PFUser currentUser].objectId, installation.objectId);
+    
+    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+    //[self presentViewController:controller animated:YES completion:nil];
+    waitForPreference = YES;
     
     // Dismiss the PFSignUpViewController
     [self dismissViewControllerAnimated:YES completion:^{
