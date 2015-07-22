@@ -11,6 +11,7 @@
 #import "EventListView.h"
 #import "ConversationView.h"
 #import "ProgramView.h"
+#import "OverviewView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -223,6 +224,20 @@
     }];
 }
 
+- (void)getEvent: (id)caller withId: (NSString *)eventId
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    [query includeKey:@"admin"];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    query.maxCacheAge = 86400;
+    [query getObjectInBackgroundWithId:eventId block:^(PFObject *object, NSError *error) {
+        NSLog(@"Successfully retrieved single event");
+        [caller processData:object];
+    }];
+
+    
+}
+
 - (void)updateEventList: (id)caller forPerson: (PFObject *) person withList: (NSArray *) events
 {
     person[@"events"] = events;
@@ -255,7 +270,26 @@
 {
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-    
+}
+
+- (void)writeUserPreferenceToLocal: (id)caller forUser: (PFUser *)user
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *fn = user[@"first_name"];
+    NSString *ln = user[@"last_name"];
+    NSString *inst = user[@"institution"];
+    NSString *link = user[@"link"];
+    BOOL mail = [user[@"email_status"] intValue] == 1 ? YES : NO;
+    BOOL event = [user[@"event_status"] intValue] == 1 ? YES : NO;
+    BOOL chat = [user[@"chat_status"] intValue] == 1 ? YES : NO;
+    [defaults setBool:mail forKey:@"mailswitch"];
+    [defaults setBool:event forKey:@"eventswitch"];
+    [defaults setBool:chat forKey:@"chatswitch"];
+    [defaults setObject:fn forKey:@"firstname"];
+    [defaults setObject:ln forKey:@"lastname"];
+    [defaults setObject:inst forKey:@"institution"];
+    [defaults setObject:link forKey:@"link"];
+    [defaults synchronize];
 }
 
 @end

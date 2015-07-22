@@ -168,7 +168,7 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
             break;
         case 2:
-            //to-do: add view to choose event admins
+            //to-do: add view to choose event admins?
             break;
         case 3:
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://colloquium.me/?page_id=3348"]];
@@ -239,7 +239,7 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    
+    [self writeUserPreferenceToLocal:self forUser:user];
     [self completeOnboarding];
 }
 

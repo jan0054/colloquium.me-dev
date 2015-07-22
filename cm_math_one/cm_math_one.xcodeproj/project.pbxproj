@@ -94,6 +94,7 @@
 		B46402921B4662B80074DD72 /* venue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402701B4662B80074DD72 /* venue64@2x.png */; };
 		B46402931B4662B80074DD72 /* web48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402711B4662B80074DD72 /* web48@2x.png */; };
 		B46402941B4662B80074DD72 /* web64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402721B4662B80074DD72 /* web64@2x.png */; };
+		B487C8F41B5F8BB7005F211E /* OverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = B487C8F31B5F8BB7005F211E /* OverviewView.m */; };
 		B48A4B1B1B3AB79700250BFF /* UserPreferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B48A4B1A1B3AB79700250BFF /* UserPreferenceView.m */; };
 		B4BE91161B4BA8AA00A46E4C /* cross48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4BE91141B4BA8AA00A46E4C /* cross48@2x.png */; };
 		B4BE91171B4BA8AA00A46E4C /* cross64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4BE91151B4BA8AA00A46E4C /* cross64@2x.png */; };
@@ -254,6 +255,8 @@
 		B46402701B4662B80074DD72 /* venue64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "venue64@2x.png"; sourceTree = "<group>"; };
 		B46402711B4662B80074DD72 /* web48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web48@2x.png"; sourceTree = "<group>"; };
 		B46402721B4662B80074DD72 /* web64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web64@2x.png"; sourceTree = "<group>"; };
+		B487C8F21B5F8BB7005F211E /* OverviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewView.h; sourceTree = "<group>"; };
+		B487C8F31B5F8BB7005F211E /* OverviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewView.m; sourceTree = "<group>"; };
 		B48A4B191B3AB79700250BFF /* UserPreferenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceView.h; sourceTree = "<group>"; };
 		B48A4B1A1B3AB79700250BFF /* UserPreferenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceView.m; sourceTree = "<group>"; };
 		B4BE91141B4BA8AA00A46E4C /* cross48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross48@2x.png"; sourceTree = "<group>"; };
@@ -554,6 +557,8 @@
 				B41756151B30310400E1E8A5 /* NewsView.m */,
 				B455D7681B4113A700DCB6E4 /* NewsDetailView.h */,
 				B455D7691B4113A700DCB6E4 /* NewsDetailView.m */,
+				B487C8F21B5F8BB7005F211E /* OverviewView.h */,
+				B487C8F31B5F8BB7005F211E /* OverviewView.m */,
 			);
 			name = EventViews;
 			sourceTree = "<group>";
@@ -799,6 +804,7 @@
 				B4BFB4EC1B316D410035309E /* LoginView.m in Sources */,
 				B455D7761B4117C200DCB6E4 /* ChatOptions.m in Sources */,
 				B417560A1B3030B300E1E8A5 /* VenueView.m in Sources */,
+				B487C8F41B5F8BB7005F211E /* OverviewView.m in Sources */,
 				B41756191B30318F00E1E8A5 /* UIImage+ImageTint.m in Sources */,
 				B4BFB5261B3181F40035309E /* ChatYouCell.m in Sources */,
 				B455D78E1B4132A900DCB6E4 /* AttendeeProgramCell.m in Sources */,

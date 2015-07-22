@@ -11,6 +11,7 @@
 #import "LoginView.h"
 #import "SignUpView.h"
 #import "UserPreferenceView.h"
+#import "UIViewController+ParseQueries.h"
 
 BOOL waitForPreference;  //used to pause launching the drawersegue to wait for the user preference view
 
@@ -107,7 +108,7 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    
+    [self writeUserPreferenceToLocal:self forUser:user];
     [self completeOnboarding];
 }
 
@@ -176,15 +177,13 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
     installation[@"user"] = [PFUser currentUser];
     [installation saveInBackground];
     NSLog(@"User associcated with Installation: %@ to %@",[PFUser currentUser].objectId, installation.objectId);
-    
-    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
-    //[self presentViewController:controller animated:YES completion:nil];
+
     waitForPreference = YES;
     
     // Dismiss the PFSignUpViewController
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"sign up / login controller dismissed");
+        
         //pop up the user preference controller to setup stuff
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];

@@ -22,10 +22,23 @@ NSIndexPath *currentIndex;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //currentIndex = [NSIndexPath indexPathForRow:1 inSection:0];
+    
+    //styling
     [self.tableView setContentInset:UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0)];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    //set default "currentIndex" depending on whether there are already saved events
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *eventNames = [defaults objectForKey:@"eventNames"];
+    if (eventNames.count >=1)  //already exist previously selected events
+    {
+        currentIndex = [NSIndexPath indexPathForRow:1 inSection:0];
+    }
+    else  //no existing selected events
+    {
+        currentIndex = [NSIndexPath indexPathForRow:0 inSection:0];
+    }
 }
 
 - (void)viewDidLayoutSubviews {
