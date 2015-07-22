@@ -130,7 +130,7 @@
             break;
         case 2:
             genericCell.primaryLabel.text = @"Administrative Assistance";
-            genericCell.secondaryLabel.text = @"Email event organizers with event questions";
+            genericCell.secondaryLabel.text = @"Email us with event questions";
             genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return genericCell;
             break;
@@ -168,7 +168,7 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
             break;
         case 2:
-            //to-do: add view to choose event admins?
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
             break;
         case 3:
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://colloquium.me/?page_id=3348"]];

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import <ParseUI.h>
+#import "UserPreferenceView.h"
 
-@interface LaunchView : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface LaunchView : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, delegateProtocol>
 
 @end

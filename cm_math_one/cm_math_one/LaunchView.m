@@ -51,13 +51,16 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
     if (!waitForPreference)
     {
         [self performSegueWithIdentifier:@"drawersegue" sender:self];
+        NSLog(@"Drawer segue from viewdidappear");
     }
     else
     {
         waitForPreference = NO;
+        NSLog(@"Drawer segue waiting on preference");
     }
-    NSLog(@"Drawer segue from viewdidappear");
 }
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"drawersegue"]) {
@@ -84,7 +87,7 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         [destinationViewController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
         [destinationViewController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeTapCenterView];
         [destinationViewController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModePanningCenterView];
-        [destinationViewController setMaximumLeftDrawerWidth:160.0];
+        [destinationViewController setMaximumLeftDrawerWidth:200.0];
         destinationViewController.shouldStretchDrawer = NO;
     }
 }
@@ -120,14 +123,22 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
+    /*
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:@"You can log in later from the Settings screen"
                                                    delegate:self
                                           cancelButtonTitle:@"Done"
                                           otherButtonTitles:nil];
     [alert show];
-    
+     */
+    [self performSelector:@selector(doDrawer) withObject:nil afterDelay:0.1];
+}
+
+- (void)doDrawer
+{
+    [self performSegueWithIdentifier:@"drawersegue" sender:self];
+    NSLog(@"Drawer segue from dismiss");
 }
 
 // Sent to the delegate to determine whether the sign up request should be submitted to the server.
@@ -187,8 +198,14 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         //pop up the user preference controller to setup stuff
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+        controller.data_delegate = self;
         [self presentViewController:controller animated:YES completion:nil];
     }];
+}
+
+- (void)prefDone
+{
+    [self performSelector:@selector(doDrawer) withObject:nil afterDelay:0.1];
 }
 
 @end

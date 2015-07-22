@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserPreferenceView : UIViewController
+@protocol delegateProtocol <NSObject>
+-(void)prefDone;
+@end
 
+@interface UserPreferenceView : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *preferenceTable;
 - (IBAction)switchChanged:(UISwitch *)sender;
 - (IBAction)saveButtonTap:(UIBarButtonItem *)sender;
-
+@property id data_delegate;
 @end

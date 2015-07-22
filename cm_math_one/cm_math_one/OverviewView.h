@@ -24,6 +24,6 @@
 - (IBAction)attendanceSwitchChanged:(UISwitch *)sender;
 @property (strong, nonatomic) IBOutlet UITableView *newsTable;
 
-- (void)processData: (PFObject *) object;
+- (void)processEvent: (PFObject *) object;
 
 @end

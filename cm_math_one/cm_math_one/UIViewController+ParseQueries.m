@@ -219,7 +219,7 @@
     [query includeKey:@"admin"];
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu events", objects.count);
+        NSLog(@"Successfully retrieved %lu events", (unsigned long)objects.count);
         [caller processData:objects];
     }];
 }
@@ -232,7 +232,7 @@
     query.maxCacheAge = 86400;
     [query getObjectInBackgroundWithId:eventId block:^(PFObject *object, NSError *error) {
         NSLog(@"Successfully retrieved single event");
-        [caller processData:object];
+        [caller processEvent:object];
     }];
 
     
