@@ -71,7 +71,7 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         NSArray *eventNames = [defaults objectForKey:@"eventNames"];
         if (eventNames.count >=1)  //already exist previously selected events, show the tab controller
         {
-            UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+            UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"home_nc"];
             [destinationViewController setCenterViewController:centerViewController];
         }
         else  //no existing selected events, show the event picker

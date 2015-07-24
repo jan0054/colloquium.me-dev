@@ -61,7 +61,7 @@ NSIndexPath *currentIndex;
 
     if (section == 0)
     {
-        return 1+[eventNames count];
+        return 2 + [eventNames count];
     }
     else
     {
@@ -85,9 +85,9 @@ NSIndexPath *currentIndex;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *eventNames = [defaults objectForKey:@"eventNames"];
     NSString *name = @"";
-    if (indexPath.section == 0 &&indexPath.row != 0)  //if dynamic event row, set name
+    if (indexPath.section == 0 && indexPath.row != 0 && indexPath.row != 1)  //if dynamic event row, set name
     {
-        name = [eventNames objectAtIndex:indexPath.row-1];
+        name = [eventNames objectAtIndex:indexPath.row-2];
     }
     
     if (indexPath.section == 1)   //bottom 3 fixed rows
@@ -116,12 +116,18 @@ NSIndexPath *currentIndex;
         }
         return cell;
     }
-    else     //dynamic event rows + first "edit event" row
+    else     //dynamic event rows + first "edit event" row + second "home" row
     {
         switch (indexPath.row) {
             case 0:
                 cell.drawerTitle.text = @"Edit Events";
                 img = [UIImage imageNamed:@"addevent48"];
+                img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                cell.drawerImage.image = img;
+                break;
+            case 1:
+                cell.drawerTitle.text = @"Home";
+                img = [UIImage imageNamed:@"eventhome48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
                 break;
@@ -141,12 +147,14 @@ NSIndexPath *currentIndex;
 {
     NSLog(@"DRAWER: selected indexpath %li - %li", (long)indexPath.section, (long)indexPath.row);
     
+    /*
     if (currentIndex.row == indexPath.row && currentIndex.section == indexPath.section) //close drawer if we're already on whatever page we tapped
     {
         [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
         NSLog(@"Close Drawer for Same Page");
         return;
     }
+     */
     
     UIViewController *centerViewController;
     
@@ -166,15 +174,19 @@ NSIndexPath *currentIndex;
                 break;
         }
     }
-    else     //dynamic event rows + first edit event row
+    else     //dynamic event rows + first edit event row + second home row
     {
         switch (indexPath.row) {
             case 0:
                 centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"eventchoose_nc"];
                 NSLog(@"Open Event Chooser");
                 break;
+            case 1:
+                centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"home_nc"];
+                NSLog(@"Open Home");
+                break;
             default:
-                [self setCurrentEventIdForRow:indexPath.row-1];
+                [self setCurrentEventIdForRow:indexPath.row-2];
                 centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
                 NSLog(@"Open Main Tab Controller");
                 break;

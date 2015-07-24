@@ -218,8 +218,24 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query includeKey:@"admin"];
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    [query orderByDescending:@"start_time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu events", (unsigned long)objects.count);
+        [caller processData:objects];
+    }];
+}
+
+- (void)getEventsFromLocalList: (id)caller
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *eventIds = [defaults objectForKey:@"eventIds"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    query.maxCacheAge = 86400;
+    [query orderByDescending:@"start_time"];
+    [query whereKey:@"objectId" containedIn:eventIds];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu events from local Id list", (unsigned long)objects.count);
         [caller processData:objects];
     }];
 }
@@ -234,8 +250,6 @@
         NSLog(@"Successfully retrieved single event");
         [caller processEvent:object];
     }];
-
-    
 }
 
 - (void)updateEventList: (id)caller forPerson: (PFObject *) person withList: (NSArray *) events
