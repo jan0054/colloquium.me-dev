@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="My Parse Web">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+
+  <script language="javascript">
+  function addTalk()
+  {
+  	if(talk_name.value==""){
+		alert(STR_username+AL_empty);
+		talk_name.focus();
+		return false;
+	}
+  	if(talk_description.value==""){
+		alert(STR_description+AL_empty);
+		talk_description.focus();
+		return false;
+	}
+  	if(talk_author.value==""){
+		alert(STR_author+AL_empty);
+		talk_author.focus();
+		return false;
+	}
+  	if(talk_session.value==""){
+		alert(STR_session+AL_empty);
+		talk_session.focus();
+		return false;
+	}
+	Parse.initialize("ZxpkBR4Fy9XQBQGhE4wfTnJTi5Fi4ZaQrw8wJzWZ", "YLOUyupAg2vLKSNT7HK1eCRfQstbNY1k5QuBCq7B");
+	ListItem = Parse.Object.extend("Talk");
+	newItem = new ListItem();
+
+	newItem.set("name", talk_name.value);
+	newItem.set("content", talk_description.value);
+
+	Person = Parse.Object.extend("Person");
+	var person = new Person();
+	person.id = talk_author.value;
+	newItem.set("author", person);
+
+	Session = Parse.Object.extend("Session");
+	var session = new Session();
+	session.id = talk_session.value;
+	newItem.set("session", session);
+
+	var sd=talk_datestart.value+'T'+talk_timestart.value+':00.000';
+	var startd = new Date(sd);
+	talk_dateend.value=talk_datestart.value;//start and end at the same day
+	var ed=talk_dateend.value+'T'+talk_timeend.value+':00.000';
+	var endd = new Date(ed);
+
+	Loca = Parse.Object.extend("Location");
+	var loca = new Loca();
+	loca.id = talk_location.value;
+	newItem.set("location", loca);
+
+
+	newItem.set("start_time", startd);
+	newItem.set("end_time", endd);
+
+	if(talk_pdf.value!=""){
+		alert(talk_pdf.value);
+		var fileUploadControl = talk_pdf;
+		if (fileUploadControl.files.length > 0) {
+			var file = fileUploadControl.files[0];
+			var fileName = "talk_pdf";
+			var parseFile = new Parse.File(fileName, file);
+			newItem.set("pdf", parseFile);
+		}
+	}
+	
+	newItem.save(null, {
+		success: function(newItem){
+			window.location.reload();
+		},
+		error: function(newItem, error){
+			alert('Failed to create new object, with error code: ' + error.message);
+		}
+	});
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addtalk)</script></h1>
+	<h2><script>dw(STR_1)</script></h2>
+
+	<div id="add_talk">
+		<table>
+			<tr>
+				<td class="tb1">*<script>dw(STR_name)</script></td>
+				<td><input class="InputSize" type="text" id="talk_name"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_description)</script></td>
+				<td><input class="InputSize" type="text" id="talk_description"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_author)</script></td>
+				<td width="70%"><select class="SelectSize" id="talk_author"><script>getAllAuthor('talk_author')</script></select></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_session)</script></td>
+				<td width="70%"><select class="SelectSize" id="talk_session"><script>getAllSession('talk_session')</script></select></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_date)</script></td>
+				<td><input type="date" class="DateSize" id="talk_datestart"><input type="date" class="DateSize" id="talk_dateend" style="display:none"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_time)</script></td>
+				<td><input type="time" class="TimeSize" id="talk_timestart">-<input type="time" class="TimeSize" id="talk_timeend"></td>
+			</tr>
+			<tr>
+			<tr>
+				<td>*<script>dw(STR_location)</script></td>
+				<td width="70%"><select class="SelectSize" id="talk_location"><script>getAllLocation('talk_location')</script></select></td>
+			</tr>
+				<td><script>dw(STR_pdffile)</script></td>
+				<td><input type="file" class="FileSize" id="talk_pdf"></td>
+			</tr>
+			<tr>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_talk_submit" value="'+BT_add+'" onClick="addTalk();">')</script></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	</div>
+</body>
+ 

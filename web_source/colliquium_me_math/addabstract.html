@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="CM Parse Web">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+
+  <script language="javascript">
+  function addAbstract()
+  {
+  	if(abstract_name.value==""){
+		alert(STR_username+AL_empty);
+		abstract_name.focus();
+		return false;
+	}
+  	if(abstract_content.value==""){
+		alert(STR_content+AL_empty);
+		abstract_content.focus();
+		return false;
+	}
+  	if(abstract_author.value==""){
+		alert(STR_author+AL_empty);
+		abstract_author.focus();
+		return false;
+	}
+	Parse.initialize("2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV", "xlirVc4ZbYnah6b97WEo4mbOUBvi0RiqZj5GJ9Hi");
+	ListItem = Parse.Object.extend("Attachment");
+	newItem = new ListItem();
+
+	newItem.set("name", abstract_name.value);
+	newItem.set("content", abstract_content.value);
+
+	//Person = Parse.Object.extend("person");
+	//var person = new Person();
+	//person.id = abstract_author.value;
+	//newItem.set("author", person);
+
+	if(abstract_pdf.value!=""){
+		alert(abstract_pdf.value);
+		var fileUploadControl = abstract_pdf;
+		if (fileUploadControl.files.length > 0) {
+			var file = fileUploadControl.files[0];
+			var fileName = "attachment";
+			var parseFile = new Parse.File(fileName, file);
+			newItem.set("file", parseFile);
+		}
+	}
+	
+	newItem.save(null, {
+		success: function(newItem){
+			window.location.reload();
+		},
+		error: function(newItem, error){
+			alert('Failed to create new object, with error code: ' + error.message);
+		}
+	});
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addabstract)</script></h1>
+	<h2><script>dw(STR_1)</script></h2>
+
+	<div id="add_abstract">
+		<table>
+			<tr>
+				<td class="tb1">*<script>dw(STR_username)</script></td>
+				<td><input class="InputSize"type="text" id="abstract_name"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_content)</script></td>
+				<td><input class="InputSize" type="text" id="abstract_content"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_author)</script></td>
+				<td><select class="SelectSize" id="abstract_author"><script>getAllAuthor('abstract_author')</script></select></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_pdffile)</script></td>
+				<td><input type="file" class="FileSize" id="abstract_pdf"></td>
+			</tr>
+			<tr>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_abstract_submit" value="'+BT_add+'" onClick="addAbstract();">')</script></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	</div>
+</body>
+ 
