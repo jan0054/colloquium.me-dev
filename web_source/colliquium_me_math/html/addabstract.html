@@ -3,7 +3,7 @@
   <meta charset="utf-8">
 
   <title>Data upload</title>
-  <meta name="description" content="CM Parse Web">
+  <meta name="description" content="CM Web">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
@@ -68,9 +68,9 @@
 	<h2><script>dw(STR_1)</script></h2>
 
 	<div id="add_abstract">
-		<table>
+		<table align="center">
 			<tr>
-				<td class="tb1">*<script>dw(STR_username)</script></td>
+				<td>*<script>dw(STR_username)</script></td>
 				<td><input class="InputSize"type="text" id="abstract_name"></td>
 			</tr>
 			<tr>
@@ -80,6 +80,10 @@
 			<tr>
 				<td>*<script>dw(STR_author)</script></td>
 				<td><select class="SelectSize" id="abstract_author"><script>getAllAuthor('abstract_author')</script></select></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_event)</script></td>
+				<td width="70%"><select class="SelectSize" id="talk_event"><script>getAllEvent('talk_event')</script></select></td>
 			</tr>
 			<tr>
 				<td><script>dw(STR_pdffile)</script></td>

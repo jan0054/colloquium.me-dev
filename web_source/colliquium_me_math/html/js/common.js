@@ -87,3 +87,31 @@ function getAllSession(inputStr)
 	})
 }
 
+function getAllEvent(inputStr)
+{
+	Parse.initialize("2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV", "xlirVc4ZbYnah6b97WEo4mbOUBvi0RiqZj5GJ9Hi");
+	ListItem = Parse.Object.extend("Event");
+	query = new Parse.Query(ListItem);
+	query.limit(500);
+	query.descending('name');
+	query.find({
+		success: function(results){
+			for (var i=0; i<results.length; i++){
+				var object=results[i];
+				var sel=document.getElementById(inputStr);
+				if(i==0){
+					var new_option = new Option(object.get('name'),object.id,1,1);
+				}
+				else
+				{
+					var new_option = new Option(object.get('name'),object.id);
+				}
+				sel.options.add(new_option);
+				}
+			},
+		error: function(error)
+		{
+			alert("Event Error: "+error.code+" "+error.message);
+		}
+	})
+}

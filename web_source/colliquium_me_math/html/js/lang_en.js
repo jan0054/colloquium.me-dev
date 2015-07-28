@@ -48,3 +48,5 @@ var STR_event_description = "Event Description";
 var STR_event_startdate = "Start Date";
 var STR_event_enddate = "End Date";
 var STR_event_organizer = "Organizer (institute or person)";
+
+var STR_event = "Event";

@@ -3,16 +3,17 @@
   <meta charset="utf-8">
 
   <title>Data upload</title>
-  <meta name="description" content="My Parse Web">
+  <meta name="description" content="CM Web">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
-  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
   <script type="text/javascript" src="js/lang_en.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 
   <script language="javascript">
   function addTalk()
   {
+  	//check required fields
   	if(talk_name.value==""){
 		alert(STR_username+AL_empty);
 		talk_name.focus();
@@ -33,7 +34,7 @@
 		talk_session.focus();
 		return false;
 	}
-	Parse.initialize("ZxpkBR4Fy9XQBQGhE4wfTnJTi5Fi4ZaQrw8wJzWZ", "YLOUyupAg2vLKSNT7HK1eCRfQstbNY1k5QuBCq7B");
+	Parse.initialize("2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV", "xlirVc4ZbYnah6b97WEo4mbOUBvi0RiqZj5GJ9Hi");
 	ListItem = Parse.Object.extend("Talk");
 	newItem = new ListItem();
 
@@ -44,6 +45,11 @@
 	var person = new Person();
 	person.id = talk_author.value;
 	newItem.set("author", person);
+	
+	Event = Parse.Object.extend("Event");
+	var event = new Event();
+	event.id = talk_event.value;
+	newItem.set("event", event);
 
 	Session = Parse.Object.extend("Session");
 	var session = new Session();
@@ -55,15 +61,13 @@
 	talk_dateend.value=talk_datestart.value;//start and end at the same day
 	var ed=talk_dateend.value+'T'+talk_timeend.value+':00.000';
 	var endd = new Date(ed);
+	newItem.set("start_time", startd);
+	newItem.set("end_time", endd);
 
 	Loca = Parse.Object.extend("Location");
 	var loca = new Loca();
 	loca.id = talk_location.value;
 	newItem.set("location", loca);
-
-
-	newItem.set("start_time", startd);
-	newItem.set("end_time", endd);
 
 	if(talk_pdf.value!=""){
 		alert(talk_pdf.value);
@@ -93,9 +97,9 @@
 	<h2><script>dw(STR_1)</script></h2>
 
 	<div id="add_talk">
-		<table>
+		<table align="center">
 			<tr>
-				<td class="tb1">*<script>dw(STR_name)</script></td>
+				<td>*<script>dw(STR_name)</script></td>
 				<td><input class="InputSize" type="text" id="talk_name"></td>
 			</tr>
 			<tr>
@@ -109,6 +113,10 @@
 			<tr>
 				<td>*<script>dw(STR_session)</script></td>
 				<td width="70%"><select class="SelectSize" id="talk_session"><script>getAllSession('talk_session')</script></select></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_event)</script></td>
+				<td width="70%"><select class="SelectSize" id="talk_event"><script>getAllEvent('talk_event')</script></select></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_date)</script></td>
