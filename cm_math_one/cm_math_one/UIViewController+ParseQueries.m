@@ -12,6 +12,7 @@
 #import "ConversationView.h"
 #import "ProgramView.h"
 #import "OverviewView.h"
+#import "ProgramForumView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -304,6 +305,38 @@
     [defaults setObject:inst forKey:@"institution"];
     [defaults setObject:link forKey:@"link"];
     [defaults synchronize];
+}
+
+- (void)getForum: (id)caller forProgram: (PFObject *)program
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Forum"];
+    [query includeKey:@"author"];
+    [query includeKey:@"source"];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu forum entries", (unsigned long)objects.count);
+        [caller processData:objects];
+    }];
+}
+
+- (void)postForum: (id)caller forProgram: (PFObject *)program withContent: (NSString *)content withAuthor: (PFUser *)author
+{
+    PFObject *forum = [PFObject objectWithClassName:@"Forum"];
+    forum[@"author"] = author;
+    forum[@"content"] = content;
+    forum[@"source"] = program;
+    [forum saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"Forum post saved successfully");
+            [caller postForumSuccessCallback];
+        }
+        else
+        {
+            NSLog(@"Forum post error");
+        }
+    }];
 }
 
 @end

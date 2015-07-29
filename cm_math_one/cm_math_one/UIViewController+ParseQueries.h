@@ -29,4 +29,6 @@
 - (void)updateUserPreference: (id)caller forUser: (PFUser *)user;
 - (void)removeLocalStorage;
 - (void)writeUserPreferenceToLocal: (id)caller forUser: (PFUser *)user;
+- (void)getForum: (id)caller forProgram: (PFObject *)program;
+- (void)postForum: (id)caller forProgram: (PFObject *)program withContent: (NSString *)content withAuthor: (PFUser *)author;
 @end

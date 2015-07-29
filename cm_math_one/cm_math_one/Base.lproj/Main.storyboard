@@ -5,6 +5,41 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Full Screen Text View-->
+        <scene sceneID="fjP-jJ-aav">
+            <objects>
+                <viewController storyboardIdentifier="fullscreentextview" id="owG-mx-sqC" customClass="FullScreenTextView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hj5-Gn-tE5"/>
+                        <viewControllerLayoutGuide type="bottom" id="wrP-U8-Cnf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aow-Oq-Q7f">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading.." translatesAutoresizingMaskIntoConstraints="NO" id="R4n-jn-dfz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R4n-jn-dfz" firstAttribute="top" secondItem="aow-Oq-Q7f" secondAttribute="topMargin" id="E5B-AO-3fb"/>
+                            <constraint firstItem="wrP-U8-Cnf" firstAttribute="top" secondItem="R4n-jn-dfz" secondAttribute="bottom" id="SkN-pi-Hrg"/>
+                            <constraint firstItem="R4n-jn-dfz" firstAttribute="leading" secondItem="aow-Oq-Q7f" secondAttribute="leadingMargin" constant="-16" id="X70-1K-iiB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R4n-jn-dfz" secondAttribute="trailing" constant="-16" id="eUt-E5-jjA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentTextView" destination="R4n-jn-dfz" id="wE2-Dy-k5K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="anq-CT-wDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="217" y="-1361"/>
+        </scene>
         <!--Drawer Controller-->
         <scene sceneID="48z-Jj-Bar">
             <objects>
@@ -416,9 +451,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pUC-gL-jAh">
-                        <barButtonItem key="rightBarButtonItem" title="Discussion" id="670-fW-Dmj"/>
+                        <barButtonItem key="rightBarButtonItem" title="Discuss" id="670-fW-Dmj">
+                            <connections>
+                                <action selector="discussButtonTap:" destination="Aa2-37-DCr" id="ZiO-uU-eY7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="authorLabel" destination="oUx-S1-ozy" id="F08-4F-VeP"/>
+                        <outlet property="barBackgroundView" destination="BOi-BU-4bS" id="R0D-nc-wbs"/>
+                        <outlet property="contentTextView" destination="7zW-bn-m2A" id="Xa8-Ln-yY8"/>
+                        <outlet property="discussButton" destination="670-fW-Dmj" id="qak-7c-RDa"/>
+                        <outlet property="locationLabel" destination="iJi-i5-dd4" id="s98-3T-yci"/>
+                        <outlet property="nameLabel" destination="Y8c-Bb-19b" id="Jaz-C0-Fbk"/>
+                        <outlet property="sessionLabel" destination="kjg-DM-CDi" id="c3B-83-1JE"/>
+                        <outlet property="timeLabel" destination="idi-p9-U5m" id="Nfl-K3-rxp"/>
                         <segue destination="F1S-86-vQv" kind="show" identifier="programforumsegue" id="w0Z-6G-iqL"/>
                     </connections>
                 </viewController>
@@ -451,6 +498,9 @@
                                         <state key="normal" title="Send">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendButtonTap:" destination="F1S-86-vQv" eventType="touchUpInside" id="bjr-MC-rAP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -501,8 +551,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Discussion" id="yG1-qN-r0I">
-                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="8kv-lp-d08"/>
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="8kv-lp-d08">
+                            <connections>
+                                <action selector="refreshButtonTap:" destination="F1S-86-vQv" id="9BW-y4-7Sc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="forumTable" destination="YtD-mX-pAy" id="1Zd-4G-QMb"/>
+                        <outlet property="inputBackgroundView" destination="Quz-dq-8yr" id="m0j-BJ-V36"/>
+                        <outlet property="inputTextField" destination="Uo0-f5-FaQ" id="grR-V3-jZ2"/>
+                        <outlet property="refreshButton" destination="8kv-lp-d08" id="etm-Ye-VgG"/>
+                        <outlet property="sendButton" destination="U2O-Iq-Zms" id="Cu6-Kc-8Zf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJ0-iW-j83" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1517,14 +1578,14 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg7-tx-MQ2">
-                                        <rect key="frame" x="8" y="21" width="584" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Institution" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiQ-Bj-wRc">
+                                        <rect key="frame" x="8" y="65" width="584" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Institution" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiQ-Bj-wRc">
-                                        <rect key="frame" x="8" y="65" width="584" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg7-tx-MQ2">
+                                        <rect key="frame" x="8" y="21" width="584" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>

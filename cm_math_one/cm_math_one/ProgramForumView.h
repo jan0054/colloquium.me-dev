@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface ProgramForumView : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *forumTable;
+@property (strong, nonatomic) IBOutlet UIView *inputBackgroundView;
+@property (strong, nonatomic) IBOutlet UITextField *inputTextField;
+@property (strong, nonatomic) IBOutlet UIButton *sendButton;
+- (IBAction)sendButtonTap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
+- (IBAction)refreshButtonTap:(UIBarButtonItem *)sender;
+
+- (void)processData: (NSArray *) results;
+- (void)postForumSuccessCallback;
+
+@property PFObject *program;
 
 @end

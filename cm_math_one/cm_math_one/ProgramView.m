@@ -13,8 +13,10 @@
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
 #import "ProgramCell.h"
+#import "ProgramDetailView.h"
 
 NSMutableArray *programArray;
+PFObject *selectedProgram;
 
 @implementation ProgramView
 
@@ -106,7 +108,8 @@ NSMutableArray *programArray;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    selectedProgram = [programArray objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"programdetailsegue" sender:self];
 }
 
 #pragma mark - Data
@@ -120,5 +123,15 @@ NSMutableArray *programArray;
     programArray = [results mutableCopy];
     [self.programTable reloadData];
 }
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"programdetailsegue"]) {
+        ProgramDetailView *controller = (ProgramDetailView *) segue.destinationViewController;
+        controller.program = selectedProgram;
+    }
+}
+
 
 @end
