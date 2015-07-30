@@ -13,6 +13,8 @@
 #import "ProgramView.h"
 #import "OverviewView.h"
 #import "ProgramForumView.h"
+#import "AttendeeDetailView.h"
+#import "AttendeeView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -34,9 +36,10 @@
 
 #pragma mark - People
 
-- (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray forEvent:(PFObject *)event
+- (void)getPeople: (id)caller withSearch: (NSArray *)searchArray forEvent:(PFObject *)event
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Person"];
+    [query includeKey:@"User"];
     [query orderByAscending:@"last_name"];
     [query setLimit:500];
     [query whereKey:@"events" containsAllObjectsInArray:@[event]];
@@ -55,6 +58,7 @@
 - (void)getPeople: (id)caller forEvent: (PFObject *)event
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Person"];
+    [query includeKey:@"User"];
     [query orderByAscending:@"last_name"];
     [query setLimit:500];
     [query whereKey:@"events" containsAllObjectsInArray:@[event]];
@@ -254,7 +258,7 @@
     query.maxCacheAge = 86400;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu programs for the person %@", (unsigned long)objects.count, person.objectId);
-        //[caller processData:objects];
+        [caller processData:objects];
     }];
 }
 

@@ -234,7 +234,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4o-VE-klm">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search.." minimumFontSize="15" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Den-6p-jsE">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search.." minimumFontSize="15" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Den-6p-jsE">
                                         <rect key="frame" x="8" y="7" width="530" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1339,7 +1339,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsr-Fw-419">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search.." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-5Z-MUg">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search.." minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-5Z-MUg">
                                         <rect key="frame" x="8" y="7" width="530" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1562,18 +1562,27 @@
                                                 <state key="normal" title="Email">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="emailButtonTap:" destination="z4v-Jf-S87" eventType="touchUpInside" id="irq-Mm-ydE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faj-tw-BdA">
                                                 <rect key="frame" x="407" y="8" width="80" height="30"/>
                                                 <state key="normal" title="Website">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="websiteButtonTap:" destination="z4v-Jf-S87" eventType="touchUpInside" id="K4j-jO-c0e"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alf-Ms-Gv5">
                                                 <rect key="frame" x="61" y="8" width="46" height="30"/>
                                                 <state key="normal" title="Chat">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="chatButtonTap:" destination="z4v-Jf-S87" eventType="touchUpInside" id="out-UL-634"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1624,6 +1633,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="attendeeBackground" destination="ub7-ts-S8s" id="1cz-6N-XCD"/>
+                        <outlet property="attendeeProgramTable" destination="WDm-pE-ZuP" id="Kah-dw-N3a"/>
+                        <outlet property="buttonBarBackground" destination="Nze-6d-q4R" id="tCw-Hs-WbJ"/>
+                        <outlet property="chatButton" destination="alf-Ms-Gv5" id="hWw-YZ-TKj"/>
+                        <outlet property="emailButton" destination="9Hq-kU-DKZ" id="2Mm-sf-aCC"/>
+                        <outlet property="institutionLabel" destination="hiQ-Bj-wRc" id="bkj-dw-YGi"/>
+                        <outlet property="nameLabel" destination="Dg7-tx-MQ2" id="5t8-bC-bbd"/>
+                        <outlet property="websiteButton" destination="faj-tw-BdA" id="YdQ-kv-Zz6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egK-kQ-lpT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

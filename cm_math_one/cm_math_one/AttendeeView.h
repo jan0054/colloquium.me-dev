@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AttendeeView : UIViewController
+@interface AttendeeView : UIViewController<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIView *searchBackgroundView;
 @property (strong, nonatomic) IBOutlet UITextField *searchInput;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;

@@ -35,6 +35,8 @@ NSMutableArray *forumArray;
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self getForum:self forProgram:program];
+    
+    
 }
 
 - (void)viewDidLayoutSubviews

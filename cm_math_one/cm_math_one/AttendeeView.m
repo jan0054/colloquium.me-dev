@@ -13,8 +13,10 @@
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
 #import "AttendeeCell.h"
+#import "AttendeeDetailView.h"
 
 NSMutableArray *attendeeArrray;
+PFObject *selectedAttendee;
 
 @implementation AttendeeView
 
@@ -24,6 +26,7 @@ NSMutableArray *attendeeArrray;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     attendeeArrray = [[NSMutableArray alloc] init];
+    self.searchInput.delegate = self;
     
     //styling
     UIImage *img = [UIImage imageNamed:@"search48"];
@@ -50,7 +53,20 @@ NSMutableArray *attendeeArrray;
 
 - (IBAction)searchButtonTap:(UIButton *)sender
 {
-    
+    if (self.searchInput.text.length >1)
+    {
+        NSString *search_str = self.searchInput.text.lowercaseString;
+        NSArray *wordsAndEmptyStrings = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+        [self doSearchWithArray:words];
+    }
+    [self.searchInput resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    if (textField == self.searchInput) [self resetSearch];
+    return YES;
 }
 
 #pragma mark - TableView
@@ -88,10 +104,28 @@ NSMutableArray *attendeeArrray;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    selectedAttendee = [attendeeArrray objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"attendeedetailsegue" sender:self];
 }
 
 #pragma mark - Data
+
+- (void)resetSearch
+{
+    NSLog(@"Search reset called");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getPeople:self forEvent:event];
+}
+
+- (void)doSearchWithArray: (NSArray *)searchArray
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getPeople:self withSearch:searchArray forEvent:event];
+}
 
 - (void)processData: (NSArray *) results
 {
@@ -100,6 +134,13 @@ NSMutableArray *attendeeArrray;
     [self.attendeeTable reloadData];
 }
 
+#pragma mark - Navigation
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"attendeedetailsegue"]) {
+        AttendeeDetailView *controller = (AttendeeDetailView *) segue.destinationViewController;
+        controller.attendee = selectedAttendee;
+    }
+}
 
 @end

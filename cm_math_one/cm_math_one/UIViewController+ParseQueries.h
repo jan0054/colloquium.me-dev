@@ -15,7 +15,7 @@
 - (void)getVenue: (id)caller forEvent: (PFObject *)event;
 
 //people
-- (void)getPeople: (id)caller withSearch: (NSMutableArray *)searchArray forEvent: (PFObject *)event;
+- (void)getPeople: (id)caller withSearch: (NSArray *)searchArray forEvent: (PFObject *)event;
 - (void)getPeople: (id)caller forEvent: (PFObject *)event;
 
 //timeline
