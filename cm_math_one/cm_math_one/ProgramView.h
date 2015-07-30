@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProgramView : UIViewController
+@interface ProgramView : UIViewController<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIView *searchBackgroundView;
 @property (strong, nonatomic) IBOutlet UITextField *searchInput;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;

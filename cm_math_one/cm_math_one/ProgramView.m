@@ -30,6 +30,7 @@ PFObject *selectedProgram;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.programTable.estimatedRowHeight = 220.0;
     self.programTable.rowHeight = UITableViewAutomaticDimension;
+    self.searchInput.delegate = self;
     
     //styling
     UIImage *img = [UIImage imageNamed:@"search48"];
@@ -61,6 +62,22 @@ PFObject *selectedProgram;
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
+- (IBAction)searchButtonTap:(UIButton *)sender {
+    if (self.searchInput.text.length >1)
+    {
+        NSString *search_str = self.searchInput.text.lowercaseString;
+        NSArray *wordsAndEmptyStrings = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+        [self doSearchWithArray:words];
+    }
+    [self.searchInput resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    if (textField == self.searchInput) [self resetSearch];
+    return YES;
+}
 
 #pragma mark - TableView
 
@@ -114,7 +131,21 @@ PFObject *selectedProgram;
 
 #pragma mark - Data
 
-- (IBAction)searchButtonTap:(UIButton *)sender {
+- (void)resetSearch
+{
+    NSLog(@"Search reset called");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getProgram:self ofType:0 withOrder:0 forEvent:event];
+}
+
+- (void)doSearchWithArray: (NSArray *)searchArray
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getProgram:self ofType:0 withOrder:0 withSearch:searchArray forEvent:event];
 }
 
 - (void)processData: (NSArray *) results
