@@ -212,7 +212,7 @@ NSMutableArray *totalEventArray;
     }
 }
 
-- (BOOL) checkIfStringArray: (NSArray *)array containsString: (NSString *) string
+- (BOOL) checkIfStringArray: (NSArray *)array containsString: (NSString *) string  //utility method
 {
     for (NSString *str in array)
     {

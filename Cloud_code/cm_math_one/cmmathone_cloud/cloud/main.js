@@ -139,6 +139,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
     var user_mailswitch = request.object.get("email_status");
     var user_chatswitch = request.object.get("chat_status");
     var user_eventswitch = request.object.get("event_status");
+    var user_events = request.object.get("events");
        
     //see if theres already a person with the same email
     var Person = Parse.Object.extend("Person");
@@ -162,6 +163,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
                 person_obj.set("email_status", user_mailswitch);
                 person_obj.set("chat_status", user_chatswitch);
                 person_obj.set("event_status", user_eventswitch);
+                person_obj.set("events", user_events);
                 person_obj.save();
                 console.log("Existing Person updated");
             }
@@ -179,6 +181,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
                 person_obj.set("email_status", user_mailswitch);
                 person_obj.set("chat_status", user_chatswitch);
                 person_obj.set("event_status", user_eventswitch);
+                person_obj.set("events", user_events);
                 person_obj.save();
                 console.log("New Person created");
             }

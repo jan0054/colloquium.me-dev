@@ -17,6 +17,7 @@
 @end
 
 PFUser *admin;
+PFObject *currentEvent;
 NSMutableArray *newsArray;
 
 @implementation OverviewView
@@ -45,12 +46,24 @@ NSMutableArray *newsArray;
 }
 
 - (IBAction)organizerButtonTap:(UIButton *)sender {
-    NSString *mail = admin[@"email"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mail]];
+    NSString *mailstr = [NSString stringWithFormat:@"mailto://%@", admin[@"email"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailstr]];
 }
 
 - (IBAction)attendanceSwitchChanged:(UISwitch *)sender {
-
+    if (![PFUser currentUser])
+    {
+        [[[UIAlertView alloc] initWithTitle:@"You need a user account"
+                                    message:@"Please log in first"
+                                   delegate:nil
+                          cancelButtonTitle:@"Done"
+                          otherButtonTitles:nil] show];
+        self.attendanceSwitch.on = NO;
+    }
+    else
+    {
+        [self changeAttendanceTo:self.attendanceSwitch.on];
+    }
 }
 
 #pragma mark - TableView
@@ -88,6 +101,7 @@ NSMutableArray *newsArray;
     NSString *content = object[@"content"];
     NSString *organizer = object[@"organizer"];
     admin = object[@"admin"];
+    currentEvent = object;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
@@ -120,16 +134,47 @@ NSMutableArray *newsArray;
     }];
 }
 
-- (void)setupAttendance
+- (void)setupAttendance  //determine initial position for the attendance switch
 {
-    if (![PFUser currentUser])
+    if (![PFUser currentUser])  //set to no if not logged in
     {
-        self.attendanceSwitch.enabled = NO;
+        self.attendanceSwitch.on = NO;
+    }
+    else  //search the attendance array if logged in
+    {
+        PFUser *user = [PFUser currentUser];
+        NSArray *attendance = user[@"attendance"];
+        int match = 0;
+        for (PFObject *event in attendance)
+        {
+            if ([currentEvent.objectId isEqualToString:event.objectId])
+            {
+                match = 1;
+            }
+        }
+        if (match == 1)
+        {
+            //already set to attend
+            self.attendanceSwitch.on = YES;
+        }
+        else
+        {
+            //wasn't attending
+            self.attendanceSwitch.on = NO;
+        }
+    }
+}
+
+- (void)changeAttendanceTo: (BOOL)attending
+{
+    PFUser *user = [PFUser currentUser];
+    if (attending)
+    {
+        //to-do
     }
     else
     {
-        self.attendanceSwitch.enabled = YES;
-        
+        //to-do
     }
 }
 

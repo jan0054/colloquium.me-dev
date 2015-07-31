@@ -30,7 +30,8 @@ NSMutableArray *attendeeProgramArray;
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self getProgram:self forAuthor:attendee forEvent:event];
     
-    //to-do: disable email/web/chat if turned off
+    //disable email/chat if turned off, or if web link empty
+    [self checkPermissions];
 }
 
 - (void)viewDidLayoutSubviews
@@ -41,6 +42,9 @@ NSMutableArray *attendeeProgramArray;
 }
 
 - (IBAction)chatButtonTap:(UIButton *)sender {
+    //to-do: start chat with this person
+    PFUser *user = attendee[@"user"];
+    
 }
 
 - (IBAction)emailButtonTap:(UIButton *)sender {
@@ -87,6 +91,37 @@ NSMutableArray *attendeeProgramArray;
     [attendeeProgramArray removeAllObjects];
     attendeeProgramArray = [results mutableCopy];
     [self.attendeeProgramTable reloadData];
+}
+
+- (void)checkPermissions
+{
+    int email = [attendee[@"email_status"] intValue];
+    int chat = [attendee[@"chat_Status"] intValue];
+    if (email == 1)
+    {
+        self.emailButton.enabled = YES;
+    }
+    else
+    {
+        self.emailButton.enabled = NO;
+    }
+    if (chat == 1)
+    {
+        self.chatButton.enabled = YES;
+    }
+    else
+    {
+        self.chatButton.enabled = NO;
+    }
+    NSString *link = attendee[@"link"];
+    if (link.length >=1)
+    {
+        self.websiteButton.enabled = YES;
+    }
+    else
+    {
+        self.websiteButton.enabled = NO;
+    }
 }
 
 @end
