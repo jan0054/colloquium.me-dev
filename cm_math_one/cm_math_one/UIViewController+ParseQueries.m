@@ -64,7 +64,7 @@
     [query whereKey:@"events" containsAllObjectsInArray:@[event]];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Person query without search, success with results: %lu", (unsigned long)[objects count]);
+        NSLog(@"Person query without search, success with results: %lu, for event: %@", (unsigned long)[objects count], event.objectId);
         [caller processData:objects];
     }];
 }

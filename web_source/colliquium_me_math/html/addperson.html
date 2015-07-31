@@ -47,6 +47,18 @@
 				newItem.set("institution", person_institution.value);
 				newItem.set("email", person_email.value);
 				newItem.set("link", person_webpage.value);
+				selected = new Array();
+  				for (var i = 0; i < person_events.options.length; i++)
+  				{
+    				if (person_events.options[i].selected)
+    				{
+    					Event = Parse.Object.extend("Event");
+						var event = new Event();
+						event.id = person_events.options[i].value
+      					selected.push(event);
+      				}
+      			}
+				newItem.set("events", selected);
 				newItem.save(null, {
 				success: function(newItem){
 					window.location.reload();
@@ -90,6 +102,10 @@
 			<tr>
 				<td><script>dw(STR_webpage)</script></td>
 				<td><input class="InputSize" type="text" id="person_webpage"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_event_multiple)</script></td>
+				<td width="70%"><select class="SelectSize" id="person_events" multiple><script>getAllEvent('person_events')</script></select></td>
 			</tr>
 			<tr>
 			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_person_submit" value="'+BT_add+'" onClick="addPerson();">')</script></td>

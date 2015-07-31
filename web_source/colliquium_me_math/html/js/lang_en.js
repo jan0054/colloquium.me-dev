@@ -50,3 +50,4 @@ var STR_event_enddate = "End Date";
 var STR_event_organizer = "Organizer (institute or person)";
 
 var STR_event = "Event";
+var STR_event_multiple = "Events (hold shift or ctrl to select multiple)";
