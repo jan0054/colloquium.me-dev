@@ -1719,7 +1719,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="286" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AKB-je-MYk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="286" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AKB-je-MYk">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1741,7 +1741,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrv-ap-1wH">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrv-ap-1wH" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="125" width="600" height="160"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJf-3R-JFQ">
@@ -1767,11 +1767,23 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AKB-je-MYk" firstAttribute="leading" secondItem="S96-NF-g36" secondAttribute="leadingMargin" constant="-16" id="FV8-y8-vmc"/>
+                            <constraint firstItem="AKB-je-MYk" firstAttribute="top" secondItem="FoN-D9-gkv" secondAttribute="bottom" id="P7H-Hn-Hlq"/>
+                            <constraint firstItem="RiI-tp-u8Q" firstAttribute="top" secondItem="AKB-je-MYk" secondAttribute="bottom" id="X5n-G2-29w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AKB-je-MYk" secondAttribute="trailing" constant="-16" id="ZFS-wE-YiO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Wall" id="Fcg-wf-vB9">
-                        <barButtonItem key="rightBarButtonItem" title="New" id="RI3-Dp-OGI"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="RI3-Dp-OGI">
+                            <connections>
+                                <action selector="addPostButtonTap:" destination="YLd-xx-tzs" id="biQ-TH-eaK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPostButton" destination="RI3-Dp-OGI" id="EQ1-RQ-8to"/>
+                        <outlet property="timelineTable" destination="AKB-je-MYk" id="PhZ-da-mjN"/>
                         <segue destination="hK6-LT-Jyx" kind="show" identifier="timelinedetailsegue" id="hDl-yc-y0D"/>
                         <segue destination="4u0-ac-AHY" kind="show" identifier="timelinepostsegue" id="3ul-yS-agL"/>
                     </connections>
@@ -1905,7 +1917,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDE-js-ELR" customClass="SZTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDE-js-ELR" customClass="SZTextView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="227"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1914,16 +1926,16 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Share your thoughts?"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NDw-jF-Nzw">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDw-jF-Nzw">
                                 <rect key="frame" x="0.0" y="491" width="600" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkv-04-sIi">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkv-04-sIi">
                                         <rect key="frame" x="16" y="3" width="98" height="30"/>
                                         <state key="normal" title="Add Photo">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y23-60-bP7">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y23-60-bP7">
                                         <rect key="frame" x="543" y="3" width="46" height="30"/>
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1932,13 +1944,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDo-Pz-jdh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDo-Pz-jdh">
                                 <rect key="frame" x="538" y="285" width="46" height="30"/>
                                 <state key="normal" title="X">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oGK-5w-nls">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oGK-5w-nls">
                                 <rect key="frame" x="0.0" y="291" width="200" height="200"/>
                             </imageView>
                         </subviews>
@@ -2168,7 +2180,7 @@
         <!--Chat View-->
         <scene sceneID="dRE-Zg-cVb">
             <objects>
-                <viewController id="1cD-7J-3ld" customClass="ChatView" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chat_vc" id="1cD-7J-3ld" customClass="ChatView" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x1m-JC-g8c"/>
                         <viewControllerLayoutGuide type="bottom" id="bpE-1U-IQN"/>
@@ -2177,24 +2189,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2M-je-rpr">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2M-je-rpr">
                                 <rect key="frame" x="0.0" y="555" width="600" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5O-iS-Pzw">
-                                        <rect key="frame" x="528" y="8" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5O-iS-Pzw">
+                                        <rect key="frame" x="546" y="8" width="46" height="30"/>
                                         <state key="normal" title="Send">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendChatButtonTap:" destination="1cD-7J-3ld" eventType="touchUpInside" id="4P1-0Q-acz"/>
+                                        </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Epg-Kq-Vkw">
-                                        <rect key="frame" x="20" y="8" width="482" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type message here.." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Epg-Kq-Vkw">
+                                        <rect key="frame" x="8" y="8" width="482" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4q4-Sv-I5R"/>
+                                    <constraint firstAttribute="centerY" secondItem="h5O-iS-Pzw" secondAttribute="centerY" id="5By-0l-EDK"/>
+                                    <constraint firstAttribute="trailing" secondItem="h5O-iS-Pzw" secondAttribute="trailing" constant="8" id="EFK-pe-hK4"/>
+                                    <constraint firstItem="h5O-iS-Pzw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Epg-Kq-Vkw" secondAttribute="trailing" constant="8" id="Ks9-7d-B44"/>
+                                    <constraint firstItem="Epg-Kq-Vkw" firstAttribute="leading" secondItem="F2M-je-rpr" secondAttribute="leading" constant="8" id="Y1i-ia-eNc"/>
+                                    <constraint firstAttribute="centerY" secondItem="Epg-Kq-Vkw" secondAttribute="centerY" id="xlf-Zo-HQL"/>
+                                </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Q87-oz-8TJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Q87-oz-8TJ">
                                 <rect key="frame" x="0.0" y="64" width="600" height="491"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -2274,13 +2297,37 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1cD-7J-3ld" id="Hak-CP-0sT"/>
+                                    <outlet property="delegate" destination="1cD-7J-3ld" id="HeA-SM-xxa"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q87-oz-8TJ" firstAttribute="leading" secondItem="cLQ-CM-dvi" secondAttribute="leadingMargin" constant="-16" id="IB7-CX-7UU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q87-oz-8TJ" secondAttribute="trailing" constant="-16" id="Vee-U5-R6t"/>
+                            <constraint firstItem="Q87-oz-8TJ" firstAttribute="top" secondItem="x1m-JC-g8c" secondAttribute="bottom" id="Ynf-RX-0aC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F2M-je-rpr" secondAttribute="trailing" constant="-16" id="ZPO-U8-Btb"/>
+                            <constraint firstItem="F2M-je-rpr" firstAttribute="top" secondItem="Q87-oz-8TJ" secondAttribute="bottom" id="c93-Bk-T05"/>
+                            <constraint firstItem="F2M-je-rpr" firstAttribute="leading" secondItem="cLQ-CM-dvi" secondAttribute="leadingMargin" constant="-16" id="lML-gh-NlK"/>
+                            <constraint firstItem="bpE-1U-IQN" firstAttribute="top" secondItem="F2M-je-rpr" secondAttribute="bottom" id="t0S-ta-Tjy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="a4f-I6-44D">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="uiV-2e-e8n"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="uiV-2e-e8n">
+                            <connections>
+                                <action selector="editButtonTap:" destination="1cD-7J-3ld" id="BMX-Ki-K5x"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="chatTable" destination="Q87-oz-8TJ" id="vib-Jp-fxo"/>
+                        <outlet property="editButton" destination="uiV-2e-e8n" id="PVC-Sb-n7x"/>
+                        <outlet property="inputBackground" destination="F2M-je-rpr" id="FCs-eD-0d7"/>
+                        <outlet property="inputTextField" destination="Epg-Kq-Vkw" id="nNE-wR-nON"/>
+                        <outlet property="sendChatButton" destination="h5O-iS-Pzw" id="r9w-Hy-SMq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYw-Bq-xLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

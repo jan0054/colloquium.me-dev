@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface TimelineDetailView : UIViewController
+
+@property PFObject *currentPost;
+@property UIImage *currentImage;
 
 @end

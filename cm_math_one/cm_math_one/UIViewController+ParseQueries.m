@@ -15,6 +15,8 @@
 #import "ProgramForumView.h"
 #import "AttendeeDetailView.h"
 #import "AttendeeView.h"
+#import "ChatView.h"
+#import "TimelineView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -71,9 +73,17 @@
 
 #pragma mark - Timeline
 
-- (void)getPosts: (id)caller
+- (void)getPosts: (id)caller forEvent: (PFObject *)event
 {
-    
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"event" equalTo:event];
+    [query includeKey:@"author"];
+    [query setLimit:500];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Post query success: %lu", (unsigned long)[objects count]);
+        [caller processData:objects];
+    }];
 }
 
 #pragma mark - Chat
@@ -81,12 +91,13 @@
 - (void)getConversations:(id)caller withUser:(PFUser *)user
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
-    [query whereKey:@"participants" equalTo:user];
+    [query whereKey:@"participants" containsAllObjectsInArray:@[user]];
     [query includeKey:@"participants"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSLog(@"conversation query error");
         } else {
+            NSLog(@"conversation query success:%lu", (unsigned long)[objects count]);
             [caller processData:objects];
         }
     }];
@@ -152,11 +163,10 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Chat"];
     [query whereKey:@"conversation" equalTo:conversation];
     [query orderByAscending:@"createdAt"];
-    [query includeKey:@"read"];
     [query includeKey:@"author"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"chat query success with # of chats: %ld", (unsigned long)[objects count]);
-        //[caller processChatList:objects];
+        [caller processChatList:objects];
     }];
 }
 
@@ -295,6 +305,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query includeKey:@"admin"];
+    [query includeKey:@"attendees"];
     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     query.maxCacheAge = 86400;
     [query getObjectInBackgroundWithId:eventId block:^(PFObject *object, NSError *error) {

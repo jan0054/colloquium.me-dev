@@ -19,7 +19,7 @@
 - (void)getPeople: (id)caller forEvent: (PFObject *)event;
 
 //timeline
-- (void)getPosts: (id)caller;
+- (void)getPosts: (id)caller forEvent: (PFObject *)event;
 
 //chat
 - (void)getConversations: (id)caller withUser: (PFUser *)user;

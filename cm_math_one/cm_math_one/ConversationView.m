@@ -13,8 +13,12 @@
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
 #import "ConversationCell.h"
+#import "ChatView.h"
 
 NSMutableArray *conversationArray;
+PFObject *selectedConversation;
+PFUser *currentUser;
+NSMutableArray *selectedParticipants;
 
 @implementation ConversationView
 
@@ -24,9 +28,11 @@ NSMutableArray *conversationArray;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     conversationArray = [[NSMutableArray alloc] init];
+    selectedParticipants = [[NSMutableArray alloc] init];
     
     if ([PFUser currentUser])
     {
+        currentUser = [PFUser currentUser];
         [self getConversations:self withUser:[PFUser currentUser]];
     }
     else
@@ -54,7 +60,7 @@ NSMutableArray *conversationArray;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 0;
+    return [conversationArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,15 +68,34 @@ NSMutableArray *conversationArray;
     ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationcell"];
     PFObject *conversation = [conversationArray objectAtIndex:indexPath.row];
     
-    cell.timeLabel.text = @"";
-    cell.participantLabel.text = @"";
-    cell.messageLabel.text = @"";
+    NSDate *date = conversation[@"last_time"];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat: @"MMM-d HH:mm"];
+    NSString *dateString = [dateFormat stringFromDate:date];
+    
+    NSArray *participants = conversation[@"participants"];
+    NSString *name = @"";
+    for (PFUser *user in participants)
+    {
+        if (![user.objectId isEqualToString:currentUser.objectId])
+        {
+            name = [NSString stringWithFormat:@"%@, %@", name, user.username];
+        }
+    }
+    NSRange range = NSMakeRange(0, 2);
+    name = [name stringByReplacingCharactersInRange:range withString:@""];
+    
+    cell.timeLabel.text = dateString;
+    cell.participantLabel.text = name;
+    cell.messageLabel.text = conversation[@"last_msg"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self performSegueWithIdentifier:@"chatsegue" sender:self];
+    selectedConversation = [conversationArray objectAtIndex:indexPath.row];
+    selectedParticipants = selectedConversation[@"participants"];
 }
 
 #pragma mark - Data
@@ -84,7 +109,25 @@ NSMutableArray *conversationArray;
 
 - (void) noUserYet
 {
-    //to-do: ask user to sign up / log in
+    //to-do: ask user to sign up / log in then go to log in page
+    [[[UIAlertView alloc] initWithTitle:@"You need a user account"
+                                message:@"Please log in first"
+                               delegate:nil
+                      cancelButtonTitle:@"Done"
+                      otherButtonTitles:nil] show];
+    UIViewController *centerViewController;
+    centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settings_nc"];
+    [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"chatsegue"]) {
+        ChatView *controller = (ChatView *) segue.destinationViewController;
+        controller.currentConversation = selectedConversation;
+        controller.participants = selectedParticipants;
+    }
 }
 
 @end

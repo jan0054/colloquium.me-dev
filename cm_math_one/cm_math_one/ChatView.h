@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface ChatView : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *chatTable;
+@property (strong, nonatomic) IBOutlet UIView *inputBackground;
+@property (strong, nonatomic) IBOutlet UITextField *inputTextField;
+@property (strong, nonatomic) IBOutlet UIButton *sendChatButton;
+- (IBAction)sendChatButtonTap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
+- (IBAction)editButtonTap:(UIBarButtonItem *)sender;
+
+@property PFObject *currentConversation;
+@property NSMutableArray *participants;
+
+//data
+- (void) processChatUploadWithConversation: (PFObject *)conversation withContent: (NSString *)content;
+- (void)processChatList: (NSArray *)results;
 
 @end

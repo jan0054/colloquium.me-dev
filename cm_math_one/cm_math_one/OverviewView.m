@@ -29,11 +29,16 @@ NSMutableArray *newsArray;
     [self setupLeftMenuButton];
     newsArray = [[NSMutableArray alloc] init];
 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     [self getEvent:self withId:eventid];
     [self getNewsFromEventId:eventid];
-    [self setupAttendance];
 }
 
 - (void)setupLeftMenuButton {
@@ -117,6 +122,9 @@ NSMutableArray *newsArray;
     self.contentLabel.text = content;
     [self.organizerButton setTitle:organizer forState:UIControlStateNormal];
     self.attendanceLabel.text = @"I am attending this event:";
+    
+    //followup stuff now that we have the event
+    [self setupAttendance];
 }
 
 - (void)getNewsFromEventId: (NSString *)eventId
@@ -147,19 +155,23 @@ NSMutableArray *newsArray;
         int match = 0;
         for (PFObject *event in attendance)
         {
+
             if ([currentEvent.objectId isEqualToString:event.objectId])
             {
                 match = 1;
+                NSLog(@"attendance match found");
             }
         }
         if (match == 1)
         {
             //already set to attend
+            NSLog(@"Setting switch to ON");
             self.attendanceSwitch.on = YES;
         }
         else
         {
             //wasn't attending
+            NSLog(@"Nothing found, switch set to OFF");
             self.attendanceSwitch.on = NO;
         }
     }
@@ -170,11 +182,19 @@ NSMutableArray *newsArray;
     PFUser *user = [PFUser currentUser];
     if (attending)
     {
-        //to-do
+        [user addObject:currentEvent forKey:@"attendance"];
+        [user saveInBackground];
+        [currentEvent addObject:user forKey:@"attendees"];
+        [currentEvent saveInBackground];
+        NSLog(@"Event attend set: %@", currentEvent.objectId);
     }
     else
     {
-        //to-do
+        [user removeObject:currentEvent forKey:@"attendance"];
+        [user saveInBackground];
+        [currentEvent removeObject:user forKey:@"attendees"];
+        [currentEvent saveInBackground];
+        NSLog(@"Event attend canceled: %@", currentEvent.objectId);
     }
 }
 

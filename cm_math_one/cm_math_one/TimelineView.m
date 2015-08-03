@@ -12,11 +12,41 @@
 #import "UIViewController+MMDrawerController.h"
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
+#import "TimelineCell.h"
+#import "TimelineDetailView.h"
+
+NSMutableArray *postArray;
+PFObject *selectedPost;
+UIImage *selectedImage;
 
 @implementation TimelineView
+
+#pragma mark - Interface
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];
+    postArray = [[NSMutableArray alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.timelineTable.tableFooterView = [[UIView alloc] init];
+    
+    //data
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getPosts:self forEvent:event];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    //styling
+    if ([self.timelineTable respondsToSelector:@selector(layoutMargins)]) {
+        self.timelineTable.layoutMargins = UIEdgeInsetsZero;
+    }
+}
+
+- (IBAction)addPostButtonTap:(UIBarButtonItem *)sender {
+    
 }
 
 - (void)setupLeftMenuButton {
@@ -38,12 +68,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 0;
+    return [postArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"timelinecell"];
     
     
     return cell;
@@ -51,7 +81,32 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    PFObject *post = [postArray objectAtIndex:indexPath.row];
+    selectedPost = post;
+    TimelineCell *cell = (TimelineCell *) [self.timelineTable cellForRowAtIndexPath:indexPath];
+    selectedImage = cell.postImage.image;
+    [self performSegueWithIdentifier:@"timelinedetailsegue" sender:self];
 }
+
+#pragma mark - Data
+
+- (void)processData: (NSArray *) results
+{
+    [postArray removeAllObjects];
+    postArray = [results mutableCopy];
+    [self.timelineTable reloadData];
+}
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"timelinedetailsegue"]) {
+        TimelineDetailView *controller = (TimelineDetailView *) segue.destinationViewController;
+        controller.currentPost = selectedPost;
+        controller.currentImage = selectedImage;
+    }
+}
+
 
 @end
