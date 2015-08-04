@@ -11,7 +11,16 @@
 
 @interface TimelineDetailView : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *commentTable;
+@property (strong, nonatomic) IBOutlet UIView *inputBackgroundView;
+@property (strong, nonatomic) IBOutlet UITextField *inputTextField;
+@property (strong, nonatomic) IBOutlet UIButton *sendButton;
+- (IBAction)sendButtonTap:(UIButton *)sender;
+
 @property PFObject *currentPost;
 @property UIImage *currentImage;
+
+- (void)processData: (NSArray *) results;
+- (void)commentPostedCallback;
 
 @end

@@ -20,6 +20,8 @@
 
 //timeline
 - (void)getPosts: (id)caller forEvent: (PFObject *)event;
+- (void)getComments: (id)caller forPost: (PFObject *)post;
+- (void)sendComment: (id)caller forPost: (PFObject *)post withContent: (NSString *)content withAuthor: (PFUser *)author;
 
 //chat
 - (void)getConversations: (id)caller withUser: (PFUser *)user;
@@ -39,6 +41,7 @@
 - (void)getEventsFromLocalList: (id)caller;
 - (void)getEvent: (id)caller withId: (NSString *)eventId;
 - (void)updateEventList: (id)caller forPerson: (PFObject *) person withList: (NSArray *) events;
+- (void)getAnnouncements: (id)caller forEvent: (PFObject *)event;
 
 //local
 - (void)updateUserPreference: (id)caller forUser: (PFUser *)user;

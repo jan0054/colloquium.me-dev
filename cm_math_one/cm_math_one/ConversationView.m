@@ -17,7 +17,7 @@
 
 NSMutableArray *conversationArray;
 PFObject *selectedConversation;
-PFUser *currentUser;
+PFUser *selfUser;
 NSMutableArray *selectedParticipants;
 
 @implementation ConversationView
@@ -32,8 +32,8 @@ NSMutableArray *selectedParticipants;
     
     if ([PFUser currentUser])
     {
-        currentUser = [PFUser currentUser];
-        [self getConversations:self withUser:[PFUser currentUser]];
+        selfUser = [PFUser currentUser];
+        [self getConversations:self withUser:selfUser];
     }
     else
     {
@@ -77,7 +77,7 @@ NSMutableArray *selectedParticipants;
     NSString *name = @"";
     for (PFUser *user in participants)
     {
-        if (![user.objectId isEqualToString:currentUser.objectId])
+        if (![user.objectId isEqualToString:selfUser.objectId])
         {
             name = [NSString stringWithFormat:@"%@, %@", name, user.username];
         }

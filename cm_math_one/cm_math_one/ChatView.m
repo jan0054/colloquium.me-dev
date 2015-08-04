@@ -15,7 +15,7 @@
 #import "ChatMeCell.h"
 
 NSMutableArray *chatArray;
-PFUser *currentUser;
+PFUser *loggedinUser;
 
 @implementation ChatView
 @synthesize currentConversation;
@@ -28,7 +28,7 @@ PFUser *currentUser;
     chatArray = [[NSMutableArray alloc] init];
     if ([PFUser currentUser])
     {
-        currentUser = [PFUser currentUser];
+        loggedinUser = [PFUser currentUser];
     }
 
     //styling
@@ -40,7 +40,7 @@ PFUser *currentUser;
 - (IBAction)sendChatButtonTap:(UIButton *)sender {
     if (self.inputTextField.text.length >=1)
     {
-        [self sendChat:self withAuthor:currentUser withContent:self.inputTextField.text withConversation:currentConversation];
+        [self sendChat:self withAuthor:loggedinUser withContent:self.inputTextField.text withConversation:currentConversation];
     }
 }
 
@@ -81,7 +81,7 @@ PFUser *currentUser;
     NSString *contentString = chat[@"content"];
     BOOL theySaid;
     
-    if ([author.objectId isEqualToString:currentUser.objectId])
+    if ([author.objectId isEqualToString:loggedinUser.objectId])
     {
         theySaid = NO;
     }
@@ -139,7 +139,7 @@ PFUser *currentUser;
 {
     NSLog(@"received chat upload callback, sending push");
     
-    NSString *pushstr = [NSString stringWithFormat:@"%@: %@",currentUser.username,content];
+    NSString *pushstr = [NSString stringWithFormat:@"%@: %@",loggedinUser.username,content];
     NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
                           pushstr, @"alert",
                           @"Increment", @"badge",

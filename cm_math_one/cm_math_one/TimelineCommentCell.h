@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TimelineCommentCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *authorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end

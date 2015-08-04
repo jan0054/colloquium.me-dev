@@ -25,5 +25,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *newsTable;
 
 - (void)processEvent: (PFObject *) object;
+- (void)processData: (NSArray *) results;
 
 @end

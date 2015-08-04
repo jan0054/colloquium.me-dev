@@ -38,7 +38,6 @@ NSMutableArray *newsArray;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     [self getEvent:self withId:eventid];
-    [self getNewsFromEventId:eventid];
 }
 
 - (void)setupLeftMenuButton {
@@ -99,7 +98,7 @@ NSMutableArray *newsArray;
 
 #pragma mark - Data
 
-- (void)processEvent: (PFObject *) object
+- (void)processEvent: (PFObject *) object  //callback for the event query
 {
     //data source
     NSString *name = object[@"name"];
@@ -125,21 +124,14 @@ NSMutableArray *newsArray;
     
     //followup stuff now that we have the event
     [self setupAttendance];
+    [self getAnnouncements:self forEvent:currentEvent];
 }
 
-- (void)getNewsFromEventId: (NSString *)eventId
+- (void)processData: (NSArray *) results  //callback for the news/announcement query
 {
-    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventId];
-    PFQuery *query = [PFQuery queryWithClassName:@"Announcement"];
-    [query includeKey:@"author"];
-    [query whereKey:@"event" equalTo:event];
-    query.cachePolicy = kPFCachePolicyNetworkElseCache;
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu announcements for event", (unsigned long)objects.count);
-        [newsArray removeAllObjects];
-        newsArray = [objects mutableCopy];
-        [self.newsTable reloadData];
-    }];
+    [newsArray removeAllObjects];
+    newsArray = [results mutableCopy];
+    [self.newsTable reloadData];
 }
 
 - (void)setupAttendance  //determine initial position for the attendance switch
@@ -177,7 +169,7 @@ NSMutableArray *newsArray;
     }
 }
 
-- (void)changeAttendanceTo: (BOOL)attending
+- (void)changeAttendanceTo: (BOOL)attending  //change attendance status on backend
 {
     PFUser *user = [PFUser currentUser];
     if (attending)

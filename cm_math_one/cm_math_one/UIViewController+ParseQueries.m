@@ -17,6 +17,7 @@
 #import "AttendeeView.h"
 #import "ChatView.h"
 #import "TimelineView.h"
+#import "TimelineDetailView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -83,6 +84,39 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Post query success: %lu", (unsigned long)[objects count]);
         [caller processData:objects];
+    }];
+}
+
+- (void)getComments: (id)caller forPost: (PFObject *)post
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"post" equalTo:post];
+    [query includeKey:@"author"];
+    [query setLimit:500];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Comment query success: %lu", (unsigned long)[objects count]);
+        [caller processData:objects];
+    }];
+}
+
+- (void)sendComment: (id)caller forPost: (PFObject *)post withContent: (NSString *)content withAuthor: (PFUser *)author
+{
+    PFObject *comment = [PFObject objectWithClassName:@"Comment"];
+    comment[@"content"] = content;
+    comment[@"author"] = author;
+    comment[@"post"] = post;
+    [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"Successfully published new comment");
+            [caller commentPostedCallback];
+        }
+        else
+        {
+            NSLog(@"Error posting comment: %@ %@", error, [error userInfo]);
+        }
     }];
 }
 
@@ -318,6 +352,19 @@
 {
     person[@"events"] = events;
     [person saveInBackground];
+}
+
+- (void)getAnnouncements: (id)caller forEvent: (PFObject *)event
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Announcement"];
+    [query includeKey:@"author"];
+    [query orderByAscending:@"createAt"];
+    [query whereKey:@"event" equalTo:event];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu announcements for event", (unsigned long)objects.count);
+        [caller processData:objects];
+    }];
 }
 
 #pragma mark - Local

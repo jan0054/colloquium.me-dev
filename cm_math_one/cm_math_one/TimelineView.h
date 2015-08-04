@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addPostButton;
 - (IBAction)addPostButtonTap:(UIBarButtonItem *)sender;
 
+- (void)processData: (NSArray *) results;
 
 @end

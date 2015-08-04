@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TimelineDetailImageCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIImageView *postImage;
 
 @end
