@@ -82,7 +82,7 @@ NSMutableArray *commentArray;
         if (indexPath.row == 0)
         {
             PFUser *postAuthor = currentPost[@"author"];
-            NSDate *date = currentPost[@"createdAt"];
+            NSDate *date = currentPost.createdAt;
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat: @"MMM-d HH:mm"];
             NSString *dateString = [dateFormat stringFromDate:date];
@@ -103,7 +103,7 @@ NSMutableArray *commentArray;
     {
         PFObject *comment = [commentArray objectAtIndex:indexPath.row];
         PFUser *author = comment[@"author"];
-        NSDate *date = comment[@"createdAt"];
+        NSDate *date = comment.createdAt;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat: @"MMM-d HH:mm"];
         NSString *dateString = [dateFormat stringFromDate:date];

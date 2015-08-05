@@ -22,6 +22,7 @@
 - (void)getPosts: (id)caller forEvent: (PFObject *)event;
 - (void)getComments: (id)caller forPost: (PFObject *)post;
 - (void)sendComment: (id)caller forPost: (PFObject *)post withContent: (NSString *)content withAuthor: (PFUser *)author;
+- (void)sentPost: (id)caller withAuthor: (PFUser *)author withContent: (NSString *)content withImage: (PFFile *)image forEvent: (PFObject *)event;
 
 //chat
 - (void)getConversations: (id)caller withUser: (PFUser *)user;

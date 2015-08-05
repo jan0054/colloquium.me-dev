@@ -18,6 +18,7 @@
 #import "ChatView.h"
 #import "TimelineView.h"
 #import "TimelineDetailView.h"
+#import "TimelinePostView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -116,6 +117,25 @@
         else
         {
             NSLog(@"Error posting comment: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+- (void)sentPost: (id)caller withAuthor: (PFUser *)author withContent: (NSString *)content withImage: (PFFile *)image forEvent: (PFObject *)event
+{
+    PFObject *post = [PFObject objectWithClassName:@"Post"];
+    post[@"author"] = author;
+    post[@"content"] = content;
+    post[@"image"] = image;
+    
+    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"Successfully published new post");
+        }
+        else
+        {
+            NSLog(@"Error posting comment: %@", error);
         }
     }];
 }

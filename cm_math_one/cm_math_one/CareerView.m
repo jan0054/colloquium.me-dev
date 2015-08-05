@@ -12,12 +12,16 @@
 #import "UIViewController+MMDrawerController.h"
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
+#import "CareerCell.h"
+
+NSMutableArray *careerArray;
 
 @implementation CareerView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupLeftMenuButton];
+    careerArray = [[NSMutableArray alloc] init];
 }
 
 - (void)setupLeftMenuButton {
@@ -27,6 +31,10 @@
 
 - (void)leftDrawerButtonPress:(id)leftDrawerButtonPress {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (IBAction)addCareerButtonTap:(UIBarButtonItem *)sender {
+
 }
 
 #pragma mark - TableView
@@ -39,12 +47,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 0;
+    return [careerArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    CareerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"careercell"];
     
     
     return cell;
@@ -52,7 +60,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self performSegueWithIdentifier:@"careerdetailsegue" sender:self];
 }
+
 
 @end

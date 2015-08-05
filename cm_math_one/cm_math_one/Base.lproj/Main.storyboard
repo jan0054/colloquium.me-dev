@@ -1970,12 +1970,18 @@
                                         <state key="normal" title="Add Photo">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addPhotoButtonTap:" destination="4u0-ac-AHY" eventType="touchUpInside" id="fzj-Ze-tho"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y23-60-bP7">
                                         <rect key="frame" x="543" y="3" width="46" height="30"/>
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="keyboardButtonTap:" destination="4u0-ac-AHY" eventType="touchUpInside" id="wEx-2a-UCi"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1985,6 +1991,9 @@
                                 <state key="normal" title="X">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelPhotoButtonTap:" destination="4u0-ac-AHY" eventType="touchUpInside" id="qjW-uy-Yh8"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oGK-5w-nls">
                                 <rect key="frame" x="0.0" y="291" width="200" height="200"/>
@@ -1993,8 +2002,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Post" id="PcR-6E-m1f">
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="qgF-Fz-hwI"/>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="qgF-Fz-hwI">
+                            <connections>
+                                <action selector="sendPostButtonTap:" destination="4u0-ac-AHY" id="APk-Ax-SIQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addPhotoButton" destination="rkv-04-sIi" id="lsF-oL-Nca"/>
+                        <outlet property="cancelPhotoButton" destination="lDo-Pz-jdh" id="dcs-KL-dZS"/>
+                        <outlet property="horizontalBarBackground" destination="NDw-jF-Nzw" id="HLb-ym-A6O"/>
+                        <outlet property="inputTextView" destination="fDE-js-ELR" id="NZv-hm-wFw"/>
+                        <outlet property="keyboardButton" destination="y23-60-bP7" id="8Zr-tY-rbW"/>
+                        <outlet property="postImageView" destination="oGK-5w-nls" id="cVP-48-jPz"/>
+                        <outlet property="sendPostButton" destination="qgF-Fz-hwI" id="MWY-y3-BJM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMO-NQ-a7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2470,16 +2492,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fD4-WB-bRH" firstAttribute="leading" secondItem="XLR-D7-NdW" secondAttribute="leadingMargin" constant="-16" id="401-kj-AlY"/>
+                            <constraint firstItem="qhP-Ns-aZQ" firstAttribute="top" secondItem="fD4-WB-bRH" secondAttribute="bottom" id="NX5-mF-GW6"/>
                             <constraint firstItem="qhP-Ns-aZQ" firstAttribute="top" secondItem="fD4-WB-bRH" secondAttribute="bottom" id="a6j-u3-HYY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fD4-WB-bRH" secondAttribute="trailing" constant="-16" id="akX-qS-a2L"/>
+                            <constraint firstItem="fD4-WB-bRH" firstAttribute="top" secondItem="Zh6-2g-NOF" secondAttribute="bottom" id="cP2-bB-bta"/>
                             <constraint firstItem="fD4-WB-bRH" firstAttribute="leading" secondItem="XLR-D7-NdW" secondAttribute="leadingMargin" constant="-16" id="gaG-bB-92H"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fD4-WB-bRH" secondAttribute="trailing" constant="-16" id="mdU-GC-njB"/>
                             <constraint firstItem="fD4-WB-bRH" firstAttribute="top" secondItem="Zh6-2g-NOF" secondAttribute="bottom" id="xyY-Sd-G2r"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Career" id="Jc5-Ne-ZH7">
-                        <barButtonItem key="rightBarButtonItem" title="New" id="lh1-SS-rdy"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="lh1-SS-rdy">
+                            <connections>
+                                <action selector="addCareerButtonTap:" destination="lNG-XK-FLW" id="a2J-92-fQb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addCareerButton" destination="lh1-SS-rdy" id="hZy-Sk-rgi"/>
+                        <outlet property="careerTable" destination="fD4-WB-bRH" id="85K-OR-23R"/>
                         <segue destination="9sS-l4-fE0" kind="show" identifier="careerdetailsegue" id="1y6-qM-8B0"/>
                         <segue destination="jAn-m3-43A" kind="show" identifier="careerpostsegue" id="bst-1P-ZAz"/>
                     </connections>

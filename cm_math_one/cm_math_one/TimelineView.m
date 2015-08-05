@@ -67,15 +67,27 @@ UIImage *selectedImage;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return [postArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"timelinecell"];
-    
-    
+    PFObject *post = [postArray objectAtIndex:indexPath.row];
+    PFUser *author = post[@"author"];
+    NSDate *time = post.createdAt;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat: @"MM-dd HH:mm"];
+    NSString *timeString = [dateFormat stringFromDate:time];
+
+    cell.contentLabel.text = post[@"content"];
+    cell.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+    cell.timeLabel.text = timeString;
+    cell.postImage.clipsToBounds = YES;
+    cell.postImage.image = nil;
+    cell.postImage.file = [post objectForKey:@"image"];
+    [cell.postImage loadInBackground];
+
     return cell;
 }
 
@@ -97,7 +109,6 @@ UIImage *selectedImage;
     [self.timelineTable reloadData];
 }
 
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -107,6 +118,5 @@ UIImage *selectedImage;
         controller.currentImage = selectedImage;
     }
 }
-
 
 @end

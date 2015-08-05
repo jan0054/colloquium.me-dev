@@ -30,6 +30,8 @@
 		B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */; };
 		B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */; };
 		B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */; };
+		B45202ED1B72065E0070EBD7 /* checkevent48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */; };
+		B45202EE1B72065E0070EBD7 /* checkevent64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45202EC1B72065E0070EBD7 /* checkevent64@2x.png */; };
 		B455D75E1B4110BA00DCB6E4 /* CareerDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D75D1B4110BA00DCB6E4 /* CareerDetailView.m */; };
 		B455D7611B4112C100DCB6E4 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7601B4112C100DCB6E4 /* ChatView.m */; };
 		B455D7641B41137F00DCB6E4 /* ProgramDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7631B41137F00DCB6E4 /* ProgramDetailView.m */; };
@@ -178,6 +180,8 @@
 		B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceCell.m; sourceTree = "<group>"; };
 		B44459A61B42A12200B200D0 /* UserPreferenceInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceInputCell.h; sourceTree = "<group>"; };
 		B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceInputCell.m; sourceTree = "<group>"; };
+		B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkevent48@2x.png"; sourceTree = "<group>"; };
+		B45202EC1B72065E0070EBD7 /* checkevent64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkevent64@2x.png"; sourceTree = "<group>"; };
 		B455D75C1B4110BA00DCB6E4 /* CareerDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerDetailView.h; sourceTree = "<group>"; };
 		B455D75D1B4110BA00DCB6E4 /* CareerDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerDetailView.m; sourceTree = "<group>"; };
 		B455D75F1B4112C100DCB6E4 /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
@@ -513,6 +517,8 @@
 				B46402581B4662B80074DD72 /* career64@2x.png */,
 				B46402591B4662B80074DD72 /* chat48@2x.png */,
 				B464025A1B4662B80074DD72 /* chat64@2x.png */,
+				B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */,
+				B45202EC1B72065E0070EBD7 /* checkevent64@2x.png */,
 				B4BE91141B4BA8AA00A46E4C /* cross48@2x.png */,
 				B4BE91151B4BA8AA00A46E4C /* cross64@2x.png */,
 				B464025B1B4662B80074DD72 /* event48@2x.png */,
@@ -701,6 +707,7 @@
 				B46402931B4662B80074DD72 /* web48@2x.png in Resources */,
 				B46402731B4662B80074DD72 /* addevent48@2x.png in Resources */,
 				B455D7A51B413B7300DCB6E4 /* Icon-72@2x.png in Resources */,
+				B45202EE1B72065E0070EBD7 /* checkevent64@2x.png in Resources */,
 				B489FEB81B621A8A009BB49A /* followevent64@2x.png in Resources */,
 				B464028F1B4662B80074DD72 /* timeline48@2x.png in Resources */,
 				B464028B1B4662B80074DD72 /* program48@2x.png in Resources */,
@@ -713,6 +720,7 @@
 				B464027B1B4662B80074DD72 /* chat48@2x.png in Resources */,
 				B455D7A81B413B7300DCB6E4 /* Icon.png in Resources */,
 				B46402781B4662B80074DD72 /* cancel64@2x.png in Resources */,
+				B45202ED1B72065E0070EBD7 /* checkevent48@2x.png in Resources */,
 				B455D7A31B413B7300DCB6E4 /* Icon-60.png in Resources */,
 				B4BE91171B4BA8AA00A46E4C /* cross64@2x.png in Resources */,
 				B464028D1B4662B80074DD72 /* setting48@2x.png in Resources */,

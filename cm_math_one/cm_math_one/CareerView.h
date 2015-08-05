@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CareerView : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *careerTable;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addCareerButton;
+- (IBAction)addCareerButtonTap:(UIBarButtonItem *)sender;
 
 @end

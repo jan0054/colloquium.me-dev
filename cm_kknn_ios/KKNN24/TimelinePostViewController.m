@@ -47,7 +47,6 @@ BOOL photo_is_set;
     [self.dismiss_keyboard_button setImage:key_img forState:UIControlStateNormal];
     [self.dismiss_keyboard_button setImage:key_img forState:UIControlStateSelected];
 
-
     //init
     self.cancel_image_button.hidden = YES;
     self.cancel_image_button.userInteractionEnabled = NO;
@@ -122,7 +121,7 @@ BOOL photo_is_set;
         PFFile *imageFile = [PFFile fileWithName:[self generate_filename] data:imageData];
         post[@"image"] = imageFile;
     }
-
+    
     [post saveInBackground];
 }
 

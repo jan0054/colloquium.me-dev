@@ -35,6 +35,4 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottom_bar_height;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *image_to_bottom_bar;
 
-
-
 @end
