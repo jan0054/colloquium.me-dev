@@ -53,4 +53,7 @@
 - (void)getForum: (id)caller forProgram: (PFObject *)program;
 - (void)postForum: (id)caller forProgram: (PFObject *)program withContent: (NSString *)content withAuthor: (PFUser *)author;
 
+//career
+- (void)getCareer: (id)caller;
+
 @end

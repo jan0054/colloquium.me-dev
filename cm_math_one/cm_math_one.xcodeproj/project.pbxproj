@@ -32,7 +32,6 @@
 		B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */; };
 		B45202ED1B72065E0070EBD7 /* checkevent48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */; };
 		B45202EE1B72065E0070EBD7 /* checkevent64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45202EC1B72065E0070EBD7 /* checkevent64@2x.png */; };
-		B455D75E1B4110BA00DCB6E4 /* CareerDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D75D1B4110BA00DCB6E4 /* CareerDetailView.m */; };
 		B455D7611B4112C100DCB6E4 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7601B4112C100DCB6E4 /* ChatView.m */; };
 		B455D7641B41137F00DCB6E4 /* ProgramDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7631B41137F00DCB6E4 /* ProgramDetailView.m */; };
 		B455D7671B41139400DCB6E4 /* TimelineDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7661B41139400DCB6E4 /* TimelineDetailView.m */; };
@@ -96,6 +95,7 @@
 		B46402921B4662B80074DD72 /* venue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402701B4662B80074DD72 /* venue64@2x.png */; };
 		B46402931B4662B80074DD72 /* web48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402711B4662B80074DD72 /* web48@2x.png */; };
 		B46402941B4662B80074DD72 /* web64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402721B4662B80074DD72 /* web64@2x.png */; };
+		B481BB8D1B73542A00FC9133 /* CareerDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B481BB8C1B73542A00FC9133 /* CareerDetailTableViewController.m */; };
 		B484678A1B68C79000C1A563 /* FullScreenTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B48467891B68C79000C1A563 /* FullScreenTextView.m */; };
 		B487C8F41B5F8BB7005F211E /* OverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = B487C8F31B5F8BB7005F211E /* OverviewView.m */; };
 		B489FEB41B621688009BB49A /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B489FEB31B621688009BB49A /* HomeView.m */; };
@@ -182,8 +182,6 @@
 		B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceInputCell.m; sourceTree = "<group>"; };
 		B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkevent48@2x.png"; sourceTree = "<group>"; };
 		B45202EC1B72065E0070EBD7 /* checkevent64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkevent64@2x.png"; sourceTree = "<group>"; };
-		B455D75C1B4110BA00DCB6E4 /* CareerDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerDetailView.h; sourceTree = "<group>"; };
-		B455D75D1B4110BA00DCB6E4 /* CareerDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerDetailView.m; sourceTree = "<group>"; };
 		B455D75F1B4112C100DCB6E4 /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
 		B455D7601B4112C100DCB6E4 /* ChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
 		B455D7621B41137F00DCB6E4 /* ProgramDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailView.h; sourceTree = "<group>"; };
@@ -266,6 +264,8 @@
 		B46402701B4662B80074DD72 /* venue64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "venue64@2x.png"; sourceTree = "<group>"; };
 		B46402711B4662B80074DD72 /* web48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web48@2x.png"; sourceTree = "<group>"; };
 		B46402721B4662B80074DD72 /* web64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web64@2x.png"; sourceTree = "<group>"; };
+		B481BB8B1B73542A00FC9133 /* CareerDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerDetailTableViewController.h; sourceTree = "<group>"; };
+		B481BB8C1B73542A00FC9133 /* CareerDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerDetailTableViewController.m; sourceTree = "<group>"; };
 		B48467881B68C79000C1A563 /* FullScreenTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenTextView.h; sourceTree = "<group>"; };
 		B48467891B68C79000C1A563 /* FullScreenTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenTextView.m; sourceTree = "<group>"; };
 		B487C8F21B5F8BB7005F211E /* OverviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewView.h; sourceTree = "<group>"; };
@@ -394,8 +394,8 @@
 				B455D7751B4117C200DCB6E4 /* ChatOptions.m */,
 				B4BFB4ED1B3172090035309E /* CareerView.h */,
 				B4BFB4EE1B3172090035309E /* CareerView.m */,
-				B455D75C1B4110BA00DCB6E4 /* CareerDetailView.h */,
-				B455D75D1B4110BA00DCB6E4 /* CareerDetailView.m */,
+				B481BB8B1B73542A00FC9133 /* CareerDetailTableViewController.h */,
+				B481BB8C1B73542A00FC9133 /* CareerDetailTableViewController.m */,
 				B455D7711B41178600DCB6E4 /* CareerPostView.h */,
 				B455D7721B41178600DCB6E4 /* CareerPostView.m */,
 				B41755F71B301A9800E1E8A5 /* SettingsView.h */,
@@ -803,6 +803,7 @@
 				B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */,
 				B455D77C1B41229700DCB6E4 /* TimelineCommentCell.m in Sources */,
 				B41756161B30310400E1E8A5 /* NewsView.m in Sources */,
+				B481BB8D1B73542A00FC9133 /* CareerDetailTableViewController.m in Sources */,
 				B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */,
 				B455D7AE1B413D4600DCB6E4 /* CareerPostCell.m in Sources */,
 				B4BFB4F21B31740C0035309E /* SettingUserCell.m in Sources */,
@@ -827,7 +828,6 @@
 				B4BFB5291B3182030035309E /* ChatMeCell.m in Sources */,
 				B48A4B1B1B3AB79700250BFF /* UserPreferenceView.m in Sources */,
 				B4BFB50B1B31810E0035309E /* VenueCell.m in Sources */,
-				B455D75E1B4110BA00DCB6E4 /* CareerDetailView.m in Sources */,
 				B455D7971B4137B500DCB6E4 /* CareerDetailCell.m in Sources */,
 				B455D7911B41330900DCB6E4 /* NewsDetailTextCell.m in Sources */,
 				B4BFB5141B31814A0035309E /* NewsCell.m in Sources */,

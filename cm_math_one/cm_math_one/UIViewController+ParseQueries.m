@@ -19,6 +19,7 @@
 #import "TimelineView.h"
 #import "TimelineDetailView.h"
 #import "TimelinePostView.h"
+#import "CareerView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -468,6 +469,20 @@
         {
             NSLog(@"Forum post error");
         }
+    }];
+}
+
+#pragma mark - Career
+
+- (void)getCareer: (id)caller
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Career"];
+    [query includeKey:@"author"];
+    [query orderByDescending:@"createdAt"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu career entries", (unsigned long)objects.count);
+        [caller processData:objects];
     }];
 }
 

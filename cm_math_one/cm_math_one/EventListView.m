@@ -94,7 +94,7 @@ NSMutableArray *totalEventArray;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    [dateFormat setDateFormat: @"MMM-d HH:mm"];
+    [dateFormat setDateFormat: @"MMM-d"];
     NSDate *sdate = event[@"start_time"];
     NSDate *edate = event[@"end_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];
@@ -111,6 +111,10 @@ NSMutableArray *totalEventArray;
     cell.nameLabel.backgroundColor = [UIColor clearColor];
     cell.contentLabel.backgroundColor = [UIColor clearColor];
     cell.organizerLabel.backgroundColor = [UIColor clearColor];
+    [cell.selectedImage setTintColor:[UIColor dark_accent]];
+    UIImage *img = [UIImage imageNamed:@"checkevent48"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    cell.selectedImage.image = img;
     
     return cell;
 }

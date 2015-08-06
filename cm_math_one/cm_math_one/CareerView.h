@@ -13,4 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addCareerButton;
 - (IBAction)addCareerButtonTap:(UIBarButtonItem *)sender;
 
+- (void)processData: (NSArray *) results;
+
 @end

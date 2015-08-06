@@ -13,5 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *organizerLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *contentLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *selectedImage;
+
 @property NSString *eventId;
 @end
