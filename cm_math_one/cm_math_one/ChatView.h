@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface ChatView : UIViewController
+@interface ChatView : UIViewController<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *chatTable;
 @property (strong, nonatomic) IBOutlet UIView *inputBackground;
 @property (strong, nonatomic) IBOutlet UITextField *inputTextField;
@@ -20,6 +20,7 @@
 
 @property PFObject *currentConversation;
 @property NSMutableArray *participants;
+@property UIRefreshControl *pullrefresh;
 
 //data
 - (void) processChatUploadWithConversation: (PFObject *)conversation withContent: (NSString *)content;

@@ -164,6 +164,7 @@
     chat[@"content"] = content;
     chat[@"author"] = user;
     chat[@"conversation"] = conversation;
+    chat[@"broadcast"] = @0;
     [chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
@@ -171,7 +172,7 @@
             conversation[@"last_time"] = [NSDate date];
             conversation[@"last_msg"] = content;
             [conversation saveInBackground];
-            //[caller processChatUploadWithConversation:conversation withContent:content];
+            [caller processChatUploadWithConversation:conversation withContent:content];
         }
         else
         {

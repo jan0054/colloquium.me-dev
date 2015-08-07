@@ -121,22 +121,45 @@ NSMutableArray *totalEventArray;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    EventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selectedImage.hidden = NO;
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    EventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selectedImage.hidden = YES;
 }
 
 #pragma mark - Data
 
-- (void)processData: (NSArray *) results
+- (void)processData: (NSArray *) results  //callback for the query to get all existing events
 {
     [totalEventArray removeAllObjects];
     totalEventArray = [results mutableCopy];
     [self.eventTable reloadData];
     [self selectExistingEvents];
+}
+
+- (void) selectExistingEvents   //check local storage for saved events and set them to selected in the tableview
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *eventIds = [defaults objectForKey:@"eventIds"];
+    
+    for (NSInteger i = 0; i < [self.eventTable numberOfRowsInSection:0]; ++i)
+    {
+        EventCell *cell = (EventCell *)[self.eventTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        NSString *eid = cell.eventId;
+        if ([self checkIfStringArray:eventIds containsString:eid])
+        {
+            [self.eventTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+            cell.selectedImage.hidden = NO;
+        }
+        else
+        {
+            cell.selectedImage.hidden = YES;
+        }
+    }
 }
 
 - (void) saveEventList: (NSArray *)selectedIndexPaths
@@ -200,21 +223,6 @@ NSMutableArray *totalEventArray;
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
-- (void) selectExistingEvents   //check local storage for saved events and set them to selected in the tableview
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *eventIds = [defaults objectForKey:@"eventIds"];
-    
-    for (NSInteger i = 0; i < [self.eventTable numberOfRowsInSection:0]; ++i)
-    {
-        EventCell *cell = (EventCell *)[self.eventTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        NSString *eid = cell.eventId;
-        if ([self checkIfStringArray:eventIds containsString:eid])
-        {
-            [self.eventTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-        }
-    }
-}
 
 - (BOOL) checkIfStringArray: (NSArray *)array containsString: (NSString *) string  //utility method
 {

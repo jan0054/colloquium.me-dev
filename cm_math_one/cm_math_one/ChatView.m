@@ -7,12 +7,12 @@
 //
 
 #import "ChatView.h"
-#import <Parse/Parse.h>
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
 #import "ChatBroadcastCell.h"
 #import "ChatYouCell.h"
 #import "ChatMeCell.h"
+#import "ChatOptions.h"
 
 NSMutableArray *chatArray;
 PFUser *loggedinUser;
@@ -20,6 +20,7 @@ PFUser *loggedinUser;
 @implementation ChatView
 @synthesize currentConversation;
 @synthesize participants;
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -30,11 +31,13 @@ PFUser *loggedinUser;
     {
         loggedinUser = [PFUser currentUser];
     }
-
+    self.inputTextField.delegate = self;
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.chatTable addSubview:pullrefresh];
+    
     //styling
     
-    //data
-    [self getChat:self withConversation:self.currentConversation];
 }
 
 - (IBAction)sendChatButtonTap:(UIButton *)sender {
@@ -45,7 +48,42 @@ PFUser *loggedinUser;
 }
 
 - (IBAction)editButtonTap:(UIBarButtonItem *)sender {
-    //to-do: go to group chat options view
+    [self performSegueWithIdentifier:@"chatoptionsegue" sender:self];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    [self getChat:self withConversation:self.currentConversation];
+    [(UIRefreshControl *)sender endRefreshing];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushreload:) name:@"gotchatinapp" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    [self getChat:self withConversation:self.currentConversation];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotchatinapp" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event   //dismiss keyboard when touched outside
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.inputTextField isFirstResponder] && [touch view] != self.inputTextField) {
+        [self.inputTextField resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 #pragma mark - TableView
@@ -139,7 +177,7 @@ PFUser *loggedinUser;
 {
     NSLog(@"received chat upload callback, sending push");
     
-    NSString *pushstr = [NSString stringWithFormat:@"%@: %@",loggedinUser.username,content];
+    NSString *pushstr = [NSString stringWithFormat:@"%@ %@: %@", loggedinUser[@"first_name"], loggedinUser[@"last_name"], content];
     NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
                           pushstr, @"alert",
                           @"Increment", @"badge",
@@ -158,6 +196,75 @@ PFUser *loggedinUser;
     [self getChat:self withConversation:self.currentConversation];
     self.inputTextField.text = @"";
     self.inputTextField.placeholder = @"Type message here..";
+}
+
+- (void) pushreload: (id) sender  //in-app push receiver
+{
+    [self.currentConversation fetchIfNeededInBackground];
+    [self getChat:self withConversation:self.currentConversation];
+}
+
+#pragma mark - Keyboard
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    
+    CGFloat height = keyboardFrame.size.height;
+    
+    NSLog(@"Updating constraints: keyboard up");
+    
+    //self.textfieldbottom.constant = height+5;
+    //self.sendmessagebottom.constant = height+5;
+    //self.tablebottom.constant = height+50;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    //scroll the table to bottom row (if not empty table)
+    if ([chatArray count] >=1)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([chatArray count] - 1) inSection:0];
+        [self.chatTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    NSLog(@"Updating constraints: keyboard down");
+    
+    //self.textfieldbottom.constant = 5;
+    //self.sendmessagebottom.constant = 5;
+    //self.tablebottom.constant = 50;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+    //scroll the table to bottom row (if not empty table)
+    if ([chatArray count] >=1)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([chatArray count] - 1) inSection:0];
+        [self.chatTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"chatoptionsegue"])
+    {
+        //to-do: group chat stuff
+        ChatOptions *controller = (ChatOptions *)[segue destinationViewController];
+        //controller.data_delegate = self;
+        controller.conversation = self.currentConversation;
+        controller.receivedParticipants = self.participants;
+    }
 }
 
 @end

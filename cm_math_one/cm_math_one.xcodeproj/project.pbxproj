@@ -30,6 +30,7 @@
 		B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */; };
 		B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */; };
 		B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */; };
+		B44B81A91B74BD6100915772 /* ChatOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44B81A81B74BD6100915772 /* ChatOptionCell.m */; };
 		B45202ED1B72065E0070EBD7 /* checkevent48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */; };
 		B45202EE1B72065E0070EBD7 /* checkevent64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45202EC1B72065E0070EBD7 /* checkevent64@2x.png */; };
 		B455D7611B4112C100DCB6E4 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7601B4112C100DCB6E4 /* ChatView.m */; };
@@ -180,6 +181,8 @@
 		B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceCell.m; sourceTree = "<group>"; };
 		B44459A61B42A12200B200D0 /* UserPreferenceInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceInputCell.h; sourceTree = "<group>"; };
 		B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceInputCell.m; sourceTree = "<group>"; };
+		B44B81A71B74BD6100915772 /* ChatOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatOptionCell.h; sourceTree = "<group>"; };
+		B44B81A81B74BD6100915772 /* ChatOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatOptionCell.m; sourceTree = "<group>"; };
 		B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkevent48@2x.png"; sourceTree = "<group>"; };
 		B45202EC1B72065E0070EBD7 /* checkevent64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkevent64@2x.png"; sourceTree = "<group>"; };
 		B455D75F1B4112C100DCB6E4 /* ChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
@@ -459,6 +462,8 @@
 				B4BFB5281B3182030035309E /* ChatMeCell.m */,
 				B4BFB5021B31748E0035309E /* CareerCell.h */,
 				B4BFB5031B31748E0035309E /* CareerCell.m */,
+				B44B81A71B74BD6100915772 /* ChatOptionCell.h */,
+				B44B81A81B74BD6100915772 /* ChatOptionCell.m */,
 				B455D7951B4137B500DCB6E4 /* CareerDetailCell.h */,
 				B455D7961B4137B500DCB6E4 /* CareerDetailCell.m */,
 				B455D7AC1B413D4600DCB6E4 /* CareerPostCell.h */,
@@ -840,6 +845,7 @@
 				B4BFB4F81B3174280035309E /* SettingGenericCell.m in Sources */,
 				B455D7791B41224C00DCB6E4 /* ProgramCell.m in Sources */,
 				B417560D1B3030C400E1E8A5 /* AttendeeView.m in Sources */,
+				B44B81A91B74BD6100915772 /* ChatOptionCell.m in Sources */,
 				B417561F1B3031D400E1E8A5 /* UIViewController+ParseQueries.m in Sources */,
 				B4BFB4EC1B316D410035309E /* LoginView.m in Sources */,
 				B455D7761B4117C200DCB6E4 /* ChatOptions.m in Sources */,

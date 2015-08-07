@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface ChatOptions : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *inviteeTabel;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *leaveButton;
+- (IBAction)leaveButtonTap:(UIBarButtonItem *)sender;
+- (IBAction)inviteButtonTap:(UIButton *)sender;
+
+@property PFObject *conversation;
+@property NSMutableArray *receivedParticipants;
 
 @end
