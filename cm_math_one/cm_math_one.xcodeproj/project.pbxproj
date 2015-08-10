@@ -30,6 +30,8 @@
 		B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */; };
 		B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */; };
 		B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */; };
+		B4475A361B78AE200049559A /* ChatInviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4475A351B78AE200049559A /* ChatInviteView.m */; };
+		B4475A391B78AF5D0049559A /* ChatInviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4475A381B78AF5D0049559A /* ChatInviteCell.m */; };
 		B44B81A91B74BD6100915772 /* ChatOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44B81A81B74BD6100915772 /* ChatOptionCell.m */; };
 		B45202ED1B72065E0070EBD7 /* checkevent48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */; };
 		B45202EE1B72065E0070EBD7 /* checkevent64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45202EC1B72065E0070EBD7 /* checkevent64@2x.png */; };
@@ -181,6 +183,10 @@
 		B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceCell.m; sourceTree = "<group>"; };
 		B44459A61B42A12200B200D0 /* UserPreferenceInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceInputCell.h; sourceTree = "<group>"; };
 		B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceInputCell.m; sourceTree = "<group>"; };
+		B4475A341B78AE200049559A /* ChatInviteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInviteView.h; sourceTree = "<group>"; };
+		B4475A351B78AE200049559A /* ChatInviteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInviteView.m; sourceTree = "<group>"; };
+		B4475A371B78AF5D0049559A /* ChatInviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInviteCell.h; sourceTree = "<group>"; };
+		B4475A381B78AF5D0049559A /* ChatInviteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInviteCell.m; sourceTree = "<group>"; };
 		B44B81A71B74BD6100915772 /* ChatOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatOptionCell.h; sourceTree = "<group>"; };
 		B44B81A81B74BD6100915772 /* ChatOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatOptionCell.m; sourceTree = "<group>"; };
 		B45202EB1B72065E0070EBD7 /* checkevent48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkevent48@2x.png"; sourceTree = "<group>"; };
@@ -395,6 +401,8 @@
 				B455D7601B4112C100DCB6E4 /* ChatView.m */,
 				B455D7741B4117C200DCB6E4 /* ChatOptions.h */,
 				B455D7751B4117C200DCB6E4 /* ChatOptions.m */,
+				B4475A341B78AE200049559A /* ChatInviteView.h */,
+				B4475A351B78AE200049559A /* ChatInviteView.m */,
 				B4BFB4ED1B3172090035309E /* CareerView.h */,
 				B4BFB4EE1B3172090035309E /* CareerView.m */,
 				B481BB8B1B73542A00FC9133 /* CareerDetailTableViewController.h */,
@@ -464,6 +472,8 @@
 				B4BFB5031B31748E0035309E /* CareerCell.m */,
 				B44B81A71B74BD6100915772 /* ChatOptionCell.h */,
 				B44B81A81B74BD6100915772 /* ChatOptionCell.m */,
+				B4475A371B78AF5D0049559A /* ChatInviteCell.h */,
+				B4475A381B78AF5D0049559A /* ChatInviteCell.m */,
 				B455D7951B4137B500DCB6E4 /* CareerDetailCell.h */,
 				B455D7961B4137B500DCB6E4 /* CareerDetailCell.m */,
 				B455D7AC1B413D4600DCB6E4 /* CareerPostCell.h */,
@@ -857,7 +867,9 @@
 				B455D78E1B4132A900DCB6E4 /* AttendeeProgramCell.m in Sources */,
 				B41755F91B301A9800E1E8A5 /* SettingsView.m in Sources */,
 				B455D7641B41137F00DCB6E4 /* ProgramDetailView.m in Sources */,
+				B4475A361B78AE200049559A /* ChatInviteView.m in Sources */,
 				B4BFB4EF1B3172090035309E /* CareerView.m in Sources */,
+				B4475A391B78AF5D0049559A /* ChatInviteCell.m in Sources */,
 				B41756101B3030DC00E1E8A5 /* ProgramView.m in Sources */,
 				B455D7731B41178600DCB6E4 /* CareerPostView.m in Sources */,
 				B455D7941B41331900DCB6E4 /* NewsDetailImageCell.m in Sources */,

@@ -10,10 +10,15 @@
 #import <Parse/Parse.h>
 
 @interface ChatOptions : UIViewController
-@property (strong, nonatomic) IBOutlet UITableView *inviteeTabel;
+
+@property (strong, nonatomic) IBOutlet UITableView *inviteeTable;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *leaveButton;
 - (IBAction)leaveButtonTap:(UIBarButtonItem *)sender;
 - (IBAction)inviteButtonTap:(UIButton *)sender;
+
+- (void)processInviteeData:(NSArray *)results;  //category callback
+- (void)processAddedSuccess: (NSIndexPath *)path;  //category callback
+- (void)processLeftConversation;  //category callback
 
 @property PFObject *conversation;
 @property NSMutableArray *receivedParticipants;

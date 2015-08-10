@@ -30,6 +30,11 @@ NSMutableArray *selectedParticipants;
     conversationArray = [[NSMutableArray alloc] init];
     selectedParticipants = [[NSMutableArray alloc] init];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     if ([PFUser currentUser])
     {
         selfUser = [PFUser currentUser];
@@ -39,6 +44,7 @@ NSMutableArray *selectedParticipants;
     {
         [self noUserYet];
     }
+
 }
 
 - (void)setupLeftMenuButton {
@@ -48,6 +54,10 @@ NSMutableArray *selectedParticipants;
 
 - (void)leftDrawerButtonPress:(id)leftDrawerButtonPress {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (IBAction)addConvButtonTap:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"chatinvitesegue" sender:self];
 }
 
 #pragma mark - TableView
@@ -129,5 +139,7 @@ NSMutableArray *selectedParticipants;
         controller.participants = selectedParticipants;
     }
 }
+
+
 
 @end

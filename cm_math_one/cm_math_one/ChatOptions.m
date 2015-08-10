@@ -7,55 +7,66 @@
 //
 
 #import "ChatOptions.h"
-
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
+#import "ChatOptionCell.h"
+
+NSMutableArray *inviteeArray;
+BOOL isGroup;
 
 @implementation ChatOptions
 @synthesize conversation;
 @synthesize receivedParticipants;
+
+#pragma mark - Interface
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     //init
-    inviteeList = [[NSMutableArray alloc] init];
-    self.selectedList = [[NSMutableArray alloc] init];
-    [self getInviteeList:self withoutUsers:participants];
+    inviteeArray = [[NSMutableArray alloc] init];
+    [self getInviteeList:self withoutUsers:receivedParticipants];
     
     //styling
-    self.view.layer.cornerRadius = 3;
-    self.inviteTable.tableFooterView = [[UIView alloc] init];
-    
-    [self updateIsGroup];
-    [self updateSelectedInvitees];
+    //self.view.layer.cornerRadius = 3;
+    self.inviteeTable.tableFooterView = [[UIView alloc] init];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@"Container view appear");
 }
 
 - (void) viewDidLayoutSubviews
 {
-    if ([self.inviteTable respondsToSelector:@selector(layoutMargins)]) {
-        self.inviteTable.layoutMargins = UIEdgeInsetsZero;
+    if ([self.inviteeTable respondsToSelector:@selector(layoutMargins)]) {
+        self.inviteeTable.layoutMargins = UIEdgeInsetsZero;
     }
 }
 
-- (IBAction)leaveConversationButtonTap:(UIButton *)sender
-{
-    NSLog(@"leave conversation tapped");
-    [data_delegate leaveConversationFromDelegate];
+- (IBAction)leaveButtonTap:(UIBarButtonItem *)sender {
+    [[[UIAlertView alloc] initWithTitle:@"Confirm"
+                                message:@"You will not be able to view past messages after you leave the conversation."
+                               delegate:self
+                      cancelButtonTitle:@"Back"
+                      otherButtonTitles:@"Leave", nil] show];
+    
 }
 
-- (IBAction)addConversationButtonTap:(UIButton *)sender
-{
-    NSLog(@"add people tapped");
-    [self getSelectedRows];
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self leaveConversation:self forConversation:conversation forUser:[PFUser currentUser]];
+    }
+}
+
+- (IBAction)inviteButtonTap:(UIButton *)sender {
+    ChatOptionCell *cell = (ChatOptionCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tappedPath = [self.inviteeTable indexPathForCell:cell];
+    NSLog(@"invitee_tap: %ld", (long)tappedPath.row);
+    PFUser *invitedUser = [inviteeArray objectAtIndex:tappedPath.row];
+    [self inviteUser:self toConversation:conversation withUser:invitedUser atPath:tappedPath];
 }
 
 #pragma mark - TableView
@@ -67,23 +78,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return inviteeList.count;
+    return inviteeArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GroupChatInviteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"invitecell"];
+    ChatOptionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatoptioncell"];
+    
     //styling
-    cell.nameLabel.textColor = [UIColor dark_txt];
-    cell.institutionLabel.textColor = [UIColor secondary_text];
+    //cell.nameLabel.textColor = [UIColor dark_txt];
+    //cell.institutionLabel.textColor = [UIColor secondary_text];
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     //data
-    PFObject *person = [inviteeList objectAtIndex:indexPath.row];
-    NSString *name = [NSString stringWithFormat:@"%@ %@", person[@"first_name"], person[@"last_name"]];
-    NSString *institution = person[@"institution"];
-    //ui
+    PFObject *user = [inviteeArray objectAtIndex:indexPath.row];
+    NSString *name = [NSString stringWithFormat:@"%@ %@", user[@"first_name"], user[@"last_name"]];
+    NSString *institution = user[@"institution"];
+    
     cell.nameLabel.text = name;
     cell.institutionLabel.text = institution;
     
@@ -92,117 +106,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self updateSelectedInvitees];
+
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self updateSelectedInvitees];
-}
 
-- (void) getSelectedRows
-{
-    [selectedList removeAllObjects];
-    NSArray *selected_paths = (NSArray *)[self.inviteTable indexPathsForSelectedRows];
-    for ( NSIndexPath *ip in selected_paths)
-    {
-        int place = ip.row;
-        PFObject *object = [inviteeList objectAtIndex:place];
-        [selectedList addObject:object];
-    }
-    [self addInviteesToGroup:selectedList];
-}
-
-- (void) deselectAllRows
-{
-    NSArray *selected_paths = (NSArray *)[self.inviteTable indexPathsForSelectedRows];
-    for ( NSIndexPath *ip in selected_paths)
-    {
-        [self.inviteTable deselectRowAtIndexPath:ip animated:YES];
-    }
 }
 
 #pragma mark - Data
 
-- (void)processInviteeData:(NSArray *)results
+- (void)processInviteeData:(NSArray *)results  //callback for total chat-enabled user query, minus current participants
 {
-    [inviteeList removeAllObjects];
-    inviteeList = [results mutableCopy];
-    [self.inviteTable reloadData];
+    [inviteeArray removeAllObjects];
+    inviteeArray = [results mutableCopy];
+    [self.inviteeTable reloadData];
 }
 
-- (void)updateIsGroup
+- (void)processAddedSuccess:(NSIndexPath *)path  //callback for adding a specific user
 {
-    NSNumber *ignum = self.conversation[@"is_group"];
-    int ig = [ignum intValue];
-    if (ig == 1)
-    {
-        isGroup = YES;
-    }
-    else
-    {
-        isGroup = NO;
-    }
+    ChatOptionCell *cell = (ChatOptionCell *)[self.inviteeTable cellForRowAtIndexPath:path];
+    [cell.inviteButton setTitle:@"Invited!" forState:UIControlStateNormal];
+}
+
+- (void)processLeftConversation  //callback for leaving the conversation
+{
+    PFUser *user = [PFUser currentUser];
+    NSString *broadcastString = [NSString stringWithFormat:@"%@ %@ has left the conversation.", user[@"first_name"], user[@"last_name"]];
+    [self sendBroadcast:self withAuthor:user withContent:broadcastString forConversation:self.conversation];
     
-    if (isGroup)
-    {
-        self.leaveConversationButton.enabled = YES;
-        [self.leaveConversationButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
-    }
-    else
-    {
-        self.leaveConversationButton.enabled = NO;
-        [self.leaveConversationButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    }
+    NSLog(@"Left conversation, popping controller stack back to root");
+    UINavigationController *navCon = self.navigationController;
+    [navCon popToRootViewControllerAnimated:YES];
 }
 
-- (void)updateSelectedInvitees
-{
-    NSArray *selected_paths = (NSArray *)[self.inviteTable indexPathsForSelectedRows];
-    if (selected_paths.count>=1)
-    {
-        self.addConversationButton.enabled = YES;
-        [self.addConversationButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
-    }
-    else
-    {
-        self.addConversationButton.enabled = NO;
-        [self.addConversationButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    }
-}
-
-- (void)addInviteesToGroup: (NSArray *)selectedPeople
-{
-    [self deselectAllRows];
-    NSMutableArray *usersToAdd = [[NSMutableArray alloc] init];
-    for (PFObject *person in selectedPeople)
-    {
-        PFUser *user = person[@"user"];
-        [usersToAdd addObject:user];
-    }
-    [self.conversation addObjectsFromArray:usersToAdd forKey:@"participants"];
-    self.conversation[@"is_group"] = @1;
-    [self.conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded)
-        {
-            NSLog(@"Conversation added participants successfully");
-            self.participants = self.conversation[@"participants"];
-            [self getInviteeList:self withoutUsers:self.participants];
-            [self updateIsGroup];
-            [self updateSelectedInvitees];
-            [data_delegate gotParticipantsFromDelegate:self.participants withNewPeople:selectedPeople withConversation:self.conversation];
-        }
-        else
-        {
-            NSLog(@"Conversation add participants error:%@",error);
-        }
-    }];
-}
-
-
-- (IBAction)leaveButtonTap:(UIBarButtonItem *)sender {
-}
-
-- (IBAction)inviteButtonTap:(UIButton *)sender {
-}
 @end

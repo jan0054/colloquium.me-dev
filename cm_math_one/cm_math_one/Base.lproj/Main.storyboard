@@ -1033,10 +1033,18 @@
                             <constraint firstItem="lWc-Om-h4O" firstAttribute="leading" secondItem="RK6-08-k0X" secondAttribute="leadingMargin" constant="-16" id="llY-dS-V4n"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Conversations" id="811-W3-APC"/>
+                    <navigationItem key="navigationItem" title="Conversations" id="811-W3-APC">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="2Kd-3h-Eqc">
+                            <connections>
+                                <action selector="addConvButtonTap:" destination="G4o-QU-d3l" id="0eY-qk-a5B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addConvButton" destination="2Kd-3h-Eqc" id="DzI-SZ-e72"/>
                         <outlet property="conversationTable" destination="lWc-Om-h4O" id="CGN-uc-7Vw"/>
                         <segue destination="1cD-7J-3ld" kind="show" identifier="chatsegue" id="as9-58-5Lc"/>
+                        <segue destination="5tk-w2-5gL" kind="show" identifier="chatinvitesegue" id="Eqd-BX-e71"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1OT-6I-s0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2598,7 +2606,7 @@
             </objects>
             <point key="canvasLocation" x="-493" y="2730"/>
         </scene>
-        <!--Invite to Conversation-->
+        <!--Invite Participants-->
         <scene sceneID="Gbz-UO-TC7">
             <objects>
                 <viewController id="NfV-4b-61Z" customClass="ChatOptions" sceneMemberID="viewController">
@@ -2675,7 +2683,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Fo4-kP-kg9" secondAttribute="trailing" constant="-16" id="mZZ-cf-TGJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Invite to Conversation" id="T2e-ao-qtw">
+                    <navigationItem key="navigationItem" title="Invite Participants" id="T2e-ao-qtw">
                         <barButtonItem key="rightBarButtonItem" title="Leave Conversation" id="fIW-ui-sNZ">
                             <connections>
                                 <action selector="leaveButtonTap:" destination="NfV-4b-61Z" id="bmg-5h-Gda"/>
@@ -2683,13 +2691,106 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="inviteeTabel" destination="Fo4-kP-kg9" id="Uhd-AB-sJG"/>
+                        <outlet property="inviteeTable" destination="Fo4-kP-kg9" id="vzO-0b-Hze"/>
                         <outlet property="leaveButton" destination="fIW-ui-sNZ" id="umW-gN-ETT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wd9-5Y-x4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="260" y="2085"/>
+        </scene>
+        <!--Invite Participants-->
+        <scene sceneID="sdc-pK-oUB">
+            <objects>
+                <viewController id="5tk-w2-5gL" customClass="ChatInviteView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q7K-3t-Pju"/>
+                        <viewControllerLayoutGuide type="bottom" id="kET-fC-psw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qtO-Pf-zWs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nzu-bL-GJb">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatinvitecell" rowHeight="65" id="XDO-qq-gRO" customClass="ChatInviteCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XDO-qq-gRO" id="23e-bk-mRO">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Institution" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dW-It-oEf">
+                                                    <rect key="frame" x="8" y="33" width="412" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdK-td-8r0">
+                                                    <rect key="frame" x="546" y="17" width="46" height="30"/>
+                                                    <state key="normal" title="Invite">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="inviteButtonTap:" destination="5tk-w2-5gL" eventType="touchUpInside" id="RqJ-xX-unp"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9V-ME-ubb">
+                                                    <rect key="frame" x="8" y="8" width="288" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="gdK-td-8r0" secondAttribute="centerY" id="5eb-Wp-q9m"/>
+                                                <constraint firstItem="gdK-td-8r0" firstAttribute="trailing" secondItem="23e-bk-mRO" secondAttribute="trailingMargin" id="6Jv-2D-YjN"/>
+                                                <constraint firstItem="x9V-ME-ubb" firstAttribute="leading" secondItem="23e-bk-mRO" secondAttribute="leadingMargin" id="ID5-Ah-LqN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9dW-It-oEf" secondAttribute="bottom" id="IHd-T2-6ZY"/>
+                                                <constraint firstItem="gdK-td-8r0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x9V-ME-ubb" secondAttribute="trailing" id="PZk-Qh-fKR"/>
+                                                <constraint firstItem="9dW-It-oEf" firstAttribute="top" secondItem="x9V-ME-ubb" secondAttribute="bottom" constant="4" id="Pie-aa-bv0"/>
+                                                <constraint firstItem="9dW-It-oEf" firstAttribute="leading" secondItem="23e-bk-mRO" secondAttribute="leadingMargin" id="QfZ-dP-27l"/>
+                                                <constraint firstItem="gdK-td-8r0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9dW-It-oEf" secondAttribute="trailing" id="evr-ye-za6"/>
+                                                <constraint firstItem="x9V-ME-ubb" firstAttribute="top" secondItem="23e-bk-mRO" secondAttribute="topMargin" id="q4L-Aa-6sV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="institutionLabel" destination="9dW-It-oEf" id="XOh-90-pMK"/>
+                                            <outlet property="inviteButton" destination="gdK-td-8r0" id="er1-0D-ons"/>
+                                            <outlet property="nameLabel" destination="x9V-ME-ubb" id="sjg-pr-ahm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5tk-w2-5gL" id="jdS-Lu-iEZ"/>
+                                    <outlet property="delegate" destination="5tk-w2-5gL" id="epP-Zn-4MV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kET-fC-psw" firstAttribute="top" secondItem="nzu-bL-GJb" secondAttribute="bottom" id="3yp-b0-w5b"/>
+                            <constraint firstItem="nzu-bL-GJb" firstAttribute="top" secondItem="Q7K-3t-Pju" secondAttribute="bottom" id="XQX-0m-YiI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nzu-bL-GJb" secondAttribute="trailing" constant="-16" id="vcA-ED-qWD"/>
+                            <constraint firstItem="nzu-bL-GJb" firstAttribute="leading" secondItem="qtO-Pf-zWs" secondAttribute="leadingMargin" constant="-16" id="zEB-lV-5ii"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Invite Participants" id="WQ9-Wt-a23">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="bBi-fn-VZr">
+                            <connections>
+                                <action selector="inviteDoneButtonTap:" destination="5tk-w2-5gL" id="364-vz-Ty8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chatInviteTable" destination="nzu-bL-GJb" id="dpV-gu-qN9"/>
+                        <outlet property="inviteDoneButton" destination="bBi-fn-VZr" id="4PK-Q2-10l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bti-bV-5KF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939" y="2085"/>
         </scene>
         <!--Career Detail Table View Controller-->
         <scene sceneID="GkN-WU-dJt">
@@ -2830,7 +2931,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y6w-tD-eCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="2730"/>
+            <point key="canvasLocation" x="260" y="2756"/>
         </scene>
         <!--Add Career Opportunity-->
         <scene sceneID="8gN-Ab-uYE">

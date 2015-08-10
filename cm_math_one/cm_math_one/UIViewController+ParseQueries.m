@@ -20,6 +20,8 @@
 #import "TimelineDetailView.h"
 #import "TimelinePostView.h"
 #import "CareerView.h"
+#import "ChatOptions.h"
+#import "ChatInviteView.h"
 
 @implementation UIViewController (ParseQueries)
 
@@ -148,6 +150,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
     [query whereKey:@"participants" containsAllObjectsInArray:@[user]];
     [query includeKey:@"participants"];
+    [query orderByDescending:@"updatedAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSLog(@"conversation query error");
@@ -181,7 +184,7 @@
     }];
 }
 
-- (void)sendBroadcast:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation withParticipants:(NSArray *)participants
+- (void)sendBroadcast:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content forConversation:(PFObject *)conversation
 {
     PFObject *chat = [PFObject objectWithClassName:@"Chat"];
     chat[@"content"] = content;
@@ -191,21 +194,7 @@
     [chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
-            NSLog(@"new broadcast uploaded successfully, sending push");
-            NSString *pushstr = content;
-            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  pushstr, @"alert",
-                                  @"Increment", @"badge",
-                                  @"default", @"sound",
-                                  nil];
-            // Create our Installation query
-            PFQuery *pushQuery = [PFInstallation query];
-            [pushQuery whereKey:@"user" containedIn:participants];
-            // Send push notification to query
-            PFPush *push = [[PFPush alloc] init];
-            [push setQuery:pushQuery]; // Set our Installation query
-            [push setData:data];
-            [push sendPushInBackground];
+            NSLog(@"new broadcast uploaded successfully");
         }
         else
         {
@@ -226,28 +215,103 @@
     }];
 }
 
-- (void)getPrivateChat: (id)caller withUser: (PFUser *)user alongWithSelf: (PFUser *) currentUser
+- (void)getInviteeList: (id)caller withoutUsers:(NSArray *)participants
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Conversation"];
-    [query whereKey:@"is_group" notEqualTo:@1];
-    [query includeKey:@"participants"];
-    [query whereKey:@"participants" containsAllObjectsInArray:@[user, currentUser]];
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"chat_status" equalTo:@1];
+    [query whereKey:@"debug_status" notEqualTo:@1];
+    [query includeKey:@"person"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu conversations for these users.", (unsigned long)objects.count);
-        //[caller processConversationData:objects];
+        NSLog(@"Successfully retrieved %lu invitees.(users)", (unsigned long)objects.count);
+        NSMutableArray *results = [[NSMutableArray alloc] init];
+        for (PFObject *allUser in objects)
+        {
+            int match = 0;
+            for (PFObject *listUser in participants)
+            {
+                if ([allUser.objectId isEqualToString:listUser.objectId])
+                {
+                    match = 1;
+                }
+            }
+            if (match == 0)
+            {
+                [results addObject:allUser];
+            }
+        }
+        [caller processInviteeData:objects];
     }];
 }
 
-- (void)getInviteeList: (id)caller withoutUsers:(NSArray *)users
+- (void)inviteUser: (id)caller toConversation: (PFObject *)conversation withUser: (PFUser *)user atPath:(NSIndexPath *)path
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Person"];
-    [query whereKey:@"chat_status" equalTo:@1];
-    [query whereKey:@"debug_status" notEqualTo:@1];
-    [query includeKey:@"user"];
-    [query whereKey:@"user" notContainedIn:users];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu invitees.(persons)", (unsigned long)objects.count);
-        //[caller processInviteeData:objects];
+    [conversation addObject:user forKey:@"participants"];
+    conversation[@"is_group"] = @1;
+    [conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"Conversation added participant %@ successfully", user.objectId);
+            [caller processAddedSuccess:path];
+        }
+        else
+        {
+            NSLog(@"Conversation add participant error:%@",error);
+        }
+    }];
+}
+
+- (void)leaveConversation:(id)caller forConversation:(PFObject *)conversation forUser:(PFUser *)user
+{
+    [conversation removeObject:user forKey:@"participants"];
+    [conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"left conversation successfully");
+            [caller processLeftConversation];
+        }
+        else
+        {
+            NSLog(@"leave conversation error:%@",error);
+        }
+    }];
+}
+
+- (void)createConcersation: (id)caller withParticipants: (NSMutableArray *)participants
+{
+    PFObject *conversation = [PFObject objectWithClassName:@"Conversation"];
+    conversation[@"participants"] = participants;
+    
+    PFUser *selfUser = [PFUser currentUser];
+    NSString *selfName = [NSString stringWithFormat:@"%@ %@", selfUser[@"first_name"], selfUser[@"last_name"]];
+    NSString *name = @"";
+    for (PFUser *user in participants)
+    {
+        if (![user.objectId isEqualToString:selfUser.objectId])
+        {
+            name = [NSString stringWithFormat:@"%@, %@", name, user.username];
+        }
+    }
+
+    conversation[@"last_msg"] = [NSString stringWithFormat:@"%@ created conversation with: %@", selfName, name];
+    conversation[@"last_time"] = [NSDate date];
+    conversation[@"is_group"] = @1;
+    [conversation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded)
+        {
+            NSLog(@"New conv created successfully");
+            
+            PFObject *chat = [PFObject objectWithClassName:@"Chat"];  //create the broadcast message announcing this new conversation
+            chat[@"conversation"] = conversation;
+            chat[@"broadcast"] = @1;
+            chat[@"author"] = selfUser;
+            chat[@"content"] = [NSString stringWithFormat:@"%@ created conversation with: %@", selfName, name];
+            
+            [caller createConvSuccess]; //callback
+        }
+        else
+        {
+            NSLog(@"Conv creation error:%@",error);
+        }
     }];
 }
 
@@ -311,7 +375,6 @@
         NSLog(@"Successfully retrieved %lu programs for type: %i with search", (unsigned long)objects.count, type);
         [caller processData:objects];
     }];
-
 }
 
 - (void)getProgram: (id)caller forAuthor: (PFObject *)person forEvent: (PFObject *)event

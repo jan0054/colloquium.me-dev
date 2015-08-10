@@ -27,10 +27,12 @@
 //chat
 - (void)getConversations: (id)caller withUser: (PFUser *)user;
 - (void)sendChat: (id)caller withAuthor: (PFUser *)user withContent: (NSString *)content withConversation: (PFObject *)conversation;
-- (void)sendBroadcast:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content withConversation:(PFObject *)conversation withParticipants: (NSArray *)participants;
+- (void)sendBroadcast:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content forConversation:(PFObject *)conversation;
 - (void)getChat: (id)caller withConversation: (PFObject *)conversation;
-- (void)getPrivateChat: (id)caller withUser: (PFUser *)user alongWithSelf: (PFUser *) currentUser;
-- (void)getInviteeList: (id)caller withoutUsers: (NSArray *)users;
+- (void)getInviteeList: (id)caller withoutUsers: (NSArray *)participants;
+- (void)inviteUser: (id)caller toConversation: (PFObject *)conversation withUser: (PFUser *)user atPath: (NSIndexPath *)path;
+- (void)leaveConversation: (id)caller forConversation: (PFObject *)conversation forUser: (PFUser *)user;
+- (void)createConcersation: (id)caller withParticipants: (NSMutableArray *)participants;
 
 //program
 - (void)getProgram: (id)caller ofType: (int)type withOrder: (int)order forEvent: (PFObject *)event;

@@ -11,4 +11,7 @@
 @interface ConversationView : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *conversationTable;
 - (void)processData: (NSArray *) results;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addConvButton;
+- (IBAction)addConvButtonTap:(UIBarButtonItem *)sender;
+
 @end
