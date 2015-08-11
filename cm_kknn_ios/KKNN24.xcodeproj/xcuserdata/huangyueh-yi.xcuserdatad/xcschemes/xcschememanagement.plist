@@ -4,15 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>KKNN24 WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>KKNN24.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Notification - KKNN24 WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>B43D265918FFC9980072B753</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4807B1E1B43EBF000F3D3AE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
