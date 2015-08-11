@@ -19,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //Parse
     [Parse setApplicationId:@"2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV"
                   clientKey:@"9pGuToEnzGXInGk7vTtfKzpU5rfvNAU0EBHdMPsZ"];
     [PFUser enableRevocableSessionInBackground];
@@ -56,7 +57,17 @@
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateHighlighted];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor light_button_txt], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
-
+    
+    //track first open for instruction page
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"appsetup"])
+    {
+        [defaults setBool:NO forKey:@"chooseeventsetup"];
+        [defaults setBool:NO forKey:@"homesetup"];
+        [defaults setValue:@1 forKey:@"appsetup"];
+        [defaults synchronize];
+    }
+    
     return YES;
 }
 

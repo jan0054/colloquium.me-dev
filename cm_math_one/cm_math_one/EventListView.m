@@ -14,24 +14,34 @@
 #import "UIViewController+ParseQueries.h"
 #import "EventCell.h"
 #import "DrawerView.h"
+#import "InstructionsViewController.h"
 
 NSMutableArray *totalEventArray;
+NSMutableDictionary *selectedDictionary;
+InstructionsViewController *controller;
 
 @implementation EventListView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupLeftMenuButton];
+    //[self setupLeftMenuButton];
     totalEventArray = [[NSMutableArray alloc] init];
+    selectedDictionary = [[NSMutableDictionary alloc] init];
     self.eventTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.eventTable.estimatedRowHeight = 220.0;
+    self.eventTable.estimatedRowHeight = 200.0;
     self.eventTable.rowHeight = UITableViewAutomaticDimension;
     
     [self getEvents:self];
+    [self setupInstructions];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.eventTable addSubview:pullrefresh];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -48,6 +58,15 @@ NSMutableArray *totalEventArray;
         self.eventTable.layoutMargins = UIEdgeInsetsZero;
     }
 }
+
+- (void)refreshctrl:(id)sender
+{
+    [self.eventTable setNeedsLayout];
+    [self.eventTable layoutIfNeeded];
+    [self.eventTable reloadData];
+    [(UIRefreshControl *)sender endRefreshing];
+}
+
 
 - (void)setupLeftMenuButton {
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
@@ -70,6 +89,12 @@ NSMutableArray *totalEventArray;
     }
 }
 
+- (IBAction)instructionTap:(UITapGestureRecognizer *)sender {
+    [controller.view removeFromSuperview];
+    [self.view removeGestureRecognizer:self.tapOutlet];
+    NSLog(@"Instructions removed");
+}
+
 #pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -88,9 +113,9 @@ NSMutableArray *totalEventArray;
     
     //data
     PFObject *event = [totalEventArray objectAtIndex:indexPath.row];
-    cell.nameLabel.text = event[@"name"];
-    cell.contentLabel.text = event[@"content"];
-    cell.organizerLabel.text = event[@"organizer"];
+    cell.eventNameLabel.text = event[@"name"];
+    cell.eventContentLabel.text = event[@"content"];
+    cell.eventOrganizerLabel.text = event[@"organizer"];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
@@ -99,22 +124,34 @@ NSMutableArray *totalEventArray;
     NSDate *edate = event[@"end_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];
     NSString *estr = [dateFormat stringFromDate:edate];
-    cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", sstr, estr];
+    cell.eventTimeLabel.text = [NSString stringWithFormat:@"%@ to %@", sstr, estr];
     cell.eventId = event.objectId;
     
     //styling
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
-    cell.nameLabel.backgroundColor = [UIColor clearColor];
-    cell.timeLabel.backgroundColor = [UIColor clearColor];
-    cell.nameLabel.backgroundColor = [UIColor clearColor];
-    cell.contentLabel.backgroundColor = [UIColor clearColor];
-    cell.organizerLabel.backgroundColor = [UIColor clearColor];
-    [cell.selectedImage setTintColor:[UIColor dark_accent]];
+    cell.eventNameLabel.backgroundColor = [UIColor clearColor];
+    cell.eventTimeLabel.backgroundColor = [UIColor clearColor];
+    cell.eventContentLabel.backgroundColor = [UIColor clearColor];
+    cell.eventOrganizerLabel.backgroundColor = [UIColor clearColor];
+        [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
     UIImage *img = [UIImage imageNamed:@"checkevent48"];
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    cell.selectedImage.image = img;
+    cell.eventSelectedImage.image = img;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.eventOrganizerLabel.textColor = [UIColor dark_primary];
+    cell.eventTimeLabel.textColor = [UIColor dark_primary];
+    
+    int sel = [[selectedDictionary valueForKey:event.objectId] intValue];
+    if (sel == 1)
+    {
+        cell.eventSelectedImage.hidden = NO;
+    }
+    else
+    {
+        cell.eventSelectedImage.hidden = YES;
+    }
     
     return cell;
 }
@@ -122,13 +159,16 @@ NSMutableArray *totalEventArray;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.selectedImage.hidden = NO;
+    cell.eventSelectedImage.hidden = NO;
+    [selectedDictionary setValue:@1 forKey:cell.eventId];
+
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.selectedImage.hidden = YES;
+    cell.eventSelectedImage.hidden = YES;
+    [selectedDictionary setValue:@0 forKey:cell.eventId];
 }
 
 #pragma mark - Data
@@ -136,33 +176,47 @@ NSMutableArray *totalEventArray;
 - (void)processData: (NSArray *) results  //callback for the query to get all existing events
 {
     [totalEventArray removeAllObjects];
+    [selectedDictionary removeAllObjects];
     totalEventArray = [results mutableCopy];
+    
+    //keep a dictionary of which event ids are saved(selected), used to determine the checkmark image for each cell
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *eventIds = [defaults objectForKey:@"eventIds"];
+    for (PFObject *event in totalEventArray)
+    {
+        NSString *eid = event.objectId;
+        if ([self checkIfStringArray:eventIds containsString:eid])
+        {
+            [selectedDictionary setValue:@1 forKey:eid];
+        }
+        else
+        {
+            [selectedDictionary setValue:@0 forKey:eid];
+        }
+    }
+    
     [self.eventTable reloadData];
     [self selectExistingEvents];
 }
 
-- (void) selectExistingEvents   //check local storage for saved events and set them to selected in the tableview
+
+- (void)selectExistingEvents   //check local storage for saved events and set them to selected in the tableview
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *eventIds = [defaults objectForKey:@"eventIds"];
     
-    for (NSInteger i = 0; i < [self.eventTable numberOfRowsInSection:0]; ++i)
+    for (NSInteger i = 0; i < [totalEventArray count]; ++i)
     {
         EventCell *cell = (EventCell *)[self.eventTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         NSString *eid = cell.eventId;
         if ([self checkIfStringArray:eventIds containsString:eid])
         {
-            [self.eventTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-            cell.selectedImage.hidden = NO;
-        }
-        else
-        {
-            cell.selectedImage.hidden = YES;
+            [self.eventTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     }
 }
 
-- (void) saveEventList: (NSArray *)selectedIndexPaths
+- (void)saveEventList: (NSArray *)selectedIndexPaths
 {
     //save the array of selected events
     NSMutableArray *selectedEvents = [[NSMutableArray alloc] init];
@@ -215,16 +269,18 @@ NSMutableArray *totalEventArray;
     
     //alert and open drawer
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                    message:@"Your events have been updated, find them in the left side drawer"
+                                                    message:@"Your events have been updated!"
                                                    delegate:self
                                           cancelButtonTitle:@"Done"
                                           otherButtonTitles:nil];
     [alert show];
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    UIViewController *centerViewController;
+    centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"home_nc"];
+    [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
 }
 
 
-- (BOOL) checkIfStringArray: (NSArray *)array containsString: (NSString *) string  //utility method
+- (BOOL)checkIfStringArray: (NSArray *)array containsString: (NSString *) string  //utility method
 {
     for (NSString *str in array)
     {
@@ -236,7 +292,7 @@ NSMutableArray *totalEventArray;
     return NO;
 }
 
-- (void) setCurrentEventWithSelected: (NSArray *)selectedEvents
+- (void)setCurrentEventWithSelected: (NSArray *)selectedEvents
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
@@ -262,6 +318,23 @@ NSMutableArray *totalEventArray;
         PFObject *event = [selectedEvents objectAtIndex:0];
         [defaults setObject:event.objectId forKey:@"currentEventId"];
         [defaults synchronize];
+    }
+}
+
+- (void)setupInstructions
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL alreadySetup = [defaults boolForKey:@"chooseeventsetup"];
+    if (!alreadySetup)
+    {
+        controller = (InstructionsViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"instruction_vc"];
+        [self.view addSubview:controller.view];
+        [defaults setBool:YES forKey:@"chooseeventsetup"];
+        [defaults synchronize];
+    }
+    else
+    {
+        [self.view removeGestureRecognizer:self.tapOutlet];
     }
 }
 

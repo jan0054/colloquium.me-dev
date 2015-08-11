@@ -11,5 +11,6 @@
 @interface SettingsView : UIViewController
 - (IBAction)userButtonTap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UITableView *settingTable;
+- (IBAction)tapInstructions:(UITapGestureRecognizer *)sender;
 
 @end

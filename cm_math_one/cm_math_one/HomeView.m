@@ -32,7 +32,7 @@ NSMutableArray *selectedEventsArray;
     self.homeTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.homeTable.estimatedRowHeight = 220.0;
+    self.homeTable.estimatedRowHeight = 200.0;
     self.homeTable.rowHeight = UITableViewAutomaticDimension;
     
     [self getEventsFromLocalList:self];
@@ -83,7 +83,7 @@ NSMutableArray *selectedEventsArray;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    [dateFormat setDateFormat: @"MMM-d HH:mm"];
+    [dateFormat setDateFormat: @"MMM-d"];
     NSDate *sdate = event[@"start_time"];
     NSDate *edate = event[@"end_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];
@@ -95,12 +95,20 @@ NSMutableArray *selectedEventsArray;
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
+    [cell.flairImage setTintColor:[UIColor dark_accent]];
     cell.nameLabel.backgroundColor = [UIColor clearColor];
     cell.timeLabel.backgroundColor = [UIColor clearColor];
-    cell.nameLabel.backgroundColor = [UIColor clearColor];
     cell.contentLabel.backgroundColor = [UIColor clearColor];
     cell.organizerLabel.backgroundColor = [UIColor clearColor];
+    cell.moreLabel.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.moreLabel.textColor = [UIColor dark_accent];
+    cell.timeLabel.textColor = [UIColor dark_primary];
+    cell.organizerLabel.textColor = [UIColor dark_primary];
+    
+    UIImage *img = [UIImage imageNamed:@"event48"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    cell.flairImage.image = img;
     
     return cell;
 }

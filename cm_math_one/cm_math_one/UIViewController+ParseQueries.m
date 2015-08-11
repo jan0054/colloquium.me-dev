@@ -21,7 +21,7 @@
 #import "TimelinePostView.h"
 #import "CareerView.h"
 #import "ChatOptions.h"
-#import "ChatInviteView.h"
+#import "ChatInviteView.h"		
 
 @implementation UIViewController (ParseQueries)
 
@@ -480,6 +480,11 @@
 {
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:NO forKey:@"chooseeventsetup"];
+    [defaults setBool:NO forKey:@"homesetup"];
+    [defaults setValue:@1 forKey:@"appsetup"];
+    [defaults synchronize];
 }
 
 - (void)writeUserPreferenceToLocal: (id)caller forUser: (PFUser *)user

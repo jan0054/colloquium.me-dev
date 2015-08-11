@@ -140,6 +140,4 @@ NSMutableArray *selectedParticipants;
     }
 }
 
-
-
 @end

@@ -17,6 +17,7 @@
 #import "LoginView.h"
 #import "SignUpView.h"
 #import "UserPreferenceView.h"
+#import "InstructionsViewController.h"
 
 @implementation SettingsView
 
@@ -28,6 +29,7 @@
     self.settingTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+
 }
 
 - (void)viewDidLayoutSubviews

@@ -132,6 +132,7 @@
 		B4BFB5231B3181E70035309E /* ChatBroadcastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB5221B3181E70035309E /* ChatBroadcastCell.m */; };
 		B4BFB5261B3181F40035309E /* ChatYouCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB5251B3181F40035309E /* ChatYouCell.m */; };
 		B4BFB5291B3182030035309E /* ChatMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB5281B3182030035309E /* ChatMeCell.m */; };
+		B4CE361A1B79D1A2008CB21F /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */; };
 		C36C9C5FCF3D705D97086C73 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007110BB53EB649131D36947 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -332,6 +333,8 @@
 		B4BFB5251B3181F40035309E /* ChatYouCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatYouCell.m; sourceTree = "<group>"; };
 		B4BFB5271B3182030035309E /* ChatMeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMeCell.h; sourceTree = "<group>"; };
 		B4BFB5281B3182030035309E /* ChatMeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMeCell.m; sourceTree = "<group>"; };
+		B4CE36181B79D1A2008CB21F /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionsViewController.h; sourceTree = "<group>"; };
+		B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -515,6 +518,8 @@
 				B48A4B1A1B3AB79700250BFF /* UserPreferenceView.m */,
 				B48467881B68C79000C1A563 /* FullScreenTextView.h */,
 				B48467891B68C79000C1A563 /* FullScreenTextView.m */,
+				B4CE36181B79D1A2008CB21F /* InstructionsViewController.h */,
+				B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -843,6 +848,7 @@
 				B4BFB5291B3182030035309E /* ChatMeCell.m in Sources */,
 				B48A4B1B1B3AB79700250BFF /* UserPreferenceView.m in Sources */,
 				B4BFB50B1B31810E0035309E /* VenueCell.m in Sources */,
+				B4CE361A1B79D1A2008CB21F /* InstructionsViewController.m in Sources */,
 				B455D7971B4137B500DCB6E4 /* CareerDetailCell.m in Sources */,
 				B455D7911B41330900DCB6E4 /* NewsDetailTextCell.m in Sources */,
 				B4BFB5141B31814A0035309E /* NewsCell.m in Sources */,

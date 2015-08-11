@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *organizerLabel;
 @property (strong, nonatomic) IBOutlet UILabel *moreLabel;
 @property NSString *eventId;
+@property (strong, nonatomic) IBOutlet UIImageView *flairImage;
 
 @end

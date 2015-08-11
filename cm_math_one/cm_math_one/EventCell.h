@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface EventCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *organizerLabel;
-@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *selectedImage;
+@property (strong, nonatomic) IBOutlet UILabel *eventNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *eventOrganizerLabel;
+@property (strong, nonatomic) IBOutlet UILabel *eventTimeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *eventContentLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *eventSelectedImage;
 
 @property NSString *eventId;
 @end
