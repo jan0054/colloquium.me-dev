@@ -23,6 +23,8 @@
 @property (strong, nonatomic) IBOutlet UISwitch *attendanceSwitch;
 - (IBAction)attendanceSwitchChanged:(UISwitch *)sender;
 @property (strong, nonatomic) IBOutlet UITableView *newsTable;
+@property (strong, nonatomic) IBOutlet UILabel *noNewsLabel;
+
 
 - (void)processEvent: (PFObject *) object;
 - (void)processData: (NSArray *) results;

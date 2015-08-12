@@ -27,6 +27,7 @@ PFObject *selectedAttendee;
     [self setupLeftMenuButton];
     attendeeArrray = [[NSMutableArray alloc] init];
     self.searchInput.delegate = self;
+    self.attendeeTable.tableFooterView = [[UIView alloc] init];
     
     //styling
     UIImage *img = [UIImage imageNamed:@"search48"];
@@ -78,7 +79,6 @@ PFObject *selectedAttendee;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return [attendeeArrray count];
 }
 
@@ -98,6 +98,8 @@ PFObject *selectedAttendee;
     cell.nameLabel.backgroundColor = [UIColor clearColor];
     cell.institutionLabel.backgroundColor = [UIColor clearColor];
     cell.moreLabel.backgroundColor = [UIColor clearColor];
+    cell.moreLabel.textColor = [UIColor dark_accent];
+    cell.institutionLabel.textColor = [UIColor dark_primary];
     
     return cell;
 }

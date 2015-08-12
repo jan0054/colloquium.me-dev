@@ -65,6 +65,7 @@
         [defaults setBool:NO forKey:@"chooseeventsetup"];
         [defaults setBool:NO forKey:@"homesetup"];
         [defaults setValue:@1 forKey:@"appsetup"];
+        [defaults setValue:@0 forKey:@"skiplogin"];
         [defaults synchronize];
     }
     

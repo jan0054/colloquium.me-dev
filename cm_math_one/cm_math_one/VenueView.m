@@ -25,6 +25,7 @@ NSMutableArray *venueArray;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     venueArray = [[NSMutableArray alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
@@ -71,6 +72,12 @@ NSMutableArray *venueArray;
     [self displayRegionCenteredOnMapItem:mapItem];
 }
 
+- (void) viewDidLayoutSubviews
+{
+    if ([self.venueTable respondsToSelector:@selector(layoutMargins)]) {
+        self.venueTable.layoutMargins = UIEdgeInsetsZero;
+    }
+}
 
 #pragma mark - TableView
 
@@ -101,6 +108,9 @@ NSMutableArray *venueArray;
     cell.contentTextView.text = venue[@"content"];
     
     //styling
+    if ([cell respondsToSelector:@selector(layoutMargins)]) {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
     cell.bottomView.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     UIImage *img1 = [UIImage imageNamed:@"phone48"];

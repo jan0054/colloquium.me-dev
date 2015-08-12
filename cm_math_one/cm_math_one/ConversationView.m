@@ -121,7 +121,7 @@ NSMutableArray *selectedParticipants;
 {
     //to-do: ask user to sign up / log in then go to log in page
     [[[UIAlertView alloc] initWithTitle:@"You need a user account"
-                                message:@"Please log in first"
+                                message:@"Please sign in first"
                                delegate:nil
                       cancelButtonTitle:@"Done"
                       otherButtonTitles:nil] show];

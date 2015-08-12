@@ -28,7 +28,21 @@ NSMutableArray *newsArray;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     newsArray = [[NSMutableArray alloc] init];
-
+    self.noNewsLabel.hidden = YES;
+    self.newsTable.tableFooterView = [[UIView alloc] init];
+    
+    //styling
+    [self.organizerButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    self.timeLabel.textColor = [UIColor dark_primary];
+    
+    self.backgroundView.backgroundColor = [UIColor clearColor];
+    self.nameLabel.backgroundColor = [UIColor clearColor];
+    self.timeLabel.backgroundColor = [UIColor clearColor];
+    self.timeAndOrganizerBackground.backgroundColor = [UIColor clearColor];
+    self.contentLabel.backgroundColor = [UIColor clearColor];
+    self.attendanceBackground.backgroundColor = [UIColor clearColor];
+    self.attendanceLabel.backgroundColor = [UIColor clearColor];
+    self.organizerButton.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -95,7 +109,6 @@ NSMutableArray *newsArray;
     return cell;
 }
 
-
 #pragma mark - Data
 
 - (void)processEvent: (PFObject *) object  //callback for the event query
@@ -132,6 +145,15 @@ NSMutableArray *newsArray;
     [newsArray removeAllObjects];
     newsArray = [results mutableCopy];
     [self.newsTable reloadData];
+    
+    if (newsArray.count >0)
+    {
+        self.noNewsLabel.hidden = YES;
+    }
+    else
+    {
+        self.noNewsLabel.hidden = NO;
+    }
 }
 
 - (void)setupAttendance  //determine initial position for the attendance switch

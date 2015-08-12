@@ -25,6 +25,8 @@ PFObject *selectedCareer;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     careerArray = [[NSMutableArray alloc] init];
+    self.careerTable.tableFooterView = [[UIView alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     //data
     [self getCareer:self];
@@ -38,6 +40,14 @@ PFObject *selectedCareer;
 - (void)leftDrawerButtonPress:(id)leftDrawerButtonPress {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
+- (void) viewDidLayoutSubviews
+{
+    if ([self.careerTable respondsToSelector:@selector(layoutMargins)]) {
+        self.careerTable.layoutMargins = UIEdgeInsetsZero;
+    }
+}
+
 
 - (IBAction)addCareerButtonTap:(UIBarButtonItem *)sender {
     [[[UIAlertView alloc] initWithTitle:@"Account privilege required"
@@ -69,11 +79,20 @@ PFObject *selectedCareer;
 {
     CareerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"careercell"];
     
+    //styling
+    if ([cell respondsToSelector:@selector(layoutMargins)]) {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
+    cell.moreLabel.textColor = [UIColor dark_accent];
+    cell.typeLabel.textColor = [UIColor dark_primary];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     PFObject *career = [careerArray objectAtIndex:indexPath.row];
     
-    cell.typeLabel.text = [career[@"hiring"] intValue] == 1 ? @"Hiring" : @"Seeking";
+    cell.typeLabel.text = [career[@"hiring"] intValue] == 1 ? @"Position Available" : @"Seeking Job";
     cell.institutionLabel.text = career[@"institution"];
     cell.contentLabel.text = career[@"content"];
+    
     return cell;
 }
 

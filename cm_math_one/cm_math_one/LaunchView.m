@@ -23,20 +23,30 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
     [super viewDidLoad];
     if (![PFUser currentUser])
     {
-        // Customize the Log In View Controller
-        LoginView *logInViewController = [[LoginView alloc] init];
-        [logInViewController setDelegate:self];
-        [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ];
-        
-        // Create the sign up view controller
-        SignUpView *signUpViewController = [[SignUpView alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-        signUpViewController.emailAsUsername = YES;
-        // Assign our sign up controller to be displayed from the login controller
-        [logInViewController setSignUpController:signUpViewController];
-        
-        // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        int skiplogin = [[defaults valueForKey:@"skiplogin"] intValue];
+        if (skiplogin == 1)
+        {
+            [self performSegueWithIdentifier:@"drawersegue" sender:self];
+            NSLog(@"Drawer segue from viewdidload(skip login");
+        }
+        else
+        {
+            // Customize the Log In View Controller
+            LoginView *logInViewController = [[LoginView alloc] init];
+            [logInViewController setDelegate:self];
+            [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ];
+            
+            // Create the sign up view controller
+            SignUpView *signUpViewController = [[SignUpView alloc] init];
+            [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+            signUpViewController.emailAsUsername = YES;
+            // Assign our sign up controller to be displayed from the login controller
+            [logInViewController setSignUpController:signUpViewController];
+            
+            // Present the log in view controller
+            [self presentViewController:logInViewController animated:YES completion:NULL];
+        }
     }
     else
     {
@@ -59,8 +69,6 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         NSLog(@"Drawer segue waiting on preference");
     }
 }
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"drawersegue"]) {
@@ -124,6 +132,11 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController
 {
     [self.navigationController popViewControllerAnimated:NO];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:@1 forKey:@"skiplogin"];
+    [defaults synchronize];
+    
     /*
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:@"You can log in later from the Settings screen"

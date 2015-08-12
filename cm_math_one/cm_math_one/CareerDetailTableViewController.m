@@ -7,6 +7,9 @@
 //
 
 #import "CareerDetailTableViewController.h"
+#import "UIViewController+MMDrawerController.h"
+#import "UIColor+ProjectColors.h"
+#import "UIViewController+ParseQueries.h"
 
 @interface CareerDetailTableViewController ()
 
@@ -17,13 +20,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+
+    //styling
+    [self.contactButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    [self.linkButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     
     //data
-    self.institutionLabel.text = [NSString stringWithFormat:@"Institution: %@", currentCareer[@"institution"]];
+    self.institutionLabel.text = [NSString stringWithFormat:@"Institute: %@", currentCareer[@"institution"]];
     self.contentLabel.text = [NSString stringWithFormat:@"Job description: %@", currentCareer[@"content"]];
     self.contactLabel.text = [NSString stringWithFormat:@"Contact: %@", currentCareer[@"contact_name"]];
 
 
+    self.tableView.estimatedRowHeight = 250.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (IBAction)contactButtonTap:(UIButton *)sender {
@@ -35,6 +45,10 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:currentCareer[@"link"]]];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewAutomaticDimension;
+}
 #pragma mark - Table view data source
 /*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

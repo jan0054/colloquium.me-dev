@@ -36,9 +36,6 @@ InstructionsViewController *controller;
     self.eventTable.estimatedRowHeight = 200.0;
     self.eventTable.rowHeight = UITableViewAutomaticDimension;
     
-    [self getEvents:self];
-    [self setupInstructions];
-    
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.eventTable addSubview:pullrefresh];
@@ -47,9 +44,13 @@ InstructionsViewController *controller;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    /*
     for (NSIndexPath *indexPath in self.eventTable.indexPathsForSelectedRows) {
         [self.eventTable deselectRowAtIndexPath:indexPath animated:NO];
     }
+    */
+    [self getEvents:self];
+    [self setupInstructions];
 }
 
 - (void) viewDidLayoutSubviews
@@ -67,7 +68,6 @@ InstructionsViewController *controller;
     [(UIRefreshControl *)sender endRefreshing];
 }
 
-
 - (void)setupLeftMenuButton {
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton];
@@ -81,12 +81,6 @@ InstructionsViewController *controller;
     NSArray *selected =  self.eventTable.indexPathsForSelectedRows;
     [self saveEventList:selected];
     
-}
-
-- (IBAction)cancelButtonTap:(UIBarButtonItem *)sender {
-    for (NSIndexPath *indexPath in self.eventTable.indexPathsForSelectedRows) {
-        [self.eventTable deselectRowAtIndexPath:indexPath animated:YES];
-    }
 }
 
 - (IBAction)instructionTap:(UITapGestureRecognizer *)sender {
@@ -158,17 +152,38 @@ InstructionsViewController *controller;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.eventSelectedImage.hidden = NO;
-    [selectedDictionary setValue:@1 forKey:cell.eventId];
+    EventCell *cell = (EventCell *)[tableView cellForRowAtIndexPath:indexPath];
+    int selectedStatus = [[selectedDictionary valueForKey:cell.eventId] intValue];
+    if (selectedStatus == 1)
+    {
+        cell.eventSelectedImage.hidden = YES;
+        [selectedDictionary setValue:@0 forKey:cell.eventId];
+    }
+    else
+    {
+        cell.eventSelectedImage.hidden = NO;
+        [selectedDictionary setValue:@1 forKey:cell.eventId];
+    }
 
+    NSLog(@"DIC AT SELECT DATA:%@", selectedDictionary);
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.eventSelectedImage.hidden = YES;
-    [selectedDictionary setValue:@0 forKey:cell.eventId];
+    EventCell *cell = (EventCell *)[tableView cellForRowAtIndexPath:indexPath];
+    int selectedStatus = [[selectedDictionary valueForKey:cell.eventId] intValue];
+    if (selectedStatus == 1)
+    {
+        cell.eventSelectedImage.hidden = YES;
+        [selectedDictionary setValue:@0 forKey:cell.eventId];
+    }
+    else
+    {
+        cell.eventSelectedImage.hidden = NO;
+        [selectedDictionary setValue:@1 forKey:cell.eventId];
+    }
+
+    NSLog(@"DIC AT DESELECT DATA:%@", selectedDictionary);
 }
 
 #pragma mark - Data
@@ -194,14 +209,15 @@ InstructionsViewController *controller;
             [selectedDictionary setValue:@0 forKey:eid];
         }
     }
-    
+    NSLog(@"DIC AT PROCESS DATA:%@", selectedDictionary);
     [self.eventTable reloadData];
     [self selectExistingEvents];
 }
 
 
-- (void)selectExistingEvents   //check local storage for saved events and set them to selected in the tableview
+- (void)selectExistingEvents   //when loading this page, check local storage for saved events and set them to selected in the tableview
 {
+    /*
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *eventIds = [defaults objectForKey:@"eventIds"];
     
@@ -212,19 +228,49 @@ InstructionsViewController *controller;
         if ([self checkIfStringArray:eventIds containsString:eid])
         {
             [self.eventTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+            //[selectedDictionary setValue:@1 forKey:eid];
         }
     }
+     */
 }
 
 - (void)saveEventList: (NSArray *)selectedIndexPaths
 {
-    //save the array of selected events
+    //this will be the array of selected events to save
     NSMutableArray *selectedEvents = [[NSMutableArray alloc] init];
+    
+    /*
+    for (NSInteger i = 0; i < [totalEventArray count]; ++i)   //first get all the events
+    {
+        EventCell *cell = (EventCell *)[self.eventTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        NSString *eid = cell.eventId;   //then grab the object ids of these events
+        if ( [[selectedDictionary valueForKey:eid] intValue] == 1)
+        {
+            //then this event was selected, we add it to the selected events array
+            PFObject *event = [totalEventArray objectAtIndex:i];
+            [selectedEvents addObject:event];
+        }
+    }
+    */
+    /*
     for (NSIndexPath *indexpath in selectedIndexPaths)
     {
         PFObject *event = [totalEventArray objectAtIndex:indexpath.row];
         [selectedEvents addObject:event];
     }
+    */
+    
+    for (PFObject *event in totalEventArray)
+    {
+        NSString *eid = event.objectId;
+        if ( [[selectedDictionary valueForKey:eid] intValue] == 1)
+        {
+            //then this event was selected, we add it to the selected events array
+            [selectedEvents addObject:event];
+        }
+    }
+    
+    NSLog(@"DIC AT SAVE DATA:%@, SEL ARRAY COUNT: %lu", selectedDictionary, (unsigned long)selectedEvents.count);
     
     //save to local storage
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

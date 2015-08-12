@@ -105,6 +105,9 @@ PFObject *selectedProgram;
     cell.bottomView.backgroundColor = [UIColor clearColor];
     cell.contentLabel.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.moreLabel.textColor = [UIColor dark_accent];
+    cell.timeLabel.textColor = [UIColor dark_primary];
+    cell.locationLabel.textColor = [UIColor dark_primary];
     
     //data
     PFObject *program = [programArray objectAtIndex:indexPath.row];

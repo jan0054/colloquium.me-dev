@@ -29,6 +29,8 @@ UIImage *selectedImage;
     postArray = [[NSMutableArray alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.timelineTable.tableFooterView = [[UIView alloc] init];
+    self.noPostLabel.hidden = YES;
+    self.noPostLabel.textColor = [UIColor dark_primary];
     
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -107,6 +109,15 @@ UIImage *selectedImage;
     [postArray removeAllObjects];
     postArray = [results mutableCopy];
     [self.timelineTable reloadData];
+    
+    if (postArray.count >0)
+    {
+        self.noPostLabel.hidden = YES;
+    }
+    else
+    {
+        self.noPostLabel.hidden = NO;
+    }
 }
 
 #pragma mark - Navigation

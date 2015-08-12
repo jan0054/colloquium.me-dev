@@ -397,7 +397,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query includeKey:@"admin"];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query orderByDescending:@"start_time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu events", (unsigned long)objects.count);
@@ -410,12 +410,11 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *eventIds = [defaults objectForKey:@"eventIds"];
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-    query.maxCacheAge = 86400;
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query orderByDescending:@"start_time"];
     [query whereKey:@"objectId" containedIn:eventIds];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Successfully retrieved %lu events from local Id list", (unsigned long)objects.count);
+        NSLog(@"Successfully retrieved %lu events from local Id list, which had a count of %lu", (unsigned long)objects.count, (unsigned long)eventIds.count);
         [caller processData:objects];
     }];
 }
@@ -484,6 +483,7 @@
     [defaults setBool:NO forKey:@"chooseeventsetup"];
     [defaults setBool:NO forKey:@"homesetup"];
     [defaults setValue:@1 forKey:@"appsetup"];
+    [defaults setValue:@0 forKey:@"skiplogin"];
     [defaults synchronize];
 }
 
