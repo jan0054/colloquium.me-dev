@@ -26,7 +26,13 @@ PFUser *loggedinUser;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     chatArray = [[NSMutableArray alloc] init];
+    self.chatTable.tableFooterView = [[UIView alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.chatTable.estimatedRowHeight = 120.0;
+    self.chatTable.rowHeight = UITableViewAutomaticDimension;
+    
     if ([PFUser currentUser])
     {
         loggedinUser = [PFUser currentUser];
@@ -37,6 +43,8 @@ PFUser *loggedinUser;
     [self.chatTable addSubview:pullrefresh];
     
     //styling
+    self.inputBackground.backgroundColor = [UIColor clearColor];
+    [self.sendChatButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     
 }
 
@@ -60,6 +68,9 @@ PFUser *loggedinUser;
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    if ([self.chatTable respondsToSelector:@selector(layoutMargins)]) {
+        self.chatTable.layoutMargins = UIEdgeInsetsZero;
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushreload:) name:@"gotchatinapp" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -108,6 +119,17 @@ PFUser *loggedinUser;
     mecell.selectionStyle = UITableViewCellSelectionStyleNone;
     youcell.selectionStyle = UITableViewCellSelectionStyleNone;
     broadcastcell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ([mecell respondsToSelector:@selector(layoutMargins)]) {
+        mecell.layoutMargins = UIEdgeInsetsZero;
+    }
+    if ([youcell respondsToSelector:@selector(layoutMargins)]) {
+        youcell.layoutMargins = UIEdgeInsetsZero;
+    }
+    if ([broadcastcell respondsToSelector:@selector(layoutMargins)]) {
+        broadcastcell.layoutMargins = UIEdgeInsetsZero;
+    }
+    mecell.timeLabel.textColor = [UIColor dark_primary];
+    youcell.timeLabel.textColor = [UIColor dark_primary];
     
     //data
     PFObject *chat = [chatArray objectAtIndex:indexPath.row];
@@ -133,6 +155,7 @@ PFUser *loggedinUser;
     if (bcInt == 1)
     {
         broadcastcell.contentLabel.text = contentString;
+        broadcastcell.contentLabel.textColor = [UIColor primary_color];
         return broadcastcell;
     }
     else if (theySaid)
@@ -216,9 +239,7 @@ PFUser *loggedinUser;
     
     NSLog(@"Updating constraints: keyboard up");
     
-    //self.textfieldbottom.constant = height+5;
-    //self.sendmessagebottom.constant = height+5;
-    //self.tablebottom.constant = height+50;
+    self.inputRowBottom.constant = height;
     
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
@@ -238,9 +259,7 @@ PFUser *loggedinUser;
     
     NSLog(@"Updating constraints: keyboard down");
     
-    //self.textfieldbottom.constant = 5;
-    //self.sendmessagebottom.constant = 5;
-    //self.tablebottom.constant = 50;
+    self.inputRowBottom.constant = 0;
     
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];

@@ -29,12 +29,22 @@ NSMutableArray *selectedParticipants;
     [self setupLeftMenuButton];
     conversationArray = [[NSMutableArray alloc] init];
     selectedParticipants = [[NSMutableArray alloc] init];
+    self.conversationTable.estimatedRowHeight = 160.0;
+    self.conversationTable.rowHeight = UITableViewAutomaticDimension;
+    self.conversationTable.tableFooterView = [[UIView alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.noConvLabel.hidden = YES;
+    self.noConvLabel.textColor = [UIColor dark_primary];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    if ([self.conversationTable respondsToSelector:@selector(layoutMargins)]) {
+        self.conversationTable.layoutMargins = UIEdgeInsetsZero;
+    }
+    
     if ([PFUser currentUser])
     {
         selfUser = [PFUser currentUser];
@@ -44,7 +54,6 @@ NSMutableArray *selectedParticipants;
     {
         [self noUserYet];
     }
-
 }
 
 - (void)setupLeftMenuButton {
@@ -76,6 +85,16 @@ NSMutableArray *selectedParticipants;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationcell"];
+    
+    //styling
+    if ([cell respondsToSelector:@selector(layoutMargins)]) {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
+    cell.timeLabel.textColor = [UIColor dark_primary];
+    cell.timeLabel.backgroundColor = [UIColor clearColor];
+    cell.messageLabel.backgroundColor = [UIColor clearColor];
+    cell.participantLabel.backgroundColor = [UIColor clearColor];
+    
     PFObject *conversation = [conversationArray objectAtIndex:indexPath.row];
     
     NSDate *date = conversation[@"last_time"];
@@ -89,7 +108,7 @@ NSMutableArray *selectedParticipants;
     {
         if (![user.objectId isEqualToString:selfUser.objectId])
         {
-            name = [NSString stringWithFormat:@"%@, %@", name, user.username];
+            name = [NSString stringWithFormat:@"%@, %@", name, [NSString stringWithFormat:@"%@ %@", user[@"first_name"], user[@"last_name"]]];
         }
     }
     NSRange range = NSMakeRange(0, 2);
@@ -103,9 +122,9 @@ NSMutableArray *selectedParticipants;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"chatsegue" sender:self];
     selectedConversation = [conversationArray objectAtIndex:indexPath.row];
     selectedParticipants = selectedConversation[@"participants"];
+    [self performSegueWithIdentifier:@"chatsegue" sender:self];
 }
 
 #pragma mark - Data
@@ -115,6 +134,15 @@ NSMutableArray *selectedParticipants;
     [conversationArray removeAllObjects];
     conversationArray = [results mutableCopy];
     [self.conversationTable reloadData];
+    
+    if (conversationArray.count >0)
+    {
+        self.noConvLabel.hidden = YES;
+    }
+    else
+    {
+        self.noConvLabel.hidden = NO;
+    }
 }
 
 - (void) noUserYet
@@ -137,6 +165,11 @@ NSMutableArray *selectedParticipants;
         ChatView *controller = (ChatView *) segue.destinationViewController;
         controller.currentConversation = selectedConversation;
         controller.participants = selectedParticipants;
+    }
+    else if ([segue.identifier isEqualToString:@"chatinvitesegue"])
+    {
+        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStylePlain target: nil action: nil];
+        self.navigationItem.backBarButtonItem=newBackButton;
     }
 }
 

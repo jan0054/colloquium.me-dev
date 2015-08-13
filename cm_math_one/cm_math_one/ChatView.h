@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
 - (IBAction)editButtonTap:(UIBarButtonItem *)sender;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *inputRowBottom;
+
 @property PFObject *currentConversation;
 @property NSMutableArray *participants;
 @property UIRefreshControl *pullrefresh;

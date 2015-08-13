@@ -239,7 +239,7 @@
                 [results addObject:allUser];
             }
         }
-        [caller processInviteeData:objects];
+        [caller processInviteeData:results];
     }];
 }
 
@@ -286,11 +286,14 @@
     NSString *name = @"";
     for (PFUser *user in participants)
     {
+        NSString *fullName = [NSString stringWithFormat:@"%@ %@", user[@"first_name"], user[@"last_name"]];
         if (![user.objectId isEqualToString:selfUser.objectId])
         {
-            name = [NSString stringWithFormat:@"%@, %@", name, user.username];
+            name = [NSString stringWithFormat:@"%@, %@", name, fullName];
         }
     }
+    NSRange range = NSMakeRange(0, 2);
+    name = [name stringByReplacingCharactersInRange:range withString:@""];
 
     conversation[@"last_msg"] = [NSString stringWithFormat:@"%@ created conversation with: %@", selfName, name];
     conversation[@"last_time"] = [NSDate date];
@@ -305,7 +308,7 @@
             chat[@"broadcast"] = @1;
             chat[@"author"] = selfUser;
             chat[@"content"] = [NSString stringWithFormat:@"%@ created conversation with: %@", selfName, name];
-            
+            [chat saveInBackground];
             [caller createConvSuccess]; //callback
         }
         else

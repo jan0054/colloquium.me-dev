@@ -21,16 +21,12 @@ NSMutableArray *selectedArray;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //init
     inviteArray = [[NSMutableArray alloc] init];
     selectedArray = [[NSMutableArray alloc] init];
-    [self getInviteeList:self withoutUsers:@[[PFUser currentUser]]];
-    
-    //styling
-    //self.view.layer.cornerRadius = 3;
     self.chatInviteTable.tableFooterView = [[UIView alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
+    [self getInviteeList:self withoutUsers:@[[PFUser currentUser]]];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,10 +75,11 @@ NSMutableArray *selectedArray;
     
     //styling
     //cell.nameLabel.textColor = [UIColor dark_txt];
-    //cell.institutionLabel.textColor = [UIColor secondary_text];
+    cell.institutionLabel.textColor = [UIColor dark_primary];
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
+    [cell.inviteButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     
     //data
     PFObject *user = [inviteArray objectAtIndex:indexPath.row];

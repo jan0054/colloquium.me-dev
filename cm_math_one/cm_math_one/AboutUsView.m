@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //styling
+    [self.doneButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    [self.contactButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
 }
 
 - (IBAction)contactButtonTap:(UIButton *)sender {

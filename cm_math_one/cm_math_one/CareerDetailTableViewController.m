@@ -45,6 +45,14 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:currentCareer[@"link"]]];
 }
 
+- (void) viewDidLayoutSubviews
+{
+    if ([self.tableView respondsToSelector:@selector(layoutMargins)]) {
+        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    }
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewAutomaticDimension;

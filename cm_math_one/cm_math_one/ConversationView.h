@@ -13,5 +13,6 @@
 - (void)processData: (NSArray *) results;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addConvButton;
 - (IBAction)addConvButtonTap:(UIBarButtonItem *)sender;
+@property (strong, nonatomic) IBOutlet UILabel *noConvLabel;
 
 @end
