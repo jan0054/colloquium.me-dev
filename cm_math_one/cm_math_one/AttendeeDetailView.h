@@ -21,6 +21,7 @@
 - (IBAction)emailButtonTap:(UIButton *)sender;
 - (IBAction)websiteButtonTap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UITableView *attendeeProgramTable;
+@property (strong, nonatomic) IBOutlet UILabel *noProgramLabel;
 
 @property PFObject *attendee;
 

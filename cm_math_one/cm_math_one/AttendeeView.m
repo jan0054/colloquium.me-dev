@@ -100,6 +100,7 @@ PFObject *selectedAttendee;
     cell.moreLabel.backgroundColor = [UIColor clearColor];
     cell.moreLabel.textColor = [UIColor dark_accent];
     cell.institutionLabel.textColor = [UIColor dark_primary];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

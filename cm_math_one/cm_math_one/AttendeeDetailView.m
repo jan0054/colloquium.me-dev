@@ -23,12 +23,23 @@ NSMutableArray *attendeeProgramArray;
     attendeeProgramArray = [[NSMutableArray alloc] init];
     self.attendeeProgramTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-
+    self.noProgramLabel.hidden = YES;
+    
+    //styling
+    self.noProgramLabel.textColor = [UIColor dark_primary];
+    self.attendeeBackground.backgroundColor = [UIColor clearColor];
+    
+    
+    
+    
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self getProgram:self forAuthor:attendee forEvent:event];
+    
+    self.nameLabel.text = [NSString stringWithFormat:@"%@, %@", self.attendee[@"last_name"], self.attendee[@"first_name"]];
+    self.institutionLabel.text = self.attendee[@"institution"];
     
     //disable email/chat if turned off, or if web link empty
     [self checkPermissions];
@@ -91,6 +102,15 @@ NSMutableArray *attendeeProgramArray;
     [attendeeProgramArray removeAllObjects];
     attendeeProgramArray = [results mutableCopy];
     [self.attendeeProgramTable reloadData];
+    
+    if (attendeeProgramArray.count >0)
+    {
+        self.noProgramLabel.hidden = YES;
+    }
+    else
+    {
+        self.noProgramLabel.hidden = NO;
+    }
 }
 
 - (void)checkPermissions
@@ -100,6 +120,7 @@ NSMutableArray *attendeeProgramArray;
     if (email == 1)
     {
         self.emailButton.enabled = YES;
+        [self.emailButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     }
     else
     {
@@ -108,6 +129,7 @@ NSMutableArray *attendeeProgramArray;
     if (chat == 1)
     {
         self.chatButton.enabled = YES;
+        [self.chatButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     }
     else
     {
@@ -117,6 +139,7 @@ NSMutableArray *attendeeProgramArray;
     if (link.length >=1)
     {
         self.websiteButton.enabled = YES;
+        [self.websiteButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     }
     else
     {

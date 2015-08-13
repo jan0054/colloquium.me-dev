@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UITextView *contentTextView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *discussButton;
+@property (strong, nonatomic) IBOutlet UIView *mainBackgroundView;
+
 - (IBAction)discussButtonTap:(UIBarButtonItem *)sender;
 
 @property PFObject *program;

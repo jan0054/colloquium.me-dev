@@ -26,6 +26,8 @@ NSMutableArray *venueArray;
     [self setupLeftMenuButton];
     venueArray = [[NSMutableArray alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.venueTable.estimatedRowHeight = 120.0;
+    self.venueTable.rowHeight = UITableViewAutomaticDimension;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
@@ -105,13 +107,12 @@ NSMutableArray *venueArray;
         }
     }];
     cell.nameLabel.text = venue[@"name"];
-    cell.contentTextView.text = venue[@"content"];
+    cell.contentLabel.text = venue[@"content"];
     
     //styling
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
-    cell.bottomView.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     UIImage *img1 = [UIImage imageNamed:@"phone48"];
     img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];

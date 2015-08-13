@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface ProgramForumView : UIViewController
+@interface ProgramForumView : UIViewController<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *forumTable;
 @property (strong, nonatomic) IBOutlet UIView *inputBackgroundView;
 @property (strong, nonatomic) IBOutlet UITextField *inputTextField;
@@ -17,10 +17,14 @@
 - (IBAction)sendButtonTap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 - (IBAction)refreshButtonTap:(UIBarButtonItem *)sender;
+@property (strong, nonatomic) IBOutlet UILabel *noForumLabel;
 
 - (void)processData: (NSArray *) results;
 - (void)postForumSuccessCallback;
 
-@property PFObject *program;
+@property PFObject *sourceProgram;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *inputbarBottom;
+
 
 @end

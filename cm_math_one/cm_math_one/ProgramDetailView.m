@@ -19,10 +19,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self fillFieldsWithObject:self.program];
+    
+    //styling
+    self.mainBackgroundView.backgroundColor = [UIColor clearColor];
+    self.sessionLabel.textColor = [UIColor dark_primary];
+    self.locationLabel.textColor = [UIColor dark_primary];
+    self.timeLabel.textColor = [UIColor dark_primary];
 }
 
 - (IBAction)discussButtonTap:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"programforumsegue" sender:self];
+    if ([PFUser currentUser])
+    {
+        [self performSegueWithIdentifier:@"programforumsegue" sender:self];
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"You need a user account"
+                                    message:@"Sorry, please sign in first!"
+                                   delegate:nil
+                          cancelButtonTitle:@"Done"
+                          otherButtonTitles:nil] show];
+
+    }
 }
 
 #pragma mark - Data
@@ -51,9 +69,9 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"programdetailsegue"]) {
+    if ([segue.identifier isEqualToString:@"programforumsegue"]) {
         ProgramForumView *controller = (ProgramForumView *) segue.destinationViewController;
-        controller.program = self.program;
+        controller.sourceProgram = self.program;
     }
 }
 

@@ -14,7 +14,7 @@
 NSMutableArray *forumArray;
 
 @implementation ProgramForumView
-@synthesize program;
+@synthesize sourceProgram;
 
 #pragma mark - Interface
 
@@ -24,19 +24,18 @@ NSMutableArray *forumArray;
     forumArray = [[NSMutableArray alloc] init];
     self.forumTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.forumTable.estimatedRowHeight = 120.0;
+    self.forumTable.estimatedRowHeight = 160.0;
     self.forumTable.rowHeight = UITableViewAutomaticDimension;
+    self.noForumLabel.hidden = YES;
+    self.inputTextField.delegate = self;
     
     //styling
     self.inputBackgroundView.backgroundColor = [UIColor whiteColor];
+    self.noForumLabel.textColor = [UIColor dark_primary];
+    [self.sendButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     
     //data
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *eventid = [defaults objectForKey:@"currentEventId"];
-    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-    [self getForum:self forProgram:program];
-    
-    
+    [self getForum:self forProgram:sourceProgram];
 }
 
 - (void)viewDidLayoutSubviews
@@ -46,12 +45,31 @@ NSMutableArray *forumArray;
     }
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+
 - (IBAction)sendButtonTap:(UIButton *)sender {
-    
+    if (self.inputTextField.text.length >0)
+    {
+        [self postForum:self forProgram:sourceProgram withContent:self.inputTextField.text withAuthor:[PFUser currentUser]];
+        [self.inputTextField resignFirstResponder];
+    }
 }
 
 - (IBAction)refreshButtonTap:(UIBarButtonItem *)sender {
-    [self getForum:self forProgram:program];
+    [self getForum:self forProgram:sourceProgram];
 }
 
 #pragma mark - TableView
@@ -71,6 +89,25 @@ NSMutableArray *forumArray;
 {
     ProgramForumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"programforumcell"];
     
+    //styling
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.timeLabel.textColor = [UIColor dark_primary];
+    
+    //data
+    PFObject *forum = [forumArray objectAtIndex:indexPath.row];
+    
+    PFUser *author = forum[@"author"];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [dateFormat setDateFormat: @"MMM-d HH:mm"];
+    NSDate *date = forum.createdAt;
+    NSString *dateStr = [dateFormat stringFromDate:date];
+
+    cell.timeLabel.text = dateStr;
+    cell.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+    cell.contentLabel.text = forum[@"content"];
     
     return cell;
 }
@@ -87,11 +124,51 @@ NSMutableArray *forumArray;
     [forumArray removeAllObjects];
     forumArray = [results mutableCopy];
     [self.forumTable reloadData];
+    
+    if (forumArray.count >0)
+    {
+        self.noForumLabel.hidden = YES;
+    }
+    else
+    {
+        self.noForumLabel.hidden = NO;
+    }
 }
 
 - (void)postForumSuccessCallback
 {
-    [self getForum:self forProgram:program];
+    self.inputTextField.text = @"";
+    [self getForum:self forProgram:sourceProgram];
+}
+
+#pragma mark - Keyboard
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    
+    CGFloat height = keyboardFrame.size.height;
+    
+    NSLog(@"Updating constraints: keyboard coming up");
+    self.inputbarBottom.constant = height -49;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    NSLog(@"Updating constraints: keyboard coming down");
+    self.inputbarBottom.constant = 0;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 @end
