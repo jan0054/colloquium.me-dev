@@ -31,6 +31,8 @@ UIImage *selectedImage;
     self.timelineTable.tableFooterView = [[UIView alloc] init];
     self.noPostLabel.hidden = YES;
     self.noPostLabel.textColor = [UIColor dark_primary];
+    self.timelineTable.estimatedRowHeight = 200.0;
+    self.timelineTable.rowHeight = UITableViewAutomaticDimension;
     
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
