@@ -25,4 +25,11 @@
 
 - (void)postCallback;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *horizontalBarBottom;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageRatio;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageToBottomBar;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *inputTextViewToBottom;
+
+
+
 @end

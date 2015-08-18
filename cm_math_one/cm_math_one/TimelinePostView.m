@@ -26,12 +26,35 @@ BOOL photoSet;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //styling
+    UIImage *cam_img = [UIImage imageNamed:@"camera48.png"];
+    cam_img = [cam_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.addPhotoButton setTintColor:[UIColor dark_accent]];
+    [self.addPhotoButton setImage:cam_img forState:UIControlStateNormal];
+    UIImage *key_img = [UIImage imageNamed:@"key_down48.png"];
+    key_img = [key_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.keyboardButton setTintColor:[UIColor dark_accent]];
+    [self.keyboardButton setImage:key_img forState:UIControlStateNormal];
+    UIImage *cancel_img = [UIImage imageNamed:@"cross64.png"];
+    cancel_img = [cancel_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.cancelPhotoButton setTintColor:[UIColor whiteColor]];
+    [self.cancelPhotoButton setImage:cancel_img forState:UIControlStateNormal];
+    
+    self.horizontalBarBackground.backgroundColor = [UIColor whiteColor];
+    self.cancelPhotoButton.backgroundColor = [UIColor dark_accent];
+    self.inputTextView.backgroundColor = [UIColor clearColor];
+    [self.addPhotoButton setTitleColor:[UIColor dark_primary] forState:UIControlStateNormal];
+    self.cancelPhotoButton.layer.cornerRadius = 16.0;
+    self.postImageView.backgroundColor = [UIColor clearColor];
+    
     //init
     self.cancelPhotoButton.hidden = YES;
     self.cancelPhotoButton.userInteractionEnabled = NO;
-    //self.textview_keyboard_spacing.active = NO;
-    //self.image_ratio.active = NO;
+    self.inputTextViewToBottom.active = NO;
+    self.imageRatio.active = NO;
     self.keyboardButton.hidden = YES;
+    photoSet = NO;
+    
 
 }
 
@@ -41,6 +64,8 @@ BOOL photoSet;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    [self.inputTextView becomeFirstResponder];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -51,12 +76,26 @@ BOOL photoSet;
 }
 
 - (IBAction)addPhotoButtonTap:(UIButton *)sender {
-    self.imagePicker = [[GKImagePicker alloc] init];
-    self.imagePicker.cropSize = CGSizeMake(640, 640);
-    self.imagePicker.delegate = self;
-    self.imagePicker.useFrontCameraAsDefault = NO;
-    
-    [self.imagePicker showActionSheetOnViewController:self onPopoverFromView:sender];
+    if (photoSet)
+    {
+        self.postImageView.image = nil;
+        photoSet = NO;
+        self.imageRatio.active = NO;
+        [self.addPhotoButton setTitle:@" Add Photo" forState:UIControlStateNormal];
+        [self.inputTextView resignFirstResponder];
+        [self.view setNeedsLayout];
+        [self.view setNeedsUpdateConstraints];
+        [self.view setNeedsDisplay];
+    }
+    else
+    {
+        self.imagePicker = [[GKImagePicker alloc] init];
+        self.imagePicker.cropSize = CGSizeMake(640, 640);
+        self.imagePicker.delegate = self;
+        self.imagePicker.useFrontCameraAsDefault = NO;
+        
+        [self.imagePicker showActionSheetOnViewController:self onPopoverFromView:sender];
+    }
 }
 
 - (IBAction)keyboardButtonTap:(UIButton *)sender {
@@ -64,23 +103,25 @@ BOOL photoSet;
 }
 
 - (IBAction)cancelPhotoButtonTap:(UIButton *)sender {
+    /*
     self.postImageView.image = nil;
     photoSet = NO;
-    //self.image_ratio.active = NO;
+    self.imageRatio.active = NO;
     self.cancelPhotoButton.hidden = YES;
     self.cancelPhotoButton.userInteractionEnabled = NO;
     [self.inputTextView resignFirstResponder];
     [self.view setNeedsLayout];
     [self.view setNeedsUpdateConstraints];
     [self.view setNeedsDisplay];
-
+     */
 }
 
 - (IBAction)sendPostButtonTap:(UIBarButtonItem *)sender {
     if ([PFUser currentUser] && self.inputTextView.text.length>0)
     {
         [self doProcessPost];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        UINavigationController *navCon = self.navigationController;
+        [navCon popViewControllerAnimated:YES];
     }
 }
 
@@ -113,9 +154,8 @@ BOOL photoSet;
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
     self.postImageView.image = image;
     photoSet = YES;
-    self.cancelPhotoButton.hidden = NO;
-    self.cancelPhotoButton.userInteractionEnabled = YES;
-    //self.image_ratio.active = YES;
+    [self.addPhotoButton setTitle:@" Remove Photo" forState:UIControlStateNormal];
+    self.imageRatio.active = YES;
 }
 
 - (UIImage *)shrinkImage:(UIImage *)image withSize:(CGSize)size {
@@ -138,15 +178,16 @@ BOOL photoSet;
     CGFloat height = keyboardFrame.size.height;
     if (photoSet)
     {
-        //self.textview_keyboard_spacing.active = YES;
-        //30 is up to how much of the top of the photo you want to show
+        self.inputTextViewToBottom.active = YES;
+        //30 is up to how much of the top of the photo you want to show, 45 is the bottom bar height
+        self.inputTextViewToBottom.constant = height+45+30;
         //self.textview_keyboard_spacing.constant = height+self.bottom_bar_height.constant+30;
-        //self.bottom_keyboard_spacing.constant = height;
-        //self.image_to_bottom_bar.active = NO;
+        self.imageToBottomBar.active = NO;
+        self.horizontalBarBottom.constant = height - 49;
     }
     else
     {
-        //self.bottom_keyboard_spacing.constant = height;
+        self.horizontalBarBottom.constant = height - 49;
     }
     
     [UIView animateWithDuration:animationDuration animations:^{
@@ -164,15 +205,15 @@ BOOL photoSet;
     CGFloat height = keyboardFrame.size.height;
     if (photoSet)
     {
-        //self.textview_keyboard_spacing.active = NO;
-        //self.bottom_keyboard_spacing.constant = 0;
-        //self.image_to_bottom_bar.active = YES;
+        self.inputTextViewToBottom.active = NO;
+        self.imageToBottomBar.active = YES;
+        self.horizontalBarBottom.constant = 0;
     }
     else
     {
-        //self.textview_keyboard_spacing.active = NO;
-        //self.bottom_keyboard_spacing.constant = 0;
-        //self.image_to_bottom_bar.active = YES;
+        self.inputTextViewToBottom.active = NO;
+        self.imageToBottomBar.active = YES;
+        self.horizontalBarBottom.constant = 0;
     }
     
     [UIView animateWithDuration:animationDuration animations:^{

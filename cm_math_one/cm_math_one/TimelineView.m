@@ -50,7 +50,18 @@ UIImage *selectedImage;
 }
 
 - (IBAction)addPostButtonTap:(UIBarButtonItem *)sender {
-    
+    if ([PFUser currentUser])
+    {
+        [self performSegueWithIdentifier:@"timelinepostsegue" sender:self];
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"You need a user account"
+                                    message:@"Please sign in first"
+                                   delegate:nil
+                          cancelButtonTitle:@"Done"
+                          otherButtonTitles:nil] show];
+    }
 }
 
 - (void)setupLeftMenuButton {

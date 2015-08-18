@@ -134,6 +134,8 @@
 		B4BFB5261B3181F40035309E /* ChatYouCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB5251B3181F40035309E /* ChatYouCell.m */; };
 		B4BFB5291B3182030035309E /* ChatMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB5281B3182030035309E /* ChatMeCell.m */; };
 		B4CE361A1B79D1A2008CB21F /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */; };
+		B4F04D3F1B81BFED00A4FCD3 /* camera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */; };
+		B4F04D411B81BFF300A4FCD3 /* key_down48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */; };
 		C36C9C5FCF3D705D97086C73 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007110BB53EB649131D36947 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -337,6 +339,8 @@
 		B4BFB5281B3182030035309E /* ChatMeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMeCell.m; sourceTree = "<group>"; };
 		B4CE36181B79D1A2008CB21F /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionsViewController.h; sourceTree = "<group>"; };
 		B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
+		B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera48@2x.png"; sourceTree = "<group>"; };
+		B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_down48@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,6 +533,8 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */,
+				B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */,
 				B46402511B4662B80074DD72 /* addevent48@2x.png */,
 				B46402521B4662B80074DD72 /* addevent64@2x.png */,
 				B46402531B4662B80074DD72 /* addphoto48@2x.png */,
@@ -756,6 +762,7 @@
 				B40CCC261B3009B500BB11B9 /* Main.storyboard in Resources */,
 				B40CCC2B1B3009B500BB11B9 /* LaunchScreen.xib in Resources */,
 				B46402851B4662B80074DD72 /* news48@2x.png in Resources */,
+				B4F04D411B81BFF300A4FCD3 /* key_down48@2x.png in Resources */,
 				B489FEB71B621A8A009BB49A /* followevent48@2x.png in Resources */,
 				B464028C1B4662B80074DD72 /* program64@2x.png in Resources */,
 				B455D7A61B413B7300DCB6E4 /* Icon-Small-50.png in Resources */,
@@ -763,6 +770,7 @@
 				B46402861B4662B80074DD72 /* news64@2x.png in Resources */,
 				B489FEBE1B6231EE009BB49A /* eventhome48@2x.png in Resources */,
 				B46402831B4662B80074DD72 /* nav48@2x.png in Resources */,
+				B4F04D3F1B81BFED00A4FCD3 /* camera48@2x.png in Resources */,
 				B46402911B4662B80074DD72 /* venue48@2x.png in Resources */,
 				B46402901B4662B80074DD72 /* timeline64@2x.png in Resources */,
 				B46402751B4662B80074DD72 /* addphoto48@2x.png in Resources */,

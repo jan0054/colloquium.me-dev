@@ -26,7 +26,8 @@ NSIndexPath *currentIndex;
     //styling
     [self.tableView setContentInset:UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0)];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor dark_primary];
+    self.tableView.backgroundColor = [UIColor dark_primary];
     
     //set default "currentIndex" depending on whether there are already saved events
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -74,12 +75,16 @@ NSIndexPath *currentIndex;
     DrawerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"drawercell"];
     
     //styling
-    cell.drawerBackground.backgroundColor = [UIColor clearColor];
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
+    cell.drawerBackground.backgroundColor = [UIColor clearColor];
     [cell.drawerImage setTintColor:[UIColor dark_accent]];
     UIImage *img = [[UIImage alloc] init];
+    cell.drawerTitle.backgroundColor = [UIColor clearColor];
+    cell.drawerTitle.textColor = [UIColor light_txt];
+    cell.contentView.backgroundColor = [UIColor dark_primary];
+    
     
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

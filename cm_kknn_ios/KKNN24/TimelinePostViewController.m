@@ -202,11 +202,9 @@ BOOL photo_is_set;
         self.image_to_bottom_bar.active = YES;
     }
     
-    
     [UIView animateWithDuration:animationDuration animations:^{
         [self.view layoutIfNeeded];
     }];
-
 }
 
 - (IBAction)dismiss_beyboard_button_tap:(UIButton *)sender {

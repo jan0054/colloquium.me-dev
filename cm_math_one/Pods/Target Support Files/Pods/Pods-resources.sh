@@ -66,6 +66,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetDoneButton@2x.png"
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetDoneButtonPressed.png"
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetDoneButtonPressed@2x.png"
+  install_resource "Parse/Parse/Resources/Localizable.strings"
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -77,6 +78,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetDoneButton@2x.png"
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetDoneButtonPressed.png"
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetDoneButtonPressed@2x.png"
+  install_resource "Parse/Parse/Resources/Localizable.strings"
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
 fi
 

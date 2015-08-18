@@ -13,10 +13,11 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
-  - Parse (1.7.5):
+  - Parse (1.8.0):
     - Bolts/Tasks (>= 1.2.0)
-  - ParseUI (1.1.4):
-    - Parse (~> 1.7)
+  - ParseUI (1.1.5):
+    - Bolts/Tasks (~> 1.2)
+    - Parse (~> 1.8)
   - SZTextView (1.2.1)
 
 DEPENDENCIES:
@@ -30,8 +31,8 @@ SPEC CHECKSUMS:
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   GKImagePicker@robseward: 800d33db9ee27eaa7f253ca2d4ff61a8ba290b1f
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
-  Parse: 7c0f115eff3e0cea3fac08d50bda47154edb8832
-  ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  Parse: 6ea05adb378fbfd6f8726ab67ef74330d96fc903
+  ParseUI: 2c53621ed028ee793f5ab92a551b099689265525
   SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
 
 COCOAPODS: 0.37.2

@@ -130,6 +130,7 @@
     post[@"author"] = author;
     post[@"content"] = content;
     post[@"image"] = image;
+    post[@"event"] = event;
     
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)

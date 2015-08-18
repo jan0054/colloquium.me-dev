@@ -12,6 +12,7 @@
 #import "SignUpView.h"
 #import "UserPreferenceView.h"
 #import "UIViewController+ParseQueries.h"
+#import "MMDrawerVisualState.h"
 
 BOOL waitForPreference;  //used to pause launching the drawersegue to wait for the user preference view
 
@@ -96,6 +97,7 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         [destinationViewController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeTapCenterView];
         [destinationViewController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModePanningCenterView];
         [destinationViewController setMaximumLeftDrawerWidth:200.0];
+        [destinationViewController setDrawerVisualStateBlock:[MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:3.0]];
         destinationViewController.shouldStretchDrawer = NO;
     }
 }
