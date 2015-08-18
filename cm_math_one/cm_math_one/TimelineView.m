@@ -88,6 +88,14 @@ UIImage *selectedImage;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"timelinecell"];
+    
+    //styling
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.timeLabel.textColor = [UIColor dark_primary];
+    if ([cell respondsToSelector:@selector(layoutMargins)]) {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
+    
     PFObject *post = [postArray objectAtIndex:indexPath.row];
     PFUser *author = post[@"author"];
     NSDate *time = post.createdAt;

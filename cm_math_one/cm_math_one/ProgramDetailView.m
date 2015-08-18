@@ -10,6 +10,7 @@
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
 #import "ProgramForumView.h"
+#import "FullScreenTextView.h"
 
 @implementation ProgramDetailView
 @synthesize program;
@@ -25,6 +26,10 @@
     self.sessionLabel.textColor = [UIColor dark_primary];
     self.locationLabel.textColor = [UIColor dark_primary];
     self.timeLabel.textColor = [UIColor dark_primary];
+}
+
+- (IBAction)contentTapped:(UITapGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:@"fullscreensegue" sender:self];
 }
 
 - (IBAction)discussButtonTap:(UIBarButtonItem *)sender {
@@ -70,8 +75,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"programforumsegue"]) {
-        ProgramForumView *controller = (ProgramForumView *) segue.destinationViewController;
+        ProgramForumView *controller = (ProgramForumView *)segue.destinationViewController;
         controller.sourceProgram = self.program;
+    }
+    else if ([segue.identifier isEqualToString:@"fullscreensegue"])
+    {
+        FullScreenTextView *controller = (FullScreenTextView *)segue.destinationViewController;
+        controller.content = self.contentTextView.text;
     }
 }
 

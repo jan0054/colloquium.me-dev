@@ -16,4 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *postImage;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageRatio;
+
+
 @end

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *discussButton;
 @property (strong, nonatomic) IBOutlet UIView *mainBackgroundView;
 
+- (IBAction)contentTapped:(UITapGestureRecognizer *)sender;
 - (IBAction)discussButtonTap:(UIBarButtonItem *)sender;
 
 @property PFObject *program;

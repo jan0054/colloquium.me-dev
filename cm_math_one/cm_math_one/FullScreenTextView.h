@@ -10,5 +10,8 @@
 
 @interface FullScreenTextView : UIViewController
 @property (strong, nonatomic) IBOutlet UITextView *contentTextView;
+- (IBAction)textFieldTapped:(UITapGestureRecognizer *)sender;
+
+@property NSString *content;
 
 @end

@@ -80,6 +80,7 @@ NSMutableArray *newsArray;
     }
     else
     {
+        NSLog(@"SWITCH:setting attendance to %@", self.attendanceSwitch.on ? @"YES" : @"NO");
         [self changeAttendanceTo:self.attendanceSwitch.on];
     }
 }
@@ -173,7 +174,7 @@ NSMutableArray *newsArray;
             if ([currentEvent.objectId isEqualToString:event.objectId])
             {
                 match = 1;
-                NSLog(@"attendance match found");
+                NSLog(@"attendance match found:%@", event.objectId);
             }
         }
         if (match == 1)

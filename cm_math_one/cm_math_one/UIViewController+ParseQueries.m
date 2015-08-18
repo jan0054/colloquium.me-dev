@@ -94,7 +94,7 @@
 - (void)getComments: (id)caller forPost: (PFObject *)post
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
-    [query orderByDescending:@"createdAt"];
+    [query orderByAscending:@"createdAt"];
     [query whereKey:@"post" equalTo:post];
     [query includeKey:@"author"];
     [query setLimit:500];

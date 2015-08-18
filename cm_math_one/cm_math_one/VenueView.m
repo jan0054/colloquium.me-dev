@@ -129,6 +129,8 @@ NSMutableArray *venueArray;
     [cell.navButton setTintColor:[UIColor dark_button_txt]];
     [cell.navButton setImage:img3 forState:UIControlStateNormal];
     [cell.navButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+    cell.venueImage.layer.cornerRadius = 30.0;
+    cell.venueImage.clipsToBounds = YES;
     
     return cell;
 }

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface TimelineDetailView : UIViewController
+@interface TimelineDetailView : UIViewController<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *commentTable;
 @property (strong, nonatomic) IBOutlet UIView *inputBackgroundView;
@@ -22,5 +22,8 @@
 
 - (void)processData: (NSArray *) results;
 - (void)commentPostedCallback;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *inputBarToBottom;
+
 
 @end

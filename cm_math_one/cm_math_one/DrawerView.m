@@ -79,7 +79,7 @@ NSIndexPath *currentIndex;
         cell.layoutMargins = UIEdgeInsetsZero;
     }
     cell.drawerBackground.backgroundColor = [UIColor clearColor];
-    [cell.drawerImage setTintColor:[UIColor dark_accent]];
+    [cell.drawerImage setTintColor:[UIColor accent_color]];
     UIImage *img = [[UIImage alloc] init];
     cell.drawerTitle.backgroundColor = [UIColor clearColor];
     cell.drawerTitle.textColor = [UIColor light_txt];

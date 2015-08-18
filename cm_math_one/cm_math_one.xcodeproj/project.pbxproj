@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B406365D1B83122200D3A042 /* TimelineCommentEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B406365C1B83122200D3A042 /* TimelineCommentEmptyCell.m */; };
 		B40CCC1A1B3009B500BB11B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B40CCC191B3009B500BB11B9 /* main.m */; };
 		B40CCC1D1B3009B500BB11B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40CCC1C1B3009B500BB11B9 /* AppDelegate.m */; };
 		B40CCC261B3009B500BB11B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B40CCC241B3009B500BB11B9 /* Main.storyboard */; };
@@ -143,6 +144,8 @@
 		007110BB53EB649131D36947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		97193DA692AC81F9F66B1E3B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9F8508E468F3460D0EDF3BFC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B406365B1B83122200D3A042 /* TimelineCommentEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCommentEmptyCell.h; sourceTree = "<group>"; };
+		B406365C1B83122200D3A042 /* TimelineCommentEmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCommentEmptyCell.m; sourceTree = "<group>"; };
 		B40CCC141B3009B500BB11B9 /* cm_math_one.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cm_math_one.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40CCC181B3009B500BB11B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B40CCC191B3009B500BB11B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -638,6 +641,8 @@
 				B4BFB5101B31813D0035309E /* TimelineCell.m */,
 				B455D77A1B41229700DCB6E4 /* TimelineCommentCell.h */,
 				B455D77B1B41229700DCB6E4 /* TimelineCommentCell.m */,
+				B406365B1B83122200D3A042 /* TimelineCommentEmptyCell.h */,
+				B406365C1B83122200D3A042 /* TimelineCommentEmptyCell.m */,
 				B455D7861B412AE800DCB6E4 /* TimelineDetailTextCell.h */,
 				B455D7871B412AE800DCB6E4 /* TimelineDetailTextCell.m */,
 				B455D7891B412AF600DCB6E4 /* TimelineDetailImageCell.h */,
@@ -880,6 +885,7 @@
 				B417560A1B3030B300E1E8A5 /* VenueView.m in Sources */,
 				B489FEBB1B621AF1009BB49A /* HomeCell.m in Sources */,
 				B487C8F41B5F8BB7005F211E /* OverviewView.m in Sources */,
+				B406365D1B83122200D3A042 /* TimelineCommentEmptyCell.m in Sources */,
 				B41756191B30318F00E1E8A5 /* UIImage+ImageTint.m in Sources */,
 				B4BFB5261B3181F40035309E /* ChatYouCell.m in Sources */,
 				B455D78E1B4132A900DCB6E4 /* AttendeeProgramCell.m in Sources */,

@@ -12,6 +12,7 @@
 #import "TimelineCommentCell.h"
 #import "TimelineDetailImageCell.h"
 #import "TimelineDetailTextCell.h"
+#import "TimelineCommentEmptyCell.h"
 
 NSMutableArray *commentArray;
 
@@ -23,10 +24,13 @@ NSMutableArray *commentArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     commentArray = [[NSMutableArray alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.commentTable.tableFooterView = [[UIView alloc] init];
+    self.commentTable.estimatedRowHeight = 120.0;
+    self.commentTable.rowHeight = UITableViewAutomaticDimension;
+    self.inputBackgroundView.backgroundColor = [UIColor whiteColor];
+    [self.sendButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     
     //data
     [self getComments:self forPost:currentPost];
@@ -45,6 +49,21 @@ NSMutableArray *commentArray;
     {
         [self sendComment:self forPost:currentPost withContent:self.inputTextField.text withAuthor:[PFUser currentUser]];
     }
+    [self.inputTextField resignFirstResponder];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 #pragma mark - TableView
@@ -62,7 +81,14 @@ NSMutableArray *commentArray;
     }
     else
     {
-        return [commentArray count];
+        if (commentArray.count>0)
+        {
+            return [commentArray count];
+        }
+        else
+        {
+            return 1;
+        }
     }
 }
 
@@ -71,16 +97,29 @@ NSMutableArray *commentArray;
     TimelineCommentCell *commentcell = [tableView dequeueReusableCellWithIdentifier:@"timelinecommentcell"];
     TimelineDetailTextCell *textcell = [tableView dequeueReusableCellWithIdentifier:@"timelinedetailtextcell"];
     TimelineDetailImageCell *imagecell = [tableView dequeueReusableCellWithIdentifier:@"timelinedetailimagecell"];
+    TimelineCommentEmptyCell *emptycell = [tableView dequeueReusableCellWithIdentifier:@"emptycell"];
     
     //styling
     commentcell.selectionStyle = UITableViewCellSelectionStyleNone;
     textcell.selectionStyle = UITableViewCellSelectionStyleNone;
     imagecell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ([commentcell respondsToSelector:@selector(layoutMargins)]) {
+        commentcell.layoutMargins = UIEdgeInsetsZero;
+    }
+    if ([textcell respondsToSelector:@selector(layoutMargins)]) {
+        textcell.layoutMargins = UIEdgeInsetsZero;
+    }
+    if ([imagecell respondsToSelector:@selector(layoutMargins)]) {
+        imagecell.layoutMargins = UIEdgeInsetsZero;
+    }
+    emptycell.contentLabel.textColor = [UIColor dark_primary];
     
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
+            textcell.timeLabel.textColor = [UIColor dark_primary];
+            
             PFUser *postAuthor = currentPost[@"author"];
             NSDate *date = currentPost.createdAt;
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -101,18 +140,29 @@ NSMutableArray *commentArray;
     }
     else
     {
-        PFObject *comment = [commentArray objectAtIndex:indexPath.row];
-        PFUser *author = comment[@"author"];
-        NSDate *date = comment.createdAt;
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat: @"MMM-d HH:mm"];
-        NSString *dateString = [dateFormat stringFromDate:date];
-        
-        commentcell.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
-        commentcell.contentLabel.text = comment[@"content"];
-        commentcell.timeLabel.text =dateString;
-        
-        return commentcell;
+        if (commentArray.count>0)
+        {
+            commentcell.timeLabel.textColor = [UIColor dark_primary];
+            commentcell.authorLabel.textColor = [UIColor dark_primary];
+            commentcell.contentLabel.textColor = [UIColor dark_primary];
+            
+            PFObject *comment = [commentArray objectAtIndex:indexPath.row];
+            PFUser *author = comment[@"author"];
+            NSDate *date = comment.createdAt;
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat: @"MMM-d HH:mm"];
+            NSString *dateString = [dateFormat stringFromDate:date];
+            
+            commentcell.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+            commentcell.contentLabel.text = comment[@"content"];
+            commentcell.timeLabel.text =dateString;
+            
+            return commentcell;
+        }
+        else
+        {
+            return emptycell;
+        }
     }
 }
 
@@ -135,6 +185,40 @@ NSMutableArray *commentArray;
     self.inputTextField.text = @"";
     [self getComments:self forPost:currentPost];
 }
+
+#pragma mark - Keyboard
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSLog(@"keyboard will show");
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    CGFloat height = keyboardFrame.size.height;
+    
+    self.inputBarToBottom.constant = height -49;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSLog(@"keyboard will hide");
+    NSDictionary *info = [notification userInfo];
+    NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [kbFrame CGRectValue];
+    CGFloat height = keyboardFrame.size.height;
+    
+    self.inputBarToBottom.constant = 0;
+    
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+}
+
 
 
 @end
