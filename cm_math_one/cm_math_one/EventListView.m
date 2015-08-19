@@ -136,15 +136,19 @@ InstructionsViewController *controller;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.eventOrganizerLabel.textColor = [UIColor dark_primary];
     cell.eventTimeLabel.textColor = [UIColor dark_primary];
+    cell.eventNameLabel.layer.cornerRadius = 12.0;
+    cell.eventNameLabel.layer.masksToBounds = YES;
     
     int sel = [[selectedDictionary valueForKey:event.objectId] intValue];
     if (sel == 1)
     {
         cell.eventSelectedImage.hidden = NO;
+        cell.eventNameLabel.backgroundColor = [UIColor dark_accent];
     }
     else
     {
         cell.eventSelectedImage.hidden = YES;
+        cell.eventNameLabel.backgroundColor = [UIColor clearColor];
     }
     
     return cell;
@@ -157,11 +161,13 @@ InstructionsViewController *controller;
     if (selectedStatus == 1)
     {
         cell.eventSelectedImage.hidden = YES;
+        cell.eventNameLabel.backgroundColor = [UIColor clearColor];
         [selectedDictionary setValue:@0 forKey:cell.eventId];
     }
     else
     {
         cell.eventSelectedImage.hidden = NO;
+        cell.eventNameLabel.backgroundColor = [UIColor dark_accent];
         [selectedDictionary setValue:@1 forKey:cell.eventId];
     }
 
@@ -175,11 +181,13 @@ InstructionsViewController *controller;
     if (selectedStatus == 1)
     {
         cell.eventSelectedImage.hidden = YES;
+        cell.eventNameLabel.backgroundColor = [UIColor clearColor];
         [selectedDictionary setValue:@0 forKey:cell.eventId];
     }
     else
     {
         cell.eventSelectedImage.hidden = NO;
+        cell.eventNameLabel.backgroundColor = [UIColor dark_accent];
         [selectedDictionary setValue:@1 forKey:cell.eventId];
     }
 

@@ -147,6 +147,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
     emailquery.equalTo("email", user_email);
     emailquery.find({
         success: function(results) {
+        	Parse.Cloud.useMasterKey();
         	console.log("Person query done:");
             console.log(results.length);
             //query done, link the user and person here
@@ -165,6 +166,11 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
                 person_obj.set("event_status", user_eventswitch);
                 person_obj.set("events", user_events);
                 person_obj.save();
+                
+                request.object.set("person", person_obj);
+                request.object.set("is_person", 1);
+                request.object.save();
+                
                 console.log("Existing Person updated");
             }
              
@@ -182,7 +188,9 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
                 person_obj.set("chat_status", user_chatswitch);
                 person_obj.set("event_status", user_eventswitch);
                 person_obj.set("events", user_events);
-                person_obj.save();
+                request.object.set("person", person_obj);
+                request.object.set("is_person", 1);
+                request.object.save();
                 console.log("New Person created");
             }
         },

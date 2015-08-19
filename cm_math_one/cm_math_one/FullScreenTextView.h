@@ -11,6 +11,13 @@
 @interface FullScreenTextView : UIViewController
 @property (strong, nonatomic) IBOutlet UITextView *contentTextView;
 - (IBAction)textFieldTapped:(UITapGestureRecognizer *)sender;
+@property (strong, nonatomic) IBOutlet UIView *controlBar;
+@property (strong, nonatomic) IBOutlet UIButton *exitButton;
+- (IBAction)exitButtonTap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIButton *whiteTextButton;
+- (IBAction)whiteTextButtonTap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIButton *blackTextButton;
+- (IBAction)blackTextButtonTap:(UIButton *)sender;
 
 @property NSString *content;
 

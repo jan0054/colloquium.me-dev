@@ -28,17 +28,74 @@
                                     <outletCollection property="gestureRecognizers" destination="PQS-Nz-gH7" appends="YES" id="bgI-BV-BTO"/>
                                 </connections>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeq-rC-zFB">
+                                <rect key="frame" x="0.0" y="555" width="600" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mI-JN-UfL">
+                                        <rect key="frame" x="8" y="8" width="30" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="A">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="whiteTextButtonTap:" destination="owG-mx-sqC" eventType="touchUpInside" id="vSI-eJ-fHe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUF-En-97z">
+                                        <rect key="frame" x="477" y="8" width="115" height="30"/>
+                                        <state key="normal" title="Exit Fullscreen">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="exitButtonTap:" destination="owG-mx-sqC" eventType="touchUpInside" id="Xda-RR-v0z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWa-Lo-tlL">
+                                        <rect key="frame" x="54" y="8" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="A">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="blackTextButtonTap:" destination="owG-mx-sqC" eventType="touchUpInside" id="CcA-ga-cqR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iUF-En-97z" secondAttribute="trailing" constant="8" id="2NP-Nk-R1g"/>
+                                    <constraint firstItem="iUF-En-97z" firstAttribute="top" secondItem="yeq-rC-zFB" secondAttribute="top" constant="8" id="6gb-Nw-n6G"/>
+                                    <constraint firstAttribute="height" constant="45" id="LdP-rP-LTW"/>
+                                    <constraint firstItem="PWa-Lo-tlL" firstAttribute="leading" secondItem="7mI-JN-UfL" secondAttribute="trailing" constant="16" id="PAn-Gz-6QH"/>
+                                    <constraint firstItem="PWa-Lo-tlL" firstAttribute="top" secondItem="yeq-rC-zFB" secondAttribute="top" constant="8" id="eNV-K1-rHc"/>
+                                    <constraint firstAttribute="bottom" secondItem="PWa-Lo-tlL" secondAttribute="bottom" constant="7" id="pfc-rq-oGL"/>
+                                    <constraint firstAttribute="bottom" secondItem="iUF-En-97z" secondAttribute="bottom" constant="7" id="qbM-yF-rac"/>
+                                    <constraint firstAttribute="bottom" secondItem="7mI-JN-UfL" secondAttribute="bottom" constant="7" id="qx9-ei-IV3"/>
+                                    <constraint firstItem="7mI-JN-UfL" firstAttribute="top" secondItem="yeq-rC-zFB" secondAttribute="top" constant="8" id="u6b-7Y-xjI"/>
+                                    <constraint firstItem="7mI-JN-UfL" firstAttribute="leading" secondItem="yeq-rC-zFB" secondAttribute="leading" constant="8" id="vjK-ka-N8X"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="yeq-rC-zFB" secondAttribute="trailing" constant="-16" id="4ty-BR-cha"/>
                             <constraint firstItem="R4n-jn-dfz" firstAttribute="top" secondItem="aow-Oq-Q7f" secondAttribute="topMargin" constant="16" id="E5B-AO-3fb"/>
+                            <constraint firstItem="yeq-rC-zFB" firstAttribute="leading" secondItem="aow-Oq-Q7f" secondAttribute="leadingMargin" constant="-16" id="LqP-Lw-XZB"/>
                             <constraint firstItem="wrP-U8-Cnf" firstAttribute="top" secondItem="R4n-jn-dfz" secondAttribute="bottom" constant="16" id="SkN-pi-Hrg"/>
                             <constraint firstItem="R4n-jn-dfz" firstAttribute="leading" secondItem="aow-Oq-Q7f" secondAttribute="leadingMargin" id="X70-1K-iiB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R4n-jn-dfz" secondAttribute="trailing" id="eUt-E5-jjA"/>
+                            <constraint firstItem="wrP-U8-Cnf" firstAttribute="top" secondItem="yeq-rC-zFB" secondAttribute="bottom" id="g4i-Cb-f26"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blackTextButton" destination="PWa-Lo-tlL" id="lDf-6r-sq8"/>
                         <outlet property="contentTextView" destination="R4n-jn-dfz" id="wE2-Dy-k5K"/>
+                        <outlet property="controlBar" destination="yeq-rC-zFB" id="8QW-4I-sL0"/>
+                        <outlet property="exitButton" destination="iUF-En-97z" id="1c4-NU-at3"/>
+                        <outlet property="whiteTextButton" destination="7mI-JN-UfL" id="tIY-qp-fqL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anq-CT-wDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -465,10 +522,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi3-TN-MHm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi3-TN-MHm">
                                 <rect key="frame" x="25" y="273" width="551" height="54"/>
-                                <string key="text">Let's start by choosing a few events that you're interested in, then tap "Save" in the top right corner. You can come back and change your choices anytime, so don't worry if you're not quite sure.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <string key="text">Let's start by choosing a few events that you're interested in, then tap "Done" in the top right corner. You can come back and change your choices anytime, so don't worry if you're not quite sure.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
