@@ -17,7 +17,7 @@
 - (IBAction)inviteButtonTap:(UIButton *)sender;
 
 - (void)processInviteeData:(NSArray *)results;  //category callback
-- (void)processAddedSuccess: (NSIndexPath *)path;  //category callback
+- (void)processAddedSuccess: (NSIndexPath *)path forAddedUser: (PFUser *)user;  //category callback
 - (void)processLeftConversation;  //category callback
 
 @property PFObject *conversation;

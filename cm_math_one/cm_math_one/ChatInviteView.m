@@ -41,9 +41,6 @@ NSMutableArray *selectedArray;
     }
 }
 
-- (IBAction)inviteButtonTap:(UIButton *)sender {
-}
-
 - (IBAction)inviteDoneButtonTap:(UIBarButtonItem *)sender {
     [selectedArray removeAllObjects];
     NSArray *selectedPaths =  self.chatInviteTable.indexPathsForSelectedRows;
@@ -79,7 +76,7 @@ NSMutableArray *selectedArray;
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
-    [cell.inviteButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    cell.inviteLabel.textColor = [UIColor dark_accent];
     
     //data
     PFObject *user = [inviteArray objectAtIndex:indexPath.row];
@@ -95,13 +92,13 @@ NSMutableArray *selectedArray;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatInviteCell *cell = (ChatInviteCell *)[self.chatInviteTable cellForRowAtIndexPath:indexPath];
-    [cell.inviteButton setTitle:@"Invited!" forState:UIControlStateNormal];
+    cell.inviteLabel.text = @"Selected";
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatInviteCell *cell = (ChatInviteCell *)[self.chatInviteTable cellForRowAtIndexPath:indexPath];
-    [cell.inviteButton setTitle:@"Invite" forState:UIControlStateNormal];
+    cell.inviteLabel.text = @"Invite";
 }
 
 #pragma mark - Data

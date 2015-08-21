@@ -47,10 +47,10 @@ BOOL isGroup;
 }
 
 - (IBAction)leaveButtonTap:(UIBarButtonItem *)sender {
-    [[[UIAlertView alloc] initWithTitle:@"Confirm"
-                                message:@"You will not be able to view past messages after you leave the conversation."
+    [[[UIAlertView alloc] initWithTitle:@"Confirm leave"
+                                message:@"You will not be able to view these messages or receive new ones after you leave the conversation."
                                delegate:self
-                      cancelButtonTitle:@"Back"
+                      cancelButtonTitle:@"Cancel"
                       otherButtonTitles:@"Leave", nil] show];
     
 }
@@ -62,11 +62,14 @@ BOOL isGroup;
 }
 
 - (IBAction)inviteButtonTap:(UIButton *)sender {
-    ChatOptionCell *cell = (ChatOptionCell *)[[[sender superview] superview] superview];
+    ChatOptionCell *cell = (ChatOptionCell *)[[sender superview] superview];
     NSIndexPath *tappedPath = [self.inviteeTable indexPathForCell:cell];
     NSLog(@"invitee_tap: %ld", (long)tappedPath.row);
     PFUser *invitedUser = [inviteeArray objectAtIndex:tappedPath.row];
     [self inviteUser:self toConversation:conversation withUser:invitedUser atPath:tappedPath];
+
+    cell.inviteButton.enabled = NO;
+    cell.inviteButton.userInteractionEnabled = NO;
 }
 
 #pragma mark - TableView
@@ -91,6 +94,7 @@ BOOL isGroup;
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
+    [cell.inviteButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //data
@@ -123,10 +127,12 @@ BOOL isGroup;
     [self.inviteeTable reloadData];
 }
 
-- (void)processAddedSuccess:(NSIndexPath *)path  //callback for adding a specific user
+- (void)processAddedSuccess:(NSIndexPath *)path forAddedUser: (PFUser *)user //callback for adding a specific user
 {
-    ChatOptionCell *cell = (ChatOptionCell *)[self.inviteeTable cellForRowAtIndexPath:path];
-    [cell.inviteButton setTitle:@"Invited!" forState:UIControlStateNormal];
+    [self.receivedParticipants addObject:user];
+    [self getInviteeList:self withoutUsers:receivedParticipants];
+    //ChatOptionCell *cell = (ChatOptionCell *)[self.inviteeTable cellForRowAtIndexPath:path];
+    //[cell.inviteButton setTitle:@"Invited" forState:UIControlStateNormal];
 }
 
 - (void)processLeftConversation  //callback for leaving the conversation

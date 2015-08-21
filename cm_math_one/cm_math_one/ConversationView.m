@@ -111,8 +111,16 @@ NSMutableArray *selectedParticipants;
             name = [NSString stringWithFormat:@"%@, %@", name, [NSString stringWithFormat:@"%@ %@", user[@"first_name"], user[@"last_name"]]];
         }
     }
-    NSRange range = NSMakeRange(0, 2);
-    name = [name stringByReplacingCharactersInRange:range withString:@""];
+    if (name.length>3)
+    {
+        NSRange range = NSMakeRange(0, 2);
+        name = [name stringByReplacingCharactersInRange:range withString:@""];
+    }
+    else
+    {
+        name = @"No participants in conversation";
+        cell.participantLabel.textColor = [UIColor primary_color];
+    }
     
     cell.timeLabel.text = dateString;
     cell.participantLabel.text = name;

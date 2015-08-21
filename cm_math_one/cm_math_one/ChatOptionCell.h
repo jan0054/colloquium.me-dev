@@ -11,6 +11,8 @@
 @interface ChatOptionCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *institutionLabel;
-@property (strong, nonatomic) IBOutlet UIButton *inviteButton;
+@property (weak, nonatomic) IBOutlet UIButton *inviteButton;
+
+
 
 @end

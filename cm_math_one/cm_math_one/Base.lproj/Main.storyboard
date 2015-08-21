@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHr-oH-jph">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHr-oH-jph">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -3147,7 +3147,7 @@
             </objects>
             <point key="canvasLocation" x="-493" y="2730"/>
         </scene>
-        <!--Invite Participants-->
+        <!--Invite-->
         <scene sceneID="Gbz-UO-TC7">
             <objects>
                 <viewController id="NfV-4b-61Z" customClass="ChatOptions" sceneMemberID="viewController">
@@ -3176,37 +3176,35 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfY-M1-XLd">
-                                                    <rect key="frame" x="542" y="17" width="50" height="30"/>
-                                                    <state key="normal" title="Invite">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="inviteButtonTap:" destination="NfV-4b-61Z" eventType="touchUpInside" id="8xd-qt-HQ4"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsV-CQ-oBG">
                                                     <rect key="frame" x="8" y="8" width="283" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk8-mi-4mx">
+                                                    <rect key="frame" x="546" y="17" width="46" height="30"/>
+                                                    <state key="normal" title="Invite">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="inviteButtonTap:" destination="NfV-4b-61Z" eventType="touchUpInside" id="5Dd-Vs-94z"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="YfY-M1-XLd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZJZ-Mq-4sv" secondAttribute="trailing" id="0ES-IW-Dkk"/>
-                                                <constraint firstItem="YfY-M1-XLd" firstAttribute="trailing" secondItem="oa4-HI-QAZ" secondAttribute="trailingMargin" id="30U-V6-9cy"/>
                                                 <constraint firstItem="ZJZ-Mq-4sv" firstAttribute="top" secondItem="IsV-CQ-oBG" secondAttribute="bottom" id="ChW-3c-KhY"/>
-                                                <constraint firstAttribute="centerY" secondItem="YfY-M1-XLd" secondAttribute="centerY" id="D7k-UR-Tbf"/>
+                                                <constraint firstAttribute="centerY" secondItem="Yk8-mi-4mx" secondAttribute="centerY" id="Dsa-kM-qK6"/>
                                                 <constraint firstItem="IsV-CQ-oBG" firstAttribute="top" secondItem="oa4-HI-QAZ" secondAttribute="topMargin" id="RMc-C8-7RR"/>
+                                                <constraint firstItem="Yk8-mi-4mx" firstAttribute="trailing" secondItem="oa4-HI-QAZ" secondAttribute="trailingMargin" id="Syo-Vt-ZUk"/>
                                                 <constraint firstItem="IsV-CQ-oBG" firstAttribute="leading" secondItem="oa4-HI-QAZ" secondAttribute="leadingMargin" constant="16" id="goy-nd-Ik9"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ZJZ-Mq-4sv" secondAttribute="bottom" id="h7c-7w-PY4"/>
                                                 <constraint firstItem="ZJZ-Mq-4sv" firstAttribute="leading" secondItem="oa4-HI-QAZ" secondAttribute="leadingMargin" constant="16" id="o9K-IL-odR"/>
-                                                <constraint firstItem="YfY-M1-XLd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IsV-CQ-oBG" secondAttribute="trailing" id="ocj-zB-D9J"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="institutionLabel" destination="ZJZ-Mq-4sv" id="lOj-w4-WJ9"/>
-                                            <outlet property="inviteButton" destination="YfY-M1-XLd" id="lbC-AH-92B"/>
+                                            <outlet property="inviteButton" destination="Yk8-mi-4mx" id="lLD-tB-emQ"/>
                                             <outlet property="nameLabel" destination="IsV-CQ-oBG" id="gDS-qT-ujb"/>
                                         </connections>
                                     </tableViewCell>
@@ -3225,8 +3223,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Fo4-kP-kg9" secondAttribute="trailing" constant="-16" id="mZZ-cf-TGJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Invite Participants" id="T2e-ao-qtw">
-                        <barButtonItem key="rightBarButtonItem" title="Leave Conversation" id="fIW-ui-sNZ">
+                    <navigationItem key="navigationItem" title="Invite" id="T2e-ao-qtw">
+                        <barButtonItem key="rightBarButtonItem" title="Leave" id="fIW-ui-sNZ">
                             <connections>
                                 <action selector="leaveButtonTap:" destination="NfV-4b-61Z" id="bmg-5h-Gda"/>
                             </connections>
@@ -3241,7 +3239,7 @@
             </objects>
             <point key="canvasLocation" x="260" y="2085"/>
         </scene>
-        <!--Invite Participants-->
+        <!--Invite-->
         <scene sceneID="sdc-pK-oUB">
             <objects>
                 <viewController id="5tk-w2-5gL" customClass="ChatInviteView" sceneMemberID="viewController">
@@ -3270,37 +3268,32 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdK-td-8r0">
-                                                    <rect key="frame" x="546" y="17" width="46" height="30"/>
-                                                    <state key="normal" title="Invite">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="inviteButtonTap:" destination="5tk-w2-5gL" eventType="touchUpInside" id="RqJ-xX-unp"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9V-ME-ubb">
                                                     <rect key="frame" x="8" y="8" width="288" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Invite" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myw-vf-B9I">
+                                                    <rect key="frame" x="546" y="21" width="46" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="gdK-td-8r0" secondAttribute="centerY" id="5eb-Wp-q9m"/>
-                                                <constraint firstItem="gdK-td-8r0" firstAttribute="trailing" secondItem="23e-bk-mRO" secondAttribute="trailingMargin" id="6Jv-2D-YjN"/>
                                                 <constraint firstItem="x9V-ME-ubb" firstAttribute="leading" secondItem="23e-bk-mRO" secondAttribute="leadingMargin" constant="16" id="ID5-Ah-LqN"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="9dW-It-oEf" secondAttribute="bottom" id="IHd-T2-6ZY"/>
-                                                <constraint firstItem="gdK-td-8r0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x9V-ME-ubb" secondAttribute="trailing" id="PZk-Qh-fKR"/>
                                                 <constraint firstItem="9dW-It-oEf" firstAttribute="top" secondItem="x9V-ME-ubb" secondAttribute="bottom" constant="4" id="Pie-aa-bv0"/>
                                                 <constraint firstItem="9dW-It-oEf" firstAttribute="leading" secondItem="23e-bk-mRO" secondAttribute="leadingMargin" constant="16" id="QfZ-dP-27l"/>
-                                                <constraint firstItem="gdK-td-8r0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9dW-It-oEf" secondAttribute="trailing" id="evr-ye-za6"/>
+                                                <constraint firstAttribute="centerY" secondItem="myw-vf-B9I" secondAttribute="centerY" id="WMc-MF-Tzg"/>
+                                                <constraint firstItem="myw-vf-B9I" firstAttribute="trailing" secondItem="23e-bk-mRO" secondAttribute="trailingMargin" id="fe9-qH-4rA"/>
                                                 <constraint firstItem="x9V-ME-ubb" firstAttribute="top" secondItem="23e-bk-mRO" secondAttribute="topMargin" id="q4L-Aa-6sV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="institutionLabel" destination="9dW-It-oEf" id="XOh-90-pMK"/>
-                                            <outlet property="inviteButton" destination="gdK-td-8r0" id="er1-0D-ons"/>
+                                            <outlet property="inviteLabel" destination="myw-vf-B9I" id="hdI-Ta-5V4"/>
                                             <outlet property="nameLabel" destination="x9V-ME-ubb" id="sjg-pr-ahm"/>
                                         </connections>
                                     </tableViewCell>
@@ -3319,7 +3312,7 @@
                             <constraint firstItem="nzu-bL-GJb" firstAttribute="leading" secondItem="qtO-Pf-zWs" secondAttribute="leadingMargin" constant="-16" id="zEB-lV-5ii"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Invite Participants" id="WQ9-Wt-a23">
+                    <navigationItem key="navigationItem" title="Invite" id="WQ9-Wt-a23">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="bBi-fn-VZr">
                             <connections>
                                 <action selector="inviteDoneButtonTap:" destination="5tk-w2-5gL" id="364-vz-Ty8"/>

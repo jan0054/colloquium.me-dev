@@ -163,7 +163,7 @@ PFUser *loggedinUser;
         //msg is them to me
         youcell.contentLabel.text = contentString;
         youcell.timeLabel.text = dateString;
-        youcell.authorLabel.text = author.username;
+        youcell.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
         return youcell;
     }
     else
