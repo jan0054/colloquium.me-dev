@@ -19,13 +19,17 @@
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     [self.signUpView setLogo:[[UIImageView alloc] initWithImage:nil]];
     
-    //[self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateNormal];
-    //[self.signUpView.dismissButton setImage:[UIImage imageNamed:@"cancelwhite.png"] forState:UIControlStateHighlighted];
+    [self.signUpView.dismissButton setTintColor:[UIColor whiteColor]];
+    [self.signUpView.dismissButton setTitle:@"Back" forState:UIControlStateNormal];
+    [self.signUpView.dismissButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.signUpView.dismissButton setBackgroundColor:[UIColor accent_color]] ;
+    [self.signUpView.dismissButton setImage:nil forState:UIControlStateNormal];
+    [self.signUpView.dismissButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0]];
     
     [self.signUpView.signUpButton setBackgroundColor:[UIColor accent_color]];
     [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];
     [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateHighlighted];
-    [self.signUpView.signUpButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
+    [self.signUpView.signUpButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0]];
     //[self.signUpView.signUpButton setTitle:@"Sign Up" forState:UIControlStateNormal];
     //[self.signUpView.signUpButton setTitle:@"Sign Up" forState:UIControlStateHighlighted];
     
@@ -63,6 +67,12 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    float signupy = self.signUpView.signUpButton.frame.origin.y;
+    float signupx = self.signUpView.signUpButton.frame.origin.x;
+    float signuph = self.signUpView.signUpButton.frame.size.height;
+    float signupw = self.signUpView.signUpButton.frame.size.width;
+    
+    [self.signUpView.dismissButton setFrame:CGRectMake(signupx+signupw*0.25, signupy+signuph+40, signupw*0.5, signuph*0.75)];
     
     
 }
