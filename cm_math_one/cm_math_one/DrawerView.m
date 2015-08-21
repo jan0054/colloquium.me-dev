@@ -43,9 +43,11 @@ NSIndexPath *currentIndex;
 }
 
 - (void)viewDidLayoutSubviews {
+    /*
     if ([self.tableView respondsToSelector:@selector(layoutMargins)]) {
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
+     */
 }
 
 #pragma mark - TableView
@@ -75,9 +77,12 @@ NSIndexPath *currentIndex;
     DrawerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"drawercell"];
     
     //styling
+    /*
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
+     */
+    //cell.separatorInset = UIEdgeInsetsMake(0, CGRectGetWidth(cell.bounds)/2.0, 0, CGRectGetWidth(cell.bounds)/2.0);
     cell.drawerBackground.backgroundColor = [UIColor clearColor];
     [cell.drawerImage setTintColor:[UIColor accent_color]];
     UIImage *img = [[UIImage alloc] init];
@@ -142,6 +147,8 @@ NSIndexPath *currentIndex;
                 img = [UIImage imageNamed:@"event48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
+                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+                
                 break;
         }
     }
