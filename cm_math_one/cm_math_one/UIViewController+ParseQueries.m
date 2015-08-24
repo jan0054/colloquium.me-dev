@@ -187,6 +187,8 @@
 
 - (void)sendBroadcast:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content forConversation:(PFObject *)conversation
 {
+    NSMutableArray *participants = conversation[@"participants"];
+    
     PFObject *chat = [PFObject objectWithClassName:@"Chat"];
     chat[@"content"] = content;
     chat[@"author"] = user;
@@ -196,6 +198,21 @@
         if (succeeded)
         {
             NSLog(@"new broadcast uploaded successfully");
+            NSString *pushstr = content;
+            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  pushstr, @"alert",
+                                  @"Increment", @"badge",
+                                  @"default", @"sound",
+                                  nil];
+            // Create our Installation query
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"user" containedIn:participants];
+            // Send push notification to query
+            PFPush *push = [[PFPush alloc] init];
+            [push setQuery:pushQuery]; // Set our Installation query
+            [push setData:data];
+            [push sendPushInBackground];
+
         }
         else
         {

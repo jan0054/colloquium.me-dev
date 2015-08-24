@@ -83,6 +83,8 @@ NSIndexPath *currentIndex;
     }
      */
     //cell.separatorInset = UIEdgeInsetsMake(0, CGRectGetWidth(cell.bounds)/2.0, 0, CGRectGetWidth(cell.bounds)/2.0);
+    cell.lowerSeparator.hidden = YES;
+    cell.upperSeparator.hidden = YES;
     cell.drawerBackground.backgroundColor = [UIColor clearColor];
     [cell.drawerImage setTintColor:[UIColor accent_color]];
     UIImage *img = [[UIImage alloc] init];
@@ -108,6 +110,8 @@ NSIndexPath *currentIndex;
                 img = [UIImage imageNamed:@"chat48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
+                cell.upperSeparator.hidden = NO;
+                cell.upperSeparator.backgroundColor = [UIColor divider_color];
                 break;
             case 1:
                 cell.drawerTitle.text = @"Career";
@@ -140,6 +144,8 @@ NSIndexPath *currentIndex;
                 img = [UIImage imageNamed:@"eventhome48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
+                cell.lowerSeparator.hidden = NO;
+                cell.lowerSeparator.backgroundColor = [UIColor divider_color];
                 break;
                 
             default:

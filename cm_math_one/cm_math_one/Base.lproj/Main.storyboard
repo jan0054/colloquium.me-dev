@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHr-oH-jph">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHr-oH-jph">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1514,12 +1514,32 @@
                                                 <constraint firstItem="8a7-q3-qB2" firstAttribute="leading" secondItem="6vf-RK-yng" secondAttribute="trailing" constant="10" id="pvO-N7-fpY"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGv-6a-y2f">
+                                            <rect key="frame" x="0.0" y="51" width="600" height="1"/>
+                                            <color key="backgroundColor" red="0.92941182850000004" green="0.68627452850000004" blue="0.87843143940000001" alpha="1" colorSpace="deviceRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="Q6N-1z-t3A"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCu-jw-oYr">
+                                            <rect key="frame" x="0.0" y="2" width="600" height="1"/>
+                                            <color key="backgroundColor" red="0.92941182850000004" green="0.68627452850000004" blue="0.87843143940000001" alpha="1" colorSpace="deviceRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="wkq-5r-Y3Z"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="centerX" secondItem="2Is-Qr-aQ9" secondAttribute="centerX" id="4Ci-LV-jTz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="YGv-6a-y2f" secondAttribute="trailing" constant="-8" id="4Xl-b3-jfw"/>
+                                        <constraint firstItem="YGv-6a-y2f" firstAttribute="leading" secondItem="ih7-hg-2yE" secondAttribute="leadingMargin" constant="-8" id="5Uq-ca-A3K"/>
+                                        <constraint firstItem="XCu-jw-oYr" firstAttribute="leading" secondItem="ih7-hg-2yE" secondAttribute="leadingMargin" constant="-8" id="Hon-c2-EnF"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="2Is-Qr-aQ9" secondAttribute="trailing" id="OaQ-d8-7da"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XCu-jw-oYr" secondAttribute="trailing" constant="-8" id="WJa-wK-d1Q"/>
                                         <constraint firstItem="2Is-Qr-aQ9" firstAttribute="leading" secondItem="ih7-hg-2yE" secondAttribute="leadingMargin" id="Xtr-Hm-CaP"/>
+                                        <constraint firstItem="XCu-jw-oYr" firstAttribute="top" secondItem="ih7-hg-2yE" secondAttribute="topMargin" constant="-6" id="iXW-gD-MSo"/>
                                         <constraint firstAttribute="centerY" secondItem="2Is-Qr-aQ9" secondAttribute="centerY" id="juP-0C-mVd"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="YGv-6a-y2f" secondAttribute="bottom" id="pkO-8y-mes"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1527,6 +1547,8 @@
                                     <outlet property="drawerBackground" destination="2Is-Qr-aQ9" id="058-Au-O6D"/>
                                     <outlet property="drawerImage" destination="6vf-RK-yng" id="9qP-SW-QhT"/>
                                     <outlet property="drawerTitle" destination="8a7-q3-qB2" id="Bm4-kw-1ad"/>
+                                    <outlet property="lowerSeparator" destination="YGv-6a-y2f" id="Lf7-pH-8VF"/>
+                                    <outlet property="upperSeparator" destination="XCu-jw-oYr" id="kGv-mq-wFU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

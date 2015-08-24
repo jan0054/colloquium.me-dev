@@ -223,8 +223,9 @@ PFUser *loggedinUser;
 
 - (void) pushreload: (id) sender  //in-app push receiver
 {
-    [self.currentConversation fetchIfNeededInBackground];
+    [self.currentConversation fetchInBackgroundWithBlock:<#(nullable PFObjectResultBlock(nullable )block#>
     [self getChat:self withConversation:self.currentConversation];
+    self.participants = self.currentConversation[@"participants"];
 }
 
 #pragma mark - Keyboard

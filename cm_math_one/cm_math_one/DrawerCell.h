@@ -12,5 +12,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *drawerTitle;
 @property (strong, nonatomic) IBOutlet UIImageView *drawerImage;
 @property (strong, nonatomic) IBOutlet UIView *drawerBackground;
+@property (weak, nonatomic) IBOutlet UIView *lowerSeparator;
+@property (weak, nonatomic) IBOutlet UIView *upperSeparator;
 
 @end
