@@ -138,6 +138,10 @@
 		B4F04D3F1B81BFED00A4FCD3 /* camera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */; };
 		B4F04D411B81BFF300A4FCD3 /* key_down48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */; };
 		C36C9C5FCF3D705D97086C73 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007110BB53EB649131D36947 /* libPods.a */; };
+		FD1FAE7D1B8CEC1A00771037 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE791B8CEC1A00771037 /* Icon-40.png */; };
+		FD1FAE7E1B8CEC1A00771037 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7A1B8CEC1A00771037 /* Icon-40@2x.png */; };
+		FD1FAE7F1B8CEC1A00771037 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7B1B8CEC1A00771037 /* Icon-76.png */; };
+		FD1FAE801B8CEC1A00771037 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7C1B8CEC1A00771037 /* Icon-76@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -344,6 +348,10 @@
 		B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
 		B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera48@2x.png"; sourceTree = "<group>"; };
 		B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_down48@2x.png"; sourceTree = "<group>"; };
+		FD1FAE791B8CEC1A00771037 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		FD1FAE7A1B8CEC1A00771037 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		FD1FAE7B1B8CEC1A00771037 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		FD1FAE7C1B8CEC1A00771037 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -536,6 +544,10 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FD1FAE791B8CEC1A00771037 /* Icon-40.png */,
+				FD1FAE7A1B8CEC1A00771037 /* Icon-40@2x.png */,
+				FD1FAE7B1B8CEC1A00771037 /* Icon-76.png */,
+				FD1FAE7C1B8CEC1A00771037 /* Icon-76@2x.png */,
 				B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */,
 				B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */,
 				B46402511B4662B80074DD72 /* addevent48@2x.png */,
@@ -747,10 +759,13 @@
 				B464028B1B4662B80074DD72 /* program48@2x.png in Resources */,
 				B464028E1B4662B80074DD72 /* setting64@2x.png in Resources */,
 				B464027A1B4662B80074DD72 /* career64@2x.png in Resources */,
+				FD1FAE801B8CEC1A00771037 /* Icon-76@2x.png in Resources */,
 				B464027E1B4662B80074DD72 /* event64@2x.png in Resources */,
 				B46402941B4662B80074DD72 /* web64@2x.png in Resources */,
 				B46402921B4662B80074DD72 /* venue64@2x.png in Resources */,
+				FD1FAE7F1B8CEC1A00771037 /* Icon-76.png in Resources */,
 				B46402771B4662B80074DD72 /* cancel48@2x.png in Resources */,
+				FD1FAE7D1B8CEC1A00771037 /* Icon-40.png in Resources */,
 				B464027B1B4662B80074DD72 /* chat48@2x.png in Resources */,
 				B455D7A81B413B7300DCB6E4 /* Icon.png in Resources */,
 				B46402781B4662B80074DD72 /* cancel64@2x.png in Resources */,
@@ -759,6 +774,7 @@
 				B4BE91171B4BA8AA00A46E4C /* cross64@2x.png in Resources */,
 				B464028D1B4662B80074DD72 /* setting48@2x.png in Resources */,
 				B46402821B4662B80074DD72 /* mail64@2x.png in Resources */,
+				FD1FAE7E1B8CEC1A00771037 /* Icon-40@2x.png in Resources */,
 				B455D7A21B413B7300DCB6E4 /* AppIcon.appiconset in Resources */,
 				B4BE91161B4BA8AA00A46E4C /* cross48@2x.png in Resources */,
 				B455D7A91B413B7300DCB6E4 /* Icon@2x.png in Resources */,
@@ -945,8 +961,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -968,7 +984,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "a1219b16-030f-4440-afa3-4f622affe350";
+				PROVISIONING_PROFILE = "e2e1caf0-eba6-4fbc-9d44-7fc8fd0b08a5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -990,8 +1006,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1006,7 +1022,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "a1219b16-030f-4440-afa3-4f622affe350";
+				PROVISIONING_PROFILE = "e2e1caf0-eba6-4fbc-9d44-7fc8fd0b08a5";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1016,7 +1032,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 97193DA692AC81F9F66B1E3B /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				INFOPLIST_FILE = cm_math_one/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1028,7 +1044,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9F8508E468F3460D0EDF3BFC /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				INFOPLIST_FILE = cm_math_one/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
