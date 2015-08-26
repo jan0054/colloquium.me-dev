@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/discussioncontent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="0"
+        android:background="@color/light_bg" >
+
+        <EditText
+            android:id="@+id/discussioninput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textCursorDrawable="@null"
+            android:textColor="@color/dark_accent"
+            android:ems="10"
+            android:layout_marginLeft="10dp"
+             />
+
+        <Button
+            android:id="@+id/senddiscussion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:onClick="sendDiscussion"
+            android:textColor="@color/dark_accent"
+            android:text="Send"
+            android:background="@color/light_bg" />
+
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/activity_discussion.xml -->

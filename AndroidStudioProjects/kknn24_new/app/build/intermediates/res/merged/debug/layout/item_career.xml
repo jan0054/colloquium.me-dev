@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/feed_container"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingBottom="10dp"
+	    android:background="@drawable/list_item_gradient"
+	    android:orientation="horizontal" >
+		<TextView
+		    android:id="@+id/institution"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginRight="16dp"
+		    android:layout_alignLeft="@+id/type"
+		    android:layout_below="@+id/type"
+		    android:layout_toLeftOf="@+id/more"
+		    android:gravity="center|left"
+		    android:fontFamily="sans-serif-light"
+		    android:text="institution"
+		    android:textSize="16sp"
+		    android:textColor="@color/list_item_level_1" />
+        <TextView
+            android:id="@+id/position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_alignLeft="@+id/institution"
+            android:layout_below="@+id/institution"
+            android:layout_toLeftOf="@+id/more"
+            android:gravity="center|left"
+            android:fontFamily="sans-serif"
+            android:text="position"
+            android:textSize="18sp"
+            android:textColor="@color/list_item_level_1" />
+
+		<TextView
+		    android:id="@+id/author"
+		    android:layout_width="match_parent"
+		    android:layout_height="24dp"
+		    android:layout_alignLeft="@+id/position"
+		    android:layout_below="@+id/position"
+		    android:layout_marginTop="10dp"
+		    android:layout_marginRight="16dp"
+		    android:layout_toLeftOf="@+id/more"
+		    android:fontFamily="sans-serif-light"
+		    android:gravity="center|left"
+		    android:maxHeight="30dp"
+		    android:maxWidth="300dp"
+		    android:text="Posted by:"
+		    android:textColor="@color/list_item_level_2"
+		    android:textSize="12sp" />
+
+		<TextView
+		    android:id="@+id/type"
+		    android:layout_width="match_parent"
+		    android:layout_height="24dp"
+		    android:layout_marginBottom="6dp"
+		    android:layout_marginLeft="10dp"
+		    android:layout_marginRight="16dp"
+		    android:layout_marginTop="12dp"
+		    android:layout_toLeftOf="@+id/more"
+		    android:fontFamily="sans-serif-light"
+		    android:gravity="center|left"
+		    android:text="Position available"
+		    android:textColor="@color/list_item_level_1"
+		    android:textSize="14sp" />
+
+		<View android:layout_width="match_parent"
+		      android:layout_height="3dp"
+		      android:background="@color/list_item_header" />
+
+		<TextView
+		    android:id="@+id/more"
+		    android:layout_width="wrap_content"
+		    android:layout_height="24dp"
+		    android:layout_alignBaseline="@+id/author"
+		    android:layout_alignBottom="@+id/author"
+		    android:layout_alignParentRight="true"
+		    android:layout_marginRight="10dp"
+		    android:gravity="center|left"
+		    android:text="@string/more"
+		    android:textColor="@color/list_action_text"
+		    android:textSize="14sp" />
+	    
+</RelativeLayout>
+<!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/item_career.xml -->
