@@ -96,6 +96,8 @@
     if ([genericCell respondsToSelector:@selector(layoutMargins)]) {
         genericCell.layoutMargins = UIEdgeInsetsZero;
     }
+    userCell.secondaryLabel.textColor = [UIColor dark_primary];
+    genericCell.secondaryLabel.textColor = [UIColor dark_primary];
     
     //user account management
     NSString *userStatus = @"";
