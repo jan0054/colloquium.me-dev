@@ -2,8 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:color="@color/primary_color"/>
     <item android:color="@color/light_button_txt"/>
-<<<<<<< Updated upstream
-</selector><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/color/tint_color_selector.xml -->
-=======
 </selector><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/color/tint_color_selector.xml -->
->>>>>>> Stashed changes

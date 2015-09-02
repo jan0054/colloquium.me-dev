@@ -7,8 +7,4 @@
 	       		android:bottomLeftRadius="4dp"
 	       		android:topRightRadius="4dp"
 	       		android:bottomRightRadius="4dp" />
-<<<<<<< Updated upstream
-</shape><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/diagram_roundcap.xml -->
-=======
 </shape><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/diagram_roundcap.xml -->
->>>>>>> Stashed changes

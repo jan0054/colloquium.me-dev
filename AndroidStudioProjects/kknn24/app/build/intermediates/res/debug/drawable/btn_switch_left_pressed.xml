@@ -10,8 +10,4 @@
            		android:top="10dp"
             	android:right="10dp"
             	android:bottom="10dp" />
-<<<<<<< Updated upstream
-</shape><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/btn_switch_left_pressed.xml -->
-=======
 </shape><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/btn_switch_left_pressed.xml -->
->>>>>>> Stashed changes

@@ -6,8 +6,4 @@
     <item android:state_focused="true"
           android:drawable="@drawable/btn_switch_mid_normal" />
     <item android:drawable="@drawable/btn_switch_mid_pressed" />
-<<<<<<< Updated upstream
-</selector><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/btn_switch_mid_selector.xml -->
-=======
 </selector><!-- From: file:/Users/huangyueh-yi/Documents/colloquium.me-dev/AndroidStudioProjects/kknn24/app/src/main/res/drawable/btn_switch_mid_selector.xml -->
->>>>>>> Stashed changes
