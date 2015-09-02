@@ -5,9 +5,11 @@
 
     <string-array name="drawer_array">
         <item>Add Event</item>
+        <item>Home</item>
         <item>Event 1</item>
         <item>Event 2</item>
         <item>Chat</item>
+        <item>Career</item>
         <item>Setting</item>
     </string-array>
     <string name="title_activity_first">FirstActivity</string>
@@ -144,5 +146,7 @@
     <string name="title_activity_login">Log In</string>
     <string name="title_activity_cmmath_application">cmmathApplication</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_career">CareerActivity</string>
 
 </resources>

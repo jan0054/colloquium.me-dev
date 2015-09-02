@@ -1,21 +1,25 @@
 package com.ashvale.cmmath_one;
 
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.ashvale.cmmath_one.R;
 
-public class AddeventActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addevent);
-            super.onCreateDrawer();
+        setContentView(R.layout.activity_home);
+        super.onCreateDrawer();
     }
 /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_first, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
@@ -34,4 +38,4 @@ public class AddeventActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 */
-    }
+}

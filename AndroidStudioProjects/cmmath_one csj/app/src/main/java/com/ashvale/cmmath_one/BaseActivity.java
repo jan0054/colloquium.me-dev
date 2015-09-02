@@ -56,12 +56,16 @@ public class BaseActivity extends AppCompatActivity {
             case 0:
                 startActivity(new Intent(this, AddeventActivity.class)); break;
             case 1:
-                startActivity(new Intent(this, EventActivity.class)); break;
+                startActivity(new Intent(this, HomeActivity.class)); break;
             case 2:
-                startActivity(new Intent(this, ThirdActivity.class)); break;
+                startActivity(new Intent(this, EventActivity.class)); break;
             case 3:
-                startActivity(new Intent(this, ConversationActivity.class)); break;
+                startActivity(new Intent(this, ThirdActivity.class)); break;
             case 4:
+                startActivity(new Intent(this, ConversationActivity.class)); break;
+            case 5:
+                startActivity(new Intent(this, CareerActivity.class)); break;
+            case 6:
                 startActivity(new Intent(this, SettingsActivity.class)); break;
         }
     }

@@ -22,49 +22,49 @@
     <uses-permission android:name="com.ashvale.drawer_demo.permission.C2D_MESSAGE" />
 
     <application
-        android:name="com.ashvale.cmmath_one.cmmathApplication"
+        android:name=".cmmathApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.ashvale.cmmath_one.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.AddeventActivity"
+            android:name=".AddeventActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.EventActivity"
+            android:name=".EventActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.ThirdActivity"
+            android:name=".ThirdActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.ConversationActivity"
+            android:name=".ConversationActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.SettingsActivity"
+            android:name=".SettingsActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.LoginActivity"
+            android:name=".LoginActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
@@ -75,7 +75,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.BaseActivity"
+            android:name=".BaseActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
@@ -99,7 +99,7 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-<!--                   IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name. -->
+                <!-- IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name. -->
                 <category android:name="com.ashvale.drawer_demo" />
             </intent-filter>
         </receiver>
@@ -114,22 +114,30 @@
         </receiver>
 
         <activity
-            android:name="com.ashvale.cmmath_one.SignupActivity"
+            android:name=".SignupActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.UserAttendeeActivity"
+            android:name=".UserAttendeeActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.ashvale.cmmath_one.UserPreferenceActivity"
+            android:name=".UserPreferenceActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name=".CareerActivity"
+            android:label="@string/title_activity_career" >
         </activity>
     </application>
 
