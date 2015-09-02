@@ -2,4 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:color="@color/primary_color"/>
     <item android:color="@color/light_button_txt"/>
-</selector><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/color/tint_color_selector.xml -->
+</selector><!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/color/tint_color_selector.xml -->

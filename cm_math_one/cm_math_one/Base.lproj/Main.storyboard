@@ -622,6 +622,19 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-6V-xea">
+                                        <rect key="frame" x="568" y="425" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="XJC-kM-Zfn"/>
+                                            <constraint firstAttribute="height" constant="24" id="eUu-Sh-6Qq"/>
+                                        </constraints>
+                                        <state key="normal" image="fullscreen48.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="fullscreenButtonTap:" destination="Aa2-37-DCr" eventType="touchUpInside" id="PE0-t8-FpW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -638,10 +651,12 @@
                                     <constraint firstItem="BOi-BU-4bS" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" id="Rg3-fU-lUh"/>
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="top" secondItem="kjg-DM-CDi" secondAttribute="bottom" constant="8" id="UHq-J5-CAl"/>
                                     <constraint firstItem="oUx-S1-ozy" firstAttribute="top" secondItem="Y8c-Bb-19b" secondAttribute="bottom" constant="8" id="cSv-wp-nr3"/>
+                                    <constraint firstItem="7zW-bn-m2A" firstAttribute="trailing" secondItem="l2h-6V-xea" secondAttribute="trailing" id="d1B-S7-KxF"/>
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="top" secondItem="BOi-BU-4bS" secondAttribute="bottom" constant="8" id="fhj-6w-J4h"/>
                                     <constraint firstAttribute="trailing" secondItem="BOi-BU-4bS" secondAttribute="trailing" id="jl8-Ex-1Ac"/>
                                     <constraint firstItem="BOi-BU-4bS" firstAttribute="top" secondItem="oUx-S1-ozy" secondAttribute="bottom" constant="24" id="kcr-ev-Npa"/>
                                     <constraint firstItem="kjg-DM-CDi" firstAttribute="top" secondItem="WJf-5P-CQo" secondAttribute="top" constant="16" id="sf6-dD-DaM"/>
+                                    <constraint firstItem="7zW-bn-m2A" firstAttribute="bottom" secondItem="l2h-6V-xea" secondAttribute="bottom" id="tJe-Xx-zam"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -670,6 +685,7 @@
                         <outlet property="barBackgroundView" destination="BOi-BU-4bS" id="R0D-nc-wbs"/>
                         <outlet property="contentTextView" destination="7zW-bn-m2A" id="Xa8-Ln-yY8"/>
                         <outlet property="discussButton" destination="670-fW-Dmj" id="qak-7c-RDa"/>
+                        <outlet property="fullscreenButton" destination="l2h-6V-xea" id="SRy-Pb-aQN"/>
                         <outlet property="locationLabel" destination="iJi-i5-dd4" id="s98-3T-yci"/>
                         <outlet property="mainBackgroundView" destination="WJf-5P-CQo" id="a2e-eg-99o"/>
                         <outlet property="nameLabel" destination="Y8c-Bb-19b" id="Jaz-C0-Fbk"/>
@@ -3597,6 +3613,7 @@
         <image name="cm_math_one_splash.png" width="2131" height="2131"/>
         <image name="cross64.png" width="32" height="32"/>
         <image name="event48.png" width="24" height="24"/>
+        <image name="fullscreen48.png" width="24" height="24"/>
         <image name="key_down48.png" width="24" height="24"/>
         <image name="nav48.png" width="24" height="24"/>
         <image name="news48.png" width="24" height="24"/>

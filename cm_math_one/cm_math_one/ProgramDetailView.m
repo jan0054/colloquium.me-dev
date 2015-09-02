@@ -26,6 +26,15 @@
     self.sessionLabel.textColor = [UIColor dark_primary];
     self.locationLabel.textColor = [UIColor dark_primary];
     self.timeLabel.textColor = [UIColor dark_primary];
+    UIImage *img = [UIImage imageNamed:@"fullscreen48@2x"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.fullscreenButton setTintColor:[UIColor primary_color]];
+    [self.fullscreenButton setImage:img forState:UIControlStateNormal];
+}
+
+- (IBAction)fullscreenButtonTap:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"fullscreensegue" sender:self];
+    NSLog(@"FULL SCREEN BUTTON TAPPED");
 }
 
 - (IBAction)contentTapped:(UITapGestureRecognizer *)sender {
@@ -44,7 +53,6 @@
                                    delegate:nil
                           cancelButtonTitle:@"Done"
                           otherButtonTitles:nil] show];
-
     }
 }
 

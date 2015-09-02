@@ -19,7 +19,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *contentTextView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *discussButton;
 @property (strong, nonatomic) IBOutlet UIView *mainBackgroundView;
-
+@property (strong, nonatomic) IBOutlet UIButton *fullscreenButton;
+- (IBAction)fullscreenButtonTap:(UIButton *)sender;
 - (IBAction)contentTapped:(UITapGestureRecognizer *)sender;
 - (IBAction)discussButtonTap:(UIBarButtonItem *)sender;
 

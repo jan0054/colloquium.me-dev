@@ -270,7 +270,7 @@
         {
             NSLog(@"Conversation added participant %@ successfully", user.objectId);
             PFUser *selfUser = [PFUser currentUser];
-            NSString *broadcastString = [NSString stringWithFormat:@"%@ %@ has invited %@ %@ to join the conversation.", selfUser[@"first_name"], selfUser[@"last_name"], user[@"first_name"], user[@"last_name"]];
+            NSString *broadcastString = [NSString stringWithFormat:@"%@ %@ has invited %@ %@ to the conversation.", selfUser[@"first_name"], selfUser[@"last_name"], user[@"first_name"], user[@"last_name"]];
             [self sendBroadcast:self withAuthor:selfUser withContent:broadcastString forConversation:conversation];
             [caller processAddedSuccess:path forAddedUser:user];
         }

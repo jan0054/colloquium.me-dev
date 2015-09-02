@@ -61,4 +61,4 @@
 		      android:textColor="@color/accent_color"
 		      android:textSize="18sp"
 		      android:text="@string/list_empty_event" />
-</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/fragment_program.xml -->
+</LinearLayout><!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/fragment_program.xml -->
