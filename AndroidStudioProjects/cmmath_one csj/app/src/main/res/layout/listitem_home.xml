@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/eventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-light"
+        android:text="last time" />
+
+    <TextView
+        android:id="@+id/eventTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/eventName"
+        android:text="last message" />
+
+    <TextView
+        android:id="@+id/eventOrg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="13dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_below="@+id/eventTime"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif"
+        android:text="participant names" />
+
+    <TextView
+        android:id="@+id/eventContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="13dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_below="@+id/eventOrg"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif"
+        android:text="participant names" />
+
+</RelativeLayout>

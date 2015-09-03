@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/careerType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/black"
+        android:layout_marginBottom="13dp"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-light"
+        android:text="position type" />
+
+    <TextView
+        android:id="@+id/careerInst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/careerType"
+        android:text="institution" />
+
+    <TextView
+        android:id="@+id/careerContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="13dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_below="@+id/careerInst"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:text="content" />
+
+</RelativeLayout>

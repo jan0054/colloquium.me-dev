@@ -27,7 +27,7 @@ public class FourthActivity extends BaseActivity {
         String label = "";
         for (String str : set)
         {
-            label = label+str;
+            label = label+", "+str;
         }
         eventslabel.setText(label);
 
