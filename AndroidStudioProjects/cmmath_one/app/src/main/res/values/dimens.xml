@@ -8,4 +8,7 @@
 
     <!-- Preference -->
     <dimen name="preference_title">16sp</dimen>
+    <dimen name="listheight_setup">30dp</dimen>
+    <dimen name="listheight_settings">50dp</dimen>
+    <dimen name="list_margin">12dp</dimen>
 </resources>

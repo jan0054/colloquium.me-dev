@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/feed_container"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/light_bg"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:background="@drawable/round"
+        android:contentDescription="@string/empty"
+        android:scaleType="centerCrop"
+        android:src="@drawable/poi_01" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:layout_toRightOf="@+id/image"
+        android:ellipsize="end"
+        android:gravity="center|left"
+        android:singleLine="true"
+        android:text="@string/name"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/call"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_below="@+id/name"
+        android:layout_alignLeft="@+id/name"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#FFFFFFFF"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/phone64"
+        android:tint="@color/dark_accent" />
+    <ImageButton
+        android:id="@+id/navigate"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/call"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#FFFFFFFF"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/nav64"
+        android:tint="@color/dark_accent" />
+    <Button
+        android:id="@+id/website"
+        android:layout_width="32dp"
+        android:layout_height="24dp"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/navigate"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="8dp"
+        android:background="#FFFFFFFF"
+        android:contentDescription="@string/empty"
+        android:gravity="center"
+        android:text="@string/web"
+        android:textColor="@color/dark_accent" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/image"
+        android:gravity="center|left"
+        android:maxHeight="30dp"
+        android:maxLines="4"
+        android:maxWidth="300dp"
+        android:singleLine="false"
+        android:text="@string/description"
+        android:textColor="@color/primary_text"
+        android:scrollbars = "vertical"
+        android:textSize="12sp" />
+
+</RelativeLayout>

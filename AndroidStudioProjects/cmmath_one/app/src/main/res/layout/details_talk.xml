@@ -66,11 +66,11 @@
 		    android:text="@string/author"
             android:textColor="@color/primary_text"
 		    android:textSize="14sp" />
-        <TextView
+        <Button
             android:id="@+id/author_details"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+			android:background="#FFFFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:fontFamily="sans-serif-light"
@@ -129,35 +129,37 @@
 
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="0dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="0dp"
             android:weightSum="3"
             android:orientation="horizontal" >
-		<TextView
+		<Button
 		    android:id="@+id/btn_attachment"
+			android:background="#FFFFFFFF"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:gravity="left"
-		    android:layout_marginBottom="5dp"
+		    android:layout_marginBottom="0dp"
 		    android:layout_marginLeft="0dp"
 		    android:layout_marginRight="16dp"
-		    android:layout_marginTop="5dp"
+		    android:layout_marginTop="0dp"
 		    android:text="@string/abstract_btn"
             android:fontFamily="sans-serif"
 		    android:textColor="@color/dark_accent"
             android:layout_weight="2"
 		    android:textSize="16sp" />
-        <TextView
+        <Button
             android:id="@+id/btn_discussion"
+			android:background="#FFFFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="0dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             android:text="Discuss"
             android:fontFamily="sans-serif"
             android:textColor="@color/dark_accent"
@@ -166,8 +168,9 @@
             android:textSize="16sp" />
         </LinearLayout>
 
-        <TextView
+        <Button
             android:id="@+id/btn_calendar"
+			android:background="#FFFFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"

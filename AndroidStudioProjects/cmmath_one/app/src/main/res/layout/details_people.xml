@@ -55,28 +55,31 @@
 		    		  android:layout_marginRight="16dp"		    		  
 		    		  android:weightSum="3"
 		    		  android:orientation="horizontal" >
-		<TextView
+		<Button
 		    android:id="@+id/email"
+			android:background="#FFFFFFFF"
 		    android:layout_width="wrap_content"
-		    android:layout_height="24dp"
+		    android:layout_height="match_parent"
 		    android:gravity="center"
 		    android:layout_weight="1"
 		    android:text="@string/e_mail"
 		    android:textColor="@color/dark_accent"
 		    android:textSize="14sp" />
-		<TextView
+		<Button
 		    android:id="@+id/link"
+			android:background="#FFFFFFFF"
 		    android:layout_width="wrap_content"
-		    android:layout_height="24dp"
+		    android:layout_height="match_parent"
 		    android:gravity="center"
 		    android:layout_weight="1"
 		    android:text="@string/website"
 		    android:textColor="@color/dark_accent"
 		    android:textSize="14sp" />
-		<TextView
+		<Button
 		    android:id="@+id/message"
+			android:background="#FFFFFFFF"
 		    android:layout_width="wrap_content"
-		    android:layout_height="24dp"
+		    android:layout_height="match_parent"
 		    android:gravity="center"
 		    android:layout_weight="1"
 		    android:text="@string/message"
@@ -84,7 +87,6 @@
 		    android:textSize="14sp" />  		    
 		</LinearLayout>
 	</LinearLayout>
-	<include layout="@layout/switcher" />
 	<ListView android:id="@android:id/list"
 	     	  android:layout_width="match_parent"
 	     	  android:layout_height="wrap_content"

@@ -108,8 +108,9 @@
             android:fontFamily="sans-serif"
             android:textColor="@color/list_item_level_1"
             android:textSize="14sp" />
-		<TextView
+		<Button
 		    android:id="@+id/contact"
+			android:background="#FFFFFFFF"
 		    android:layout_width="wrap_content"
 		    android:layout_height="24dp"
 		    android:layout_marginTop="5dp"
@@ -118,11 +119,13 @@
 		    android:layout_marginRight="16dp"
 		    android:layout_gravity="left"
 		    android:text="Email"
+			android:gravity="left"
             android:fontFamily="sans-serif"
 		    android:textColor="@color/list_action_text"
 		    android:textSize="14sp" />
-        <TextView
+        <Button
             android:id="@+id/weblink"
+			android:background="#FFFFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_marginTop="5dp"
@@ -131,6 +134,7 @@
             android:layout_marginRight="16dp"
             android:layout_gravity="left"
             android:text="Webpage"
+			android:gravity="left"
             android:fontFamily="sans-serif"
             android:textColor="@color/list_action_text"
             android:textSize="14sp" />

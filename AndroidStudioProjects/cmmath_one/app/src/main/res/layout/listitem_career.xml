@@ -77,7 +77,7 @@
 		    android:layout_alignBottom="@+id/author"
 		    android:layout_alignParentRight="true"
 		    android:layout_marginRight="10dp"
-		    android:gravity="center|left"
+		    android:gravity="right"
 		    android:text="@string/more"
 		    android:textColor="@color/list_action_text"
 		    android:textSize="14sp" />

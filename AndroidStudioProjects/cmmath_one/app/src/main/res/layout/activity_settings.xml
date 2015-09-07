@@ -16,10 +16,27 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             android:paddingBottom="@dimen/activity_vertical_margin"
             tools:context="com.ashvale.cmmath_one.AddeventActivity">
-
-            <TextView android:text="5555555555" android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
+            <RelativeLayout
+                android:id="@+id/sign"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/listheight_settings"
+                android:layout_marginLeft="@dimen/list_margin">
+                <TextView
+                    android:id="@+id/sign_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/signup"/>
+                <TextView
+                    android:id="@+id/sign_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+                <View android:layout_width="match_parent"
+                      android:layout_height="1dip"
+                      android:background="@color/light_primary" />
+            </RelativeLayout>
         </RelativeLayout>
     </FrameLayout>
 

@@ -23,7 +23,7 @@
 
     <string name="empty"></string>
 
-    <!-- LOGIN & SIGNUP -->
+    <!-- LOGIN & SIGNUP & USERSETTINGS -->
     <string name="title_login">Login</string>
     <string name="username">Username(Email)</string>
     <string name="password">Password</string>
@@ -33,15 +33,20 @@
     <string name="sign_institution">Institution</string>
     <string name="login">Log in</string>
     <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
     <string name="signup_reminder">Don\'t have an account yet?</string>
     <string name="signup">Sign up</string>
     <string name="skip"><u>Skip</u></string>
     <string name="title_signup">Sign Up</string>
     <string name="login_notice">Welcome to the 24th Joint Kaist-Kyoto-NTU-NUS Symposium on Environmental Engineering.</string>
     <string name="signup_notice">Your information is kept secure and private on our servers. To view our privacy policy please go to Settings, or contact us if you have any questions.</string>
+    <string name="login_first">Sorry, you do not seem to be a registered attendee. Email and chat functions will not be available. Remember, you must use the same email address you used to register for the workshop.</string>
     <string name="hint_search">Enter keywords here..</string>
     <string name="hint_comment">Comment..</string>
     <string name="hint_newpost">Share your thoughts..</string>
+    <string name="emaillabel">Allow other users to email you</string>
+    <string name="eventlabel">Receive chat notifications</string>
+    <string name="chatlabel">Receive chat notifications</string>
 
     <!-- TAB SECTION -->
     <string name="title_program">Program</string>
@@ -62,7 +67,7 @@
     <string name="list_empty">--  No Result  --</string>
     <string name="title_conversation">Conversation</string>
     <string name="list_empty_empty"></string>
-    <string name="list_empty_event">--No result for this event--</string>
+    <string name="list_empty_event">There are no announcements for this event yet</string>
 
     <!-- DETAILS -->
     <string name="details">Details</string>
@@ -77,12 +82,14 @@
     <string name="unknown">(Unknown)</string>
     <string name="date">Date</string>
     <string name="comments">Comments</string>
+    <string name="web">Web</string>
 
     <!-- DETAILS (FAKE DATA) -->
     <string name="name">NAME</string>
     <string name="author">AUTHOR</string>
     <string name="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
     <string name="content">@string/description</string>
+    <string name="organizer">Organizer</string>
     <string name="start_time">START TIME</string>
     <string name="position">POSITION</string>
     <string name="location">LOCATION</string>
@@ -90,6 +97,7 @@
     <string name="address">1172–-1188 S San Pedro St, Los Angeles, CA 90015</string>
 
     <!-- SETTINGS -->
+    <string name="attending">I am sttending this event: </string>
     <string name="pref_title_notification">Notification</string>
     <string name="pref_title_about">About Us</string>
     <string name="pref_title_feedback">Feedback</string>
