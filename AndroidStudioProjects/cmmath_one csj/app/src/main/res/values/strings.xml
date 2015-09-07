@@ -149,5 +149,6 @@
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_career">CareerActivity</string>
+    <string name="title_activity_event_wrapper">EventWrapperActivity</string>
 
 </resources>

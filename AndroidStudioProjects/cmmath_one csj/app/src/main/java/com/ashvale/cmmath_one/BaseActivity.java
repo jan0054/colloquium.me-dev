@@ -1,16 +1,32 @@
 package com.ashvale.cmmath_one;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.ashvale.cmmath_one.adapter.CareerAdapter;
+import com.ashvale.cmmath_one.adapter.ConversationAdapter;
+import com.ashvale.cmmath_one.adapter.DrawerAdapter;
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 public class BaseActivity extends AppCompatActivity {
@@ -19,8 +35,10 @@ public class BaseActivity extends AppCompatActivity {
     private String[] drawerArray;
     public ListView drawerListView;
     public String mActivityTitle;
-
+    private SharedPreferences savedEvents;
     public ActionBarDrawerToggle mDrawerToggle;
+    private Context context;
+    public  List<ParseObject> eventObjList;
 
     //@Override
     protected void onCreateDrawer() {
@@ -29,7 +47,8 @@ public class BaseActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_base);
 
         mActivityTitle = getTitle().toString();
-
+        context = this;
+        /*
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerArray = getResources().getStringArray(R.array.drawer_array);
         drawerListView = (ListView) findViewById(R.id.left_drawer);
@@ -43,6 +62,11 @@ public class BaseActivity extends AppCompatActivity {
                 startDrawerActivity(position);
             }
         });
+        */
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerArray = getResources().getStringArray(R.array.drawer_array);
+        drawerListView = (ListView) findViewById(R.id.left_drawer);
+        setADrawer();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -50,23 +74,78 @@ public class BaseActivity extends AppCompatActivity {
         setupDrawerAndActionbar();
     }
 
+    public void setADrawer()
+    {
+        savedEvents = getSharedPreferences("EVENTS", 6);
+        Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
+        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+        if (!(eventIdSet == null))
+        {
+            query.whereContainedIn("objectId", eventIdSet);
+        }
+        query.orderByDescending("start_time");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    eventObjList = objects;
+                    List<String> eventNames = new ArrayList<String>();
+                    for (ParseObject object : objects) {
+                        String name = object.getString("name");
+                        eventNames.add(name);
+                    }
+                    DrawerAdapter adapter = new DrawerAdapter(context, eventNames);
+                    drawerListView.setAdapter(adapter);
+                    drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Toast.makeText(BaseActivity.this, "drawer item selected", Toast.LENGTH_SHORT).show();
+                            startDrawerActivity(position);
+                        }
+                    });
+
+                } else {
+                    Log.d("cm_app", "drawer query error: " + e);
+                }
+            }
+        });
+    }
+
     public void startDrawerActivity (int position)
     {
-        switch(position) {
-            case 0:
-                startActivity(new Intent(this, AddeventActivity.class)); break;
-            case 1:
-                startActivity(new Intent(this, HomeActivity.class)); break;
-            case 2:
-                startActivity(new Intent(this, EventActivity.class)); break;
-            case 3:
-                startActivity(new Intent(this, ThirdActivity.class)); break;
-            case 4:
-                startActivity(new Intent(this, ConversationActivity.class)); break;
-            case 5:
-                startActivity(new Intent(this, CareerActivity.class)); break;
-            case 6:
-                startActivity(new Intent(this, SettingsActivity.class)); break;
+        savedEvents = getSharedPreferences("EVENTS", 6);
+        Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
+        int total = eventIdSet.size();
+
+        if (position == 0)
+        {
+            startActivity(new Intent(this, AddeventActivity.class));
+        }
+        else if (position == 1)
+        {
+            startActivity(new Intent(this, HomeActivity.class));
+        }
+        else if (position == total-1)
+        {
+            startActivity(new Intent(this, SettingsActivity.class));
+        }
+        else if (position == total-2)
+        {
+            startActivity(new Intent(this, CareerActivity.class));
+        }
+        else if (position == total-3)
+        {
+            startActivity(new Intent(this, ConversationActivity.class));
+        }
+        else
+        {
+            ParseObject event = eventObjList.get(position - 2);
+            String eventid = event.getObjectId();
+            savedEvents = getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
+            SharedPreferences.Editor editor = savedEvents.edit();
+            editor.putString("currenteventid", eventid);
+            editor.commit();
+            startActivity(new Intent(this, EventWrapperActivity.class));
         }
     }
 

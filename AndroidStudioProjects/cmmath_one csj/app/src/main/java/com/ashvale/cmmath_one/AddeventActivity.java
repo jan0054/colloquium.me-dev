@@ -19,8 +19,9 @@ import java.util.Set;
 
 public class AddeventActivity extends BaseActivity {
 
-    private List selectedEvents;
-    private List totalEvents;
+    private List<String> selectedEventIds;
+    private List<String> SelectedEventNames;
+    private List<ParseObject> totalEvents;
     private int[] selectedIPositions;
     private SharedPreferences savedEvents;
 
@@ -30,11 +31,13 @@ public class AddeventActivity extends BaseActivity {
         setContentView(R.layout.activity_addevent);
             super.onCreateDrawer();
 
+        selectedEventIds = new ArrayList<String>();
+        SelectedEventNames = new ArrayList<String>();
+
         ParseQuery query = new ParseQuery("Event");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> list, ParseException e) {
-                //Toast.makeText(FirstActivity.this, "event query returned:" + list.size(), Toast.LENGTH_SHORT).show();
                 setAdapter(list);
             }
         });
@@ -52,7 +55,7 @@ public class AddeventActivity extends BaseActivity {
         {
             selectedIPositions[i] = 0;
         }
-        totalEvents = new ArrayList();
+        totalEvents = new ArrayList<ParseObject>();
         totalEvents = results;
 
         eventlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -60,29 +63,35 @@ public class AddeventActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                ParseObject event = (ParseObject) totalEvents.get(position);
+                ParseObject event = totalEvents.get(position);
                 String eventid = event.getObjectId();
-                //Toast.makeText(FirstActivity.this, "eventID:" + eventid, Toast.LENGTH_SHORT).show();
+                String eventname = event.getString("name");
+
+
                 if (selectedIPositions[position] == 0) {
-                    selectedEvents.add(eventid);
+                    selectedEventIds.add(eventid);
+                    SelectedEventNames.add(eventname);
                     selectedIPositions[position] = 1;
                 } else {
-                    selectedEvents.remove(eventid);
+                    selectedEventIds.remove(eventid);
+                    SelectedEventNames.remove(eventname);
                     selectedIPositions[position] = 0;
                 }
-
-                Toast.makeText(AddeventActivity.this, "event item selections:" + selectedEvents.size(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddeventActivity.this, "eventID: " + eventid+" count: "+selectedEventIds.size(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void saveEvents(List eventlist)
+    public void saveEvents(List eventids, List eventnames)
     {
         savedEvents = getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
         SharedPreferences.Editor editor = savedEvents.edit();
-        Set<String> set = new HashSet<String>();
-        set.addAll(eventlist);
-        editor.putStringSet("events", set);
+        Set<String> setId = new HashSet<String>();
+        Set<String> setName = new HashSet<String>();
+        setId.addAll(eventids);
+        setName.addAll(eventnames);
+        editor.putStringSet("eventids", setId);
+        editor.putStringSet("eventnames", setName);
         editor.commit();
     }
 
@@ -102,7 +111,7 @@ public class AddeventActivity extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.saveevents) {
-            saveEvents(selectedEvents);
+            saveEvents(selectedEventIds, SelectedEventNames);
             return true;
         }
 

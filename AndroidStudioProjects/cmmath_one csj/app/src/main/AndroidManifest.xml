@@ -139,6 +139,10 @@
             android:name=".CareerActivity"
             android:label="@string/title_activity_career" >
         </activity>
+        <activity
+            android:name=".EventWrapperActivity"
+            android:label="@string/title_activity_event_wrapper" >
+        </activity>
     </application>
 
 </manifest>

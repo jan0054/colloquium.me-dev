@@ -29,11 +29,12 @@ public class HomeActivity extends BaseActivity {
         super.onCreateDrawer();
 
         savedEvents = getSharedPreferences("EVENTS", 6);
-        Set<String> eventset = savedEvents.getStringSet("events", null);
+        Set<String> eventset = savedEvents.getStringSet("eventids", null);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
-        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
         query.whereContainedIn("objectId", eventset);
+        query.orderByDescending("start_time");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
