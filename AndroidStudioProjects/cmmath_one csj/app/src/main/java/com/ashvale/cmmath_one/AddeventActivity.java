@@ -93,6 +93,7 @@ public class AddeventActivity extends BaseActivity {
         editor.putStringSet("eventids", setId);
         editor.putStringSet("eventnames", setName);
         editor.commit();
+        refreshDrawer();
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.ashvale.cmmath_one;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,7 +25,9 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -39,76 +42,78 @@ public class BaseActivity extends AppCompatActivity {
     public ActionBarDrawerToggle mDrawerToggle;
     private Context context;
     public  List<ParseObject> eventObjList;
+    public DrawerAdapter drawerAdapter;
 
     //@Override
     protected void onCreateDrawer() {
-        //protected void onCreate(Bundle savedInstanceState) {
-        //super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_base);
-
         mActivityTitle = getTitle().toString();
         context = this;
-        /*
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerArray = getResources().getStringArray(R.array.drawer_array);
         drawerListView = (ListView) findViewById(R.id.left_drawer);
 
-        drawerListView.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, drawerArray));
-        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(BaseActivity.this, "drawer item selected", Toast.LENGTH_SHORT).show();
-                startDrawerActivity(position);
-            }
-        });
-        */
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerArray = getResources().getStringArray(R.array.drawer_array);
-        drawerListView = (ListView) findViewById(R.id.left_drawer);
-        setADrawer();
+        setDrawer();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
         setupDrawerAndActionbar();
     }
 
-    public void setADrawer()
+    public void setDrawer()
     {
         savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
-        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
-        if (!(eventIdSet == null))
+        if (eventIdSet != null)   //there was some saved events
         {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
+            query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
             query.whereContainedIn("objectId", eventIdSet);
-        }
-        query.orderByDescending("start_time");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    eventObjList = objects;
-                    List<String> eventNames = new ArrayList<String>();
-                    for (ParseObject object : objects) {
-                        String name = object.getString("name");
-                        eventNames.add(name);
-                    }
-                    DrawerAdapter adapter = new DrawerAdapter(context, eventNames);
-                    drawerListView.setAdapter(adapter);
-                    drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Toast.makeText(BaseActivity.this, "drawer item selected", Toast.LENGTH_SHORT).show();
-                            startDrawerActivity(position);
+            query.orderByDescending("start_time");
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                    if (e == null) {
+                        eventObjList = objects;
+                        List<String> eventNames = new ArrayList<String>();
+                        for (ParseObject object : objects) {
+                            String name = object.getString("name");
+                            eventNames.add(name);
                         }
-                    });
+                        drawerAdapter = new DrawerAdapter(context, eventNames);
+                        drawerListView.setAdapter(drawerAdapter);
+                        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Toast.makeText(BaseActivity.this, "drawer item selected", Toast.LENGTH_SHORT).show();
+                                startDrawerActivity(position);
+                            }
+                        });
 
-                } else {
-                    Log.d("cm_app", "drawer query error: " + e);
+                    } else {
+                        Log.d("cm_app", "drawer query error: " + e);
+                    }
                 }
-            }
-        });
+            });
+        }
+        else   //no saved events found
+        {
+            List<String> eventNames = new ArrayList<>();
+            drawerAdapter = new DrawerAdapter(context, eventNames);
+            drawerListView.setAdapter(drawerAdapter);
+            drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(BaseActivity.this, "drawer item selected", Toast.LENGTH_SHORT).show();
+                    startDrawerActivity(position);
+                }
+            });
+        }
+
+    }
+
+    public void refreshDrawer()
+    {
+        Toast.makeText(BaseActivity.this, "drawer refreshed", Toast.LENGTH_SHORT).show();
+        setDrawer();
     }
 
     public void startDrawerActivity (int position)
