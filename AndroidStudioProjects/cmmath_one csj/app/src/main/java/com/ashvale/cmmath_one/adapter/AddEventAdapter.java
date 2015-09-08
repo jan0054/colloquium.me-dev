@@ -1,6 +1,7 @@
 package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by csjan on 9/3/15.
@@ -64,14 +66,41 @@ public class AddEventAdapter extends BaseAdapter {
 
         Date startdate = event.getDate("start_time");
         Date enddate = event.getDate("end_time");
-        Format dateformatter = new SimpleDateFormat("MM-dd");
+        Format dateformatter = new SimpleDateFormat("MM/dd");
         String startstr = dateformatter.format(startdate);
         String endstr = dateformatter.format(enddate);
         String contentstr = event.getString("content");
         String namestr = event.getString("name");
         String orgstr = event.getString("organizer");
+        String selectednamestr = "-Selected- "+namestr;
 
-        namelabel.setText(namestr);
+        SharedPreferences savedEvents = context.getSharedPreferences("EVENTS", 6);
+        Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
+        if (eventIdSet != null)   //there were some saved events
+        {
+            String eventid = event.getObjectId();
+            int contained = 0;
+            for (String idSet : eventIdSet)
+            {
+                if (eventid.equals(idSet))
+                {
+                    contained = 1;
+                }
+            }
+            if (contained == 1)
+            {
+                namelabel.setText(selectednamestr);
+            }
+            else
+            {
+                namelabel.setText(namestr);
+            }
+        }
+        else
+        {
+            namelabel.setText(namestr);
+        }
+
         organizerlabel.setText(orgstr);
         contentlabel.setText(contentstr);
         timelabel.setText(startstr+" ~ "+endstr);

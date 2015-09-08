@@ -114,6 +114,7 @@ public class BaseActivity extends AppCompatActivity {
     {
         Toast.makeText(BaseActivity.this, "drawer refreshed", Toast.LENGTH_SHORT).show();
         setDrawer();
+        drawerLayout.openDrawer(drawerListView);
     }
 
     public void startDrawerActivity (int position)
