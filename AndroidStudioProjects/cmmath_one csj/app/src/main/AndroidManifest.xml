@@ -143,6 +143,22 @@
             android:name=".EventWrapperActivity"
             android:label="@string/title_activity_event_wrapper" >
         </activity>
+        <activity
+            android:name=".CareerDetailActivity"
+            android:label="@string/title_activity_career_detail" >
+        </activity>
+        <activity
+            android:name=".ChatActivity"
+            android:label="@string/title_activity_chat" >
+        </activity>
+        <activity
+            android:name=".ChatOptionsActivity"
+            android:label="@string/title_activity_chat_options" >
+        </activity>
+        <activity
+            android:name=".AboutUsActivity"
+            android:label="@string/title_activity_about_us" >
+        </activity>
     </application>
 
 </manifest>

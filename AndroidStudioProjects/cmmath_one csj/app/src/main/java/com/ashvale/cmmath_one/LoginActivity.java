@@ -2,6 +2,7 @@ package com.ashvale.cmmath_one;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -17,14 +18,17 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class LoginActivity extends Activity {
 
     public static final String TAG = LoginActivity.class.getSimpleName();
     private EditText mUsername;
     private EditText mPassword;
-
     protected cmmathApplication app;
+    private SharedPreferences userStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,13 @@ public class LoginActivity extends Activity {
 
         if (isLogin())
             skip(null);
+
+        userStatus = getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+        int skiplogin = userStatus.getInt("skiplogin", 0);
+        if (skiplogin == 1)
+        {
+            skip(null);
+        }
     }
 
     public void toast(String message) {
@@ -43,9 +54,14 @@ public class LoginActivity extends Activity {
     }
 
     public void skip(View view) {
-            Intent intent = new Intent(this, AddeventActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+        userStatus = getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+        SharedPreferences.Editor editor = userStatus.edit();
+        editor.putInt("skiplogin", 1);
+        editor.commit();
+
+        Intent intent = new Intent(this, AddeventActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
     public boolean isLogin() {
         ParseUser user = ParseUser.getCurrentUser();

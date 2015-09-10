@@ -84,7 +84,7 @@ public class AddeventActivity extends BaseActivity {
                 editor.putStringSet("eventids", setId);
                 editor.putStringSet("eventnames", setName);
                 editor.commit();
-                
+
                 adapter.notifyDataSetChanged();
 
                 //Toast.makeText(AddeventActivity.this, "eventID: " + eventid + " count: " + selectedEventIds.size(), Toast.LENGTH_SHORT).show();
