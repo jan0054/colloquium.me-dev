@@ -76,7 +76,7 @@ public class AddeventActivity extends BaseActivity {
                     selectedEventNames.remove(eventname);
                     selectedPositions[position] = 0;
                 }
-                
+
                 adapter.notifyDataSetChanged();
 
                 //Toast.makeText(AddeventActivity.this, "eventID: " + eventid + " count: " + selectedEventIds.size(), Toast.LENGTH_SHORT).show();

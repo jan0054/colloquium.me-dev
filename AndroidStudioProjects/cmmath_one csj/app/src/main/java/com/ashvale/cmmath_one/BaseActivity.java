@@ -63,7 +63,7 @@ public class BaseActivity extends AppCompatActivity {
     {
         savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
-        if (eventIdSet != null)   //there was some saved events
+        if (eventIdSet != null)   //there were some saved events
         {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
             query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
@@ -102,7 +102,7 @@ public class BaseActivity extends AppCompatActivity {
             drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(BaseActivity.this, "drawer item selected", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(BaseActivity.this, "drawer item selected", Toast.LENGTH_SHORT).show();
                     startDrawerActivity(position);
                 }
             });
@@ -112,7 +112,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void refreshDrawer()
     {
-        Toast.makeText(BaseActivity.this, "drawer refreshed", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(BaseActivity.this, "drawer refreshed", Toast.LENGTH_SHORT).show();
         setDrawer();
         drawerLayout.openDrawer(drawerListView);
     }
@@ -132,15 +132,15 @@ public class BaseActivity extends AppCompatActivity {
         {
             startActivity(new Intent(this, HomeActivity.class));
         }
-        else if (position == total-1)
+        else if (position == 5 + total - 1)
         {
             startActivity(new Intent(this, SettingsActivity.class));
         }
-        else if (position == total-2)
+        else if (position == 5 + total - 2)
         {
             startActivity(new Intent(this, CareerActivity.class));
         }
-        else if (position == total-3)
+        else if (position == 5 + total - 3)
         {
             startActivity(new Intent(this, ConversationActivity.class));
         }
