@@ -62,7 +62,7 @@ public class HomeActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Toast.makeText(HomeActivity.this, "home event item selected " + position, Toast.LENGTH_SHORT).show();
 
-                ParseObject event = eventObjList.get(position - 2);
+                ParseObject event = eventObjList.get(position);
                 String eventid = event.getObjectId();
                 savedEvents = getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
                 SharedPreferences.Editor editor = savedEvents.edit();
