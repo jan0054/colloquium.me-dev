@@ -2,11 +2,13 @@ package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -135,7 +137,8 @@ public class DrawerAdapter extends BaseAdapter {
             }
         }
 
-        TextView textLabel = (TextView)view.findViewById(R.id.drawertext);
+        ImageView imageLabel = (ImageView)view.findViewById(R.id.drawer_image);
+        TextView textLabel = (TextView)view.findViewById(R.id.drawer_text);
         int total = eventNames.size()+5;
         String eventpicker = "Edit Events";
         String home = "Home";
@@ -144,32 +147,40 @@ public class DrawerAdapter extends BaseAdapter {
         String settings = "Settings";
 
         String text;
+        int image;
         if (position == 0)
         {
             text = eventpicker;
+            image = R.drawable.addevent;
         }
         else if (position == 1)
         {
             text = home;
+            image = R.drawable.eventhome;
         }
         else if (position == total-1)
         {
             text = settings;
+            image = R.drawable.setting;
         }
         else if (position == total-2)
         {
             text = career;
+            image = R.drawable.career;
         }
         else if (position == total-3)
         {
             text = chat;
+            image = R.drawable.chat;
         }
         else
         {
             String eventname = eventNames.get(position-2);
             text = eventname;
+            image = R.drawable.event;
         }
         textLabel.setText(text);
+        imageLabel.setImageResource(image);
 
         return view;
     }

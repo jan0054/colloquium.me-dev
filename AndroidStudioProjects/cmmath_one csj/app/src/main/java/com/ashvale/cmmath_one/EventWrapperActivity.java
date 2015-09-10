@@ -7,12 +7,13 @@ import android.view.MenuItem;
 
 import com.ashvale.cmmath_one.R;
 
-public class EventWrapperActivity extends AppCompatActivity {
+public class EventWrapperActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_wrapper);
+        super.onCreateDrawer();
     }
 
     @Override

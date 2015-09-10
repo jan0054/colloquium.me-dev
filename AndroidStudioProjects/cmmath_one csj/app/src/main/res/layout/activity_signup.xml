@@ -23,7 +23,7 @@
                android:background="@color/light_bg"
                android:singleLine="true"
                android:inputType="textEmailAddress"
-               android:hint="@string/username"
+               android:hint="@string/email"
                android:minWidth="120dp"
                android:maxWidth="260dp" />
     <View android:layout_width="match_parent"
@@ -84,7 +84,7 @@
             android:onClick="signup"
             android:textColor="@color/light_button_txt"
             android:text="@string/signup" />
-    <Button android:id="@+id/btn_cancel"
+    <Button android:id="@+id/btn_skip"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -92,5 +92,5 @@
             android:background="@drawable/btn_login_bg_selector"
             android:onClick="toLoginPage"
             android:textColor="@color/light_button_txt"
-            android:text="@string/cancel" />
+            android:text="@string/skip" />
 </LinearLayout>

@@ -25,26 +25,21 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="empty"></string>
+    <string name="hello_world">Hello world!</string>
 
-    <!-- LOGIN & SIGNUP -->
-    <string name="title_login">Login</string>
-    <string name="username">Username(Email)</string>
-    <string name="password">Password</string>
-    <string name="email">Email</string>
-    <string name="firstname">First Name</string>
-    <string name="lastname">Last Name</string>
-    <string name="sign_institution">Institution</string>
-    <string name="login">Log in</string>
-    <string name="cancel">Cancel</string>
-    <string name="signup_reminder">Don\'t have an account yet?</string>
-    <string name="signup">Sign up</string>
-    <string name="skip"><u>Skip</u></string>
-    <string name="title_signup">Sign Up</string>
-    <string name="login_notice">Welcome to the 24th Joint Kaist-Kyoto-NTU-NUS Symposium on Environmental Engineering.</string>
-    <string name="signup_notice">Your information is kept secure and private on our servers. To view our privacy policy please go to Settings, or contact us if you have any questions.</string>
-    <string name="hint_search">Enter keywords here..</string>
-    <string name="hint_comment">Comment..</string>
-    <string name="hint_newpost">Share your thoughts..</string>
+    <!-- TITLES -->
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_user_preference">UserPreferenceActivity</string>
+    <string name="title_activity_discussion">DiscussionActivity</string>
+    <string name="title_activity_upload_career">UploadCareerActivity</string>
+    <string name="title_activity_user_attendee">UserAttendeeActivity</string>
+    <string name="title_activity_login">Log In</string>
+    <string name="title_activity_cmmath_application">cmmathApplication</string>
+    <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_career">CareerActivity</string>
+    <string name="title_activity_event_wrapper">EventWrapperActivity</string>
 
     <!-- TAB SECTION -->
     <string name="title_program">Program</string>
@@ -56,6 +51,45 @@
     <string name="title_news">News</string>
     <string name="title_newpost">New Post</string>
 
+    <!-- LOGIN & SIGNUP & USERSETTINGS -->
+    <string name="title_login">Login</string>
+    <string name="username">Username(Email)</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="sign_institution">Institution</string>
+    <string name="login">Log in</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
+    <string name="signup_reminder">Don\'t have an account yet?</string>
+    <string name="signup">Sign up</string>
+    <string name="signout">Sign Out</string>
+    <string name="skip"><u>Skip</u></string>
+    <string name="title_signup">Sign Up</string>
+    <string name="login_notice">Welcome to the 24th Joint Kaist-Kyoto-NTU-NUS Symposium on Environmental Engineering.</string>
+    <string name="signup_notice">Your information is kept secure and private on our servers. To view our privacy policy please go to Settings, or contact us if you have any questions.</string>
+    <string name="login_first">Sorry, you do not seem to be a registered attendee. Email and chat functions will not be available. Remember, you must use the same email address you used to register for the workshop.</string>
+    <string name="hint_search">Enter keywords here..</string>
+    <string name="hint_comment">Comment..</string>
+    <string name="hint_newpost">Share your thoughts..</string>
+    <string name="emaillabel">Allow other users to email you</string>
+    <string name="eventlabel">Receive chat notifications</string>
+    <string name="chatlabel">Receive chat notifications</string>
+    <string name="sign_title">Not signed in yet</string>
+    <string name="sign_detail_not">Sign in to access social features</string>
+    <string name="sign_detail_yes">Sign out to swtich users</string>
+    <string name="feedback_title">App Feedback</string>
+    <string name="feedback_detail">Email us with app questions or feedback</string>
+    <string name="admin_title">Administrative Assistance</string>
+    <string name="admin_detail">Email us with event questions</string>
+    <string name="priv_title">Privacy and Terms</string>
+    <string name="priv_detail">Info on how we protect and secure your data</string>
+    <string name="about_title">About Us</string>
+    <string name="about_detail">Learn about the developers of this add</string>
+    <string name="userpref_title">User Preferences</string>
+    <string name="userpref_detail">Setup or change user info and social options</string>
+
     <!-- PROGRAM SWITCH -->
     <string name="switch_talk">Talks</string>
     <string name="switch_poster">Posters</string>
@@ -65,7 +99,7 @@
     <string name="list_empty">--  No Result  --</string>
     <string name="title_conversation">Conversation</string>
     <string name="list_empty_empty"></string>
-    <string name="list_empty_event">--No result for this event--</string>
+    <string name="list_empty_event">There are no announcements for this event yet</string>
 
     <!-- DETAILS -->
     <string name="details">Details</string>
@@ -80,12 +114,15 @@
     <string name="unknown">(Unknown)</string>
     <string name="date">Date</string>
     <string name="comments">Comments</string>
+    <string name="web">Web</string>
+    <string name="positiontype">Position Type</string>
 
     <!-- DETAILS (FAKE DATA) -->
     <string name="name">NAME</string>
     <string name="author">AUTHOR</string>
     <string name="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
     <string name="content">@string/description</string>
+    <string name="organizer">Organizer</string>
     <string name="start_time">START TIME</string>
     <string name="position">POSITION</string>
     <string name="location">LOCATION</string>
@@ -93,6 +130,7 @@
     <string name="address">1172–-1188 S San Pedro St, Los Angeles, CA 90015</string>
 
     <!-- SETTINGS -->
+    <string name="attending">I am sttending this event: </string>
     <string name="pref_title_notification">Notification</string>
     <string name="pref_title_about">About Us</string>
     <string name="pref_title_feedback">Feedback</string>
@@ -137,18 +175,4 @@
     <string name="dialog_network_error_content">No internet connection. Please check your network settings</string>
     <string name="dialog_network_error_title">Network connection error</string>
     <string name="error_payment_failed">The Payment is failed!</string>
-    <string name="title_activity_chat">ChatActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_user_preference">UserPreferenceActivity</string>
-    <string name="title_activity_discussion">DiscussionActivity</string>
-    <string name="title_activity_upload_career">UploadCareerActivity</string>
-    <string name="title_activity_user_attendee">UserAttendeeActivity</string>
-    <string name="title_activity_login">Log In</string>
-    <string name="title_activity_cmmath_application">cmmathApplication</string>
-    <string name="title_activity_signup">SignupActivity</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_activity_career">CareerActivity</string>
-    <string name="title_activity_event_wrapper">EventWrapperActivity</string>
-
 </resources>

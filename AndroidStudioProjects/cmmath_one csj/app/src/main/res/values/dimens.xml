@@ -6,6 +6,16 @@
     <!-- Login -->
     <dimen name="padding_horizontal">40dp</dimen>
 
+    <dimen name="textSize_title">20dp</dimen>
+    <dimen name="textSize_subtitle">16dp</dimen>
+    <dimen name="textSize_detail">14dp</dimen>
     <!-- Preference -->
     <dimen name="preference_title">16sp</dimen>
+    <dimen name="listheight_setup">30dp</dimen>
+    <dimen name="listheight_settings">50dp</dimen>
+    <dimen name="list_margin">12dp</dimen>
+    <dimen name="listicon_margin">10dp</dimen>
+
+    <dimen name="drawyericon_size">30dp</dimen>
+    <dimen name="fragmenticon_size">30dp</dimen>
 </resources>

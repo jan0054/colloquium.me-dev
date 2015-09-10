@@ -88,22 +88,22 @@
     <color name="section_text">#000000</color>
 
     <!-- Colors for HEP app -->
-    <color name="accent_color">#536DFE</color>
+    <color name="accent_color">#E19800</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="divider_color">#B6B6B6</color>
     <color name="primary_color">#9E9E9E</color>
     <color name="dark_primary">#616161</color>
     <color name="light_primary">#F5F5F5</color>
-    <color name="dark_accent">#303F9F</color>
-    <color name="light_accent">#B3CAE9</color>
+    <color name="dark_accent">#F57C00</color>
+    <color name="light_accent">#E1E0B2</color>
     <color name="hint_color">#B6B6B6</color>
 
     <color name="background">#9E9E9E</color>
-    <color name="nav_bar">#536DFE</color>
-    <color name="tab_bar">#303F9F</color>
+    <color name="nav_bar">#F57C00</color>
+    <color name="tab_bar">#000000</color>
     <color name="light_button_txt">#FFFFFF</color>
-    <color name="dark_button_txt">#303F9F</color>
+    <color name="dark_button_txt">#F57C00</color>
     <color name="light_bg">#FFFFFF</color>
     <color name="light_txt">#FFFFFF</color>
     <color name="dark_bg">#616161</color>

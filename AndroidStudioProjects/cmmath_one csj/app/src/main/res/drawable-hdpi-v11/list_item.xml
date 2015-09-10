@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item
+		android:bottom="10dp">
+		<shape
+			android:shape="rectangle"
+			android:id="@+id/toggle_profile_shape">
+			<solid android:color="@color/light_bg" />
+		</shape>
+	</item>
+</layer-list>
+

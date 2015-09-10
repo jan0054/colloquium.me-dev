@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/list_margin"
+    android:background="@color/light_bg"
+    android:gravity="left">
+    <ImageView
+        android:id="@+id/event_select"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/checkevent"
+        android:tint="@color/dark_accent"/>
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/event_select"
+        android:fontFamily="sans-serif"
+        android:gravity="center|left"
+        android:text="@string/name"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/event_select"
+        android:layout_below="@+id/nameLabel"
+        android:layout_toLeftOf="@+id/organizer"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center|left"
+        android:text="@string/date"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/organizerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameLabel"
+        android:layout_alignParentRight="true"
+        android:gravity="center|bottom"
+        android:paddingLeft="16dp"
+        android:paddingRight="12dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/organizer"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/contentLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeLabel"
+        android:layout_alignLeft="@+id/event_select"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/content"
+        android:textColor="@color/primary_text"
+        android:textSize="14dp"/>
+</RelativeLayout>
+<!--LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -33,4 +96,4 @@
         android:layout_height="wrap_content"
         android:text="content"
         android:id="@+id/contentLabel" />
-</LinearLayout>
+</LinearLayout-->
