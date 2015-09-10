@@ -11,6 +11,8 @@
         android:layout_height="@dimen/drawyericon_size"
         android:layout_margin="@dimen/listicon_margin"
         android:layout_alignParentLeft="true"
+        android:padding="@dimen/listicon_padding"
+        android:scaleType="centerInside"
         android:src="@drawable/event"
         android:tint="@color/dark_accent"/>
     <TextView
@@ -24,7 +26,7 @@
         android:gravity="center|left"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:fontFamily="sans-serif"
         android:text="drawer text" />
 

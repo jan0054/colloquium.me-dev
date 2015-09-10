@@ -6,17 +6,16 @@
     android:background="@color/light_bg"
     android:gravity="left">
     <ImageView
-        android:id="@+id/event_select"
+        android:id="@+id/imageLabel"
         android:layout_width="20dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/checkevent"
+        android:layout_height="@dimen/fragmenticon_size"
         android:tint="@color/dark_accent"/>
     <TextView
         android:id="@+id/nameLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/event_select"
+        android:layout_toRightOf="@+id/imageLabel"
         android:fontFamily="sans-serif"
         android:gravity="center|left"
         android:text="@string/name"
@@ -27,7 +26,7 @@
         android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_select"
+        android:layout_alignLeft="@+id/imageLabel"
         android:layout_below="@+id/nameLabel"
         android:layout_toLeftOf="@+id/organizer"
         android:fontFamily="sans-serif-light"
@@ -54,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/timeLabel"
-        android:layout_alignLeft="@+id/event_select"
+        android:layout_alignLeft="@+id/imageLabel"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:fontFamily="sans-serif"
@@ -62,38 +61,3 @@
         android:textColor="@color/primary_text"
         android:textSize="14dp"/>
 </RelativeLayout>
-<!--LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="name"
-        android:gravity="center"
-        android:id="@+id/nameLabel" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="time"
-            android:id="@+id/timeLabel" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="organizer"
-            android:layout_alignParentRight="true"
-            android:id="@+id/organizerLabel" />
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="content"
-        android:id="@+id/contentLabel" />
-</LinearLayout-->

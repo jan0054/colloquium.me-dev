@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
+
 import com.ashvale.cmmath_one.adapter.AddEventAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -22,7 +22,7 @@ public class AddeventActivity extends BaseActivity {
     private List<String> selectedEventIds;
     private List<String> selectedEventNames;
     private List<ParseObject> totalEvents;
-    private int[] selectedIPositions;
+    private int[] selectedPositions;
     private SharedPreferences savedEvents;
     private AddEventAdapter adapter;
 
@@ -47,12 +47,14 @@ public class AddeventActivity extends BaseActivity {
 
     public void setAdapter(final List<ParseObject> results)
     {
-        adapter = new AddEventAdapter(this, results);
+        processExisting(results);
+
+        adapter = new AddEventAdapter(this, results, selectedPositions);
         ListView eventlist = (ListView)findViewById(R.id.eventListView);
         eventlist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         eventlist.setAdapter(adapter);
 
-       processExisting(results);
+
 
         totalEvents = new ArrayList<ParseObject>();
         totalEvents = results;
@@ -65,25 +67,15 @@ public class AddeventActivity extends BaseActivity {
                 String eventid = event.getObjectId();
                 String eventname = event.getString("name");
 
-                if (selectedIPositions[position] == 0) {
+                if (selectedPositions[position] == 0) {
                     selectedEventIds.add(eventid);
                     selectedEventNames.add(eventname);
-                    selectedIPositions[position] = 1;
+                    selectedPositions[position] = 1;
                 } else {
                     selectedEventIds.remove(eventid);
                     selectedEventNames.remove(eventname);
-                    selectedIPositions[position] = 0;
+                    selectedPositions[position] = 0;
                 }
-
-                savedEvents = getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
-                SharedPreferences.Editor editor = savedEvents.edit();
-                Set<String> setId = new HashSet<String>();
-                Set<String> setName = new HashSet<String>();
-                setId.addAll(selectedEventIds);
-                setName.addAll(selectedEventNames);
-                editor.putStringSet("eventids", setId);
-                editor.putStringSet("eventnames", setName);
-                editor.commit();
                 
                 adapter.notifyDataSetChanged();
 
@@ -109,7 +101,7 @@ public class AddeventActivity extends BaseActivity {
 
     public void processExisting(List<ParseObject> results)   //read local storage for selected events and select them
     {
-        selectedIPositions = new int[results.size()];
+        selectedPositions = new int[results.size()];
 
         savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
@@ -129,11 +121,11 @@ public class AddeventActivity extends BaseActivity {
                 }
                 if (contained == 1)
                 {
-                    selectedIPositions[i] = 1;        // set the selectedPosition array according to the info above
+                    selectedPositions[i] = 1;        // set the selectedPosition array according to the info above
                 }
                 else
                 {
-                    selectedIPositions[i] = 0;
+                    selectedPositions[i] = 0;
                 }
             }
         }
@@ -141,7 +133,7 @@ public class AddeventActivity extends BaseActivity {
         {
             for (int i = 0; i< results.size(); i++)
             {
-                selectedIPositions[i] = 0;            //just set everything to 0 if there wasn't anything saved in local storage
+                selectedPositions[i] = 0;            //just set everything to 0 if there wasn't anything saved in local storage
             }
         }
     }

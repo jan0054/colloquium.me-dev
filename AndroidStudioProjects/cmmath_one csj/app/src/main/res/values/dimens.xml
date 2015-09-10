@@ -14,7 +14,8 @@
     <dimen name="listheight_setup">30dp</dimen>
     <dimen name="listheight_settings">50dp</dimen>
     <dimen name="list_margin">12dp</dimen>
-    <dimen name="listicon_margin">10dp</dimen>
+    <dimen name="listicon_margin">8dp</dimen>
+    <dimen name="listicon_padding">6dp</dimen>
 
     <dimen name="drawyericon_size">30dp</dimen>
     <dimen name="fragmenticon_size">30dp</dimen>

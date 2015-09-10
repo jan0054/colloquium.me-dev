@@ -126,6 +126,7 @@ public class BaseActivity extends AppCompatActivity {
         if (position == 0)
         {
             startActivity(new Intent(this, AddeventActivity.class));
+            drawerLayout.closeDrawers();
         }
         else if (position == 1)
         {

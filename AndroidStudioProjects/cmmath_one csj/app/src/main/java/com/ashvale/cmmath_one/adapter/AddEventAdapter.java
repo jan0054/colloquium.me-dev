@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ashvale.cmmath_one.R;
@@ -23,10 +24,12 @@ import java.util.Set;
 public class AddEventAdapter extends BaseAdapter {
     private final Context context;
     private final List events;
+    private final int[] selectedPositions;
 
-    public AddEventAdapter(Context context, List queryresults) {
+    public AddEventAdapter(Context context, List queryresults, int[] selectedpositions) {
         this.context = context;
         this.events = queryresults;
+        this.selectedPositions = selectedpositions;
     }
 
     @Override
@@ -59,6 +62,7 @@ public class AddEventAdapter extends BaseAdapter {
 
         ParseObject event = (ParseObject)events.get(position);
 
+        ImageView imagelabel = (ImageView)view.findViewById(R.id.imageLabel);
         TextView namelabel = (TextView)view.findViewById(R.id.nameLabel);
         TextView timelabel = (TextView)view.findViewById(R.id.timeLabel);
         TextView organizerlabel = (TextView)view.findViewById(R.id.organizerLabel);
@@ -74,6 +78,7 @@ public class AddEventAdapter extends BaseAdapter {
         String orgstr = event.getString("organizer");
         String selectednamestr = "-Selected- "+namestr;
 
+        /*
         SharedPreferences savedEvents = context.getSharedPreferences("EVENTS", 6);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
         if (eventIdSet != null)   //there were some saved events
@@ -89,18 +94,29 @@ public class AddEventAdapter extends BaseAdapter {
             }
             if (contained == 1)
             {
-                namelabel.setText(selectednamestr);
+                imagelabel.setImageResource(R.drawable.checkevent);
             }
             else
             {
-                namelabel.setText(namestr);
+                imagelabel.setImageResource(0);
             }
         }
         else
         {
-            namelabel.setText(namestr);
+            imagelabel.setImageResource(0);
+        }
+        */
+        int selected = selectedPositions[position];
+        if (selected == 1)
+        {
+            imagelabel.setImageResource(R.drawable.checkevent);
+        }
+        else
+        {
+            imagelabel.setImageResource(0);
         }
 
+        namelabel.setText(namestr);
         organizerlabel.setText(orgstr);
         contentlabel.setText(contentstr);
         timelabel.setText(startstr+" ~ "+endstr);
