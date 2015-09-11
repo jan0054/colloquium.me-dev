@@ -47,33 +47,28 @@ public class DrawerAdapter extends BaseAdapter {
     public Object getItem(int position)
     {
         int total = eventNames.size()+5;
-        String eventpicker = "Edit Events";
-        String home = "Home";
-        String chat = "Chat";
-        String career = "Career";
-        String settings = "Settings";
 
         String returnobject;
 
         if (position == 0)
         {
-            returnobject = eventpicker;
+            returnobject = context.getString(R.string.title_eventpicker);
         }
         else if (position == 1)
         {
-            returnobject = home;
+            returnobject = context.getString(R.string.title_home);
         }
         else if (position == total-1)
         {
-            returnobject = settings;
+            returnobject = context.getString(R.string.title_settings);
         }
         else if (position == total-2)
         {
-            returnobject = career;
+            returnobject = context.getString(R.string.title_career);
         }
         else if (position == total-3)
         {
-            returnobject = chat;
+            returnobject = context.getString(R.string.title_chat);
         }
         else
         {
@@ -139,39 +134,38 @@ public class DrawerAdapter extends BaseAdapter {
 
         ImageView imageLabel = (ImageView)view.findViewById(R.id.drawer_image);
         TextView textLabel = (TextView)view.findViewById(R.id.drawer_text);
+        View topDivider = (View)view.findViewById(R.id.drawer_topdivider);
+        View bottomDivider = (View)view.findViewById(R.id.drawer_bottomdivider);
         int total = eventNames.size()+5;
-        String eventpicker = "Edit Events";
-        String home = "Home";
-        String chat = "Chat";
-        String career = "Career";
-        String settings = "Settings";
 
         String text;
         int image;
         if (position == 0)
         {
-            text = eventpicker;
+            text = context.getString(R.string.title_eventpicker);
             image = R.drawable.addevent;
         }
         else if (position == 1)
         {
-            text = home;
+            text = context.getString(R.string.title_home);
             image = R.drawable.eventhome;
+            bottomDivider.setBackgroundColor(context.getResources().getColor(R.color.background));
         }
         else if (position == total-1)
         {
-            text = settings;
+            text = context.getString(R.string.title_settings);
             image = R.drawable.setting;
         }
         else if (position == total-2)
         {
-            text = career;
+            text = context.getString(R.string.title_career);
             image = R.drawable.career;
         }
         else if (position == total-3)
         {
-            text = chat;
+            text = context.getString(R.string.title_chat);
             image = R.drawable.chat;
+            topDivider.setBackgroundColor(context.getResources().getColor(R.color.background));
         }
         else
         {

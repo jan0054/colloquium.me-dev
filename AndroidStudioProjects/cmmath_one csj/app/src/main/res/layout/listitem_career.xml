@@ -13,7 +13,7 @@
         android:layout_alignParentLeft="true"
         android:textColor="@color/black"
         android:layout_marginBottom="@dimen/list_margin"
-        android:textSize="16sp"
+        android:textSize="12dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/positiontype" />
 
@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="16sp"
         android:fontFamily="sans-serif"
         android:layout_below="@+id/careerType"
@@ -36,7 +35,7 @@
         android:textColor="@color/black"
         android:layout_marginTop="@dimen/list_margin"
         android:layout_below="@+id/careerInst"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:fontFamily="sans-serif"
         android:text="@string/content" />
     <TextView
@@ -44,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/careerContent"
+        android:layout_marginTop="@dimen/list_margin"
         android:layout_marginRight="@dimen/list_margin"
         android:layout_alignParentRight="true"
         android:text="@string/details"
