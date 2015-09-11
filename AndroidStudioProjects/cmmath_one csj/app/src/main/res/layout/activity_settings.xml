@@ -16,7 +16,7 @@
 
             <ListView
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/settingListView"
                 android:divider="@color/divider_color"
                 android:dividerHeight="1dp"/>

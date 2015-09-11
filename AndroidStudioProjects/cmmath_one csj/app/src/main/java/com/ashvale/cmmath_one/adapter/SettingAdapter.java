@@ -1,8 +1,6 @@
 package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ashvale.cmmath_one.LoginActivity;
 import com.ashvale.cmmath_one.R;
-import com.parse.ParseUser;
 
 /**
  * Created by csjan on 9/10/15.
@@ -51,14 +47,7 @@ public class SettingAdapter extends BaseAdapter {
         switch (position)
         {
             case 0:
-                if(ParseUser.getCurrentUser()!=null)//user log in
-                {
-                    returnobject = userIn;
-                }
-                else//no user
-                {
-                    returnobject = userOut;
-                }
+                returnobject = userIn;
                 break;
             case 1:
                 returnobject =  feedback;
@@ -117,7 +106,7 @@ public class SettingAdapter extends BaseAdapter {
 
         String[] primary = context.getResources().getStringArray(R.array.setting_primary_label_array);
         String[] secondary = context.getResources().getStringArray(R.array.setting_secondary_label_array);
-        String[] userIn = {"Signed in as ", "Sign out to switch users", "Sign Out"};
+        String[] userIn = {"Signed in as XXX", "Sign out to switch users", "Sign Out"};
         String[] userOut = {"Not signed in yet", "Sign in to access social features", "Sign In"};
 
         if (position != 0)
@@ -128,37 +117,16 @@ public class SettingAdapter extends BaseAdapter {
         else if (position == 0)
         {
             Button userbutton = (Button)view.findViewById(R.id.userbutton);
-            userbutton.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
+            userbutton.setOnClickListener(new View.OnClickListener()
+            {
+                public void onClick(View v)
+                {
                     Toast.makeText(context, "Sign in/out button tap", Toast.LENGTH_SHORT).show();
-                    SharedPreferences userStatus;
-                    userStatus = context.getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
-                    SharedPreferences.Editor editor = userStatus.edit();
-                    editor.putInt("skiplogin", 0);
-                    editor.commit();
-                    if (ParseUser.getCurrentUser() == null)//need sing in
-                    {
-                        context.startActivity(new Intent(context, LoginActivity.class));
-                    } else//log out
-                    {
-                        ParseUser.logOut();
-                        notifyDataSetChanged();
-                    }
                 }
             });
-            if(ParseUser.getCurrentUser()!=null) //user log in
-            {
-                String userIn0 = userIn[0]+ParseUser.getCurrentUser().get("first_name")+" "+ParseUser.getCurrentUser().get("last_name");
-                primarylabel.setText(userIn0);
-                secondarylabel.setText(userIn[1]);
-                userbutton.setText(userIn[2]);
-            }
-            else //no user
-            {
-                primarylabel.setText(userOut[0]);
-                secondarylabel.setText(userOut[1]);
-                userbutton.setText(userOut[2]);
-            }
+            primarylabel.setText(userOut[0]);
+            secondarylabel.setText(userOut[1]);
+            userbutton.setText(userOut[2]);
         }
 
 

@@ -5,17 +5,12 @@
     android:layout_marginTop="@dimen/list_margin"
     android:layout_marginBottom="@dimen/list_margin">
 
-    <View android:layout_width="match_parent"
-          android:layout_height="1dip"
-          android:id="@+id/drawer_topdivider"
-          android:background="@color/drawyer_bg" />
     <ImageView
         android:id="@+id/drawer_image"
         android:layout_width="@dimen/drawyericon_size"
         android:layout_height="@dimen/drawyericon_size"
         android:layout_margin="@dimen/listicon_margin"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/drawer_topdivider"
         android:padding="@dimen/listicon_padding"
         android:scaleType="centerInside"
         android:src="@drawable/event"
@@ -30,13 +25,9 @@
         android:layout_toRightOf="@+id/drawer_image"
         android:gravity="center|left"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="14sp"
         android:fontFamily="sans-serif"
         android:text="drawer text" />
-    <View android:layout_width="match_parent"
-          android:layout_height="1dip"
-          android:id="@+id/drawer_bottomdivider"
-          android:layout_below="@+id/drawer_text"
-          android:background="@color/drawyer_bg" />
 
 </RelativeLayout>

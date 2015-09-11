@@ -121,11 +121,7 @@ public class BaseActivity extends AppCompatActivity {
     {
         savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
-        int total;
-        if(eventIdSet != null)
-            total = eventIdSet.size();
-        else
-            total = 0;
+        int total = eventIdSet.size();
 
         if (position == 0)
         {
