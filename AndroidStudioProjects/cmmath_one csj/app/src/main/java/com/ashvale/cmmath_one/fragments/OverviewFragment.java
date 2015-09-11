@@ -1,4 +1,4 @@
-package com.ashvale.cmmath_one;
+package com.ashvale.cmmath_one.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -8,16 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ashvale.cmmath_one.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TestFragment.OnFragmentInteractionListener} interface
+ * {@link OverviewFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TestFragment#newInstance} factory method to
+ * Use the {@link OverviewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TestFragment extends Fragment {
+public class OverviewFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,11 +36,11 @@ public class TestFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TestFragment.
+     * @return A new instance of fragment OverviewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TestFragment newInstance(String param1, String param2) {
-        TestFragment fragment = new TestFragment();
+    public static OverviewFragment newInstance(String param1, String param2) {
+        OverviewFragment fragment = new OverviewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -47,7 +48,7 @@ public class TestFragment extends Fragment {
         return fragment;
     }
 
-    public TestFragment() {
+    public OverviewFragment() {
         // Required empty public constructor
     }
 
@@ -64,14 +65,7 @@ public class TestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        return inflater.inflate(R.layout.fragment_overview, container, false);
     }
 
     @Override
@@ -101,9 +95,6 @@ public class TestFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-    }
+
 
 }
