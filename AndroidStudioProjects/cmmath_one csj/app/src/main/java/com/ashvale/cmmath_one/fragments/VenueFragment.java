@@ -71,7 +71,7 @@ public class VenueFragment extends BaseFragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        savedEvents = getActivity().getSharedPreferences("EVENTS", 6);
+        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         String currentId = savedEvents.getString("currenteventid", "");
 
         ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");

@@ -127,12 +127,11 @@ public class ParseData {
 
     public void getPeople(ParseObject event)
     {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("People");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
         query.whereEqualTo("event", event);
         query.include("User");
         query.orderByAscending("last_name");
         query.setLimit(500);
-        query.whereEqualTo("events", event);
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
@@ -147,7 +146,7 @@ public class ParseData {
 
     public void getPeople(ParseObject event, List<String> searchArray)
     {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("People");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
         query.whereEqualTo("event", event);
         query.include("User");
         query.orderByAscending("last_name");
