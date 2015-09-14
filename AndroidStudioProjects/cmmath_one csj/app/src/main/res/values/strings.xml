@@ -35,7 +35,6 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
-
     <string name="empty"></string>
     <string name="hello_world">Hello world!</string>
 
@@ -53,8 +52,16 @@
     <string name="title_activity_career">CareerActivity</string>
     <string name="title_activity_event_wrapper">EventWrapperActivity</string>
 
+    <!-- TAB SECTION -->
+    <string name="title_eventpicker">Edit Events</string>
+    <string name="title_home">Home</string>
+    <string name="title_chat">Chat</string>
     <string name="title_career">Career</string>
     <string name="title_settings">Settings</string>
+    <string name="title_people">People</string>
+    <string name="title_news">News</string>
+    <string name="title_newpost">New Post</string>
+    <string name="title_login">Login</string>
 
     <!-- Fragment Titles -->
     <string name="title_overview">Overview</string>
@@ -64,7 +71,6 @@
     <string name="title_venue">Venue</string>
 
     <!-- LOGIN & SIGNUP & USERSETTINGS -->
-    <string name="title_login">Login</string>
     <string name="username">Username(Email)</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
