@@ -99,7 +99,6 @@ public class LoginActivity extends Activity {
                     app = (cmmathApplication) getApplication();
                     app.isPerson = true;
                 } else {
-                    //toPage(new Intent(), UserAttendeeActivity.class);
                     return;
                 }
             }

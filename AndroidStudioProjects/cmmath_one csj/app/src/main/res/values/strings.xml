@@ -92,7 +92,7 @@
     <string name="hint_comment">Comment..</string>
     <string name="hint_newpost">Share your thoughts..</string>
     <string name="emaillabel">Allow other users to email you</string>
-    <string name="eventlabel">Receive chat notifications</string>
+    <string name="eventlabel">Receive event notifications</string>
     <string name="chatlabel">Receive chat notifications</string>
     <string name="sign_title">Not signed in yet</string>
     <string name="sign_detail_not">Sign in to access social features</string>

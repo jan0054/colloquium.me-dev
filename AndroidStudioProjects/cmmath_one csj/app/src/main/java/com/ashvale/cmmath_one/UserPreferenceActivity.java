@@ -1,8 +1,10 @@
 package com.ashvale.cmmath_one;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -14,44 +16,60 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 public class UserPreferenceActivity extends Activity {
 
     public ParseUser selfuser;
     public int email_on;
+    public int event_on;
     public int chat_on;
     public int is_person;
-    public String link_str;
+    public String pref_fnamestr;
+    public String pref_lnamestr;
+    public String pref_inststr;
+    public String pref_linkstr;
     public ParseObject selfperson;
 
-    public Switch email_switch;
-    public Switch chat_switch;
-    public EditText link_input;
-    public TextView save_preference;
+    public Switch pref_emailswitch;
+    public Switch pref_eventswitch;
+    public Switch pref_chatswitch;
+    public EditText pref_fnameinput;
+    public EditText pref_lnameinput;
+    public EditText pref_instinput;
+    public EditText pref_linkinput;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_preference);
 
-        save_preference = (TextView) findViewById(R.id.save_preference);
-        save_preference.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                savePreferences();
-            }
-        });
         //default disable stuff
-        email_switch = (Switch) findViewById(R.id.email_switch);
-        chat_switch = (Switch) findViewById(R.id.chat_switch);
-        link_input = (EditText) findViewById(R.id.link_input);
-        email_switch.setEnabled(false);
-        chat_switch.setEnabled(false);
-        link_input.setEnabled(false);
+        pref_emailswitch = (Switch) findViewById(R.id.pref_emailswitch);
+        pref_eventswitch = (Switch) findViewById(R.id.pref_eventswitch);
+        pref_chatswitch = (Switch) findViewById(R.id.pref_chatswitch);
+        pref_fnameinput = (EditText) findViewById(R.id.pref_fnameinput);
+        pref_lnameinput = (EditText) findViewById(R.id.pref_lnameinput);
+        pref_instinput = (EditText) findViewById(R.id.pref_instinput);
+        pref_linkinput = (EditText) findViewById(R.id.pref_linkinput);
+        pref_emailswitch.setEnabled(false);
+        pref_eventswitch.setEnabled(false);
+        pref_chatswitch.setEnabled(false);
+        pref_fnameinput.setEnabled(false);
+        pref_lnameinput.setEnabled(false);
+        pref_instinput.setEnabled(false);
+        pref_linkinput.setEnabled(false);
         is_person = 0;
         email_on = 0;
+        event_on = 0;
         chat_on = 0;
-        link_str = "";
+        pref_fnamestr = "";
+        pref_lnamestr = "";
+        pref_inststr = "";
+        pref_linkstr = "";
 
         //check if current user is person
         if (ParseUser.getCurrentUser() != null)
@@ -84,9 +102,9 @@ public class UserPreferenceActivity extends Activity {
         if (is_person == 1)
         {
             //user is person
-            email_switch.setEnabled(true);
-            chat_switch.setEnabled(true);
-            link_input.setEnabled(true);
+            pref_emailswitch.setEnabled(true);
+            pref_chatswitch.setEnabled(true);
+            pref_linkinput.setEnabled(true);
             //set email/chat variables
             if (selfuser.containsKey("email_status"))
             {
@@ -95,6 +113,14 @@ public class UserPreferenceActivity extends Activity {
             else
             {
                 email_on = 0;
+            }
+            if (selfuser.containsKey("event_status"))
+            {
+                event_on = selfuser.getInt("event_status");
+            }
+            else
+            {
+                event_on = 1;
             }
             if (selfuser.containsKey("chat_status"))
             {
@@ -107,93 +133,111 @@ public class UserPreferenceActivity extends Activity {
             //set email/chat switch initial position
             if (email_on == 1)
             {
-                email_switch.setChecked(true);
+                pref_emailswitch.setChecked(true);
             }
             else
             {
-                email_switch.setChecked(false);
+                pref_emailswitch.setChecked(false);
+            }
+            if (event_on == 1)
+            {
+                pref_eventswitch.setChecked(true);
+            }
+            else
+            {
+                pref_eventswitch.setChecked(false);
             }
             if (chat_on == 1)
             {
-                chat_switch.setChecked(true);
+                pref_chatswitch.setChecked(true);
             }
             else
             {
-                chat_switch.setChecked(false);
+                pref_chatswitch.setChecked(false);
             }
             //set listener and callback for the switches
-            email_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            pref_emailswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked)
-                    {
+                    if (isChecked) {
                         //email set to public
                         email_on = 1;
-                    }
-                    else if (!isChecked)
-                    {
+                    } else if (!isChecked) {
                         //email set to private
                         email_on = 0;
                     }
                 }
             });
-            chat_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            pref_eventswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked)
-                    {
+                    if (isChecked) {
+                        //email set to public
+                        event_on = 1;
+                    } else if (!isChecked) {
+                        //email set to private
+                        event_on = 0;
+                    }
+                }
+            });
+            pref_chatswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
                         //chat set to on
                         chat_on = 1;
-                    }
-                    else if (!isChecked)
-                    {
+                    } else if (!isChecked) {
                         //chat set to off
                         chat_on = 0;
                     }
                 }
             });
             //get link if exist and set as default text in url input
+            if (selfperson.containsKey("first_name"))
+            {
+                pref_linkstr = selfperson.getString("first_name");
+            }
+            pref_fnameinput.setText(pref_fnamestr);
+            if (selfperson.containsKey("last_name"))
+            {
+                pref_lnamestr = selfperson.getString("last_name");
+            }
+            pref_lnameinput.setText(pref_lnamestr);
+            if (selfperson.containsKey("institution"))
+            {
+                pref_inststr = selfperson.getString("institution");
+            }
+            pref_instinput.setText(pref_inststr);
             if (selfperson.containsKey("link"))
             {
-                link_str = selfperson.getString("link");
+                pref_linkstr = selfperson.getString("link");
             }
-            link_input.setText(link_str);
-            //set status text with name included;
-            String lname = selfperson.getString("last_name");
-            String fname = selfperson.getString("first_name");
-            String status_str = String.format("Hello %s %s, please set your email and chat preferences below, you can change these preferences anytime.", fname, lname);
-            TextView status_tv = (TextView) findViewById(R.id.status);
-            status_tv.setText(status_str);
+            pref_linkinput.setText(pref_linkstr);
         }
         else
         {
             //user is not person
         }
-
     }
 
     public void savePreferences()
     {
         if (is_person == 1)
         {
-            link_str = link_input.getText().toString();
             selfuser.put("email_status", email_on);
+            selfuser.put("event_status", event_on);
             selfuser.put("chat_status", chat_on);
             selfuser.put("is_person", is_person);
-            selfuser.put("person", selfperson);
+            selfuser.put("first_name", pref_fnameinput.getText().toString());
+            selfuser.put("last_name", pref_lnameinput.getText().toString());
+            selfuser.put("institution", pref_instinput.getText().toString());
+            selfuser.put("link", pref_linkinput.getText().toString());
             selfuser.saveInBackground();
-            selfperson.put("email_status", email_on);
-            selfperson.put("chat_status", chat_on);
-            selfperson.put("is_user", is_person);
-            selfperson.put("user", selfuser);
-            selfperson.put("link", link_str);
-            selfperson.saveInBackground();
         }
    //     toMainPage();
     }
-/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_user_preference, menu);
+        getMenuInflater().inflate(R.menu.menu_userpreference, menu);
         return true;
     }
 
@@ -205,11 +249,11 @@ public class UserPreferenceActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.savepreference) {
+            savePreferences();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-*/
 }

@@ -1,24 +1,35 @@
 package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ashvale.cmmath_one.R;
+import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by csjan on 9/14/15.
  */
 public class VenueAdapter extends BaseAdapter {
+    public static final String 			ACTION_VENUE_WEBSITE 		= "com.cmmath.action.venue.website";
+    public static final String          ACTION_VENUE_URL            = "com.cmmath.data.venue.url";
+    public static final String 			ACTION_VENUE_CALL 			= "com.cmmath.action.venue.call";
+    public static final String          ACTION_VENUE_PHONE          = "com.cmmath.data.venue.phone";
+    public static final String 			ACTION_VENUE_NAVIGATE 		= "com.cmmath.action.venue.navigate";
+    public static final String 			EXTRA_VENUE_LAT	  			= "com.cmmath.data.venue.LATITUDE";
+    public static final String 			EXTRA_VENUE_LNG				= "com.cmmath.data.venue.LONGITUDE";
+
     private final Context context;
     private final List venues;
 
@@ -57,11 +68,49 @@ public class VenueAdapter extends BaseAdapter {
 
         ParseObject venue = (ParseObject)venues.get(position);
 
-        TextView primaryLabel = (TextView)view.findViewById(R.id.primarylabel);
-        TextView secondaryLabel = (TextView)view.findViewById(R.id.secondarylabel);
+        ParseImageView imageLabel = (ParseImageView)view.findViewById(R.id.venueImage);
+        TextView nameLabel = (TextView)view.findViewById(R.id.venueName);
+        ImageButton callLabel = (ImageButton)view.findViewById(R.id.venueCall);
+        ImageButton navigateLabel = (ImageButton)view.findViewById(R.id.venueNavigate);
+        Button websiteLabel = (Button)view.findViewById(R.id.venueWebsite);
+        TextView contentLabel = (TextView)view.findViewById(R.id.venueContent);
 
-        primaryLabel.setText(venue.getString("name"));
-        secondaryLabel.setText(venue.getString("content"));
+        ParseFile image = venue.getParseFile("image");
+        imageLabel.setParseFile(image);
+        imageLabel.loadInBackground();
+        nameLabel.setText(venue.getString("name"));
+        callLabel.setTag(venue.getString("phone"));
+        navigateLabel.setTag(venue.getParseGeoPoint("coord"));
+        websiteLabel.setTag(venue.getString("url"));
+        contentLabel.setText(venue.getString("content"));
+
+        websiteLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ACTION_VENUE_WEBSITE);
+                intent.putExtra(ACTION_VENUE_URL, v.getTag().toString());
+                context.sendBroadcast(intent);
+            }
+        });
+
+        callLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ACTION_VENUE_CALL);
+                intent.putExtra(ACTION_VENUE_PHONE, v.getTag().toString());
+                context.sendBroadcast(intent);
+            }
+        });
+
+        navigateLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ACTION_VENUE_NAVIGATE);
+                intent.putExtra(EXTRA_VENUE_LAT, ((ParseGeoPoint) v.getTag()).getLatitude());
+                intent.putExtra(EXTRA_VENUE_LNG, ((ParseGeoPoint) v.getTag()).getLongitude());
+                context.sendBroadcast(intent);
+            }
+        });
 
         return view;
     }

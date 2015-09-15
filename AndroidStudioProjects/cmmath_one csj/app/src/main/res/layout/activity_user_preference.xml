@@ -1,143 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical" >
-    <LinearLayout android:id="@+id/container"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_bg">
+    <TextView
+        android:id="@+id/pref_emaillabel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:fontFamily="sans-serif-light"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/list_margin"
+        android:gravity="left"
+        android:text="@string/emaillabel"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
+    <Switch
+        android:id="@+id/pref_emailswitch"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_toRightOf="@+id/pref_emaillabel"
+        android:layout_alignParentRight="true"
+        android:text=""/>
+    <View android:layout_width="match_parent"
+          android:layout_height="1dip"
+          android:layout_below="@+id/pref_emaillabel"
+          android:background="@color/light_primary" />
+    <TextView
+        android:id="@+id/pref_eventlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_below="@+id/pref_emaillabel"
+        android:fontFamily="sans-serif-light"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_gravity="center_vertical"
+        android:text="@string/eventlabel"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"/>
+    <Switch
+        android:id="@+id/pref_eventswitch"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_below="@+id/pref_emailswitch"
+        android:layout_toRightOf="@+id/pref_eventlabel"
+        android:layout_alignParentRight="true"
+        android:text=""/>
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:background="@drawable/list_item_gradient"
-        android:orientation="vertical" >
-        <View android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/background" />
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center|left"
-            android:text="Sorry, you do not seem to be a registered attendee. Email and chat functions will not be available. Remember, you must use the same email address you used to register for the workshop."
-            android:textColor="@color/primary_text"
-            android:textSize="14sp" />
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="1dp"
-            android:weightSum="2"
-            android:orientation="horizontal" >
-            <TextView
-                android:id="@+id/email_label"
-                android:layout_width="wrap_content"
-                android:layout_height="16dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center|left"
-                android:layout_gravity="center_vertical"
-                android:text="Allow attendees to Email you"
-                android:textColor="@color/primary_text"
-                android:textSize="14sp" />
-
-
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:id="@+id/email_switch"
-                android:layout_weight="1"
-                android:thumb="@drawable/switch_selector"/>
-        </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="1dp"
-            android:weightSum="2"
-            android:orientation="horizontal" >
-            <TextView
-                android:id="@+id/chat_label"
-                android:layout_width="wrap_content"
-                android:layout_height="16dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center|left"
-                android:text="Chat with other attendees"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/primary_text"
-                android:textSize="14sp" />
-
-            <Switch
-                android:layout_height="wrap_content"
-                android:text=""
-                android:id="@+id/chat_switch"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:thumb="@drawable/switch_selector"/>
-        </LinearLayout>
-        <TextView
-            android:id="@+id/link_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center|left"
-            android:maxHeight="30dp"
-            android:maxWidth="300dp"
-            android:text="@string/website"
-            android:textColor="@color/primary_text"
-            android:textSize="14dp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/link_input"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="@color/dark_accent"
-            android:textColor="@color/primary_text"
-            android:textColorHighlight="@color/light_primary"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:id="@+id/link_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center|left"
-            android:text="Enter the URL of your personal webpage here, such as your deparment faculty/grad student page. (Optional)"
-            android:textColor="@color/primary_text"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/save_preference"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="Done"
-            android:textColor="@color/dark_accent"
-            android:textSize="16sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal" />
-
-
-    </LinearLayout>
-</LinearLayout>
+        android:layout_height="1dp"
+        android:layout_below="@+id/pref_eventlabel"/>
+    <TextView
+        android:id="@+id/pref_chatlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_below="@+id/pref_eventlabel"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_alignParentLeft="true"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/chatlabel"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
+    <Switch
+        android:id="@+id/pref_chatswitch"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/pref_eventswitch"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_toRightOf="@+id/pref_chatlabel"
+        android:layout_alignParentRight="true"
+        android:text=""/>
+    <View android:layout_width="match_parent"
+          android:layout_height="1dip"
+          android:layout_below="@+id/pref_chatlabel"
+          android:background="@color/light_primary" />
+    <TextView
+        android:id="@+id/pref_fnamelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_below="@+id/pref_chatlabel"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_alignParentLeft="true"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/firstname"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
+    <EditText  android:id="@+id/pref_fnameinput"
+               android:layout_width="wrap_content"
+               android:layout_height="@dimen/listheight_setup"
+               android:layout_below="@+id/pref_chatswitch"
+               android:layout_toRightOf="@+id/pref_fnamelabel"
+               android:layout_margin="@dimen/list_margin"
+               android:layout_alignParentRight="true"
+               android:singleLine="true"
+               android:minWidth="120dp"
+               android:maxWidth="260dp" />
+    <View android:layout_width="match_parent"
+          android:layout_height="1dip"
+          android:layout_below="@+id/pref_fnamelabel"
+          android:background="@color/light_primary" />
+    <TextView
+        android:id="@+id/pref_lnamelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_below="@+id/pref_fnamelabel"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_alignParentLeft="true"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/lastname"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
+    <EditText  android:id="@+id/pref_lnameinput"
+               android:layout_width="wrap_content"
+               android:layout_height="@dimen/listheight_setup"
+               android:layout_below="@+id/pref_fnameinput"
+               android:layout_toRightOf="@+id/pref_lnamelabel"
+               android:layout_margin="@dimen/list_margin"
+               android:layout_alignParentRight="true"
+               android:singleLine="true"
+               android:minWidth="120dp"
+               android:maxWidth="260dp" />
+    <View android:layout_width="match_parent"
+          android:layout_height="1dip"
+          android:background="@color/light_primary" />
+    <TextView
+        android:id="@+id/pref_instlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_below="@+id/pref_lnamelabel"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_alignParentLeft="true"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/institution"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
+    <EditText  android:id="@+id/pref_instinput"
+               android:layout_width="wrap_content"
+               android:layout_height="@dimen/listheight_setup"
+               android:layout_below="@+id/pref_lnameinput"
+               android:layout_toRightOf="@+id/pref_instlabel"
+               android:layout_margin="@dimen/list_margin"
+               android:layout_alignParentRight="true"
+               android:singleLine="true"
+               android:minWidth="120dp"
+               android:maxWidth="260dp" />
+    <View android:layout_width="match_parent"
+          android:layout_height="1dip"
+          android:background="@color/light_primary" />
+    <TextView
+        android:id="@+id/pref_linklabel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/listheight_setup"
+        android:layout_below="@+id/pref_instlabel"
+        android:layout_margin="@dimen/list_margin"
+        android:layout_alignParentLeft="true"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/website"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
+    <EditText  android:id="@+id/pref_linkinput"
+               android:layout_width="wrap_content"
+               android:layout_height="@dimen/listheight_setup"
+               android:layout_below="@+id/pref_instinput"
+               android:layout_toRightOf="@+id/pref_linklabel"
+               android:layout_margin="@dimen/list_margin"
+               android:layout_alignParentRight="true"
+               android:singleLine="true"
+               android:minWidth="120dp"
+               android:maxWidth="260dp" />
+</RelativeLayout>
