@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import com.ashvale.cmmath_one.R;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -61,11 +63,32 @@ public class ConversationAdapter extends BaseAdapter {
         TextView msgLabel = (TextView)view.findViewById(R.id.conversationMsg);
         TextView namelabel = (TextView)view.findViewById(R.id.conversationName);
 
+        List<ParseUser> participants;
+        participants = conversation.getList("participants");
+        final ParseUser selfUser = ParseUser.getCurrentUser();
+        String nameList = "";
+        for (ParseUser user : participants)
+        {
+            String fullName = user.getString("first_name")+" "+user.getString("last_name");
+            if (!user.getObjectId().equals(selfUser.getObjectId()))
+            {
+                if (nameList.length()>1)
+                {
+                    nameList = nameList+", "+fullName;
+                }
+                else
+                {
+                    nameList = fullName;
+                }
+            }
+        }
+
         Date lastdate = conversation.getDate("last_time");
         Format convdateformatter = new SimpleDateFormat("MM-dd HH:mm");
+
         String timestr = convdateformatter.format(lastdate);
         String msgstr = conversation.getString("last_msg");
-        String namestr = conversation.getString("content");
+        String namestr = nameList;
 
         timeLabel.setText(timestr);
         msgLabel.setText(msgstr);

@@ -52,18 +52,9 @@ public class SignupActivity extends Activity {
         String lastname     = mLastname.getText().toString();
         String institution  = mInstitution.getText().toString();
         if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
-            toast("Wrong username and/or password!");
+            toast("Please fill in all fields");
             return;
         }
-
-        ParseObject person = new ParseObject("Person");
-        person.put("is_user", 1);
-        person.put("chat_status", 1);
-        person.put("email", email);
-        person.put("first_name", firstname);
-        person.put("last_name", lastname);
-        person.put("institution", institution);
-        person.saveInBackground();
 
         ParseUser user = new ParseUser();
         user.setUsername(username);
@@ -72,14 +63,12 @@ public class SignupActivity extends Activity {
         user.put("first_name", firstname);
         user.put("last_name", lastname);
         user.put("notifications", 1);
-        user.put("isperson", 1);
-        user.put("person", person);
-        user.signUpInBackground(new SignUpCallback() {
 
+        user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    Log.d(TAG, "Sign Up: " + "passed");
+                    Log.d("cm_app", "Sign Up done");
                     //after successful signup, associate user to installation(this phone), in order to receive push notifications
                     ParseInstallation installation = ParseInstallation.getCurrentInstallation();
                     installation.put("user",ParseUser.getCurrentUser());
@@ -88,7 +77,7 @@ public class SignupActivity extends Activity {
                     toPreferencePage();
                     //toMainPage();
                 } else {
-                    Log.d(TAG, "Sign Up: " + "failed"+e.getMessage());
+                    Log.d("cm_app", "Sign Up: " + "failed"+e.getMessage());
                     onSignupFailed(e.getCode(), e.getMessage());
                 }
             }

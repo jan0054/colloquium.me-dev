@@ -6,7 +6,76 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.ashvale.cmmath_one.CareerDetailActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/inst_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Institute:"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/contact_name_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Contact:"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
+        android:layout_below="@+id/inst_label"/>
+    <TextView
+        android:id="@+id/web_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Web Page"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
+        android:layout_below="@+id/contact_name_label"/>
+
+    <TextView
+        android:id="@+id/content_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="content"
+        android:textColor="@color/primary_text"
+        android:textSize="14sp"
+        android:layout_below="@+id/web_label"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send email"
+        android:id="@+id/email_button"
+        android:layout_below="@+id/content_label"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open in browser"
+        android:id="@+id/web_button"
+        android:layout_below="@+id/email_button"/>
 
 </RelativeLayout>

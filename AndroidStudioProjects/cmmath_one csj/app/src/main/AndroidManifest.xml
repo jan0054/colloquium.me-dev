@@ -142,11 +142,13 @@
         </activity>
         <activity
             android:name=".CareerDetailActivity"
-            android:label="@string/title_activity_career_detail" >
+            android:label="@string/title_activity_career_detail"
+            android:parentActivityName=".CareerActivity">
         </activity>
         <activity
             android:name=".ChatActivity"
-            android:label="@string/title_activity_chat" >
+            android:label="@string/title_activity_chat"
+            android:parentActivityName=".ConversationActivity">
         </activity>
         <activity
             android:name=".ChatOptionsActivity"
