@@ -1,9 +1,12 @@
 package com.ashvale.cmmath_one;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ashvale.cmmath_one.adapter.CareerAdapter;
@@ -41,11 +44,21 @@ public class ConversationActivity extends BaseActivity {
         });
     }
 
-    public void setAdapter(final List results)
+    public void setAdapter(final List<ParseObject> results)
     {
         ConversationAdapter adapter = new ConversationAdapter(this, results);
         ListView conversationListView = (ListView)findViewById(R.id.conversationListView);
         conversationListView.setAdapter(adapter);
+        conversationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ParseObject conversation = results.get(position);
+                String convid = conversation.getObjectId();
+                Intent intent = new Intent(ConversationActivity.this, ChatActivity.class);
+                intent.putExtra("convid", convid);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
