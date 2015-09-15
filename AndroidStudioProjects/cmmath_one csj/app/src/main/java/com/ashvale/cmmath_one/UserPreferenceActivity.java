@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class UserPreferenceActivity extends Activity {
+public class UserPreferenceActivity extends BaseActivity {
 
     public ParseUser selfuser;
     public int email_on;
