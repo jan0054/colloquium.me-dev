@@ -29,7 +29,7 @@ public class CareerDetailActivity extends AppCompatActivity {
     public String contactMail;
     public String contentString;
     public String contactLink;
-
+    protected static boolean isChat = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

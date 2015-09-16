@@ -24,7 +24,6 @@ public class cmmathApplication extends Application {
         isChat = false;
         isPerson = false;
         Parse.initialize(getBaseContext(), _PARAMS.APPLICATION_ID, _PARAMS.CLIENT_KEY);
-
         ParsePush.subscribeInBackground("", new SaveCallback() {
             @Override
             public void done(ParseException e) {
