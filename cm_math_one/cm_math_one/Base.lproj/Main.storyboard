@@ -1189,6 +1189,11 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="oqy-Nz-fof"/>
+                                                        </mask>
+                                                    </variation>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="input description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5M-OT-K3v">
                                                     <rect key="frame" x="8" y="19" width="200" height="21"/>
@@ -1199,6 +1204,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="pjN-Z5-gO6" secondAttribute="centerY" id="1EV-lV-ZUO"/>
+                                                <constraint firstItem="pjN-Z5-gO6" firstAttribute="leading" secondItem="E5M-OT-K3v" secondAttribute="trailing" constant="16" id="9E2-BQ-Ta0"/>
                                                 <constraint firstAttribute="centerY" secondItem="E5M-OT-K3v" secondAttribute="centerY" id="bXs-Bf-7Nh"/>
                                                 <constraint firstItem="pjN-Z5-gO6" firstAttribute="leading" secondItem="E5M-OT-K3v" secondAttribute="trailing" constant="25" id="coK-5v-5I3"/>
                                                 <constraint firstItem="E5M-OT-K3v" firstAttribute="leading" secondItem="Duw-Sg-G27" secondAttribute="leadingMargin" id="eV1-ve-2tR"/>
@@ -2620,7 +2626,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Colloquium.me by Ashvale Technology" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ie3-PK-uUN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Colloquium.me by Ashvale Tech" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ie3-PK-uUN">
                                         <rect key="frame" x="139" y="65" width="323" height="35"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

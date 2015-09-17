@@ -4,4 +4,4 @@
 <item android:drawable="@drawable/switch_checked" android:state_checked="true"/>
 <item android:drawable="@drawable/switch_unchecked" android:state_checked="false"/>
 
-</selector><!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/drawable/switch_selector.xml -->
+</selector><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/drawable/switch_selector.xml -->

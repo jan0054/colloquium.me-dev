@@ -26,4 +26,4 @@
 			      android:textColor="@color/tab_color_selector"
 			      android:text="@string/title_settings"
 			      android:textSize="10sp" />
-</LinearLayout><!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/tab_custom.xml -->
+</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/tab_custom.xml -->

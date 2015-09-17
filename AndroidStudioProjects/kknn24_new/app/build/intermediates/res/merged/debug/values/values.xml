@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="career_array">
         <item>New</item>
@@ -25,7 +25,7 @@
         <item>@string/pref_title_about</item>
         <item>@string/pref_title_terms</item>
     </string-array>
-    <!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="accent_color">#536DFE</color>
     <color name="actionbar_bottom">#3E5378</color>
@@ -112,14 +112,14 @@
     <color name="warning">#DD7777</color>
     <color name="white">#FFFFFF</color>
     <declare-styleable name="TintableImageView"><attr format="reference|color" name="tint"/></declare-styleable>
-    <!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="padding_horizontal">40dp</dimen>
     <dimen name="preference_item_height">56dp</dimen>
     <dimen name="preference_title">16sp</dimen>
-    <!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="abstract_btn">Attachment</string>
     <string name="action_close">Close</string>
@@ -195,7 +195,7 @@
     <string name="unknown">(Unknown)</string>
     <string name="username">Username</string>
     <string name="website">Webpage</string>
-    <!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
 		<!--item name="android:background">@drawable/actionbar_gradient_background</item-->

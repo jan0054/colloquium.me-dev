@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.AttendeeAdapter;
@@ -105,20 +106,22 @@ public class AttendeeFragment extends BaseFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_attendee, container, false);
+        View view = inflater.inflate(R.layout.fragment_attendee, container, false);
 
-        searchinput = (EditText)v.findViewById(R.id.searchinput);
-        dosearch = (Button)v.findViewById(R.id.dosearch);
-        cancelsearch = (Button)v.findViewById(R.id.cancelsearch);
+        searchinput = (EditText)view.findViewById(R.id.searchinput);
+        dosearch = (Button)view.findViewById(R.id.dosearch);
+        cancelsearch = (Button)view.findViewById(R.id.cancelsearch);
 //        dosearch.setOnClickListener(this);
-        cancelsearch.setOnClickListener(new View.OnClickListener() {
+        cancelsearch.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 //cancel search button
+                Toast.makeText(getActivity().getBaseContext(), "TOASTTTTTTTT", Toast.LENGTH_SHORT).show();
                 searchinput.setText("");
-                searcharray.clear();
-                savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-                getPeople(event, searcharray);
+                //searcharray.clear();
+                //savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+                //getPeople(event, searcharray);
             }
         });
         searchinput.addTextChangedListener(new TextWatcher() {
@@ -135,13 +138,13 @@ public class AttendeeFragment extends BaseFragment{
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
                 if (s.length() == 0) {
-                    searcharray.clear();
-                    savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-                    getPeople(event, searcharray);
+                    //searcharray.clear();
+                    //savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+                    //getPeople(event, searcharray);
                 }
             }
         });
-        return inflater.inflate(R.layout.fragment_attendee, container, false);
+        return view;
     }
 
     @Override
