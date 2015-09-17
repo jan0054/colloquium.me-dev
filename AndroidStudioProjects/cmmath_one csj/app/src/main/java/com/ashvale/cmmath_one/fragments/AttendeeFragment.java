@@ -32,7 +32,7 @@ import java.util.List;
  * Use the {@link AttendeeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AttendeeFragment extends BaseFragment implements View.OnClickListener{
+public class AttendeeFragment extends BaseFragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private SharedPreferences savedEvents;
@@ -40,6 +40,8 @@ public class AttendeeFragment extends BaseFragment implements View.OnClickListen
     public Button dosearch;
     public Button cancelsearch;
     public ArrayList<String> searcharray;
+    public String currentId;
+    public ParseObject event;
 
     // TODO: Rename and change types of parameters
 
@@ -70,9 +72,9 @@ public class AttendeeFragment extends BaseFragment implements View.OnClickListen
         }
 
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-        String currentId = savedEvents.getString("currenteventid", "");
+        currentId = savedEvents.getString("currenteventid", "");
 
-        ParseObject event = ParseObject.createWithoutData("Event", currentId);
+        event = ParseObject.createWithoutData("Event", currentId);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
         query.whereEqualTo("events", event);
@@ -108,8 +110,17 @@ public class AttendeeFragment extends BaseFragment implements View.OnClickListen
         searchinput = (EditText)v.findViewById(R.id.searchinput);
         dosearch = (Button)v.findViewById(R.id.dosearch);
         cancelsearch = (Button)v.findViewById(R.id.cancelsearch);
-        dosearch.setOnClickListener(this);
-        cancelsearch.setOnClickListener(this);
+//        dosearch.setOnClickListener(this);
+        cancelsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //cancel search button
+                searchinput.setText("");
+                searcharray.clear();
+                savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+                getPeople(event, searcharray);
+            }
+        });
         searchinput.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -124,11 +135,9 @@ public class AttendeeFragment extends BaseFragment implements View.OnClickListen
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
                 if (s.length() == 0) {
-                    savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-                    String currentId = savedEvents.getString("currenteventid", "");
-                    ParseObject event = ParseObject.createWithoutData("Event", currentId);
-                    getPeople(event, searcharray);
                     searcharray.clear();
+                    savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+                    getPeople(event, searcharray);
                 }
             }
         });
@@ -160,14 +169,30 @@ public class AttendeeFragment extends BaseFragment implements View.OnClickListen
         searcharray = new ArrayList<String>(Arrays.asList(split_string));
     }
 
+    public void AAA(View v) {
+        Log.d("cm_app", "DDDDDDOOOOO");
+
+        setSearchString();
+        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+        currentId = savedEvents.getString("currenteventid", "");
+        event = ParseObject.createWithoutData("Event", currentId);
+        getPeople(event, searcharray);
+
+    }
+/*    @Override
     public void onClick(View v) {
         String currentId;
         ParseObject event;
+        Log.d("cm_app", "cancel");
         switch (v.getId()) {
             case R.id.cancelsearch:
                 //cancel search button
                 searchinput.setText("");
                 searcharray.clear();
+                savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+                currentId = savedEvents.getString("currenteventid", "");
+                event = ParseObject.createWithoutData("Event", currentId);
+                getPeople(event, searcharray);
                 break;
             case R.id.dosearch:
                 //do search button
@@ -178,7 +203,7 @@ public class AttendeeFragment extends BaseFragment implements View.OnClickListen
                 getPeople(event, searcharray);
                 break;
         }
-    }
+    }*/
 
     public void getPeople(ParseObject event, List<String> searchArray)
     {

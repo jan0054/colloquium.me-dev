@@ -24,9 +24,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -143,12 +143,12 @@
         <activity
             android:name=".CareerDetailActivity"
             android:label="@string/title_activity_career_detail"
-            android:parentActivityName=".CareerActivity" >
+            android:parentActivityName=".CareerActivity">
         </activity>
         <activity
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
-            android:parentActivityName=".ConversationActivity" >
+            android:parentActivityName=".ConversationActivity">
         </activity>
         <activity
             android:name=".ChatOptionsActivity"
@@ -157,11 +157,6 @@
         <activity
             android:name=".AboutUsActivity"
             android:label="@string/title_activity_about_us" >
-        </activity>
-        <activity
-            android:name=".EditChatActivity"
-            android:label="@string/title_activity_edit_chat"
-            android:parentActivityName=".ChatActivity">
         </activity>
     </application>
 
