@@ -5,6 +5,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.ashvale.cmmath_one.adapter.AddEventAdapter;
@@ -47,7 +49,9 @@ public class AddeventActivity extends BaseActivity {
 
     public void setAdapter(final List<ParseObject> results)
     {
-        processExisting(results);
+        if(results != null) {
+            processExisting(results);
+        }
 
         adapter = new AddEventAdapter(this, results, selectedPositions);
         ListView eventlist = (ListView)findViewById(R.id.eventListView);

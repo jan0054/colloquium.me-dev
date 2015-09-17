@@ -4,32 +4,95 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/list_margin"
+    android:padding="@dimen/list_padding"
     android:background="@color/light_bg"
     android:gravity="start"
     android:orientation="horizontal">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/program_name"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/listheight_settings"
-        android:layout_marginLeft="@dimen/list_margin">
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="16dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:gravity="center|left"
+        android:singleLine="true"
+        android:text="@string/name"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp"
+        />
 
-        <TextView
-            android:id="@+id/primarylabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/feedback_title"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/textSize_subtitle"/>
-        <TextView
-            android:id="@+id/secondarylabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/primarylabel"
-            android:layout_marginTop="@dimen/listicon_margin"
-            android:text="@string/feedback_detail"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/textSize_detail"/>
+    <TextView
+        android:id="@+id/program_authorname"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_alignLeft="@+id/program_name"
+        android:layout_alignRight="@+id/program_name"
+        android:layout_below="@+id/program_name"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center|left"
+        android:text="@string/author"
+        android:textColor="@color/primary_text"
+        android:textSize="14sp" />
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/program_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/program_authorname"
+        android:layout_alignRight="@+id/program_name"
+        android:layout_below="@+id/program_authorname"
+        android:layout_marginBottom="@dimen/list_margin"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-light"
+        android:lineSpacingExtra="2sp"
+        android:maxLines="3"
+        android:text="@string/description"
+        android:textColor="@color/primary_text"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:id="@+id/program_locationname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/program_name"
+        android:layout_below="@+id/program_content"
+        android:fontFamily="sans-serif-thin"
+        android:gravity="center|left"
+        android:text="@string/location"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/program_starttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/program_content"
+        android:layout_toRightOf="@+id/program_locationname"
+        android:layout_marginLeft="@dimen/list_margin"
+        android:fontFamily="sans-serif-thin"
+        android:gravity="center"
+        android:text="@string/start_time"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView android:id="@+id/program_more"
+              android:layout_width="wrap_content"
+              android:layout_height="24dp"
+              android:layout_marginRight="@dimen/list_padding"
+              android:layout_below="@+id/program_content"
+              android:layout_alignRight="@+id/program_name"
+              android:gravity="center|right"
+              android:layout_weight="1"
+              android:text="@string/more"
+              android:textColor="@color/dark_accent"
+              android:maxLines="1"
+              android:textSize="14sp" />
 </RelativeLayout>

@@ -2,22 +2,26 @@ package com.ashvale.cmmath_one.fragments;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.AttendeeAdapter;
-import com.ashvale.cmmath_one.adapter.VenueAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,16 +32,16 @@ import java.util.List;
  * Use the {@link AttendeeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AttendeeFragment extends BaseFragment {
+public class AttendeeFragment extends BaseFragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private SharedPreferences savedEvents;
+    public EditText searchinput;
+    public Button dosearch;
+    public Button cancelsearch;
+    public ArrayList<String> searcharray;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -45,16 +49,12 @@ public class AttendeeFragment extends BaseFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment AttendeeFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static AttendeeFragment newInstance(String param1, String param2) {
         AttendeeFragment fragment = new AttendeeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,8 +67,6 @@ public class AttendeeFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
@@ -105,6 +103,35 @@ public class AttendeeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_attendee, container, false);
+
+        searchinput = (EditText)v.findViewById(R.id.searchinput);
+        dosearch = (Button)v.findViewById(R.id.dosearch);
+        cancelsearch = (Button)v.findViewById(R.id.cancelsearch);
+        dosearch.setOnClickListener(this);
+        cancelsearch.setOnClickListener(this);
+        searchinput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if (s.length() == 0) {
+                    savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+                    String currentId = savedEvents.getString("currenteventid", "");
+                    ParseObject event = ParseObject.createWithoutData("Event", currentId);
+                    getPeople(event, searcharray);
+                    searcharray.clear();
+                }
+            }
+        });
         return inflater.inflate(R.layout.fragment_attendee, container, false);
     }
 
@@ -125,6 +152,58 @@ public class AttendeeFragment extends BaseFragment {
         mListener = null;
     }
 
+    public void setSearchString()
+    {
+        String raw_input = searchinput.getText().toString();
+        String lower_raw = raw_input.toLowerCase();
+        String [] split_string = lower_raw.split("\\s+");
+        searcharray = new ArrayList<String>(Arrays.asList(split_string));
+    }
+
+    public void onClick(View v) {
+        String currentId;
+        ParseObject event;
+        switch (v.getId()) {
+            case R.id.cancelsearch:
+                //cancel search button
+                searchinput.setText("");
+                searcharray.clear();
+                break;
+            case R.id.dosearch:
+                //do search button
+                setSearchString();
+                savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+                currentId = savedEvents.getString("currenteventid", "");
+                event = ParseObject.createWithoutData("Event", currentId);
+                getPeople(event, searcharray);
+                break;
+        }
+    }
+
+    public void getPeople(ParseObject event, List<String> searchArray)
+    {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
+        query.whereEqualTo("event", event);
+        query.include("User");
+        query.orderByAscending("last_name");
+        query.setLimit(500);
+        query.whereEqualTo("events", event);
+        if (searchArray.size()>0)
+        {
+            query.whereContainsAll("words", searchArray);
+        }
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "attendee query result: " + objects.size());
+                    setAdapter(objects);
+                } else {
+                    Log.d("cm_app", "attendee query error: " + e);
+                }
+            }
+        });
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

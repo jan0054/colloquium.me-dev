@@ -2,10 +2,51 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ashvale.cmmath_one.fragments.AttendeeFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/light_bg">
 
+        <Button
+            android:id="@+id/cancelsearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:onClick="sendChat"
+            android:textColor="@color/accent_color"
+            android:text="Cancel"
+            android:background="@color/light_bg" />
+        <EditText
+            android:id="@+id/searchinput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hint_search"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@null"
+            android:backgroundTint="@color/accent_color"
+            android:textColor="@color/accent_color"/>
+        <Button
+            android:id="@+id/dosearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:onClick="sendChat"
+            android:textColor="@color/accent_color"
+            android:text="Search"
+            android:background="@color/light_bg" />
+    </LinearLayout>
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_bar"
         android:id="@+id/attendeeListView" />
+    </RelativeLayout>
 
 </FrameLayout>

@@ -1,27 +1,21 @@
 package com.ashvale.cmmath_one;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.parse.GetCallback;
-import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-
-public class UserPreferenceActivity extends BaseActivity {
+public class UserPreferenceActivity extends AppCompatActivity {
 
     public ParseUser selfuser;
     public int email_on;
@@ -75,26 +69,9 @@ public class UserPreferenceActivity extends BaseActivity {
         if (ParseUser.getCurrentUser() != null)
         {
             selfuser = ParseUser.getCurrentUser();
+            is_person = 1;
         }
-        ParseQuery<ParseObject> personquery = ParseQuery.getQuery("Person");
-        personquery.whereEqualTo("email", selfuser.getEmail());
-        personquery.getFirstInBackground(new GetCallback<ParseObject>() {
-            @Override
-            public void done(ParseObject parseObject, ParseException e) {
-                if (parseObject != null)
-                {
-                    //found a match, user is person
-                    is_person = 1;
-                    selfperson = parseObject;
-                }
-                else
-                {
-                    //no match, user not a person
-                    is_person = 0;
-                }
-                setupData();
-            }
-        });
+        setupData();
     }
 
     public void setupData()
@@ -103,33 +80,16 @@ public class UserPreferenceActivity extends BaseActivity {
         {
             //user is person
             pref_emailswitch.setEnabled(true);
+            pref_eventswitch.setEnabled(true);
             pref_chatswitch.setEnabled(true);
+            pref_fnameinput.setEnabled(true);
+            pref_lnameinput.setEnabled(true);
+            pref_instinput.setEnabled(true);
             pref_linkinput.setEnabled(true);
             //set email/chat variables
-            if (selfuser.containsKey("email_status"))
-            {
-                email_on = selfuser.getInt("email_status");
-            }
-            else
-            {
-                email_on = 0;
-            }
-            if (selfuser.containsKey("event_status"))
-            {
-                event_on = selfuser.getInt("event_status");
-            }
-            else
-            {
-                event_on = 1;
-            }
-            if (selfuser.containsKey("chat_status"))
-            {
-                chat_on = selfuser.getInt("chat_status");
-            }
-            else
-            {
-                chat_on = 1;
-            }
+            email_on = selfuser.getInt("email_status");
+            event_on = selfuser.getInt("event_status");
+            chat_on = selfuser.getInt("chat_status");
             //set email/chat switch initial position
             if (email_on == 1)
             {
@@ -190,24 +150,25 @@ public class UserPreferenceActivity extends BaseActivity {
                 }
             });
             //get link if exist and set as default text in url input
-            if (selfperson.containsKey("first_name"))
+            if (selfuser.containsKey("first_name"))
             {
-                pref_linkstr = selfperson.getString("first_name");
+                pref_fnamestr = selfuser.getString("first_name");
+                Toast.makeText(UserPreferenceActivity.this, "firstname = "+pref_fnamestr, Toast.LENGTH_SHORT).show();
             }
             pref_fnameinput.setText(pref_fnamestr);
-            if (selfperson.containsKey("last_name"))
+            if (selfuser.containsKey("last_name"))
             {
-                pref_lnamestr = selfperson.getString("last_name");
+                pref_lnamestr = selfuser.getString("last_name");
             }
             pref_lnameinput.setText(pref_lnamestr);
-            if (selfperson.containsKey("institution"))
+            if (selfuser.containsKey("institution"))
             {
-                pref_inststr = selfperson.getString("institution");
+                pref_inststr = selfuser.getString("institution");
             }
             pref_instinput.setText(pref_inststr);
-            if (selfperson.containsKey("link"))
+            if (selfuser.containsKey("link"))
             {
-                pref_linkstr = selfperson.getString("link");
+                pref_linkstr = selfuser.getString("link");
             }
             pref_linkinput.setText(pref_linkstr);
         }
@@ -224,14 +185,13 @@ public class UserPreferenceActivity extends BaseActivity {
             selfuser.put("email_status", email_on);
             selfuser.put("event_status", event_on);
             selfuser.put("chat_status", chat_on);
-            selfuser.put("is_person", is_person);
             selfuser.put("first_name", pref_fnameinput.getText().toString());
             selfuser.put("last_name", pref_lnameinput.getText().toString());
             selfuser.put("institution", pref_instinput.getText().toString());
             selfuser.put("link", pref_linkinput.getText().toString());
             selfuser.saveInBackground();
         }
-   //     toMainPage();
+        skip(null);
     }
 
     @Override
@@ -256,4 +216,14 @@ public class UserPreferenceActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void toast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void skip(View view) {
+        Intent intent = new Intent(this, AddeventActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
 }

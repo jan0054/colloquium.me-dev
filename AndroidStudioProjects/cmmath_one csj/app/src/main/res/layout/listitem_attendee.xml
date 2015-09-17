@@ -4,32 +4,49 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/list_margin"
+    android:padding="@dimen/list_padding"
     android:background="@color/light_bg"
     android:gravity="start"
     android:orientation="horizontal">
-
-    <RelativeLayout
+]
+    <TextView
+        android:id="@+id/attendee_name"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/listheight_settings"
-        android:layout_marginLeft="@dimen/list_margin">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center|left"
+        android:text="@string/name"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/primarylabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/feedback_title"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/textSize_subtitle"/>
-        <TextView
-            android:id="@+id/secondarylabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/primarylabel"
-            android:layout_marginTop="@dimen/listicon_margin"
-            android:text="@string/feedback_detail"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/textSize_detail"/>
+    <TextView
+        android:id="@+id/attendee_institution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/attendee_name"
+        android:layout_below="@+id/attendee_name"
+        android:layout_marginBottom="0dp"
+        android:layout_toLeftOf="@+id/attendee_more"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center|left"
+        android:text="@string/institution"
+        android:textColor="@color/primary_text"
+        android:textSize="14sp" />
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/attendee_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/attendee_name"
+        android:layout_below="@+id/attendee_name"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center|right"
+        android:text="@string/more"
+        android:textColor="@color/dark_accent"
+        android:textSize="14sp" />
+
 </RelativeLayout>

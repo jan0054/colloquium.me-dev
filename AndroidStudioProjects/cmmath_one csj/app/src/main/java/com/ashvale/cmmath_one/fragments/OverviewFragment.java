@@ -1,6 +1,8 @@
 package com.ashvale.cmmath_one.fragments;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,14 +11,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ashvale.cmmath_one.R;
+import com.ashvale.cmmath_one.adapter.AddEventAdapter;
+import com.ashvale.cmmath_one.adapter.AnnounceAdapter;
+import com.ashvale.cmmath_one.adapter.VenueAdapter;
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,13 +43,13 @@ import java.util.List;
 public class OverviewFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final String		TAG = OverviewFragment.class.getSimpleName();
+    private IntentFilter filter	 = null;
+    private BroadcastReceiver receiver = null;
     private SharedPreferences savedEvents;
+    private AnnounceAdapter adapter;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -44,16 +57,12 @@ public class OverviewFragment extends BaseFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment OverviewFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static OverviewFragment newInstance(String param1, String param2) {
         OverviewFragment fragment = new OverviewFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -66,8 +75,6 @@ public class OverviewFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
@@ -81,11 +88,54 @@ public class OverviewFragment extends BaseFragment {
                 if (e==null)
                 {
                     String eventName = parseObject.getString("name");
+                    Date startdate = parseObject.getDate("start_time");
+                    Date enddate = parseObject.getDate("end_time");
+                    Format dateformatter = new SimpleDateFormat("MM/dd");
+                    String startstr = dateformatter.format(startdate);
+                    String endstr = dateformatter.format(enddate);
+                    String eventOrganizer = parseObject.getString("organizer");
                     String eventContent = parseObject.getString("content");
-                    TextView nameLabel = (TextView) getView().findViewById(R.id.name);
-                    TextView contentLabel = (TextView) getView().findViewById(R.id.content);
+                    TextView nameLabel = (TextView) getView().findViewById(R.id.overview_name);
+                    TextView dateLabel = (TextView) getView().findViewById(R.id.overview_date);
+                    TextView organizerLabel = (TextView) getView().findViewById(R.id.overview_organizer);
+                    TextView contentLabel = (TextView) getView().findViewById(R.id.overview_content);
+
                     nameLabel.setText(eventName);
+                    dateLabel.setText(startstr+" ~ "+endstr);
+                    organizerLabel.setText(eventOrganizer);
                     contentLabel.setText(eventContent);
+
+                    //attendance not prepared
+//                    int eventAttending = ParseUser.getCurrentUser().get
+
+                    savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+                    String currentId = savedEvents.getString("currenteventid", "");
+
+                    ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
+                    innerQuery.whereEqualTo("objectId", currentId);
+
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Announce");
+                    query.whereMatchesQuery("event", innerQuery);
+                    query.orderByDescending("order");
+                    query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+                    query.findInBackground(new FindCallback<ParseObject>() {
+                        public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                            if (e == null) {
+                                if(objects.size()!=0) {
+                                    setAdapter(objects);
+                                    TextView emptyText = (TextView)getView().findViewById(R.id.announceempty);
+                                    emptyText.setVisibility(View.INVISIBLE);
+                                }
+                                else {
+                                    ListView announceList = (ListView) getView().findViewById(R.id.announceListView);
+                                    announceList.setVisibility(View.INVISIBLE);
+                                }
+                            } else {
+                                Log.d("cm_app", "announcements query error: " + e);
+                            }
+                        }
+                    });
+
                     //to-do: get all other data and put into UI..
                 }
                 else
@@ -132,5 +182,10 @@ public class OverviewFragment extends BaseFragment {
      * >Communicating with Other Fragments</a> for more information.
      */
 
-
+    public void setAdapter(final List results)
+    {
+        AnnounceAdapter adapter = new AnnounceAdapter(getActivity(), results);
+        ListView announceList = (ListView)getActivity().findViewById(R.id.announceListView);
+        announceList.setAdapter(adapter);
+    }
 }

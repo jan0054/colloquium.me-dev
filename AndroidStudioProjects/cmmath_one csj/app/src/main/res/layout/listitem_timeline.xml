@@ -4,32 +4,61 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/list_margin"
+    android:padding="@dimen/list_padding"
     android:background="@color/light_bg"
     android:gravity="start"
     android:orientation="horizontal">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/listheight_settings"
-        android:layout_marginLeft="@dimen/list_margin">
-
         <TextView
-            android:id="@+id/primarylabel"
+            android:id="@+id/timeline_authorname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/feedback_title"
-            android:textColor="@color/primary_text"
-            android:textSize="@dimen/textSize_subtitle"/>
-        <TextView
-            android:id="@+id/secondarylabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/primarylabel"
-            android:layout_marginTop="@dimen/listicon_margin"
-            android:text="@string/feedback_detail"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/timeline_image"
+            android:layout_marginRight="16dp"
+            android:fontFamily="sans-serif-thin"
+            android:gravity="center|left"
+            android:text="@string/author"
             android:textColor="@color/secondary_text"
-            android:textSize="@dimen/textSize_detail"/>
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-    </RelativeLayout>
+        <TextView android:id="@+id/timeline_createdAt"
+                  android:layout_width="wrap_content"
+                  android:layout_height="24dp"
+                  android:layout_alignParentLeft="true"
+                  android:layout_below="@+id/timeline_authorname"
+                  android:layout_toLeftOf="@+id/timeline_image"
+                  android:layout_marginRight="10dp"
+                  android:gravity="center|left"
+                  android:text="@string/date"
+                  android:textColor="@color/secondary_text"
+                  android:maxLines="1"
+                  android:textSize="12sp" />
+        <TextView
+            android:id="@+id/timeline_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timeline_createdAt"
+            android:layout_margin="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toLeftOf="@+id/timeline_image"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:lineSpacingExtra="2sp"
+            android:maxLines="3"
+            android:text="@string/content"
+            android:textColor="@color/primary_text"
+            android:textSize="14sp" />
+        <com.parse.ParseImageView
+            android:id="@+id/timeline_image"
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            android:layout_alignParentRight="true"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:contentDescription="@string/empty"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            android:src="@drawable/poi_01" />
 </RelativeLayout>

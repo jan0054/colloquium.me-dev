@@ -62,6 +62,7 @@ public class SignupActivity extends Activity {
         user.setEmail(email);
         user.put("first_name", firstname);
         user.put("last_name", lastname);
+        user.put("institution", institution);
         user.put("notifications", 1);
 
         user.signUpInBackground(new SignUpCallback() {

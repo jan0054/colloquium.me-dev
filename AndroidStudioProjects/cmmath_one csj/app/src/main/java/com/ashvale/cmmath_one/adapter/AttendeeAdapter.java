@@ -54,12 +54,20 @@ public class AttendeeAdapter extends BaseAdapter {
 
         ParseObject person = (ParseObject)people.get(position);
 
-        TextView primaryLabel = (TextView)view.findViewById(R.id.primarylabel);
-        TextView secondaryLabel = (TextView)view.findViewById(R.id.secondarylabel);
+        TextView attendeenameLabel = (TextView)view.findViewById(R.id.attendee_name);
+        TextView institutionLabel = (TextView)view.findViewById(R.id.attendee_institution);
 
-        primaryLabel.setText(person.getString("first_name"));
-        secondaryLabel.setText(person.getString("last_name"));
+        attendeenameLabel.setText(getName(person));
+        institutionLabel.setText(getInstitution(person));
 
         return view;
     }
+    private String getInstitution(ParseObject object) {
+        return object.getString("institution");
+    }
+
+    private String getName(ParseObject object) {
+        return object.getString("last_name") + ", " + object.getString("first_name");
+    }
+
 }
