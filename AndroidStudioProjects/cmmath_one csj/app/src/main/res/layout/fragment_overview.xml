@@ -42,12 +42,12 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/overview_name"
             android:layout_below="@+id/overview_name"
-            android:gravity="center|bottom"
+            android:gravity="center"
             android:paddingLeft="16dp"
             android:paddingRight="12dp"
             android:text="@string/organizer"
             android:textColor="@color/dark_accent"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
         <TextView
             android:id="@+id/overview_content"
             android:layout_width="match_parent"
@@ -97,6 +97,6 @@
                   android:gravity="center"
                   android:text="@string/list_empty_event"
                   android:textColor="@color/dark_primary"
-                  android:textSize="18sp" />
+                  android:textSize="14sp" />
     </RelativeLayout>
 </FrameLayout>

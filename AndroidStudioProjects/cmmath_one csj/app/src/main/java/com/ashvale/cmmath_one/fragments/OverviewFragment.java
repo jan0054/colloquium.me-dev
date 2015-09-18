@@ -2,8 +2,13 @@ package com.ashvale.cmmath_one.fragments;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.LabeledIntent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -11,16 +16,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.ashvale.cmmath_one.LoginActivity;
 import com.ashvale.cmmath_one.R;
-import com.ashvale.cmmath_one.adapter.AddEventAdapter;
 import com.ashvale.cmmath_one.adapter.AnnounceAdapter;
-import com.ashvale.cmmath_one.adapter.VenueAdapter;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -28,9 +33,12 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -52,6 +60,9 @@ public class OverviewFragment extends BaseFragment {
     private AnnounceAdapter adapter;
     public Switch attendEventswitch;
     public int attendEvent_on;
+    List<ParseObject> eventAttending;
+    ParseObject currenteventObject;
+    String contactMail;
 
     // TODO: Rename and change types of parameters
 
@@ -88,58 +99,107 @@ public class OverviewFragment extends BaseFragment {
         query.include("admin");
         query.getInBackground(currentId, new GetCallback<ParseObject>() {
             @Override
-            public void done(ParseObject parseObject, ParseException e) {
+            public void done(final ParseObject obj, ParseException e) {
                 if (e==null)
                 {
-                    String eventName = parseObject.getString("name");
-                    Date startdate = parseObject.getDate("start_time");
-                    Date enddate = parseObject.getDate("end_time");
+                    currenteventObject = obj;
+                    String eventName = currenteventObject.getString("name");
+                    Date startdate = currenteventObject.getDate("start_time");
+                    Date enddate = currenteventObject.getDate("end_time");
                     Format dateformatter = new SimpleDateFormat("MM/dd");
                     String startstr = dateformatter.format(startdate);
                     String endstr = dateformatter.format(enddate);
-                    String eventOrganizer = parseObject.getString("organizer");
-                    String eventContent = parseObject.getString("content");
+                    String eventOrganizer = currenteventObject.getString("organizer");
+                    String eventContent = currenteventObject.getString("content");
                     TextView nameLabel = (TextView) getView().findViewById(R.id.overview_name);
                     TextView dateLabel = (TextView) getView().findViewById(R.id.overview_date);
                     TextView organizerLabel = (TextView) getView().findViewById(R.id.overview_organizer);
                     TextView contentLabel = (TextView) getView().findViewById(R.id.overview_content);
                     attendEventswitch = (Switch) getView().findViewById(R.id.attend_switch);
+                    contactMail = currenteventObject.getParseUser("admin").getUsername().toString();
 
                     nameLabel.setText(eventName);
                     dateLabel.setText(startstr+" ~ "+endstr);
                     organizerLabel.setText(eventOrganizer);
                     contentLabel.setText(eventContent);
 
-                    //attendance not prepared
-                    ParseUser curuser = ParseUser.getCurrentUser();
-                    List<ParseObject> eventAttending = new ArrayList<>();
-                    eventAttending = curuser.getList("attendance");
-
-                    attendEvent_on = 0;
-                    for (ParseObject eventobject : eventAttending)
-                    {
-                        if(eventobject == parseObject)
-                            attendEvent_on = 1;
-                    }
-                    if(attendEvent_on == 1)
-                    {
-                        attendEventswitch.setChecked(true);
-                    }
-                    else
-                    {
-                        attendEventswitch.setChecked(false);
-                    }
-                    attendEventswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            if (isChecked) {
-                                //email set to public
-                                attendEvent_on = 1;
-                            } else if (!isChecked) {
-                                //email set to private
-                                attendEvent_on = 0;
+                    organizerLabel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            try {
+                                sendEmail("", "", new String[]{contactMail}, null);
+                            } catch (Exception e){
+                                e.getStackTrace();
                             }
                         }
                     });
+                    //attendance not prepared
+                    final ParseUser curuser = ParseUser.getCurrentUser();
+                    if(curuser == null) {
+                        attendEventswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                toast(getString(R.string.error_not_login));
+                                SharedPreferences userStatus;
+                                userStatus = getActivity().getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+                                SharedPreferences.Editor editor = userStatus.edit();
+                                editor.putInt("skiplogin", 0);
+                                editor.commit();
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        eventAttending = new ArrayList<>();
+                        eventAttending = curuser.getList("attendance");
+
+                        attendEvent_on = 0;
+                        if(eventAttending == null)
+                        {
+                            Log.d("cm_app", "attendance is null");
+                            eventAttending = new ArrayList<>();
+                            attendEvent_on = 0;
+                        }
+                        else {
+                            Log.d("cm_app", "event number: " + eventAttending.size());
+                            for (ParseObject eventobject : eventAttending) {
+                                if (eventobject.getObjectId().equals(currenteventObject.getObjectId())) {
+                                    attendEvent_on = 1;
+                                    break;
+                                }
+                                else {
+                                    Log.d("cm_app", "not this event");
+                                }
+                            }
+                        }
+                        if (attendEvent_on == 1) {
+                            attendEventswitch.setChecked(true);
+                        } else {
+                            attendEventswitch.setChecked(false);
+                        }
+                        attendEventswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if (isChecked) {
+                                    //email set to public
+                                    if (attendEvent_on == 0) {
+                                        eventAttending.add(currenteventObject);
+                                        curuser.put("attendance", eventAttending);
+                                        curuser.saveInBackground();
+                                    }
+                                    attendEvent_on = 1;
+                                } else if (!isChecked) {
+                                    //email set to private
+                                    if (attendEvent_on == 1) {
+                                        curuser.removeAll("attendance", Arrays.asList(currenteventObject));
+                                        curuser.saveInBackground();
+                                    }
+                                    attendEvent_on = 0;
+                                }
+                            }
+                        });
+                    }
 
                     savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
                     String currentId = savedEvents.getString("currenteventid", "");
@@ -215,10 +275,72 @@ public class OverviewFragment extends BaseFragment {
      * >Communicating with Other Fragments</a> for more information.
      */
 
+    public void addAttendance(ParseObject parseObject)
+    {
+
+    }
+
+    public void deleteAttendance(ParseObject parseObject)
+    {
+
+    }
+
+    public void toast(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
     public void setAdapter(final List results)
     {
         AnnounceAdapter adapter = new AnnounceAdapter(getActivity(), results);
         ListView announceList = (ListView)getActivity().findViewById(R.id.announceListView);
         announceList.setAdapter(adapter);
+    }
+
+    private void sendEmail(String title, String content, String[] emails, Uri imageUri) throws IOException {
+
+        Intent emailIntent = new Intent();
+        emailIntent.setAction(Intent.ACTION_SEND);
+        emailIntent.setType("application/image");
+        if (imageUri != null) {
+            emailIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+        }
+        Intent openInChooser = Intent.createChooser(emailIntent, "Share");
+
+        // Extract all package labels
+        PackageManager pm = getActivity().getPackageManager();
+
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+
+        List<ResolveInfo> resInfo = pm.queryIntentActivities(sendIntent, 0);
+        List<LabeledIntent> intentList = new ArrayList<LabeledIntent>();
+
+        for (int i = 0; i < resInfo.size(); i++) {
+            ResolveInfo ri = resInfo.get(i);
+            String packageName = ri.activityInfo.packageName;
+            // Append and repackage the packages we want into a LabeledIntent
+            if(packageName.contains("android.email")) {
+                emailIntent.setPackage(packageName);
+            } else if (packageName.contains("android.gm")) 	{
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName(packageName, ri.activityInfo.name));
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_EMAIL,  emails);
+                intent.putExtra(Intent.EXTRA_SUBJECT, title);
+                intent.putExtra(Intent.EXTRA_TEXT, content);
+                if (imageUri != null) {
+                    intent.setType("message/rfc822");
+                    intent.putExtra(Intent.EXTRA_STREAM, imageUri);
+                }
+                intentList.add(new LabeledIntent(intent, packageName, ri.loadLabel(pm), ri.icon));
+            }
+        }
+        // convert intentList to array
+        LabeledIntent[] extraIntents = intentList.toArray( new LabeledIntent[ intentList.size() ]);
+
+        openInChooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents);
+        startActivity(openInChooser);
+
     }
 }
