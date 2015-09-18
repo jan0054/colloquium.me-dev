@@ -23,7 +23,7 @@ public class ChatAdapter extends BaseAdapter {
     private final Context context;
     private final List chats;
 
-    public ChatAdapter(Context context, List queryresults) {
+    public ChatAdapter(Context context, List<ParseObject> queryresults) {
         this.context = context;
         this.chats = queryresults;
     }
