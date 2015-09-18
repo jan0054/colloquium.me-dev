@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.AttendeeAdapter;
@@ -72,6 +71,7 @@ public class AttendeeFragment extends BaseFragment{
         if (getArguments() != null) {
         }
 
+        searcharray = new ArrayList<String>();
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         currentId = savedEvents.getString("currenteventid", "");
 
@@ -111,17 +111,21 @@ public class AttendeeFragment extends BaseFragment{
         searchinput = (EditText)view.findViewById(R.id.searchinput);
         dosearch = (Button)view.findViewById(R.id.dosearch);
         cancelsearch = (Button)view.findViewById(R.id.cancelsearch);
-//        dosearch.setOnClickListener(this);
-        cancelsearch.setOnClickListener(new View.OnClickListener()
-        {
+        dosearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //cancel search button
-                Toast.makeText(getActivity().getBaseContext(), "TOASTTTTTTTT", Toast.LENGTH_SHORT).show();
+                setSearchString();
+                event = ParseObject.createWithoutData("Event", currentId);
+                getPeople(event, searcharray);
+            }
+        });
+        cancelsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 searchinput.setText("");
-                //searcharray.clear();
-                //savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-                //getPeople(event, searcharray);
+                searcharray.clear();
+                event = ParseObject.createWithoutData("Event", currentId);
+                getPeople(event);
             }
         });
         searchinput.addTextChangedListener(new TextWatcher() {
@@ -138,9 +142,9 @@ public class AttendeeFragment extends BaseFragment{
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
                 if (s.length() == 0) {
-                    //searcharray.clear();
-                    //savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-                    //getPeople(event, searcharray);
+                    searcharray.clear();
+                    event = ParseObject.createWithoutData("Event", currentId);
+                    getPeople(event);
                 }
             }
         });
@@ -172,41 +176,24 @@ public class AttendeeFragment extends BaseFragment{
         searcharray = new ArrayList<String>(Arrays.asList(split_string));
     }
 
-    public void AAA(View v) {
-        Log.d("cm_app", "DDDDDDOOOOO");
+    public void getPeople(ParseObject event)
+    {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
+        query.whereEqualTo("event", event);
+        query.include("User");
+        query.orderByAscending("last_name");
+        query.setLimit(500);
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
 
-        setSearchString();
-        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-        currentId = savedEvents.getString("currenteventid", "");
-        event = ParseObject.createWithoutData("Event", currentId);
-        getPeople(event, searcharray);
+                } else {
 
+                }
+            }
+        });
     }
-/*    @Override
-    public void onClick(View v) {
-        String currentId;
-        ParseObject event;
-        Log.d("cm_app", "cancel");
-        switch (v.getId()) {
-            case R.id.cancelsearch:
-                //cancel search button
-                searchinput.setText("");
-                searcharray.clear();
-                savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-                currentId = savedEvents.getString("currenteventid", "");
-                event = ParseObject.createWithoutData("Event", currentId);
-                getPeople(event, searcharray);
-                break;
-            case R.id.dosearch:
-                //do search button
-                setSearchString();
-                savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-                currentId = savedEvents.getString("currenteventid", "");
-                event = ParseObject.createWithoutData("Event", currentId);
-                getPeople(event, searcharray);
-                break;
-        }
-    }*/
 
     public void getPeople(ParseObject event, List<String> searchArray)
     {
