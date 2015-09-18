@@ -116,7 +116,10 @@ public class OverviewFragment extends BaseFragment {
                     TextView organizerLabel = (TextView) getView().findViewById(R.id.overview_organizer);
                     TextView contentLabel = (TextView) getView().findViewById(R.id.overview_content);
                     attendEventswitch = (Switch) getView().findViewById(R.id.attend_switch);
-                    contactMail = currenteventObject.getParseUser("admin").getUsername().toString();
+                    boolean adminexist = currenteventObject.has("admin");
+                    if(adminexist) {
+                        contactMail = currenteventObject.getParseUser("admin").getUsername().toString();
+                    }
 
                     nameLabel.setText(eventName);
                     dateLabel.setText(startstr+" ~ "+endstr);
@@ -127,7 +130,9 @@ public class OverviewFragment extends BaseFragment {
                         @Override
                         public void onClick(View v) {
                             try {
-                                sendEmail("", "", new String[]{contactMail}, null);
+                                if(contactMail!=null && contactMail.length()!=0) {
+                                    sendEmail("", "", new String[]{contactMail}, null);
+                                }
                             } catch (Exception e){
                                 e.getStackTrace();
                             }
