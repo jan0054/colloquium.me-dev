@@ -116,7 +116,7 @@ public class AttendeeFragment extends BaseFragment{
             public void onClick(View v) {
                 setSearchString();
                 event = ParseObject.createWithoutData("Event", currentId);
-                getPeople(event, searcharray);
+                getPeopleSearch(event, searcharray);
             }
         });
         cancelsearch.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +179,7 @@ public class AttendeeFragment extends BaseFragment{
     public void getPeople(ParseObject event)
     {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-        query.whereEqualTo("event", event);
+        query.whereEqualTo("events", event);
         query.include("User");
         query.orderByAscending("last_name");
         query.setLimit(500);
@@ -187,22 +187,22 @@ public class AttendeeFragment extends BaseFragment{
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
-
+                    Log.d("cm_app", "attendee query result: " + objects.size());
+                    setAdapter(objects);
                 } else {
-
+                    Log.d("cm_app", "attendee query error: " + e);
                 }
             }
         });
     }
 
-    public void getPeople(ParseObject event, List<String> searchArray)
+    public void getPeopleSearch(ParseObject event, List<String> searchArray)
     {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-        query.whereEqualTo("event", event);
+        query.whereEqualTo("events", event);
         query.include("User");
         query.orderByAscending("last_name");
         query.setLimit(500);
-        query.whereEqualTo("events", event);
         if (searchArray.size()>0)
         {
             query.whereContainsAll("words", searchArray);

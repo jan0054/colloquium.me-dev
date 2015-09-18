@@ -29,7 +29,7 @@
             android:layout_alignLeft="@+id/overview_name"
             android:layout_below="@+id/overview_name"
             android:layout_marginBottom="10dp"
-            android:layout_toLeftOf="@+id/organizer"
+            android:layout_toLeftOf="@+id/overview_organizer"
             android:fontFamily="sans-serif-light"
             android:gravity="center|left"
             android:text="@string/date"
@@ -92,11 +92,11 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:layout_below="@+id/attend_string"
-                  android:layout_marginLeft="16dp"
-                  android:layout_marginRight="16dp"
-                  android:gravity="top"
+                  android:layout_marginLeft="32dp"
+                  android:layout_marginRight="32dp"
+                  android:gravity="center"
                   android:text="@string/list_empty_event"
-                  android:textColor="@color/dark_accent"
+                  android:textColor="@color/dark_primary"
                   android:textSize="18sp" />
     </RelativeLayout>
 </FrameLayout>

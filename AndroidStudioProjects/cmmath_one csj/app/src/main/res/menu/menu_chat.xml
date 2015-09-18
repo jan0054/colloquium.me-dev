@@ -4,4 +4,6 @@
     tools:context="com.ashvale.cmmath_one.ChatActivity">
     <item android:id="@+id/leave_chat" android:title="@string/leave_chat"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/invite_chat" android:title="@string/invite_chat"
+          android:orderInCategory="100" app:showAsAction="never" />
 </menu>

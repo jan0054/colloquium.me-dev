@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.ashvale.cmmath_one.R;
@@ -48,6 +50,8 @@ public class OverviewFragment extends BaseFragment {
     private BroadcastReceiver receiver = null;
     private SharedPreferences savedEvents;
     private AnnounceAdapter adapter;
+    public Switch attendEventswitch;
+    public int attendEvent_on;
 
     // TODO: Rename and change types of parameters
 
@@ -99,6 +103,7 @@ public class OverviewFragment extends BaseFragment {
                     TextView dateLabel = (TextView) getView().findViewById(R.id.overview_date);
                     TextView organizerLabel = (TextView) getView().findViewById(R.id.overview_organizer);
                     TextView contentLabel = (TextView) getView().findViewById(R.id.overview_content);
+                    attendEventswitch = (Switch) getView().findViewById(R.id.attend_switch);
 
                     nameLabel.setText(eventName);
                     dateLabel.setText(startstr+" ~ "+endstr);
@@ -106,7 +111,35 @@ public class OverviewFragment extends BaseFragment {
                     contentLabel.setText(eventContent);
 
                     //attendance not prepared
-//                    int eventAttending = ParseUser.getCurrentUser().get
+                    ParseUser curuser = ParseUser.getCurrentUser();
+                    List<ParseObject> eventAttending = new ArrayList<>();
+                    eventAttending = curuser.getList("attendance");
+
+                    attendEvent_on = 0;
+                    for (ParseObject eventobject : eventAttending)
+                    {
+                        if(eventobject == parseObject)
+                            attendEvent_on = 1;
+                    }
+                    if(attendEvent_on == 1)
+                    {
+                        attendEventswitch.setChecked(true);
+                    }
+                    else
+                    {
+                        attendEventswitch.setChecked(false);
+                    }
+                    attendEventswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            if (isChecked) {
+                                //email set to public
+                                attendEvent_on = 1;
+                            } else if (!isChecked) {
+                                //email set to private
+                                attendEvent_on = 0;
+                            }
+                        }
+                    });
 
                     savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
                     String currentId = savedEvents.getString("currenteventid", "");
@@ -114,7 +147,7 @@ public class OverviewFragment extends BaseFragment {
                     ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
                     innerQuery.whereEqualTo("objectId", currentId);
 
-                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Announce");
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Announcement");
                     query.whereMatchesQuery("event", innerQuery);
                     query.orderByDescending("order");
                     query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);

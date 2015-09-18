@@ -83,7 +83,7 @@ public class BaseActivity extends AppCompatActivity {
                         drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Toast.makeText(BaseActivity.this, "drawer item selected "+position, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(BaseActivity.this, "drawer item selected "+position, Toast.LENGTH_SHORT).show();
                                 startDrawerActivity(position);
                             }
                         });

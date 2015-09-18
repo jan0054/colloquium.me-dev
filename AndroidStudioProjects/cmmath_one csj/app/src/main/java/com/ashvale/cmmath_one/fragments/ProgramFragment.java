@@ -5,10 +5,14 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.ashvale.cmmath_one.R;
@@ -18,6 +22,8 @@ import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,6 +38,12 @@ public class ProgramFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private SharedPreferences savedEvents;
+    public EditText searchinput;
+    public Button dosearch;
+    public Button cancelsearch;
+    public ArrayList<String> searcharray;
+    public String currentId;
+    public ParseObject event;
 
     // TODO: Rename and change types of parameters
 
@@ -61,8 +73,11 @@ public class ProgramFragment extends BaseFragment {
         if (getArguments() != null) {
         }
 
+        searcharray = new ArrayList<String>();
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-        String currentId = savedEvents.getString("currenteventid", "");
+        currentId = savedEvents.getString("currenteventid", "");
+
+        event = ParseObject.createWithoutData("Event", currentId);
 
         ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
         innerQuery.whereEqualTo("objectId", currentId);
@@ -79,6 +94,7 @@ public class ProgramFragment extends BaseFragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
+                    Log.d("cm_app", "program query result: "+ objects.size());
                     setAdapter(objects);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
@@ -98,8 +114,48 @@ public class ProgramFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_program, container, false);
+        View view = inflater.inflate(R.layout.fragment_program, container, false);
+        searchinput = (EditText)view.findViewById(R.id.searchinput);
+        dosearch = (Button)view.findViewById(R.id.dosearch);
+        cancelsearch = (Button)view.findViewById(R.id.cancelsearch);
+        dosearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setSearchString();
+                event = ParseObject.createWithoutData("Event", currentId);
+                getProgramSearch(event, 0, searcharray, 0);
+            }
+        });
+        cancelsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchinput.setText("");
+                searcharray.clear();
+                event = ParseObject.createWithoutData("Event", currentId);
+                getProgram(event, 0, 0);
+            }
+        });
+        searchinput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
 
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if (s.length() == 0) {
+                    searcharray.clear();
+                    event = ParseObject.createWithoutData("Event", currentId);
+                    getProgram(event, 0, 0);
+                }
+            }
+        });
+        return view;
     }
 
 
@@ -119,6 +175,86 @@ public class ProgramFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void setSearchString()
+    {
+        String raw_input = searchinput.getText().toString();
+        String lower_raw = raw_input.toLowerCase();
+        String [] split_string = lower_raw.split("\\s+");
+        searcharray = new ArrayList<String>(Arrays.asList(split_string));
+    }
+
+    public void getProgram(ParseObject event, int type, int order)
+    {
+        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
+        innerQuery.whereEqualTo("objectId", currentId);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talk");
+        query.whereMatchesQuery("event", innerQuery);
+        query.include("author");
+        query.include("session");
+        query.include("location");
+        //type = 0 for talk, =1 for poster, can add others in future if needed
+        query.whereEqualTo("type", type);
+        //order = 0 start_time, order = 1 name, can add others in future if needed
+        if (order == 0)
+        {
+            query.orderByDescending("start_time");
+        }
+        else if (order==1)
+        {
+            query.orderByDescending("name");
+        }
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "program query result: "+ objects.size());
+                    setAdapter(objects);
+                } else {
+                    Log.d("cm_app", "program query error: " + e);
+                }
+            }
+        });
+    }
+
+    public void getProgramSearch(ParseObject event, int type, List<String> searchArray, int order)
+    {
+        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
+        innerQuery.whereEqualTo("objectId", currentId);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talk");
+        query.whereMatchesQuery("event", innerQuery);
+        query.include("author");
+        query.include("session");
+        query.include("location");
+        //type = 0 for talk, =1 for poster, can add others in future if needed
+        query.whereEqualTo("type", type);
+        //order = 0 start_time, order = 1 name, can add others in future if needed
+        if (order == 0)
+        {
+            query.orderByDescending("start_time");
+        }
+        else if (order==1)
+        {
+            query.orderByDescending("name");
+        }
+        if (searchArray.size()>0)
+        {
+            query.whereContainsAll("words", searchArray);
+        }
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "program query result: "+ objects.size());
+                    setAdapter(objects);
+                } else {
+                    Log.d("cm_app", "program query error: " + e);
+                }
+            }
+        });
     }
 
     /**
