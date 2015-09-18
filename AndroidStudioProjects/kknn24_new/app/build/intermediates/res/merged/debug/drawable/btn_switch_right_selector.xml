@@ -6,4 +6,4 @@
     <item android:state_focused="true"
           android:drawable="@drawable/btn_switch_right_pressed" />
     <item android:drawable="@drawable/btn_switch_right_normal" />
-</selector><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/drawable/btn_switch_right_selector.xml -->
+</selector><!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/drawable/btn_switch_right_selector.xml -->

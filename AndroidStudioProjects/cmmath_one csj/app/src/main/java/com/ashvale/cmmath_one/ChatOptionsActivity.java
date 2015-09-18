@@ -1,18 +1,44 @@
 package com.ashvale.cmmath_one;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.ashvale.cmmath_one.R;
+import com.ashvale.cmmath_one.adapter.CareerAdapter;
+import com.ashvale.cmmath_one.adapter.InviteeAdapter;
+import com.parse.ParseObject;
+
+import java.util.List;
 
 public class ChatOptionsActivity extends AppCompatActivity {
+    public String conversationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_options);
+        conversationId = this.getIntent().getExtras().getString("convid");
+
+
+    }
+
+    public void setAdapter(final List results)
+    {
+        InviteeAdapter adapter = new InviteeAdapter(this, results);
+        ListView inviteeListView = (ListView)findViewById(R.id.inviteeListView);
+        inviteeListView.setAdapter(adapter);
+        inviteeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //to-do: add selected parse user to participants then refresh the liveview
+            }
+        });
     }
 
     @Override

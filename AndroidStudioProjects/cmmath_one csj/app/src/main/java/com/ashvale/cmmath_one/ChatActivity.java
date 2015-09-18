@@ -32,20 +32,22 @@ import com.parse.SaveCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
     public ParseObject conversationObject;
     protected cmmathApplication app;
+    public String conversationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        String convId = this.getIntent().getExtras().getString("convid");
-        conversationObject = ParseObject.createWithoutData("Conversation", convId);
+        conversationId = this.getIntent().getExtras().getString("convid");
+        conversationObject = ParseObject.createWithoutData("Conversation", conversationId);
         conversationObject.fetchInBackground();
         getChatList();
 
@@ -184,15 +186,54 @@ public class ChatActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.leave_chat:
-                //to-do: handle leaving the chat
+                final ParseUser selfUser = ParseUser.getCurrentUser();
+                String selfName = selfUser.getString("first_name")+" "+selfUser.getString("last_name");
+                final String content = selfName+" has left the conversation.";
+                conversationObject.removeAll("participants", Arrays.asList(selfUser));
+                conversationObject.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        if (e == null) {
+                            sendBroadcast(selfUser, content, conversationObject);
+                        } else {
+                            Log.d("cm_app", "leave chat error: "+e);
+                        }
+                    }
+                });
                 return true;
 
             case R.id.invite_chat:
-                //to-do: start the chat invite activity
+                Intent intent = new Intent(ChatActivity.this, ChatOptionsActivity.class);
+                intent.putExtra("convid", conversationId);
+                startActivity(intent);
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void sendBroadcast(ParseUser author, final String content, final ParseObject conversation)
+    {
+        ParseObject chat = new ParseObject("Chat");
+        chat.put("author", author);
+        chat.put("content", content);
+        chat.put("conversation", conversation);
+        chat.put("broadcast", 1);
+        chat.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(com.parse.ParseException e) {
+                if (e == null) {
+                    conversation.put("last_msg", content);
+                    Date date = new Date();
+                    conversation.put("last_time", date);
+                    conversation.saveInBackground();
+                    //send push and stuff
+
+                } else {
+                    Log.d("cm_app", "broadcast error: "+e);
+                }
+            }
+        });
     }
 }
