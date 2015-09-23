@@ -1,6 +1,7 @@
 package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,10 +90,6 @@ public class TimelineAdapter extends BaseAdapter {
         contentLabel.setText(getContent(post));
 
         return view;
-    }
-
-    private String getName(ParseObject object) {
-        return object.getString("name");
     }
 
     private String getAuthor(ParseObject object) {

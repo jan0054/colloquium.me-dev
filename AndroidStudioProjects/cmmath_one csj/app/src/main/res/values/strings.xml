@@ -54,6 +54,11 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_career">CareerActivity</string>
     <string name="title_activity_event_wrapper">EventWrapperActivity</string>
+    <string name="title_activity_career_detail">CareerDetailActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_chat_options">ChatOptionsActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="title_activity_post_detail">PostDetailActivity</string>
 
     <!-- TAB SECTION -->
     <string name="title_eventpicker">Edit Events</string>
@@ -196,10 +201,6 @@
     <string name="dialog_network_error_content">No internet connection. Please check your network settings</string>
     <string name="dialog_network_error_title">Network connection error</string>
     <string name="error_payment_failed">The Payment is failed!</string>
-    <string name="title_activity_career_detail">CareerDetailActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_chat_options">ChatOptionsActivity</string>
-    <string name="title_activity_about_us">AboutUsActivity</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

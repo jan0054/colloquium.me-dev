@@ -1,20 +1,31 @@
 package com.ashvale.cmmath_one.fragments;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.ashvale.cmmath_one.CareerDetailActivity;
+import com.ashvale.cmmath_one.EventWrapperActivity;
+import com.ashvale.cmmath_one.PostDetailActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.AttendeeAdapter;
+import com.ashvale.cmmath_one.adapter.HomeAdapter;
 import com.ashvale.cmmath_one.adapter.TimelineAdapter;
 import com.parse.FindCallback;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -32,6 +43,7 @@ public class TimelineFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private SharedPreferences savedEvents;
+    public  List<ParseObject> postObjList;
 
     // TODO: Rename and change types of parameters
 
@@ -76,6 +88,7 @@ public class TimelineFragment extends BaseFragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
+                    postObjList = objects;
                     setAdapter(objects);
                 } else {
                     Log.d("cm_app", "timeline query error: " + e);
@@ -89,6 +102,18 @@ public class TimelineFragment extends BaseFragment {
         TimelineAdapter adapter = new TimelineAdapter(getActivity(), results);
         ListView postList = (ListView)getActivity().findViewById(R.id.timelineListView);
         postList.setAdapter(adapter);
+
+        postList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(HomeActivity.this, "home event item selected " + position, Toast.LENGTH_SHORT).show();
+
+                ParseObject post = postObjList.get(position);
+                Intent intent = new Intent(getActivity(), PostDetailActivity.class);
+                intent.putExtra("postID", post.getObjectId());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -114,6 +139,4 @@ public class TimelineFragment extends BaseFragment {
         super.onDetach();
         mListener = null;
     }
-
-
 }

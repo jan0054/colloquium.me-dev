@@ -159,6 +159,10 @@
             android:label="@string/title_activity_about_us" >
         </activity>
         <activity
+            android:name=".PostDetailActivity"
+            android:label="@string/title_activity_post_detail" >
+        </activity>
+        <activity
             android:name=".EditChatActivity"
             android:label="@string/title_activity_edit_chat"
             android:parentActivityName=".ChatActivity">

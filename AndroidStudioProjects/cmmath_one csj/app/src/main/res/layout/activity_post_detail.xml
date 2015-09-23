@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:background="@color/background"
+                 android:orientation="vertical" >
+    <ScrollView android:id="@+id/scroll"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="10dp"
+                android:layout_above="@+id/footer">
+        <RelativeLayout android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+            <RelativeLayout android:id="@+id/container"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="0dp"
+                          android:background="#FFFFFFFF"
+                          android:orientation="vertical" >
+                    <TextView
+                        android:id="@+id/post_authorname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/list_margin"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/post_createdAt"
+                        android:paddingLeft="@dimen/list_margin"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center|left"
+                        android:text="@string/author"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView android:id="@+id/post_createdAt"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_margin="@dimen/list_margin"
+                              android:layout_alignParentRight="true"
+                              android:paddingRight="@dimen/list_margin"
+                              android:gravity="center|right"
+                              android:text="@string/date"
+                              android:textColor="@color/secondary_text"
+                              android:maxLines="1"
+                              android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/post_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/list_margin"
+                    android:layout_below="@+id/post_authorname"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="2sp"
+                    android:maxLines="3"
+                    android:text="@string/content"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp" />
+                <com.parse.ParseImageView
+                    android:id="@+id/post_image"
+                    android:adjustViewBounds="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/post_content"
+                    android:contentDescription="@string/empty"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/poi_01" />
+            </RelativeLayout>
+            <ListView
+                android:id="@+id/commentListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:layout_below="@+id/container"
+                android:divider="@color/divider_color"
+                android:dividerHeight="1dp"
+                android:scrollbars="none"/>
+            <!--android:scrollbars="vertical"/-->
+            <TextView android:id="@android:id/empty"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/container"
+                      android:gravity="center"
+                      android:textColor="@color/dark_accent"
+                      android:textSize="18sp"
+                      android:text="@string/list_empty_empty"/>
+        </RelativeLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_bg"
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:id="@+id/commentinput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hint_comment"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@null"
+            android:textColor="@color/primary_text"
+            android:backgroundTint="@color/dark_accent"
+            android:ems="10"
+            android:layout_marginLeft="10dp"/>
+
+        <Button
+            android:id="@+id/sendcomment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:onClick="sendComment"
+            android:textColor="@color/dark_accent"
+            android:text="Send"
+            />
+    </LinearLayout>
+</RelativeLayout>
