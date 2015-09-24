@@ -160,7 +160,8 @@
         </activity>
         <activity
             android:name=".PostDetailActivity"
-            android:label="@string/title_activity_post_detail" >
+            android:label="@string/title_activity_post_detail"
+            android:parentActivityName=".EventWrapperActivity">
         </activity>
         <activity
             android:name=".EditChatActivity"

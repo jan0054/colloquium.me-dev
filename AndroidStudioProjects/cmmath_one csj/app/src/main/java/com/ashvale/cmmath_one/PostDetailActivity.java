@@ -1,28 +1,40 @@
 package com.ashvale.cmmath_one;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashvale.cmmath_one.adapter.CommentAdapter;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class PostDetailActivity extends AppCompatActivity {
+public class PostDetailActivity extends AppCompatActivity{
+    public static final String TAG = PostDetailActivity.class.getSimpleName();
 
     private SimpleDateFormat sdf;
     public String postID;
@@ -57,7 +69,7 @@ public class PostDetailActivity extends AppCompatActivity {
                     imageLabel.setParseFile(image);
                     imageLabel.loadInBackground();
                     authornameLabel.setText(getAuthor(postObject));
-                    createdAtLabel.setTag(getCreatedAt(postObject));
+                    createdAtLabel.setText(getCreatedAt(postObject));
                     contentLabel.setText(getContent(postObject));
                 } else {
                     Log.d("cm_app", "postdetail query error: " + e);
@@ -70,7 +82,8 @@ public class PostDetailActivity extends AppCompatActivity {
 
         ParseQuery<ParseObject> queryComment = ParseQuery.getQuery("Comment");
         queryComment.orderByDescending("createdAt");
-        queryComment.whereEqualTo("post", innerQuery);
+        queryComment.whereMatchesQuery("post", innerQuery);
+        queryComment.include("author");
         queryComment.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         queryComment.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
@@ -92,9 +105,9 @@ public class PostDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_post_detail, menu);
-        return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_event_wrapper, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -102,13 +115,9 @@ public class PostDetailActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
+        Intent intent = new Intent(this, EventWrapperActivity.class);
+        intent.putExtra("itemID", item.getItemId());
+        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 
@@ -124,4 +133,64 @@ public class PostDetailActivity extends AppCompatActivity {
     private String getContent(ParseObject object) {
         return object.getString("content");
     }
+
+    public void sendComment(View view) {
+        Log.i(TAG, "send comment button pressed");
+        ParseUser selfuser = ParseUser.getCurrentUser();
+        if (selfuser == null) {
+            toast(getString(R.string.error_not_login));
+            SharedPreferences userStatus;
+            userStatus = this.getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+            SharedPreferences.Editor editor = userStatus.edit();
+            editor.putInt("skiplogin", 0);
+            editor.commit();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            return;
+        }
+        //setup all the data for the new comment object
+        EditText editText = (EditText) findViewById(R.id.commentinput);
+        final String message = editText.getText().toString();
+        Log.i(TAG, message);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        //get the other guy
+
+        if(message.length()<1) {
+            toast("Empty imput.");
+            return;
+        }
+        //create and save the chat object
+        ParseObject commentmsg = new ParseObject("Comment");
+        commentmsg.put("content", message);
+        commentmsg.put("post", postObject);
+        commentmsg.put("author", currentUser);
+        ParseACL commentACL = new ParseACL(ParseUser.getCurrentUser());
+        commentACL.setPublicReadAccess(true);
+        commentACL.setPublicWriteAccess(true);
+        commentmsg.setACL(commentACL);
+        commentmsg.saveInBackground(new SaveCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    //saved complete
+                    EditText edt = (EditText) findViewById(R.id.commentinput);
+                    edt.setText("");
+                    Log.i(TAG, "new comment save success");
+                    Intent intent = getIntent();
+                    toPage(intent, PostDetailActivity.class);
+                } else {
+                    Log.i(TAG, "sendComment save fail");
+                    //did not save successfully
+                }
+            }
+        });
+    }
+    public void toast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public <T> void toPage(Intent intent, Class<T> cls) {
+        intent.setClass(this, cls); //PeopleDetailsActivity.class);
+        startActivity(intent);
+    }
+
 }

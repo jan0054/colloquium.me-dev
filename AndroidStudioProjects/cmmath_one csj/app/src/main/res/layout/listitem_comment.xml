@@ -3,7 +3,7 @@
     android:id="@+id/feed_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_item"
+    android:background="#FFFFFFFF"
     android:orientation="horizontal" >
 
     <View

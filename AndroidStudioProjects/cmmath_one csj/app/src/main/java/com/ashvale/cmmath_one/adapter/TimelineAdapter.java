@@ -86,7 +86,7 @@ public class TimelineAdapter extends BaseAdapter {
         imageLabel.setParseFile(image);
         imageLabel.loadInBackground();
         authornameLabel.setText(getAuthor(post));
-        createdAtLabel.setTag(getCreatedAt(post));
+        createdAtLabel.setText(getCreatedAt(post));
         contentLabel.setText(getContent(post));
 
         return view;

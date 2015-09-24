@@ -1,6 +1,7 @@
 package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +76,7 @@ public class CommentAdapter extends BaseAdapter {
         TextView contentLabel = (TextView)view.findViewById(R.id.comment_content);
 
         authornameLabel.setText(getAuthor(comment));
-        createdAtLabel.setTag(getCreatedAt(comment));
+        createdAtLabel.setText(getCreatedAt(comment));
         contentLabel.setText(getContent(comment));
 
         return view;
@@ -83,6 +84,8 @@ public class CommentAdapter extends BaseAdapter {
 
     private String getAuthor(ParseObject object) {
         ParseObject author = object.getParseObject("author");
+        Log.d("cm_app", "author: "+author.getObjectId().toString());
+        Log.d("cm_app", "username: "+author.getString("last_name"));
         return (author == null) ? context.getString(R.string.unknown) : author.getString("last_name") + ", " + author.getString("first_name");
     }
 
