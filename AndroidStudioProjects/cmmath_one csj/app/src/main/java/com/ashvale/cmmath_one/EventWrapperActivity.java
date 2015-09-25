@@ -1,10 +1,13 @@
 package com.ashvale.cmmath_one;
 
+import android.app.ActionBar;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
+import com.ashvale.cmmath_one.adapter.FragmentViewPagerAdapter;
 import com.ashvale.cmmath_one.fragments.AttendeeFragment;
 import com.ashvale.cmmath_one.fragments.BaseFragment;
 import com.ashvale.cmmath_one.fragments.OverviewFragment;
@@ -29,15 +33,11 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         setContentView(R.layout.activity_event_wrapper);
         super.onCreateDrawer();
 
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        OverviewFragment fragment = new OverviewFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("param1", "1111111");
-        bundle.putString("param2", "2222222");
-        fragment.setArguments(bundle);
-        fragmentTransaction.add(R.id.fragmentcontainer, fragment);
-        fragmentTransaction.commit();
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new FragmentViewPagerAdapter(getFragmentManager(), EventWrapperActivity.this));
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 
     @Override
@@ -53,7 +53,7 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
     {
 
     }
-
+/*
     class IntentReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -61,7 +61,7 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
             onOptionsItemSelectedwithID(itemID);
         }
     }
-
+*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -69,11 +69,13 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         return super.onCreateOptionsMenu(menu);
     }
 
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -124,10 +126,12 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
             default:
                 return super.onOptionsItemSelected(item);
         }
+
     }
 
     public boolean onOptionsItemSelectedwithID(int itemID)
     {
+
         switch (itemID) {
             case R.id.action_overview:
                 //Toast.makeText(EventWrapperActivity.this, "action bar program", Toast.LENGTH_SHORT).show();
@@ -172,5 +176,7 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
             default:
                 return false;
         }
+
     }
+    */
 }
