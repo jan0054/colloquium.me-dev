@@ -59,6 +59,5 @@
             android:scaleY="1"
             android:contentDescription="@string/empty"
             android:scaleType="centerCrop"
-            android:visibility="visible"
-            android:src="@drawable/poi_01" />
+            android:visibility="visible"/>
 </RelativeLayout>

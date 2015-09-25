@@ -165,6 +165,12 @@
             android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity
+            android:name=".TalkDetailActivity"
+            android:label="@string/title_activity_talk_detail"
+            android:parentActivityName=".EventWrapperActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity
             android:name=".EditChatActivity"
             android:label="@string/title_activity_edit_chat"
             android:parentActivityName=".ChatActivity">

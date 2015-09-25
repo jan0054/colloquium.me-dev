@@ -58,6 +58,7 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         @Override
         public void onReceive(Context context, Intent intent) {
             int itemID = intent.getIntExtra("itemID", 0);
+            Log.d("cm_app", "itemID receive = "+itemID);
             onOptionsItemSelectedwithID(itemID);
         }
     }

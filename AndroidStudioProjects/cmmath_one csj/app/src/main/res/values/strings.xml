@@ -59,6 +59,7 @@
     <string name="title_activity_chat_options">ChatOptionsActivity</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
     <string name="title_activity_post_detail">PostDetailActivity</string>
+    <string name="title_activity_talk_detail">TalkDetailActivity</string>
 
     <!-- TAB SECTION -->
     <string name="title_eventpicker">Edit Events</string>

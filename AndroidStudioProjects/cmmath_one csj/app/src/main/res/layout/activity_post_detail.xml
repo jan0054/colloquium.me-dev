@@ -64,8 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/post_content"
                     android:contentDescription="@string/empty"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/poi_01" />
+                    android:scaleType="fitXY"/>
             </RelativeLayout>
             <ListView
                 android:id="@+id/commentListView"

@@ -88,6 +88,7 @@ public class TimelineFragment extends BaseFragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
+                    Log.d("cm_app", "timeline query result: "+ objects.size());
                     postObjList = objects;
                     setAdapter(objects);
                 } else {
