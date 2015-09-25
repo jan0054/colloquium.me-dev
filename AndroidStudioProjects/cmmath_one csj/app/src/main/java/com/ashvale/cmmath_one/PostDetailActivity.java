@@ -115,13 +115,17 @@ public class PostDetailActivity extends AppCompatActivity{
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case android.R.id.home:
+        Log.d("cm_app", "itemID = "+item.getItemId());
+        if(item.getItemId()== android.R.id.home) {
                 onBackPressed();
                 return true;
+        } else {
+            Intent intent = new Intent(this, EventWrapperActivity.class);
+            intent.putExtra("itemID", item.getItemId());
+            Log.d("cm_app", "itemID 2 = " + item.getItemId());
+            startActivity(intent);
+            return super.onOptionsItemSelected(item);
         }
-
-        return false;
     }
 
     private String getAuthor(ParseObject object) {

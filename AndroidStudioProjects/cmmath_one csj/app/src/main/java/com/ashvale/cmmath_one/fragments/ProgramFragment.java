@@ -1,6 +1,7 @@
 package com.ashvale.cmmath_one.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,11 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.ashvale.cmmath_one.PostDetailActivity;
 import com.ashvale.cmmath_one.R;
+import com.ashvale.cmmath_one.TalkDetailActivity;
 import com.ashvale.cmmath_one.adapter.AttendeeAdapter;
 import com.ashvale.cmmath_one.adapter.ProgramAdapter;
 import com.parse.FindCallback;
@@ -38,6 +42,7 @@ public class ProgramFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private SharedPreferences savedEvents;
+    public  List<ParseObject> talkObjList;
     public EditText searchinput;
     public Button dosearch;
     public Button cancelsearch;
@@ -95,6 +100,7 @@ public class ProgramFragment extends BaseFragment {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     Log.d("cm_app", "program query result: "+ objects.size());
+                    talkObjList = objects;
                     setAdapter(objects);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
@@ -108,6 +114,18 @@ public class ProgramFragment extends BaseFragment {
         ProgramAdapter adapter = new ProgramAdapter(getActivity(), results);
         ListView talkList = (ListView)getActivity().findViewById(R.id.programListView);
         talkList.setAdapter(adapter);
+
+        talkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(HomeActivity.this, "home event item selected " + position, Toast.LENGTH_SHORT).show();
+
+                ParseObject talk = talkObjList.get(position);
+                Intent intent = new Intent(getActivity(), TalkDetailActivity.class);
+                intent.putExtra("talkID", talk.getObjectId());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

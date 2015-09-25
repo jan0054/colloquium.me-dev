@@ -60,6 +60,7 @@
     <string name="title_activity_about_us">AboutUsActivity</string>
     <string name="title_activity_post_detail">PostDetailActivity</string>
     <string name="title_activity_conversation">Conversations</string>
+    <string name="title_activity_talk_detail">TalkDetailActivity</string>
 
 
     <!-- TAB SECTION -->
