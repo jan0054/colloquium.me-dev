@@ -110,6 +110,7 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
                 FragmentTransaction fragmentTransaction4 = fragmentManager4.beginTransaction();
                 TimelineFragment timelineFragment = new TimelineFragment();
                 fragmentTransaction4.replace(R.id.fragmentcontainer, timelineFragment);
+                fragmentTransaction4.addToBackStack(null);
                 fragmentTransaction4.commit();
                 return true;
             case R.id.action_venue:

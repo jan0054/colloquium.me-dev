@@ -138,7 +138,7 @@
         </activity>
         <activity
             android:name=".EventWrapperActivity"
-            android:label="@string/title_activity_event_wrapper" >
+            android:label="@string/title_activity_event_wrapper">
         </activity>
         <activity
             android:name=".CareerDetailActivity"
@@ -161,7 +161,8 @@
         <activity
             android:name=".PostDetailActivity"
             android:label="@string/title_activity_post_detail"
-            android:parentActivityName=".EventWrapperActivity">
+            android:parentActivityName=".EventWrapperActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity
             android:name=".EditChatActivity"
