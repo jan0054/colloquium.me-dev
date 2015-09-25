@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Drawer_demo</string>
+    <string name="app_name">Colloquium.me</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_main">MainActivity</string>
 
@@ -52,13 +52,15 @@
     <string name="title_activity_cmmath_application">cmmathApplication</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_activity_career">CareerActivity</string>
+    <string name="title_activity_career">Career</string>
     <string name="title_activity_event_wrapper">EventWrapperActivity</string>
     <string name="title_activity_career_detail">CareerDetailActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_chat_options">ChatOptionsActivity</string>
+    <string name="title_activity_chat_options">Select People</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
     <string name="title_activity_post_detail">PostDetailActivity</string>
+    <string name="title_activity_conversation">Conversations</string>
+
 
     <!-- TAB SECTION -->
     <string name="title_eventpicker">Edit Events</string>

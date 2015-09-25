@@ -19,10 +19,12 @@ import java.util.List;
 public class InviteeAdapter extends BaseAdapter {
     private final Context context;
     private final List invitees;
+    private final int[] selectedPositions;
 
-    public InviteeAdapter(Context context, List queryresults) {
+    public InviteeAdapter(Context context, List queryresults, int[] selectedpositions) {
         this.context = context;
         this.invitees = queryresults;
+        this.selectedPositions = selectedpositions;
     }
 
     @Override
@@ -60,6 +62,12 @@ public class InviteeAdapter extends BaseAdapter {
 
         nameLabel.setText(name);
         institutionLabel.setText(invitee.getString("institution"));
+
+        int selected = selectedPositions[position];
+        if (selected == 1)
+        {
+            nameLabel.setText("=SELECTED= "+name);
+        }
 
         return view;
     }

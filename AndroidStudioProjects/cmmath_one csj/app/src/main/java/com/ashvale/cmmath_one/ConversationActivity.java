@@ -36,6 +36,7 @@ public class ConversationActivity extends BaseActivity {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
+                    Log.d("cm_app", "conversation query results: "+objects.size());
                     setAdapter(objects);
                 } else {
                     Log.d("cm_app", "conversation query error: "+e);
@@ -60,6 +61,29 @@ public class ConversationActivity extends BaseActivity {
             }
         });
     }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        ParseUser selfUser = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Conversation");
+        query.whereEqualTo("participants", selfUser);
+        query.include("participants");
+        query.orderByDescending("updatedAt");
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "conversation query results: " + objects.size());
+                    setAdapter(objects);
+                } else {
+                    Log.d("cm_app", "conversation query error: " + e);
+                }
+            }
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

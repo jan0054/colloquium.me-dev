@@ -172,6 +172,7 @@ public class ChatActivity extends AppCompatActivity {
         app=(cmmathApplication)getApplication();
         app.isChat=true;
         this.registerReceiver(mMessageReceiver, new IntentFilter("got_chat_intent"));
+        getChatList();
     }
 
     @Override

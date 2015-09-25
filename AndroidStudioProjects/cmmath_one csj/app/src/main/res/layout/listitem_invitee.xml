@@ -33,12 +33,7 @@
         android:textColor="@color/primary_text"
         android:textSize="14sp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Invite"
-        android:id="@+id/invitee_invite"
-        android:layout_below="@+id/invitee_institution"/>
+
 
 
 </RelativeLayout>

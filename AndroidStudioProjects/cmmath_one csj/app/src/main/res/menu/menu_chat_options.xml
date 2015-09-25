@@ -2,6 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.ashvale.cmmath_one.ChatOptionsActivity">
-    <item android:id="@+id/action_done" android:title="Done"
+    <item android:id="@+id/action_invite" android:title="Invite"
         android:orderInCategory="100" app:showAsAction="always" />
 </menu>
