@@ -51,7 +51,7 @@
     <string name="title_activity_login">Log In</string>
     <string name="title_activity_cmmath_application">cmmathApplication</string>
     <string name="title_activity_signup">SignupActivity</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">Home</string>
     <string name="title_activity_career">Career</string>
     <string name="title_activity_event_wrapper">EventWrapperActivity</string>
     <string name="title_activity_career_detail">CareerDetailActivity</string>
