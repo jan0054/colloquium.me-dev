@@ -187,6 +187,10 @@
             android:parentActivityName=".TalkDetailActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" >
         </activity>
+        <activity
+            android:name=".NewChatActivity"
+            android:label="@string/title_activity_newchat" >
+        </activity>
     </application>
 
 </manifest>
