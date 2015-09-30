@@ -48,10 +48,10 @@ public class FragmentViewPagerAdapter extends FragmentPagerAdapter {
                 return AttendeeFragment.newInstance("", "");
 
             case 3:
-                return VenueFragment.newInstance("", "");
+                return TimelineFragment.newInstance("", "");
 
             case 4:
-                return TimelineFragment.newInstance("", "");
+                return VenueFragment.newInstance("", "");
 
             default:
                 return null;

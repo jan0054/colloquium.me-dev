@@ -52,7 +52,7 @@ public class VenueFragment extends BaseFragment {
      * @return A new instance of fragment VenueFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static VenueFragment newInstance() {
+    public static VenueFragment newInstance(String param1, String param2) {
         VenueFragment fragment = new VenueFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -82,6 +82,7 @@ public class VenueFragment extends BaseFragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
+                    Log.d("cm_app", "venue query result: "+ objects.size());
                     setAdapter(objects);
                 } else {
                     Log.d("cm_app", "venue query error: " + e);

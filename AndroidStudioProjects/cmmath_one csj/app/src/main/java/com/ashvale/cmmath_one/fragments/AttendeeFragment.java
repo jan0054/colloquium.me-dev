@@ -36,6 +36,7 @@ public class AttendeeFragment extends BaseFragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private SharedPreferences savedEvents;
+    public  List<ParseObject> personObjList;
     public EditText searchinput;
     public Button dosearch;
     public Button cancelsearch;
@@ -87,6 +88,7 @@ public class AttendeeFragment extends BaseFragment{
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     Log.d("cm_app", "attendee query result: " + objects.size());
+                    personObjList = objects;
                     setAdapter(objects);
                 } else {
                     Log.d("cm_app", "attendee query error: " + e);
