@@ -72,30 +72,7 @@ public class TimelineFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
-
-        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-        String currentId = savedEvents.getString("currenteventid", "");
-
-        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
-        innerQuery.whereEqualTo("objectId", currentId);
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
-        query.orderByDescending("createdAt");
-        query.whereMatchesQuery("event", innerQuery);
-        query.include("author");
-        query.setLimit(500);
-        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    Log.d("cm_app", "timeline query result: "+ objects.size());
-                    postObjList = objects;
-                    setAdapter(objects);
-                } else {
-                    Log.d("cm_app", "timeline query error: " + e);
-                }
-            }
-        });
+        //loadTimeline();
     }
 
     public void setAdapter(final List results)
@@ -139,5 +116,37 @@ public class TimelineFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadTimeline();
+    }
+
+    public void loadTimeline() {
+        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+        String currentId = savedEvents.getString("currenteventid", "");
+
+        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
+        innerQuery.whereEqualTo("objectId", currentId);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
+        query.orderByDescending("createdAt");
+        query.whereMatchesQuery("event", innerQuery);
+        query.include("author");
+        query.setLimit(500);
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "timeline query result: " + objects.size());
+                    postObjList = objects;
+                    setAdapter(objects);
+                } else {
+                    Log.d("cm_app", "timeline query error: " + e);
+                }
+            }
+        });
     }
 }

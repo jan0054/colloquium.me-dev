@@ -3,29 +3,25 @@ package com.ashvale.cmmath_one;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ashvale.cmmath_one.adapter.CommentAdapter;
-import com.parse.FindCallback;
 import com.parse.GetCallback;
-import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -64,6 +60,8 @@ public class TalkDetailActivity extends AppCompatActivity{
                     TextView locationLabel = (TextView) findViewById(R.id.talk_location);
                     TextView timeLabel = (TextView) findViewById(R.id.talk_time);
                     TextView contentLabel = (TextView) findViewById(R.id.talk_content);
+                    Button discussBtn = (Button) findViewById(R.id.talk_discussionbtn);
+                    Button calendarBtn = (Button) findViewById(R.id.talk_calendarbtn);
 
                     sessionLabel.setText(talkObject.getParseObject("session").getString("name"));
                     nameLabel.setText(talkObject.getString("name"));
@@ -71,6 +69,26 @@ public class TalkDetailActivity extends AppCompatActivity{
                     locationLabel.setText(talkObject.getParseObject("location").getString("name"));
                     timeLabel.setText(getTime(talkObject));
                     contentLabel.setText(getContent(talkObject));
+
+                    authornameLabel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            toAuthor();
+                        }
+                    });
+                    discussBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            toDiscuss();
+                        }
+                    });
+                    calendarBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            toCalendar();
+                        }
+                    });
+
                 } else {
                     Log.d("cm_app", "postdetail query error: " + e);
                 }
@@ -119,6 +137,49 @@ public class TalkDetailActivity extends AppCompatActivity{
 
     public void toast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void toAuthor() {
+        Intent intent = new Intent(this, PeopleDetailActivity.class);
+        intent.putExtra("personID", talkObject.getParseObject("author").getObjectId());
+        startActivity(intent);
+    }
+
+    public void toDiscuss() {
+        ParseUser selfuser = ParseUser.getCurrentUser();
+        if (selfuser == null) {
+            toast(getString(R.string.error_not_login));
+            SharedPreferences userStatus;
+            userStatus = this.getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+            SharedPreferences.Editor editor = userStatus.edit();
+            editor.putInt("skiplogin", 0);
+            editor.commit();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            return;
+        }
+        Log.d(TAG, "DISCUSS: " + talkObject.getObjectId());
+        Intent discussionIntent = new Intent(this, DiscussionActivity.class);
+        discussionIntent.putExtra("event_objid",  talkObject.getObjectId());
+        discussionIntent.putExtra("event_type",  0);
+        startActivity(discussionIntent);
+    }
+
+    public void toCalendar() {
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2015, 0, 15, 10, 00);
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2015, 0, 15, 11, 30);
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                .putExtra(CalendarContract.Events.TITLE, talkObject.getString("name"))
+                .putExtra(CalendarContract.Events.DESCRIPTION, talkObject.getString("name"))
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, talkObject.getParseObject("location").getString("name"))
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+        //.putExtra(Intent.EXTRA_EMAIL, "rowan@example.com,trevor@example.com");
+        startActivity(intent);
     }
 
     public <T> void toPage(Intent intent, Class<T> cls) {

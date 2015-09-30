@@ -77,36 +77,7 @@ public class ProgramFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
-
-        searcharray = new ArrayList<String>();
-        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-        currentId = savedEvents.getString("currenteventid", "");
-
-        event = ParseObject.createWithoutData("Event", currentId);
-
-        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
-        innerQuery.whereEqualTo("objectId", currentId);
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talk");
-        query.whereMatchesQuery("event", innerQuery);
-        query.include("author");
-        query.include("session");
-        query.include("location");
-        //type = 0 for talk, =1 for poster, can add others in future if needed
-        query.whereEqualTo("type", 0);
-        query.orderByDescending("start_time");
-        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    Log.d("cm_app", "program query result: "+ objects.size());
-                    talkObjList = objects;
-                    setAdapter(objects);
-                } else {
-                    Log.d("cm_app", "program query error: " + e);
-                }
-            }
-        });
+        //loadProgram();
     }
 
     public void setAdapter(final List results)
@@ -193,6 +164,44 @@ public class ProgramFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadProgram();
+    }
+
+    public void loadProgram() {
+        searcharray = new ArrayList<String>();
+        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+        currentId = savedEvents.getString("currenteventid", "");
+
+        event = ParseObject.createWithoutData("Event", currentId);
+
+        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
+        innerQuery.whereEqualTo("objectId", currentId);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talk");
+        query.whereMatchesQuery("event", innerQuery);
+        query.include("author");
+        query.include("session");
+        query.include("location");
+        //type = 0 for talk, =1 for poster, can add others in future if needed
+        query.whereEqualTo("type", 0);
+        query.orderByDescending("start_time");
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "program query result: " + objects.size());
+                    talkObjList = objects;
+                    setAdapter(objects);
+                } else {
+                    Log.d("cm_app", "program query error: " + e);
+                }
+            }
+        });
     }
 
     public void setSearchString()

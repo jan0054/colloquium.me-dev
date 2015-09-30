@@ -68,27 +68,7 @@ public class VenueFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
-
-        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
-        String currentId = savedEvents.getString("currenteventid", "");
-
-        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
-        innerQuery.whereEqualTo("objectId", currentId);
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Venue");
-        query.whereMatchesQuery("event", innerQuery);
-        query.orderByDescending("order");
-        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    Log.d("cm_app", "venue query result: "+ objects.size());
-                    setAdapter(objects);
-                } else {
-                    Log.d("cm_app", "venue query error: " + e);
-                }
-            }
-        });
+        //loadVenue();
     }
 
     public void setAdapter(final List results)
@@ -127,12 +107,36 @@ public class VenueFragment extends BaseFragment {
         super.onResume();
         if (receiver == null) receiver = new IntentReceiver();
         getActivity().registerReceiver(receiver, getIntentFilter());
+        loadVenue();
     }
 
     @Override
     public void onPause() {
         super.onPause();
         getActivity().unregisterReceiver(receiver);
+    }
+
+    public void loadVenue() {
+        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
+        String currentId = savedEvents.getString("currenteventid", "");
+
+        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
+        innerQuery.whereEqualTo("objectId", currentId);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Venue");
+        query.whereMatchesQuery("event", innerQuery);
+        query.orderByDescending("order");
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "venue query result: " + objects.size());
+                    setAdapter(objects);
+                } else {
+                    Log.d("cm_app", "venue query error: " + e);
+                }
+            }
+        });
     }
 
     private void getCall(String number) {

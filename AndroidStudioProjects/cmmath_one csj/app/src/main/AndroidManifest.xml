@@ -24,9 +24,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -57,8 +57,8 @@
         <activity
             android:name=".ConversationActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTop"
             android:label="@string/title_activity_conversation"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -139,17 +139,17 @@
         </activity>
         <activity
             android:name=".EventWrapperActivity"
-            android:label="@string/title_activity_event_wrapper">
+            android:label="@string/title_activity_event_wrapper" >
         </activity>
         <activity
             android:name=".CareerDetailActivity"
             android:label="@string/title_activity_career_detail"
-            android:parentActivityName=".CareerActivity">
+            android:parentActivityName=".CareerActivity" >
         </activity>
         <activity
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
-            android:parentActivityName=".ConversationActivity">
+            android:parentActivityName=".ConversationActivity" >
         </activity>
         <activity
             android:name=".ChatOptionsActivity"
@@ -163,18 +163,29 @@
             android:name=".PostDetailActivity"
             android:label="@string/title_activity_post_detail"
             android:parentActivityName=".EventWrapperActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|adjustResize" >
         </activity>
         <activity
             android:name=".TalkDetailActivity"
             android:label="@string/title_activity_talk_detail"
             android:parentActivityName=".EventWrapperActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|adjustResize" >
         </activity>
         <activity
             android:name=".EditChatActivity"
             android:label="@string/title_activity_edit_chat"
-            android:parentActivityName=".ChatActivity">
+            android:parentActivityName=".ChatActivity" >
+        </activity>
+        <activity
+            android:name=".PeopleDetailActivity"
+            android:label="@string/title_activity_people_detail"
+            android:parentActivityName=".EventWrapperActivity">
+        </activity>
+        <activity
+            android:name=".DiscussionActivity"
+            android:label="@string/title_activity_discussion"
+            android:parentActivityName=".TalkDetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
         </activity>
     </application>
 
