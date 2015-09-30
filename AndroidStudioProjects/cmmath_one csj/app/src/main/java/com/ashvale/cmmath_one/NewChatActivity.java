@@ -147,6 +147,7 @@ public class NewChatActivity extends AppCompatActivity {
                     Intent intent = new Intent(NewChatActivity.this, ChatActivity.class);
                     intent.putExtra("convid", convid);
                     startActivity(intent);
+                    finish();
                 } else {
                 }
             }
