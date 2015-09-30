@@ -2,6 +2,7 @@ package com.ashvale.cmmath_one;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,15 @@ public class ConversationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
         super.onCreateDrawer();
+
+        FloatingActionButton newchat_fab = (FloatingActionButton)findViewById(R.id.newchat_fab);
+        newchat_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConversationActivity.this, NewChatActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ParseUser selfUser = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Conversation");

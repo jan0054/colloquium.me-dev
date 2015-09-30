@@ -61,7 +61,7 @@
     <string name="title_activity_post_detail">PostDetailActivity</string>
     <string name="title_activity_conversation">Conversations</string>
     <string name="title_activity_talk_detail">TalkDetailActivity</string>
-
+    <string name="title_activity_newchat">Invite Participants</string>
 
     <!-- TAB SECTION -->
     <string name="title_eventpicker">Edit Events</string>
@@ -205,7 +205,8 @@
     <string name="dialog_network_error_title">Network connection error</string>
     <string name="error_payment_failed">The Payment is failed!</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_edit_chat">EditChatActivity</string>
+
 </resources>
