@@ -9,25 +9,34 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ashvale.cmmath_one.CareerDetailActivity;
 import com.ashvale.cmmath_one.EventWrapperActivity;
+import com.ashvale.cmmath_one.LoginActivity;
+import com.ashvale.cmmath_one.NewPostActivity;
 import com.ashvale.cmmath_one.PostDetailActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.AttendeeAdapter;
 import com.ashvale.cmmath_one.adapter.HomeAdapter;
 import com.ashvale.cmmath_one.adapter.TimelineAdapter;
 import com.parse.FindCallback;
+import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -42,6 +51,7 @@ import java.util.List;
 public class TimelineFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    public static final String TAG = TimelineFragment.class.getSimpleName();
     private SharedPreferences savedEvents;
     public  List<ParseObject> postObjList;
 
@@ -72,7 +82,7 @@ public class TimelineFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
-        //loadTimeline();
+        loadTimeline();
     }
 
     public void setAdapter(final List results)
@@ -98,7 +108,8 @@ public class TimelineFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_timeline, container, false);
+        View view = inflater.inflate(R.layout.fragment_timeline, container, false);
+        return view;
     }
 
     @Override
@@ -148,5 +159,7 @@ public class TimelineFragment extends BaseFragment {
                 }
             }
         });
+
     }
+
 }

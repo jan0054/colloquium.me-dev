@@ -14,10 +14,11 @@
         android:id="@+id/newpost_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/chat"
+        android:src="@drawable/pen"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="24pt"
         android:layout_marginRight="8pt"
+        android:onClick="newPost"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"/>
 

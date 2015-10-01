@@ -191,7 +191,8 @@
         </activity>
         <activity
             android:name=".NewPostActivity"
-            android:label="@string/title_activity_new_post" >
+            android:label="@string/title_activity_new_post"
+            android:parentActivityName=".EventWrapperActivity" >
         </activity>
     </application>
 

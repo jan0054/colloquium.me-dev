@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
@@ -24,6 +26,7 @@ import com.ashvale.cmmath_one.fragments.OverviewFragment;
 import com.ashvale.cmmath_one.fragments.ProgramFragment;
 import com.ashvale.cmmath_one.fragments.TimelineFragment;
 import com.ashvale.cmmath_one.fragments.VenueFragment;
+import com.parse.ParseUser;
 
 public class EventWrapperActivity extends BaseActivity implements BaseFragment.OnFragmentInteractionListener {
 
@@ -70,6 +73,31 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    public void newPost(View view) {
+        ParseUser selfuser = ParseUser.getCurrentUser();
+        if (selfuser == null) {
+            toast(getString(R.string.error_not_login));
+            SharedPreferences userStatus;
+            userStatus = this.getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+            SharedPreferences.Editor editor = userStatus.edit();
+            editor.putInt("skiplogin", 0);
+            editor.commit();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            return;
+        }
+        toPage(new Intent(), NewPostActivity.class);
+    }
+
+    public void toast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public <T> void toPage(Intent intent, Class<T> cls) {
+        intent.setClass(this, cls); //PeopleDetailsActivity.class);
+        startActivity(intent);
+    }
     /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -5,7 +5,7 @@
     tools:context="com.ashvale.cmmath_one.AddeventActivity">
 
     <item android:id="@+id/saveevents"
-        android:title="Save"
+        android:title="@string/save"
         app:showAsAction="ifRoom" />
 
 </menu>
