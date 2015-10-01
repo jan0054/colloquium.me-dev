@@ -177,7 +177,7 @@
         <activity
             android:name=".PeopleDetailActivity"
             android:label="@string/title_activity_people_detail"
-            android:parentActivityName=".EventWrapperActivity">
+            android:parentActivityName=".EventWrapperActivity" >
         </activity>
         <activity
             android:name=".DiscussionActivity"
@@ -188,6 +188,10 @@
         <activity
             android:name=".NewChatActivity"
             android:label="@string/title_activity_newchat" >
+        </activity>
+        <activity
+            android:name=".NewPostActivity"
+            android:label="@string/title_activity_new_post" >
         </activity>
     </application>
 
