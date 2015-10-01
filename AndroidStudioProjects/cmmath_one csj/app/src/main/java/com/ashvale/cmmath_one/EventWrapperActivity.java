@@ -39,6 +39,7 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new FragmentViewPagerAdapter(getFragmentManager(), EventWrapperActivity.this));
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setupWithViewPager(viewPager);
 
     }
