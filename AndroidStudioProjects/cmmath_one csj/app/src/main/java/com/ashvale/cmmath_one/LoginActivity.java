@@ -29,6 +29,7 @@ public class LoginActivity extends Activity {
     private EditText mPassword;
     protected cmmathApplication app;
     private SharedPreferences userStatus;
+    private SharedPreferences savedEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +60,22 @@ public class LoginActivity extends Activity {
         editor.putInt("skiplogin", 1);
         editor.commit();
 
-        Intent intent = new Intent(this, AddeventActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        savedEvents = getSharedPreferences("EVENTS", 0);
+        Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
+        if (eventIdSet != null)   //there were some saved events
+        {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else
+        {
+            Intent intent = new Intent(this, AddeventActivity.class);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }
+
     }
     public boolean isLogin() {
         ParseUser user = ParseUser.getCurrentUser();
