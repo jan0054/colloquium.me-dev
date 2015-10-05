@@ -8,7 +8,7 @@
               android:paddingTop="20dp"
               android:paddingBottom="10dp"
               android:orientation="vertical"
-              android:background="@color/background" >
+              android:background="@color/dark_bg" >
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginTop="30dp"
@@ -16,7 +16,7 @@
               android:alpha="1"
               android:gravity="left"
               android:fontFamily="sans-serif"
-              android:textColor="@color/light_button_txt"
+              android:textColor="@color/light_primary"
               android:text="@string/login_notice"
               android:textSize="16dp"/>
     <EditText  android:id="@+id/username"
@@ -61,7 +61,7 @@
               android:alpha="0.7"
               android:gravity="center"
               android:fontFamily="sans-serif"
-              android:textColor="@color/light_txt"
+              android:textColor="@color/light_primary"
               android:text="@string/signup_reminder" />
     <Button android:id="@+id/btn_signup"
             android:layout_width="match_parent"

@@ -46,8 +46,8 @@ public class CareerDetailActivity extends AppCompatActivity {
         TextView instLabel = (TextView)findViewById(R.id.inst_label);
         TextView nameLabel = (TextView)findViewById(R.id.contact_name_label);
         TextView contentLabel = (TextView)findViewById(R.id.content_label);
-        Button sendMail = (Button)findViewById(R.id.email_button);
-        Button openBrowswer = (Button)findViewById(R.id.web_button);
+        TextView sendMail = (TextView)findViewById(R.id.email_button);
+        TextView openBrowswer = (TextView)findViewById(R.id.web_button);
 
         sendMail.setOnClickListener(new View.OnClickListener() {
             @Override
