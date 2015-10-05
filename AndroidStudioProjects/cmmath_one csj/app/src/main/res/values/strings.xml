@@ -212,4 +212,9 @@
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="feedback_email_address">csjan@tapgo.cc</string>
+    <string name="privacy_url">http://colloquium.me/?page_id=3348</string>
+    <string name="aboutus_url">http://colloquium.me</string>
+
 </resources>

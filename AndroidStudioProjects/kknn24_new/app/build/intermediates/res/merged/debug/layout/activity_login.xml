@@ -75,4 +75,4 @@
 	    	android:textColor="@color/light_button_txt"
 	    	android:text="@string/signup" />	
 	    	
-</LinearLayout><!-- From: file:/Users/csjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/activity_login.xml -->
+</LinearLayout><!-- From: file:/Users/chishengjan/Desktop/colloquium.me-dev/AndroidStudioProjects/kknn24_new/app/src/main/res/layout/activity_login.xml -->
