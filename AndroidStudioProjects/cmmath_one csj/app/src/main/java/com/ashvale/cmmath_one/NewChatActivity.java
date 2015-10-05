@@ -91,7 +91,7 @@ public class NewChatActivity extends AppCompatActivity {
         final ParseUser selfUser = ParseUser.getCurrentUser();
         participants.add(selfUser);
         final ParseObject conversation = new ParseObject("Conversation");
-        conversation.put("participants", participants);
+        conversation.addAll("participants", participants);
         String selfName = selfUser.getString("first_name")+" "+selfUser.getString("last_name");
         String nameList = "";
         for (ParseUser user : participants)

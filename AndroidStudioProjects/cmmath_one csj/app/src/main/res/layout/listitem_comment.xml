@@ -33,7 +33,7 @@
                 android:layout_weight="2"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center|left"
-                android:text="@string/author"
+                android:text="@string/author_fake"
                 android:textColor="@color/secondary_text"
                 android:textStyle="bold"
                 android:textSize="12sp" />
@@ -60,7 +60,7 @@
             android:layout_below="@+id/comment_header"
             android:fontFamily="sans-serif"
             android:gravity="center|left"
-            android:text="@string/content"
+            android:text="@string/content_fake"
             android:textColor="@color/dark_primary"
             android:textSize="14sp" />
 

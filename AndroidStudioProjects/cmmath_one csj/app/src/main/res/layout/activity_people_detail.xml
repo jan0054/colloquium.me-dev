@@ -16,7 +16,7 @@
             android:layout_marginBottom="@dimen/list_padding"
             android:fontFamily="sans-serif"
             android:gravity="center|left"
-            android:text="@string/author"
+            android:text="@string/author_fake"
             android:textColor="@color/primary_text"
             android:textSize="18sp"/>
         <TextView android:id="@+id/person_institution"
@@ -26,7 +26,7 @@
                   android:layout_below="@+id/person_name"
                   android:fontFamily="sans-serif"
                   android:gravity="center|left"
-                  android:text="@string/institution"
+                  android:text="@string/institution_fake"
                   android:textColor="@color/dark_primary"
                   android:textSize="14sp" />
         <LinearLayout android:layout_width="match_parent"

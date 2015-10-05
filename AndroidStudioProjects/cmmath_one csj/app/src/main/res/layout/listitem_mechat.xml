@@ -7,23 +7,21 @@
         android:id="@+id/chat_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="13dp"
-        android:textColor="@color/light_primary"
+        android:layout_margin="@dimen/list_margin"
         android:layout_alignParentRight="true"
+        android:textColor="@color/secondary_text"
         android:fontFamily="sans-serif-light"
-        android:textSize="11sp"
+        android:textSize="12sp"
         android:text="time" />
 
     <TextView
         android:id="@+id/chat_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/light_txt"
         android:layout_alignRight="@+id/chat_time"
         android:layout_below="@+id/chat_time"
-        android:layout_marginBottom="13dp"
-        android:layout_marginTop="13dp"
         android:fontFamily="sans-serif"
+        android:textColor="@color/dark_primary"
         android:textSize="16sp"
         android:text="content" />
 

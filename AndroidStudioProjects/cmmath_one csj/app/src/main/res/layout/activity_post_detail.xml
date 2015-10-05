@@ -25,7 +25,7 @@
                     android:paddingLeft="@dimen/list_margin"
                     android:fontFamily="sans-serif-light"
                     android:gravity="center|left"
-                    android:text="@string/author"
+                    android:text="@string/author_fake"
                     android:textColor="@color/secondary_text"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -50,7 +50,7 @@
                     android:fontFamily="sans-serif"
                     android:lineSpacingExtra="2sp"
                     android:maxLines="3"
-                    android:text="@string/content"
+                    android:text="@string/content_fake"
                     android:textColor="@color/primary_text"
                     android:textSize="16sp" />
                 <com.parse.ParseImageView

@@ -82,7 +82,7 @@
                android:background="@color/light_bg"
                android:singleLine="true"
                android:fontFamily="sans-serif"
-               android:hint="@string/sign_institution"
+               android:hint="@string/institution"
                android:textColorHint="@color/hint_color"
                android:minWidth="120dp"
                android:maxWidth="260dp" />

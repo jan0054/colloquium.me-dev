@@ -90,7 +90,7 @@
     <string name="email">Email</string>
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
-    <string name="sign_institution">Institution</string>
+    <string name="institution">Institution</string>
     <string name="login">Log in</string>
     <string name="cancel">Cancel</string>
     <string name="back">Back</string>
@@ -137,7 +137,7 @@
     <string name="details">Details</string>
     <string name="contact">Contact</string>
     <string name="e_mail">Send email</string>
-    <string name="website">Webpage</string>
+    <string name="website">Web Page</string>
     <string name="message">Message</string>
     <string name="abstract_btn">Attachment</string>
     <string name="more">more..</string>
@@ -149,18 +149,19 @@
     <string name="web">Web</string>
     <string name="positiontype">Position Type</string>
     <string name="save">Save</string>
+    <string name="openbrowser">Open in browser</string>
 
     <!-- DETAILS (FAKE DATA) -->
-    <string name="name">NAME</string>
-    <string name="author">AUTHOR</string>
-    <string name="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
-    <string name="content">@string/description</string>
-    <string name="organizer">Organizer</string>
-    <string name="start_time">START TIME</string>
-    <string name="position">POSITION</string>
-    <string name="location">LOCATION</string>
-    <string name="institution">INSTITUTION</string>
-    <string name="address">1172–-1188 S San Pedro St, Los Angeles, CA 90015</string>
+    <string name="name_fake">NAME</string>
+    <string name="author_fake">AUTHOR</string>
+    <string name="description_fake">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="content_fake">@string/description_fake</string>
+    <string name="organizer_fake">Organizer</string>
+    <string name="start_time_fake">START TIME</string>
+    <string name="position_fake">POSITION</string>
+    <string name="location_fake">LOCATION</string>
+    <string name="institution_fake">INSTITUTION</string>
+    <string name="address_fake">1172–-1188 S San Pedro St, Los Angeles, CA 90015</string>
 
     <!-- SETTINGS -->
     <string name="attending">I am attending this event: </string>

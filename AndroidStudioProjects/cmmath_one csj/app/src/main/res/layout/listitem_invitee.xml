@@ -4,8 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/list_padding"
-    android:background="@color/light_bg"
+    android:padding="@dimen/list_margin"
+    android:background="@drawable/list_item"
     android:gravity="start"
     android:orientation="horizontal">
     ]
@@ -13,13 +13,12 @@
         android:id="@+id/invitee_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/list_padding"
+        android:layout_marginTop="@dimen/list_padding"
         android:fontFamily="sans-serif"
-        android:text="@string/name"
+        android:text="@string/name_fake"
         android:textColor="@color/primary_text"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/invitee_institution"
@@ -29,8 +28,8 @@
         android:layout_marginBottom="0dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center|left"
-        android:text="@string/institution"
-        android:textColor="@color/primary_text"
+        android:text="@string/institution_fake"
+        android:textColor="@color/secondary_text"
         android:textSize="14sp" />
 
 

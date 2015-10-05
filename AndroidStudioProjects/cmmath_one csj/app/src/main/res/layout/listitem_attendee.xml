@@ -16,7 +16,7 @@
         android:layout_marginLeft="10dp"
         android:fontFamily="sans-serif"
         android:gravity="center|left"
-        android:text="@string/name"
+        android:text="@string/name_fake"
         android:textColor="@color/primary_text"
         android:textSize="18sp" />
 
@@ -30,7 +30,7 @@
         android:layout_toLeftOf="@+id/attendee_more"
         android:fontFamily="sans-serif-light"
         android:gravity="center|left"
-        android:text="@string/institution"
+        android:text="@string/institution_fake"
         android:textColor="@color/secondary_text"
         android:textSize="14sp" />
 

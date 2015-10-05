@@ -27,7 +27,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center|left"
         android:maxLines="4"
-        android:text="@string/name"
+        android:text="@string/name_fake"
         android:textColor="@color/primary_text"
         android:textSize="18sp"
         />
@@ -41,7 +41,7 @@
         android:padding="0dp"
         android:fontFamily="sans-serif"
         android:gravity="left"
-        android:text="@string/author"
+        android:text="@string/author_fake"
         android:textColor="@color/dark_accent"
         android:textSize="14sp"
         style="?android:attr/borderlessButtonStyle"/>
@@ -53,7 +53,7 @@
         android:layout_margin="@dimen/list_padding"
         android:layout_below="@+id/talk_authorname"
         android:fontFamily="sans-serif"
-        android:text="@string/location"
+        android:text="@string/location_fake"
         android:textColor="@color/primary_text"
         android:textSize="14sp" />
 
@@ -67,7 +67,7 @@
         android:layout_alignParentRight="true"
         android:gravity="right"
         android:fontFamily="sans-serif"
-        android:text="@string/start_time"
+        android:text="@string/start_time_fake"
         android:textColor="@color/primary_text"
         android:textSize="14sp" />
 
@@ -80,7 +80,7 @@
         android:ellipsize="end"
         android:fontFamily="sans-serif"
         android:padding="0dp"
-        android:text="@string/description"
+        android:text="@string/description_fake"
         android:textColor="@color/dark_primary"
         android:scrollbars = "vertical"
         android:textSize="16sp" />

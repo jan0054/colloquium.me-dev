@@ -18,7 +18,7 @@
         android:layout_toRightOf="@+id/imageLabel"
         android:fontFamily="sans-serif"
         android:gravity="center|left"
-        android:text="@string/name"
+        android:text="@string/name_fake"
         android:textColor="@color/primary_text"
         android:textSize="16sp" />
 
@@ -45,7 +45,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="12dp"
         android:fontFamily="sans-serif-light"
-        android:text="@string/organizer"
+        android:text="@string/organizer_fake"
         android:textColor="@color/secondary_text"
         android:textSize="14sp" />
     <TextView
@@ -57,7 +57,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:fontFamily="sans-serif"
-        android:text="@string/content"
+        android:text="@string/content_fake"
         android:textColor="@color/dark_primary"
         android:textSize="14dp"/>
 </RelativeLayout>

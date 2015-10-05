@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,6 +63,8 @@ public class TalkDetailActivity extends AppCompatActivity{
                     TextView contentLabel = (TextView) findViewById(R.id.talk_content);
                     Button discussBtn = (Button) findViewById(R.id.talk_discussionbtn);
                     Button calendarBtn = (Button) findViewById(R.id.talk_calendarbtn);
+
+                    contentLabel.setMovementMethod(new ScrollingMovementMethod());
 
                     sessionLabel.setText(talkObject.getParseObject("session").getString("name"));
                     nameLabel.setText(talkObject.getString("name"));

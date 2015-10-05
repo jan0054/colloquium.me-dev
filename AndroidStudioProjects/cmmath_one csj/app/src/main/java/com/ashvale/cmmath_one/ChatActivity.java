@@ -120,10 +120,15 @@ public class ChatActivity extends AppCompatActivity {
                     }
                     // Create our Installation query
                     List<ParseUser> allParticipants = conversationObject.getList("participants");
+                    int selfIncluded = 0;
                     for (ParseUser user : allParticipants) {
                         if (user.getObjectId().equals(currentUser.getObjectId())) {
-                            allParticipants.remove(user);
+                            selfIncluded = 1;
                         }
+                    }
+                    if (selfIncluded ==1)
+                    {
+                        allParticipants.remove(currentUser);
                     }
 
                     ParseQuery pushQuery = ParseInstallation.getQuery();

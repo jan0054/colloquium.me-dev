@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="@dimen/list_margin"
-                android:background="@color/light_bg"
+                android:background="@drawable/list_item"
                 android:gravity="start">
 
     <TextView
@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/list_padding"
         android:textColor="@color/black"
-        android:layout_marginBottom="@dimen/list_margin"
         android:textSize="12dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/positiontype" />
@@ -22,28 +22,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:textColor="@color/black"
+        android:textColor="@color/primary_text"
         android:textSize="16sp"
         android:fontFamily="sans-serif"
         android:layout_below="@+id/careerType"
-        android:text="@string/institution" />
+        android:text="@string/institution_fake" />
 
     <TextView
         android:id="@+id/careerContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:layout_marginTop="@dimen/list_margin"
         android:layout_below="@+id/careerInst"
-        android:textSize="14sp"
         android:fontFamily="sans-serif"
-        android:text="@string/content" />
+        android:textColor="@color/dark_primary"
+        android:textSize="14sp"
+        android:text="@string/content_fake" />
     <TextView
         android:id="@+id/careerDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/careerContent"
-        android:layout_marginTop="@dimen/list_margin"
         android:layout_marginRight="@dimen/list_margin"
         android:layout_alignParentRight="true"
         android:text="@string/details"
