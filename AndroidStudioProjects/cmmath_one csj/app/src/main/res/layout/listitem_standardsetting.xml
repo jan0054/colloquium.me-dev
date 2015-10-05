@@ -11,8 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/listheight_settings"
-        android:layout_marginLeft="@dimen/list_margin">
+        android:layout_height="@dimen/listheight_settings">
 
         <TextView
             android:id="@+id/primarylabel"

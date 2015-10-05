@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/light_bg">
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_item">
     <TextView
         android:id="@+id/pref_emaillabel"
         android:layout_width="wrap_content"
@@ -22,10 +22,12 @@
         android:layout_toRightOf="@+id/pref_emaillabel"
         android:layout_alignParentRight="true"
         android:text=""/>
-    <View android:layout_width="match_parent"
-          android:layout_height="1dip"
-          android:layout_below="@+id/pref_emaillabel"
-          android:background="@color/light_primary" />
+    <View
+        android:id="@+id/div1"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/pref_emaillabel"
+        android:background="@color/light_primary" />
     <TextView
         android:id="@+id/pref_eventlabel"
         android:layout_width="wrap_content"
@@ -48,9 +50,11 @@
         android:layout_alignParentRight="true"
         android:text=""/>
     <View
+        android:id="@+id/div2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/pref_eventlabel"/>
+        android:layout_below="@+id/pref_eventlabel"
+        android:background="@color/light_primary"/>
     <TextView
         android:id="@+id/pref_chatlabel"
         android:layout_width="wrap_content"
@@ -73,15 +77,17 @@
         android:layout_toRightOf="@+id/pref_chatlabel"
         android:layout_alignParentRight="true"
         android:text=""/>
-    <View android:layout_width="match_parent"
-          android:layout_height="1dip"
-          android:layout_below="@+id/pref_chatlabel"
-          android:background="@color/light_primary" />
+    <View
+        android:id="@+id/div3"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/pref_chatlabel"
+        android:background="@color/light_primary"/>
     <TextView
         android:id="@+id/pref_fnamelabel"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/listheight_setup"
-        android:layout_below="@+id/pref_chatlabel"
+        android:layout_below="@+id/div3"
         android:layout_margin="@dimen/list_margin"
         android:layout_alignParentLeft="true"
         android:fontFamily="sans-serif-light"
@@ -93,8 +99,9 @@
     <EditText  android:id="@+id/pref_fnameinput"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_below="@+id/pref_chatswitch"
+               android:layout_below="@+id/div3"
                android:layout_toRightOf="@+id/pref_fnamelabel"
+               android:layout_margin="@dimen/list_margin"
                android:layout_alignParentRight="true"
                android:layout_gravity="bottom"
                android:text="1234"
@@ -102,15 +109,17 @@
                android:singleLine="true"
                android:minWidth="120dp"
                android:maxWidth="260dp" />
-    <View android:layout_width="match_parent"
-          android:layout_height="1dip"
-          android:layout_below="@+id/pref_fnamelabel"
-          android:background="@color/light_primary" />
+    <View
+        android:id="@+id/div4"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/pref_fnamelabel"
+        android:background="@color/light_primary" />
     <TextView
         android:id="@+id/pref_lnamelabel"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/listheight_setup"
-        android:layout_below="@+id/pref_fnamelabel"
+        android:layout_below="@+id/div4"
         android:layout_margin="@dimen/list_margin"
         android:layout_alignParentLeft="true"
         android:fontFamily="sans-serif-light"
@@ -122,7 +131,7 @@
     <EditText  android:id="@+id/pref_lnameinput"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_below="@+id/pref_fnameinput"
+               android:layout_below="@+id/div4"
                android:layout_toRightOf="@+id/pref_lnamelabel"
                android:layout_margin="@dimen/list_margin"
                android:layout_alignParentRight="true"
@@ -132,14 +141,17 @@
                android:singleLine="true"
                android:minWidth="120dp"
                android:maxWidth="260dp" />
-    <View android:layout_width="match_parent"
-          android:layout_height="1dip"
-          android:background="@color/light_primary" />
+    <View
+        android:id="@+id/div5"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/pref_lnamelabel"
+        android:background="@color/light_primary" />
     <TextView
         android:id="@+id/pref_instlabel"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/listheight_setup"
-        android:layout_below="@+id/pref_lnamelabel"
+        android:layout_below="@+id/div5"
         android:layout_margin="@dimen/list_margin"
         android:layout_alignParentLeft="true"
         android:fontFamily="sans-serif-light"
@@ -151,7 +163,7 @@
     <EditText  android:id="@+id/pref_instinput"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_below="@+id/pref_lnameinput"
+               android:layout_below="@+id/div5"
                android:layout_toRightOf="@+id/pref_instlabel"
                android:layout_margin="@dimen/list_margin"
                android:layout_alignParentRight="true"
@@ -161,14 +173,17 @@
                android:singleLine="true"
                android:minWidth="120dp"
                android:maxWidth="260dp" />
-    <View android:layout_width="match_parent"
-          android:layout_height="1dip"
-          android:background="@color/light_primary" />
+    <View
+        android:id="@+id/div6"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/pref_instlabel"
+        android:background="@color/light_primary" />
     <TextView
         android:id="@+id/pref_linklabel"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/listheight_setup"
-        android:layout_below="@+id/pref_instlabel"
+        android:layout_below="@+id/div6"
         android:layout_margin="@dimen/list_margin"
         android:layout_alignParentLeft="true"
         android:fontFamily="sans-serif-light"
@@ -180,8 +195,9 @@
     <EditText  android:id="@+id/pref_linkinput"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_below="@+id/pref_instinput"
+               android:layout_below="@+id/div6"
                android:layout_toRightOf="@+id/pref_linklabel"
+               android:layout_margin="@dimen/list_margin"
                android:layout_alignParentRight="true"
                android:layout_gravity="center_vertical"
                android:text="1234"

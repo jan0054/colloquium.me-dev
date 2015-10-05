@@ -26,6 +26,10 @@ import com.ashvale.cmmath_one.fragments.OverviewFragment;
 import com.ashvale.cmmath_one.fragments.ProgramFragment;
 import com.ashvale.cmmath_one.fragments.TimelineFragment;
 import com.ashvale.cmmath_one.fragments.VenueFragment;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class EventWrapperActivity extends BaseActivity implements BaseFragment.OnFragmentInteractionListener {
@@ -46,6 +50,8 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         tabLayout.getTabAt(2).setIcon(R.drawable.people64);
         tabLayout.getTabAt(3).setIcon(R.drawable.timeline64);
         tabLayout.getTabAt(4).setIcon(R.drawable.venue64);
+
+        getEventName();
     }
 
     @Override
@@ -74,7 +80,6 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_event_wrapper, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -93,6 +98,25 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
             return;
         }
         toPage(new Intent(), NewPostActivity.class);
+    }
+
+    public void getEventName()
+    {
+        SharedPreferences savedEvents = getSharedPreferences("EVENTS", 0);
+        String currentId = savedEvents.getString("currenteventid", "");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
+        query.getInBackground(currentId, new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject parseObject, ParseException e) {
+                if(e == null) {
+                    mActivityTitle = parseObject.getString("name");
+                    Log.d("cm_app", "event name: "+mActivityTitle);
+                    getSupportActionBar().setTitle(mActivityTitle);
+                } else {
+                    Log.d("cm_app", "get event name error: no event");
+                }
+            }
+        });
     }
 
     public void toast(String message) {

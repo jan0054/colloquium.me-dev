@@ -44,6 +44,7 @@
         <activity
             android:name=".AddeventActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_addevent"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
