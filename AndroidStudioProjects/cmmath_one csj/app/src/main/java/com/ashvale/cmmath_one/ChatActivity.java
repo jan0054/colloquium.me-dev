@@ -147,7 +147,7 @@ public class ChatActivity extends AppCompatActivity {
                     conversationObject.saveInBackground();
 
                 } else {
-                    Log.i("cm_app", "send chat failed");
+                    Log.d("cm_app", "send chat failed");
                 }
             }
         });
@@ -160,6 +160,7 @@ public class ChatActivity extends AppCompatActivity {
         app=(cmmathApplication)getApplication();
         app.isChat = false;
         this.unregisterReceiver(mMessageReceiver);
+        Log.d("cm_app", "In CHAT push UNREGISTERED");
     }
 
     //This is the handler that will listen to process the broadcast intent
@@ -167,6 +168,7 @@ public class ChatActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             getChatList();
+            Log.d("cm_app", "In CHAT push received");
         }
     };
 
@@ -178,6 +180,8 @@ public class ChatActivity extends AppCompatActivity {
         app.isChat=true;
         this.registerReceiver(mMessageReceiver, new IntentFilter("got_chat_intent"));
         getChatList();
+        Log.d("cm_app", "In CHAT push REGISTERED");
+
     }
 
     @Override

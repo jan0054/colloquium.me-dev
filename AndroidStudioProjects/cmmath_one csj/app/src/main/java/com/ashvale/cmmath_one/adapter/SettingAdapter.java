@@ -130,7 +130,7 @@ public class SettingAdapter extends BaseAdapter {
             Button userbutton = (Button)view.findViewById(R.id.userbutton);
             userbutton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Toast.makeText(context, "Sign in/out button tap", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "Sign in/out button tap", Toast.LENGTH_SHORT).show();
                     SharedPreferences userStatus;
                     userStatus = context.getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
                     SharedPreferences.Editor editor = userStatus.edit();

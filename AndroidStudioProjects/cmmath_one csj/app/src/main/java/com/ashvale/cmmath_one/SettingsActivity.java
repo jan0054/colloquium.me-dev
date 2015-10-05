@@ -62,6 +62,7 @@ public class SettingsActivity extends BaseActivity {
                         startActivity(aboutusWeb);
                         break;
                     case 4:
+                        //preference page
                         Intent intent = new Intent(SettingsActivity.this, UserPreferenceActivity.class);
                         startActivity(intent);
                         break;

@@ -43,6 +43,7 @@ public class BaseActivity extends AppCompatActivity {
     private Context context;
     public  List<ParseObject> eventObjList;
     public DrawerAdapter drawerAdapter;
+    protected cmmathApplication app;
 
     //@Override
     protected void onCreateDrawer() {
@@ -108,6 +109,24 @@ public class BaseActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        app=(cmmathApplication)getApplication();
+        app.isVisible = true;
+        Log.d("cm_app", "APP visible now");
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        app=(cmmathApplication)getApplication();
+        app.isVisible = false;
+        Log.d("cm_app", "APP not visible");
     }
 
     public void refreshDrawer()
