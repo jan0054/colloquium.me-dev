@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/list_margin"
-    android:background="@color/light_bg"
+    android:background="@drawable/list_item"
     android:gravity="left">
     <ImageView
         android:id="@+id/imageLabel"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageLabel"
         android:layout_below="@+id/nameLabel"
-        android:layout_toLeftOf="@+id/organizer"
+        android:layout_toLeftOf="@+id/organizerLabel"
         android:fontFamily="sans-serif-light"
         android:gravity="center|left"
         android:text="@string/date"
@@ -58,6 +58,6 @@
         android:layout_marginBottom="0dp"
         android:fontFamily="sans-serif"
         android:text="@string/content"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/dark_primary"
         android:textSize="14dp"/>
 </RelativeLayout>

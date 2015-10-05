@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
                  android:layout_width="match_parent"
-                 android:layout_height="match_parent"
+                 android:layout_height="wrap_content"
                  android:padding="@dimen/list_margin"
-                 android:background="@color/light_bg">
+                 android:background="@drawable/list_item">
     <TextView
         android:id="@+id/talk_session"
         android:layout_width="match_parent"
@@ -78,11 +78,10 @@
         android:layout_margin="@dimen/list_padding"
         android:layout_below="@+id/talk_location"
         android:ellipsize="end"
-        android:fontFamily="sans-serif-light"
-        android:maxLines="10"
+        android:fontFamily="sans-serif"
         android:padding="0dp"
         android:text="@string/description"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/dark_primary"
         android:scrollbars = "vertical"
         android:textSize="16sp" />
 

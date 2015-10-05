@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/feed_container"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:background="@color/light_bg"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list_item"
                 android:orientation="horizontal" >
 
     <com.parse.ParseImageView
@@ -74,9 +74,11 @@
     <TextView
         android:id="@+id/venueContent"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/list_padding"
+        android:paddingRight="@dimen/list_padding"
         android:layout_below="@+id/venueImage"
         android:gravity="center|left"
         android:maxHeight="30dp"
@@ -84,7 +86,7 @@
         android:maxWidth="300dp"
         android:singleLine="false"
         android:text="@string/description"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/dark_primary"
         android:scrollbars = "vertical"
         android:textSize="12sp" />
 

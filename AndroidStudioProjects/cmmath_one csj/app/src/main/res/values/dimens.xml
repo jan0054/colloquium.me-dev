@@ -13,10 +13,14 @@
     <dimen name="preference_title">16sp</dimen>
     <dimen name="listheight_setup">30dp</dimen>
     <dimen name="listheight_settings">50dp</dimen>
-    <dimen name="list_margin">12dp</dimen>
+    <dimen name="list_margin">14dp</dimen>
     <dimen name="list_padding">6dp</dimen>
     <dimen name="listicon_margin">8dp</dimen>
     <dimen name="listicon_padding">6dp</dimen>
+    <dimen name="listitem_margin">6dp</dimen>
+    <dimen name="listitem_bottom">3dp</dimen>
+    <dimen name="listitembg_bottom">2dp</dimen>
+    <dimen name="corner_size">2dp</dimen>
 
     <dimen name="drawyericon_size">30dp</dimen>
     <dimen name="fragmenticon_size">30dp</dimen>

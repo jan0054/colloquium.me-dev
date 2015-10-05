@@ -149,7 +149,7 @@ public class DrawerAdapter extends BaseAdapter {
         {
             text = context.getString(R.string.title_home);
             image = R.drawable.eventhome;
-            bottomDivider.setBackgroundColor(context.getResources().getColor(R.color.background));
+            bottomDivider.setBackgroundColor(context.getResources().getColor(R.color.divider_color));
         }
         else if (position == total-1)
         {
@@ -165,7 +165,7 @@ public class DrawerAdapter extends BaseAdapter {
         {
             text = context.getString(R.string.title_chat);
             image = R.drawable.chat;
-            topDivider.setBackgroundColor(context.getResources().getColor(R.color.background));
+            topDivider.setBackgroundColor(context.getResources().getColor(R.color.divider_color));
         }
         else
         {

@@ -84,8 +84,6 @@ public class CommentAdapter extends BaseAdapter {
 
     private String getAuthor(ParseObject object) {
         ParseObject author = object.getParseObject("author");
-        Log.d("cm_app", "author: "+author.getObjectId().toString());
-        Log.d("cm_app", "username: "+author.getString("last_name"));
         return (author == null) ? context.getString(R.string.unknown) : author.getString("last_name") + ", " + author.getString("first_name");
     }
 

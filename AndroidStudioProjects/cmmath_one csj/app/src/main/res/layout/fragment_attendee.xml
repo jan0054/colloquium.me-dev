@@ -45,7 +45,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/search_bar"
-        android:id="@+id/attendeeListView" />
+        android:id="@+id/attendeeListView"
+        android:background="@color/background"
+        android:divider="@color/divider_color"
+        android:dividerHeight="0dp"/>
     </RelativeLayout>
 
 </FrameLayout>

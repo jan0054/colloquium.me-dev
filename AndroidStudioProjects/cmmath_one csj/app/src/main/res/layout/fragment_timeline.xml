@@ -8,7 +8,10 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:id="@+id/timelineListView" />
+        android:id="@+id/timelineListView"
+        android:background="@color/background"
+        android:divider="@color/divider_color"
+        android:dividerHeight="0dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/newpost_fab"

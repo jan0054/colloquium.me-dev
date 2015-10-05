@@ -41,7 +41,11 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setupWithViewPager(viewPager);
-
+        tabLayout.getTabAt(0).setIcon(R.drawable.home64);
+        tabLayout.getTabAt(1).setIcon(R.drawable.program64);
+        tabLayout.getTabAt(2).setIcon(R.drawable.people64);
+        tabLayout.getTabAt(3).setIcon(R.drawable.timeline64);
+        tabLayout.getTabAt(4).setIcon(R.drawable.venue64);
     }
 
     @Override

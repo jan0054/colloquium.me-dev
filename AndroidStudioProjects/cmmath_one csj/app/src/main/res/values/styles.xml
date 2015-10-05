@@ -5,11 +5,4 @@
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/dark_accent</item>
     </style>
-    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabTextAppearance">@style/MyCustomTextAppearance</item>
-    </style>
-
-    <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
-        <item name="textAllCaps">false</item>
-    </style>
 </resources>

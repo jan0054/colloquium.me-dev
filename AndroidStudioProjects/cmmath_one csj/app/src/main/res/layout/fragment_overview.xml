@@ -4,99 +4,104 @@
              android:layout_height="match_parent" tools:context="com.ashvale.cmmath_one.NewsFragment">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:gravity="left">
-        <TextView
-            android:id="@+id/overview_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="@string/name"
-            android:textColor="@color/primary_text"
-            android:textSize="18sp" />
+            android:background="@drawable/list_item"
+            android:gravity="left">
+            <TextView
+                android:id="@+id/overview_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="@dimen/list_margin"
+                android:layout_marginRight="@dimen/list_margin"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="@string/name"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/overview_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/overview_name"
-            android:layout_below="@+id/overview_name"
-            android:layout_marginBottom="10dp"
-            android:layout_toLeftOf="@+id/overview_organizer"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center|left"
-            android:text="@string/date"
-            android:textColor="@color/dark_accent"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/overview_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/overview_name"
+                android:layout_below="@+id/overview_name"
+                android:layout_marginBottom="@dimen/list_padding"
+                android:layout_toLeftOf="@+id/overview_organizer"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center|left"
+                android:text="@string/date"
+                android:textColor="@color/dark_accent"
+                android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/overview_organizer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/overview_name"
-            android:layout_below="@+id/overview_name"
-            android:gravity="center"
-            android:paddingLeft="16dp"
-            android:paddingRight="12dp"
-            android:text="@string/organizer"
-            android:textColor="@color/dark_accent"
-            android:textSize="14sp"/>
-        <TextView
-            android:id="@+id/overview_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/overview_name"
-            android:layout_alignRight="@+id/overview_name"
-            android:layout_below="@+id/overview_date"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="sans-serif"
-            android:text="@string/content"
-            android:textColor="@color/primary_text"/>
-        <TextView
-            android:id="@+id/attend_string"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/overview_name"
-            android:layout_below="@+id/overview_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="sans-serif"
-            android:text="@string/attending"
-            android:textColor="@color/primary_text"/>
+            <TextView
+                android:id="@+id/overview_organizer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/overview_name"
+                android:layout_below="@+id/overview_name"
+                android:layout_marginBottom="@dimen/list_padding"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/organizer"
+                android:textColor="@color/dark_accent"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/overview_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/overview_name"
+                android:layout_alignRight="@+id/overview_name"
+                android:layout_below="@+id/overview_date"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/content"
+                android:textColor="@color/dark_primary"/>
+            <TextView
+                android:id="@+id/attend_string"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/overview_name"
+                android:layout_below="@+id/overview_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/attending"
+                android:textColor="@color/dark_primary"/>
 
-        <Switch
-            android:id="@+id/attend_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/overview_name"
-            android:layout_below="@+id/overview_content"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@+id/attend_string"
-            android:text=""/>
-        <ListView android:id="@+id/announceListView"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_below="@+id/attend_string"
-                  android:layout_marginLeft="@dimen/activity_vertical_margin"
-                  android:layout_marginRight="@dimen/activity_vertical_margin"
-                  android:divider="@color/divider_color"
-                  android:dividerHeight="1dp"
-                  android:paddingTop="6dp" />
-        <TextView android:id="@+id/announceempty"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:layout_below="@+id/attend_string"
-                  android:layout_marginLeft="32dp"
-                  android:layout_marginRight="32dp"
-                  android:gravity="center"
-                  android:text="@string/list_empty_event"
-                  android:textColor="@color/dark_primary"
-                  android:textSize="14sp" />
+            <Switch
+                android:id="@+id/attend_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/overview_name"
+                android:layout_below="@+id/overview_content"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@+id/attend_string"
+                android:text=""/>
+            <ListView android:id="@+id/announceListView"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/attend_string"
+                      android:layout_marginLeft="@dimen/activity_vertical_margin"
+                      android:layout_marginRight="@dimen/activity_vertical_margin"
+                      android:divider="@color/divider_color"
+                      android:dividerHeight="1dp"
+                      android:paddingTop="6dp" />
+            <TextView android:id="@+id/announceempty"
+                      android:layout_width="match_parent"
+                      android:layout_height="120dp"
+                      android:layout_below="@+id/attend_string"
+                      android:layout_marginLeft="32dp"
+                      android:layout_marginRight="32dp"
+                      android:gravity="center"
+                      android:text="@string/list_empty_event"
+                      android:textColor="@color/dark_primary"
+                      android:textSize="14sp" />
+        </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>

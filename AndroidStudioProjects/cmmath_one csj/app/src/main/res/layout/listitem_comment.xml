@@ -3,7 +3,7 @@
     android:id="@+id/feed_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFFFF"
+    android:background="@drawable/list_item"
     android:orientation="horizontal" >
 
     <View
@@ -23,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/comment_content"
-            android:layout_marginBottom="6dp"
             android:orientation="horizontal"
             android:weightSum="4">
             <TextView
@@ -62,7 +61,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center|left"
             android:text="@string/content"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/dark_primary"
             android:textSize="14sp" />
 
     </RelativeLayout>

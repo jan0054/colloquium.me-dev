@@ -89,6 +89,7 @@ public class PostDetailActivity extends AppCompatActivity{
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     setAdapter(objects);
+                    Log.d("cm_app", "comment query number: "+objects.size());
                 } else {
                     Log.d("cm_app", "comment query error: " + e);
                 }

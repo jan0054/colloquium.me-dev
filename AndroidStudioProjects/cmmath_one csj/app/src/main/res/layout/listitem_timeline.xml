@@ -4,8 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/list_padding"
-    android:background="@color/light_bg"
+    android:padding="@dimen/list_margin"
+    android:background="@drawable/list_item"
     android:gravity="start"
     android:orientation="horizontal">
 
@@ -40,15 +40,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/timeline_createdAt"
-            android:layout_margin="4dp"
-            android:layout_marginBottom="8dp"
             android:layout_toLeftOf="@+id/timeline_image"
             android:ellipsize="end"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif"
             android:lineSpacingExtra="2sp"
             android:maxLines="3"
             android:text="@string/content"
-            android:textColor="@color/primary_text"
+            android:textColor="@color/dark_primary"
             android:textSize="14sp" />
         <com.parse.ParseImageView
             android:id="@+id/timeline_image"

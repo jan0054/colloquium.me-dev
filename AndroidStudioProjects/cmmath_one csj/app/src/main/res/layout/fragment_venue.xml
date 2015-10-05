@@ -5,6 +5,9 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:id="@+id/venueListView" />
+        android:id="@+id/venueListView"
+        android:background="@color/background"
+        android:divider="@color/divider_color"
+        android:dividerHeight="0dp"/>
 
 </FrameLayout>

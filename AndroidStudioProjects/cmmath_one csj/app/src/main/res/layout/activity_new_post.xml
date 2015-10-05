@@ -33,7 +33,7 @@
             android:textColorHint="@color/hint_color"
             android:textColor="@color/primary_text"
             android:background="#00000000"
-            android:textColorHighlight="@color/light_primary"
+            android:textColorHighlight="@color/background"
             android:gravity="top"
             android:layout_gravity="center_horizontal" />
 
