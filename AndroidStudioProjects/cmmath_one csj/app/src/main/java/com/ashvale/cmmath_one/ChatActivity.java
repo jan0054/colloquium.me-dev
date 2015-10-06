@@ -239,6 +239,7 @@ public class ChatActivity extends AppCompatActivity {
                     conversation.put("last_time", date);
                     conversation.saveInBackground();
                     //send push and stuff
+                    finish();
 
                 } else {
                     Log.d("cm_app", "broadcast error: "+e);

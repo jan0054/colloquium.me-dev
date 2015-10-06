@@ -42,7 +42,7 @@
             android:onClick="sendDiscussion"
             android:textColor="@color/dark_accent"
             android:text="Send"
-            android:background="@color/light_bg" />
+            android:background="#00000000" />
 
     </LinearLayout>
 

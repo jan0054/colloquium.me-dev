@@ -114,7 +114,8 @@
         <activity
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
-            android:parentActivityName=".ConversationActivity" >
+            android:parentActivityName=".ConversationActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity
             android:name=".ChatOptionsActivity"

@@ -23,6 +23,7 @@ import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -165,6 +166,18 @@ public class BaseActivity extends AppCompatActivity {
         }
         else if (position == 5 + total - 3)
         {
+            ParseUser selfuser = ParseUser.getCurrentUser();
+            if (selfuser == null) {
+                toast(getString(R.string.error_not_login));
+                SharedPreferences userStatus;
+                userStatus = this.getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+                SharedPreferences.Editor editor = userStatus.edit();
+                editor.putInt("skiplogin", 0);
+                editor.commit();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                return;
+            }
             startActivity(new Intent(this, ConversationActivity.class));
         }
         else
@@ -251,4 +264,7 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void toast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

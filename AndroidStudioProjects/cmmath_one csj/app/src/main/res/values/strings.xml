@@ -97,7 +97,7 @@
     <string name="signout">Sign Out</string>
     <string name="skip"><u>Skip</u></string>
     <string name="title_signup">Sign Up</string>
-    <string name="login_notice">Welcome to the Colloquium.me for Mathematics! Please sign up or log in below to start customizing your events.</string>
+    <string name="login_notice">Welcome to Colloquium.me for Mathematics! Please sign up or log in below to start customizing your events.</string>
     <string name="signup_notice">Your information is kept secure and private on our servers. To view our privacy policy please go to Settings -> Privacy and Terms, or contact us if you have any questions.</string>
     <string name="login_first">Sorry, you do not seem to be a registered attendee. Email and chat functions will not be available. Remember, you must use the same email address you used to register for the workshop.</string>
     <string name="hint_search">Enter keywords here..</string>
