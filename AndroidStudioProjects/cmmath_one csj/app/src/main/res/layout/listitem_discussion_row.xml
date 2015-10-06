@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="13dp"
         android:layout_alignParentLeft="true"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/secondary_text"
         android:textSize="16sp"
         android:fontFamily="sans-serif"
         android:text="author" />
@@ -24,7 +24,7 @@
         android:layout_below="@+id/discussion_author"
         android:layout_alignLeft="@+id/discussion_author"
         android:textSize="18sp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif"
         android:text="content" />
 
 </RelativeLayout>

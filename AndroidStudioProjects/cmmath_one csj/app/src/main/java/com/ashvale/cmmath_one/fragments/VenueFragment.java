@@ -40,6 +40,7 @@ public class VenueFragment extends BaseFragment {
     private IntentFilter			filter	 = null;
     private BroadcastReceiver 		receiver = null;
     private SharedPreferences       savedEvents;
+    ListView venueList;
 
     // TODO: Rename and change types of parameters
 
@@ -74,7 +75,7 @@ public class VenueFragment extends BaseFragment {
     public void setAdapter(final List results)
     {
         VenueAdapter adapter = new VenueAdapter(getActivity(), results);
-        ListView venueList = (ListView)getActivity().findViewById(R.id.venueListView);
+        venueList = (ListView)getActivity().findViewById(R.id.venueListView);
         venueList.setAdapter(adapter);
     }
 

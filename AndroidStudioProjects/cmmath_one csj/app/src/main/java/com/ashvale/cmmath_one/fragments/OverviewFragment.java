@@ -61,6 +61,10 @@ public class OverviewFragment extends BaseFragment {
     List<ParseObject> eventAttending;
     ParseObject currenteventObject;
     String contactMail;
+    TextView nameLabel;
+    TextView dateLabel;
+    TextView organizerLabel;
+    TextView contentLabel;
 
     // TODO: Rename and change types of parameters
 
@@ -126,6 +130,12 @@ public class OverviewFragment extends BaseFragment {
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         String currentId = savedEvents.getString("currenteventid", "");
 
+        nameLabel = (TextView) getView().findViewById(R.id.overview_name);
+        dateLabel = (TextView) getView().findViewById(R.id.overview_date);
+        organizerLabel = (TextView) getView().findViewById(R.id.overview_organizer);
+        contentLabel = (TextView) getView().findViewById(R.id.overview_content);
+        attendEventswitch = (Switch) getView().findViewById(R.id.attend_switch);
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
         query.include("admin");
         query.getInBackground(currentId, new GetCallback<ParseObject>() {
@@ -142,11 +152,6 @@ public class OverviewFragment extends BaseFragment {
                     String endstr = dateformatter.format(enddate);
                     String eventOrganizer = currenteventObject.getString("organizer");
                     String eventContent = currenteventObject.getString("content");
-                    TextView nameLabel = (TextView) getView().findViewById(R.id.overview_name);
-                    TextView dateLabel = (TextView) getView().findViewById(R.id.overview_date);
-                    TextView organizerLabel = (TextView) getView().findViewById(R.id.overview_organizer);
-                    TextView contentLabel = (TextView) getView().findViewById(R.id.overview_content);
-                    attendEventswitch = (Switch) getView().findViewById(R.id.attend_switch);
                     boolean adminexist = currenteventObject.has("admin");
                     if(adminexist) {
                         contactMail = currenteventObject.getParseUser("admin").getUsername().toString();

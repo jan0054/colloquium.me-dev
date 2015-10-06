@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/chatpen64"
-            android:tint="@color/white"
+            android:tint="@color/light_button_txt"
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="24pt"
             android:layout_marginRight="8pt"

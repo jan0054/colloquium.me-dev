@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.ashvale.cmmath_one.PostDetailActivity;
@@ -44,11 +45,11 @@ public class ProgramFragment extends BaseFragment {
     private SharedPreferences savedEvents;
     public  List<ParseObject> talkObjList;
     public EditText searchinput;
-    public Button dosearch;
-    public Button cancelsearch;
+    public ImageButton dosearch;
     public ArrayList<String> searcharray;
     public String currentId;
     public ParseObject event;
+    ListView talkList;
 
     // TODO: Rename and change types of parameters
 
@@ -83,7 +84,7 @@ public class ProgramFragment extends BaseFragment {
     public void setAdapter(final List results)
     {
         ProgramAdapter adapter = new ProgramAdapter(getActivity(), results);
-        ListView talkList = (ListView)getActivity().findViewById(R.id.programListView);
+        talkList = (ListView)getActivity().findViewById(R.id.programListView);
         talkList.setAdapter(adapter);
 
         talkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -105,23 +106,13 @@ public class ProgramFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_program, container, false);
         searchinput = (EditText)view.findViewById(R.id.searchinput);
-        dosearch = (Button)view.findViewById(R.id.dosearch);
-        cancelsearch = (Button)view.findViewById(R.id.cancelsearch);
+        dosearch = (ImageButton)view.findViewById(R.id.dosearch);
         dosearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setSearchString();
                 event = ParseObject.createWithoutData("Event", currentId);
                 getProgramSearch(event, 0, searcharray, 0);
-            }
-        });
-        cancelsearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchinput.setText("");
-                searcharray.clear();
-                event = ParseObject.createWithoutData("Event", currentId);
-                getProgram(event, 0, 0);
             }
         });
         searchinput.addTextChangedListener(new TextWatcher() {

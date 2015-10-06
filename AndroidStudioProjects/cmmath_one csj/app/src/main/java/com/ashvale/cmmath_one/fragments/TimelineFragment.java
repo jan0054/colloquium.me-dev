@@ -54,6 +54,7 @@ public class TimelineFragment extends BaseFragment {
     public static final String TAG = TimelineFragment.class.getSimpleName();
     private SharedPreferences savedEvents;
     public  List<ParseObject> postObjList;
+    ListView postList;
 
     // TODO: Rename and change types of parameters
 
@@ -88,7 +89,7 @@ public class TimelineFragment extends BaseFragment {
     public void setAdapter(final List results)
     {
         TimelineAdapter adapter = new TimelineAdapter(getActivity(), results);
-        ListView postList = (ListView)getActivity().findViewById(R.id.timelineListView);
+        postList = (ListView)getActivity().findViewById(R.id.timelineListView);
         postList.setAdapter(adapter);
 
         postList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
