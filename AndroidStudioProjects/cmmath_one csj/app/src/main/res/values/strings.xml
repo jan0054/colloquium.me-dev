@@ -130,6 +130,7 @@
     <string name="title_conversation">Conversation</string>
     <string name="list_empty_empty"></string>
     <string name="list_empty_event">There are no announcements for this event yet</string>
+    <string name="no_result">No result found.</string>
 
     <!-- DETAILS -->
     <string name="details">Details</string>

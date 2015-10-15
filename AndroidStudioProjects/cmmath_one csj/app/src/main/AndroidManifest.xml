@@ -155,7 +155,8 @@
         </activity>
         <activity
             android:name=".NewChatActivity"
-            android:label="@string/title_activity_newchat" >
+            android:label="@string/title_activity_newchat"
+            android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity
             android:name=".NewPostActivity"

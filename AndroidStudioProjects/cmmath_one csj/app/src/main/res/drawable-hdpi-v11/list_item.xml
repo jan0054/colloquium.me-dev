@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 	<item
 		android:left="@dimen/listitem_margin"
-		android:right="@dimen/listitem_margin"
+		android:right="@dimen/listitembg_right"
 		android:top="@dimen/listitem_margin"
 		android:bottom="@dimen/listitembg_bottom">
 		<shape

@@ -30,6 +30,7 @@
             android:layout_weight="1"
             android:textCursorDrawable="@null"
             android:textColor="@color/dark_accent"
+            android:backgroundTint="@color/edittext_bgtint"
             android:ems="10"
             android:layout_marginLeft="10dp"
              />

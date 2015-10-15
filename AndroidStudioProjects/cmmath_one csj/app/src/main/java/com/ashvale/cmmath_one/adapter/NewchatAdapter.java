@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ashvale.cmmath_one.R;
@@ -58,6 +59,7 @@ public class NewchatAdapter extends BaseAdapter {
         String name = invitee.getString("first_name") + " " + invitee.getString("last_name");
         TextView nameLabel = (TextView)view.findViewById(R.id.newchat_name);
         TextView institutionLabel = (TextView)view.findViewById(R.id.newchat_institution);
+        ImageView checkbox = (ImageView)view.findViewById(R.id.checkbox);
 
         nameLabel.setText(name);
         institutionLabel.setText(invitee.getString("institution"));
@@ -65,7 +67,15 @@ public class NewchatAdapter extends BaseAdapter {
         int selected = selectedPositions[position];
         if (selected == 1)
         {
-            nameLabel.setText("=SELECTED= "+name);
+            checkbox.setImageResource(R.drawable.check);
+            checkbox.setColorFilter(context.getResources().getColor(R.color.accent_color));
+            nameLabel.setTextColor(context.getResources().getColor(R.color.accent_color));
+        }
+        else
+        {
+            checkbox.setImageResource(R.drawable.emptycircle);
+            checkbox.setColorFilter(context.getResources().getColor(R.color.primary_color));
+            nameLabel.setTextColor(context.getResources().getColor(R.color.primary_text));
         }
 
         return view;

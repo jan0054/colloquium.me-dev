@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class LoginActivity extends Activity {
     public static final String TAG = LoginActivity.class.getSimpleName();
     private EditText mUsername;
     private EditText mPassword;
+    private Button   btnLogin;
     protected cmmathApplication app;
     private SharedPreferences userStatus;
     private SharedPreferences savedEvents;
@@ -38,6 +40,8 @@ public class LoginActivity extends Activity {
 
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
+        btnLogin  = (Button) findViewById(R.id.btn_login);
+        btnLogin.setEnabled(true);
 
         if (isLogin())
             skip(null);
@@ -120,12 +124,14 @@ public class LoginActivity extends Activity {
     }
 
     public void login(View view) {
+        btnLogin.setEnabled(false);
         String username = mUsername.getText().toString();
         String password = mPassword.getText().toString();
 
         // TODO: Add more check-out for username and password!
         if (username.length() == 0 || password.length() == 0) {
             toast("Wrong username and/or password!");
+            btnLogin.setEnabled(true);
             return;
         }
 
@@ -144,12 +150,7 @@ public class LoginActivity extends Activity {
 
                             new Handler().postDelayed(new Runnable() {
                                 public void run() {
-                                    app = (cmmathApplication) getApplication();
-                                    checkIsPerson(ParseUser.getCurrentUser());
-                                    if (!app.isPerson) {
-//                                        Intent intent = new Intent(this, UserPreferenceActivity.class);
-//                                        startActivity(intent);
-                                    } else skip(null);
+                                    skip(null);
                                 }
                             }, 100);
                         } else {
@@ -175,5 +176,6 @@ public class LoginActivity extends Activity {
 
     private void onLoginFailed(int code, String msg) {
         toast("Error (" + code + "): " + msg + "!");
+        btnLogin.setEnabled(true);
     }
 }
