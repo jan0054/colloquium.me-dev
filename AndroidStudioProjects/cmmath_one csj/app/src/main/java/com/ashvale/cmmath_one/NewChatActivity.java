@@ -3,6 +3,7 @@ package com.ashvale.cmmath_one;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,11 @@ public class NewChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_chat);
 
+        Log.d("cm_app", "I AM : " + ParseUser.getCurrentUser().getObjectId());
+        selectedInvitees = new ArrayList<>();
+        //selectedInvitees.add(ParseUser.getCurrentUser());
+        //selectedInvitees.add(ParseUser.getCurrentUser());
+
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("chat_status", 1);
         query.whereNotEqualTo("debug_status", 1);
@@ -43,8 +49,7 @@ public class NewChatActivity extends AppCompatActivity {
                     ParseUser selfUser = ParseUser.getCurrentUser();
                     List<ParseUser> fullList = new ArrayList<>();
                     for (ParseUser allUser : objects) {
-                        if (!(allUser.getObjectId().equals(selfUser.getObjectId())))
-                        {
+                        if (!(allUser.getObjectId().equals(selfUser.getObjectId()))) {
                             fullList.add(allUser);
                         }
                     }
@@ -89,7 +94,15 @@ public class NewChatActivity extends AppCompatActivity {
     public void createConversation(List<ParseUser> participants)
     {
         final ParseUser selfUser = ParseUser.getCurrentUser();
+        //ParseUser selfPar = ParseUser.getCurrentUser();
+        //Log.d("cm_app", "Before add self: " + participants.size());
         participants.add(selfUser);
+        for (ParseUser someuser : participants)
+        {
+            Log.d("cm_app", "USER LISTING: " + someuser.getObjectId());
+        }
+        //List<ParseUser> finalParts = participants;
+        //Log.d("cm_app", "After add self: " + participants.size());
         final ParseObject conversation = new ParseObject("Conversation");
         conversation.addAll("participants", participants);
         String selfName = selfUser.getString("first_name")+" "+selfUser.getString("last_name");

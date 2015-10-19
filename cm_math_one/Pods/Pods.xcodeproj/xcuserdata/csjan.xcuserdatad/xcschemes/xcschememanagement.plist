@@ -4,32 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Bolts.xcscheme</key>
+		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-GKImagePicker@robseward.xcscheme</key>
+		<key>GKImagePicker@robseward.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MMDrawerController.xcscheme</key>
+		<key>MMDrawerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Parse.xcscheme</key>
+		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ParseUI.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-SZTextView.xcscheme</key>
+		<key>ParseUI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -39,40 +34,45 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SZTextView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>32BC12DB3F4E0CDAE211F0F5</key>
+		<key>3C40AD938D23DF5F8345D23B4D3E1644</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4098E1314C50BDBBF1FFB4B3</key>
+		<key>5366B7F679CF2BA31EA583EA35CA2D90</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45D17F66BB680CD133F4AB3B</key>
+		<key>550F7EEAEEA17E3F92C873912E23B01C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E4CCBB02ADD9B82529601B1</key>
+		<key>9919E6CD990DC38A1CD20234897AB430</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94F24814264D76B71DB676AE</key>
+		<key>CD2B367A6ADAD06EE4F327DD0F8F1B6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3157A68FA226A7DEC362B03</key>
+		<key>D76832EDF407CFD1EED6728658BDADAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4EA1374B7B06C5F3A244E76</key>
+		<key>FC41A66297D4679069497E316F8E8F20</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -17,6 +17,7 @@
 @end
 
 PFUser *admin;
+PFUser *eventSelf;
 PFObject *currentEvent;
 NSMutableArray *newsArray;
 
@@ -30,11 +31,14 @@ NSMutableArray *newsArray;
     newsArray = [[NSMutableArray alloc] init];
     self.noNewsLabel.hidden = YES;
     self.newsTable.tableFooterView = [[UIView alloc] init];
+    if ([PFUser currentUser])
+    {
+        eventSelf = [PFUser currentUser];
+    }
     
     //styling
     [self.organizerButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
     self.timeLabel.textColor = [UIColor dark_primary];
-    
     self.backgroundView.backgroundColor = [UIColor clearColor];
     self.nameLabel.backgroundColor = [UIColor clearColor];
     self.timeLabel.backgroundColor = [UIColor clearColor];
@@ -69,7 +73,7 @@ NSMutableArray *newsArray;
 }
 
 - (IBAction)attendanceSwitchChanged:(UISwitch *)sender {
-    if (![PFUser currentUser])
+    if (!eventSelf)
     {
         [[[UIAlertView alloc] initWithTitle:@"You need a user account"
                                     message:@"Please log in first"
@@ -81,7 +85,14 @@ NSMutableArray *newsArray;
     else
     {
         NSLog(@"SWITCH:setting attendance to %@", self.attendanceSwitch.on ? @"YES" : @"NO");
-        [self changeAttendanceTo:self.attendanceSwitch.on];
+        if (self.attendanceSwitch.on)
+        {
+            [self attendEvent];
+        }
+        else
+        {
+            [self cancelEvent];
+        }
     }
 }
 
@@ -159,14 +170,13 @@ NSMutableArray *newsArray;
 
 - (void)setupAttendance  //determine initial position for the attendance switch
 {
-    if (![PFUser currentUser])  //set to no if not logged in
+    if (!eventSelf)  //set to no if not logged in
     {
         self.attendanceSwitch.on = NO;
     }
     else  //search the attendance array if logged in
     {
-        PFUser *user = [PFUser currentUser];
-        NSArray *attendance = user[@"attendance"];
+        NSArray *attendance = eventSelf[@"attendance"];
         int match = 0;
         for (PFObject *event in attendance)
         {
@@ -192,25 +202,60 @@ NSMutableArray *newsArray;
     }
 }
 
-- (void)changeAttendanceTo: (BOOL)attending  //change attendance status on backend
+- (void)attendEvent
 {
-    PFUser *user = [PFUser currentUser];
-    if (attending)
-    {
-        [user addObject:currentEvent forKey:@"attendance"];
-        [user saveInBackground];
-        [currentEvent addObject:user forKey:@"attendees"];
-        [currentEvent saveInBackground];
-        NSLog(@"Event attend set: %@", currentEvent.objectId);
-    }
-    else
-    {
-        [user removeObject:currentEvent forKey:@"attendance"];
-        [user saveInBackground];
-        [currentEvent removeObject:user forKey:@"attendees"];
-        [currentEvent saveInBackground];
-        NSLog(@"Event attend canceled: %@", currentEvent.objectId);
-    }
+    NSLog(@"Attending Event in progress...");
+    [eventSelf addObject:currentEvent forKey:@"attendance"];
+    [eventSelf saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded)
+        {
+            NSLog(@"DONE: Successfully saved user attendance add, doing the event add now:");
+            [currentEvent addObject:eventSelf forKey:@"attendees"];
+            [currentEvent saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded)
+                {
+                    NSLog(@"Successfully saved event attendance add");
+                }
+                else
+                {
+                    NSLog(@"Error saving event attendance add: %@", error);
+                }
+            }];
+        }
+        else
+        {
+            NSLog(@"DONE: Error saving user attendance add: %@", error);
+        }
+    }];
+}
+
+- (void)cancelEvent
+{
+    NSLog(@"Cancelling Event in progress...");
+    [eventSelf removeObject:currentEvent forKey:@"attendance"];
+    [eventSelf saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded)
+        {
+            NSLog(@"DONE: Successfully saved user attendance remove, doing the event remove now:");
+            [currentEvent removeObject:eventSelf forKey:@"attendees"];
+            [currentEvent saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded)
+                {
+                    NSLog(@"Successfully saved event attendance remove");
+                }
+                else
+                {
+                    NSLog(@"Error saving event attendance remove: %@", error);
+                }
+            }];
+        }
+        else
+        {
+            NSLog(@"DONE: Error saving user attendance remove: %@", error);
+        }
+    }];
 }
 
 @end
+
+
