@@ -109,4 +109,5 @@
     <color name="light_txt">#FFFFFF</color>
     <color name="dark_bg">#616161</color>
     <color name="dark_txt">#212121</color>
+    <color name="edittext_bgtint">#00000000</color>
 </resources>

@@ -3,14 +3,21 @@ package com.ashvale.cmmath_one;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+<<<<<<< HEAD
+=======
+import android.text.Editable;
+import android.text.TextWatcher;
+>>>>>>> origin/master
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.ashvale.cmmath_one.adapter.InviteeAdapter;
 import com.ashvale.cmmath_one.adapter.NewchatAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
@@ -19,6 +26,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -27,16 +35,49 @@ public class NewChatActivity extends AppCompatActivity {
     private int[] selectedPositions;
     public List<ParseUser> totalInvitees;
     public List<ParseUser> selectedInvitees;
+    public EditText searchinput;
+    public ImageButton dosearch;
+    public ArrayList<String> searcharray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_chat);
 
+
         Log.d("cm_app", "I AM : " + ParseUser.getCurrentUser().getObjectId());
         selectedInvitees = new ArrayList<>();
         //selectedInvitees.add(ParseUser.getCurrentUser());
         //selectedInvitees.add(ParseUser.getCurrentUser());
+
+        searchinput = (EditText)findViewById(R.id.searchinput);
+        dosearch = (ImageButton)findViewById(R.id.dosearch);
+        dosearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setSearchString();
+                getUserSearch(searcharray);
+            }
+        });
+        searchinput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if (s.length() == 0) {
+                    searcharray.clear();
+                    getUser();
+                }
+            }
+        });
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("chat_status", 1);
@@ -189,4 +230,80 @@ public class NewChatActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void setSearchString()
+    {
+        String raw_input = searchinput.getText().toString();
+        String lower_raw = raw_input.toLowerCase();
+        String [] split_string = lower_raw.split("\\s+");
+        searcharray = new ArrayList<String>(Arrays.asList(split_string));
+    }
+
+    public void getUser()
+    {
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("chat_status", 1);
+        query.whereNotEqualTo("debug_status", 1);
+        query.include("person");
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "user query result: " + objects.size());
+                    ParseUser selfUser = ParseUser.getCurrentUser();
+                    List<ParseUser> fullList = new ArrayList<>();
+                    for (ParseUser allUser : objects) {
+                        if (!(allUser.getObjectId().equals(selfUser.getObjectId())))
+                        {
+                            fullList.add(allUser);
+                        }
+                    }
+                    setAdapter(fullList);
+                } else {
+                    //error handling
+                    Log.d("cm_app", "user query error: " + e);
+                }
+            }
+        });
+    }
+
+    public void getUserSearch(List<String> searchArray)
+    {
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("chat_status", 1);
+        query.whereNotEqualTo("debug_status", 1);
+        query.include("person");
+        if (searchArray.size()>0)
+        {
+            query.whereContainsAll("words", searchArray);
+        }
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "user query result: " + objects.size());
+                    if(objects.size() == 0) {
+                        toast(getString(R.string.no_result));
+                    }
+                    ParseUser selfUser = ParseUser.getCurrentUser();
+                    List<ParseUser> fullList = new ArrayList<>();
+                    for (ParseUser allUser : objects) {
+                        if (!(allUser.getObjectId().equals(selfUser.getObjectId())))
+                        {
+                            fullList.add(allUser);
+                        }
+                    }
+                    setAdapter(fullList);
+                } else {
+                    //error handling
+                    Log.d("cm_app", "user query error: " + e);
+                }
+            }
+        });
+    }
+
+    public void toast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 }

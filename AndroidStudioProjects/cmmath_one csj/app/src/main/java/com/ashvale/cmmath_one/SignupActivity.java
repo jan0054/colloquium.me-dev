@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class SignupActivity extends Activity {
     private EditText mFirstname;
     private EditText mLastname;
     private EditText mInstitution;
+    private Button   btnSignup;
 
 
     @Override
@@ -33,6 +35,8 @@ public class SignupActivity extends Activity {
         mFirstname  = (EditText) findViewById(R.id.firstname);
         mLastname   = (EditText) findViewById(R.id.lastname);
         mInstitution= (EditText) findViewById(R.id.institution);
+        btnSignup   = (Button) findViewById(R.id.btn_signup);
+        btnSignup.setEnabled(true);
     }
 
     @Override
@@ -45,6 +49,7 @@ public class SignupActivity extends Activity {
     }
 
     public void signup(View view) {
+        btnSignup.setEnabled(false);
         String username     = mUsername.getText().toString();
         String password     = mPassword.getText().toString();
         String email        = mUsername.getText().toString();
@@ -53,6 +58,7 @@ public class SignupActivity extends Activity {
         String institution  = mInstitution.getText().toString();
         if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
             toast("Please fill in all fields");
+            btnSignup.setEnabled(true);
             return;
         }
 
@@ -78,7 +84,7 @@ public class SignupActivity extends Activity {
                     toPreferencePage();
                     //toMainPage();
                 } else {
-                    Log.d("cm_app", "Sign Up: " + "failed"+e.getMessage());
+                    Log.d("cm_app", "Sign Up: " + "failed" + e.getMessage());
                     onSignupFailed(e.getCode(), e.getMessage());
                 }
             }
@@ -88,6 +94,7 @@ public class SignupActivity extends Activity {
 
     private void onSignupFailed(int code, String msg) {
         toast("Error (" + code + "): " + msg + "!");
+        btnSignup.setEnabled(true);
     }
 
     public void toLoginPage(View view) {

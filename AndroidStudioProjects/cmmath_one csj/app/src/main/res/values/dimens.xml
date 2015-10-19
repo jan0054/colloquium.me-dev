@@ -19,6 +19,7 @@
     <dimen name="listicon_padding">6dp</dimen>
     <dimen name="listitem_margin">6dp</dimen>
     <dimen name="listitem_bottom">3dp</dimen>
+    <dimen name="listitembg_right">5dp</dimen>
     <dimen name="listitembg_bottom">2dp</dimen>
     <dimen name="corner_size">2dp</dimen>
 

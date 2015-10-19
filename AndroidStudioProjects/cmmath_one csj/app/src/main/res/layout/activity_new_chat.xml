@@ -4,10 +4,40 @@
                 android:background="@color/background"
                 tools:context="com.ashvale.cmmath_one.ChatOptionsActivity">
 
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/list_item">
+        <EditText
+            android:id="@+id/searchinput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:layout_marginLeft="@dimen/list_margin"
+            android:singleLine="true"
+            android:hint="@string/hint_search"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@null"
+            android:backgroundTint="@color/edittext_bgtint"
+            android:textColor="@color/accent_color"/>
+        <ImageButton
+            android:id="@+id/dosearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/search"
+            android:tint="@color/dark_accent"
+            android:background="#00000000" />
+    </LinearLayout>
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:id="@+id/newchatListView"
+        android:layout_below="@+id/search_bar"
         android:background="@color/background"
         android:divider="@color/divider_color"
         android:dividerHeight="0dp"/>
