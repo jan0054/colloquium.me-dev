@@ -13,14 +13,19 @@
             android:layout_height="match_parent"
             tools:context="com.ashvale.cmmath_one.CareerActivity">
 
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/pulltorefresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/careerListView"
-                android:background="@color/background"
-                android:divider="@color/divider_color"
-                android:dividerHeight="0dp"/>
+                <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/careerListView"
+                    android:background="@color/background"
+                    android:divider="@color/divider_color"
+                    android:dividerHeight="0dp"/>
+            </android.support.v4.widget.SwipeRefreshLayout>
         </RelativeLayout>
     </FrameLayout>
 

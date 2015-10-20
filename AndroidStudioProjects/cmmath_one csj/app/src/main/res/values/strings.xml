@@ -119,6 +119,9 @@
     <string name="about_detail">Learn about the developers of this add</string>
     <string name="userpref_title">User Preferences</string>
     <string name="userpref_detail">Setup or change user info and social options</string>
+    <string name="pull_to_refresh">Pull to refresh....</string>
+    <string name="release_to_refresh">Release to refresh.</string>
+    <string name="refreshing">Refreshing........</string>
 
     <!-- PROGRAM SWITCH -->
     <string name="switch_talk">Talks</string>

@@ -5,13 +5,19 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context="com.ashvale.cmmath_one.fragments.TimelineFragment">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:id="@+id/timelineListView"
-        android:background="@color/background"
-        android:divider="@color/divider_color"
-        android:dividerHeight="0dp"/>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/pulltorefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/timelineListView"
+            android:background="@color/background"
+            android:divider="@color/divider_color"
+            android:dividerHeight="0dp"
+            android:layout_gravity="center_horizontal|top"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/newpost_fab"

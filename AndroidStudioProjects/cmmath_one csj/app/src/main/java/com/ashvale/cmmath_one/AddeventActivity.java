@@ -1,6 +1,7 @@
 package com.ashvale.cmmath_one;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,12 +28,30 @@ public class AddeventActivity extends BaseActivity {
     private int[] selectedPositions;
     private SharedPreferences savedEvents;
     private AddEventAdapter adapter;
+    SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addevent);
             super.onCreateDrawer();
+
+        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.pulltorefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ParseQuery query = new ParseQuery("Event");
+                query.orderByDescending("start_time");
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> list, ParseException e) {
+                        setAdapter(list);
+                        swipeRefresh.setRefreshing(false);
+                    }
+                });
+
+            }
+        });
 
         selectedEventIds = new ArrayList<String>();
         selectedEventNames = new ArrayList<String>();
@@ -43,6 +62,7 @@ public class AddeventActivity extends BaseActivity {
             @Override
             public void done(List<ParseObject> list, ParseException e) {
                 setAdapter(list);
+                swipeRefresh.setRefreshing(false);
             }
         });
     }

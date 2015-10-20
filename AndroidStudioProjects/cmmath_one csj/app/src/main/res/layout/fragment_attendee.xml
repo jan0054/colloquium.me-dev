@@ -35,13 +35,18 @@
                 android:src="@drawable/search"
                 android:background="#00000000" />
         </LinearLayout>
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/search_bar"
-            android:id="@+id/attendeeListView"
-            android:divider="@color/divider_color"
-            android:dividerHeight="0dp"/>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/pulltorefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/search_bar"
+                android:id="@+id/attendeeListView"
+                android:divider="@color/divider_color"
+                android:dividerHeight="0dp"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
     </RelativeLayout>
 
 </FrameLayout>

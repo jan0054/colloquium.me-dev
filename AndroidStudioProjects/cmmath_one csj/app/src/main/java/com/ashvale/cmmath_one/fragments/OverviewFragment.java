@@ -56,7 +56,7 @@ public class OverviewFragment extends BaseFragment {
     private BroadcastReceiver receiver = null;
     private SharedPreferences savedEvents;
     private AnnounceAdapter adapter;
-    public Switch attendEventswitch;
+    public android.support.v7.widget.SwitchCompat attendEventswitch;
     public int attendEvent_on;
     List<ParseObject> eventAttending;
     ParseObject currenteventObject;
@@ -134,7 +134,7 @@ public class OverviewFragment extends BaseFragment {
         dateLabel = (TextView) getView().findViewById(R.id.overview_date);
         organizerLabel = (TextView) getView().findViewById(R.id.overview_organizer);
         contentLabel = (TextView) getView().findViewById(R.id.overview_content);
-        attendEventswitch = (Switch) getView().findViewById(R.id.attend_switch);
+        attendEventswitch = (android.support.v7.widget.SwitchCompat) getView().findViewById(R.id.attend_switch);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
         query.include("admin");
@@ -228,6 +228,10 @@ public class OverviewFragment extends BaseFragment {
                                         eventAttending.add(currenteventObject);
                                         curuser.put("attendance", eventAttending);
                                         curuser.saveInBackground();
+                                        List<ParseObject> userAttending = currenteventObject.getList("attendees");
+                                        userAttending.add(curuser);
+                                        currenteventObject.put("attendees", userAttending);
+                                        currenteventObject.saveInBackground();
                                     }
                                     attendEvent_on = 1;
                                 } else if (!isChecked) {
@@ -235,6 +239,8 @@ public class OverviewFragment extends BaseFragment {
                                     if (attendEvent_on == 1) {
                                         curuser.removeAll("attendance", Arrays.asList(currenteventObject));
                                         curuser.saveInBackground();
+                                        currenteventObject.removeAll("attendees", Arrays.asList(curuser));
+                                        currenteventObject.saveInBackground();
                                     }
                                     attendEvent_on = 0;
                                 }

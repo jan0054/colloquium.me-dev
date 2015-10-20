@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,8 @@ public class VenueFragment extends BaseFragment {
     private IntentFilter			filter	 = null;
     private BroadcastReceiver 		receiver = null;
     private SharedPreferences       savedEvents;
+    public  List<ParseObject> venueObjList;
+    SwipeRefreshLayout swipeRefresh;
     ListView venueList;
 
     // TODO: Rename and change types of parameters
@@ -83,7 +86,15 @@ public class VenueFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_venue, container, false);
+        View view = inflater.inflate(R.layout.fragment_venue, container, false);
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.pulltorefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadVenue();
+            }
+        });
+        return view;
     }
 
     @Override
@@ -132,7 +143,9 @@ public class VenueFragment extends BaseFragment {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     Log.d("cm_app", "venue query result: " + objects.size());
+                    venueObjList = objects;
                     setAdapter(objects);
+                    swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "venue query error: " + e);
                 }

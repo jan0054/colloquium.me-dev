@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -49,6 +50,7 @@ public class ProgramFragment extends BaseFragment {
     public ArrayList<String> searcharray;
     public String currentId;
     public ParseObject event;
+    SwipeRefreshLayout swipeRefresh;
     ListView talkList;
 
     // TODO: Rename and change types of parameters
@@ -135,6 +137,13 @@ public class ProgramFragment extends BaseFragment {
                 }
             }
         });
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.pulltorefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadProgram();
+            }
+        });
         return view;
     }
 
@@ -188,6 +197,7 @@ public class ProgramFragment extends BaseFragment {
                     Log.d("cm_app", "program query result: " + objects.size());
                     talkObjList = objects;
                     setAdapter(objects);
+                    swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
                 }
@@ -229,7 +239,9 @@ public class ProgramFragment extends BaseFragment {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     Log.d("cm_app", "program query result: "+ objects.size());
+                    talkObjList = objects;
                     setAdapter(objects);
+                    swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
                 }
@@ -266,8 +278,10 @@ public class ProgramFragment extends BaseFragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
-                    Log.d("cm_app", "program query result: "+ objects.size());
+                    Log.d("cm_app", "program query result: " + objects.size());
+                    talkObjList = objects;
                     setAdapter(objects);
+                    swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
                 }

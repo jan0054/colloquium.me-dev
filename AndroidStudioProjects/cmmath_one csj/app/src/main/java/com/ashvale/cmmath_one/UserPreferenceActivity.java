@@ -28,9 +28,9 @@ public class UserPreferenceActivity extends AppCompatActivity {
     public String pref_linkstr;
     public ParseObject selfperson;
 
-    public Switch pref_emailswitch;
-    public Switch pref_eventswitch;
-    public Switch pref_chatswitch;
+    public android.support.v7.widget.SwitchCompat pref_emailswitch;
+    public android.support.v7.widget.SwitchCompat pref_eventswitch;
+    public android.support.v7.widget.SwitchCompat pref_chatswitch;
     public EditText pref_fnameinput;
     public EditText pref_lnameinput;
     public EditText pref_instinput;
@@ -42,9 +42,9 @@ public class UserPreferenceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_preference);
 
         //default disable stuff
-        pref_emailswitch = (Switch) findViewById(R.id.pref_emailswitch);
-        pref_eventswitch = (Switch) findViewById(R.id.pref_eventswitch);
-        pref_chatswitch = (Switch) findViewById(R.id.pref_chatswitch);
+        pref_emailswitch = (android.support.v7.widget.SwitchCompat) findViewById(R.id.pref_emailswitch);
+        pref_eventswitch = (android.support.v7.widget.SwitchCompat) findViewById(R.id.pref_eventswitch);
+        pref_chatswitch = (android.support.v7.widget.SwitchCompat) findViewById(R.id.pref_chatswitch);
         pref_fnameinput = (EditText) findViewById(R.id.pref_fnameinput);
         pref_lnameinput = (EditText) findViewById(R.id.pref_lnameinput);
         pref_instinput = (EditText) findViewById(R.id.pref_instinput);

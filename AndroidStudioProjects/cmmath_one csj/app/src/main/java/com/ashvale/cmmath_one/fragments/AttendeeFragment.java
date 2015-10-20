@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -46,6 +47,7 @@ public class AttendeeFragment extends BaseFragment{
     public ArrayList<String> searcharray;
     public String currentId;
     public ParseObject event;
+    SwipeRefreshLayout swipeRefresh;
     ListView attendeeList;
 
     // TODO: Rename and change types of parameters
@@ -133,6 +135,13 @@ public class AttendeeFragment extends BaseFragment{
                 }
             }
         });
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.pulltorefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadAttendee();
+            }
+        });
         return view;
     }
 
@@ -178,6 +187,7 @@ public class AttendeeFragment extends BaseFragment{
                     Log.d("cm_app", "attendee query result: " + objects.size());
                     personObjList = objects;
                     setAdapter(objects);
+                    swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "attendee query error: " + e);
                 }

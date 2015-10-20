@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ import java.util.List;
 
 public class CareerActivity extends BaseActivity
 {
+    SwipeRefreshLayout swipeRefresh;
     public  List<ParseObject> careerObjList;
 
     @Override
@@ -32,6 +34,28 @@ public class CareerActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_career);
         super.onCreateDrawer();
+
+        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.pulltorefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Career");
+                query.orderByDescending("createdAt");
+                query.include("author");
+                query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                        if (e == null) {
+                            careerObjList = objects;
+                            setAdapter(objects);
+                            swipeRefresh.setRefreshing(false);
+                        } else {
+                            Log.d("cm_app", "career query error: " + e);
+                        }
+                    }
+                });
+            }
+        });
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Career");
         query.orderByDescending("createdAt");
@@ -42,6 +66,7 @@ public class CareerActivity extends BaseActivity
                 if (e == null) {
                     careerObjList = objects;
                     setAdapter(objects);
+                    swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "career query error: "+e);
                 }

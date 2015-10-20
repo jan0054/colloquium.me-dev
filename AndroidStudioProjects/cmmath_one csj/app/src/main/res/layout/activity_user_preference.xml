@@ -14,7 +14,7 @@
         android:text="@string/emaillabel"
         android:textColor="@color/primary_text"
         android:textSize="16sp" />
-    <Switch
+    <android.support.v7.widget.SwitchCompat
         android:id="@+id/pref_emailswitch"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/listheight_setup"
@@ -40,7 +40,7 @@
         android:text="@string/eventlabel"
         android:textColor="@color/primary_text"
         android:textSize="16sp"/>
-    <Switch
+    <android.support.v7.widget.SwitchCompat
         android:id="@+id/pref_eventswitch"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/listheight_setup"
@@ -68,7 +68,7 @@
         android:layout_gravity="center_vertical"
         android:textColor="@color/primary_text"
         android:textSize="16sp" />
-    <Switch
+    <android.support.v7.widget.SwitchCompat
         android:id="@+id/pref_chatswitch"
         android:layout_height="@dimen/listheight_setup"
         android:layout_width="wrap_content"
