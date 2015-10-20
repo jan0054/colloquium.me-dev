@@ -3,11 +3,8 @@ package com.ashvale.cmmath_one;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-<<<<<<< HEAD
-=======
 import android.text.Editable;
 import android.text.TextWatcher;
->>>>>>> origin/master
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;

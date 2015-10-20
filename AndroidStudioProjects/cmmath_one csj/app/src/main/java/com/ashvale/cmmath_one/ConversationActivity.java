@@ -3,6 +3,7 @@ package com.ashvale.cmmath_one;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ import java.util.List;
 
 
 public class ConversationActivity extends BaseActivity {
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,33 @@ public class ConversationActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ConversationActivity.this, NewChatActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.conversation_refresh);
+        swipeRefreshLayout.setColorSchemeColors(R.color.dark_accent);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //refresh things here
+                ParseUser selfUser = ParseUser.getCurrentUser();
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Conversation");
+                query.whereEqualTo("participants", selfUser);
+                query.include("participants");
+                query.orderByDescending("updatedAt");
+                query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                        if (e == null) {
+                            Log.d("cm_app", "conversation query results: "+objects.size());
+                            setAdapter(objects);
+                            swipeRefreshLayout.setRefreshing(false);
+                        } else {
+                            Log.d("cm_app", "conversation query error: "+e);
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
+                    }
+                });
             }
         });
 
