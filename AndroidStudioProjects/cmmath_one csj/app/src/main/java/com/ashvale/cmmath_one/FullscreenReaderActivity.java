@@ -1,12 +1,20 @@
 package com.ashvale.cmmath_one;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -31,9 +39,15 @@ public class FullscreenReaderActivity extends AppCompatActivity {
      */
     private static final int UI_ANIMATION_DELAY = 300;
 
-    private View mContentView;
+    private TextView mContentView;
     private View mControlsView;
+    private View backgroundFrame;
+    private View controlBar;
     private boolean mVisible;
+    public String contentString;
+    public Button colorToggleButton;
+    public int colorMode;   // 0(default) = black text on white background, 1= white text on black background
+    private SharedPreferences savedColorMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +57,9 @@ public class FullscreenReaderActivity extends AppCompatActivity {
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
-        mContentView = findViewById(R.id.fullscreen_content);
-
+        mContentView = (TextView) findViewById(R.id.fullscreen_textview);
+        backgroundFrame = findViewById(R.id.fullscreen_parent);
+        controlBar = findViewById(R.id.fullscreen_content_controls);
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +72,36 @@ public class FullscreenReaderActivity extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.color_toggle_button).setOnTouchListener(mDelayHideTouchListener);
+
+        contentString = this.getIntent().getExtras().getString("content");
+        mContentView.setText(contentString);
+
+        savedColorMode = getSharedPreferences("COLORMODE", 0);
+        colorMode = savedColorMode.getInt("readercolormode", 0);
+        if (colorMode == 1)
+        {
+            mContentView.setTextColor(getResources().getColor(R.color.white));
+            mContentView.setBackgroundColor(getResources().getColor(R.color.black));
+            backgroundFrame.setBackgroundColor(getResources().getColor(R.color.black));
+            controlBar.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+        }
+        else if (colorMode == 0)
+        {
+            mContentView.setTextColor(getResources().getColor(R.color.black));
+            mContentView.setBackgroundColor(getResources().getColor(R.color.white));
+            backgroundFrame.setBackgroundColor(getResources().getColor(R.color.white));
+            controlBar.setBackgroundColor(getResources().getColor(R.color.black_overlay));
+        }
+
+        colorToggleButton = (Button) findViewById(R.id.color_toggle_button);
+        colorToggleButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleColorMode();
+            }
+        });
+
     }
 
     @Override
@@ -91,6 +135,28 @@ public class FullscreenReaderActivity extends AppCompatActivity {
         } else {
             show();
         }
+    }
+
+    public void toggleColorMode() {
+        if (colorMode == 0)
+        {
+            mContentView.setTextColor(getResources().getColor(R.color.white));
+            mContentView.setBackgroundColor(getResources().getColor(R.color.black));
+            backgroundFrame.setBackgroundColor(getResources().getColor(R.color.black));
+            controlBar.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+            colorMode = 1;
+        }
+        else if (colorMode == 1)
+        {
+            mContentView.setTextColor(getResources().getColor(R.color.black));
+            mContentView.setBackgroundColor(getResources().getColor(R.color.white));
+            backgroundFrame.setBackgroundColor(getResources().getColor(R.color.white));
+            controlBar.setBackgroundColor(getResources().getColor(R.color.black_overlay));
+            colorMode = 0;
+        }
+        SharedPreferences.Editor editor = savedColorMode.edit();
+        editor.putInt("readercolormode", colorMode);
+        editor.commit();
     }
 
     private void hide() {
@@ -164,5 +230,20 @@ public class FullscreenReaderActivity extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

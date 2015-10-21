@@ -200,7 +200,8 @@
             android:name=".FullscreenReaderActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen_reader"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/FullscreenTheme"
+            android:parentActivityName=".TalkDetailActivity">
         </activity>
     </application>
 

@@ -221,8 +221,7 @@
     <string name="privacy_url">http://colloquium.me/?page_id=3348</string>
     <string name="aboutus_url">http://colloquium.me</string>
 
-    <string name="title_activity_fullscreen_reader">Reader</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_fullscreen_reader">Reading Mode</string>
+    <string name="fullscreen_button">Toggle Color</string>
 
 </resources>

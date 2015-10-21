@@ -82,7 +82,6 @@
         android:padding="0dp"
         android:text="@string/description_fake"
         android:textColor="@color/dark_primary"
-        android:scrollbars = "vertical"
         android:textSize="16sp" />
 
     <Button
