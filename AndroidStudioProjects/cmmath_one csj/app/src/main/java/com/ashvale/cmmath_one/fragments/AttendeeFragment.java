@@ -83,7 +83,6 @@ public class AttendeeFragment extends BaseFragment{
     public void setAdapter(final List results)
     {
         AttendeeAdapter adapter = new AttendeeAdapter(getActivity(), results);
-        attendeeList = (ListView)getActivity().findViewById(R.id.attendeeListView);
         attendeeList.setAdapter(adapter);
 
         attendeeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -169,6 +168,7 @@ public class AttendeeFragment extends BaseFragment{
     }
 
     public void loadAttendee() {
+        attendeeList = (ListView)getActivity().findViewById(R.id.attendeeListView);
         searcharray = new ArrayList<String>();
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         currentId = savedEvents.getString("currenteventid", "");

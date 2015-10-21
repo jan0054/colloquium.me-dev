@@ -61,6 +61,8 @@ public class OverviewFragment extends BaseFragment {
     List<ParseObject> eventAttending;
     ParseObject currenteventObject;
     String contactMail;
+    TextView emptyText;
+    ListView announceList;
     TextView nameLabel;
     TextView dateLabel;
     TextView organizerLabel;
@@ -100,7 +102,10 @@ public class OverviewFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_overview, container, false);
+        View view = inflater.inflate(R.layout.fragment_overview, container, false);
+        emptyText = (TextView)view.findViewById(R.id.announceempty);
+        announceList = (ListView) view.findViewById(R.id.announceListView);
+        return view;
     }
 
     @Override
@@ -263,11 +268,9 @@ public class OverviewFragment extends BaseFragment {
                             if (e == null) {
                                 if(objects.size()!=0) {
                                     setAdapter(objects);
-                                    TextView emptyText = (TextView)getView().findViewById(R.id.announceempty);
                                     emptyText.setVisibility(View.INVISIBLE);
                                 }
                                 else {
-                                    ListView announceList = (ListView) getView().findViewById(R.id.announceListView);
                                     announceList.setVisibility(View.INVISIBLE);
                                 }
                             } else {
@@ -313,7 +316,6 @@ public class OverviewFragment extends BaseFragment {
     public void setAdapter(final List results)
     {
         AnnounceAdapter adapter = new AnnounceAdapter(getActivity(), results);
-        ListView announceList = (ListView)getActivity().findViewById(R.id.announceListView);
         announceList.setAdapter(adapter);
     }
 

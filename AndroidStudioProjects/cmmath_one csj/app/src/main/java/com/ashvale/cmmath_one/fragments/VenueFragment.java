@@ -78,7 +78,6 @@ public class VenueFragment extends BaseFragment {
     public void setAdapter(final List results)
     {
         VenueAdapter adapter = new VenueAdapter(getActivity(), results);
-        venueList = (ListView)getActivity().findViewById(R.id.venueListView);
         venueList.setAdapter(adapter);
     }
 
@@ -129,6 +128,7 @@ public class VenueFragment extends BaseFragment {
     }
 
     public void loadVenue() {
+        venueList = (ListView)getActivity().findViewById(R.id.venueListView);
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         String currentId = savedEvents.getString("currenteventid", "");
 

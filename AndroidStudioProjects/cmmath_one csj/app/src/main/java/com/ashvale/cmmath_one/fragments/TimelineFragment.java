@@ -72,7 +72,6 @@ public class TimelineFragment extends BaseFragment {
     public void setAdapter(final List results)
     {
         TimelineAdapter adapter = new TimelineAdapter(getActivity(), results);
-        postList = (ListView)getActivity().findViewById(R.id.timelineListView);
         postList.setAdapter(adapter);
 
         postList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -127,6 +126,7 @@ public class TimelineFragment extends BaseFragment {
     }
 
     public void loadTimeline() {
+        postList = (ListView)getActivity().findViewById(R.id.timelineListView);
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         String currentId = savedEvents.getString("currenteventid", "");
 
