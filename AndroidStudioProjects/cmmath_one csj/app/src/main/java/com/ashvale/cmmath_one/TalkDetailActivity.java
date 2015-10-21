@@ -65,6 +65,12 @@ public class TalkDetailActivity extends AppCompatActivity{
                     Button calendarBtn = (Button) findViewById(R.id.talk_calendarbtn);
 
                     contentLabel.setMovementMethod(new ScrollingMovementMethod());
+                    contentLabel.setOnClickListener(new TextView.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            toFullScreenReader();
+                        }
+                    });
 
                     sessionLabel.setText(talkObject.getParseObject("session").getString("name"));
                     nameLabel.setText(talkObject.getString("name"));
@@ -140,6 +146,12 @@ public class TalkDetailActivity extends AppCompatActivity{
 
     public void toast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void toFullScreenReader() {
+        Intent intent = new Intent(this, FullscreenReaderActivity.class);
+        intent.putExtra("content", getContent(talkObject));
+        startActivity(intent);
     }
 
     public void toAuthor() {

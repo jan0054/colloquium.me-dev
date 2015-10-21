@@ -20,12 +20,12 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.ashvale.cmmath_one.permission.C2D_MESSAGE" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -87,12 +87,12 @@
         <activity
             android:name=".SignupActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" >
         </activity>
         <activity
             android:name=".UserPreferenceActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" >
         </activity>
         <activity
             android:name=".HomeActivity"
@@ -104,7 +104,7 @@
         </activity>
         <activity
             android:name=".EventWrapperActivity"
-            android:label="@string/title_activity_event_wrapper">
+            android:label="@string/title_activity_event_wrapper" >
         </activity>
         <activity
             android:name=".CareerDetailActivity"
@@ -115,7 +115,7 @@
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
             android:parentActivityName=".ConversationActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|adjustResize" >
         </activity>
         <activity
             android:name=".ChatOptionsActivity"
@@ -156,7 +156,7 @@
         <activity
             android:name=".NewChatActivity"
             android:label="@string/title_activity_newchat"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|adjustResize" >
         </activity>
         <activity
             android:name=".NewPostActivity"
@@ -165,6 +165,7 @@
         </activity>
 
         <service android:name="com.parse.PushService" />
+
         <receiver android:name="com.parse.ParseBroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -182,7 +183,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.ashvale.cmmath_one.ChatReceiver"
+            android:name=".ChatReceiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -195,6 +196,12 @@
             android:name="com.parse.push.notification_icon"
             android:resource="@drawable/ic_stat_name" />
 
+        <activity
+            android:name=".FullscreenReaderActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen_reader"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>
