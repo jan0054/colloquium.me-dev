@@ -86,7 +86,6 @@ public class ProgramFragment extends BaseFragment {
     public void setAdapter(final List results)
     {
         ProgramAdapter adapter = new ProgramAdapter(getActivity(), results);
-        talkList = (ListView)getActivity().findViewById(R.id.programListView);
         talkList.setAdapter(adapter);
 
         talkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -173,6 +172,7 @@ public class ProgramFragment extends BaseFragment {
     }
 
     public void loadProgram() {
+        talkList = (ListView)getActivity().findViewById(R.id.programListView);
         searcharray = new ArrayList<String>();
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         currentId = savedEvents.getString("currenteventid", "");
