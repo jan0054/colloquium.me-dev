@@ -24,7 +24,7 @@
     <string name="title_activity_people_detail">People Details</string>
     <string name="title_activity_newchat">Invite Participants</string>
     <string name="title_activity_new_post">New Post</string>
-    <string name="title_activity_fullscreen_reader">Reading Mode</string>
+    <string name="title_activity_fullscreen_reader">Reader</string>
 
     <string name="title_activity_first">FirstActivity</string>
     <string name="title_activity_second">SecondActivity</string>
@@ -52,7 +52,7 @@
 
     <!-- LABELS GENERAL -->
     <string name="empty"></string>
-    <string name="login">Log in</string>
+    <string name="login">Log In</string>
     <string name="cancel">Cancel</string>
     <string name="back">Back</string>
     <string name="signup_reminder">Don\'t have an account yet?</string>
@@ -126,7 +126,6 @@
     <string name="positiontype">Position Type</string>
     <string name="openbrowser">Open in browser</string>
     <string name="attending">I am attending this event: </string>
-    <string name="fullscreen_button">Toggle Color</string>
 
     <!-- DETAILS (FAKE DATA) -->
     <string name="name_fake">NAME</string>

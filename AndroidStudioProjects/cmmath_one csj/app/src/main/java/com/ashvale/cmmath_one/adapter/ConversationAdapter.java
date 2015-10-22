@@ -84,7 +84,7 @@ public class ConversationAdapter extends BaseAdapter {
         }
 
         Date lastdate = conversation.getDate("last_time");
-        Format convdateformatter = new SimpleDateFormat("MM-dd HH:mm");
+        Format convdateformatter = new SimpleDateFormat("MM/dd HH:mm");
 
         String timestr = convdateformatter.format(lastdate);
         String msgstr = conversation.getString("last_msg");

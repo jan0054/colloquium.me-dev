@@ -41,12 +41,12 @@ public class SettingAdapter extends BaseAdapter {
     @Override
     public Object getItem(int position)
     {
-        String[] userIn = {"Signed in as XXX", "Sign out to switch users", "Sign Out"};
-        String[] userOut = {"Not signed in yet", "Sign in to access social features", "Sign In"};
-        String[] feedback = {"App Feedback", "Email us with app questions or feedback"};
-        String[] privacy = {"Privacy & Terms", "Info on how we protect and secure your data"};
-        String[] about = {"About Us", "Learn about the developers of this app"};
-        String[] preference = {"User Preference", "Setup or change user info and social options"};
+        String[] userIn = {context.getString(R.string.signup_as), context.getString(R.string.sign_detail_yes), context.getString(R.string.signout)};
+        String[] userOut = {context.getString(R.string.sign_title), context.getString(R.string.sign_detail_not), context.getString(R.string.signup)};
+        String[] feedback = {context.getString(R.string.feedback_title), context.getString(R.string.feedback_detail)};
+        String[] privacy = {context.getString(R.string.priv_title), context.getString(R.string.priv_detail)};
+        String[] about = {context.getString(R.string.about_title), context.getString(R.string.about_detail)};
+        String[] preference = {context.getString(R.string.userpref_title), context.getString(R.string.userpref_detail)};
         String[] returnobject = {""};
         switch (position)
         {
@@ -117,8 +117,8 @@ public class SettingAdapter extends BaseAdapter {
 
         String[] primary = context.getResources().getStringArray(R.array.setting_primary_label_array);
         String[] secondary = context.getResources().getStringArray(R.array.setting_secondary_label_array);
-        String[] userIn = {"Signed in as ", "Sign out to switch users", "Sign Out"};
-        String[] userOut = {"Not signed in yet", "Sign in to access social features", "Sign In"};
+        String[] userIn = {context.getString(R.string.signup_as)+" ", context.getString(R.string.sign_detail_yes), context.getString(R.string.signout)};
+        String[] userOut = {context.getString(R.string.sign_title), context.getString(R.string.sign_detail_not), context.getString(R.string.signup)};
 
         if (position != 0)
         {

@@ -61,7 +61,7 @@
         android:layout_marginRight="@dimen/list_padding"
         android:layout_alignParentRight="true"
         android:gravity="right"
-        android:text="@string/e_mail"
+        android:text="@string/send_email"
         android:textColor="@color/dark_accent"
         android:textSize="14sp"/>
 

@@ -64,7 +64,7 @@ public class HomeAdapter extends BaseAdapter {
 
         Date startdate = event.getDate("start_time");
         Date enddate = event.getDate("end_time");
-        Format dateformatter = new SimpleDateFormat("MM-dd");
+        Format dateformatter = new SimpleDateFormat("MM/dd");
         String startstr = dateformatter.format(startdate);
         String endstr = dateformatter.format(enddate);
         String contentstr = event.getString("content");

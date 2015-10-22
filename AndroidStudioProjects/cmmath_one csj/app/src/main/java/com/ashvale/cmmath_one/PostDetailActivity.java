@@ -47,7 +47,7 @@ public class PostDetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
 
-        sdf = new SimpleDateFormat("MM-dd hh:mm a", Locale.getDefault());
+        sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         postID = this.getIntent().getExtras().getString("postID");

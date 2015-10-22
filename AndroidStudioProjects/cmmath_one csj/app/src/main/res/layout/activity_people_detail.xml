@@ -41,7 +41,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="@string/e_mail"
+                android:text="@string/send_email"
                 android:textColor="@color/dark_accent"
                 android:textSize="14sp"
                 style="?android:attr/borderlessButtonStyle"/>

@@ -66,7 +66,7 @@ public class CommentAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.listitem_comment, vg, false);
         }
 
-        sdf = new SimpleDateFormat("MM-dd hh:mm a", Locale.getDefault());
+        sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         ParseObject comment = (ParseObject) comments.get(position);

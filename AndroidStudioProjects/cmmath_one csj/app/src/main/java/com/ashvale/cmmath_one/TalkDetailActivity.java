@@ -40,7 +40,7 @@ public class TalkDetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_detail);
 
-        sdf = new SimpleDateFormat("MM-dd hh:mm a", Locale.getDefault());
+        sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         talkID = this.getIntent().getExtras().getString("talkID");
@@ -182,9 +182,9 @@ public class TalkDetailActivity extends AppCompatActivity{
 
     public void toCalendar() {
         Calendar beginTime = Calendar.getInstance();
-        beginTime.set(2015, 0, 15, 10, 00);
+        beginTime.setTime(talkObject.getDate("start_time"));
         Calendar endTime = Calendar.getInstance();
-        endTime.set(2015, 0, 15, 11, 30);
+        endTime.setTime(talkObject.getDate("end_time"));
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())

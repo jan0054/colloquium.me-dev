@@ -81,7 +81,7 @@ public class ChatAdapter extends BaseAdapter {
         ParseUser currentUser = ParseUser.getCurrentUser();
         ParseUser author = chatObject.getParseUser("author");
         Date date = chatObject.getCreatedAt();
-        Format formatter = new SimpleDateFormat("MM-dd HH:mm");
+        Format formatter = new SimpleDateFormat("MM/dd HH:mm");
         String datestr = formatter.format(date);
         String msgstr = chatObject.getString("content");
         String authorstr = author.getString("first_name")+" "+author.getString("last_name");

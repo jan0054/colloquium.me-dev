@@ -72,7 +72,7 @@ public class TimelineAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.listitem_timeline, vg, false);
         }
 
-        sdf = new SimpleDateFormat("MM-dd hh:mm a", Locale.getDefault());
+        sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         ParseObject post = (ParseObject)posts.get(position);
