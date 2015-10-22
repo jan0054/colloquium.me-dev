@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -162,8 +163,12 @@ public class VenueFragment extends BaseFragment {
     }
 
     private void getSite(String url) {
-        Intent ie = new Intent(Intent.ACTION_VIEW,Uri.parse(url));
-        startActivity(ie);
+        if(url != null && URLUtil.isValidUrl(url)==true) {
+            Intent ie = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(ie);
+        } else {
+            toast(this.getString(R.string.error_no_web));
+        }
     }
 
     private void getMap(double lat, double lng) {

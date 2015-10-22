@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -231,8 +232,12 @@ public class PeopleDetailActivity extends AppCompatActivity {
     }
 
     private void getSite(String url) {
-        Intent ie = new Intent(Intent.ACTION_VIEW,Uri.parse(url));
-        startActivity(ie);
+        if(url != null && URLUtil.isValidUrl(url)==true) {
+            Intent ie = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(ie);
+        } else {
+            toast(this.getString(R.string.error_no_web));
+        }
     }
 
     public void processConversation (final ParseUser theguy)
