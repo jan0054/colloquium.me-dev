@@ -36,7 +36,6 @@ import java.util.Set;
 public class BaseActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
-    private String[] drawerArray;
     public ListView drawerListView;
     public String mActivityTitle;
     private SharedPreferences savedEvents;
@@ -51,7 +50,6 @@ public class BaseActivity extends AppCompatActivity {
         mActivityTitle = getTitle().toString();
         context = this;
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerArray = getResources().getStringArray(R.array.drawer_array);
         drawerListView = (ListView) findViewById(R.id.left_drawer);
 
         setDrawer();
