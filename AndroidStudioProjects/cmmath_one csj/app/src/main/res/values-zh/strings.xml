@@ -171,6 +171,7 @@
 
     <!-- ERROR - SETTINGS -->
     <string name="error_not_login">Please log in first.</string>
+    <string name="error_no_web">There is no webpage.</string>
 
     <!-- ERROR - NETWORK -->
     <string name="dialog_network_error_content">No internet connection. Please check your network settings</string>
