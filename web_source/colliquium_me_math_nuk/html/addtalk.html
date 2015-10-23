@@ -19,9 +19,9 @@
 		talk_name.focus();
 		return false;
 	}
-  	if(talk_description.value==""){
-		alert(STR_description+AL_empty);
-		talk_description.focus();
+  	if(talk_content.value==""){
+		alert(STR_content+AL_empty);
+		talk_content.focus();
 		return false;
 	}
   	if(talk_author.value==""){
@@ -39,7 +39,7 @@
 	newItem = new ListItem();
 
 	newItem.set("name", talk_name.value);
-	newItem.set("content", talk_description.value);
+	newItem.set("content", talk_content.value);
 
 	Person = Parse.Object.extend("Person");
 	var person = new Person();
@@ -128,19 +128,19 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><script>dw(STR_searchexist);dw('<input type="button" id="talk_searchbyemail" value="'+BT_search+'" onClick="searchTalk();">')</script></td>
+				<td><script>dw('<input type="button" id="talk_searchbyemail" value="'+BT_search+'" onClick="searchTalk();">')</script></td>
 			</tr>
 			<tr>
-				<td>*<script>dw(STR_description)</script></td>
-				<td><input class="InputSize" type="text" id="talk_description"></td>
+				<td>*<script>dw(STR_content)</script></td>
+				<td><input class="InputSize" type="text" id="talk_content"></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_author)</script></td>
-				<td width="70%"><select class="SelectSize" id="talk_author"><script>getAllAuthor('talk_author')</script></select></td>
+				<td width="70%"><select class="SelectSize" id="talk_author"><script>getAuthorWithEvent('talk_author')</script></select></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_session)</script></td>
-				<td width="70%"><select class="SelectSize" id="talk_session"><script>getAllSession('talk_session')</script></select></td>
+				<td width="70%"><select class="SelectSize" id="talk_session"><script>getSessionWithEvent('talk_session')</script></select></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_date)</script></td>
@@ -153,7 +153,7 @@
 			<tr>
 			<tr>
 				<td>*<script>dw(STR_location)</script></td>
-				<td width="70%"><select class="SelectSize" id="talk_location"><script>getAllLocation('talk_location')</script></select></td>
+				<td width="70%"><select class="SelectSize" id="talk_location"><script>getLocationWithEvent('talk_location')</script></select></td>
 			<tr>
 			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_talk_submit" value="'+BT_add+'" onClick="addTalk();">')</script></td>
 			</tr>

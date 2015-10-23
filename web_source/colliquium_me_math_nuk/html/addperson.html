@@ -56,7 +56,6 @@
 				var event = new Event();
 				event.id = K3;
 				selected.push(event);
-				selected = GetUnique(selected);
  				object.set("events", selected);
 				object.save(null, {
 				success: function(object){
@@ -90,7 +89,6 @@
 				person_webpage.value = object.get('link');
 				person_title.value = object.get('title');
 				selected = object.get('events');
-				alert(selected);
 			}
 			else{
 				alert('This is a new author!');
@@ -117,15 +115,15 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><script>dw(STR_searchexist);dw('<input type="button" id="person_searchbyemail" value="'+BT_search+'" onClick="searchPerson();">')</script></td>
-			</tr>
-			<tr>
-				<td>*<script>dw(STR_firstname)</script></td>
-				<td><input class="InputSize" type="text" id="person_firstname"></td>
+				<td><script>dw('<input type="button" id="person_searchbyemail" value="'+BT_search+'" onClick="searchPerson();">')</script></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_lastname)</script></td>
 				<td><input class="InputSize" type="text" id="person_lastname"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_firstname)</script></td>
+				<td><input class="InputSize" type="text" id="person_firstname"></td>
 			</tr>
 			<tr>
 				<td><script>dw(STR_title)</script></td>

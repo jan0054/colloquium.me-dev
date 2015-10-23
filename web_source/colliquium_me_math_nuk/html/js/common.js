@@ -1,10 +1,15 @@
 // JavaScript Document for common functions
 
-function getAllAuthor(inputStr)
+function getAuthorWithEvent(inputStr)
 {
+	Event = Parse.Object.extend("Event");
+	var event = new Event();
+	event.id = K3;
+
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Person");
 	query = new Parse.Query(ListItem);
+	query.equalTo("events", event);
 	query.limit(500);
 	query.ascending('last_name');
 	query.find({
@@ -29,11 +34,16 @@ function getAllAuthor(inputStr)
 	})
 }
 
-function getAllLocation(inputStr)
+function getLocationWithEvent(inputStr)
 {
+	Event = Parse.Object.extend("Event");
+	var event = new Event();
+	event.id = K3;
+
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Location");
 	query = new Parse.Query(ListItem);
+	query.matchesQuery("event", event);
 	query.limit(500);
 	query.ascending('name');
 	query.find({
@@ -42,11 +52,11 @@ function getAllLocation(inputStr)
 				var object=results[i];
 				var sel=document.getElementById(inputStr);
 				if(i==0){
-					var new_option = new Option(object.get('name')+"("+object.get('capacity')+")",object.id,1,1);
+					var new_option = new Option(object.get('name'),object.id,1,1);
 				}
 				else
 				{
-					var new_option = new Option(object.get('name')+"("+object.get('capacity')+")",object.id);
+					var new_option = new Option(object.get('name'),object.id);
 				}
 				sel.options.add(new_option);
 				}
@@ -58,11 +68,16 @@ function getAllLocation(inputStr)
 	})
 }
 
-function getAllSession(inputStr)
+function getSessionWithEvent(inputStr)
 {
+	Event = Parse.Object.extend("Event");
+	var event = new Event();
+	event.id = K3;
+
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Session");
 	query = new Parse.Query(ListItem);
+	query.matchesQuery("event", event);
 	query.limit(500);
 	query.ascending('name');
 	query.find({
