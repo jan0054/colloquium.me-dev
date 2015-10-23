@@ -36,7 +36,7 @@
 
     <!-- Drawer -->
     <string name="title_eventpicker">Choose Events</string>
-    <string name="title_home">首頁</string>
+    <string name="title_home">Home</string>
     <string name="title_chat">Chat</string>
     <string name="title_career">Career</string>
     <string name="title_settings">Settings</string>
@@ -52,7 +52,7 @@
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
     <string name="institution">Institution</string>
-    <string name="login_notice">Thanks for using Colloquium.me (Math), Please log in, create an account, or start browsing events right away</string>
+    <string name="login_notice">Thanks for using Colloquium.me Math. Please log in, create an account, or start browsing events right away.</string>
     <string name="signup_notice">Your information is stored securely on our servers, and will never be shared with a 3rd party outside of event organizers without your consent.</string>
 
     <!--Labels: general -->
@@ -120,16 +120,16 @@
 
     <!-- Arrays (settings page) -->
     <string-array name="setting_primary_label_array">
-        <item>建議回饋</item>
-        <item>隱私權政策</item>
-        <item>關於我們</item>
-        <item>使用者偏好</item>
+        <item>App Feedback</item>
+        <item>Privacy and Terms</item>
+        <item>About Us</item>
+        <item>User Preferences</item>
     </string-array>
     <string-array name="setting_secondary_label_array">
-        <item>將您的建議或任何問題與我們分享</item>
-        <item>了解我們如何確保您的資料隱私</item>
-        <item>Colloquium.me服務的開發團隊</item>
-        <item>設定或更改使用者資訊與隱私設定</item>
+        <item>Share your questions and feedback with us</item>
+        <item>Learn how we protect and secure your data</item>
+        <item>Learn about the team behind Colloquium.me</item>
+        <item>Setup or change user info and social options</item>
     </string-array>
 
     <!-- Errors -->
