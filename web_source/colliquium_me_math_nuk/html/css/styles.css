@@ -40,7 +40,7 @@ table {
 }
 
 table .tb1 {
-	width: 240px;
+	width: 260px;
 }
 
 .ApplyButton {
@@ -48,7 +48,7 @@ table .tb1 {
 }
 
 .InputSize, .SelectSize, .TimeSize {
-	width: 240px;
+	width: 260px;
 }
 
 .FileSize {
@@ -57,9 +57,18 @@ table .tb1 {
 }
 
 .DateSize {
-	width: 240px;
+	width: 260px;
+}
+
+.DatSize2 {
+	width:130px;
 }
 
 .TimeSize {
-	width:115px;
+	width:125px;
 }
+
+.TimeSize2 {
+	width:85px;
+}
+

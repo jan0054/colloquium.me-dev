@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
-  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/lang_zh.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 
   <script language="javascript">
@@ -90,6 +90,7 @@
 				person_webpage.value = object.get('link');
 				person_title.value = object.get('title');
 				selected = object.get('events');
+				alert(selected);
 			}
 			else{
 				alert('This is a new author!');
@@ -130,12 +131,12 @@
 				<td><script>dw(STR_title)</script></td>
 				<td width="70%">
 					<select class="SelectSize" id="person_title">
-					<option selected value="professor"><script>dw(STR_persontitle_professor)</script></option>
-					<option value="postdoc"><script>dw(STR_persontitle_postdoc)</script></option>
-					<option value="doctor"><script>dw(STR_persontitle_doctor)</script></option>
-					<option value="master"><script>dw(STR_persontitle_master)</script></option>
-					<option value="bachelor"><script>dw(STR_persontitle_bachelor)</script></option>
-					<option value="other"><script>dw(STR_persontitle_other)</script></option>
+					<option selected value="professor"><script>dw(OPT_persontitle_professor)</script></option>
+					<option value="postdoc"><script>dw(OPT_persontitle_postdoc)</script></option>
+					<option value="doctor"><script>dw(OPT_persontitle_doctor)</script></option>
+					<option value="master"><script>dw(OPT_persontitle_master)</script></option>
+					<option value="bachelor"><script>dw(OPT_persontitle_bachelor)</script></option>
+					<option value="other"><script>dw(OPT_persontitle_other)</script></option>
 					</select>
 				</td>
 			</tr>

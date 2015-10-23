@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="CM Web">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/lang_zh.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+
+  <script language="javascript">
+  function addLocation()
+  {
+  	if(location_name.value==""){
+		alert(STR_name+AL_empty);
+		location_name.focus();
+		return false;
+	}
+  	if(location_capacity.value==""){
+		alert(STR_capacity+AL_empty);
+		location_capacity.focus();
+		return false;
+	}
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Location");
+	newItem = new ListItem();
+
+	newItem.set("name", location_name.value);
+	newItem.set("capacity", location_capacity.value);
+	Event = Parse.Object.extend("Event");
+	var event = new Event();
+	event.id = K3;
+	newItem.set("event", event);
+	
+	newItem.save(null, {
+		success: function(newItem){
+			window.location.reload();
+		},
+		error: function(newItem, error){
+			alert('Failed to create new object, with error code: ' + error.message);
+		}
+	});
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addlocation)</script></h1>
+	<h2><script>dw(STR_1)</script></h2>
+
+	<div id="add_venue">
+		<table align="center">
+			<tr>
+				<td>*<script>dw(STR_name)</script></td>
+				<td><input class="InputSize"type="text" id="location_name"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_capacity)</script></td>
+				<td><input class="InputSize" type="number" id="location_capacity"></td>
+			</tr>
+			<tr>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_location_submit" value="'+BT_add+'" onClick="addLocation();">')</script></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	</div>
+</body>
+ 

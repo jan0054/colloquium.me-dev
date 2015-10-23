@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
-  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/lang_zh.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 
   <script language="javascript">
@@ -34,7 +34,7 @@
 		career_postedby.focus();
 		return false;
 	}
-	Parse.initialize("2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV", "xlirVc4ZbYnah6b97WEo4mbOUBvi0RiqZj5GJ9Hi");
+	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Career");
 	newItem = new ListItem();
 
@@ -45,7 +45,7 @@
 
 	Person = Parse.Object.extend("Person");
 	var person = new Person();
-	person.id = career_postedby.value;
+	person.id = K4;
 	newItem.set("author", person);
 
 	newItem.save(null, {
@@ -81,10 +81,6 @@
 			<tr>
 				<td><script>dw(STR_note)</script></td>
 				<td><input class="InputSize" type="text" id="career_note"></td>
-			</tr>
-			<tr>
-				<td>*<script>dw(STR_postedby)</script></td>
-				<td width="70%"><select class="SelectSize" id="career_postedby"><script>getAllAuthor('career_postedby')</script></select></td>
 			</tr>
 			<tr>
 			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_career_submit" value="'+BT_add+'" onClick="addCareer();">')</script></td>

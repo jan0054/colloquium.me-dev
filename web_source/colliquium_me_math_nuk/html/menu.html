@@ -7,11 +7,23 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
-  <script language="javascript" src="js/lang_en.js"></script>
+  <script language="javascript" src="js/lang_zh.js"></script>
+  <script language="JavaScript" type="text/javascript">
+  <!--
+  function changeitem(page, title)
+  {
+  	parent.mainFrame.location = page;
+ 	parent.listtitleFrame.getElementById(texttitle).setText(title);
+//         	<li><a href="javascript:changeitem('addsession.html', 'session')"><script>dw(TT_addsession)</script></a></li>
+  }
+  //-->
+  </script>
 </head>
 <body>
 	<div>
          <ul>
+         	<li><a href="addsession.html" target="mainFrame"><script>dw(TT_addsession)</script></a></li>
+         	<li><a href="addlocation.html" target="mainFrame"><script>dw(TT_addlocation)</script></a></li>
          	<li><a href="addperson.html" target="mainFrame"><script>dw(TT_addperson)</script></a></li>
          	<li><a href="addtalk.html" target="mainFrame"><script>dw(TT_addtalk)</script></a></li>
          	<li><a href="addvenue.html" target="mainFrame"><script>dw(TT_addvenue)</script></a></li>

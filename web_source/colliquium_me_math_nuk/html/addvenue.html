@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
-  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/lang_zh.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 
   <script language="javascript">
@@ -24,12 +24,7 @@
 		venue_description.focus();
 		return false;
 	}
-  	/*if(venue_coordinates.value==""){
-		alert(STR_coordinates+AL_empty);
-		venue_coordinates.focus();
-		return false;
-	}*/
-	Parse.initialize("2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV", "xlirVc4ZbYnah6b97WEo4mbOUBvi0RiqZj5GJ9Hi");
+	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Venue");
 	newItem = new ListItem();
 
@@ -40,7 +35,7 @@
 	newItem.set("url", venue_website.value);
 	Event = Parse.Object.extend("Event");
 	var event = new Event();
-	event.id = talk_event.value;
+	event.id = K3;
 	newItem.set("event", event);
 
 //	newItem.set("coord", venue_coordinates.value);
@@ -83,14 +78,6 @@
 				<td><input class="InputSize" type="text" id="venue_description"></td>
 			</tr>
 			<tr>
-				<td>*<script>dw(STR_event)</script></td>
-				<td width="70%"><select class="SelectSize" id="talk_event"><script>getAllEvent('talk_event')</script></select></td>
-			</tr>
-			<tr>
-				<td>*<script>dw(STR_coordinates)</script></td>
-				<td><input class="InputSize" type="text" id="venue_coordinates"></td>
-			</tr>
-			<tr>
 				<td><script>dw(STR_phone)</script></td>
 				<td><input class="InputSize" type="text" id="venue_phone"></td>
 			</tr>
@@ -101,6 +88,10 @@
 			<tr>
 				<td><script>dw(STR_address)</script></td>
 				<td><input class="InputSize" type="text" id="venue_address"></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_coordinates)</script></td>
+				<td><input class="InputSize" type="text" id="venue_coordinates"></td>
 			</tr>
 			<tr>
 				<td><script>dw(STR_website)</script></td>
