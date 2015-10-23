@@ -122,10 +122,6 @@
             android:label="@string/title_activity_chat_options" >
         </activity>
         <activity
-            android:name=".AboutUsActivity"
-            android:label="@string/title_activity_about_us" >
-        </activity>
-        <activity
             android:name=".PostDetailActivity"
             android:label="@string/title_activity_post_detail"
             android:parentActivityName=".EventWrapperActivity"

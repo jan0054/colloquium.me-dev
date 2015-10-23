@@ -236,7 +236,7 @@ public class PeopleDetailActivity extends AppCompatActivity {
             Intent ie = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(ie);
         } else {
-            toast(this.getString(R.string.error_no_web));
+
         }
     }
 

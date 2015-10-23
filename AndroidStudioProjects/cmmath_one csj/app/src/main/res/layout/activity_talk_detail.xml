@@ -101,7 +101,7 @@
             android:fontFamily="sans-serif"
             android:textColor="@color/dark_accent"
             android:onClick="goDiscuss"
-            android:text="Discuss"
+            android:text="@string/go_discuss_button"
             android:textSize="14sp"
             style="?android:attr/borderlessButtonStyle"/>
 
@@ -115,7 +115,7 @@
             android:layout_below="@+id/talk_discussionbtn"
             android:padding="0dp"
             android:gravity="left"
-            android:text="Add to Calendar"
+            android:text="@string/add_calendar"
             android:fontFamily="sans-serif"
             android:textColor="@color/dark_accent"
             android:textSize="14sp"

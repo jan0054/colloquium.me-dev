@@ -86,7 +86,7 @@
         android:layout_toLeftOf="@+id/web_button"
         android:fontFamily="sans-serif"
         android:gravity="left"
-        android:text="Web Page"
+        android:text=""
         android:textColor="@color/primary_text"
         android:textSize="14sp"/>
     <TextView
@@ -97,7 +97,7 @@
         android:layout_marginRight="@dimen/list_padding"
         android:layout_alignParentRight="true"
         android:gravity="right"
-        android:text="Open in browser"
+        android:text="@string/career_web_button"
         android:textColor="@color/dark_accent"
         android:textSize="14sp"/>
 

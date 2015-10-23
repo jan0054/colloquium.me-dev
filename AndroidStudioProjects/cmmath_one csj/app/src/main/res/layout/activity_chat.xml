@@ -42,7 +42,7 @@
             android:background="#00000000"
             android:onClick="sendChat"
             android:textColor="@color/dark_accent"
-            android:text="Send"
+            android:text="@string/send_chat_button"
             />
 
     </LinearLayout>

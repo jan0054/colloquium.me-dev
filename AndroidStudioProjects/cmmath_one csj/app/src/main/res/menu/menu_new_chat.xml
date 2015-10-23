@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.ashvale.cmmath_one.NewChatActivity">
     <item android:id="@+id/createchat"
-        android:title="Create"
+        android:title="@string/create_new_chat"
         app:showAsAction="always" />
 </menu>

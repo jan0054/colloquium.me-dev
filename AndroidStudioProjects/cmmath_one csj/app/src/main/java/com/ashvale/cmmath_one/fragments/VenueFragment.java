@@ -167,7 +167,7 @@ public class VenueFragment extends BaseFragment {
             Intent ie = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(ie);
         } else {
-            toast(this.getString(R.string.error_no_web));
+
         }
     }
 
