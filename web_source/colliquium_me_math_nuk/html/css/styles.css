@@ -1,0 +1,65 @@
+body {
+    background: #eee;
+    text-align: center;
+    padding: 0 25px;
+}
+
+#main {
+    width: 500px;
+    margin: auto;
+    text-align: left;
+    background: white;
+    padding: 50px 60px;
+    border: solid #ddd;
+    border-width: 0 1px 1px 1px;
+}
+
+#main h1 {
+    margin-top: 0;
+    font-size: 35px;
+}
+
+body h1 {
+    font-size: 35px;
+	text-align: center;
+	padding-left: 50px;
+}
+
+body h2 {
+    font-size: 16px;
+	text-align: center;
+	padding-left: 50px;
+}
+
+table {
+	border-collapse: collapse;
+	text-align: center;
+	padding-left: 5px;
+	border: 1px solid block;
+
+}
+
+table .tb1 {
+	width: 240px;
+}
+
+.ApplyButton {
+	text-align: center;
+}
+
+.InputSize, .SelectSize, .TimeSize {
+	width: 240px;
+}
+
+.FileSize {
+	font-size: 14px;
+	width:65%;
+}
+
+.DateSize {
+	width: 240px;
+}
+
+.TimeSize {
+	width:115px;
+}

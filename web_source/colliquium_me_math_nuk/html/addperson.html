@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="CM Web">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/lang_en.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+
+  <script language="javascript">
+  var selected = new Array();
+
+  function addPerson()
+  {
+  	//check required fields
+  	if(person_firstname.value==""){
+		alert(STR_firstname+AL_empty);
+		person_firstname.focus();
+		return false;
+	}
+  	if(person_lastname.value==""){
+		alert(STR_lastname+AL_empty);
+		person_lastname.focus();
+		return false;
+	}
+  	if(person_email.value==""){
+		alert(STR_email+AL_empty);
+		person_email.focus();
+		return false;
+	}
+
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Person");
+
+	var personcheck = new Parse.Query(ListItem);
+    personcheck.equalTo("email", person_email.value);
+	personcheck.find({
+		success: function(results){
+			var object;
+			if(results.length>0) {
+				object=results[0];				
+			}
+			else{
+				object = new ListItem();
+			}
+				object.set("first_name", person_firstname.value);
+				object.set("last_name", person_lastname.value);
+				object.set("title", person_title.value);
+				object.set("institution", person_institution.value);
+				object.set("email", person_email.value);
+				object.set("link", person_webpage.value);
+				Event = Parse.Object.extend("Event");
+				var event = new Event();
+				event.id = K3;
+				selected.push(event);
+				selected = GetUnique(selected);
+ 				object.set("events", selected);
+				object.save(null, {
+				success: function(object){
+					window.location.reload();
+					},
+					error: function(object, error){
+						alert('Failed to create new object, with error code: ' + error.message);
+					}
+				});
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+  
+  function searchPerson()
+  {
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Person");
+
+	var personcheck = new Parse.Query(ListItem);
+    personcheck.equalTo("email", person_email.value);
+	personcheck.find({
+		success: function(results){
+			if(results.length>0) {
+				var object=results[0];
+				person_firstname.value = object.get('first_name');
+				person_lastname.value = object.get('last_name');
+				person_institution.value = object.get('institution');
+				person_webpage.value = object.get('link');
+				person_title.value = object.get('title');
+				selected = object.get('events');
+			}
+			else{
+				alert('This is a new author!');
+				selected = "";
+			}
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addperson)</script></h1>
+	<h2><script>dw(STR_1)</script></h2>
+
+	<div id="add_person">
+		<table align="center">
+			<tr>
+				<td>*<script>dw(STR_email)</script></td>
+				<td><input class="InputSize" type="text" id="person_email"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><script>dw(STR_searchexist);dw('<input type="button" id="person_searchbyemail" value="'+BT_search+'" onClick="searchPerson();">')</script></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_firstname)</script></td>
+				<td><input class="InputSize" type="text" id="person_firstname"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_lastname)</script></td>
+				<td><input class="InputSize" type="text" id="person_lastname"></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_title)</script></td>
+				<td width="70%">
+					<select class="SelectSize" id="person_title">
+					<option selected value="professor"><script>dw(STR_persontitle_professor)</script></option>
+					<option value="postdoc"><script>dw(STR_persontitle_postdoc)</script></option>
+					<option value="doctor"><script>dw(STR_persontitle_doctor)</script></option>
+					<option value="master"><script>dw(STR_persontitle_master)</script></option>
+					<option value="bachelor"><script>dw(STR_persontitle_bachelor)</script></option>
+					<option value="other"><script>dw(STR_persontitle_other)</script></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_institution)</script></td>
+				<td><input class="InputSize" type="text" id="person_institution"></td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_webpage)</script></td>
+				<td><input class="InputSize" type="text" id="person_webpage"></td>
+			</tr>
+			<tr>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_person_submit" value="'+BT_add+'" onClick="addPerson();">')</script></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	</div>
+</body>
+ 
