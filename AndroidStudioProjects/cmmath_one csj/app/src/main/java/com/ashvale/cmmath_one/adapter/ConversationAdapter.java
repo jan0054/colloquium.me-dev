@@ -69,16 +69,14 @@ public class ConversationAdapter extends BaseAdapter {
         String nameList = "";
         for (ParseUser user : participants)
         {
-            String fullName = user.getString("first_name")+" "+user.getString("last_name");
-            if (!user.getObjectId().equals(selfUser.getObjectId()))
-            {
-                if (nameList.length()>1)
-                {
-                    nameList = nameList+", "+fullName;
-                }
-                else
-                {
-                    nameList = fullName;
+            if(user!= null) {
+                String fullName = user.getString("first_name") + " " + user.getString("last_name");
+                if (!user.getObjectId().equals(selfUser.getObjectId())) {
+                    if (nameList.length() > 1) {
+                        nameList = nameList + ", " + fullName;
+                    } else {
+                        nameList = fullName;
+                    }
                 }
             }
         }

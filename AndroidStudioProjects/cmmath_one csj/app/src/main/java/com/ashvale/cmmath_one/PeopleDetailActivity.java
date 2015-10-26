@@ -236,7 +236,7 @@ public class PeopleDetailActivity extends AppCompatActivity {
             Intent ie = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(ie);
         } else {
-
+            toast(getString(R.string.error_invalidlink));
         }
     }
 
@@ -258,6 +258,6 @@ public class PeopleDetailActivity extends AppCompatActivity {
     }
 
     public void toast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

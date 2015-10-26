@@ -2,13 +2,16 @@ package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
 import com.parse.ParseFile;
@@ -87,9 +90,14 @@ public class VenueAdapter extends BaseAdapter {
         websiteLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ACTION_VENUE_WEBSITE);
-                intent.putExtra(ACTION_VENUE_URL, v.getTag().toString());
-                context.sendBroadcast(intent);
+                if(v.getTag().toString() != null && URLUtil.isValidUrl(v.getTag().toString())==true) {
+                    Intent intent = new Intent(ACTION_VENUE_WEBSITE);
+                    intent.putExtra(ACTION_VENUE_URL, v.getTag().toString());
+                    context.sendBroadcast(intent);
+
+                } else {
+                    Toast.makeText(context, context.getString(R.string.error_invalidlink), Toast.LENGTH_LONG).show();
+                }
             }
         });
 

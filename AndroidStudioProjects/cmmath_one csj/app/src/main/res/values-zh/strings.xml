@@ -141,6 +141,7 @@
 
     <!-- Errors -->
     <string name="error_not_login">您必須先登入</string>
+    <string name="error_invalidlink">資料中的網址無效</string>
 
     <!--URLs and emails -->
     <string name="feedback_email_address">csjan@tapgo.cc</string>

@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
 import com.parse.ParseObject;
@@ -63,8 +65,12 @@ public class CareerDetailActivity extends AppCompatActivity {
         openBrowswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ie = new Intent(Intent.ACTION_VIEW, Uri.parse(contactLink));
-                startActivity(ie);
+                if(contactLink != null && URLUtil.isValidUrl(contactLink)==true) {
+                    Intent ie = new Intent(Intent.ACTION_VIEW, Uri.parse(contactLink));
+                    startActivity(ie);
+                } else {
+                    toast(getString(R.string.error_invalidlink));
+                }
             }
         });
 
@@ -97,6 +103,10 @@ public class CareerDetailActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void toast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     private void sendEmail(String title, String content, String[] emails, Uri imageUri) throws IOException {
