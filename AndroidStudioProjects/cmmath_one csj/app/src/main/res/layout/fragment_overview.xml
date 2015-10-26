@@ -37,7 +37,7 @@
                 android:fontFamily="sans-serif-light"
                 android:gravity="center|left"
                 android:text="@string/date"
-                android:textColor="@color/dark_accent"
+                android:textColor="@color/secondary_text"
                 android:textSize="14sp" />
 
             <TextView

@@ -90,6 +90,11 @@
             android:launchMode="singleTop" >
         </activity>
         <activity
+            android:name=".ResetPasswordActivity"
+            android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop" >
+        </activity>
+        <activity
             android:name=".UserPreferenceActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop" >

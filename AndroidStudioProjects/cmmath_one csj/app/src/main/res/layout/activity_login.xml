@@ -12,7 +12,7 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginTop="30dp"
-              android:layout_marginBottom="50dp"
+              android:layout_marginBottom="40dp"
               android:alpha="1"
               android:gravity="left"
               android:fontFamily="sans-serif"
@@ -48,7 +48,7 @@
                android:maxWidth="260dp" />
     <Button android:id="@+id/btn_login"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/button_height"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
             android:background="@color/accent_color"
@@ -65,7 +65,7 @@
               android:text="@string/signup_reminder" />
     <Button android:id="@+id/btn_signup"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/button_height"
             android:layout_marginTop="10dp"
             android:background="@color/accent_color"
             android:onClick="toSignupPage"
@@ -74,13 +74,22 @@
             android:text="@string/signup" />
     <Button android:id="@+id/btn_skip"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/button_height"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
             android:background="@color/accent_color"
             android:onClick="skip"
             android:fontFamily="sans-serif"
             android:textColor="@color/light_button_txt"
             android:text="@string/skip" />
+    <TextView android:id="@+id/resetpwdLabel"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="30dp"
+              android:alpha="0.7"
+              android:gravity="center"
+              android:fontFamily="sans-serif"
+              android:textColor="@color/light_primary"
+              android:text="@string/resetpwd_reminder" />
 
 </LinearLayout>

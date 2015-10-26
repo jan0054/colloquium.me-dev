@@ -109,11 +109,13 @@ public class AddEventAdapter extends BaseAdapter {
         int selected = selectedPositions[position];
         if (selected == 1)
         {
-            imagelabel.setImageResource(R.drawable.checkevent);
+            imagelabel.setImageResource(R.drawable.check);
+            imagelabel.setColorFilter(R.color.accent_color);
         }
         else
         {
-            imagelabel.setImageResource(0);
+            imagelabel.setImageResource(R.drawable.emptycircle);
+            imagelabel.setColorFilter(R.color.primary_color);
         }
 
         namelabel.setText(namestr);

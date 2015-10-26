@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.GetCallback;
@@ -28,6 +29,7 @@ public class LoginActivity extends Activity {
     public static final String TAG = LoginActivity.class.getSimpleName();
     private EditText mUsername;
     private EditText mPassword;
+    private TextView labelResetPWD;
     private Button   btnLogin;
     protected cmmathApplication app;
     private SharedPreferences userStatus;
@@ -40,11 +42,19 @@ public class LoginActivity extends Activity {
 
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
+        labelResetPWD = (TextView) findViewById(R.id.resetpwdLabel);
         btnLogin  = (Button) findViewById(R.id.btn_login);
         btnLogin.setEnabled(true);
 
         if (isLogin())
             skip(null);
+
+        labelResetPWD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toResetPwdPage();
+            }
+        });
 
         userStatus = getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
         int skiplogin = userStatus.getInt("skiplogin", 0);
@@ -145,7 +155,7 @@ public class LoginActivity extends Activity {
 
                             //after successful login, associate user to installation(this phone), in order to receive push notifications
                             ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-                            installation.put("user",ParseUser.getCurrentUser());
+                            installation.put("user", ParseUser.getCurrentUser());
                             installation.saveInBackground();
 
                             new Handler().postDelayed(new Runnable() {
@@ -171,6 +181,11 @@ public class LoginActivity extends Activity {
 
     public void toSignupPage(View view) {
         Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
+    }
+
+    public void toResetPwdPage() {
+        Intent intent = new Intent(this, ResetPasswordActivity.class);
         startActivity(intent);
     }
 

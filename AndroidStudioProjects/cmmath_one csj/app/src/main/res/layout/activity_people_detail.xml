@@ -84,5 +84,5 @@
               android:gravity="center"
               android:textColor="@color/dark_accent"
               android:textSize="14sp"
-              android:text="@string/list_empty_empty" />
+              android:text="@string/list_empty_person" />
 </RelativeLayout>

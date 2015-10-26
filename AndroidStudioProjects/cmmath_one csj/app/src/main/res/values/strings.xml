@@ -9,6 +9,7 @@
     <string name="title_activity_addevent">Choose Events</string>
     <string name="title_activity_login">Log In</string>
     <string name="title_activity_signup">Sign Up</string>
+    <string name="title_activity_resetpassword">Reset Password</string>
     <string name="title_activity_home">Home</string>
     <string name="title_activity_career">Career</string>
     <string name="title_activity_career_detail">Career</string>
@@ -46,7 +47,10 @@
     <string name="back">Back</string>
     <string name="signup_reminder">No account yet?</string>
     <string name="signup">Sign Up</string>
-    <string name="skip"><u>Skip</u></string>
+    <string name="skip">Skip</string>
+    <string name="resetpwd">Reset Password</string>
+    <string name="resetpwd_reminder"><u>Forget password?</u></string>
+    <string name="cancel">Cancel</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="firstname">First Name</string>
@@ -54,6 +58,8 @@
     <string name="institution">Institution</string>
     <string name="login_notice">Thanks for using Colloquium.me Math. Please log in, create an account, or start browsing events right away.</string>
     <string name="signup_notice">Your information is stored securely on our servers, and will never be shared with a 3rd party outside of event organizers without your consent.</string>
+    <string name="resetpwd_notice">RESETPWENOTICE</string>
+    <string name="resetpwd_message">reset password message</string>
 
     <!--Labels: general -->
     <string name="signout">Sign Out</string>
@@ -66,6 +72,7 @@
     <string name="list_empty_empty"> </string>
     <string name="empty"></string>
     <string name="fullscreen_content"> </string>
+    <string name="list_empty_person">This person has no scheduled presentations</string>
     <string name="list_empty_event">There are no announcements from this event yet</string>
     <string name="no_result">No results</string>
     <string name="hint_search">Search..</string>

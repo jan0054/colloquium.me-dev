@@ -23,6 +23,7 @@
     <dimen name="listitembg_bottom">2dp</dimen>
     <dimen name="corner_size">2dp</dimen>
 
+    <dimen name="button_height">40dp</dimen>
     <dimen name="drawyericon_size">30dp</dimen>
     <dimen name="fragmenticon_size">30dp</dimen>
 </resources>
