@@ -4,7 +4,7 @@ function dw(key) {document.write(key);}
 var K1 = "2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV";
 var K2 = "xlirVc4ZbYnah6b97WEo4mbOUBvi0RiqZj5GJ9Hi";
 var K3 = "pintUUOFdx";
-var K4 = "NzNsbc63DG";
+var K4 = "Gi5mwesLdM";
 
 var AL_empty = " can not be empty!";
 var BT_add = "Add";
@@ -15,6 +15,10 @@ var STR_1 = "* is required";
 var STR_address = "Address";
 var STR_author = "Author";
 var STR_capacity = "Capacity";
+var STR_careercontent = "Content";
+var STR_careerinstitution = "Institution";
+var STR_contactname = "Contact Person";
+var STR_contactemail = "Contact Email";
 var STR_content = "Content";
 var STR_coordinates = "Coordinates";
 var STR_date = "Date";
@@ -23,6 +27,7 @@ var STR_email = "Email";
 var STR_end = "End";
 var STR_event = "Event";
 var STR_firstname = "First Name";
+var STR_hiring = "Post Type";
 var STR_institution = "Institution";
 var STR_jobname = "Name";
 var STR_lastname = "Last Name";
@@ -66,6 +71,9 @@ var STR_event_enddate = "End Date";
 var STR_event_organizer = "Organizer (institute or person)";
 
 var STR_event_multiple = "Events (hold shift or ctrl to select multiple)";
+
+var OPT_career_available = "Position Available";
+var OPT_career_seeking = "Seeking Job";
 
 var OPT_persontitle_professor = "Professor";
 var OPT_persontitle_postdoc = "Postdoc";

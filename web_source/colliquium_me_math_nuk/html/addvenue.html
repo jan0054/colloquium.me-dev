@@ -41,11 +41,10 @@
 //	newItem.set("coord", venue_coordinates.value);
 
 	if(venue_photo.value!=""){
-		alert(venue_photo.value);
-		var fileUploadControl = venue_photo.value[0];
+		var fileUploadControl = venue_photo;
 		if (fileUploadControl.files.length > 0) {
 			var file = fileUploadControl.files[0];
-			var fileName = abstract_pdf.value;
+			var fileName = file.name;
 			var parseFile = new Parse.File(fileName, file);
 			newItem.set("image", parseFile);
 		}

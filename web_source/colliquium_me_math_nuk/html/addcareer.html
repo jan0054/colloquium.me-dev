@@ -14,34 +14,36 @@
   function addCareer()
   {
     //check required fields
-  	if(career_name.value==""){
-		alert(STR_jobname+AL_empty);
-		career_name.focus();
-		return false;
-	}
-  	if(career_position.value==""){
-		alert(STR_position+AL_empty);
-		career_position.focus();
-		return false;
-	}
   	if(career_institution.value==""){
-		alert(STR_institution+AL_empty);
+		alert(STR_careerinstitution+AL_empty);
 		career_institution.focus();
 		return false;
 	}
-  	if(career_postedby.value==""){
-		alert(STR_postedby+AL_empty);
-		career_postedby.focus();
+  	if(career_contactname.value==""){
+		alert(STR_contactname+AL_empty);
+		career_contactname.focus();
+		return false;
+	}
+  	if(career_contactemail.value==""){
+		alert(STR_contactemail+AL_empty);
+		career_contactemail.focus();
+		return false;
+	}
+  	if(career_content.value==""){
+		alert(STR_careercontent+AL_empty);
+		career_content.focus();
 		return false;
 	}
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Career");
 	newItem = new ListItem();
 
-	newItem.set("details", career_name.value);
-	newItem.set("position", career_position.value);
 	newItem.set("institution", career_institution.value);
-	newItem.set("contact_name", career_note.value);
+	newItem.set("contact_name", career_contactname.value);
+	newItem.set("contact_email", career_contactemail.value);
+	newItem.set("content", career_content.value);
+	newItem.set("hiring", parseInt(career_hiring.value));
+	newItem.set("link", career_link.value);
 
 	Person = Parse.Object.extend("Person");
 	var person = new Person();
@@ -67,20 +69,33 @@
 	<div id="add_career">
 		<table align="center">
 			<tr>
-				<td>*<script>dw(STR_jobname)</script></td>
-				<td><input class="InputSize"type="text" id="career_name"></td>
-			</tr>
-			<tr>
-				<td>*<script>dw(STR_position)</script></td>
-				<td><input class="InputSize" type="text" id="career_position"></td>
-			</tr>
-			<tr>
-				<td>*<script>dw(STR_institution)</script></td>
+				<td>*<script>dw(STR_careerinstitution)</script></td>
 				<td><input class="InputSize" type="text" id="career_institution"></td>
 			</tr>
 			<tr>
-				<td><script>dw(STR_note)</script></td>
-				<td><input class="InputSize" type="text" id="career_note"></td>
+				<td>*<script>dw(STR_contactname)</script></td>
+				<td><input class="InputSize"type="text" id="career_contactname"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_contactemail)</script></td>
+				<td><input class="InputSize" type="text" id="career_contactemail"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_hiring)</script></td>
+				<td width="70%">
+					<select class="SelectSize" id="career_hiring">
+					<option selected value="1"><script>dw(OPT_career_available)</script></option>
+					<option value="0"><script>dw(OPT_career_seeking)</script></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><script>dw(STR_website)</script></td>
+				<td><input class="InputSize" type="text" id="career_link"></td>
+			</tr>
+			<tr>
+				<td>*<script>dw(STR_careercontent)</script></td>
+				<td><input class="InputSize" type="text" id="career_content"></td>
 			</tr>
 			<tr>
 			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_career_submit" value="'+BT_add+'" onClick="addCareer();">')</script></td>

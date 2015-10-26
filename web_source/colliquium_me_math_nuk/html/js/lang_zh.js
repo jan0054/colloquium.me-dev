@@ -4,7 +4,7 @@ function dw(key) {document.write(key);}
 var K1 = "2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV";
 var K2 = "xlirVc4ZbYnah6b97WEo4mbOUBvi0RiqZj5GJ9Hi";
 var K3 = "pintUUOFdx";
-var K4 = "NzNsbc63DG";
+var K4 = "Gi5mwesLdM";
 
 var AL_empty = "不能為空白！";
 var BT_add = "新增";
@@ -15,6 +15,10 @@ var STR_1 = "* 欄位為必填";
 var STR_address = "地址";
 var STR_author = "講者";
 var STR_capacity = "可容納人數";
+var STR_careercontent = "工作內容描述";
+var STR_careerinstitution = "單位/學校";
+var STR_contactname = "聯絡人";
+var STR_contactemail = "聯絡人Email";
 var STR_content = "摘要";
 var STR_coordinates = "座標";
 var STR_date = "日期";
@@ -23,6 +27,7 @@ var STR_email = "Email";
 var STR_end = "結束時間";
 var STR_event = "活動";
 var STR_firstname = "名";
+var STR_hiring = "類型";
 var STR_institution = "服務單位";
 var STR_jobname = "工作名稱";
 var STR_lastname = "姓";
@@ -66,6 +71,9 @@ var STR_event_enddate = "End Date";
 var STR_event_organizer = "Organizer (institute or person)";
 
 var STR_event_multiple = "Events (hold shift or ctrl to select multiple)";
+
+var OPT_career_available = "徵才";
+var OPT_career_seeking = "求職";
 
 var OPT_persontitle_professor = "教授(研究員)";
 var OPT_persontitle_postdoc = "博士後";

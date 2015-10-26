@@ -29,7 +29,7 @@
 	newItem = new ListItem();
 
 	newItem.set("name", location_name.value);
-	newItem.set("capacity", location_capacity.value);
+	newItem.set('capacity', parseInt(location_capacity.value));
 	Event = Parse.Object.extend("Event");
 	var event = new Event();
 	event.id = K3;
@@ -55,7 +55,7 @@
 		<table align="center">
 			<tr>
 				<td>*<script>dw(STR_name)</script></td>
-				<td><input class="InputSize"type="text" id="location_name"></td>
+				<td><input class="InputSize" type="text" id="location_name"></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_capacity)</script></td>

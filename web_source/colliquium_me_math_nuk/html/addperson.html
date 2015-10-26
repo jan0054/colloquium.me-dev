@@ -11,10 +11,10 @@
   <script type="text/javascript" src="js/common.js"></script>
 
   <script language="javascript">
-  var selected = new Array();
 
   function addPerson()
   {
+	var selected = new Array();
   	//check required fields
   	if(person_firstname.value==""){
 		alert(STR_firstname+AL_empty);
@@ -42,6 +42,7 @@
 			var object;
 			if(results.length>0) {
 				object=results[0];				
+				selected = object.get('events');
 			}
 			else{
 				object = new ListItem();
@@ -74,6 +75,7 @@
   
   function searchPerson()
   {
+	var selected = new Array();
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Person");
 
@@ -92,7 +94,6 @@
 			}
 			else{
 				alert('This is a new author!');
-				selected = "";
 			}
 		},
 		error: function(error){

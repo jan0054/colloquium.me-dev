@@ -14,7 +14,7 @@
   <script language="javascript">
   function addSession()
   {
-  	if(sesssion_name.value==""){
+  	if(session_name.value==""){
 		alert(STR_name+AL_empty);
 		session_name.focus();
 		return false;
@@ -81,10 +81,10 @@
 				</tr>
 				<tr>
 					<td>*<script>dw(STR_location)</script></td>
-					<td width="70%"><select class="SelectSize" id="talk_location"><script>getLocationWithEvent('talk_location')</script></select></td>
+					<td width="70%"><select class="SelectSize" id="session_location"><script>getLocationWithEvent('session_location')</script></select></td>
 				<tr>
 				<tr>
-					<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_venue_submit" value="'+BT_add+'" onClick="addVenue();">')</script></td>
+					<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_session_submit" value="'+BT_add+'" onClick="addSession();">')</script></td>
 				</tr>
 			</table>
 			</div>
