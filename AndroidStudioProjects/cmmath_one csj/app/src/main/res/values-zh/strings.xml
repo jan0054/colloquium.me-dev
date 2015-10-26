@@ -49,7 +49,7 @@
     <string name="signup">註冊</string>
     <string name="skip">跳過</string>
     <string name="resetpwd">重設密碼</string>
-    <string name="resetpwd_reminder"><u>忘記密碼了？</u></string>
+    <string name="resetpwd_reminder"><u>忘記密碼？</u></string>
     <string name="cancel">取消</string>
     <string name="password">密碼</string>
     <string name="email">Email</string>
@@ -58,8 +58,8 @@
     <string name="institution">單位</string>
     <string name="login_notice">歡迎使用Colloquium.me平台(數學) 您可以選擇登入, 註冊帳號或直接開始瀏覽各會議</string>
     <string name="signup_notice">您的資訊儲存在我們的伺服器上, 未經您同意絕不會公開或讓我們以及活動主辦單位外的第三方存取</string>
-    <string name="resetpwd_notice">RESETPWENOTICE</string>
-    <string name="resetpwd_message">reset password message</string>
+    <string name="resetpwd_notice">請輸入您當初註冊用的Email，我們將發送信件讓您重新設定密碼</string>
+    <string name="resetpwd_message">請收信並依照連結重置您的密碼</string>
 
     <!--Labels: general -->
     <string name="signout">登出</string>

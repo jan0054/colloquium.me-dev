@@ -49,7 +49,7 @@
     <string name="signup">Sign Up</string>
     <string name="skip">Skip</string>
     <string name="resetpwd">Reset Password</string>
-    <string name="resetpwd_reminder"><u>Forget password?</u></string>
+    <string name="resetpwd_reminder"><u>Forgot password?</u></string>
     <string name="cancel">Cancel</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
@@ -58,8 +58,8 @@
     <string name="institution">Institution</string>
     <string name="login_notice">Thanks for using Colloquium.me Math. Please log in, create an account, or start browsing events right away.</string>
     <string name="signup_notice">Your information is stored securely on our servers, and will never be shared with a 3rd party outside of event organizers without your consent.</string>
-    <string name="resetpwd_notice">RESETPWENOTICE</string>
-    <string name="resetpwd_message">reset password message</string>
+    <string name="resetpwd_notice">Please enter the email you used to register, we will send you an email to reset your password.</string>
+    <string name="resetpwd_message">Please check your email</string>
 
     <!--Labels: general -->
     <string name="signout">Sign Out</string>
