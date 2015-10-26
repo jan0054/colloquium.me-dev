@@ -28,7 +28,6 @@ public class ResetPasswordActivity extends Activity {
         mUsername 	= (EditText) findViewById(R.id.username);
         btnResetPwd   = (Button) findViewById(R.id.btn_resetpwd);
         btnCancel   = (Button) findViewById(R.id.btn_cancel);
-        btnResetPwd.setEnabled(true);
     }
 
     @Override

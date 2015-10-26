@@ -153,7 +153,6 @@ public class UserPreferenceActivity extends AppCompatActivity {
             if (selfuser.containsKey("first_name"))
             {
                 pref_fnamestr = selfuser.getString("first_name");
-                Toast.makeText(UserPreferenceActivity.this, "firstname = "+pref_fnamestr, Toast.LENGTH_SHORT).show();
             }
             pref_fnameinput.setText(pref_fnamestr);
             if (selfuser.containsKey("last_name"))

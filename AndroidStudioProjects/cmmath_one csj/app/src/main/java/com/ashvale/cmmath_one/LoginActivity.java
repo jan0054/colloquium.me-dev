@@ -44,7 +44,6 @@ public class LoginActivity extends Activity {
         mPassword = (EditText) findViewById(R.id.password);
         labelResetPWD = (TextView) findViewById(R.id.resetpwdLabel);
         btnLogin  = (Button) findViewById(R.id.btn_login);
-        btnLogin.setEnabled(true);
 
         if (isLogin())
             skip(null);

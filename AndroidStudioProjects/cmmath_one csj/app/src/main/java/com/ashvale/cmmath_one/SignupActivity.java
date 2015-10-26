@@ -36,7 +36,6 @@ public class SignupActivity extends Activity {
         mLastname   = (EditText) findViewById(R.id.lastname);
         mInstitution= (EditText) findViewById(R.id.institution);
         btnSignup   = (Button) findViewById(R.id.btn_signup);
-        btnSignup.setEnabled(true);
     }
 
     @Override
