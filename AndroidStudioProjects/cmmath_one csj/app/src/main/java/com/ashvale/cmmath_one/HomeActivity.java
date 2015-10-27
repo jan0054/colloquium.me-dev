@@ -18,7 +18,9 @@ import com.ashvale.cmmath_one.adapter.HomeAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +28,7 @@ public class HomeActivity extends BaseActivity {
 
     private SharedPreferences savedEvents;
     private List<ParseObject> eventObjects;
+    private ParseUser curuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,8 @@ public class HomeActivity extends BaseActivity {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
-                    setAdapter(objects);
                     eventObjects = objects;
+                    setAdapter(objects);
                 } else {
                     Log.d("cm_app", "home query error: " + e);
                 }

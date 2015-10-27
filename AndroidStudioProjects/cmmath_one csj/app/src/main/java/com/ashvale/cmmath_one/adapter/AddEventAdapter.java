@@ -76,7 +76,6 @@ public class AddEventAdapter extends BaseAdapter {
         String contentstr = event.getString("content");
         String namestr = event.getString("name");
         String orgstr = event.getString("organizer");
-        String selectednamestr = "-Selected- "+namestr;
 
         /*
         SharedPreferences savedEvents = context.getSharedPreferences("EVENTS", 6);
@@ -110,12 +109,13 @@ public class AddEventAdapter extends BaseAdapter {
         if (selected == 1)
         {
             imagelabel.setImageResource(R.drawable.check);
-            imagelabel.setColorFilter(R.color.accent_color);
+            imagelabel.setColorFilter(context.getResources().getColor(R.color.accent_color));
+
         }
         else
         {
             imagelabel.setImageResource(R.drawable.emptycircle);
-            imagelabel.setColorFilter(R.color.primary_color);
+            imagelabel.setColorFilter(context.getResources().getColor(R.color.primary_color));
         }
 
         namelabel.setText(namestr);

@@ -5,29 +5,36 @@
     android:padding="@dimen/list_margin"
     android:background="@drawable/list_item"
     android:gravity="left">
-    <ImageView
-        android:id="@+id/imageLabel"
-        android:layout_width="20dp"
-        android:layout_height="@dimen/fragmenticon_size"
-        android:tint="@color/dark_accent"/>
-    <TextView
-        android:id="@+id/nameLabel"
+    <LinearLayout
+        android:id="@+id/titleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/imageLabel"
-        android:fontFamily="sans-serif"
-        android:gravity="center|left"
-        android:text="@string/name_fake"
-        android:textColor="@color/primary_text"
-        android:textSize="16sp" />
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:tint="@color/dark_accent"
+            android:src="@drawable/emptycircle"/>
+        <TextView
+            android:id="@+id/nameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageLabel"
+            android:fontFamily="sans-serif"
+            android:gravity="center|left"
+            android:text="@string/name_fake"
+            android:textColor="@color/primary_text"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageLabel"
-        android:layout_below="@+id/nameLabel"
+        android:layout_alignLeft="@+id/titleLabel"
+        android:layout_below="@+id/titleLabel"
         android:layout_toLeftOf="@+id/organizerLabel"
         android:fontFamily="sans-serif-light"
         android:gravity="center|left"
@@ -39,7 +46,7 @@
         android:id="@+id/organizerLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nameLabel"
+        android:layout_below="@+id/titleLabel"
         android:layout_alignParentRight="true"
         android:gravity="center|bottom"
         android:paddingLeft="16dp"
@@ -53,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/timeLabel"
-        android:layout_alignLeft="@+id/imageLabel"
+        android:layout_alignLeft="@+id/titleLabel"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:fontFamily="sans-serif"

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -37,6 +38,7 @@ public class NewPostActivity extends AppCompatActivity {
     private SharedPreferences savedEvents;
     private ParseObject currenteventObject;
     public EditText post_input;
+    public ParseImageView post_image;
     public Bitmap bitmap = null;
     private Uri imageUri, imageUri2;
 
@@ -52,6 +54,7 @@ public class NewPostActivity extends AppCompatActivity {
         //default disable stuff
         post_input = (EditText) findViewById(R.id.post_input);
         post_input.setEnabled(true);
+        post_image = (ParseImageView) findViewById(R.id.post_image);
 
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Colloquium_Me");
         if (! mediaStorageDir.exists()){
@@ -143,7 +146,7 @@ public class NewPostActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK ) {
-            ImageView imageView = (ImageView) findViewById(R.id.post_image);
+            ParseImageView imageView = (ParseImageView) findViewById(R.id.post_image);
             switch (requestCode) {
                 case PICK_IMAGE_REQUEST:
                     if( data != null && data.getData() != null) {

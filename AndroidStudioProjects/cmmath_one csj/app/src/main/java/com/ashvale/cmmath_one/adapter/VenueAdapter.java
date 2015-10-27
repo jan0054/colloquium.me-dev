@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
+import com.parse.Parse;
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseImageView;
@@ -90,7 +91,7 @@ public class VenueAdapter extends BaseAdapter {
         websiteLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(v.getTag().toString() != null && URLUtil.isValidUrl(v.getTag().toString())==true) {
+                if (v.getTag().toString() != null && URLUtil.isValidUrl(v.getTag().toString()) == true) {
                     Intent intent = new Intent(ACTION_VENUE_WEBSITE);
                     intent.putExtra(ACTION_VENUE_URL, v.getTag().toString());
                     context.sendBroadcast(intent);
@@ -104,19 +105,27 @@ public class VenueAdapter extends BaseAdapter {
         callLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ACTION_VENUE_CALL);
-                intent.putExtra(ACTION_VENUE_PHONE, v.getTag().toString());
-                context.sendBroadcast(intent);
+                if (v.getTag().toString() != null) {
+                    Intent intent = new Intent(ACTION_VENUE_CALL);
+                    intent.putExtra(ACTION_VENUE_PHONE, v.getTag().toString());
+                    context.sendBroadcast(intent);
+                } else {
+                    Toast.makeText(context, context.getString(R.string.error_invalidphone), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         navigateLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ACTION_VENUE_NAVIGATE);
-                intent.putExtra(EXTRA_VENUE_LAT, ((ParseGeoPoint) v.getTag()).getLatitude());
-                intent.putExtra(EXTRA_VENUE_LNG, ((ParseGeoPoint) v.getTag()).getLongitude());
-                context.sendBroadcast(intent);
+                if (v.getTag() != null) {
+                    Intent intent = new Intent(ACTION_VENUE_NAVIGATE);
+                    intent.putExtra(EXTRA_VENUE_LAT, ((ParseGeoPoint) v.getTag()).getLatitude());
+                    intent.putExtra(EXTRA_VENUE_LNG, ((ParseGeoPoint) v.getTag()).getLongitude());
+                    context.sendBroadcast(intent);
+                } else {
+                    Toast.makeText(context, context.getString(R.string.error_invalidgeo), Toast.LENGTH_LONG).show();
+                }
             }
         });
 

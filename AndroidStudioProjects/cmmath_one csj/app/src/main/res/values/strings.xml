@@ -141,7 +141,10 @@
 
     <!-- Errors -->
     <string name="error_not_login">You need to log in first</string>
+    <string name="error_invalidperson">Invalid person!</string>
+    <string name="error_invalidphone">Invalid phone number!</string>
     <string name="error_invalidlink">Invalid link!</string>
+    <string name="error_invalidgeo">Invalid coordinate!</string>
 
     <!--URLs and emails -->
     <string name="feedback_email_address">csjan@tapgo.cc</string>

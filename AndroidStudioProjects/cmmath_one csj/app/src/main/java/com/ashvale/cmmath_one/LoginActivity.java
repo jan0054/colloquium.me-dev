@@ -21,6 +21,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -156,6 +157,7 @@ public class LoginActivity extends Activity {
                             ParseInstallation installation = ParseInstallation.getCurrentInstallation();
                             installation.put("user", ParseUser.getCurrentUser());
                             installation.saveInBackground();
+                            //saveEvents(user);
 
                             new Handler().postDelayed(new Runnable() {
                                 public void run() {
@@ -192,4 +194,21 @@ public class LoginActivity extends Activity {
         toast("Error (" + code + "): " + msg + "!");
         btnLogin.setEnabled(true);
     }
+
+/*    public void saveEvents(ParseUser user)
+    {
+        List eventids;
+
+
+        savedEvents = getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
+        SharedPreferences.Editor editor = savedEvents.edit();
+        Set<String> setId = new HashSet<String>();
+        Set<String> setName = new HashSet<String>();
+        setId.addAll(eventids);
+        setName.addAll(eventnames);
+        editor.putStringSet("eventids", setId);
+        editor.putStringSet("eventnames", setName);
+        editor.commit();
+
+    }*/
 }

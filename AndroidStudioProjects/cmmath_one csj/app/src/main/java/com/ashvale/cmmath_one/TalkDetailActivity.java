@@ -2,6 +2,7 @@ package com.ashvale.cmmath_one;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,9 +65,10 @@ public class TalkDetailActivity extends AppCompatActivity{
                     TextView contentLabel = (TextView) findViewById(R.id.talk_content);
                     Button discussBtn = (Button) findViewById(R.id.talk_discussionbtn);
                     Button calendarBtn = (Button) findViewById(R.id.talk_calendarbtn);
+                    ImageButton fullscreenBtn = (ImageButton) findViewById(R.id.talk_fullscreen);
 
-                    contentLabel.setMovementMethod(new ScrollingMovementMethod());
-                    contentLabel.setOnClickListener(new TextView.OnClickListener() {
+                    //contentLabel.setMovementMethod(new ScrollingMovementMethod());
+                    fullscreenBtn.setOnClickListener(new TextView.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             toFullScreenReader();

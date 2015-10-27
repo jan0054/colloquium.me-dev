@@ -78,12 +78,13 @@
         <TextView
             android:id="@+id/talk_content"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/list_padding"
             android:layout_below="@+id/talk_location"
             android:ellipsize="end"
             android:fontFamily="sans-serif"
             android:padding="0dp"
+            android:maxLines="10"
             android:text="@string/description_fake"
             android:textColor="@color/dark_primary"
             android:textSize="16sp" />
@@ -105,6 +106,17 @@
             android:textSize="14sp"
             style="?android:attr/borderlessButtonStyle"/>
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/talk_fullscreen"
+            android:layout_above="@+id/talk_discussionbtn"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/fullscreen"
+            android:tint="@color/background"
+            android:background="#00000000"/>
+
         <Button
             android:id="@+id/talk_calendarbtn"
             android:layout_width="wrap_content"
@@ -120,5 +132,6 @@
             android:textColor="@color/dark_accent"
             android:textSize="14sp"
             style="?android:attr/borderlessButtonStyle"/>
+
     </RelativeLayout>
 </RelativeLayout>

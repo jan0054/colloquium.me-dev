@@ -77,6 +77,7 @@ public class PeopleDetailActivity extends AppCompatActivity {
 
                     if(email_status == 1 && emailStr != null) {
                         emailBtn.setEnabled(true);
+                        emailBtn.setTextColor(getResources().getColor(R.color.dark_accent));
                         emailBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -89,10 +90,11 @@ public class PeopleDetailActivity extends AppCompatActivity {
                         });
                     } else {
                         emailBtn.setEnabled(false);
+                        emailBtn.setTextColor(getResources().getColor(R.color.secondary_text));
                     }
-
-                    if(linkStr != null) {
+                    if(linkStr != null && linkStr.length()!=0) {
                         linkBtn.setEnabled(true);
+                        linkBtn.setTextColor(getResources().getColor(R.color.dark_accent));
                         linkBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -101,10 +103,12 @@ public class PeopleDetailActivity extends AppCompatActivity {
                         });
                     } else {
                         linkBtn.setEnabled(false);
+                        linkBtn.setTextColor(getResources().getColor(R.color.secondary_text));
                     }
 
                     if(chat_status == 1) {
                         messageBtn.setEnabled(true);
+                        messageBtn.setTextColor(getResources().getColor(R.color.dark_accent));
                         messageBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -113,9 +117,12 @@ public class PeopleDetailActivity extends AppCompatActivity {
                         });
                     } else {
                         messageBtn.setEnabled(false);
+                        messageBtn.setTextColor(getResources().getColor(R.color.secondary_text));
                     }
                 } else {
                     Log.d("cm_app", "postdetail query error: " + e);
+                    toast(getString(R.string.error_invalidperson));
+                    onBackPressed();
                 }
             }
         });
