@@ -1,0 +1,426 @@
+
+/* Class = "UIBarButtonItem"; title = "New"; ObjectID = "2Kd-3h-Eqc"; */
+"2Kd-3h-Eqc.title" = "New";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "2Lg-HQ-7CG"; */
+"2Lg-HQ-7CG.text" = "content";
+
+/* Class = "UINavigationItem"; title = "Choose Events"; ObjectID = "2gr-M2-fyf"; */
+"2gr-M2-fyf.title" = "Choose Events";
+
+/* Class = "UILabel"; text = "Institution"; ObjectID = "2wd-9g-8v2"; */
+"2wd-9g-8v2.text" = "Institution";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "4Qi-N5-eDY"; */
+"4Qi-N5-eDY.text" = "author";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "4wS-lA-aYN"; */
+"4wS-lA-aYN.text" = "time";
+
+/* Class = "UILabel"; text = "Web Page"; ObjectID = "5gM-9u-IE5"; */
+"5gM-9u-IE5.text" = "Web Page";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "5sU-59-O1y"; */
+"5sU-59-O1y.normalTitle" = "Send";
+
+/* Class = "UIBarButtonItem"; title = "Discuss"; ObjectID = "670-fW-Dmj"; */
+"670-fW-Dmj.title" = "Discuss";
+
+/* Class = "UILabel"; text = "seek or hire"; ObjectID = "6BD-NL-CdE"; */
+"6BD-NL-CdE.text" = "seek or hire";
+
+/* Class = "UILabel"; text = "Attend:"; ObjectID = "6Kg-Zc-1iQ"; */
+"6Kg-Zc-1iQ.text" = "Attend:";
+
+/* Class = "UILabel"; text = "participants"; ObjectID = "7fx-IC-g8z"; */
+"7fx-IC-g8z.text" = "participants";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "7mI-JN-UfL"; */
+"7mI-JN-UfL.normalTitle" = "A";
+
+/* Class = "UITextView"; text = "content"; ObjectID = "7zW-bn-m2A"; */
+"7zW-bn-m2A.text" = "content";
+
+/* Class = "UINavigationItem"; title = "Conversations"; ObjectID = "811-W3-APC"; */
+"811-W3-APC.title" = "Conversations";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8a7-q3-qB2"; */
+"8a7-q3-qB2.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Refresh"; ObjectID = "8kv-lp-d08"; */
+"8kv-lp-d08.title" = "Refresh";
+
+/* Class = "UIButton"; normalTitle = "Email"; ObjectID = "9Hq-kU-DKZ"; */
+"9Hq-kU-DKZ.normalTitle" = "Email";
+
+/* Class = "UILabel"; text = "Institution"; ObjectID = "9dW-It-oEf"; */
+"9dW-It-oEf.text" = "Institution";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "AQM-6S-QUq"; */
+"AQM-6S-QUq.text" = "content";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "AtV-bl-4Et"; */
+"AtV-bl-4Et.text" = "time";
+
+/* Class = "UIButton"; normalTitle = "Send email"; ObjectID = "CWQ-fz-iUu"; */
+"CWQ-fz-iUu.normalTitle" = "Send email";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "CdD-cP-GfH"; */
+"CdD-cP-GfH.text" = "author";
+
+/* Class = "UILabel"; text = "broadcast"; ObjectID = "DF0-sT-Cta"; */
+"DF0-sT-Cta.text" = "broadcast";
+
+/* Class = "UITextField"; placeholder = "Search.."; ObjectID = "Den-6p-jsE"; */
+"Den-6p-jsE.placeholder" = "Search..";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Dg7-tx-MQ2"; */
+"Dg7-tx-MQ2.text" = "Name";
+
+/* Class = "UILabel"; text = "input description"; ObjectID = "E5M-OT-K3v"; */
+"E5M-OT-K3v.text" = "input description";
+
+/* Class = "UIBarButtonItem"; title = "Post"; ObjectID = "EPY-2q-X9T"; */
+"EPY-2q-X9T.title" = "Post";
+
+/* Class = "UITextField"; placeholder = "Type message here.."; ObjectID = "Epg-Kq-Vkw"; */
+"Epg-Kq-Vkw.placeholder" = "Type message here..";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "FCW-jk-t7o"; */
+"FCW-jk-t7o.text" = "time";
+
+/* Class = "UILabel"; text = "organizer"; ObjectID = "FP5-wx-o0E"; */
+"FP5-wx-o0E.text" = "organizer";
+
+/* Class = "UINavigationItem"; title = "Wall"; ObjectID = "Fcg-wf-vB9"; */
+"Fcg-wf-vB9.title" = "Wall";
+
+/* Class = "UIButton"; normalTitle = "Open in browser"; ObjectID = "GEd-hE-q8d"; */
+"GEd-hE-q8d.normalTitle" = "Open in browser";
+
+/* Class = "UINavigationItem"; title = "Add Career Opportunity"; ObjectID = "Hdx-a6-yj7"; */
+"Hdx-a6-yj7.title" = "Add Career Opportunity";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "IhO-0w-XIw"; */
+"IhO-0w-XIw.text" = "author";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "IsV-CQ-oBG"; */
+"IsV-CQ-oBG.text" = "Name";
+
+/* Class = "UINavigationItem"; title = "Career"; ObjectID = "Jc5-Ne-ZH7"; */
+"Jc5-Ne-ZH7.title" = "Career";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "KBn-zX-2Ow"; */
+"KBn-zX-2Ow.text" = "time";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "L6G-4N-dZf"; */
+"L6G-4N-dZf.text" = "name";
+
+/* Class = "UILabel"; text = "program"; ObjectID = "LYf-dH-u8h"; */
+"LYf-dH-u8h.text" = "program";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "Ldj-aj-fWM"; */
+"Ldj-aj-fWM.title" = "Done";
+
+/* Class = "UITabBarItem"; title = "Announcement"; ObjectID = "M6Q-w3-1xY"; */
+"M6Q-w3-1xY.title" = "Announcement";
+
+/* Class = "UILabel"; text = "Description:"; ObjectID = "MS5-g2-Mis"; */
+"MS5-g2-Mis.text" = "Description:";
+
+/* Class = "UILabel"; text = "Institution:"; ObjectID = "MaE-w2-2zP"; */
+"MaE-w2-2zP.text" = "Institution:";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "NAS-Lm-fYj"; */
+"NAS-Lm-fYj.text" = "author";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "NEd-jQ-cYK"; */
+"NEd-jQ-cYK.title" = "Home";
+
+/* Class = "UINavigationItem"; title = "People"; ObjectID = "NUL-l3-wzU"; */
+"NUL-l3-wzU.title" = "People";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "NUk-Iq-rFK"; */
+"NUk-Iq-rFK.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Program"; ObjectID = "Ndp-O9-ENd"; */
+"Ndp-O9-ENd.title" = "Program";
+
+/* Class = "UITabBarItem"; title = "Overview"; ObjectID = "NrJ-YC-Mxf"; */
+"NrJ-YC-Mxf.title" = "Overview";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "P9T-Rx-GYb"; */
+"P9T-Rx-GYb.text" = "content";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "PWa-Lo-tlL"; */
+"PWa-Lo-tlL.normalTitle" = "A";
+
+/* Class = "UINavigationItem"; title = "New Post"; ObjectID = "PcR-6E-m1f"; */
+"PcR-6E-m1f.title" = "New Post";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QsV-LD-7aa"; */
+"QsV-LD-7aa.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Announcements"; ObjectID = "R0K-1k-L0f"; */
+"R0K-1k-L0f.title" = "Announcements";
+
+/* Class = "UITextView"; text = "Loading.."; ObjectID = "R4n-jn-dfz"; */
+"R4n-jn-dfz.text" = "Loading..";
+
+/* Class = "UIBarButtonItem"; title = "New"; ObjectID = "RI3-Dp-OGI"; */
+"RI3-Dp-OGI.title" = "New";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "RJf-3R-JFQ"; */
+"RJf-3R-JFQ.text" = "content";
+
+/* Class = "UITextField"; placeholder = "Search.."; ObjectID = "SJy-5Z-MUg"; */
+"SJy-5Z-MUg.placeholder" = "Search..";
+
+/* Class = "UINavigationItem"; title = "Invite"; ObjectID = "T2e-ao-qtw"; */
+"T2e-ao-qtw.title" = "Invite";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "TS4-he-O9s"; */
+"TS4-he-O9s.text" = "content";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "U2O-Iq-Zms"; */
+"U2O-Iq-Zms.normalTitle" = "Send";
+
+/* Class = "UILabel"; text = "Contact:"; ObjectID = "UTA-mB-xdQ"; */
+"UTA-mB-xdQ.text" = "Contact:";
+
+/* Class = "UILabel"; text = "last message"; ObjectID = "V4x-i2-JPu"; */
+"V4x-i2-JPu.text" = "last message";
+
+/* Class = "UILabel"; text = "more.."; ObjectID = "VXx-Xg-n0w"; */
+"VXx-Xg-n0w.text" = "more..";
+
+/* Class = "UINavigationItem"; title = "Invite"; ObjectID = "WQ9-Wt-a23"; */
+"WQ9-Wt-a23.title" = "Invite";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "X5J-5I-LkI"; */
+"X5J-5I-LkI.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "People"; ObjectID = "X7D-SS-aAf"; */
+"X7D-SS-aAf.title" = "People";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "XwE-Ib-949"; */
+"XwE-Ib-949.text" = "Author";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "Y1S-Km-PVf"; */
+"Y1S-Km-PVf.text" = "time";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "Y8c-Bb-19b"; */
+"Y8c-Bb-19b.text" = "name";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "Yje-VV-nFH"; */
+"Yje-VV-nFH.text" = "time";
+
+/* Class = "UIButton"; normalTitle = "Invite"; ObjectID = "Yk8-mi-4mx"; */
+"Yk8-mi-4mx.normalTitle" = "Invite";
+
+/* Class = "UINavigationItem"; title = "User Setup"; ObjectID = "ZCh-eo-PDO"; */
+"ZCh-eo-PDO.title" = "User Setup";
+
+/* Class = "UILabel"; text = "There are no announcements for this event yet"; ObjectID = "ZGh-qH-g8f"; */
+"ZGh-qH-g8f.text" = "There are no announcements for this event yet";
+
+/* Class = "UILabel"; text = "Institution"; ObjectID = "ZJZ-Mq-4sv"; */
+"ZJZ-Mq-4sv.text" = "Institution";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZSA-GH-28s"; */
+"ZSA-GH-28s.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "ZXP-S8-6K9"; */
+"ZXP-S8-6K9.title" = "Settings";
+
+/* Class = "UIButton"; normalTitle = "Chat"; ObjectID = "alf-Ms-Gv5"; */
+"alf-Ms-Gv5.normalTitle" = "Chat";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "bBi-fn-VZr"; */
+"bBi-fn-VZr.title" = "Done";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "ba7-d5-NAc"; */
+"ba7-d5-NAc.text" = "content";
+
+/* Class = "UILabel"; text = "Colloquium.me is a conference platform designed to help event organizers and attendees stay up-to-date and connect with each other. We offer a variety of features and customizations to fit the needs of each conference. If you host an academic conference or workshop and think this app is useful, contact us below to see how we can help you roll out your own solution."; ObjectID = "bh3-JS-aa9"; */
+"bh3-JS-aa9.text" = "Colloquium.me is a conference platform designed to help event organizers and attendees stay up-to-date and connect with each other. We offer a variety of features and customizations to fit the needs of each conference. If you host an academic conference or workshop and think this app is useful, contact us below to see how we can help you roll out your own solution.";
+
+/* Class = "UIButton"; normalTitle = "Contact Us"; ObjectID = "bwj-pq-rdP"; */
+"bwj-pq-rdP.normalTitle" = "Contact Us";
+
+/* Class = "UINavigationItem"; title = "Program"; ObjectID = "c4D-oH-Wr4"; */
+"c4D-oH-Wr4.title" = "Program";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "cO2-uH-MJA"; */
+"cO2-uH-MJA.text" = "time";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "cc8-7z-6fm"; */
+"cc8-7z-6fm.text" = "Description";
+
+/* Class = "UILabel"; text = "location"; ObjectID = "ceE-ms-Y4J"; */
+"ceE-ms-Y4J.text" = "location";
+
+/* Class = "UITabBarItem"; title = "Venue"; ObjectID = "dnR-Pz-cQQ"; */
+"dnR-Pz-cQQ.title" = "Venue";
+
+/* Class = "UILabel"; text = "switch description"; ObjectID = "dyb-6I-XZ0"; */
+"dyb-6I-XZ0.text" = "switch description";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "eiU-5U-OnX"; */
+"eiU-5U-OnX.text" = "content";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "exb-ik-P1E"; */
+"exb-ik-P1E.text" = "Name";
+
+/* Class = "UIBarButtonItem"; title = "Leave"; ObjectID = "fIW-ui-sNZ"; */
+"fIW-ui-sNZ.title" = "Leave";
+
+/* Class = "UIButton"; normalTitle = "Website"; ObjectID = "faj-tw-BdA"; */
+"faj-tw-BdA.normalTitle" = "Website";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "flb-3g-RRC"; */
+"flb-3g-RRC.text" = "time";
+
+/* Class = "UILabel"; text = "No posts here yet, why not make yours the first?"; ObjectID = "gaP-td-OXl"; */
+"gaP-td-OXl.text" = "No posts here yet, why not make yours the first?";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "h2s-og-ILr"; */
+"h2s-og-ILr.text" = "author";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "h5O-iS-Pzw"; */
+"h5O-iS-Pzw.normalTitle" = "Send";
+
+/* Class = "UILabel"; text = "Institution"; ObjectID = "hiQ-Bj-wRc"; */
+"hiQ-Bj-wRc.text" = "Institution";
+
+/* Class = "UILabel"; text = "location"; ObjectID = "iJi-i5-dd4"; */
+"iJi-i5-dd4.text" = "location";
+
+/* Class = "UIButton"; normalTitle = "Exit Fullscreen"; ObjectID = "iUF-En-97z"; */
+"iUF-En-97z.normalTitle" = "Exit Fullscreen";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "idi-p9-U5m"; */
+"idi-p9-U5m.text" = "time";
+
+/* Class = "UILabel"; text = "Colloquium.me by Ashvale Tech"; ObjectID = "ie3-PK-uUN"; */
+"ie3-PK-uUN.text" = "Colloquium.me by Ashvale Tech";
+
+/* Class = "UILabel"; text = "No comments yet"; ObjectID = "iwA-wV-q3h"; */
+"iwA-wV-q3h.text" = "No comments yet";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "jzZ-k1-FCg"; */
+"jzZ-k1-FCg.text" = "time";
+
+/* Class = "UIButton"; normalTitle = "Web"; ObjectID = "k4g-Uh-pXA"; */
+"k4g-Uh-pXA.normalTitle" = "Web";
+
+/* Class = "UILabel"; text = "session"; ObjectID = "kjg-DM-CDi"; */
+"kjg-DM-CDi.text" = "session";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "kkl-fL-SWm"; */
+"kkl-fL-SWm.text" = "Time";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "la6-tu-h1k"; */
+"la6-tu-h1k.text" = "Detail";
+
+/* Class = "UIBarButtonItem"; title = "New"; ObjectID = "lh1-SS-rdy"; */
+"lh1-SS-rdy.title" = "New";
+
+/* Class = "UINavigationItem"; title = "Venue"; ObjectID = "lvM-r7-eR6"; */
+"lvM-r7-eR6.title" = "Venue";
+
+/* Class = "UILabel"; text = "Invite"; ObjectID = "myw-vf-B9I"; */
+"myw-vf-B9I.text" = "Invite";
+
+/* Class = "UITabBarItem"; title = "Wall"; ObjectID = "nab-a1-Ze9"; */
+"nab-a1-Ze9.title" = "Wall";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "ncE-Vq-UH1"; */
+"ncE-Vq-UH1.text" = "name";
+
+/* Class = "UILabel"; text = "Details.."; ObjectID = "oBd-6z-c95"; */
+"oBd-6z-c95.text" = "Details..";
+
+/* Class = "UILabel"; text = "Details..."; ObjectID = "oRe-fi-ylS"; */
+"oRe-fi-ylS.text" = "Details...";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "oUx-S1-ozy"; */
+"oUx-S1-ozy.text" = "author";
+
+/* Class = "UILabel"; text = "No Conversations yet! Start one by tapping \"New\" in the top right corner."; ObjectID = "oo8-ws-nrL"; */
+"oo8-ws-nrL.text" = "No Conversations yet! Start one by tapping \"New\" in the top right corner.";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "qAb-La-KDl"; */
+"qAb-La-KDl.text" = "content";
+
+/* Class = "UILabel"; text = "Content"; ObjectID = "qDi-t5-UZH"; */
+"qDi-t5-UZH.text" = "Content";
+
+/* Class = "UIBarButtonItem"; title = "Post"; ObjectID = "qgF-Fz-hwI"; */
+"qgF-Fz-hwI.title" = "Post";
+
+/* Class = "UITextField"; placeholder = "Write a comment.."; ObjectID = "r7r-4c-Llu"; */
+"r7r-4c-Llu.placeholder" = "Write a comment..";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "rEv-hg-sxR"; */
+"rEv-hg-sxR.text" = "name";
+
+/* Class = "UILabel"; text = "No discussions here yet! Feel free to ask questions or share your thoughts on this talk."; ObjectID = "rPL-q7-mei"; */
+"rPL-q7-mei.text" = "No discussions here yet! Feel free to ask questions or share your thoughts on this talk.";
+
+/* Class = "UIButton"; normalTitle = " Add Photo"; ObjectID = "rkv-04-sIi"; */
+"rkv-04-sIi.normalTitle" = " Add Photo";
+
+/* Class = "UILabel"; text = "institution"; ObjectID = "tZx-qH-0J1"; */
+"tZx-qH-0J1.text" = "institution";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ue1-oT-Fi6"; */
+"ue1-oT-Fi6.normalTitle" = "Done";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "uiV-2e-e8n"; */
+"uiV-2e-e8n.title" = "Edit";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "uxG-sD-bDK"; */
+"uxG-sD-bDK.text" = "author";
+
+/* Class = "UILabel"; text = "more.."; ObjectID = "v1p-cB-OyC"; */
+"v1p-cB-OyC.text" = "more..";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "v8p-Tn-jH8"; */
+"v8p-Tn-jH8.title" = "Done";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "v9W-H0-Q2O"; */
+"v9W-H0-Q2O.text" = "time";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "vgM-K8-USZ"; */
+"vgM-K8-USZ.text" = "content";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "wES-do-GWD"; */
+"wES-do-GWD.text" = "name";
+
+/* Class = "UILabel"; text = "Let's start by choosing a few events that you're interested in, then tap \"Done\" in the top right corner. You can come back and change your choices anytime, so don't worry if you're not quite sure."; ObjectID = "wi3-TN-MHm"; */
+"wi3-TN-MHm.text" = "Let's start by choosing a few events that you're interested in, then tap \"Done\" in the top right corner. You can come back and change your choices anytime, so don't worry if you're not quite sure.";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "x9V-ME-ubb"; */
+"x9V-ME-ubb.text" = "Name";
+
+/* Class = "UILabel"; text = "Person has no presentations in this event"; ObjectID = "xIP-DG-S9V"; */
+"xIP-DG-S9V.text" = "Person has no presentations in this event";
+
+/* Class = "UIButton"; normalTitle = "button"; ObjectID = "xie-zI-t7e"; */
+"xie-zI-t7e.normalTitle" = "button";
+
+/* Class = "UILabel"; text = "Hi there!"; ObjectID = "xuL-pa-SOj"; */
+"xuL-pa-SOj.text" = "Hi there!";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "xwo-9F-2bE"; */
+"xwo-9F-2bE.text" = "content";
+
+/* Class = "UINavigationItem"; title = "Discussion"; ObjectID = "yG1-qN-r0I"; */
+"yG1-qN-r0I.title" = "Discussion";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "yUi-hy-sa2"; */
+"yUi-hy-sa2.text" = "Title";
+
+/* Class = "UILabel"; text = "Organizer"; ObjectID = "zAh-hr-zUA"; */
+"zAh-hr-zUA.text" = "Organizer";
