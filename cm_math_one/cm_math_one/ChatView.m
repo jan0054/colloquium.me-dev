@@ -218,7 +218,7 @@ PFUser *loggedinUser;
     //interface: reload chat list and reset text field
     [self getChat:self withConversation:self.currentConversation];
     self.inputTextField.text = @"";
-    self.inputTextField.placeholder = @"Type message here..";
+    self.inputTextField.placeholder = NSLocalizedString(@"chat_input_holder", nil);
 }
 
 - (void) pushreload: (id) sender  //in-app push receiver

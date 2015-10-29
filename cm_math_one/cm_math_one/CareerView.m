@@ -50,16 +50,16 @@ PFObject *selectedCareer;
 
 
 - (IBAction)addCareerButtonTap:(UIBarButtonItem *)sender {
-    [[[UIAlertView alloc] initWithTitle:@"Account privilege required"
-                          message:@"Please contact us to request a career posting"
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_career_title", nil)
+                          message:NSLocalizedString(@"alert_career_detail", nil)
                           delegate:self
-                          cancelButtonTitle:@"Cancel"
-                          otherButtonTitles:@"Contact", nil] show];
+                          cancelButtonTitle:NSLocalizedString(@"alert_cancel", nil)
+                          otherButtonTitles:NSLocalizedString(@"alert_career_contact", nil), nil] show];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://support@colloquium.me"]];
     }
 }
 
@@ -89,7 +89,7 @@ PFObject *selectedCareer;
     
     PFObject *career = [careerArray objectAtIndex:indexPath.row];
     
-    cell.typeLabel.text = [career[@"hiring"] intValue] == 1 ? @"Position Available" : @"Seeking Job";
+    cell.typeLabel.text = [career[@"hiring"] intValue] == 1 ? NSLocalizedString(@"type_hiring", nil) : NSLocalizedString(@"type_seeking", nil);
     cell.institutionLabel.text = career[@"institution"];
     cell.contentLabel.text = career[@"content"];
     

@@ -322,10 +322,10 @@ InstructionsViewController *controller;
     }
     
     //alert and open drawer
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                    message:@"Your events have been updated!"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_success", nil)
+                                                    message:NSLocalizedString(@"alert_event_update", nil)
                                                    delegate:self
-                                          cancelButtonTitle:@"Done"
+                                          cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                                           otherButtonTitles:nil];
     [alert show];
     UIViewController *centerViewController;

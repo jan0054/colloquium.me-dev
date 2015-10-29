@@ -47,11 +47,11 @@ BOOL isGroup;
 }
 
 - (IBAction)leaveButtonTap:(UIBarButtonItem *)sender {
-    [[[UIAlertView alloc] initWithTitle:@"Confirm leave"
-                                message:@"You will not be able to view these messages or receive new ones after you leave the conversation."
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_leave_title", nil)
+                                message:NSLocalizedString(@"alert_leave_detail", nil)
                                delegate:self
-                      cancelButtonTitle:@"Cancel"
-                      otherButtonTitles:@"Leave", nil] show];
+                      cancelButtonTitle:NSLocalizedString(@"alert_cancel", nil)
+                      otherButtonTitles:NSLocalizedString(@"alert_leave", nil), nil] show];
     
 }
 

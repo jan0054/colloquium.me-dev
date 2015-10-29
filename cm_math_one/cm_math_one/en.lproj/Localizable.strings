@@ -12,6 +12,18 @@
 "alert_error" = "Error";
 "alert_please_fill" = "Please fill in all fields";
 "alert_done" = "Done";
+"alert_success" = "Success";
+"alert_event_update" = "Your events have been updated!";
+"alert_need_account" = "You need a user account";
+"alert_sign_in" = "Please sign in first";
+"alert_leave_title" = "Confirm leave";
+"alert_leave_detail" = "You will not be able to view these messages or receive new ones after you leave the conversation";
+"alert_cancel" = "Cancel";
+"alert_leave" = "Leave";
+"alert_career_title" = "Account privilege required";
+"alert_career_detail" = "Please contact us to request a career posting";
+"alert_career_contact" = "Contact";
+"alert_sign_later" = "You can log in later under Settings";
 
 //drawer labels
 "drawer_chat" = "Chat";
@@ -19,3 +31,34 @@
 "drawer_settings" = "Settings";
 "drawer_edit" = "Edit Events";
 "drawer_home" = "Home";
+
+//chat&conversation
+"conv_nobody" = "No participants in conversation";
+"nav_back" = "Back";
+"chat_input_holder" = "Type message here..";
+
+//career
+"type_hiring" = "Position Available";
+"type_seeking" = "Seeking Job";
+
+//settings
+"sign_as" = "Signed in as";
+"sign_out_switch" = "Sign out to switch users";
+"sign_out" = "Sign Out";
+"no_sign_yet" = "Not signed in yet";
+"sign_in_detail" = "Sign in to access social features";
+"sign_in" = "Sign In";
+"feedback_title" = "App Feedback";
+"feedback_sub" = "Email us with app questions or feedback";
+"admin_title" = "Administrative Assistance";
+"admin_sub" = "Email us with event questions";
+"privacy_title" = "Privacy & Terms";
+"privacy_sub" = "Info on how we protect and secure your data";
+"about_title" = "About Us";
+"about_sub" = "The team behind Colloquium.me";
+"pref_title" = "User Preference";
+"pref_sub" = "Setup or change user info and social options";
+
+
+
+

@@ -118,7 +118,7 @@ NSMutableArray *selectedParticipants;
     }
     else
     {
-        name = @"No participants in conversation";
+        name = NSLocalizedString(@"conv_nobody", nil);
         cell.participantLabel.textColor = [UIColor primary_color];
     }
     
@@ -156,10 +156,10 @@ NSMutableArray *selectedParticipants;
 - (void) noUserYet
 {
     //to-do: ask user to sign up / log in then go to log in page
-    [[[UIAlertView alloc] initWithTitle:@"You need a user account"
-                                message:@"Please sign in first"
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_need_account", nil)
+                                message:NSLocalizedString(@"alert_sign_in", nil)
                                delegate:nil
-                      cancelButtonTitle:@"Done"
+                      cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                       otherButtonTitles:nil] show];
     UIViewController *centerViewController;
     centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settings_nc"];
@@ -176,7 +176,7 @@ NSMutableArray *selectedParticipants;
     }
     else if ([segue.identifier isEqualToString:@"chatinvitesegue"])
     {
-        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStylePlain target: nil action: nil];
+        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"nav_back", nil) style: UIBarButtonItemStylePlain target: nil action: nil];
         self.navigationItem.backBarButtonItem=newBackButton;
     }
 }

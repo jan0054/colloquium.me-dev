@@ -106,15 +106,16 @@
     if ([PFUser currentUser])
     {
         PFUser *user = [PFUser currentUser];
-        userStatus = [NSString stringWithFormat:@"Signed in as %@ %@", user[@"first_name"], user[@"last_name"]];
-        secondaryStatus = @"Sign out to switch users";
-        statusButton = @"Sign Out";
+        NSString *signAs = NSLocalizedString(@"sign_as", nil);
+        userStatus = [NSString stringWithFormat:@"%@ %@ %@", signAs,  user[@"first_name"], user[@"last_name"]];
+        secondaryStatus = NSLocalizedString(@"sign_out_switch", nil);
+        statusButton = NSLocalizedString(@"sign_out", nil);
     }
     else
     {
-        userStatus = @"Not signed in yet";
-        secondaryStatus = @"Sign in to access social features";
-        statusButton = @"Sign In";
+        userStatus = NSLocalizedString(@"no_sign_yet", nil);
+        secondaryStatus = NSLocalizedString(@"sign_in_detail", nil);
+        statusButton = NSLocalizedString(@"sign_in", nil);
     }
     
     switch (indexPath.row) {
@@ -127,32 +128,32 @@
             return userCell;
             break;
         case 1:
-            genericCell.primaryLabel.text = @"App Feedback";
-            genericCell.secondaryLabel.text = @"Email us with app questions or feedback";
+            genericCell.primaryLabel.text = NSLocalizedString(@"feedback_title", nil);
+            genericCell.secondaryLabel.text = NSLocalizedString(@"feedback_sub", nil);
             genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return genericCell;
             break;
         case 2:
-            genericCell.primaryLabel.text = @"Administrative Assistance";
-            genericCell.secondaryLabel.text = @"Email us with event questions";
+            genericCell.primaryLabel.text = NSLocalizedString(@"admin_title", nil);
+            genericCell.secondaryLabel.text = NSLocalizedString(@"admin_sub", nil);
             genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return genericCell;
             break;
         case 3:
-            genericCell.primaryLabel.text = @"Privacy & Terms";
-            genericCell.secondaryLabel.text = @"Info on how we protect and secure your data";
+            genericCell.primaryLabel.text = NSLocalizedString(@"privacy_title", nil);
+            genericCell.secondaryLabel.text = NSLocalizedString(@"privacy_sub", nil);
             genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return genericCell;
             break;
         case 4:
-            genericCell.primaryLabel.text = @"About Us";
-            genericCell.secondaryLabel.text = @"Learn about the developers of this app";
+            genericCell.primaryLabel.text = NSLocalizedString(@"about_title", nil);
+            genericCell.secondaryLabel.text = NSLocalizedString(@"about_sub", nil);
             genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return genericCell;
             break;
         case 5:
-            genericCell.primaryLabel.text = @"User Preferences";
-            genericCell.secondaryLabel.text = @"Setup or change user info and social options";
+            genericCell.primaryLabel.text = NSLocalizedString(@"pref_title", nil);
+            genericCell.secondaryLabel.text = NSLocalizedString(@"pref_sub", nil);
             genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return genericCell;
             break;
@@ -169,10 +170,10 @@
     
     switch (indexPath.row) {
         case 1:
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://support@colloquium.me"]];
             break;
         case 2:
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://support@colloquium.me"]];
             break;
         case 3:
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://colloquium.me/?page_id=3348"]];
@@ -233,10 +234,10 @@
         return YES; // Begin login process
     }
     
-    [[[UIAlertView alloc] initWithTitle:@"Error"
-                                message:@"Please fill in all fields."
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_error", nil)
+                                message:NSLocalizedString(@"alert_please_fill", nil)
                                delegate:nil
-                      cancelButtonTitle:@"Done"
+                      cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                       otherButtonTitles:nil] show];
     return NO; // Interrupt login process
 }
@@ -256,9 +257,9 @@
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:@"You can log in later under Settings"
+                                                    message:NSLocalizedString(@"alert_sign_later", nil)
                                                    delegate:self
-                                          cancelButtonTitle:@"Done"
+                                          cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                                           otherButtonTitles:nil];
     [alert show];
 }
@@ -278,10 +279,10 @@
     
     // Display an alert if a field wasn't completed
     if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:@"Error"
-                                    message:@"Please fill in all fields."
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_error", nil)
+                                    message:NSLocalizedString(@"alert_please_fill", nil)
                                    delegate:nil
-                          cancelButtonTitle:@"Done"
+                          cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                           otherButtonTitles:nil] show];
     }
     
