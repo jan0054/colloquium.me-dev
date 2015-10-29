@@ -111,10 +111,10 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         return YES; // Begin login process
     }
     
-    [[[UIAlertView alloc] initWithTitle:@"Error"
-                                message:@"Please fill in all fields."
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_error", nil)
+                                message:NSLocalizedString(@"alert_please_fill", nil)
                                delegate:nil
-                      cancelButtonTitle:@"Done"
+                      cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                       otherButtonTitles:nil] show];
     return NO; // Interrupt login process
 }
@@ -171,10 +171,10 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
     
     // Display an alert if a field wasn't completed
     if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:@"Error"
-                                    message:@"Please fill in all fields."
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_error", nil)
+                                    message:NSLocalizedString(@"alert_please_fill", nil)
                                    delegate:nil
-                          cancelButtonTitle:@"Done"
+                          cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                           otherButtonTitles:nil] show];
     }
     

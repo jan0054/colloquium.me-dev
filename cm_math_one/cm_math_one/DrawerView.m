@@ -106,7 +106,7 @@ NSIndexPath *currentIndex;
     {
         switch (indexPath.row) {
             case 0:
-                cell.drawerTitle.text = @"Chat";
+                cell.drawerTitle.text = NSLocalizedString(@"drawer_chat", nil);
                 img = [UIImage imageNamed:@"chat48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -114,13 +114,13 @@ NSIndexPath *currentIndex;
                 cell.upperSeparator.backgroundColor = [UIColor divider_color];
                 break;
             case 1:
-                cell.drawerTitle.text = @"Career";
+                cell.drawerTitle.text = NSLocalizedString(@"drawer_career", nil);
                 img = [UIImage imageNamed:@"career48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
                 break;
             case 2:
-                cell.drawerTitle.text = @"Settings";
+                cell.drawerTitle.text = NSLocalizedString(@"drawer_settings", nil);
                 img = [UIImage imageNamed:@"setting48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -134,13 +134,13 @@ NSIndexPath *currentIndex;
     {
         switch (indexPath.row) {
             case 0:
-                cell.drawerTitle.text = @"Edit Events";
+                cell.drawerTitle.text = NSLocalizedString(@"drawer_edit", nil);
                 img = [UIImage imageNamed:@"addevent48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
                 break;
             case 1:
-                cell.drawerTitle.text = @"Home";
+                cell.drawerTitle.text = NSLocalizedString(@"drawer_home", nil);
                 img = [UIImage imageNamed:@"eventhome48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;

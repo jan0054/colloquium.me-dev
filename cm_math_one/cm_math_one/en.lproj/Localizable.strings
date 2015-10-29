@@ -5,3 +5,17 @@
   Created by Chi-sheng Jan on 10/27/15.
   Copyright © 2015 tapgo. All rights reserved.
 */
+
+//NSLocalizedString(@"", nil)
+
+//alert dialog
+"alert_error" = "Error";
+"alert_please_fill" = "Please fill in all fields";
+"alert_done" = "Done";
+
+//drawer labels
+"drawer_chat" = "Chat";
+"drawer_career" = "Career";
+"drawer_settings" = "Settings";
+"drawer_edit" = "Edit Events";
+"drawer_home" = "Home";
