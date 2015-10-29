@@ -130,9 +130,12 @@ public class ChatOptionsActivity extends AppCompatActivity {
                     }
                 }
 
-                final String content = selfName + " has invited " + nameList + " to the conversation.";
-                sendBroadcast(selfUser, content, conversationObject);
-
+                if (nameList.length() != 0) {
+                    final String content = selfName + " has invited " + nameList + " to the conversation.";
+                    sendBroadcast(selfUser, content, conversationObject);
+                } else {
+                    onBackPressed();
+                }
             }
         });
     }

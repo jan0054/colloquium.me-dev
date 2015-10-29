@@ -221,7 +221,11 @@ public class NewChatActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.createchat) {
-            createConversation(selectedInvitees);
+            if (selectedInvitees.size() != 0) {
+                createConversation(selectedInvitees);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.alert_no_user), Toast.LENGTH_SHORT).show();
+            }
             return true;
         }
 

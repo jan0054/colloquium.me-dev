@@ -139,6 +139,9 @@
         <item>設定或更改使用者資訊與隱私設定</item>
     </string-array>
 
+    <!-- Alerts -->
+    <string name="alert_no_user">請至少選擇一位使用者</string>
+
     <!-- Errors -->
     <string name="error_not_login">您必須先登入</string>
     <string name="error_invalidperson">查無此與會者</string>

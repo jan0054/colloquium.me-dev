@@ -31,6 +31,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.io.IOException;
 import java.text.Format;
@@ -230,22 +231,51 @@ public class OverviewFragment extends BaseFragment {
                                 if (isChecked) {
                                     //email set to public
                                     if (attendEvent_on == 0) {
+                                        eventAttending = curuser.getList("attendance");
                                         eventAttending.add(currenteventObject);
                                         curuser.put("attendance", eventAttending);
-                                        curuser.saveInBackground();
-                                        List<ParseObject> userAttending = currenteventObject.getList("attendees");
-                                        userAttending.add(curuser);
-                                        currenteventObject.put("attendees", userAttending);
-                                        currenteventObject.saveInBackground();
+                                        curuser.saveInBackground(new SaveCallback() {
+                                            @Override
+                                            public void done(ParseException e) {
+                                                if(e == null) {
+                                                    if(currenteventObject != null) {
+                                                        List<ParseUser> userAttending = currenteventObject.getList("attendees");
+                                                        if(userAttending == null) {
+                                                            userAttending = Arrays.asList(curuser);
+                                                        } else {
+                                                            userAttending.add(curuser);
+                                                        }
+                                                        currenteventObject.put("attendees", userAttending);
+                                                        currenteventObject.saveInBackground();
+                                                    } else {
+                                                        Log.d("cm_app", "error: currentevent == null");
+                                                    }
+                                                } else {
+                                                    Log.d("cm_app", "write to user failed: "+e);
+                                                }
+                                            }
+                                        });
                                     }
                                     attendEvent_on = 1;
                                 } else if (!isChecked) {
                                     //email set to private
                                     if (attendEvent_on == 1) {
                                         curuser.removeAll("attendance", Arrays.asList(currenteventObject));
-                                        curuser.saveInBackground();
-                                        currenteventObject.removeAll("attendees", Arrays.asList(curuser));
-                                        currenteventObject.saveInBackground();
+                                        curuser.saveInBackground(new SaveCallback() {
+                                            @Override
+                                            public void done(ParseException e) {
+                                                if(e == null) {
+                                                    if(currenteventObject !=null) {
+                                                        currenteventObject.removeAll("attendees", Arrays.asList(curuser));
+                                                        currenteventObject.saveInBackground();
+                                                    } else {
+                                                        Log.d("cm_app", "error: currentevent == null");
+                                                    }
+                                                } else {
+                                                    Log.d("cm_app", "write to user failed"+e);
+                                                }
+                                            }
+                                        });
                                     }
                                     attendEvent_on = 0;
                                 }

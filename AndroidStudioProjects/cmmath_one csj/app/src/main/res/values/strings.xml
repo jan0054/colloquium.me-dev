@@ -139,6 +139,9 @@
         <item>Setup or change user info and social options</item>
     </string-array>
 
+    <!-- Alerts -->
+    <string name="alert_no_user">Please select at least one person.</string>
+
     <!-- Errors -->
     <string name="error_not_login">You need to log in first</string>
     <string name="error_invalidperson">Invalid person!</string>
