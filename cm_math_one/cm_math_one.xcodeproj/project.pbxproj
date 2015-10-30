@@ -290,6 +290,7 @@
 		B46402701B4662B80074DD72 /* venue64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "venue64@2x.png"; sourceTree = "<group>"; };
 		B46402711B4662B80074DD72 /* web48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web48@2x.png"; sourceTree = "<group>"; };
 		B46402721B4662B80074DD72 /* web64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web64@2x.png"; sourceTree = "<group>"; };
+		B46EBA8A1BE3775A00F99C07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B481BB8B1B73542A00FC9133 /* CareerDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerDetailTableViewController.h; sourceTree = "<group>"; };
 		B481BB8C1B73542A00FC9133 /* CareerDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerDetailTableViewController.m; sourceTree = "<group>"; };
 		B48467881B68C79000C1A563 /* FullScreenTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenTextView.h; sourceTree = "<group>"; };
@@ -982,6 +983,7 @@
 			children = (
 				FDCA8C3A1BDFC48D009AF220 /* en */,
 				FDCA8C3C1BDFC492009AF220 /* zh-Hant */,
+				B46EBA8A1BE3775A00F99C07 /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

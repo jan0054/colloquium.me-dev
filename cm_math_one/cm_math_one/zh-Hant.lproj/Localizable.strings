@@ -5,4 +5,63 @@
   Created by Chi-sheng Jan on 10/27/15.
   Copyright © 2015 tapgo. All rights reserved.
 */
+
+//NSLocalizedString(@"", nil)
+
+//alert dialog
 "alert_error" = "錯誤";
+"alert_please_fill" = "請填寫所有必要欄位";
+"alert_done" = "完成";
+"alert_success" = "成功";
+"alert_event_update" = "您的活動已更新";
+"alert_need_account" = "無使用者帳號";
+"alert_sign_in" = "請先登入或註冊";
+"alert_leave_title" = "確認";
+"alert_leave_detail" = "離開對話後您將無法瀏覽這些訊息";
+"alert_cancel" = "取消";
+"alert_leave" = "離開";
+"alert_career_title" = "權限不足";
+"alert_career_detail" = "請聯絡我們協助張貼職涯機會";
+"alert_career_contact" = "聯絡";
+"alert_sign_later" = "您之後可以在設定頁面登入";
+
+//drawer labels
+"drawer_chat" = "訊息";
+"drawer_career" = "職涯";
+"drawer_settings" = "設定";
+"drawer_edit" = "選擇會議";
+"drawer_home" = "首頁";
+
+//chat&conversation
+"conv_nobody" = "該對話目前無參與者";
+"nav_back" = "返回";
+"chat_input_holder" = "輸入訊息..";
+
+//career
+"type_hiring" = "職缺";
+"type_seeking" = "求職";
+
+//settings
+"sign_as" = "使用者";
+"sign_out_switch" = "若要切換使用者請登出";
+"sign_out" = "登出";
+"no_sign_yet" = "尚未登入";
+"sign_in_detail" = "登入可使用社群功能";
+"sign_in" = "登入";
+"feedback_title" = "建議回饋";
+"feedback_sub" = "將您的建議或任何問題與我們分享";
+"admin_title" = "活動支援";
+"admin_sub" = "對於會議或活動的問題";
+"privacy_title" = "隱私權政策";
+"privacy_sub" = "了解我們如何確保您的資料隱私";
+"about_title" = "關於我們";
+"about_sub" = "Colloquium.me服務的開發團隊";
+"pref_title" = "使用者偏好";
+"pref_sub" = "設定或更改使用者資訊與隱私設定";
+
+//Timeline/Post
+"post_add_photo" = " 新增照片";
+"post_remove_photo" = " 移除照片";
+
+//Overview
+"overview_attend" = "我將出席這場會議：";

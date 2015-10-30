@@ -75,10 +75,10 @@ NSMutableArray *newsArray;
 - (IBAction)attendanceSwitchChanged:(UISwitch *)sender {
     if (!eventSelf)
     {
-        [[[UIAlertView alloc] initWithTitle:@"You need a user account"
-                                    message:@"Please log in first"
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_need_account", nil)
+                                    message:NSLocalizedString(@"alert_sign_in", nil)
                                    delegate:nil
-                          cancelButtonTitle:@"Done"
+                          cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                           otherButtonTitles:nil] show];
         self.attendanceSwitch.on = NO;
     }
@@ -134,18 +134,18 @@ NSMutableArray *newsArray;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    [dateFormat setDateFormat: @"MMM-d HH:mm"];
+    [dateFormat setDateFormat: @"MMM-d"];
     NSDate *sdate = object[@"start_time"];
     NSDate *edate = object[@"end_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];
     NSString *estr = [dateFormat stringFromDate:edate];
     
     //interface
-    self.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", sstr, estr];
+    self.timeLabel.text = [NSString stringWithFormat:@"%@ ~ %@", sstr, estr];
     self.nameLabel.text = name;
     self.contentLabel.text = content;
     [self.organizerButton setTitle:organizer forState:UIControlStateNormal];
-    self.attendanceLabel.text = @"I am attending this event:";
+    self.attendanceLabel.text = NSLocalizedString(@"overview_attend", nil);
     
     //followup stuff now that we have the event
     [self setupAttendance];
@@ -257,5 +257,3 @@ NSMutableArray *newsArray;
 }
 
 @end
-
-

@@ -81,7 +81,7 @@ BOOL photoSet;
         self.postImageView.image = nil;
         photoSet = NO;
         self.imageRatio.active = NO;
-        [self.addPhotoButton setTitle:@" Add Photo" forState:UIControlStateNormal];
+        [self.addPhotoButton setTitle:NSLocalizedString(@"post_add_photo", nil) forState:UIControlStateNormal];
         [self.inputTextView resignFirstResponder];
         [self.view setNeedsLayout];
         [self.view setNeedsUpdateConstraints];
@@ -154,7 +154,7 @@ BOOL photoSet;
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
     self.postImageView.image = image;
     photoSet = YES;
-    [self.addPhotoButton setTitle:@" Remove Photo" forState:UIControlStateNormal];
+    [self.addPhotoButton setTitle:NSLocalizedString(@"post_remove_photo", nil) forState:UIControlStateNormal];
     self.imageRatio.active = YES;
 }
 
@@ -221,6 +221,5 @@ BOOL photoSet;
     }];
     
 }
-
 
 @end

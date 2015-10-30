@@ -56,10 +56,10 @@ UIImage *selectedImage;
     }
     else
     {
-        [[[UIAlertView alloc] initWithTitle:@"You need a user account"
-                                    message:@"Please sign in first"
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_need_account", nil)
+                                    message:NSLocalizedString(@"alert_sign_in", nil)
                                    delegate:nil
-                          cancelButtonTitle:@"Done"
+                          cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                           otherButtonTitles:nil] show];
     }
 }
