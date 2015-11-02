@@ -54,12 +54,34 @@ PFObject *selectedAttendee;
 
 - (IBAction)searchButtonTap:(UIButton *)sender
 {
-    if (self.searchInput.text.length >1)
+    if (self.searchInput.text.length >0)
     {
         NSString *search_str = self.searchInput.text.lowercaseString;
-        NSArray *wordsAndEmptyStrings = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
-        [self doSearchWithArray:words];
+        
+        NSArray *separateBySpace = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSMutableArray *processedWords = [[NSMutableArray alloc] init];
+        for (NSString *componentString in separateBySpace)
+        {
+            CFStringRef compstr = (__bridge CFStringRef)(componentString);
+            NSString *lang = CFBridgingRelease(CFStringTokenizerCopyBestStringLanguage(compstr, CFRangeMake(0, componentString.length)));
+            if ([lang isEqualToString:@"zh-Hant"])
+            {
+                //中文
+                for (int i=1; i<=componentString.length; i++)
+                {
+                    NSString *chcomp = [componentString substringWithRange:NSMakeRange(i-1, 1)];
+                    [processedWords addObject:chcomp];
+                }
+            }
+            else
+            {
+                //not中文
+                [processedWords addObject:componentString];
+            }
+        }
+        
+        [self doSearchWithArray:processedWords];
+        NSLog(@"PROCESSEDWORDS:%lu, %@", processedWords.count, processedWords);
     }
     [self.searchInput resignFirstResponder];
 }
