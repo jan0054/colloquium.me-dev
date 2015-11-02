@@ -48,7 +48,7 @@ public class PostDetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_post_detail);
 
         sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        sdf.setTimeZone(TimeZone.getDefault());
 
         postID = this.getIntent().getExtras().getString("postID");
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");

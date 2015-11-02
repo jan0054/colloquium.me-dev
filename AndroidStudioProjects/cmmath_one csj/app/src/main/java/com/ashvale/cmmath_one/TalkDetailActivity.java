@@ -43,7 +43,7 @@ public class TalkDetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_talk_detail);
 
         sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        sdf.setTimeZone(TimeZone.getDefault());
 
         talkID = this.getIntent().getExtras().getString("talkID");
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Talk");

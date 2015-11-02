@@ -112,7 +112,7 @@ InstructionsViewController *controller;
     cell.eventOrganizerLabel.text = event[@"organizer"];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
     [dateFormat setDateFormat: @"MMM-d"];
     NSDate *sdate = event[@"start_time"];
     NSDate *edate = event[@"end_time"];

@@ -18,6 +18,7 @@
 #import "SignUpView.h"
 #import "UserPreferenceView.h"
 #import "InstructionsViewController.h"
+#import "PasswordResetView.h"
 
 @implementation SettingsView
 
@@ -166,7 +167,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+    //UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+    PasswordResetView *controller = (PasswordResetView *)[storyboard instantiateViewControllerWithIdentifier:@"reset_vc"];
     
     switch (indexPath.row) {
         case 1:

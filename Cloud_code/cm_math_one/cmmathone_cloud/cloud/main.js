@@ -81,7 +81,25 @@ Parse.Cloud.beforeSave("Person", function(request, response) {
         lname = _.map(lname, toLowerCase);
         //lname = _.filter(lname, function(w) { return w.match(/^\w+$/) && ! _.contains(stopWords, w); });
     }
-     
+    
+    var fullname;
+    var chname;
+    if (person.get("last_name") != null && person.get("first_name") != null) {
+    	var fn = person.get("first_name").split(/\b/);
+    	var ln = person.get("last_name").split(/\b/);
+    	fullname = ln+fn;
+    	fullname = _.map(fullname, toLowerCase);
+    	
+    	var cfn = person.get("first_name");
+    	var cln = person.get("last_name");
+    	chname = cln+cfn;
+    	chname = chname.split(/\b/);
+    	chname = _.map(chname, toLowerCase);
+    }
+    console.log("after fullname:");
+    console.log(fullname);
+    console.log(chname);
+    
     var inststr = person.get("institution");
     if (inststr == null)
     {
@@ -94,7 +112,17 @@ Parse.Cloud.beforeSave("Person", function(request, response) {
     
     var words = fname.concat(lname);
     words = words.concat(inst);
+    console.log("before concat:");
+    console.log(words);
+    words = words.concat(fullname);
+    console.log("after concat:");
+    console.log(words);
+    words = words.concat(chname);
+    console.log("after ch:");
+    console.log(words);
     words = _.uniq(words);
+    console.log("after unique:");
+    console.log(words);
     person.set("words", words);
     
     response.success();

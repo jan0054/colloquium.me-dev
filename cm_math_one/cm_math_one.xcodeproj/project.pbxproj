@@ -31,6 +31,7 @@
 		B41D57D31B96D86A00F558CF /* fullscreen64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B41D57D11B96D86A00F558CF /* fullscreen64@2x.png */; };
 		B42BBEE51B4A8A28005CAAB1 /* search48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE31B4A8A28005CAAB1 /* search48@2x.png */; };
 		B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */; };
+		B42C49321BE7612800C7D2E7 /* PasswordResetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B42C49311BE7612800C7D2E7 /* PasswordResetView.m */; };
 		B438E58F1B7CBFFE009D753D /* cm_math_one_splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B438E58E1B7CBFFE009D753D /* cm_math_one_splash@2x.png */; };
 		B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */; };
 		B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */; };
@@ -195,6 +196,8 @@
 		B41D57D11B96D86A00F558CF /* fullscreen64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fullscreen64@2x.png"; sourceTree = "<group>"; };
 		B42BBEE31B4A8A28005CAAB1 /* search48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search48@2x.png"; sourceTree = "<group>"; };
 		B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search64@2x.png"; sourceTree = "<group>"; };
+		B42C49301BE7612800C7D2E7 /* PasswordResetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordResetView.h; sourceTree = "<group>"; };
+		B42C49311BE7612800C7D2E7 /* PasswordResetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetView.m; sourceTree = "<group>"; };
 		B438E58E1B7CBFFE009D753D /* cm_math_one_splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_math_one_splash@2x.png"; sourceTree = "<group>"; };
 		B44459A31B42A0CE00B200D0 /* UserPreferenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceCell.h; sourceTree = "<group>"; };
 		B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceCell.m; sourceTree = "<group>"; };
@@ -418,6 +421,7 @@
 				B40CCC1B1B3009B500BB11B9 /* AppDelegate.h */,
 				B40CCC1C1B3009B500BB11B9 /* AppDelegate.m */,
 				B40CCC241B3009B500BB11B9 /* Main.storyboard */,
+				FDCA8C3B1BDFC48D009AF220 /* Localizable.strings */,
 				B41755F41B3019E000E1E8A5 /* LaunchView.h */,
 				B41755F51B3019E000E1E8A5 /* LaunchView.m */,
 				B41755FA1B301DE600E1E8A5 /* DrawerView.h */,
@@ -525,7 +529,6 @@
 			isa = PBXGroup;
 			children = (
 				B41756001B301F8200E1E8A5 /* Images */,
-				FDCA8C3B1BDFC48D009AF220 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -549,6 +552,8 @@
 				B48467891B68C79000C1A563 /* FullScreenTextView.m */,
 				B4CE36181B79D1A2008CB21F /* InstructionsViewController.h */,
 				B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */,
+				B42C49301BE7612800C7D2E7 /* PasswordResetView.h */,
+				B42C49311BE7612800C7D2E7 /* PasswordResetView.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -945,6 +950,7 @@
 				B4BFB4EF1B3172090035309E /* CareerView.m in Sources */,
 				B4475A391B78AF5D0049559A /* ChatInviteCell.m in Sources */,
 				B41756101B3030DC00E1E8A5 /* ProgramView.m in Sources */,
+				B42C49321BE7612800C7D2E7 /* PasswordResetView.m in Sources */,
 				B455D7731B41178600DCB6E4 /* CareerPostView.m in Sources */,
 				B455D7941B41331900DCB6E4 /* NewsDetailImageCell.m in Sources */,
 				B4BFB5011B3174830035309E /* ConversationCell.m in Sources */,

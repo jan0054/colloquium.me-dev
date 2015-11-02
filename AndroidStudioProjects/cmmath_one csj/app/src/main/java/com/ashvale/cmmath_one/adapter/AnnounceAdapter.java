@@ -65,7 +65,7 @@ public class AnnounceAdapter extends BaseAdapter {
         }
 
         sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        sdf.setTimeZone(TimeZone.getDefault());
 
         ParseObject announce = (ParseObject) announces.get(position);
 

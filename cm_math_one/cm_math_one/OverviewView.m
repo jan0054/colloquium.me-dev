@@ -133,7 +133,7 @@ NSMutableArray *newsArray;
     currentEvent = object;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
     [dateFormat setDateFormat: @"MMM-d"];
     NSDate *sdate = object[@"start_time"];
     NSDate *edate = object[@"end_time"];

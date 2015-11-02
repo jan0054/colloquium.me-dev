@@ -66,7 +66,7 @@ public class BaseActivity extends AppCompatActivity {
         if (eventIdSet != null)   //there were some saved events
         {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
-            query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+            query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
             query.whereContainedIn("objectId", eventIdSet);
             query.orderByDescending("start_time");
             query.findInBackground(new FindCallback<ParseObject>() {

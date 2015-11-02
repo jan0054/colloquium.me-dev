@@ -69,7 +69,7 @@
     self.locationLabel.text = location[@"name"];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
     [dateFormat setDateFormat: @"MMM-d HH:mm"];
     NSDate *sdate = object[@"start_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];

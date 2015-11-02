@@ -40,7 +40,7 @@ public class HomeActivity extends BaseActivity {
         Set<String> eventset = savedEvents.getStringSet("eventids", null);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
-        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.whereContainedIn("objectId", eventset);
         query.orderByDescending("start_time");
         query.findInBackground(new FindCallback<ParseObject>() {

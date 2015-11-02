@@ -112,12 +112,15 @@ PFObject *selectedProgram;
     //data
     PFObject *program = [programArray objectAtIndex:indexPath.row];
     PFObject *author = program[@"author"];
+    PFObject *location = program[@"location"];
+    NSString *locationName = (location[@"name"]!=NULL) ? location[@"name"] : @"";
     cell.nameLabel.text = program[@"name"];
     cell.contentLabel.text = program[@"content"];
+    cell.locationLabel.text = locationName;
     cell.authorLabel.text = [NSString stringWithFormat:@"%@, %@", author[@"last_name"], author[@"first_name"]];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
     [dateFormat setDateFormat: @"MMM-d HH:mm"];
     NSDate *sdate = program[@"start_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];

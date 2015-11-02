@@ -69,8 +69,8 @@ public class ProgramAdapter extends BaseAdapter {
         TextView starttimeLabel = (TextView)view.findViewById(R.id.program_starttime);
 
         sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-
+        //sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        sdf.setTimeZone(TimeZone.getDefault());
         nameLabel.setText(talk.getString("name"));
         authornameLabel.setText(getAuthor(talk));
         contentLabel.setText(talk.getString("content"));

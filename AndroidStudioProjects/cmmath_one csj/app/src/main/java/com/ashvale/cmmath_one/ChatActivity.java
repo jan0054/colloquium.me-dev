@@ -65,7 +65,7 @@ public class ChatActivity extends AppCompatActivity {
         query.whereEqualTo("conversation", conversationObject);
         query.include("author");
         query.orderByAscending("createdAt");
-        query.setLimit(500);
+        query.setLimit(1000);
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {

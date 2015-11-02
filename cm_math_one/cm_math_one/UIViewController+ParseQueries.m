@@ -32,7 +32,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Venue"];
     [query whereKey:@"event" equalTo:event];
     [query orderByDescending:@"order"];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     query.maxCacheAge = 86400;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -48,7 +48,8 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Person"];
     [query includeKey:@"User"];
     [query orderByAscending:@"last_name"];
-    [query setLimit:500];
+    [query whereKey:@"debug_status" notEqualTo:@1];
+    [query setLimit:1000];
     [query whereKey:@"events" containsAllObjectsInArray:@[event]];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     if (searchArray.count >=1)
@@ -67,7 +68,8 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Person"];
     [query includeKey:@"User"];
     [query orderByAscending:@"last_name"];
-    [query setLimit:500];
+    [query setLimit:1000];
+    [query whereKey:@"debug_status" notEqualTo:@1];
     [query whereKey:@"events" containsAllObjectsInArray:@[event]];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -84,7 +86,8 @@
     [query orderByDescending:@"createdAt"];
     [query whereKey:@"event" equalTo:event];
     [query includeKey:@"author"];
-    [query setLimit:500];
+    [query setLimit:1000];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Post query success: %lu", (unsigned long)[objects count]);
         [caller processData:objects];
@@ -97,7 +100,7 @@
     [query orderByAscending:@"createdAt"];
     [query whereKey:@"post" equalTo:post];
     [query includeKey:@"author"];
-    [query setLimit:500];
+    [query setLimit:1000];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Comment query success: %lu", (unsigned long)[objects count]);
@@ -131,7 +134,6 @@
     post[@"content"] = content;
     post[@"image"] = image;
     post[@"event"] = event;
-    
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
@@ -152,6 +154,7 @@
     [query whereKey:@"participants" containsAllObjectsInArray:@[user]];
     [query includeKey:@"participants"];
     [query orderByDescending:@"updatedAt"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSLog(@"conversation query error");
@@ -227,6 +230,7 @@
     [query whereKey:@"conversation" equalTo:conversation];
     [query orderByAscending:@"createdAt"];
     [query includeKey:@"author"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"chat query success with # of chats: %ld", (unsigned long)[objects count]);
         [caller processChatList:objects];
@@ -239,6 +243,7 @@
     [query whereKey:@"chat_status" equalTo:@1];
     [query whereKey:@"debug_status" notEqualTo:@1];
     [query includeKey:@"person"];
+    query.cachePolicy = kPFCachePolicyNetworkOnly;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu invitees.(users)", (unsigned long)objects.count);
         NSMutableArray *results = [[NSMutableArray alloc] init];
@@ -360,8 +365,7 @@
     {
         [query orderByDescending:@"name"];
     }
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-    query.maxCacheAge = 86400;
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu programs for type: %i", (unsigned long)objects.count, type);
         [caller processData:objects];
@@ -387,8 +391,7 @@
     {
         [query orderByDescending:@"name"];
     }
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-    query.maxCacheAge = 86400;
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     if (searchArray.count >=1)
     {
         [query whereKey:@"words" containsAllObjectsInArray:searchArray];
@@ -407,8 +410,7 @@
     [query whereKey:@"event" equalTo:event];
     [query whereKey:@"author" equalTo:person];
     [query orderByDescending:@"name"];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-    query.maxCacheAge = 86400;
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu programs for the person %@", (unsigned long)objects.count, person.objectId);
         [caller processData:objects];
@@ -448,8 +450,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query includeKey:@"admin"];
     [query includeKey:@"attendees"];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-    query.maxCacheAge = 86400;
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query getObjectInBackgroundWithId:eventId block:^(PFObject *object, NSError *error) {
         NSLog(@"Successfully retrieved single event");
         [caller processEvent:object];

@@ -73,7 +73,7 @@ public class TimelineAdapter extends BaseAdapter {
         }
 
         sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        sdf.setTimeZone(TimeZone.getDefault());
 
         ParseObject post = (ParseObject)posts.get(position);
 

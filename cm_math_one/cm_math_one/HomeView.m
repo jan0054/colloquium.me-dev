@@ -82,13 +82,13 @@ NSMutableArray *selectedEventsArray;
     cell.organizerLabel.text = event[@"organizer"];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
     [dateFormat setDateFormat: @"MMM-d"];
     NSDate *sdate = event[@"start_time"];
     NSDate *edate = event[@"end_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];
     NSString *estr = [dateFormat stringFromDate:edate];
-    cell.timeLabel.text = [NSString stringWithFormat:@"%@ to %@", sstr, estr];
+    cell.timeLabel.text = [NSString stringWithFormat:@"%@ ~ %@", sstr, estr];
     cell.eventId = event.objectId;
     
     //styling

@@ -137,7 +137,7 @@ public class TimelineFragment extends BaseFragment {
         query.orderByDescending("createdAt");
         query.whereMatchesQuery("event", innerQuery);
         query.include("author");
-        query.setLimit(500);
+        query.setLimit(1000);
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {

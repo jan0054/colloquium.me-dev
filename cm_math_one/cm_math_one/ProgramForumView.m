@@ -100,7 +100,7 @@ NSMutableArray *forumArray;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
     [dateFormat setDateFormat: @"MMM-d HH:mm"];
     NSDate *date = forum.createdAt;
     NSString *dateStr = [dateFormat stringFromDate:date];

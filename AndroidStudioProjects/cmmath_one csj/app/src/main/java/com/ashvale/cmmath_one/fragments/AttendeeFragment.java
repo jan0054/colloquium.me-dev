@@ -179,7 +179,7 @@ public class AttendeeFragment extends BaseFragment{
         query.whereEqualTo("events", event);
         query.include("User");
         query.orderByAscending("last_name");
-        query.setLimit(500);
+        query.setLimit(1000);
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
@@ -209,7 +209,7 @@ public class AttendeeFragment extends BaseFragment{
         query.whereEqualTo("events", event);
         query.include("User");
         query.orderByAscending("last_name");
-        query.setLimit(500);
+        query.setLimit(1000);
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
@@ -229,7 +229,7 @@ public class AttendeeFragment extends BaseFragment{
         query.whereEqualTo("events", event);
         query.include("User");
         query.orderByAscending("last_name");
-        query.setLimit(500);
+        query.setLimit(1000);
         if (searchArray.size()>0)
         {
             query.whereContainsAll("words", searchArray);
