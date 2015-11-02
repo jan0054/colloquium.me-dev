@@ -47,6 +47,7 @@
     <string name="back">返回</string>
     <string name="signup_reminder">還沒有帳號嗎？</string>
     <string name="signup">註冊</string>
+    <string name="settingsignup">登入</string>
     <string name="skip">跳過</string>
     <string name="resetpwd">重設密碼</string>
     <string name="resetpwd_reminder"><u>忘記密碼？</u></string>

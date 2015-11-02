@@ -47,6 +47,7 @@
     <string name="back">Back</string>
     <string name="signup_reminder">No account yet?</string>
     <string name="signup">Sign Up</string>
+    <string name="settingsignup">Sign In</string>
     <string name="skip">Skip</string>
     <string name="resetpwd">Reset Password</string>
     <string name="resetpwd_reminder"><u>Forgot password?</u></string>
