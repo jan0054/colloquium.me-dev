@@ -11,4 +11,5 @@
 @interface HomeView : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *homeTable;
 - (void)processData: (NSArray *) results;
+@property UIRefreshControl *pullrefresh;
 @end

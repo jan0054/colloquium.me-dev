@@ -14,5 +14,5 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addConvButton;
 - (IBAction)addConvButtonTap:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) IBOutlet UILabel *noConvLabel;
-
+@property UIRefreshControl *pullrefresh;
 @end

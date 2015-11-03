@@ -29,9 +29,6 @@ NSMutableArray *attendeeProgramArray;
     self.noProgramLabel.textColor = [UIColor dark_primary];
     self.attendeeBackground.backgroundColor = [UIColor clearColor];
     
-    
-    
-    
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
@@ -55,17 +52,23 @@ NSMutableArray *attendeeProgramArray;
 - (IBAction)chatButtonTap:(UIButton *)sender {
     //to-do: start chat with this person
     PFUser *user = attendee[@"user"];
-    
 }
 
 - (IBAction)emailButtonTap:(UIButton *)sender {
-    NSString *mailstr = [NSString stringWithFormat:@"mailto://%@", attendee[@"email"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailstr]];
+    NSString *mail = attendee[@"email"];
+    if (mail.length>3)
+    {
+        NSString *mailstr = [NSString stringWithFormat:@"mailto://%@", attendee[@"email"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailstr]];
+    }
 }
 
 - (IBAction)websiteButtonTap:(UIButton *)sender {
     NSString *linkstr = attendee[@"link"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkstr]];
+    if (linkstr.length>3)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkstr]];
+    }
 }
 
 #pragma mark - TableView
@@ -85,7 +88,7 @@ NSMutableArray *attendeeProgramArray;
     AttendeeProgramCell *cell = [tableView dequeueReusableCellWithIdentifier:@"attendeeprogramcell"];
     PFObject *program = [attendeeProgramArray objectAtIndex:indexPath.row];
     cell.programLabel.text = program[@"name"];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -126,6 +129,7 @@ NSMutableArray *attendeeProgramArray;
     {
         self.emailButton.enabled = NO;
     }
+    /*
     if (chat == 1)
     {
         self.chatButton.enabled = YES;
@@ -135,6 +139,12 @@ NSMutableArray *attendeeProgramArray;
     {
         self.chatButton.enabled = NO;
     }
+    */
+    
+    //unfinished: tap to start chat
+    self.chatButton.enabled = NO;
+    self.chatButton.hidden = YES;
+    
     NSString *link = attendee[@"link"];
     if (link.length >=1)
     {

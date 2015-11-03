@@ -19,6 +19,7 @@ NSMutableArray *commentArray;
 @implementation TimelineDetailView
 @synthesize currentPost;
 @synthesize currentImage;
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -34,6 +35,16 @@ NSMutableArray *commentArray;
     
     //data
     [self getComments:self forPost:currentPost];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.commentTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    [self getComments:self forPost:currentPost];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void) viewDidLayoutSubviews

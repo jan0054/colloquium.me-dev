@@ -28,5 +28,5 @@
 
 - (void)processEvent: (PFObject *) object;
 - (void)processData: (NSArray *) results;
-
+@property UIRefreshControl *pullrefresh;
 @end

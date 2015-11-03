@@ -127,7 +127,12 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
 
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in...");
+    NSLog(@"Failed to log in with error %@", error);
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_error", nil)
+                                message:error.userInfo[@"error"]
+                               delegate:nil
+                      cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
+                      otherButtonTitles:nil] show];
 }
 
 // Sent to the delegate when the log in screen is dismissed.
@@ -189,6 +194,11 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
 // Sent to the delegate when the sign up attempt fails.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
     NSLog(@"Failed to sign up with error: %@", error);
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_error", nil)
+                                message:error.userInfo[@"error"]
+                               delegate:nil
+                      cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
+                      otherButtonTitles:nil] show];
 }
 
 // Sent to the delegate when the sign up screen is dismissed.

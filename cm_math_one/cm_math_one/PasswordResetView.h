@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface PasswordResetView : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (strong, nonatomic) IBOutlet UITextField *emailTextField;
+@property (strong, nonatomic) IBOutlet UIButton *resetButton;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+- (IBAction)resetButtonTap:(UIButton *)sender;
+- (IBAction)cancelButtonTap:(UIButton *)sender;
 
 @end

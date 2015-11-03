@@ -15,6 +15,6 @@
 - (IBAction)webButtonTap:(UIButton *)sender;
 - (IBAction)navButtonTap:(UIButton *)sender;
 - (void)processData: (NSArray *) results;
-
+@property UIRefreshControl *pullrefresh;
 
 @end

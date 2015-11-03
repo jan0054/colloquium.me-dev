@@ -52,6 +52,7 @@ PFUser *loggedinUser;
     if (self.inputTextField.text.length >=1)
     {
         [self sendChat:self withAuthor:loggedinUser withContent:self.inputTextField.text withConversation:currentConversation];
+        self.sendChatButton.enabled = NO;
     }
 }
 
@@ -198,6 +199,7 @@ PFUser *loggedinUser;
 
 - (void) processChatUploadWithConversation: (PFObject *)conversation withContent: (NSString *)content
 {
+    self.sendChatButton.enabled = YES;
     NSLog(@"received chat upload callback, sending push");
     
     NSString *pushstr = [NSString stringWithFormat:@"%@ %@: %@", loggedinUser[@"first_name"], loggedinUser[@"last_name"], content];

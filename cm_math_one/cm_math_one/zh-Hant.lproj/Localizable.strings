@@ -24,6 +24,7 @@
 "alert_career_detail" = "請聯絡我們協助張貼職涯機會";
 "alert_career_contact" = "聯絡";
 "alert_sign_later" = "您之後可以在設定頁面登入";
+"alert_reset_done" = "請檢查您的信箱以設定新密碼";
 
 //drawer labels
 "drawer_chat" = "訊息";
@@ -65,3 +66,21 @@
 
 //Overview
 "overview_attend" = "我將出席這場會議：";
+
+//login and signup
+"pass_reset" = "忘記密碼？";
+"login_welcome" = "歡迎使用Colloquium.me平台(數學)，您可以選擇登入，註冊帳號，或直接開始瀏覽所有會議活動。";
+"login_mail_hint" = "Email";
+"login_pass_hint" = "密碼";
+"login_button" = "登入";
+"skip_button" = "跳過";
+"to_signup" = "註冊";
+"signup_welcome" = "您的資訊儲存在我們的伺服器上，未經您同意絕不會公開或讓我們以及活動主辦單位外的第三方存取。";
+"signup_mail_hint" = "Email";
+"signup_pass_hint" = "密碼";
+"signup_button" = "註冊";
+"signup_back" = "返回";
+"email" = "Email";
+"reset_welcome" = "請輸入您當初註冊使用的Email，我們將發送信件讓您重新設定密碼。";
+"reset_button" = "重設密碼";
+"reset_cancel" = "取消";

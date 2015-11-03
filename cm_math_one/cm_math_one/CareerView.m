@@ -20,6 +20,7 @@ NSMutableArray *careerArray;
 PFObject *selectedCareer;
 
 @implementation CareerView
+@synthesize pullrefresh;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,6 +31,16 @@ PFObject *selectedCareer;
     
     //data
     [self getCareer:self];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.careerTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    [self getCareer:self];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)setupLeftMenuButton {

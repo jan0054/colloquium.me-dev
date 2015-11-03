@@ -12,7 +12,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *careerTable;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addCareerButton;
 - (IBAction)addCareerButtonTap:(UIBarButtonItem *)sender;
-
 - (void)processData: (NSArray *) results;
-
+@property UIRefreshControl *pullrefresh;
 @end

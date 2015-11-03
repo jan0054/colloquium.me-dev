@@ -19,6 +19,7 @@ NSMutableArray *programArray;
 PFObject *selectedProgram;
 
 @implementation ProgramView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -44,6 +45,19 @@ PFObject *selectedProgram;
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self getProgram:self ofType:0 withOrder:0 forEvent:event];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.programTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getProgram:self ofType:0 withOrder:0 forEvent:event];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)viewDidLayoutSubviews

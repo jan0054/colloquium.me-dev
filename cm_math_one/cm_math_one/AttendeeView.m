@@ -19,6 +19,7 @@ NSMutableArray *attendeeArrray;
 PFObject *selectedAttendee;
 
 @implementation AttendeeView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -41,6 +42,19 @@ PFObject *selectedAttendee;
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self getPeople:self forEvent:event];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.attendeeTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getPeople:self forEvent:event];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)setupLeftMenuButton {

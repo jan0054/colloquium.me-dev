@@ -16,5 +16,5 @@
 @property (strong, nonatomic) IBOutlet UITableView *programTable;
 
 - (void)processData: (NSArray *) results;
-
+@property UIRefreshControl *pullrefresh;
 @end

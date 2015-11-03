@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UITableView *attendeeTable;
 - (IBAction)searchButtonTap:(UIButton *)sender;
 - (void)processData: (NSArray *) results;
-
+@property UIRefreshControl *pullrefresh;
 @end

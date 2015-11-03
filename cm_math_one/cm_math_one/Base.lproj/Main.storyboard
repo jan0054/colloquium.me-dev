@@ -544,21 +544,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ok" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSq-qc-ces">
-                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xng-kA-CAP">
+                                <rect key="frame" x="52" y="45" width="498" height="56"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5J-0T-8wQ">
+                                <rect key="frame" x="200" y="210" width="200" height="40"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="750" constant="200" id="BqH-X9-mZQ"/>
+                                    <constraint firstAttribute="height" constant="40" id="rXi-uX-V4G"/>
+                                </constraints>
+                                <state key="normal" title="Cancel"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BqH-X9-mZQ"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="cancelButtonTap:" destination="eIx-nc-GxZ" eventType="touchUpInside" id="cwP-MG-bgY"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YeU-aV-l4P">
+                                <rect key="frame" x="0.0" y="100" width="600" height="40"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ZbD-Ao-Lev"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1XA-3L-5Ho">
+                                <rect key="frame" x="200" y="155" width="200" height="40"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="750" constant="200" id="nla-Ro-gBY"/>
+                                    <constraint firstAttribute="height" constant="40" id="oBo-BD-ggu"/>
+                                </constraints>
+                                <state key="normal" title="Reset Password"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nla-Ro-gBY"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="resetButtonTap:" destination="eIx-nc-GxZ" eventType="touchUpInside" id="IaW-VR-BGT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dSq-qc-ces" firstAttribute="centerY" secondItem="T53-7d-ah6" secondAttribute="centerY" id="LdB-41-7SE"/>
-                            <constraint firstItem="dSq-qc-ces" firstAttribute="centerX" secondItem="T53-7d-ah6" secondAttribute="centerX" id="h9V-cO-NpV"/>
+                            <constraint firstItem="b5J-0T-8wQ" firstAttribute="centerX" secondItem="T53-7d-ah6" secondAttribute="centerX" id="2QC-fS-9ZN"/>
+                            <constraint firstItem="1XA-3L-5Ho" firstAttribute="leading" secondItem="T53-7d-ah6" secondAttribute="leadingMargin" constant="20" id="3We-qm-Vy0"/>
+                            <constraint firstItem="xng-kA-CAP" firstAttribute="top" secondItem="Jny-yQ-DLx" secondAttribute="bottom" constant="50" id="8fm-P1-Om1"/>
+                            <constraint firstItem="YeU-aV-l4P" firstAttribute="centerX" secondItem="T53-7d-ah6" secondAttribute="centerX" id="A1u-BY-pmI"/>
+                            <constraint firstItem="1XA-3L-5Ho" firstAttribute="top" secondItem="YeU-aV-l4P" secondAttribute="bottom" constant="25" id="GXh-GU-ID3"/>
+                            <constraint firstItem="xng-kA-CAP" firstAttribute="trailing" secondItem="T53-7d-ah6" secondAttribute="trailingMargin" constant="-20" id="Wf7-cJ-xfh"/>
+                            <constraint firstItem="xng-kA-CAP" firstAttribute="centerX" secondItem="T53-7d-ah6" secondAttribute="centerX" id="Z0H-OJ-2DM"/>
+                            <constraint firstItem="YeU-aV-l4P" firstAttribute="top" secondItem="xng-kA-CAP" secondAttribute="bottom" constant="30" id="bvH-Dn-xyp"/>
+                            <constraint firstItem="1XA-3L-5Ho" firstAttribute="centerX" secondItem="T53-7d-ah6" secondAttribute="centerX" id="dB1-0M-qCG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YeU-aV-l4P" secondAttribute="trailing" id="kX6-LI-pbo"/>
+                            <constraint firstItem="YeU-aV-l4P" firstAttribute="leading" secondItem="T53-7d-ah6" secondAttribute="leadingMargin" constant="20" id="mkM-Yz-5UA"/>
+                            <constraint firstItem="b5J-0T-8wQ" firstAttribute="leading" secondItem="T53-7d-ah6" secondAttribute="leadingMargin" constant="20" id="sFi-OE-maY"/>
+                            <constraint firstItem="xng-kA-CAP" firstAttribute="leading" secondItem="T53-7d-ah6" secondAttribute="leadingMargin" constant="20" id="tAE-5G-kja"/>
+                            <constraint firstItem="b5J-0T-8wQ" firstAttribute="top" secondItem="1XA-3L-5Ho" secondAttribute="bottom" constant="25" id="xDD-YT-n3p"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Wf7-cJ-xfh"/>
+                                <exclude reference="kX6-LI-pbo"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="b5J-0T-8wQ" id="PgQ-oH-eE4"/>
+                        <outlet property="emailTextField" destination="YeU-aV-l4P" id="ow2-Z1-POp"/>
+                        <outlet property="resetButton" destination="1XA-3L-5Ho" id="nNa-G0-rAI"/>
+                        <outlet property="welcomeLabel" destination="xng-kA-CAP" id="PVV-Nf-JJO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FP-o7-54a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

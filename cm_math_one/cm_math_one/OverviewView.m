@@ -22,6 +22,7 @@ PFObject *currentEvent;
 NSMutableArray *newsArray;
 
 @implementation OverviewView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -47,6 +48,18 @@ NSMutableArray *newsArray;
     self.attendanceBackground.backgroundColor = [UIColor clearColor];
     self.attendanceLabel.backgroundColor = [UIColor clearColor];
     self.organizerButton.backgroundColor = [UIColor clearColor];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.newsTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    [self getEvent:self withId:eventid];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -22,6 +22,7 @@
 NSMutableArray *selectedEventsArray;
 
 @implementation HomeView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -36,6 +37,16 @@ NSMutableArray *selectedEventsArray;
     self.homeTable.rowHeight = UITableViewAutomaticDimension;
     
     [self getEventsFromLocalList:self];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.homeTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    [self getEventsFromLocalList:self];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)viewDidAppear:(BOOL)animated

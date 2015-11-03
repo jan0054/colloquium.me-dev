@@ -18,6 +18,7 @@
 NSMutableArray *venueArray;
 
 @implementation VenueView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -29,10 +30,24 @@ NSMutableArray *venueArray;
     self.venueTable.estimatedRowHeight = 120.0;
     self.venueTable.rowHeight = UITableViewAutomaticDimension;
     
+    //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self getVenue:self forEvent:event];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.venueTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getVenue:self forEvent:event];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)setupLeftMenuButton {
@@ -49,8 +64,11 @@ NSMutableArray *venueArray;
     NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
     PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
     NSString *rawphone = venue[@"phone"];
-    NSString *phonenumber = [@"tel:" stringByAppendingString:rawphone];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
+    if (rawphone.length>1)
+    {
+        NSString *phonenumber = [@"tel:" stringByAppendingString:rawphone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phonenumber]];
+    }
 }
 
 - (IBAction)webButtonTap:(UIButton *)sender {
@@ -58,7 +76,10 @@ NSMutableArray *venueArray;
     NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
     PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
     NSString *urlstr = venue[@"url"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlstr]];
+    if (urlstr.length>1)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlstr]];
+    }
 }
 
 - (IBAction)navButtonTap:(UIButton *)sender {
@@ -66,12 +87,15 @@ NSMutableArray *venueArray;
     NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
     PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
     PFGeoPoint *location = venue[@"coord"];
-    double lat = location.latitude;
-    double lon = location.longitude;
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(lat, lon) addressDictionary:nil];
-    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-    [mapItem setName:venue[@"name"]];
-    [self displayRegionCenteredOnMapItem:mapItem];
+    if (location != NULL)
+    {
+        double lat = location.latitude;
+        double lon = location.longitude;
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(lat, lon) addressDictionary:nil];
+        MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+        [mapItem setName:venue[@"name"]];
+        [self displayRegionCenteredOnMapItem:mapItem];
+    }
 }
 
 - (void) viewDidLayoutSubviews

@@ -24,6 +24,7 @@
 "alert_career_detail" = "Please contact us to request a career posting";
 "alert_career_contact" = "Contact";
 "alert_sign_later" = "You can log in later under Settings";
+"alert_reset_done" = "Please check your inbox to setup your new password";
 
 //drawer labels
 "drawer_chat" = "Chat";
@@ -65,3 +66,20 @@
 
 //Overview
 "overview_attend" = "I am attending this event:";
+
+//login and signup
+"pass_reset" = "Forgot password?";
+"login_welcome" = "Welcome to Colloquium.me for Mathematics! Please sign up, log in, or just start browsing all the events.";
+"login_mail_hint" = "Email";
+"login_pass_hint" = "Password";
+"login_button" = "Log In";
+"skip_button" = "Skip";
+"to_signup" = "Sign Up";
+"signup_welcome" = "Your information is kept secure and private on our servers. To view our privacy policy please go to Privacy&Terms under Settings, or contact us if you have any further questions.";
+"signup_mail_hint" = "Email";
+"signup_pass_hint" = "Password";
+"signup_button" = "Sign Up";
+"signup_back" = "Back";
+"reset_welcome" = "Please enter the Email you used to sign up, we will send you the password reset link.";
+"reset_button" = "Reset Password";
+"reset_cancel" = "Cancel";

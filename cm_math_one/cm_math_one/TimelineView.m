@@ -20,6 +20,7 @@ PFObject *selectedPost;
 UIImage *selectedImage;
 
 @implementation TimelineView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -39,6 +40,19 @@ UIImage *selectedImage;
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self getPosts:self forEvent:event];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.timelineTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventid = [defaults objectForKey:@"currentEventId"];
+    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getPosts:self forEvent:event];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void) viewDidLayoutSubviews

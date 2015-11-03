@@ -20,7 +20,7 @@
     [self.signUpView setLogo:[[UIImageView alloc] initWithImage:nil]];
     
     [self.signUpView.dismissButton setTintColor:[UIColor whiteColor]];
-    [self.signUpView.dismissButton setTitle:@"Back" forState:UIControlStateNormal];
+    [self.signUpView.dismissButton setTitle:NSLocalizedString(@"signup_back", nil) forState:UIControlStateNormal];
     [self.signUpView.dismissButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.signUpView.dismissButton setBackgroundColor:[UIColor accent_color]] ;
     [self.signUpView.dismissButton setImage:nil forState:UIControlStateNormal];
@@ -30,8 +30,6 @@
     [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];
     [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateHighlighted];
     [self.signUpView.signUpButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0]];
-    //[self.signUpView.signUpButton setTitle:@"Sign Up" forState:UIControlStateNormal];
-    //[self.signUpView.signUpButton setTitle:@"Sign Up" forState:UIControlStateHighlighted];
     
     // Remove text shadow
     //CALayer *layer = self.signUpView.usernameField.layer;
@@ -50,15 +48,19 @@
     [self.signUpView.emailField setTextColor:[UIColor darkGrayColor]];
     
     //self.signUpView.usernameField.placeholder= @"Username";
-    //self.signUpView.passwordField.placeholder=@"Password";
+    self.signUpView.emailField.placeholder = NSLocalizedString(@"email", nil);
+    self.signUpView.passwordField.placeholder = NSLocalizedString(@"signup_pass_hint", nil);
     //[self.signUpView.usernameField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     //[self.signUpView.passwordField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     //[self.signUpView.emailField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     
+    //change keyboard type for the email field
+    self.signUpView.emailField.keyboardType = UIKeyboardTypeEmailAddress;
+    
     UILabel *notice_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 95, 280, 90)];
     [notice_label setBackgroundColor:[UIColor clearColor]];
     [notice_label setTextColor:[UIColor whiteColor]];
-    [notice_label setText:@"Your information is kept secure and private on our servers. To view our privacy policy please go to Settings -> Privacy&Terms, or contact us if you have any questions."];
+    [notice_label setText:NSLocalizedString(@"signup_welcome", nil)];
     [notice_label setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
     [notice_label setLineBreakMode:NSLineBreakByWordWrapping];
     notice_label.numberOfLines = 0;
@@ -73,6 +75,10 @@
     float signupw = self.signUpView.signUpButton.frame.size.width;
     
     [self.signUpView.dismissButton setFrame:CGRectMake(signupx+signupw*0.25, signupy+signuph+40, signupw*0.5, signuph*0.75)];
+    
+    [self.signUpView.signUpButton setTitle:NSLocalizedString(@"signup_button", nil) forState:UIControlStateNormal];
+    [self.signUpView.signUpButton setTitle:NSLocalizedString(@"signup_button", nil) forState:UIControlStateHighlighted];
+
     
     
 }

@@ -21,6 +21,7 @@ PFUser *selfUser;
 NSMutableArray *selectedParticipants;
 
 @implementation ConversationView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
@@ -36,6 +37,24 @@ NSMutableArray *selectedParticipants;
     self.noConvLabel.hidden = YES;
     self.noConvLabel.textColor = [UIColor dark_primary];
     
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.conversationTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    if ([PFUser currentUser])
+    {
+        selfUser = [PFUser currentUser];
+        [self getConversations:self withUser:selfUser];
+    }
+    else
+    {
+        [self noUserYet];
+    }
+
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)viewDidAppear:(BOOL)animated

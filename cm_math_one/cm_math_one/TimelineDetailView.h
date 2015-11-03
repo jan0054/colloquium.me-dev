@@ -24,6 +24,6 @@
 - (void)commentPostedCallback;
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *inputBarToBottom;
-
+@property UIRefreshControl *pullrefresh;
 
 @end
