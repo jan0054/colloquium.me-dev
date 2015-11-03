@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/CSJSRequestObject.js"></script>
   <script type="text/javascript" src="js/lang_zh.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 
@@ -36,28 +37,82 @@
 	}
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Career");
-	newItem = new ListItem();
 
-	newItem.set("institution", career_institution.value);
-	newItem.set("contact_name", career_contactname.value);
-	newItem.set("contact_email", career_contactemail.value);
-	newItem.set("content", career_content.value);
-	newItem.set("hiring", parseInt(career_hiring.value));
-	newItem.set("link", career_link.value);
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo("objectId", career_id.value);
+	itemcheck.find({
+		success: function(results){
+			var object;
+			if(results.length>0) {
+				object=results[0];				
+			}
+			else{
+				object = new ListItem();
+			}
+			object.set("institution", career_institution.value);
+			object.set("contact_name", career_contactname.value);
+			object.set("contact_email", career_contactemail.value);
+			object.set("content", career_content.value);
+			object.set("hiring", parseInt(career_hiring.value));
+			object.set("link", career_link.value);
 
-	Person = Parse.Object.extend("Person");
-	var person = new Person();
-	person.id = K4;
-	newItem.set("author", person);
+			Person = Parse.Object.extend("Person");
+			var person = new Person();
+			person.id = K4;
+			object.set("author", person);
 
-	newItem.save(null, {
-		success: function(newItem){
-			window.location.reload();
+			object.save(null, {
+				success: function(object){
+					window.location = "addcareer.html?id=null";
+					parent.listFrame.location = "list.html?type=career";
+				},
+				error: function(object, error){
+					alert('Failed to create new object, with error code: ' + error.message);
+				}
+			});
 		},
-		error: function(newItem, error){
-			alert('Failed to create new object, with error code: ' + error.message);
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
 		}
 	});
+  }
+  var careerid = Request.QueryString("id");
+  function searchCareer()
+  {
+	var selected = new Array();
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Career");
+
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo('objectId', career_id.value);
+	itemcheck.descending('createdAt');
+	itemcheck.find({
+		success: function(results){
+			if(results.length>0) {
+				var object=results[0];
+				career_institution.value = object.get('institution');
+				career_contactname.value = object.get('contact_name');
+				career_contactemail.value = object.get('contact_email');
+				career_content.value = object.get('content');
+				career_hiring.value = object.get('hiring');
+				career_link.value = object.get('link');
+			}
+			else{
+				alert('This is a new career!');
+			}
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+  function loadId()
+  {
+  	if(careerid != 'null')
+  	{
+  		career_id.value = careerid;
+  		searchCareer();
+  	}
   }
   </script>
 </head>
@@ -100,9 +155,9 @@
 			<tr>
 			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_career_submit" value="'+BT_add+'" onClick="addCareer();">')</script></td>
 			</tr>
+			</tr><td><input class="InputSize" type="hidden" id="career_id"></td></tr>
 		</table>
 	</div>
-	<div>
-	</div>
+	<script>loadId();</script>
 </body>
  

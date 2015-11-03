@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/CSJSRequestObject.js"></script>
   <script type="text/javascript" src="js/lang_zh.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
   
@@ -47,45 +48,61 @@
 	}
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Talk");
-	newItem = new ListItem();
 
-	newItem.set("name", talk_name.value);
-	newItem.set("content", talk_content.value);
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo("name", talk_name.value);
+	itemcheck.find({
+		success: function(results){
+			var object;
+			if(results.length>0) {
+				object=results[0];	
+			}
+			else{
+				object = new ListItem();
+			}
+			object.set("name", talk_name.value);
+			object.set("content", talk_content.value);
 
-	Person = Parse.Object.extend("Person");
-	var person = new Person();
-	person.id = talk_author.value;
-	newItem.set("author", person);
+			Person = Parse.Object.extend("Person");
+			var person = new Person();
+			person.id = talk_author.value;
+			object.set("author", person);
 	
-	Event = Parse.Object.extend("Event");
-	var event = new Event();
-	event.id = K3;
-	newItem.set("event", event);
+			Event = Parse.Object.extend("Event");
+			var event = new Event();
+			event.id = K3;
+			object.set("event", event);
 
-	Session = Parse.Object.extend("Session");
-	var session = new Session();
-	session.id = talk_session.value;
-	newItem.set("session", session);
+			Session = Parse.Object.extend("Session");
+			var session = new Session();
+			session.id = talk_session.value;
+			object.set("session", session);
 
-	var sd=talk_datestart.value+'T'+talk_timestart.value+':00.000';
-	var startd = new Date(sd);
-	talk_dateend.value=talk_datestart.value;//start and end at the same day
-	var ed=talk_dateend.value+'T'+talk_timeend.value+':00.000';
-	var endd = new Date(ed);
-	newItem.set("start_time", startd);
-	newItem.set("end_time", endd);
+			var sd=talk_datestart.value+'T'+talk_timestart.value+':00.000';
+			var startd = new Date(sd);
+			talk_dateend.value=talk_datestart.value;//start and end at the same day
+			var ed=talk_dateend.value+'T'+talk_timeend.value+':00.000';
+			var endd = new Date(ed);
+			object.set("start_time", startd);
+			object.set("end_time", endd);
 
-	Loca = Parse.Object.extend("Location");
-	var loca = new Loca();
-	loca.id = talk_location.value;
-	newItem.set("location", loca);
+			Loca = Parse.Object.extend("Location");
+			var loca = new Loca();
+			loca.id = talk_location.value;
+			object.set("location", loca);
 
-	newItem.save(null, {
-		success: function(newItem){
-			window.location.reload();
+			object.save(null, {
+				success: function(object){
+					window.location = "addtalk.html?name=null";
+					parent.listFrame.location = "list.html?type=talk";
+				},
+				error: function(object, error){
+					alert('Failed to create new object, with error code: ' + error.message);
+				}
+			});
 		},
-		error: function(newItem, error){
-			alert('Failed to create new object, with error code: ' + error.message);
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
 		}
 	});
   }
@@ -97,12 +114,13 @@
 	var event = new Event();
 	event.id = K3;
 
-	var talkcheck = new Parse.Query(ListItem);
-    talkcheck.equalTo("name", talk_name.value);
-	talkcheck.matchesQuery("event", event);
-	talkcheck.include("author");
-	talkcheck.include("session");
-	talkcheck.find({
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo("name", talk_name.value);
+	itemcheck.matchesQuery("event", event);
+	itemcheck.include("author");
+	itemcheck.include("session");
+	itemcheck.include('location');
+	itemcheck.find({
 		success: function(results){
 			if(results.length>0) {
 				var object=results[0];
@@ -123,6 +141,17 @@
 			alert('Failed to search object, with error code: ' + error.message);
 		}
 	});
+  }
+
+  var talkname = Request.QueryString("name");
+
+  function loadName()
+  {
+  	if(talkname != 'null')
+  	{
+  		talk_name.value = talkname;
+  		searchTalk();
+  	}
   }
   </script>
 </head>
@@ -147,11 +176,11 @@
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_author)</script></td>
-				<td width="70%"><select class="SelectSize" id="talk_author"><script>getAuthorWithEvent('talk_author')</script></select></td>
+				<td width="70%"><select class="SelectSize" id="talk_author"><script>selectGetAuthorWithEvent('talk_author')</script></select></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_session)</script></td>
-				<td width="70%"><select class="SelectSize" id="talk_session"><script>getSessionWithEvent('talk_session')</script></select></td>
+				<td width="70%"><select class="SelectSize" id="talk_session"><script>selectGetSessionWithEvent('talk_session')</script></select></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_date)</script></td>
@@ -164,14 +193,14 @@
 			<tr>
 			<tr>
 				<td>*<script>dw(STR_location)</script></td>
-				<td width="70%"><select class="SelectSize" id="talk_location"><script>getLocationWithEvent('talk_location')</script></select></td>
+				<td width="70%"><select class="SelectSize" id="talk_location"><script>selectGetLocationWithEvent('talk_location')</script></select></td>
+			</tr><td><input class="InputSize" type="hidden" id="talk_id"></td></tr>
 			<tr>
-			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_talk_submit" value="'+BT_add+'" onClick="addTalk();">')</script></td>
+				<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_talk_submit" value="'+BT_add+'" onClick="addTalk();">')</script></td>
 			</tr>
 
 		</table>
 	</div>
-	<div>
-	</div>
+	<script>loadName();</script>
 </body>
  

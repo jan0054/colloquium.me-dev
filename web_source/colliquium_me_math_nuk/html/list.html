@@ -6,16 +6,54 @@
   <meta name="description" content="CM Parse Web">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/CSJSRequestObject.js"></script>
+  <script language="javascript" src="js/lang_zh.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script>
+  var type = Request.QueryString("type");
+  var title;
+  function loadPage()
+  {
+  	if(type == "empty") title = TT_list;
+  	else if(type == "location") title = TT_listlocation;
+  	else if(type == "session") title = TT_listsession;
+  	else if(type == "person") title = TT_listperson;
+  	else if(type == "talk") title = TT_listtalk;
+  	else if(type == "venue") title = TT_listvenue;
+  	else if(type == "career") title = TT_listcareer;
+  	else title = TT_list;
+  }
+
+  function loadList()
+  {
+  	if(title == TT_listlocation) {
+	  	listGetLocationWithEvent('listresult');
+  	}
+  	else if(title == TT_listsession) {
+	  	listGetSessionWithEvent('listresult');
+	}
+  	else if(title == TT_listperson) {
+	  	listGetAuthorWithEvent('listresult');
+	}
+  	else if(title == TT_listtalk) {
+	  	listGetTalkWithEvent('listresult');
+	}
+  	else if(title == TT_listvenue) {
+	  	listGetVenueWithEvent('listresult');
+	}
+  	else if(title == TT_listcareer) {
+	  	listGetCareerWithAuthor('listresult');
+	}
+  }
+  </script>
 </head>
 
 <body>
 
-	<div id="textbody">
-	Add events first, then persons, finally talks. we can skip the venue part and all secondary data for now <br> 
-	Go to https://www.parse.com/apps/cm_math_one/collections to view the data <br>
-	(You will need a free account from Parse.com) <br>
-	</div>
-	<div>
-	</div>
+	<h3 id="listtitle"><u><script>loadPage();dw(title);</script></u></h3>
+	<ul id="listresult" class="ulitems"></li><script>loadList();</script>
+	</ul>
+
 </body>
  

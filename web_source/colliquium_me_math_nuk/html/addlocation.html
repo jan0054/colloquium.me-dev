@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/CSJSRequestObject.js"></script>
   <script type="text/javascript" src="js/lang_zh.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 
@@ -26,23 +27,74 @@
 	}
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Location");
-	newItem = new ListItem();
 
-	newItem.set("name", location_name.value);
-	newItem.set('capacity', parseInt(location_capacity.value));
-	Event = Parse.Object.extend("Event");
-	var event = new Event();
-	event.id = K3;
-	newItem.set("event", event);
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo("objectId", location_id.value);
+	itemcheck.find({
+		success: function(results){
+			var object;
+			if(results.length>0) {
+				object=results[0];			
+			}
+			else{
+				object = new ListItem();
+			}
+			object.set("name", location_name.value);
+			object.set('capacity', parseInt(location_capacity.value));
+			Event = Parse.Object.extend("Event");
+			var event = new Event();
+			event.id = K3;
+			object.set("event", event);
 	
-	newItem.save(null, {
-		success: function(newItem){
-			window.location.reload();
+			object.save(null, {
+				success: function(object){
+					window.location = "addlocation.html?id=null";
+					parent.listFrame.location = "list.html?type=location";
+				},
+				error: function(object, error){
+					alert('Failed to create new object, with error code: ' + error.message);
+				}
+			});
 		},
-		error: function(newItem, error){
-			alert('Failed to create new object, with error code: ' + error.message);
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
 		}
 	});
+  }
+
+  var locationid = Request.QueryString("id");
+  function searchLocation()
+  {
+	var selected = new Array();
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Location");
+
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo('objectId', location_id.value);
+	itemcheck.ascending('name');
+	itemcheck.find({
+		success: function(results){
+			if(results.length>0) {
+				var object=results[0];
+				location_name.value = object.get('name');
+				location_capacity.value = object.get('capacity');
+			}
+			else{
+				alert('This is a new location!');
+			}
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+  function loadId()
+  {
+  	if(locationid != 'null')
+  	{
+  		location_id.value = locationid;
+  		searchLocation();
+  	}
   }
   </script>
 </head>
@@ -64,8 +116,9 @@
 			<tr>
 			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_location_submit" value="'+BT_add+'" onClick="addLocation();">')</script></td>
 			</tr>
+			</tr><td><input class="InputSize" type="hidden" id="location_id"></td></tr>
 		</table>
-	</div>
+	</div><script>loadId();</script>
 	<div>
 	</div>
 </body>

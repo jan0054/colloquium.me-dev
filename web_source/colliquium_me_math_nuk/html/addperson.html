@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/CSJSRequestObject.js"></script>
   <script type="text/javascript" src="js/lang_zh.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 
@@ -35,9 +36,9 @@
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Person");
 
-	var personcheck = new Parse.Query(ListItem);
-    personcheck.equalTo("email", person_email.value);
-	personcheck.find({
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo("email", person_email.value);
+	itemcheck.find({
 		success: function(results){
 			var object;
 			if(results.length>0) {
@@ -47,25 +48,26 @@
 			else{
 				object = new ListItem();
 			}
-				object.set("first_name", person_firstname.value);
-				object.set("last_name", person_lastname.value);
-				object.set("title", person_title.value);
-				object.set("institution", person_institution.value);
-				object.set("email", person_email.value);
-				object.set("link", person_webpage.value);
-				Event = Parse.Object.extend("Event");
-				var event = new Event();
-				event.id = K3;
-				selected.push(event);
- 				object.set("events", selected);
-				object.save(null, {
+			object.set("first_name", person_firstname.value);
+			object.set("last_name", person_lastname.value);
+			object.set("title", person_title.value);
+			object.set("institution", person_institution.value);
+			object.set("email", person_email.value);
+			object.set("link", person_webpage.value);
+			Event = Parse.Object.extend("Event");
+			var event = new Event();
+			event.id = K3;
+			selected.push(event);
+ 			object.set("events", selected);
+ 			object.save(null, {
 				success: function(object){
-					window.location.reload();
+					window.location = "addperson.html?email=null";
+					parent.listFrame.location = "list.html?type=person";
 					},
 					error: function(object, error){
 						alert('Failed to create new object, with error code: ' + error.message);
 					}
-				});
+			});
 		},
 		error: function(error){
 			alert('Failed to search object, with error code: ' + error.message);
@@ -79,9 +81,9 @@
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Person");
 
-	var personcheck = new Parse.Query(ListItem);
-    personcheck.equalTo("email", person_email.value);
-	personcheck.find({
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo("email", person_email.value);
+	itemcheck.find({
 		success: function(results){
 			if(results.length>0) {
 				var object=results[0];
@@ -101,13 +103,22 @@
 		}
 	});
   }
+
+  var email = Request.QueryString("email");
+  function loadEmail()
+  {
+  	if(email != 'null')
+  	{
+  		person_email.value = email;
+  		searchPerson();
+  	}
+  }
   </script>
 </head>
 
 <body>
 	<h1><script>dw(TT_addperson)</script></h1>
 	<h2><script>dw(STR_1)</script></h2>
-
 	<div id="add_person">
 		<table align="center">
 			<tr>
@@ -152,7 +163,7 @@
 			</tr>
 		</table>
 	</div>
-	<div>
+	<div><script>loadEmail();</script>
 	</div>
 </body>
  

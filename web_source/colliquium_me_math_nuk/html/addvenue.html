@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/CSJSRequestObject.js"></script>
   <script type="text/javascript" src="js/lang_zh.js"></script>
   <script type="text/javascript" src="js/common.js"></script>
 
@@ -26,38 +27,90 @@
 	}
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Venue");
-	newItem = new ListItem();
 
-	newItem.set("name", venue_name.value);
-	newItem.set("content", venue_description.value);
-	newItem.set("phone", venue_phone.value);
-	newItem.set("address", venue_address.value);
-	newItem.set("url", venue_website.value);
-	Event = Parse.Object.extend("Event");
-	var event = new Event();
-	event.id = K3;
-	newItem.set("event", event);
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo('objectId', venue_id.value);
+	itemcheck.find({
+		success: function(results){
+			var object;
+			if(results.length>0) {
+				object=results[0];	
+			}
+			else{
+				object = new ListItem();
+			}
+			object.set("name", venue_name.value);
+			object.set("content", venue_description.value);
+			object.set("phone", venue_phone.value);
+			object.set("address", venue_address.value);
+			object.set("url", venue_website.value);
+			Event = Parse.Object.extend("Event");
+			var event = new Event();
+			event.id = K3;
+			object.set("event", event);
 
-//	newItem.set("coord", venue_coordinates.value);
-
-	if(venue_photo.value!=""){
-		var fileUploadControl = venue_photo;
-		if (fileUploadControl.files.length > 0) {
-			var file = fileUploadControl.files[0];
-			var fileName = file.name;
-			var parseFile = new Parse.File(fileName, file);
-			newItem.set("image", parseFile);
-		}
-	}
+			if(venue_photo.value!=""){
+				var fileUploadControl = venue_photo;
+				if (fileUploadControl.files.length > 0) {
+					var file = fileUploadControl.files[0];
+					var fileName = file.name;
+					var parseFile = new Parse.File(fileName, file);
+					object.set("image", parseFile);
+				}
+			}
 	
-	newItem.save(null, {
-		success: function(newItem){
-			window.location.reload();
+			object.save(null, {
+				success: function(object){
+					window.location = "addvenue.html?id=null";
+					parent.listFrame.location = "list.html?type=venue";
+				},
+				error: function(object, error){
+					alert('Failed to create new object, with error code: ' + error.message);
+				}
+			});
 		},
-		error: function(newItem, error){
-			alert('Failed to create new object, with error code: ' + error.message);
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
 		}
 	});
+  }
+  var venueid = Request.QueryString("id");
+  function searchVenue()
+  {
+	var selected = new Array();
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Venue");
+
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo('objectId', venue_id.value);
+	itemcheck.ascending('name');
+	itemcheck.find({
+		success: function(results){
+			if(results.length>0) {
+				var object=results[0];
+				venue_name.value = object.get('name');
+				venue_description.value = object.get('content');
+				venue_phone.value = object.get('phone');
+				venue_address.value = object.get('address');
+				venue_website.value = object.get('url');
+  				venue_image.src = object.get('image').url();
+			}
+			else{
+				alert('This is a new venue!');
+			}
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+  function loadId()
+  {
+  	if(venueid != 'null')
+  	{
+  		venue_id.value = venueid;
+  		searchVenue();
+  	}
   }
   </script>
 </head>
@@ -81,10 +134,6 @@
 				<td><input class="InputSize" type="text" id="venue_phone"></td>
 			</tr>
 			<tr>
-				<td><script>dw(STR_photo)</script></td>
-				<td><input type="file" class="FileSize" id="venue_photo"></td>
-			</tr>
-			<tr>
 				<td><script>dw(STR_address)</script></td>
 				<td><input class="InputSize" type="text" id="venue_address"></td>
 			</tr>
@@ -93,11 +142,17 @@
 				<td><input class="InputSize" type="text" id="venue_website"></td>
 			</tr>
 			<tr>
-			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_venue_submit" value="'+BT_add+'" onClick="addVenue();">')</script></td>
+				<td><script>dw(STR_photo)</script></td>
+				<td><input type="file" class="FileSize" id="venue_photo"></td>
 			</tr>
+			<tr>
+				<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_venue_submit" value="'+BT_add+'" onClick="addVenue();">')</script></td>
+			</tr>
+			</tr><td><input class="InputSize" type="hidden" id="venue_id"></td></tr>
 		</table>
 	</div>
-	<div>
+	<div><img id="venue_image" class="ImageSize">
+	<script>loadId();</script>
 	</div>
 </body>
  
