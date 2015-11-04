@@ -127,21 +127,35 @@ Parse.Cloud.beforeSave("Person", function(request, response) {
     
     response.success();
 });
- 
-//after a new user signs up (or user preferences are updated), check persons for the same email and link
-Parse.Cloud.afterSave(Parse.User, function(request) {
-    //grab info of the user
+
+Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+	//grab info of the user
     var user_email = request.object.get("email");
     var user_fn = request.object.get("first_name");
     var user_ln = request.object.get("last_name");
     var user_inst = request.object.get("institution");
     var user_link = request.object.get("link");
-    var user_mailswitch = request.object.get("email_status");
-    var user_chatswitch = request.object.get("chat_status");
-    var user_eventswitch = request.object.get("event_status");
-    var user_events = request.object.get("events");
-        
+    
     var toLowerCase = function(w) { return w.toLowerCase(); };
+    
+    var fullname;
+    var chname;
+    if (user_ln != null && user_fn != null) {
+    	var fn = user_fn.split(/\b/);
+    	var ln = user_ln.split(/\b/);
+    	fullname = ln+fn;
+    	fullname = _.map(fullname, toLowerCase);
+    	
+    	var cfn = user_fn;
+    	var cln = user_ln;
+    	chname = cln+cfn;
+    	chname = chname.split(/\b/);
+    	chname = _.map(chname, toLowerCase);
+    }
+    console.log("after fullname:");
+    console.log(fullname);
+    console.log(chname);
+    
     var stopWords = ["the", "in", "and"]
     var words;
     if(user_fn != null)
@@ -156,12 +170,37 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
     {
         words = words.concat(user_inst.split(/\b/));
     }
+    if(fullname != null)
+    {
+    	words = words.concat(fullname);
+    }
+    if(chname != null)
+    {
+    	words = words.concat(chname);
+    }
+    
     words = _.map(words, toLowerCase);
-    words = _.filter(words, function(w) { return w.match(/^\w+$/) && ! _.contains(stopWords, w); });
+    //words = _.filter(words, function(w) { return w.match(/^\w+$/) && ! _.contains(stopWords, w); });
     words = _.uniq(words);
     request.object.set("words", words);
     request.object.save();
-     
+    
+    response.success();
+});
+ 
+//after a new user signs up (or user preferences are updated), check persons for the same email and link
+Parse.Cloud.afterSave(Parse.User, function(request) {
+	//grab info of the user
+    var user_email = request.object.get("email");
+    var user_fn = request.object.get("first_name");
+    var user_ln = request.object.get("last_name");
+    var user_inst = request.object.get("institution");
+    var user_link = request.object.get("link");
+    var user_mailswitch = request.object.get("email_status");
+    var user_chatswitch = request.object.get("chat_status");
+    var user_eventswitch = request.object.get("event_status");
+    var user_events = request.object.get("events");
+    
     //see if theres already a person with the same email
     var Person = Parse.Object.extend("Person");
     var emailquery = new Parse.Query(Person);

@@ -22,5 +22,9 @@
 
 @property PFObject *conversation;
 @property NSMutableArray *receivedParticipants;
+@property (strong, nonatomic) IBOutlet UIView *searchBackgroundView;
+@property (strong, nonatomic) IBOutlet UITextField *searchField;
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
+- (IBAction)searchButtonTap:(UIButton *)sender;
 
 @end

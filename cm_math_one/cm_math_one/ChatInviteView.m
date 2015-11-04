@@ -103,6 +103,9 @@ NSMutableArray *selectedArray;
 
 #pragma mark - Data
 
+- (IBAction)searchButtonTap:(UIButton *)sender {
+}
+
 - (void)processInviteeData:(NSArray *)results  //callback for total chat-enabled user query, minus current participants
 {
     [inviteArray removeAllObjects];

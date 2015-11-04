@@ -63,6 +63,7 @@ PFUser *loggedinUser;
 - (void)refreshctrl:(id)sender
 {
     [self getChat:self withConversation:self.currentConversation];
+    [self updateConversationObject];
     [(UIRefreshControl *)sender endRefreshing];
 }
 
@@ -78,6 +79,7 @@ PFUser *loggedinUser;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     [self getChat:self withConversation:self.currentConversation];
+    [self updateConversationObject];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -224,6 +226,11 @@ PFUser *loggedinUser;
 }
 
 - (void) pushreload: (id) sender  //in-app push receiver
+{
+    [self updateConversationObject];
+}
+
+- (void)updateConversationObject
 {
     [self.currentConversation fetchInBackgroundWithBlock:^(PFObject *PF_NULLABLE_S object,  NSError *PF_NULLABLE_S error){
         self.currentConversation = object;

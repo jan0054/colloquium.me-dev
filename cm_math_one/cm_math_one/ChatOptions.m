@@ -31,6 +31,7 @@ BOOL isGroup;
     //styling
     //self.view.layer.cornerRadius = 3;
     self.inviteeTable.tableFooterView = [[UIView alloc] init];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
 }
 
@@ -146,4 +147,6 @@ BOOL isGroup;
     [navCon popToRootViewControllerAnimated:YES];
 }
 
+- (IBAction)searchButtonTap:(UIButton *)sender {
+}
 @end

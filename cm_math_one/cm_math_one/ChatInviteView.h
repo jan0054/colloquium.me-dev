@@ -14,7 +14,10 @@
 @property (strong, nonatomic) IBOutlet UITableView *chatInviteTable;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *inviteDoneButton;
 - (IBAction)inviteDoneButtonTap:(UIBarButtonItem *)sender;
-
+@property (strong, nonatomic) IBOutlet UIView *searchBackgroundView;
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
+@property (strong, nonatomic) IBOutlet UITextField *searchField;
+- (IBAction)searchButtonTap:(UIButton *)sender;
 
 - (void)processInviteeData:(NSArray *)results;  //category callback
 - (void)createConvSuccess;  //category callback

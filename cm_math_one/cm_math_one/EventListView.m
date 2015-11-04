@@ -86,6 +86,7 @@ InstructionsViewController *controller;
 - (IBAction)instructionTap:(UITapGestureRecognizer *)sender {
     [controller.view removeFromSuperview];
     [self.view removeGestureRecognizer:self.tapOutlet];
+    self.doneButton.enabled = YES;
     NSLog(@"Instructions removed");
 }
 
@@ -385,6 +386,7 @@ InstructionsViewController *controller;
         [self.view addSubview:controller.view];
         [defaults setBool:YES forKey:@"chooseeventsetup"];
         [defaults synchronize];
+        self.doneButton.enabled = NO;
     }
     else
     {

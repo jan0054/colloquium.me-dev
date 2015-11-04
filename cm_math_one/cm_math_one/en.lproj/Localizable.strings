@@ -80,6 +80,7 @@
 "signup_pass_hint" = "Password";
 "signup_button" = "Sign Up";
 "signup_back" = "Back";
+"email" = "Email";
 "reset_welcome" = "Please enter the Email you used to sign up, we will send you the password reset link.";
 "reset_button" = "Reset Password";
 "reset_cancel" = "Cancel";
