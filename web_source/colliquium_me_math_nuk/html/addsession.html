@@ -36,7 +36,7 @@
 	ListItem = Parse.Object.extend("Session");
 
 	var itemcheck = new Parse.Query(ListItem);
-    itemcheck.equalTo("objectId", location_id.value);
+    itemcheck.equalTo("objectId", session_id.value);
 	itemcheck.find({
 		success: function(results){
 			var object;
@@ -46,9 +46,10 @@
 			else{
 				object = new ListItem();
 			}
-			var sd=session_datestart.value+'T'+session_timestart.value+':00.000';
+			object.set("name", session_name.value);
+			var sd=session_datestart.value+'T'+session_timestart.value+':00.000'+GMTTIME;
 			var startd = new Date(sd);
-			var ed=session_dateend.value+'T'+session_timeend.value+':00.000';
+			var ed=session_dateend.value+'T'+session_timeend.value+':00.000'+GMTTIME;
 			var endd = new Date(ed);
 			object.set("start_time", startd);
 			object.set("end_time", endd);
@@ -96,10 +97,10 @@
 				var object=results[0];
 				session_name.value = object.get('name');
 				session_location.value = object.get('location').id;
-				session_datestart.value = (object.get('start_time').getFullYear()+'-'+object.get('start_time').getMonth()+'-'+object.get('start_time').getDate());
-				session_dateend.value = (object.get('end_time').getFullYear()+'-'+object.get('end_time').getMonth()+'-'+object.get('end_time').getDate());
-				session_timestart.value = (object.get('start_time').getHours()+':'+("0"+object.get('start_time').getMinutes()).substr(-2));
-				session_timeend.value = (object.get('end_time').getHours()+':'+("0"+object.get('end_time').getMinutes()).substr(-2));
+				session_datestart.value = (object.get('start_time').getFullYear()+'-'+("0"+(1+object.get('start_time').getMonth())).substr(-2)+'-'+("0"+object.get('start_time').getDate()).substr(-2));
+				session_dateend.value = (object.get('end_time').getFullYear()+'-'+("0"+(1+object.get('end_time').getMonth())).substr(-2)+'-'+("0"+object.get('end_time').getDate()).substr(-2));
+				session_timestart.value = (("0"+object.get('start_time').getHours()).substr(-2)+':'+("0"+object.get('start_time').getMinutes()).substr(-2));
+				session_timeend.value = (("0"+object.get('end_time').getHours()).substr(-2)+':'+("0"+object.get('end_time').getMinutes()).substr(-2));
 			}
 			else{
 				alert('This is a new session!');
@@ -132,7 +133,7 @@
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_start)</script></td>
-				<td><input type="date" class="DateSize2" id="session_datestart">-<input type="time" class="TimeSize2" id="session_timestart"></td>
+				<td><input type="date" class="DateSize2" id="session_datestart">-<input type="time" class="TimeSize2" id="session_timestart" ></td>
 			</tr>
 			<tr>
 				<td>*<script>dw(STR_end)</script></td>

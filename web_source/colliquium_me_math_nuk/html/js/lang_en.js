@@ -5,6 +5,7 @@ var K1 = "2JF8yrgsM5H261Gju4rzKfxFurDZluOfWUq9UnCV";
 var K2 = "xlirVc4ZbYnah6b97WEo4mbOUBvi0RiqZj5GJ9Hi";
 var K3 = "pintUUOFdx";
 var K4 = "Gi5mwesLdM";
+var GMTTIME = "+08:00";
 
 var AL_empty = " can not be empty!";
 var BT_add = "Add";

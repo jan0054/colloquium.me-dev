@@ -93,7 +93,8 @@
 				venue_phone.value = object.get('phone');
 				venue_address.value = object.get('address');
 				venue_website.value = object.get('url');
-  				venue_image.src = object.get('image').url();
+				if(object.get('image')!=null)
+	  				venue_image.src = object.get('image').url();
 			}
 			else{
 				alert('This is a new venue!');

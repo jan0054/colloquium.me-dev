@@ -78,10 +78,10 @@
 			session.id = talk_session.value;
 			object.set("session", session);
 
-			var sd=talk_datestart.value+'T'+talk_timestart.value+':00.000';
+			var sd=talk_datestart.value+'T'+talk_timestart.value+':00.000'+GMTTIME;
 			var startd = new Date(sd);
 			talk_dateend.value=talk_datestart.value;//start and end at the same day
-			var ed=talk_dateend.value+'T'+talk_timeend.value+':00.000';
+			var ed=talk_dateend.value+'T'+talk_timeend.value+':00.000'+GMTTIME;
 			var endd = new Date(ed);
 			object.set("start_time", startd);
 			object.set("end_time", endd);
@@ -124,14 +124,14 @@
 		success: function(results){
 			if(results.length>0) {
 				var object=results[0];
-				talk_description.value = object.get('content');
+				talk_content.value = object.get('content');
 				talk_author.value = object.get('author').id;
 				talk_session.value = object.get('session').id;
 				talk_location.value = object.get('location').id;
-				talk_datestart.value = (object.get('start_time').getFullYear()+'-'+object.get('start_time').getMonth()+'-'+object.get('start_time').getDate());
-				talk_dateend.value = (object.get('end_time').getFullYear()+'-'+object.get('end_time').getMonth()+'-'+object.get('end_time').getDate());
-				talk_timestart.value = (object.get('start_time').getHours()+':'+("0"+object.get('start_time').getMinutes()).substr(-2));
-				talk_timeend.value = (object.get('end_time').getHours()+':'+("0"+object.get('end_time').getMinutes()).substr(-2));
+				talk_datestart.value = (object.get('start_time').getFullYear()+'-'+("0"+(1+object.get('start_time').getMonth())).substr(-2)+'-'+("0"+object.get('start_time').getDate()).substr(-2));
+				talk_dateend.value = (object.get('end_time').getFullYear()+'-'+("0"+(1+object.get('end_time').getMonth())).substr(-2)+'-'+("0"+object.get('end_time').getDate()).substr(-2));
+				talk_timestart.value = (("0"+object.get('start_time').getHours()).substr(-2)+':'+("0"+object.get('start_time').getMinutes()).substr(-2));
+				talk_timeend.value = (("0"+object.get('end_time').getHours()).substr(-2)+':'+("0"+object.get('end_time').getMinutes()).substr(-2));
 			}
 			else{
 				alert('This is a new talk!');
