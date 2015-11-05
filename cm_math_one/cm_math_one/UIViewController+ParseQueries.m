@@ -266,6 +266,41 @@
     }];
 }
 
+- (void)getInviteeList: (id)caller withoutUsers: (NSArray *)participants withSearch: (NSArray *)searchArray
+{
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"chat_status" equalTo:@1];
+    [query whereKey:@"debug_status" notEqualTo:@1];
+    [query includeKey:@"person"];
+    if (searchArray.count >=1)
+    {
+        [query whereKey:@"words" containsAllObjectsInArray:searchArray];
+        NSLog(@"person query search array not empty");
+    }
+    query.cachePolicy = kPFCachePolicyNetworkOnly;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu invitees.(users)", (unsigned long)objects.count);
+        NSMutableArray *results = [[NSMutableArray alloc] init];
+        for (PFObject *allUser in objects)
+        {
+            int match = 0;
+            for (PFObject *listUser in participants)
+            {
+                if ([allUser.objectId isEqualToString:listUser.objectId])
+                {
+                    match = 1;
+                }
+            }
+            if (match == 0)
+            {
+                [results addObject:allUser];
+            }
+        }
+        [caller processInviteeData:results];
+    }];
+
+}
+
 - (void)inviteUser: (id)caller toConversation: (PFObject *)conversation withUser: (PFUser *)user atPath:(NSIndexPath *)path
 {
     [conversation addObject:user forKey:@"participants"];

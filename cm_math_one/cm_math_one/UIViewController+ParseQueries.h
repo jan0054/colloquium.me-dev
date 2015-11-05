@@ -30,6 +30,7 @@
 - (void)sendBroadcast:(id)caller withAuthor:(PFUser *)user withContent:(NSString *)content forConversation:(PFObject *)conversation;
 - (void)getChat: (id)caller withConversation: (PFObject *)conversation;
 - (void)getInviteeList: (id)caller withoutUsers: (NSArray *)participants;
+- (void)getInviteeList: (id)caller withoutUsers: (NSArray *)participants withSearch: (NSArray *)searchArray;
 - (void)inviteUser: (id)caller toConversation: (PFObject *)conversation withUser: (PFUser *)user atPath: (NSIndexPath *)path;
 - (void)leaveConversation: (id)caller forConversation: (PFObject *)conversation forUser: (PFUser *)user;
 - (void)createConcersation: (id)caller withParticipants: (NSMutableArray *)participants;

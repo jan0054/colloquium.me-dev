@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface ChatInviteView : UIViewController
+@interface ChatInviteView : UIViewController<UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *chatInviteTable;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *inviteDoneButton;

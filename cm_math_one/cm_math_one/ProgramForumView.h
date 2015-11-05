@@ -26,5 +26,5 @@
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *inputbarBottom;
 
-
+@property UIRefreshControl *pullrefresh;
 @end

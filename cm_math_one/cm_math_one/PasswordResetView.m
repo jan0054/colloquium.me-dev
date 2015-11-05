@@ -10,13 +10,10 @@
 #import "UIColor+ProjectColors.h"
 #import <Parse/Parse.h>
 
-NSMutableArray *peoplelist;
-
 @implementation PasswordResetView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //peoplelist = [[NSMutableArray alloc] init];
     
     //styling
     self.view.backgroundColor = [UIColor dark_primary];
@@ -63,30 +60,4 @@ NSMutableArray *peoplelist;
 }
 
 
-//testing stuff to update all people
-- (void)getPersonList {
-    PFQuery *query = [PFQuery queryWithClassName:@"Person"];
-    [query orderByAscending:@"last_name"];
-    [query setLimit:1000];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"Person query without search, success with results: %lu", (unsigned long)[objects count]);
-        peoplelist = [objects mutableCopy];
-        [self processPeople];
-    }];
-}
-
-- (void)processPeople {
-    for (PFObject *person in peoplelist)
-    {
-        person[@"debug_status"] = @0;
-        if (person.save)
-        {
-            NSLog(@"success:%@", person.objectId);
-        }
-        else
-        {
-            NSLog(@"failed:%@", person.objectId);
-        }
-    }
-}
 @end

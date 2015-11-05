@@ -15,7 +15,7 @@ NSMutableArray *forumArray;
 
 @implementation ProgramForumView
 @synthesize sourceProgram;
-
+@synthesize pullrefresh;
 #pragma mark - Interface
 
 - (void)viewDidLoad {
@@ -36,6 +36,16 @@ NSMutableArray *forumArray;
     
     //data
     [self getForum:self forProgram:sourceProgram];
+    
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.forumTable addSubview:pullrefresh];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    [self getForum:self forProgram:sourceProgram];
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)viewDidLayoutSubviews

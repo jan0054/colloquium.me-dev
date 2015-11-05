@@ -27,11 +27,17 @@ BOOL isGroup;
     //init
     inviteeArray = [[NSMutableArray alloc] init];
     [self getInviteeList:self withoutUsers:receivedParticipants];
+    self.searchField.delegate = self;
     
     //styling
     //self.view.layer.cornerRadius = 3;
     self.inviteeTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    UIImage *img = [UIImage imageNamed:@"search48"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.searchButton setTintColor:[UIColor lightGrayColor]];
+    [self.searchButton setImage:img forState:UIControlStateNormal];
+    self.searchBackgroundView.backgroundColor = [UIColor whiteColor];
     
 }
 
@@ -71,6 +77,45 @@ BOOL isGroup;
 
     cell.inviteButton.enabled = NO;
     cell.inviteButton.userInteractionEnabled = NO;
+}
+
+- (IBAction)searchButtonTap:(UIButton *)sender {
+    if (self.searchField.text.length >0)
+    {
+        NSString *search_str = self.searchField.text.lowercaseString;
+        
+        NSArray *separateBySpace = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSMutableArray *processedWords = [[NSMutableArray alloc] init];
+        for (NSString *componentString in separateBySpace)
+        {
+            CFStringRef compstr = (__bridge CFStringRef)(componentString);
+            NSString *lang = CFBridgingRelease(CFStringTokenizerCopyBestStringLanguage(compstr, CFRangeMake(0, componentString.length)));
+            if ([lang isEqualToString:@"zh-Hant"])
+            {
+                //中文
+                for (int i=1; i<=componentString.length; i++)
+                {
+                    NSString *chcomp = [componentString substringWithRange:NSMakeRange(i-1, 1)];
+                    [processedWords addObject:chcomp];
+                }
+            }
+            else
+            {
+                //not中文
+                [processedWords addObject:componentString];
+            }
+        }
+        
+        [self getInviteeList:self withoutUsers:receivedParticipants withSearch:processedWords];
+        NSLog(@"PROCESSEDWORDS:%lu, %@", processedWords.count, processedWords);
+    }
+    [self.searchField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    if (textField == self.searchField) [self resetSearch];
+    return YES;
 }
 
 #pragma mark - TableView
@@ -147,6 +192,11 @@ BOOL isGroup;
     [navCon popToRootViewControllerAnimated:YES];
 }
 
-- (IBAction)searchButtonTap:(UIButton *)sender {
+- (void)resetSearch
+{
+    NSLog(@"Search reset called");
+    [self getInviteeList:self withoutUsers:receivedParticipants];
 }
+
+
 @end

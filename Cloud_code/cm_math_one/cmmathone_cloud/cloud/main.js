@@ -129,6 +129,8 @@ Parse.Cloud.beforeSave("Person", function(request, response) {
 });
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+	Parse.Cloud.useMasterKey();
+	
 	//grab info of the user
     var user_email = request.object.get("email");
     var user_fn = request.object.get("first_name");
@@ -226,7 +228,7 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
                 person_obj.set("event_status", user_eventswitch);
                 person_obj.set("events", user_events);
                 person_obj.save();
-                 
+                
                 request.object.set("person", person_obj);
                 request.object.set("is_person", 1);
                 request.object.save();
@@ -258,6 +260,56 @@ Parse.Cloud.afterSave(Parse.User, function(request) {
             console.error("Got an error " + error.code + " : " + error.message);
             //something went wrong with the query
              
+        }
+    });
+});
+
+//refreshes the User class to generate and update search words array
+Parse.Cloud.define("refreshUsers", function(request, response) {
+  var query = new Parse.Query(Parse.User);
+  query.notEqualTo("debug_status", 0);
+  query.find({
+    success: function(results) {
+    	Parse.Cloud.useMasterKey();
+      	for (var i = 0; i < results.length; ++i) {
+        	var user_obj = results[i];
+        	user_obj.set("debug_status", 0);
+        	user_obj.save(); 
+      	}
+      	response.success();
+    },
+    error: function() {
+      	response.error(error.code+" : "+error.message);
+      	console.error(error.code+" : "+error.message);
+    }
+  });
+});
+
+//do push notification for event announcements
+Parse.Cloud.afterSave("Announcement", function(request) {
+	var announcement_obj = request.object
+	var event_obj = announcement_obj.get("event");
+	event_obj.fetch({
+        success: function(event_obj) {
+            var event_name = event_obj.get("name");
+            var event_attendees = event_obj.get("attendees");
+        	
+        	var query = new Parse.Query(Parse.Installation);
+        	query.containedIn("user", event_attendees);
+        	
+        	Parse.Push.send({
+  				where: query,
+  				data: {
+    				alert: "Announcement from: "+event_name 
+  				}
+			}, {
+  				success: function() {
+    				//console.log("announcement push successful";
+  				},
+  				error: function(error) {
+    				//console.error(error.code+" : "+error.message);
+  				}
+			});
         }
     });
 });
