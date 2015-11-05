@@ -9,6 +9,40 @@ var clickItem = {
 	}
 }
 
+function listGetAnnounceWithAuthor(inputID)
+{
+	var user = new Parse.User();
+	user.id = K5;
+
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Announcement");
+	query = new Parse.Query(ListItem);
+	query.equalTo("author", user);
+	query.limit(500);
+	query.descending('createdAt');
+	query.find({
+		success: function(results){
+			var ul=document.getElementById(inputID);
+			for (var i=0; i<results.length; i++){
+				var object=results[i];
+				var li = document.createElement("li");
+				li.appendChild(document.createTextNode(object.get('content')));
+				li.setAttribute("id", object.id);
+				li.page = "addannounce.html";
+				li.type = "id";
+				li.typevalue = object.id;
+				li.style.margin = "2px";
+				li.addEventListener('click', clickItem.click, false);
+				ul.appendChild(li);
+			}
+		},
+		error: function(error)
+		{
+			alert("Session Error: "+error.code+" "+error.message);
+		}
+	})
+}
+
 function listGetCareerWithAuthor(inputID)
 {
 	Person = Parse.Object.extend("Person");

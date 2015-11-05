@@ -55,6 +55,12 @@ table .tb1 {
 	width: 300px;
 }
 
+.AnnounceSize {
+	cols: 40;
+	width: 350px;
+	height: 300px;
+}
+
 .FileSize {
 	font-size: 14px;
 	width:65%;

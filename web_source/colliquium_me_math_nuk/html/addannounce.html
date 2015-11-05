@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="CM Web">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/CSJSRequestObject.js"></script>
+  <script type="text/javascript" src="js/lang_zh.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- cdn for modernizr, if you haven't included it already -->
+  <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+  <!-- polyfiller file to detect and load polyfills -->
+  <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+  <script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {types: 'date'});
+  webshims.polyfill('forms forms-ext');
+  </script>
+
+
+  <script language="javascript">
+  function addAnnounce()
+  {
+  	if(announce_content.value==""){
+		alert(STR_description+AL_empty);
+		announce_content.focus();
+		return false;
+	}
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Announcement");
+
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo("objectId", announce_id.value);
+	itemcheck.find({
+		success: function(results){
+			var object;
+			if(results.length>0) {
+				object=results[0];				
+			}
+			else{
+				object = new ListItem();
+			}
+			object.set("content", announce_content.value);
+
+			Event = Parse.Object.extend("Event");
+			var event = new Event();
+			event.id = K3;
+			object.set("event", event);
+
+			var user = new Parse.User();
+			user.id = K5;
+			object.set("author", user);
+	
+			object.save(null, {
+				success: function(object){
+					window.location = "addannounce.html?id=null";
+					parent.listFrame.location = "list.html?type=announce";
+				},
+				error: function(object, error){
+					alert('Failed to create new object, with error code: ' + error.message);
+				}
+			});
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+
+  var announceid = Request.QueryString("id");
+  function searchAnnounce()
+  {
+	var selected = new Array();
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Announcement");
+
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo('objectId', announce_id.value);
+	itemcheck.descending('createdAt');
+	itemcheck.find({
+		success: function(results){
+			if(results.length>0) {
+				var object=results[0];
+				announce_content.value = object.get('content');
+			}
+			else{
+				alert('This is a new announcement!');
+			}
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+  function loadId()
+  {
+  	if(announceid != 'null')
+  	{
+  		announce_id.value = announceid;
+  		searchAnnounce();
+  	}
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addannounce)</script></h1>
+	<h2><script>dw(STR_1)</script></h2>
+	<div id="add_announce">
+		<table align="center">
+			<tr>
+				<td>*<script>dw(STR_description)</script></td>
+				<td><textarea class="AnnounceSize" id="announce_content"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_announce_submit" value="'+BT_add+'" onClick="addAnnounce();">')</script></td>
+			</tr>
+			</tr><td><input class="InputSize" type="hidden" id="announce_id"></td></tr>
+		</table>
+	</div>
+	<script>loadId();</script>
+</body>
+ 

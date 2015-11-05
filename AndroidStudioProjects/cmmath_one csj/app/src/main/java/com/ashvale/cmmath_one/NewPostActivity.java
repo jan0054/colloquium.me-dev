@@ -202,7 +202,7 @@ public class NewPostActivity extends AppCompatActivity {
             System.out.println("Current time => "+c.getTime());
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
             String formattedDate = sdf.format(c.getTime());
-            String filename = currentUser.getString("last_name")+currentUser.getString("first_name")+formattedDate+".jpg";
+            String filename = currentUser.getString("username")+formattedDate+".jpg";
             toast(filename);
             ParseFile image = new ParseFile(filename, bitmapToByteArray(bitmap));
             postmsg.put("image", image);

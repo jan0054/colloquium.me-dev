@@ -21,6 +21,7 @@
   	else if(type == "person") title = TT_listperson;
   	else if(type == "talk") title = TT_listtalk;
   	else if(type == "venue") title = TT_listvenue;
+  	else if(type == "announce") title = TT_listannounce;
   	else if(type == "career") title = TT_listcareer;
   	else title = TT_list;
   }
@@ -41,6 +42,9 @@
 	}
   	else if(title == TT_listvenue) {
 	  	listGetVenueWithEvent('listresult');
+	}
+  	else if(title == TT_listannounce) {
+	  	listGetAnnounceWithAuthor('listresult');
 	}
   	else if(title == TT_listcareer) {
 	  	listGetCareerWithAuthor('listresult');
