@@ -171,10 +171,6 @@
 				<td><script>dw('<input type="button" id="talk_searchbyemail" value="'+BT_search+'" onClick="searchTalk();">')</script></td>
 			</tr>
 			<tr>
-				<td>*<script>dw(STR_content)</script></td>
-				<td><input class="InputSize" type="text" id="talk_content"></td>
-			</tr>
-			<tr>
 				<td>*<script>dw(STR_author)</script></td>
 				<td width="70%"><select class="SelectSize" id="talk_author"><script>selectGetAuthorWithEvent('talk_author')</script></select></td>
 			</tr>
@@ -195,6 +191,10 @@
 				<td>*<script>dw(STR_location)</script></td>
 				<td width="70%"><select class="SelectSize" id="talk_location"><script>selectGetLocationWithEvent('talk_location')</script></select></td>
 			</tr><td><input class="InputSize" type="hidden" id="talk_id"></td></tr>
+			<tr>
+				<td>*<script>dw(STR_content)</script></td>
+				<td><textarea class="textAreaSize" id="talk_content"></textarea></td>
+			</tr>
 			<tr>
 				<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_talk_submit" value="'+BT_add+'" onClick="addTalk();">')</script></td>
 			</tr>
