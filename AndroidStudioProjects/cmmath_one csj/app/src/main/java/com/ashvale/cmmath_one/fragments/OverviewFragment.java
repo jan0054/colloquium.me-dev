@@ -291,6 +291,7 @@ public class OverviewFragment extends BaseFragment {
 
                     ParseQuery<ParseObject> query = ParseQuery.getQuery("Announcement");
                     query.whereMatchesQuery("event", innerQuery);
+                    query.include("author");
                     query.orderByDescending("order");
                     query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
                     query.findInBackground(new FindCallback<ParseObject>() {

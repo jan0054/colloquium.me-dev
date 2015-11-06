@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.ashvale.cmmath_one.R;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -61,7 +62,7 @@ public class AnnounceAdapter extends BaseAdapter {
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            view = inflater.inflate(R.layout.listitem_comment, vg, false);
+            view = inflater.inflate(R.layout.listitem_announcement, vg, false);
         }
 
         sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
@@ -69,19 +70,19 @@ public class AnnounceAdapter extends BaseAdapter {
 
         ParseObject announce = (ParseObject) announces.get(position);
 
-        TextView authornameLabel = (TextView)view.findViewById(R.id.comment_authorname);
-        TextView createdAtLabel = (TextView)view.findViewById(R.id.comment_createdAt);
-        TextView contentLabel = (TextView)view.findViewById(R.id.comment_content);
+        TextView authornameLabel = (TextView)view.findViewById(R.id.announce_authorname);
+        TextView createdAtLabel = (TextView)view.findViewById(R.id.announce_createdAt);
+        TextView contentLabel = (TextView)view.findViewById(R.id.announce_content);
 
         authornameLabel.setText(getAuthor(announce));
-        createdAtLabel.setTag(getCreatedAt(announce));
+        createdAtLabel.setText(getCreatedAt(announce));
         contentLabel.setText(getContent(announce));
 
         return view;
     }
 
     private String getAuthor(ParseObject object) {
-        ParseObject author = object.getParseObject("author");
+        ParseUser author = object.getParseUser("author");
         return (author == null) ? context.getString(R.string.unknown) : author.getString("last_name") + ", " + author.getString("first_name");
     }
 

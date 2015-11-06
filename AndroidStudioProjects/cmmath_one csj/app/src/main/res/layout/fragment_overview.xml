@@ -8,6 +8,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/background">
         <RelativeLayout
+            android:id="@+id/overview_contain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/list_item"
@@ -83,25 +84,23 @@
                 android:layout_marginBottom="10dp"
                 android:layout_toRightOf="@+id/attend_string"
                 android:text=""/>
-            <ListView android:id="@+id/announceListView"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_below="@+id/attend_string"
-                      android:layout_marginLeft="@dimen/activity_vertical_margin"
-                      android:layout_marginRight="@dimen/activity_vertical_margin"
-                      android:divider="@color/divider_color"
-                      android:dividerHeight="1dp"
-                      android:paddingTop="6dp" />
-            <TextView android:id="@+id/announceempty"
-                      android:layout_width="match_parent"
-                      android:layout_height="120dp"
-                      android:layout_below="@+id/attend_string"
-                      android:layout_marginLeft="32dp"
-                      android:layout_marginRight="32dp"
-                      android:gravity="center"
-                      android:text="@string/list_empty_event"
-                      android:textColor="@color/dark_primary"
-                      android:textSize="14sp" />
         </RelativeLayout>
+        <ListView android:id="@+id/announceListView"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@+id/overview_contain"
+                  android:divider="@color/divider_color"
+                  android:dividerHeight="0dp"
+                  android:paddingTop="6dp" />
+        <TextView android:id="@+id/announceempty"
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:layout_below="@+id/overview_contain"
+                  android:layout_marginLeft="32dp"
+                  android:layout_marginRight="32dp"
+                  android:gravity="center"
+                  android:text="@string/list_empty_event"
+                  android:textColor="@color/dark_primary"
+                  android:textSize="14sp" />
     </RelativeLayout>
 </FrameLayout>
