@@ -232,7 +232,11 @@ public class OverviewFragment extends BaseFragment {
                                     //email set to public
                                     if (attendEvent_on == 0) {
                                         eventAttending = curuser.getList("attendance");
-                                        eventAttending.add(currenteventObject);
+                                        if(eventAttending == null) {
+                                            eventAttending = Arrays.asList(currenteventObject);
+                                        } else {
+                                            eventAttending.add(currenteventObject);
+                                        }
                                         curuser.put("attendance", eventAttending);
                                         curuser.saveInBackground(new SaveCallback() {
                                             @Override
