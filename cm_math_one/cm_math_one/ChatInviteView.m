@@ -32,6 +32,7 @@ NSMutableDictionary *inviteeDictionary;
     self.chatInviteTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.searchField.delegate = self;
+    self.inviteDoneButton.enabled = NO;
     
     //styling
     UIImage *img = [UIImage imageNamed:@"search48"];
@@ -214,6 +215,14 @@ NSMutableDictionary *inviteeDictionary;
         NSLog(@"TAP CELL DESELECTING");
     }
     NSLog(@"HOLDER: %lu", (unsigned long)holderArray.count);
+    if (holderArray.count>0)
+    {
+        self.inviteDoneButton.enabled = YES;
+    }
+    else
+    {
+        self.inviteDoneButton.enabled = NO;
+    }
 }
 
 - (void)processInviteeData:(NSArray *)results  //callback for total chat-enabled user query, minus current participants

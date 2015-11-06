@@ -25,6 +25,7 @@
 "alert_career_contact" = "Contact";
 "alert_sign_later" = "You can log in later under Settings";
 "alert_reset_done" = "Please check your inbox to setup your new password";
+"alert_empty_chat" = "Don't talk to yourself! Please select at least one other user";
 
 //drawer labels
 "drawer_chat" = "Chat";

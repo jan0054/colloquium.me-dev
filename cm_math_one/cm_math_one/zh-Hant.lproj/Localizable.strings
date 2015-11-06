@@ -25,6 +25,7 @@
 "alert_career_contact" = "聯絡";
 "alert_sign_later" = "您之後可以在設定頁面登入";
 "alert_reset_done" = "請檢查您的信箱以設定新密碼";
+"alert_empty_chat" = "別自言自語！請至少選擇一個人";
 
 //drawer labels
 "drawer_chat" = "訊息";

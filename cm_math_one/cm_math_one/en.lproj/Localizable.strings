@@ -59,6 +59,7 @@
 "about_sub" = "The team behind Colloquium.me";
 "pref_title" = "User Preference";
 "pref_sub" = "Setup or change user info and social options";
+"alert_empty_chat" = "Don't talk to yourself! Please select at least one other user";
 
 //Timeline/Post
 "post_add_photo" = " Add Photo";
