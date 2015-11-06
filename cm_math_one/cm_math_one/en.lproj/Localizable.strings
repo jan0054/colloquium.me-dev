@@ -85,3 +85,6 @@
 "reset_button" = "Reset Password";
 "reset_cancel" = "Cancel";
 
+//chat
+"person_invite" = "Invite";
+"person_invited" = "Selected";

@@ -124,6 +124,7 @@ NSMutableArray *newsArray;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newscell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //data
     PFObject *announcement = [newsArray objectAtIndex:indexPath.row];

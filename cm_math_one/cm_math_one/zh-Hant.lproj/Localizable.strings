@@ -84,3 +84,7 @@
 "reset_welcome" = "請輸入您當初註冊使用的Email，我們將發送信件讓您重新設定密碼。";
 "reset_button" = "重設密碼";
 "reset_cancel" = "取消";
+
+//chat
+"person_invite" = "邀請";
+"person_invited" = "已選取";
