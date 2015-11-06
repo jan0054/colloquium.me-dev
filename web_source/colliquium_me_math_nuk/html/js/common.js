@@ -9,15 +9,20 @@ var clickItem = {
 	}
 }
 
-function listGetAnnounceWithAuthor(inputID)
+function listGetAnnounceWithAuthorAndEvent(inputID)
 {
 	var user = new Parse.User();
 	user.id = K5;
+
+	Event = Parse.Object.extend("Event");
+	var event = new Event();
+	event.id = K3;
 
 	Parse.initialize(K1, K2);
 	ListItem = Parse.Object.extend("Announcement");
 	query = new Parse.Query(ListItem);
 	query.equalTo("author", user);
+	query.equalTo("event", event);
 	query.limit(500);
 	query.descending('createdAt');
 	query.find({
