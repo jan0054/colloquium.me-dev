@@ -502,7 +502,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Announcement"];
     [query includeKey:@"author"];
-    [query orderByAscending:@"createAt"];
+    [query orderByDescending:@"createdAt"];
     [query whereKey:@"event" equalTo:event];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

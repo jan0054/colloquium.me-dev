@@ -60,6 +60,15 @@
 "about_sub" = "The team behind Colloquium.me";
 "pref_title" = "User Preference";
 "pref_sub" = "Setup or change user info and social options";
+"email_switch" = "Allow other users to email you";
+"event_switch" = "Receive event announcements";
+"chat_switch" = "Receive chat invites";
+"first_name" = "First Name";
+"last_name" = "Last Name";
+"inst" = "Institution";
+"web_page" = "Web Page";
+"optional" = "Optional";
+"required" = "Required";
 
 //Timeline/Post
 "post_add_photo" = " Add Photo";

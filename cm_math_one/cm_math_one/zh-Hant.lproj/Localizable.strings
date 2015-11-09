@@ -60,6 +60,15 @@
 "about_sub" = "Colloquium.me服務的開發團隊";
 "pref_title" = "使用者偏好";
 "pref_sub" = "設定或更改使用者資訊與隱私設定";
+"email_switch" = "其他使用者可Email您";
+"event_switch" = "接收會議主辦通知";
+"chat_switch" = "其他使用者可邀您對話";
+"first_name" = "名";
+"last_name" = "姓";
+"inst" = "服務單位";
+"web_page" = "個人網頁";
+"optional" = "選填";
+"required" = "必填";
 
 //Timeline/Post
 "post_add_photo" = " 新增照片";
