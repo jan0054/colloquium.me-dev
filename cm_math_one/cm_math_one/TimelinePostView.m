@@ -129,14 +129,18 @@ BOOL photoSet;
 
 - (void)doProcessPost
 {
-    CGSize img_param = CGSizeMake(1080.0, 1080.0);
+    CGSize img_param = CGSizeMake(720.0, 720.0);
+    CGSize preview_param = CGSizeMake(480.0, 480.0);
     UIImage *smallpic = [self shrinkImage:self.postImageView.image withSize:img_param];
+    UIImage *previewpic = [self shrinkImage:self.postImageView.image withSize:preview_param];
     NSData *imageData = UIImagePNGRepresentation(smallpic);
     PFFile *imageFile = [PFFile fileWithName:[self generate_filename] data:imageData];
+    NSData *previewData = UIImagePNGRepresentation(previewpic);
+    PFFile *previewFile = [PFFile fileWithName:[self generate_filename] data:previewData];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-    [self sentPost:self withAuthor:[PFUser currentUser] withContent:self.inputTextView.text withImage:imageFile forEvent:event];
+    [self sentPost:self withAuthor:[PFUser currentUser] withContent:self.inputTextView.text withImage:imageFile withPreview:previewFile  forEvent:event];
 }
 
 - (NSString *) generate_filename {
