@@ -75,7 +75,16 @@ BOOL barIsVisible;
 }
 
 - (IBAction)whiteTextButtonTap:(UIButton *)sender {
-    self.contentTextView.textColor = [UIColor whiteColor];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 8;
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:17.0];
+    self.contentTextView.attributedText = [[NSAttributedString alloc]
+                                           initWithString:@"Predefined Text"
+                                           attributes:@{NSParagraphStyleAttributeName : style,
+                                                        NSFontAttributeName : font }];
+    self.contentTextView.text = self.content;
+
+    [self.contentTextView setTextColor:[UIColor whiteColor]];
     self.contentTextView.backgroundColor = [UIColor blackColor];
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -85,7 +94,16 @@ BOOL barIsVisible;
 }
 
 - (IBAction)blackTextButtonTap:(UIButton *)sender {
-    self.contentTextView.textColor = [UIColor blackColor];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 8;
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:17.0];
+    self.contentTextView.attributedText = [[NSAttributedString alloc]
+                                           initWithString:@"Predefined Text"
+                                           attributes:@{NSParagraphStyleAttributeName : style,
+                                                        NSFontAttributeName : font }];
+    self.contentTextView.text = self.content;
+
+    [self.contentTextView setTextColor:[UIColor blackColor]];
     self.contentTextView.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
     

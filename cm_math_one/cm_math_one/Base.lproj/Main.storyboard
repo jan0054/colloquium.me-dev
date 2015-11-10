@@ -712,7 +712,7 @@
         <!--Program Detail View-->
         <scene sceneID="GoU-IA-c5U">
             <objects>
-                <viewController id="Aa2-37-DCr" customClass="ProgramDetailView" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="programdetail_vc" id="Aa2-37-DCr" customClass="ProgramDetailView" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GDb-bV-WcL"/>
                         <viewControllerLayoutGuide type="bottom" id="XlS-yU-fge"/>
@@ -2362,6 +2362,7 @@
                         <outlet property="nameLabel" destination="Dg7-tx-MQ2" id="5t8-bC-bbd"/>
                         <outlet property="noProgramLabel" destination="xIP-DG-S9V" id="JLg-qb-EJc"/>
                         <outlet property="websiteButton" destination="faj-tw-BdA" id="YdQ-kv-Zz6"/>
+                        <segue destination="Aa2-37-DCr" kind="show" identifier="attendeetalksegue" id="20g-Ac-w6B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egK-kQ-lpT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4155,4 +4156,7 @@
         <image name="timeline48.png" width="24" height="24"/>
         <image name="venue48.png" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="20g-Ac-w6B"/>
+    </inferredMetricsTieBreakers>
 </document>

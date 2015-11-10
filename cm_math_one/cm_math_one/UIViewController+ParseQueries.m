@@ -445,6 +445,9 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
     [query whereKey:@"event" equalTo:event];
     [query whereKey:@"author" equalTo:person];
+    [query includeKey:@"author"];
+    [query includeKey:@"location"];
+    [query includeKey:@"session"];
     [query orderByDescending:@"name"];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
