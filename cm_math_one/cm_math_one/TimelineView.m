@@ -122,7 +122,7 @@ UIImage *selectedImage;
     cell.timeLabel.text = timeString;
     cell.postImage.clipsToBounds = YES;
     cell.postImage.image = nil;
-    cell.postImage.file = [post objectForKey:@"image"];
+    cell.postImage.file = [post objectForKey:@"preview"];
     [cell.postImage loadInBackground];
 
     return cell;

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <ParseUI.h>
 
 @interface TimelineDetailImageCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *postImage;
+@property (strong, nonatomic) IBOutlet PFImageView *postImage;
 
 @end

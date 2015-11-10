@@ -129,27 +129,32 @@ BOOL photoSet;
 
 - (void)doProcessPost
 {
-    CGSize img_param = CGSizeMake(720.0, 720.0);
+    CGSize img_param = CGSizeMake(1080.0, 1080.0);
     CGSize preview_param = CGSizeMake(480.0, 480.0);
     UIImage *smallpic = [self shrinkImage:self.postImageView.image withSize:img_param];
     UIImage *previewpic = [self shrinkImage:self.postImageView.image withSize:preview_param];
-    NSData *imageData = UIImagePNGRepresentation(smallpic);
-    PFFile *imageFile = [PFFile fileWithName:[self generate_filename] data:imageData];
-    NSData *previewData = UIImagePNGRepresentation(previewpic);
-    PFFile *previewFile = [PFFile fileWithName:[self generate_filename] data:previewData];
+    //NSData *imageData = UIImagePNGRepresentation(smallpic);
+    NSData *imageData = UIImageJPEGRepresentation(smallpic, 0.7);
+    PFFile *imageFile = [PFFile fileWithName:[self generateFilenameWithPreview:NO] data:imageData];
+    NSData *previewData = UIImageJPEGRepresentation(previewpic, 0.7);
+    PFFile *previewFile = [PFFile fileWithName:[self generateFilenameWithPreview:YES] data:previewData];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
     [self sentPost:self withAuthor:[PFUser currentUser] withContent:self.inputTextView.text withImage:imageFile withPreview:previewFile  forEvent:event];
 }
 
-- (NSString *) generate_filename {
+- (NSString *) generateFilenameWithPreview: (BOOL)preview {
     PFUser *user = [PFUser currentUser];
     NSString *uname = user.username;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat: @"yyyyMMddHHmm"];
     NSString *dateString = [dateFormat stringFromDate:[NSDate date]];
-    NSString *filename = [NSString stringWithFormat:@"%@%@.png",uname,dateString];
+    NSString *filename = [NSString stringWithFormat:@"%@%@.jpeg",uname,dateString];
+    if (preview)
+    {
+        filename = [NSString stringWithFormat:@"preview%@%@.jpeg",uname,dateString];
+    }
     return filename;
 }
 

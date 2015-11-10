@@ -125,7 +125,7 @@ NSMutableArray *commentArray;
     }
     emptycell.contentLabel.textColor = [UIColor dark_primary];
     
-    if (indexPath.section == 0)
+    if (indexPath.section == 0)  //top section with the photo and content
     {
         if (indexPath.row == 0)
         {
@@ -146,10 +146,12 @@ NSMutableArray *commentArray;
         else
         {
             imagecell.postImage.image = currentImage;
+            imagecell.postImage.file = [currentPost objectForKey:@"image"];
+            [imagecell.postImage loadInBackground];
             return imagecell;
         }
     }
-    else
+    else  //comment section
     {
         if (commentArray.count>0)
         {
