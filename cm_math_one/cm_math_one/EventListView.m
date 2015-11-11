@@ -114,12 +114,12 @@ InstructionsViewController *controller;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormat setDateFormat: @"MMM-d"];
+    [dateFormat setDateFormat: @"MMM/d"];
     NSDate *sdate = event[@"start_time"];
     NSDate *edate = event[@"end_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];
     NSString *estr = [dateFormat stringFromDate:edate];
-    cell.eventTimeLabel.text = [NSString stringWithFormat:@"%@ to %@", sstr, estr];
+    cell.eventTimeLabel.text = [NSString stringWithFormat:@"%@ ~ %@", sstr, estr];
     cell.eventId = event.objectId;
     
     //styling

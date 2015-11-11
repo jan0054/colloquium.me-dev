@@ -56,9 +56,20 @@ NSMutableArray *commentArray;
 }
 
 - (IBAction)sendButtonTap:(UIButton *)sender {
-    if (self.inputTextField.text.length >0 && [PFUser currentUser])
+    if ([PFUser currentUser])
     {
-        [self sendComment:self forPost:currentPost withContent:self.inputTextField.text withAuthor:[PFUser currentUser]];
+        if (self.inputTextField.text.length >0)
+        {
+            [self sendComment:self forPost:currentPost withContent:self.inputTextField.text withAuthor:[PFUser currentUser]];
+        }
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_need_account", nil)
+                                    message:NSLocalizedString(@"alert_sign_in", nil)
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
+                          otherButtonTitles:nil] show];
     }
     [self.inputTextField resignFirstResponder];
 }

@@ -39,6 +39,9 @@ NSMutableArray *newsArray;
     {
         eventSelf = [PFUser currentUser];
     }
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.newsTable addSubview:pullrefresh];
     
     //styling
     [self.organizerButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
@@ -53,10 +56,7 @@ NSMutableArray *newsArray;
     self.organizerButton.backgroundColor = [UIColor clearColor];
     self.newsTable.estimatedRowHeight = 44.0;
     self.newsTable.rowHeight = UITableViewAutomaticDimension;
-    
-    self.pullrefresh = [[UIRefreshControl alloc] init];
-    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
-    [self.newsTable addSubview:pullrefresh];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)refreshctrl:(id)sender
@@ -74,6 +74,13 @@ NSMutableArray *newsArray;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
     [self getEvent:self withId:eventid];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    if ([self.newsTable respondsToSelector:@selector(layoutMargins)]) {
+        self.newsTable.layoutMargins = UIEdgeInsetsZero;
+    }
 }
 
 - (void)setupLeftMenuButton {
@@ -132,6 +139,10 @@ NSMutableArray *newsArray;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.contentLabel.textColor = [UIColor dark_primary];
     cell.authorLabel.textColor = [UIColor primary_color];
+    if ([cell respondsToSelector:@selector(layoutMargins)])
+    {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
     
     //data
     PFObject *announcement = [newsArray objectAtIndex:indexPath.row];
@@ -155,7 +166,7 @@ NSMutableArray *newsArray;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormat setDateFormat: @"MMM-d"];
+    [dateFormat setDateFormat: @"MMM/d"];
     NSDate *sdate = object[@"start_time"];
     NSDate *edate = object[@"end_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];

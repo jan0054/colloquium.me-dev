@@ -42,6 +42,9 @@
 //career
 "type_hiring" = "Position Available";
 "type_seeking" = "Seeking Job";
+"inst_title" = "Institution:";
+"contact_title" = "Contact:";
+"job_content_title" = "Description:";
 
 //settings
 "sign_as" = "Signed in as";
