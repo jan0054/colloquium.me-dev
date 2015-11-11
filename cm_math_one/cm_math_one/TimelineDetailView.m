@@ -99,7 +99,14 @@ NSMutableArray *commentArray;
 {
     if (section == 0)
     {
-        return 2;
+        if (currentImage==NULL)
+        {
+            return 1;   //only the content cell
+        }
+        else
+        {
+            return 2;   //content+image cells
+        }
     }
     else
     {

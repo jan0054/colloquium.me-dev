@@ -110,13 +110,14 @@ UIImage *selectedImage;
         cell.layoutMargins = UIEdgeInsetsZero;
     }
     
+    //data
     PFObject *post = [postArray objectAtIndex:indexPath.row];
     PFUser *author = post[@"author"];
     NSDate *time = post.createdAt;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat: @"MM-dd HH:mm"];
     NSString *timeString = [dateFormat stringFromDate:time];
-
+    
     cell.contentLabel.text = post[@"content"];
     cell.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
     cell.timeLabel.text = timeString;
@@ -124,7 +125,12 @@ UIImage *selectedImage;
     cell.postImage.image = nil;
     cell.postImage.file = [post objectForKey:@"preview"];
     [cell.postImage loadInBackground];
-
+    
+    if (cell.postImage.file == NULL)
+    {
+        cell.imageRatio.active = NO;
+    }
+    
     return cell;
 }
 
