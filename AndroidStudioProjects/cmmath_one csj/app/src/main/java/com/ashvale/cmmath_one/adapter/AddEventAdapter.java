@@ -109,7 +109,7 @@ public class AddEventAdapter extends BaseAdapter {
         if (selected == 1)
         {
             imagelabel.setImageResource(R.drawable.check);
-            imagelabel.setColorFilter(context.getResources().getColor(R.color.accent_color));
+            imagelabel.setColorFilter(context.getResources().getColor(R.color.dark_accent));
 
         }
         else

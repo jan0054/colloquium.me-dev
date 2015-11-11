@@ -5,7 +5,7 @@
               android:layout_height="match_parent"
               android:paddingLeft="@dimen/padding_horizontal"
               android:paddingRight="@dimen/padding_horizontal"
-              android:paddingTop="20dp"
+              android:paddingTop="10dp"
               android:paddingBottom="10dp"
               android:orientation="vertical"
               android:background="@color/dark_bg" >
@@ -84,7 +84,7 @@
     <TextView android:id="@+id/resetpwdLabel"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginTop="20dp"
+              android:layout_marginTop="10dp"
               android:alpha="0.7"
               android:gravity="center"
               android:fontFamily="sans-serif"

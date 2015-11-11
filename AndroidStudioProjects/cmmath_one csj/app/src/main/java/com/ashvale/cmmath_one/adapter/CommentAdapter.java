@@ -36,6 +36,7 @@ public class CommentAdapter extends BaseAdapter {
     public CommentAdapter(Context context, List queryresults) {
         this.context = context;
         this.comments = queryresults;
+        Log.d("cm_app", "number = " + comments.size());
     }
 
     @Override

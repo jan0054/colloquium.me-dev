@@ -82,7 +82,7 @@ public class TimelineAdapter extends BaseAdapter {
         TextView createdAtLabel = (TextView)view.findViewById(R.id.timeline_createdAt);
         TextView contentLabel = (TextView)view.findViewById(R.id.timeline_content);
 
-        ParseFile image = post.getParseFile("image");
+        ParseFile image = post.getParseFile("preview");
         imageLabel.setParseFile(image);
         imageLabel.loadInBackground();
         authornameLabel.setText(getAuthor(post));

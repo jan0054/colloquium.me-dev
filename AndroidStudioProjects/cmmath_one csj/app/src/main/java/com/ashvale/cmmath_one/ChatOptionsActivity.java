@@ -3,12 +3,17 @@ package com.ashvale.cmmath_one;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.CareerAdapter;
@@ -22,6 +27,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -32,11 +38,46 @@ public class ChatOptionsActivity extends AppCompatActivity {
     public List<ParseUser> selectedInvitees;
     private InviteeAdapter adapter;
     private ParseObject conversationObject;
+    public EditText searchinput;
+    public ImageButton dosearch;
+    public ArrayList<String> searcharray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_options);
+        selectedInvitees = new ArrayList<ParseUser>();
+        totalInvitees = new ArrayList<ParseUser>();
+
+        searchinput = (EditText)findViewById(R.id.searchinput);
+        dosearch = (ImageButton)findViewById(R.id.dosearch);
+        dosearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setSearchString();
+                getUserSearch(searcharray);
+            }
+        });
+        searchinput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if (s.length() == 0) {
+                    searcharray.clear();
+                    getUser();
+                }
+            }
+        });
+
         conversationId = this.getIntent().getExtras().getString("convid");
         ParseQuery<ParseObject> convquery = ParseQuery.getQuery("Conversation");
         convquery.include("participants");
@@ -82,13 +123,19 @@ public class ChatOptionsActivity extends AppCompatActivity {
 
     public void setAdapter(final List results)
     {
-        selectedInvitees = new ArrayList<ParseUser>();
-        totalInvitees = new ArrayList<ParseUser>();
         totalInvitees = results;
         selectedPositions = new int[results.size()];
         for (int i = 0; i< results.size(); i++)
         {
-            selectedPositions[i] = 0;
+            for (ParseUser userobject : selectedInvitees) {
+                if (userobject.getObjectId().equals(totalInvitees.get(i).getObjectId())) {
+                    selectedPositions[i] = 1;
+                    break;
+                }
+                else {
+                    selectedPositions[i] = 0;
+                }
+            }
         }
         adapter = new InviteeAdapter(this, results, selectedPositions);
         ListView inviteeListView = (ListView)findViewById(R.id.inviteeListView);
@@ -190,4 +237,95 @@ public class ChatOptionsActivity extends AppCompatActivity {
         });
     }
 
+    public void getUser()
+    {
+        conversationId = this.getIntent().getExtras().getString("convid");
+        ParseQuery<ParseObject> convquery = ParseQuery.getQuery("Conversation");
+        convquery.include("participants");
+        convquery.getInBackground(conversationId, new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject parseObject, ParseException e) {
+
+                final List<ParseUser> participants = parseObject.getList("participants");
+                conversationObject = parseObject;
+                ParseQuery<ParseUser> query = ParseUser.getQuery();
+                query.whereEqualTo("chat_status", 1);
+                query.whereNotEqualTo("debug_status", 1);
+
+                query.include("person");
+                query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+                query.findInBackground(new FindCallback<ParseUser>() {
+                    public void done(List<ParseUser> objects, com.parse.ParseException e) {
+                        if (e == null) {
+                            List<ParseUser> inviteeList = new ArrayList<ParseUser>();
+                            for (ParseUser allUser : objects) {
+                                int match = 0;
+                                for (ParseUser alreadyUser : participants) {
+                                    if (allUser.getObjectId().equalsIgnoreCase(alreadyUser.getObjectId())) {
+                                        match = 1;
+                                    }
+                                }
+                                if (match == 0) {
+                                    inviteeList.add(allUser);
+                                }
+                            }
+                            //do stuff with inviteeList
+                            setAdapter(inviteeList);
+
+                        } else {
+                            //error handling
+                            Log.d("cm_app", "user query error: " + e);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    public void setSearchString()
+    {
+        String raw_input = searchinput.getText().toString();
+        String lower_raw = raw_input.toLowerCase();
+        String [] split_string = lower_raw.split("\\s+");
+        searcharray = new ArrayList<String>(Arrays.asList(split_string));
+    }
+
+    public void getUserSearch(List<String> searchArray)
+    {
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("chat_status", 1);
+        query.whereNotEqualTo("debug_status", 1);
+        query.include("person");
+        if (searchArray.size()>0)
+        {
+            query.whereContainsAll("words", searchArray);
+        }
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "user query result: " + objects.size());
+                    if(objects.size() == 0) {
+                        toast(getString(R.string.no_result));
+                    }
+                    ParseUser selfUser = ParseUser.getCurrentUser();
+                    List<ParseUser> fullList = new ArrayList<>();
+                    for (ParseUser allUser : objects) {
+                        if (!(allUser.getObjectId().equals(selfUser.getObjectId())))
+                        {
+                            fullList.add(allUser);
+                        }
+                    }
+                    setAdapter(fullList);
+                } else {
+                    //error handling
+                    Log.d("cm_app", "user query error: " + e);
+                }
+            }
+        });
+    }
+
+    public void toast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

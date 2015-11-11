@@ -1,6 +1,7 @@
 package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class AnnounceAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup vg)
     {
+        Log.d("cm_app", "view announce set " + position);
         if (view == null)
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

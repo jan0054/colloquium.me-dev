@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,6 +41,8 @@ public class PostDetailActivity extends AppCompatActivity{
     public String postID;
     public String content;
     public ParseObject postObject;
+    TextView emptyText;
+    ListView commentList;
 
 
     @Override
@@ -77,6 +80,8 @@ public class PostDetailActivity extends AppCompatActivity{
             }
         });
 
+        emptyText = (TextView) findViewById(R.id.commentempty);
+        commentList = (ListView) findViewById(R.id.commentListView);
         ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Post");
         innerQuery.whereEqualTo("objectId", postID);
 
@@ -88,8 +93,8 @@ public class PostDetailActivity extends AppCompatActivity{
         queryComment.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
-                    setAdapter(objects);
                     Log.d("cm_app", "comment query number: "+objects.size());
+                    setAdapter(objects);
                 } else {
                     Log.d("cm_app", "comment query error: " + e);
                 }
@@ -99,9 +104,10 @@ public class PostDetailActivity extends AppCompatActivity{
 
     public void setAdapter(final List results)
     {
+        Log.d("cm_app", "start Adapter");
         CommentAdapter adapter = new CommentAdapter(this, results);
-        ListView postList = (ListView)this.findViewById(R.id.commentListView);
-        postList.setAdapter(adapter);
+        commentList.setAdapter(adapter);
+        getListHeight(commentList);
     }
 
     @Override
@@ -127,6 +133,25 @@ public class PostDetailActivity extends AppCompatActivity{
             startActivity(intent);
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void getListHeight(ListView listView)
+    {
+        int totalHeight = 0;
+        View view = null;
+        for (int i =0; i < listView.getAdapter().getCount(); i++) {
+            int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+            view = listView.getAdapter().getView(i, view, listView);
+            if(i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.MATCH_PARENT));
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        Log.d(TAG, "getcount "+listView.getAdapter().getCount());
+        Log.d(TAG, "totalHeight "+totalHeight);
+        listView.getLayoutParams().height = totalHeight + (listView.getDividerHeight() * listView.getAdapter().getCount());
+        listView.setLayoutParams(listView.getLayoutParams());
+        listView.requestLayout();
     }
 
     private String getAuthor(ParseObject object) {

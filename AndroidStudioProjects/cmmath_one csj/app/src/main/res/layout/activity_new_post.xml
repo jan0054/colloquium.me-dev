@@ -43,6 +43,17 @@
         android:onClick="selectCamera"
         android:src="@drawable/addcamera"/>
 
+    <ImageButton
+        android:id="@+id/btn_delete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/post_input"
+        android:background="#00000000"
+        android:visibility="invisible"
+        android:clickable="false"
+        android:onClick="deleteImage"
+        android:src="@drawable/cancel"/>
+
     <com.parse.ParseImageView
         android:id="@+id/post_image"
         android:layout_width="match_parent"

@@ -137,9 +137,18 @@ public class PeopleDetailActivity extends AppCompatActivity {
         queryComment.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
-                    Log.d("cm_app", "talk of person result number: "+objects.size());
-                    talkObjList = objects;
-                    setAdapter(objects);
+                    Log.d("cm_app", "talk of person result number: " + objects.size());
+                    TextView emptyLabel = (TextView) findViewById(R.id.persontalkempty);
+                    ListView talkList = (ListView)findViewById(R.id.talkListView);
+                    if(objects.size() != 0) {
+                        emptyLabel.setVisibility(View.INVISIBLE);
+                        talkList.setVisibility(View.VISIBLE);
+                        talkObjList = objects;
+                        setAdapter(objects);
+                    } else {
+                        talkList.setVisibility(View.INVISIBLE);
+                        emptyLabel.setVisibility(View.VISIBLE);
+                    }
                 } else {
                     Log.d("cm_app", "talk of person query error: " + e);
                 }

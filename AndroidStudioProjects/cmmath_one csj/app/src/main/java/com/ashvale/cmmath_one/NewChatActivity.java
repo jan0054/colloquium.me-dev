@@ -40,12 +40,9 @@ public class NewChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_chat);
-
-
+        selectedInvitees = new ArrayList<ParseUser>();
+        totalInvitees = new ArrayList<ParseUser>();
         Log.d("cm_app", "I AM : " + ParseUser.getCurrentUser().getObjectId());
-        selectedInvitees = new ArrayList<>();
-        //selectedInvitees.add(ParseUser.getCurrentUser());
-        //selectedInvitees.add(ParseUser.getCurrentUser());
 
         searchinput = (EditText)findViewById(R.id.searchinput);
         dosearch = (ImageButton)findViewById(R.id.dosearch);
@@ -101,13 +98,19 @@ public class NewChatActivity extends AppCompatActivity {
 
     public void setAdapter(final List results)
     {
-        selectedInvitees = new ArrayList<ParseUser>();
-        totalInvitees = new ArrayList<ParseUser>();
         totalInvitees = results;
         selectedPositions = new int[results.size()];
         for (int i = 0; i< results.size(); i++)
         {
-            selectedPositions[i] = 0;
+            for (ParseUser userobject : selectedInvitees) {
+                if (userobject.getObjectId().equals(totalInvitees.get(i).getObjectId())) {
+                    selectedPositions[i] = 1;
+                    break;
+                }
+                else {
+                    selectedPositions[i] = 0;
+                }
+            }
         }
         adapter = new NewchatAdapter(this, results, selectedPositions);
         ListView newchatListView = (ListView)findViewById(R.id.newchatListView);

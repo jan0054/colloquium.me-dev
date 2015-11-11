@@ -78,12 +78,12 @@
               android:background="@color/background"
               android:divider="@color/divider_color"
               android:dividerHeight="0dp"/>
-    <TextView android:id="@android:id/empty"
+    <TextView android:id="@+id/persontalkempty"
               android:layout_width="match_parent"
               android:layout_height="120dp"
               android:layout_below="@+id/container"
               android:gravity="center"
-              android:textColor="@color/dark_accent"
+              android:textColor="@color/secondary_text"
               android:textSize="14sp"
               android:text="@string/list_empty_person" />
 </RelativeLayout>

@@ -62,6 +62,7 @@
 			}
 			object.set("name", talk_name.value);
 			object.set("content", talk_content.value);
+			object.set("type", 0);
 
 			Person = Parse.Object.extend("Person");
 			var person = new Person();

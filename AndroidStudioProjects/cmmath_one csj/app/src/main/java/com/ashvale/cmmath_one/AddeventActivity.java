@@ -1,7 +1,9 @@
 package com.ashvale.cmmath_one;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,8 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +26,7 @@ import java.util.Set;
 
 public class AddeventActivity extends BaseActivity {
 
+    private List<ParseObject> selectedEvents;
     private List<String> selectedEventIds;
     private List<String> selectedEventNames;
     private List<ParseObject> totalEvents;
@@ -53,6 +58,7 @@ public class AddeventActivity extends BaseActivity {
             }
         });
 
+        selectedEvents = new ArrayList<ParseObject>();
         selectedEventIds = new ArrayList<String>();
         selectedEventNames = new ArrayList<String>();
 
@@ -70,6 +76,7 @@ public class AddeventActivity extends BaseActivity {
     public void setAdapter(final List<ParseObject> results)
     {
         if(results != null) {
+            Log.d("cm_app", "Event Result have " + results.size() + " events.");
             processExisting(results);
         }
 
@@ -94,10 +101,12 @@ public class AddeventActivity extends BaseActivity {
                 if (selectedPositions[position] == 0) {
                     selectedEventIds.add(eventid);
                     selectedEventNames.add(eventname);
+                    selectedEvents.add(event);
                     selectedPositions[position] = 1;
                 } else {
                     selectedEventIds.remove(eventid);
                     selectedEventNames.remove(eventname);
+                    selectedEvents.remove(event);
                     selectedPositions[position] = 0;
                 }
 
@@ -120,6 +129,11 @@ public class AddeventActivity extends BaseActivity {
         editor.putStringSet("eventnames", setName);
         editor.commit();
 
+        if(ParseUser.getCurrentUser()!=null) {
+            ParseUser user = ParseUser.getCurrentUser();
+            user.put("events", selectedEvents);
+            user.saveInBackground();
+        }
         refreshDrawer();   //method in BaseActivity that refreshes and then open the drawer
     }
 
@@ -131,6 +145,7 @@ public class AddeventActivity extends BaseActivity {
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
         if (eventIdSet != null)   //there were some saved events
         {
+            Log.d("cm_app", "savedEvents size = "+eventIdSet.size());
             for (int i = 0; i< results.size(); i++)   //iterate over total number of events
             {
                 ParseObject event = results.get(i);   //get the parse object at position i
@@ -145,6 +160,9 @@ public class AddeventActivity extends BaseActivity {
                 }
                 if (contained == 1)
                 {
+                    selectedEventIds.add(eventid);
+                    selectedEventNames.add(event.getString("name"));
+                    selectedEvents.add(event);
                     selectedPositions[i] = 1;        // set the selectedPosition array according to the info above
                 }
                 else
@@ -179,6 +197,8 @@ public class AddeventActivity extends BaseActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.saveevents) {
             saveEvents(selectedEventIds, selectedEventNames);
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
             return true;
         }
 
