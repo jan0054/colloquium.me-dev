@@ -287,29 +287,71 @@ Parse.Cloud.define("refreshUsers", function(request, response) {
 
 //do push notification for event announcements
 Parse.Cloud.afterSave("Announcement", function(request) {
+	
+	//get the event object then fetch it
 	var announcement_obj = request.object
 	var event_obj = announcement_obj.get("event");
+	
 	event_obj.fetch({
         success: function(event_obj) {
             var event_name = event_obj.get("name");
-            var event_attendees = event_obj.get("attendees");
-        	
-        	var query = new Parse.Query(Parse.Installation);
-        	query.containedIn("user", event_attendees);
-        	
-        	Parse.Push.send({
-  				where: query,
-  				data: {
-    				alert: "Announcement from: "+event_name 
-  				}
-			}, {
-  				success: function() {
-    				//console.log("announcement push successful";
-  				},
-  				error: function(error) {
-    				//console.error(error.code+" : "+error.message);
-  				}
+            var event_id = event_obj.id;
+            
+            //arrays to hold the users
+			var all_attendees = [];
+			var notify_attendees = [];
+	
+			//query the event, include attendees (users)
+			var Event = Parse.Object.extend("Event");
+			var query = new Parse.Query(Event);
+			query.equalTo("objectId", event_id);
+			console.log("EVENT ID:");
+			console.log(event_id);
+			query.include("attendees");
+			query.first({
+				success: function(object) {
+					all_attendees = object.get("attendees");
+					console.log("All attendees:");
+					console.log(all_attendees.length);
+					for (var i=0; i<all_attendees.length; i++)
+					{
+						var user_obj = all_attendees[i];
+						if (user_obj.get("event_status")==1)
+						{
+							notify_attendees.push(user_obj);
+							console.log("User Added!");
+						}
+					}
+					console.log("Notify attendees:");
+					console.log(notify_attendees.length);
+					var query = new Parse.Query(Parse.Installation);
+					query.containedIn("user", notify_attendees);
+					Parse.Push.send({
+						where: query,
+						data: {
+							alert: "Announcement from: "+event_name 
+						}
+					}, {
+						success: function() {
+							console.log("announcement push successful");
+						},
+						error: function(error) {
+							console.error(error.code+" : "+error.message);
+						}
+					});
+			
+				},
+				error: function(error) {
+					alert("Error: " + error.code + " " + error.message);
+				}
 			});
+        	
         }
     });
+	
+	
+	
+	
+	
+    
 });

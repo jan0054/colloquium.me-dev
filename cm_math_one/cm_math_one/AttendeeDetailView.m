@@ -10,8 +10,10 @@
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
 #import "AttendeeProgramCell.h"
+#import "ProgramDetailView.h"
 
 NSMutableArray *attendeeProgramArray;
+PFObject *chosenProgram;
 
 @implementation AttendeeDetailView
 @synthesize attendee;
@@ -95,7 +97,13 @@ NSMutableArray *attendeeProgramArray;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //to-do: go to the program detail view for this program
-    PFObject *program = [attendeeProgramArray objectAtIndex:indexPath.row];
+    chosenProgram = [attendeeProgramArray objectAtIndex:indexPath.row];
+    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //ProgramDetailView *controller = (ProgramDetailView *)[storyboard instantiateViewControllerWithIdentifier:@"programdetail_vc"];
+    //controller.program = targetProgram;
+    //[self presentViewController:controller animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"attendeetalksegue" sender:self];
+    
 }
 
 #pragma mark - Data
@@ -154,6 +162,15 @@ NSMutableArray *attendeeProgramArray;
     else
     {
         self.websiteButton.enabled = NO;
+    }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"attendeetalksegue"]) {
+        ProgramDetailView *controller = (ProgramDetailView *) segue.destinationViewController;
+        controller.program = chosenProgram;
     }
 }
 

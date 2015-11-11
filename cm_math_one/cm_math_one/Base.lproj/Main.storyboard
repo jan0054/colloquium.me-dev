@@ -151,33 +151,45 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newscell" textLabel="yUi-hy-sa2" detailTextLabel="la6-tu-h1k" style="IBUITableViewCellStyleValue1" id="l5q-yf-nmg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newscell" id="l5q-yf-nmg" customClass="AnnouncementCell">
                                         <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l5q-yf-nmg" id="NSy-7V-8DG">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yUi-hy-sa2">
-                                                    <rect key="frame" x="15" y="12" width="32" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfd-xu-FIx">
+                                                    <rect key="frame" x="532" y="11" width="60" height="21"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="la6-tu-h1k">
-                                                    <rect key="frame" x="543" y="12" width="42" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kl-7A-F2e">
+                                                    <rect key="frame" x="8" y="11" width="468" height="21"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7kl-7A-F2e" secondAttribute="bottom" constant="3" id="7Ls-9c-wcu"/>
+                                                <constraint firstItem="vfd-xu-FIx" firstAttribute="top" secondItem="NSy-7V-8DG" secondAttribute="topMargin" constant="3" id="DDf-Vb-tBH"/>
+                                                <constraint firstItem="vfd-xu-FIx" firstAttribute="centerY" secondItem="NSy-7V-8DG" secondAttribute="centerY" id="Ndm-gi-mCU"/>
+                                                <constraint firstItem="7kl-7A-F2e" firstAttribute="top" secondItem="NSy-7V-8DG" secondAttribute="topMargin" constant="3" id="S4S-YE-nlN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vfd-xu-FIx" secondAttribute="bottom" constant="3" id="aQK-gQ-cwq"/>
+                                                <constraint firstItem="7kl-7A-F2e" firstAttribute="leading" secondItem="NSy-7V-8DG" secondAttribute="leadingMargin" id="g6X-nU-Bv1"/>
+                                                <constraint firstItem="vfd-xu-FIx" firstAttribute="trailing" secondItem="NSy-7V-8DG" secondAttribute="trailingMargin" id="iM4-kg-USe"/>
+                                                <constraint firstItem="vfd-xu-FIx" firstAttribute="leading" secondItem="7kl-7A-F2e" secondAttribute="trailing" constant="8" id="kAx-sb-A5X"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="vfd-xu-FIx" id="4dR-pO-I7h"/>
+                                            <outlet property="contentLabel" destination="7kl-7A-F2e" id="qQG-Et-6OC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -700,7 +712,7 @@
         <!--Program Detail View-->
         <scene sceneID="GoU-IA-c5U">
             <objects>
-                <viewController id="Aa2-37-DCr" customClass="ProgramDetailView" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="programdetail_vc" id="Aa2-37-DCr" customClass="ProgramDetailView" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GDb-bV-WcL"/>
                         <viewControllerLayoutGuide type="bottom" id="XlS-yU-fge"/>
@@ -2350,6 +2362,7 @@
                         <outlet property="nameLabel" destination="Dg7-tx-MQ2" id="5t8-bC-bbd"/>
                         <outlet property="noProgramLabel" destination="xIP-DG-S9V" id="JLg-qb-EJc"/>
                         <outlet property="websiteButton" destination="faj-tw-BdA" id="YdQ-kv-Zz6"/>
+                        <segue destination="Aa2-37-DCr" kind="show" identifier="attendeetalksegue" id="20g-Ac-w6B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egK-kQ-lpT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2657,7 +2670,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-n2-y3L">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-n2-y3L" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
                                                     <animations/>
                                                     <constraints>
@@ -4143,4 +4156,7 @@
         <image name="timeline48.png" width="24" height="24"/>
         <image name="venue48.png" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="20g-Ac-w6B"/>
+    </inferredMetricsTieBreakers>
 </document>

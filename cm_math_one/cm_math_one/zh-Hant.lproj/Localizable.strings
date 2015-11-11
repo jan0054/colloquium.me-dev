@@ -25,6 +25,7 @@
 "alert_career_contact" = "聯絡";
 "alert_sign_later" = "您之後可以在設定頁面登入";
 "alert_reset_done" = "請檢查您的信箱以設定新密碼";
+"alert_empty_chat" = "別自言自語！請至少選擇一個人";
 
 //drawer labels
 "drawer_chat" = "訊息";
@@ -59,6 +60,15 @@
 "about_sub" = "Colloquium.me服務的開發團隊";
 "pref_title" = "使用者偏好";
 "pref_sub" = "設定或更改使用者資訊與隱私設定";
+"email_switch" = "其他使用者可Email您";
+"event_switch" = "接收會議主辦通知";
+"chat_switch" = "其他使用者可邀您對話";
+"first_name" = "名";
+"last_name" = "姓";
+"inst" = "服務單位";
+"web_page" = "個人網頁";
+"optional" = "選填";
+"required" = "必填";
 
 //Timeline/Post
 "post_add_photo" = " 新增照片";
@@ -84,3 +94,7 @@
 "reset_welcome" = "請輸入您當初註冊使用的Email，我們將發送信件讓您重新設定密碼。";
 "reset_button" = "重設密碼";
 "reset_cancel" = "取消";
+
+//chat
+"person_invite" = "邀請";
+"person_invited" = "已選取";

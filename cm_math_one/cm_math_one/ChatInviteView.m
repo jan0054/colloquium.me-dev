@@ -13,6 +13,8 @@
 
 NSMutableArray *inviteArray;
 NSMutableArray *selectedArray;
+NSMutableArray *holderArray;
+NSMutableDictionary *inviteeDictionary;
 
 @implementation ChatInviteView
 
@@ -25,9 +27,12 @@ NSMutableArray *selectedArray;
     //init
     inviteArray = [[NSMutableArray alloc] init];
     selectedArray = [[NSMutableArray alloc] init];
+    holderArray = [[NSMutableArray alloc] init];
+    inviteeDictionary = [[NSMutableDictionary alloc] init];
     self.chatInviteTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.searchField.delegate = self;
+    self.inviteDoneButton.enabled = NO;
     
     //styling
     UIImage *img = [UIImage imageNamed:@"search48"];
@@ -42,6 +47,7 @@ NSMutableArray *selectedArray;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [holderArray removeAllObjects];
 }
 
 - (void) viewDidLayoutSubviews
@@ -52,6 +58,7 @@ NSMutableArray *selectedArray;
 }
 
 - (IBAction)inviteDoneButtonTap:(UIBarButtonItem *)sender {
+    /*
     [selectedArray removeAllObjects];
     NSArray *selectedPaths =  self.chatInviteTable.indexPathsForSelectedRows;
     for ( NSIndexPath *ip in selectedPaths)
@@ -62,6 +69,10 @@ NSMutableArray *selectedArray;
     }
     [selectedArray addObject:[PFUser currentUser]];
     [self createConcersation:self withParticipants:selectedArray];
+     */
+    [holderArray addObject:[PFUser currentUser]];
+    [self createConcersation:self withParticipants:holderArray];
+    
 }
 
 - (IBAction)searchButtonTap:(UIButton *)sender {
@@ -126,6 +137,7 @@ NSMutableArray *selectedArray;
         cell.layoutMargins = UIEdgeInsetsZero;
     }
     cell.inviteLabel.textColor = [UIColor dark_accent];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //data
     PFObject *user = [inviteArray objectAtIndex:indexPath.row];
@@ -135,24 +147,83 @@ NSMutableArray *selectedArray;
     cell.nameLabel.text = name;
     cell.institutionLabel.text = institution;
     
+    //determine invite/selection status
+    int match = 0;
+    for (PFUser *holderUser in holderArray)  //check if this user is in the holder array
+    {
+        if ([user.objectId isEqualToString:holderUser.objectId])
+        {
+            match = 1;
+        }
+    }
+    if (match == 0)  //no match
+    {
+        cell.inviteLabel.text = NSLocalizedString(@"person_invite", nil);
+    }
+    else if (match == 1)  //matched
+    {
+        cell.inviteLabel.text = NSLocalizedString(@"person_invited", nil);
+    }
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatInviteCell *cell = (ChatInviteCell *)[self.chatInviteTable cellForRowAtIndexPath:indexPath];
-    cell.inviteLabel.text = @"Selected";
+    [self tapCell:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatInviteCell *cell = (ChatInviteCell *)[self.chatInviteTable cellForRowAtIndexPath:indexPath];
-    cell.inviteLabel.text = @"Invite";
+    [self tapCell:indexPath];
 }
 
 #pragma mark - Data
 
-
+- (void)tapCell: (NSIndexPath *)indexPath
+{
+    NSLog(@"TAP CELL");
+    ChatInviteCell *cell = (ChatInviteCell *)[self.chatInviteTable cellForRowAtIndexPath:indexPath];
+    PFUser *cellUser = [inviteArray objectAtIndex:indexPath.row];
+    int match = 0;
+    
+    for (PFUser *holderUser in holderArray)  //check if this user was in the holder array
+    {
+        if ([cellUser.objectId isEqualToString:holderUser.objectId])
+        {
+            match = 1;
+        }
+    }
+    if (match == 0)  //no match, select the user
+    {
+        cell.inviteLabel.text = NSLocalizedString(@"person_invited", nil);
+        [holderArray addObject:cellUser];
+        NSLog(@"TAP CELL SELECTING");
+    }
+    else if (match == 1)  //matched, deselect the user
+    {
+        cell.inviteLabel.text = NSLocalizedString(@"person_invite", nil);
+        NSMutableArray *toBeDeleted = [[NSMutableArray alloc] init];
+        for (PFUser *hUser in holderArray)
+        {
+            if ([hUser.objectId isEqualToString:cellUser.objectId])
+            {
+                [toBeDeleted addObject:hUser];
+            }
+        }
+        [holderArray removeObjectsInArray:toBeDeleted];
+        NSLog(@"TAP CELL DESELECTING");
+    }
+    NSLog(@"HOLDER: %lu", (unsigned long)holderArray.count);
+    if (holderArray.count>0)
+    {
+        self.inviteDoneButton.enabled = YES;
+    }
+    else
+    {
+        self.inviteDoneButton.enabled = NO;
+    }
+}
 
 - (void)processInviteeData:(NSArray *)results  //callback for total chat-enabled user query, minus current participants
 {

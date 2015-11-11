@@ -127,13 +127,14 @@
     }];
 }
 
-- (void)sentPost: (id)caller withAuthor: (PFUser *)author withContent: (NSString *)content withImage: (PFFile *)image forEvent: (PFObject *)event
+- (void)sentPost: (id)caller withAuthor: (PFUser *)author withContent: (NSString *)content withImage: (PFFile *)image withPreview: (PFFile *)preview forEvent: (PFObject *)event
 {
     PFObject *post = [PFObject objectWithClassName:@"Post"];
     post[@"author"] = author;
     post[@"content"] = content;
     post[@"image"] = image;
     post[@"event"] = event;
+    post[@"preview"] = preview;
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded)
         {
@@ -444,6 +445,9 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
     [query whereKey:@"event" equalTo:event];
     [query whereKey:@"author" equalTo:person];
+    [query includeKey:@"author"];
+    [query includeKey:@"location"];
+    [query includeKey:@"session"];
     [query orderByDescending:@"name"];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -502,7 +506,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Announcement"];
     [query includeKey:@"author"];
-    [query orderByAscending:@"createAt"];
+    [query orderByDescending:@"createdAt"];
     [query whereKey:@"event" equalTo:event];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

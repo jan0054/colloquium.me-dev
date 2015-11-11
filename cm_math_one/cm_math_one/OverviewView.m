@@ -11,6 +11,7 @@
 #import "UIViewController+MMDrawerController.h"
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
+#import "AnnouncementCell.h"
 
 @interface OverviewView ()
 
@@ -28,6 +29,8 @@ NSMutableArray *newsArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //init
     [self setupLeftMenuButton];
     newsArray = [[NSMutableArray alloc] init];
     self.noNewsLabel.hidden = YES;
@@ -48,6 +51,8 @@ NSMutableArray *newsArray;
     self.attendanceBackground.backgroundColor = [UIColor clearColor];
     self.attendanceLabel.backgroundColor = [UIColor clearColor];
     self.organizerButton.backgroundColor = [UIColor clearColor];
+    self.newsTable.estimatedRowHeight = 44.0;
+    self.newsTable.rowHeight = UITableViewAutomaticDimension;
     
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
@@ -123,13 +128,16 @@ NSMutableArray *newsArray;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newscell"];
+    AnnouncementCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newscell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.contentLabel.textColor = [UIColor dark_primary];
+    cell.authorLabel.textColor = [UIColor primary_color];
     
     //data
     PFObject *announcement = [newsArray objectAtIndex:indexPath.row];
     PFUser *author = announcement[@"author"];
-    cell.textLabel.text = announcement[@"content"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+    cell.contentLabel.text = announcement[@"content"];
+    cell.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
     
     return cell;
 }

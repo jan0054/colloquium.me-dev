@@ -25,6 +25,7 @@
 "alert_career_contact" = "Contact";
 "alert_sign_later" = "You can log in later under Settings";
 "alert_reset_done" = "Please check your inbox to setup your new password";
+"alert_empty_chat" = "Don't talk to yourself! Please select at least one other user";
 
 //drawer labels
 "drawer_chat" = "Chat";
@@ -59,6 +60,16 @@
 "about_sub" = "The team behind Colloquium.me";
 "pref_title" = "User Preference";
 "pref_sub" = "Setup or change user info and social options";
+"email_switch" = "Allow other users to email you";
+"event_switch" = "Receive event announcements";
+"chat_switch" = "Receive chat invites";
+"first_name" = "First Name";
+"last_name" = "Last Name";
+"inst" = "Institution";
+"web_page" = "Web Page";
+"optional" = "Optional";
+"required" = "Required";
+
 
 //Timeline/Post
 "post_add_photo" = " Add Photo";
@@ -84,4 +95,8 @@
 "reset_welcome" = "Please enter the Email you used to sign up, we will send you the password reset link.";
 "reset_button" = "Reset Password";
 "reset_cancel" = "Cancel";
+
+//chat
+"person_invite" = "Invite";
+"person_invited" = "Selected";
 

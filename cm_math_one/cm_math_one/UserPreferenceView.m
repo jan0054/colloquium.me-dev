@@ -106,41 +106,41 @@ BOOL changed;
     
     switch (indexPath.row) {
         case 0:
-            pcell.contentLabel.text = @"Allow other users to email you";
+            pcell.contentLabel.text = NSLocalizedString(@"email_switch", nil);
             [pcell.settingSwitch setOn:mail];
             return pcell;
             break;
         case 1:
-            pcell.contentLabel.text = @"Receive event notifications";
+            pcell.contentLabel.text = NSLocalizedString(@"event_switch", nil);
             [pcell.settingSwitch setOn:event];
             return pcell;
             break;
         case 2:
-            pcell.contentLabel.text = @"Receive chat notifications";
+            pcell.contentLabel.text = NSLocalizedString(@"chat_switch", nil);
             [pcell.settingSwitch setOn:chat];
             return pcell;
             break;
         case 3:
-            icell.contentLabel.text = @"First Name:";
-            icell.textInput.placeholder = @"required";
+            icell.contentLabel.text = NSLocalizedString(@"first_name", nil);
+            icell.textInput.placeholder = NSLocalizedString(@"required", nil);
             icell.textInput.text = fn.length>0 ? fn : nil;
             return icell;
             break;
         case 4:
-            icell.contentLabel.text = @"Last Name:";
-            icell.textInput.placeholder = @"required";
+            icell.contentLabel.text = NSLocalizedString(@"last_name", nil);
+            icell.textInput.placeholder = NSLocalizedString(@"required", nil);
             icell.textInput.text = ln.length>0 ? ln : nil;
             return icell;
             break;
         case 5:
-            icell.contentLabel.text = @"Institution:";
-            icell.textInput.placeholder = @"optional";
+            icell.contentLabel.text = NSLocalizedString(@"inst", nil);
+            icell.textInput.placeholder = NSLocalizedString(@"optional", nil);
             icell.textInput.text = inst.length>0 ? inst : nil;
             return icell;
             break;
         case 6:
-            icell.contentLabel.text = @"Web Page:";
-            icell.textInput.placeholder = @"optional";
+            icell.contentLabel.text = NSLocalizedString(@"web_page", nil);
+            icell.textInput.placeholder = NSLocalizedString(@"optional", nil);
             icell.textInput.text = link.length>0 ? link : nil;
             return icell;
             break;
