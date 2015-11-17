@@ -50,10 +50,14 @@ PFObject *selectedAttendee;
 
 - (void)refreshctrl:(id)sender
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *eventid = [defaults objectForKey:@"currentEventId"];
-    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-    [self getPeople:self forEvent:event];
+    if (self.searchInput.text.length>0)
+    {
+        [self prepareSearch];
+    }
+    else
+    {
+        [self resetSearch];  //just the normal non-search query
+    }
     [(UIRefreshControl *)sender endRefreshing];
 }
 
@@ -68,35 +72,7 @@ PFObject *selectedAttendee;
 
 - (IBAction)searchButtonTap:(UIButton *)sender
 {
-    if (self.searchInput.text.length >0)
-    {
-        NSString *search_str = self.searchInput.text.lowercaseString;
-        
-        NSArray *separateBySpace = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSMutableArray *processedWords = [[NSMutableArray alloc] init];
-        for (NSString *componentString in separateBySpace)
-        {
-            CFStringRef compstr = (__bridge CFStringRef)(componentString);
-            NSString *lang = CFBridgingRelease(CFStringTokenizerCopyBestStringLanguage(compstr, CFRangeMake(0, componentString.length)));
-            if ([lang isEqualToString:@"zh-Hant"])
-            {
-                //中文
-                for (int i=1; i<=componentString.length; i++)
-                {
-                    NSString *chcomp = [componentString substringWithRange:NSMakeRange(i-1, 1)];
-                    [processedWords addObject:chcomp];
-                }
-            }
-            else
-            {
-                //not中文
-                [processedWords addObject:componentString];
-            }
-        }
-        
-        [self doSearchWithArray:processedWords];
-        NSLog(@"PROCESSEDWORDS:%lu, %@", processedWords.count, processedWords);
-    }
+    [self prepareSearch];
     [self.searchInput resignFirstResponder];
 }
 
@@ -158,7 +134,40 @@ PFObject *selectedAttendee;
     [self getPeople:self forEvent:event];
 }
 
-- (void)doSearchWithArray: (NSArray *)searchArray
+- (void)prepareSearch   //check if the search empty, then process the string and words, then call the search method with the processed array
+{
+    if (self.searchInput.text.length >0)
+    {
+        NSString *search_str = self.searchInput.text.lowercaseString;
+        
+        NSArray *separateBySpace = [search_str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSMutableArray *processedWords = [[NSMutableArray alloc] init];
+        for (NSString *componentString in separateBySpace)
+        {
+            CFStringRef compstr = (__bridge CFStringRef)(componentString);
+            NSString *lang = CFBridgingRelease(CFStringTokenizerCopyBestStringLanguage(compstr, CFRangeMake(0, componentString.length)));
+            if ([lang isEqualToString:@"zh-Hant"])
+            {
+                //中文
+                for (int i=1; i<=componentString.length; i++)
+                {
+                    NSString *chcomp = [componentString substringWithRange:NSMakeRange(i-1, 1)];
+                    [processedWords addObject:chcomp];
+                }
+            }
+            else
+            {
+                //not中文
+                [processedWords addObject:componentString];
+            }
+        }
+        
+        [self doSearchWithArray:processedWords];
+        NSLog(@"PROCESSEDWORDS:%lu, %@", (unsigned long)processedWords.count, processedWords);
+    }
+}
+
+- (void)doSearchWithArray: (NSArray *)searchArray  //search with the current event and the received word array
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
@@ -166,7 +175,7 @@ PFObject *selectedAttendee;
     [self getPeople:self withSearch:searchArray forEvent:event];
 }
 
-- (void)processData: (NSArray *) results
+- (void)processData: (NSArray *) results  //callback for attendee(people) results, with or without search
 {
     [attendeeArrray removeAllObjects];
     attendeeArrray = [results mutableCopy];

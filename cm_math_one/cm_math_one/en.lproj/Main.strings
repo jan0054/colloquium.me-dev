@@ -405,7 +405,7 @@
 "x9V-ME-ubb.text" = "Name";
 
 /* Class = "UILabel"; text = "Person has no presentations in this event"; ObjectID = "xIP-DG-S9V"; */
-"xIP-DG-S9V.text" = "Person has no presentations in this event";
+"xIP-DG-S9V.text" = "This person has no presentations for this event";
 
 /* Class = "UIButton"; normalTitle = "button"; ObjectID = "xie-zI-t7e"; */
 "xie-zI-t7e.normalTitle" = "button";

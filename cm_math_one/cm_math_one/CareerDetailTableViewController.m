@@ -27,10 +27,13 @@
     [self.linkButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     
     //data
-    self.institutionLabel.text = [NSString stringWithFormat:@"Institute: %@", currentCareer[@"institution"]];
-    self.contentLabel.text = [NSString stringWithFormat:@"Job description: %@", currentCareer[@"content"]];
-    self.contactLabel.text = [NSString stringWithFormat:@"Contact: %@", currentCareer[@"contact_name"]];
-
+    NSString *inst_title = NSLocalizedString(@"inst_title", nil);
+    NSString *contact_title = NSLocalizedString(@"contact_title", nil);
+    NSString *job_content_title = NSLocalizedString(@"job_content_title", nil);
+    
+    self.institutionLabel.text = [NSString stringWithFormat:@"%@ %@", inst_title, currentCareer[@"institution"]];
+    self.contentLabel.text = [NSString stringWithFormat:@"%@ %@", job_content_title, currentCareer[@"content"]];
+    self.contactLabel.text = [NSString stringWithFormat:@"%@ %@", contact_title, currentCareer[@"contact_name"]];
 
     self.tableView.estimatedRowHeight = 250.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;

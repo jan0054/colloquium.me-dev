@@ -42,6 +42,9 @@
 //career
 "type_hiring" = "職缺";
 "type_seeking" = "求職";
+"inst_title" = "服務/就學單位：";
+"contact_title" = "聯絡人：";
+"job_content_title" = "內容描述：";
 
 //settings
 "sign_as" = "使用者";

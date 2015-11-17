@@ -94,7 +94,7 @@ NSMutableArray *selectedEventsArray;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormat setDateFormat: @"MMM-d"];
+    [dateFormat setDateFormat: @"MMM/d"];
     NSDate *sdate = event[@"start_time"];
     NSDate *edate = event[@"end_time"];
     NSString *sstr = [dateFormat stringFromDate:sdate];
