@@ -109,37 +109,6 @@ public class ChatActivity extends AppCompatActivity {
                     Log.i("sendChat", "save success");
                     getChatList();
 
-                    //sent! now send the push notification: first prepare the message payload
-                    JSONObject pn = new JSONObject();
-                    try {
-                        pn.put("alert", msgContent);
-                        pn.put("sound", "default");
-                        pn.put("badge", "Increment");
-                    } catch (JSONException e1) {
-                        e1.printStackTrace();
-                    }
-                    // Create our Installation query
-                    List<ParseUser> allParticipants = conversationObject.getList("participants");
-                    int selfIncluded = 0;
-                    for (ParseUser user : allParticipants) {
-                        if (user.getObjectId().equals(currentUser.getObjectId())) {
-                            selfIncluded = 1;
-                        }
-                    }
-                    if (selfIncluded ==1)
-                    {
-                        allParticipants.remove(currentUser);
-                    }
-
-                    ParseQuery pushQuery = ParseInstallation.getQuery();
-                    pushQuery.whereContainedIn("user", allParticipants);
-                    // Send push notification to query
-                    ParsePush push = new ParsePush();
-                    push.setQuery(pushQuery); // Set our Installation query
-                    //push.setMessage(message);
-                    push.setData(pn);
-                    push.sendInBackground();
-
                     //also update the conversation last msg/last msg time/unread count
                     Date date = new Date();
                     conversationObject.put("last_time", date);
@@ -223,7 +192,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    public void sendBroadcast(ParseUser author, final String content, final ParseObject conversation)
+    public void sendBroadcast(final ParseUser author, final String content, final ParseObject conversation)
     {
         ParseObject chat = new ParseObject("Chat");
         chat.put("author", author);
@@ -238,7 +207,39 @@ public class ChatActivity extends AppCompatActivity {
                     Date date = new Date();
                     conversation.put("last_time", date);
                     conversation.saveInBackground();
+
                     //send push and stuff
+                    //sent! now send the push notification: first prepare the message payload
+                    JSONObject pn = new JSONObject();
+                    try {
+                        pn.put("alert", content);
+                        pn.put("sound", "default");
+                        pn.put("badge", "Increment");
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
+                    // Create our Installation query
+                    List<ParseUser> allParticipants = conversationObject.getList("participants");
+                    int selfIncluded = 0;
+                    for (ParseUser user : allParticipants) {
+                        if (user.getObjectId().equals(author.getObjectId())) {
+                            selfIncluded = 1;
+                        }
+                    }
+                    if (selfIncluded ==1)
+                    {
+                        allParticipants.remove(author);
+                    }
+
+                    ParseQuery pushQuery = ParseInstallation.getQuery();
+                    pushQuery.whereContainedIn("user", allParticipants);
+                    // Send push notification to query
+                    ParsePush push = new ParsePush();
+                    push.setQuery(pushQuery); // Set our Installation query
+                    //push.setMessage(message);
+                    push.setData(pn);
+                    push.sendInBackground();
+
                     finish();
 
                 } else {
