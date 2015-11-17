@@ -137,12 +137,14 @@
             android:name=".TalkDetailActivity"
             android:label="@string/title_activity_talk_detail"
             android:parentActivityName=".EventWrapperActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:launchMode="singleTask" >
         </activity>
         <activity
             android:name=".PeopleDetailActivity"
             android:label="@string/title_activity_people_detail"
-            android:parentActivityName=".EventWrapperActivity" >
+            android:parentActivityName=".EventWrapperActivity"
+            android:launchMode="singleTask" >
         </activity>
         <activity
             android:name=".DiscussionActivity"

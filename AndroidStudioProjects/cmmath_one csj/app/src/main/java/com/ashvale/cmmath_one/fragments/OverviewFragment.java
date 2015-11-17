@@ -12,6 +12,7 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,7 @@ public class OverviewFragment extends BaseFragment {
     TextView dateLabel;
     TextView organizerLabel;
     TextView contentLabel;
+    SwipeRefreshLayout swipeRefresh;
 
     // TODO: Rename and change types of parameters
 
@@ -106,6 +108,13 @@ public class OverviewFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_overview, container, false);
         emptyText = (TextView)view.findViewById(R.id.announceempty);
         announceList = (ListView) view.findViewById(R.id.announceListView);
+        swipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.pulltorefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadOverview();
+            }
+        });
         return view;
     }
 
@@ -303,6 +312,7 @@ public class OverviewFragment extends BaseFragment {
                             if (e == null) {
                                 if(objects.size()!=0) {
                                     setAdapter(objects);
+                                    swipeRefresh.setRefreshing(false);
                                     emptyText.setVisibility(View.INVISIBLE);
                                 }
                                 else {

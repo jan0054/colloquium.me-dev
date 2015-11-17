@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -43,6 +44,7 @@ public class PostDetailActivity extends AppCompatActivity{
     public ParseObject postObject;
     TextView emptyText;
     ListView commentList;
+    SwipeRefreshLayout swipeRefresh;
 
 
     @Override
@@ -93,13 +95,23 @@ public class PostDetailActivity extends AppCompatActivity{
         queryComment.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
-                    Log.d("cm_app", "comment query number: "+objects.size());
+                    Log.d("cm_app", "comment query number: " + objects.size());
                     setAdapter(objects);
+                    swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "comment query error: " + e);
                 }
             }
         });
+
+        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.pulltorefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadPost();
+            }
+        });
+
     }
 
     public void setAdapter(final List results)
@@ -208,8 +220,7 @@ public class PostDetailActivity extends AppCompatActivity{
                     EditText edt = (EditText) findViewById(R.id.commentinput);
                     edt.setText("");
                     Log.i(TAG, "new comment save success");
-                    Intent intent = getIntent();
-                    toPage(intent, PostDetailActivity.class);
+                    loadPost();
                 } else {
                     Log.i(TAG, "sendComment save fail");
                     //did not save successfully
@@ -217,6 +228,61 @@ public class PostDetailActivity extends AppCompatActivity{
             }
         });
     }
+
+    public void loadPost()
+    {
+        sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
+        sdf.setTimeZone(TimeZone.getDefault());
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
+        query.orderByDescending("createdAt");
+        query.include("author");
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.getInBackground(postID, new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject obj, ParseException e) {
+                if (e == null) {
+                    postObject = obj;
+                    TextView authornameLabel = (TextView) findViewById(R.id.post_authorname);
+                    TextView createdAtLabel = (TextView) findViewById(R.id.post_createdAt);
+                    TextView contentLabel = (TextView) findViewById(R.id.post_content);
+                    ParseImageView imageLabel = (ParseImageView) findViewById(R.id.post_image);
+
+                    ParseFile image = postObject.getParseFile("image");
+                    imageLabel.setParseFile(image);
+                    imageLabel.loadInBackground();
+                    authornameLabel.setText(getAuthor(postObject));
+                    createdAtLabel.setText(getCreatedAt(postObject));
+                    contentLabel.setText(getContent(postObject));
+                } else {
+                    Log.d("cm_app", "postdetail query error: " + e);
+                }
+            }
+        });
+
+        emptyText = (TextView) findViewById(R.id.commentempty);
+        commentList = (ListView) findViewById(R.id.commentListView);
+        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Post");
+        innerQuery.whereEqualTo("objectId", postID);
+
+        ParseQuery<ParseObject> queryComment = ParseQuery.getQuery("Comment");
+        queryComment.orderByDescending("createdAt");
+        queryComment.whereMatchesQuery("post", innerQuery);
+        queryComment.include("author");
+        queryComment.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        queryComment.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "comment query number: "+objects.size());
+                    setAdapter(objects);
+                    swipeRefresh.setRefreshing(false);
+                } else {
+                    Log.d("cm_app", "comment query error: " + e);
+                }
+            }
+        });
+    }
+
     public void toast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
