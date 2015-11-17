@@ -17,10 +17,15 @@ import android.widget.Toast;
 
 import com.ashvale.cmmath_one.adapter.NewchatAdapter;
 import com.parse.FindCallback;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -180,7 +185,7 @@ public class NewChatActivity extends AppCompatActivity {
         });
     }
 
-    public void sendBroadcast(ParseUser author, final String content, final ParseObject conversation)
+    public void sendBroadcast(final ParseUser author, final String content, final ParseObject conversation)
     {
         ParseObject chat = new ParseObject("Chat");
         chat.put("author", author);
@@ -195,6 +200,37 @@ public class NewChatActivity extends AppCompatActivity {
                     Date date = new Date();
                     conversation.put("last_time", date);
                     conversation.saveInBackground();
+
+                    //sent! now send the push notification: first prepare the message payload
+                    JSONObject pn = new JSONObject();
+                    try {
+                        pn.put("alert", content);
+                        pn.put("sound", "default");
+                        pn.put("badge", "Increment");
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
+                    // Create our Installation query
+                    List<ParseUser> allParticipants = totalInvitees;
+                    int selfIncluded = 0;
+                    for (ParseUser user : allParticipants) {
+                        if (user.getObjectId().equals(author.getObjectId())) {
+                            selfIncluded = 1;
+                        }
+                    }
+                    if (selfIncluded ==1)
+                    {
+                        allParticipants.remove(author);
+                    }
+
+                    ParseQuery pushQuery = ParseInstallation.getQuery();
+                    pushQuery.whereContainedIn("user", allParticipants);
+                    // Send push notification to query
+                    ParsePush push = new ParsePush();
+                    push.setQuery(pushQuery); // Set our Installation query
+                    //push.setMessage(message);
+                    push.setData(pn);
+                    push.sendInBackground();
 
                     //go to the chat view, but somehow unload this view...(to-do)
                     String convid = conversation.getObjectId();

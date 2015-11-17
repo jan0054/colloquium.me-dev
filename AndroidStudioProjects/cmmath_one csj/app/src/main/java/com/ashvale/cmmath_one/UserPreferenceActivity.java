@@ -22,6 +22,7 @@ public class UserPreferenceActivity extends AppCompatActivity {
     public int event_on;
     public int chat_on;
     public int is_person;
+    public String src_act;
     public String pref_fnamestr;
     public String pref_lnamestr;
     public String pref_inststr;
@@ -40,6 +41,7 @@ public class UserPreferenceActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_preference);
+        src_act = this.getIntent().getExtras().getString("src");
 
         //default disable stuff
         pref_emailswitch = (android.support.v7.widget.SwitchCompat) findViewById(R.id.pref_emailswitch);
@@ -190,7 +192,7 @@ public class UserPreferenceActivity extends AppCompatActivity {
             selfuser.put("link", pref_linkinput.getText().toString());
             selfuser.saveInBackground();
         }
-        skip(null);
+        finischSetting(null);
     }
 
     @Override
@@ -219,8 +221,15 @@ public class UserPreferenceActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    public void skip(View view) {
-        Intent intent = new Intent(this, AddeventActivity.class);
+    public void finischSetting(View view) {
+        Intent intent;
+        if(src_act.equals("settings")) {
+            intent = new Intent(this, SettingsActivity.class);
+        } else if(src_act.equals("signup")) {
+            intent = new Intent(this, AddeventActivity.class);
+        } else {
+            intent = new Intent(this, HomeActivity.class);
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

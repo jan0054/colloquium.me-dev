@@ -64,6 +64,7 @@ public class SettingsActivity extends BaseActivity {
                     case 4:
                         //preference page
                         Intent intent = new Intent(SettingsActivity.this, UserPreferenceActivity.class);
+                        intent.putExtra("src", "settings");
                         startActivity(intent);
                         break;
                 }

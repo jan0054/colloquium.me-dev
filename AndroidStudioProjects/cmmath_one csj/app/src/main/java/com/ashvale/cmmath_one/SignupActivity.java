@@ -102,6 +102,7 @@ public class SignupActivity extends Activity {
 
     private void toPreferencePage() {
         Intent intent = new Intent(this, UserPreferenceActivity.class);
+        intent.putExtra("src", "signup");
         startActivity(intent);
         finish();
     }

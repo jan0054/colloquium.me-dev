@@ -204,6 +204,7 @@
                    android:layout_margin="@dimen/list_margin"
                    android:layout_alignParentRight="true"
                    android:layout_gravity="center_vertical"
+                   android:inputType="textUri"
                    android:text="1234"
                    android:singleLine="true"
                    android:textSize="16sp"
