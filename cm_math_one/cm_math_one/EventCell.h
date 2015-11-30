@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface EventCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *eventNameLabel;
@@ -16,4 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *eventSelectedImage;
 
 @property NSString *eventId;
+@property PFObject *eventObject;
+
 @end

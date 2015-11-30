@@ -159,10 +159,19 @@ NSMutableDictionary *inviteeDictionary;
     if (match == 0)  //no match
     {
         cell.inviteLabel.text = NSLocalizedString(@"person_invite", nil);
+        [cell.selectionImage setTintColor:[UIColor primary_color]];
+        UIImage *img = [UIImage imageNamed:@"emptycircle48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.selectionImage.image = img;
+        
     }
     else if (match == 1)  //matched
     {
         cell.inviteLabel.text = NSLocalizedString(@"person_invited", nil);
+        [cell.selectionImage setTintColor:[UIColor dark_accent]];
+        UIImage *img = [UIImage imageNamed:@"check48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.selectionImage.image = img;
     }
 
     return cell;
@@ -198,6 +207,10 @@ NSMutableDictionary *inviteeDictionary;
     {
         cell.inviteLabel.text = NSLocalizedString(@"person_invited", nil);
         [holderArray addObject:cellUser];
+        [cell.selectionImage setTintColor:[UIColor dark_accent]];
+        UIImage *img = [UIImage imageNamed:@"check48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.selectionImage.image = img;
         NSLog(@"TAP CELL SELECTING");
     }
     else if (match == 1)  //matched, deselect the user
@@ -212,6 +225,10 @@ NSMutableDictionary *inviteeDictionary;
             }
         }
         [holderArray removeObjectsInArray:toBeDeleted];
+        [cell.selectionImage setTintColor:[UIColor primary_color]];
+        UIImage *img = [UIImage imageNamed:@"emptycircle48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.selectionImage.image = img;
         NSLog(@"TAP CELL DESELECTING");
     }
     NSLog(@"HOLDER: %lu", (unsigned long)holderArray.count);

@@ -10,7 +10,7 @@
 #import "UIColor+ProjectColors.h"
 #import <Parse/Parse.h>
 
-NSMutableArray *peoplelist;
+NSMutableArray *testlist;
 
 @interface AboutUsView ()
 
@@ -21,7 +21,7 @@ NSMutableArray *peoplelist;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //peoplelist = [[NSMutableArray alloc] init];
+    testlist = [[NSMutableArray alloc] init];
     
     //styling
     [self.doneButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
@@ -31,7 +31,7 @@ NSMutableArray *peoplelist;
 - (IBAction)contactButtonTap:(UIButton *)sender {
     NSLog(@"CONTACT");
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
-    //[self getPersonList];
+    //[self getTalkList];
     //[PFCloud callFunctionInBackground:@"refreshUsers" withParameters:NULL];
 }
 
@@ -39,7 +39,7 @@ NSMutableArray *peoplelist;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//testing stuff to update all people
+//testing stuff to
 - (void)getPersonList {
     //PFQuery *query = [PFQuery queryWithClassName:@"Person"];
     PFQuery *query = [PFUser query];
@@ -47,13 +47,24 @@ NSMutableArray *peoplelist;
     [query setLimit:1000];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Person query without search, success with results: %lu", (unsigned long)[objects count]);
-        peoplelist = [objects mutableCopy];
+        testlist = [objects mutableCopy];
         [self processPeople];
     }];
 }
+- (void)getTalkList {
+    PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
+    [query orderByDescending:@"createdAt"];
+    [query setLimit:1000];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"talk query success with results: %lu", (unsigned long)[objects count]);
+        testlist = [objects mutableCopy];
+        [self processTalk];
+    }];
+}
+
 
 - (void)processPeople {
-    for (PFUser *person in peoplelist)
+    for (PFUser *person in testlist)
     {
         person[@"debug_status"] = @0;
         if (person.save)
@@ -66,6 +77,21 @@ NSMutableArray *peoplelist;
         }
     }
 }
+- (void)processTalk {
+    for (PFObject *talk in testlist)
+    {
+        talk[@"debug_status"] = @0;
+        if (talk.save)
+        {
+            NSLog(@"success:%@", talk.objectId);
+        }
+        else
+        {
+            NSLog(@"failed:%@", talk.objectId);
+        }
+    }
+}
+
 
 
 @end

@@ -12,5 +12,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *institutionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *inviteLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *selectionImage;
 
 @end

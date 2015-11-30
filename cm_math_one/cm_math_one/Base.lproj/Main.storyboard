@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHr-oH-jph">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHr-oH-jph">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1088,7 +1088,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkevent48.png" translatesAutoresizingMaskIntoConstraints="NO" id="yQP-vK-Fy6">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptycircle48.png" translatesAutoresizingMaskIntoConstraints="NO" id="yQP-vK-Fy6">
                                                     <rect key="frame" x="16" y="8" width="24" height="24"/>
                                                     <animations/>
                                                     <constraints>
@@ -1761,7 +1761,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a7-q3-qB2">
                                                     <rect key="frame" x="115" y="11" width="168" height="21"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -3781,8 +3781,16 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptycircle48.png" translatesAutoresizingMaskIntoConstraints="NO" id="nV9-li-AYb">
+                                                    <rect key="frame" x="574" y="23" width="18" height="18"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="Y5u-pr-pD3"/>
+                                                        <constraint firstAttribute="width" constant="18" id="k2F-qn-N0A"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Invite" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myw-vf-B9I">
-                                                    <rect key="frame" x="546" y="21" width="46" height="21"/>
+                                                    <rect key="frame" x="520" y="21" width="46" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3791,20 +3799,29 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
+                                                <constraint firstItem="nV9-li-AYb" firstAttribute="leading" secondItem="myw-vf-B9I" secondAttribute="trailing" constant="8" id="DTR-c0-iYp"/>
+                                                <constraint firstItem="nV9-li-AYb" firstAttribute="centerY" secondItem="23e-bk-mRO" secondAttribute="centerY" id="Ebs-c9-GE5"/>
                                                 <constraint firstItem="x9V-ME-ubb" firstAttribute="leading" secondItem="23e-bk-mRO" secondAttribute="leadingMargin" constant="16" id="ID5-Ah-LqN"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="9dW-It-oEf" secondAttribute="bottom" id="IHd-T2-6ZY"/>
                                                 <constraint firstItem="9dW-It-oEf" firstAttribute="top" secondItem="x9V-ME-ubb" secondAttribute="bottom" constant="4" id="Pie-aa-bv0"/>
                                                 <constraint firstItem="9dW-It-oEf" firstAttribute="leading" secondItem="23e-bk-mRO" secondAttribute="leadingMargin" constant="16" id="QfZ-dP-27l"/>
                                                 <constraint firstAttribute="centerY" secondItem="myw-vf-B9I" secondAttribute="centerY" id="WMc-MF-Tzg"/>
                                                 <constraint firstItem="myw-vf-B9I" firstAttribute="trailing" secondItem="23e-bk-mRO" secondAttribute="trailingMargin" id="fe9-qH-4rA"/>
+                                                <constraint firstItem="nV9-li-AYb" firstAttribute="trailing" secondItem="23e-bk-mRO" secondAttribute="trailingMargin" id="nWn-aF-9X8"/>
                                                 <constraint firstItem="x9V-ME-ubb" firstAttribute="top" secondItem="23e-bk-mRO" secondAttribute="topMargin" id="q4L-Aa-6sV"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="fe9-qH-4rA"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
                                             <outlet property="institutionLabel" destination="9dW-It-oEf" id="XOh-90-pMK"/>
                                             <outlet property="inviteLabel" destination="myw-vf-B9I" id="hdI-Ta-5V4"/>
                                             <outlet property="nameLabel" destination="x9V-ME-ubb" id="sjg-pr-ahm"/>
+                                            <outlet property="selectionImage" destination="nV9-li-AYb" id="645-Gg-1OZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -4157,9 +4174,9 @@
     </scenes>
     <resources>
         <image name="camera48.png" width="24" height="24"/>
-        <image name="checkevent48.png" width="24" height="24"/>
         <image name="cm_math_one_splash.png" width="2131" height="2131"/>
         <image name="cross64.png" width="32" height="32"/>
+        <image name="emptycircle48.png" width="24" height="24"/>
         <image name="event48.png" width="24" height="24"/>
         <image name="fullscreen48.png" width="24" height="24"/>
         <image name="key_down48.png" width="24" height="24"/>

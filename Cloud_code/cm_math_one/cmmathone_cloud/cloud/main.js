@@ -50,11 +50,35 @@ Parse.Cloud.beforeSave("Talk", function(request, response) {
                 inst = _.map(inst, toLowerCase);
                 inst = _.filter(inst, function(w) { return w.match(/^\w+$/) && ! _.contains(stopWords, w); });
             }
+            
+            var fullname;
+			var chname;
+			if (ln != null && fn != null) {
+				var sfn = fn.split(/\b/);
+				var sln = ln.split(/\b/);
+				fullname = sln+sfn;
+				fullname = _.map(fullname, toLowerCase);
+		
+				var cfn = fn;
+				var cln = ln;
+				chname = cln+cfn;
+				chname = chname.split(/\b/);
+				chname = _.map(chname, toLowerCase);
+			}
+			
+			var fulltitle;
+			if(talk.get("name") != null) {
+                var stn = talk.get("name").split(/\b/);
+                fulltitle = _.map(stn, toLowerCase);
+            }
        
             var words = word_desc.concat(word_name);
             words = words.concat(fname);
             words = words.concat(lname);
             words = words.concat(inst);
+            words = words.concat(fullname);
+			words = words.concat(chname);
+			words = words.concat(fulltitle);
             words = _.uniq(words);
             talk.set("words", words);
     

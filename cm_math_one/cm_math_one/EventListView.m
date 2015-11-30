@@ -16,8 +16,9 @@
 #import "DrawerView.h"
 #import "InstructionsViewController.h"
 
-NSMutableArray *totalEventArray;
-NSMutableDictionary *selectedDictionary;
+NSMutableArray *totalEventArray;           //hold all event pfobjects from query
+NSMutableDictionary *selectedDictionary;   //object id and selection(0/1) key value pair
+NSMutableArray *selectedEventArray;        //pfobject array for selected events
 InstructionsViewController *controller;
 
 @implementation EventListView
@@ -27,15 +28,16 @@ InstructionsViewController *controller;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self setupLeftMenuButton];
+    //[self setupLeftMenuButton];  //we don't display the drawer button on this page
+    
+    //init
     totalEventArray = [[NSMutableArray alloc] init];
     selectedDictionary = [[NSMutableDictionary alloc] init];
+    selectedEventArray = [[NSMutableArray alloc] init];
     self.eventTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
     self.eventTable.estimatedRowHeight = 200.0;
     self.eventTable.rowHeight = UITableViewAutomaticDimension;
-    
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.eventTable addSubview:pullrefresh];
@@ -44,13 +46,8 @@ InstructionsViewController *controller;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    /*
-    for (NSIndexPath *indexPath in self.eventTable.indexPathsForSelectedRows) {
-        [self.eventTable deselectRowAtIndexPath:indexPath animated:NO];
-    }
-    */
-    [self getEvents:self];
-    [self setupInstructions];
+    [self getEvents:self];      //get events list, callback method is processData
+    [self setupInstructions];   //instruction overlay
 }
 
 - (void) viewDidLayoutSubviews
@@ -68,6 +65,7 @@ InstructionsViewController *controller;
     [(UIRefreshControl *)sender endRefreshing];
 }
 
+//not currently used
 - (void)setupLeftMenuButton {
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton];
@@ -77,12 +75,13 @@ InstructionsViewController *controller;
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
+//save button
 - (IBAction)doneButtonTap:(UIBarButtonItem *)sender {
     NSArray *selected =  self.eventTable.indexPathsForSelectedRows;
     [self saveEventList:selected];
-    
 }
 
+//remove instruction overlay
 - (IBAction)instructionTap:(UITapGestureRecognizer *)sender {
     [controller.view removeFromSuperview];
     [self.view removeGestureRecognizer:self.tapOutlet];
@@ -130,10 +129,11 @@ InstructionsViewController *controller;
     cell.eventTimeLabel.backgroundColor = [UIColor clearColor];
     cell.eventContentLabel.backgroundColor = [UIColor clearColor];
     cell.eventOrganizerLabel.backgroundColor = [UIColor clearColor];
-        [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
-    UIImage *img = [UIImage imageNamed:@"checkevent48"];
-    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    cell.eventSelectedImage.image = img;
+    
+    [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
+    UIImage *imgSelected = [UIImage imageNamed:@"check48"];
+    imgSelected = [imgSelected imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    cell.eventSelectedImage.image = imgSelected;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.eventOrganizerLabel.textColor = [UIColor dark_primary];
     cell.eventTimeLabel.textColor = [UIColor dark_primary];
@@ -143,13 +143,19 @@ InstructionsViewController *controller;
     int sel = [[selectedDictionary valueForKey:event.objectId] intValue];
     if (sel == 1)
     {
-        cell.eventSelectedImage.hidden = NO;
-        cell.eventNameLabel.backgroundColor = [UIColor dark_accent];
+        [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
+        UIImage *img = [UIImage imageNamed:@"check48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.eventSelectedImage.image = img;
+        cell.eventNameLabel.textColor = [UIColor dark_accent];
     }
     else
     {
-        cell.eventSelectedImage.hidden = YES;
-        cell.eventNameLabel.backgroundColor = [UIColor clearColor];
+        [cell.eventSelectedImage setTintColor:[UIColor primary_color]];
+        UIImage *img = [UIImage imageNamed:@"emptycircle48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.eventSelectedImage.image = img;
+        cell.eventNameLabel.textColor = [UIColor dark_txt];
     }
     
     return cell;
@@ -157,42 +163,12 @@ InstructionsViewController *controller;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EventCell *cell = (EventCell *)[tableView cellForRowAtIndexPath:indexPath];
-    int selectedStatus = [[selectedDictionary valueForKey:cell.eventId] intValue];
-    if (selectedStatus == 1)
-    {
-        cell.eventSelectedImage.hidden = YES;
-        cell.eventNameLabel.backgroundColor = [UIColor clearColor];
-        [selectedDictionary setValue:@0 forKey:cell.eventId];
-    }
-    else
-    {
-        cell.eventSelectedImage.hidden = NO;
-        cell.eventNameLabel.backgroundColor = [UIColor dark_accent];
-        [selectedDictionary setValue:@1 forKey:cell.eventId];
-    }
-
-    NSLog(@"DIC AT SELECT DATA:%@", selectedDictionary);
+    [self tableView:tableView wasTappedAt:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EventCell *cell = (EventCell *)[tableView cellForRowAtIndexPath:indexPath];
-    int selectedStatus = [[selectedDictionary valueForKey:cell.eventId] intValue];
-    if (selectedStatus == 1)
-    {
-        cell.eventSelectedImage.hidden = YES;
-        cell.eventNameLabel.backgroundColor = [UIColor clearColor];
-        [selectedDictionary setValue:@0 forKey:cell.eventId];
-    }
-    else
-    {
-        cell.eventSelectedImage.hidden = NO;
-        cell.eventNameLabel.backgroundColor = [UIColor dark_accent];
-        [selectedDictionary setValue:@1 forKey:cell.eventId];
-    }
-
-    NSLog(@"DIC AT DESELECT DATA:%@", selectedDictionary);
+    [self tableView:tableView wasTappedAt:indexPath];
 }
 
 #pragma mark - Data
@@ -201,6 +177,7 @@ InstructionsViewController *controller;
 {
     [totalEventArray removeAllObjects];
     [selectedDictionary removeAllObjects];
+    [selectedEventArray removeAllObjects];
     totalEventArray = [results mutableCopy];
     
     //keep a dictionary of which event ids are saved(selected), used to determine the checkmark image for each cell
@@ -220,54 +197,74 @@ InstructionsViewController *controller;
     }
     NSLog(@"DIC AT PROCESS DATA:%@", selectedDictionary);
     [self.eventTable reloadData];
-    [self selectExistingEvents];
+    
+    int totalSelected = 0;
+    for (NSString *key in selectedDictionary)
+    {
+        int selValue = [[selectedDictionary valueForKey:key] intValue];
+        totalSelected = totalSelected + selValue;
+        NSLog(@"TOTALVALUE:%i, %i", totalSelected, selValue);
+    }
+    //check if nothing selected then disable done button
+    if (totalSelected == 0)
+    {
+        self.doneButton.enabled = NO;
+    }
+    else
+    {
+        self.doneButton.enabled = YES;
+    }
+    NSLog(@"SELECTION COUNT:%i", totalSelected);
 }
 
-
-- (void)selectExistingEvents   //when loading this page, check local storage for saved events and set them to selected in the tableview
+- (void)tableView: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
 {
-    /*
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *eventIds = [defaults objectForKey:@"eventIds"];
-    
-    for (NSInteger i = 0; i < [totalEventArray count]; ++i)
+    EventCell *cell = (EventCell *)[tableView cellForRowAtIndexPath:indexPath];
+    int selectedStatus = [[selectedDictionary valueForKey:cell.eventId] intValue];
+    if (selectedStatus == 1)
     {
-        EventCell *cell = (EventCell *)[self.eventTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        NSString *eid = cell.eventId;
-        if ([self checkIfStringArray:eventIds containsString:eid])
-        {
-            [self.eventTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
-            //[selectedDictionary setValue:@1 forKey:eid];
-        }
+        [cell.eventSelectedImage setTintColor:[UIColor primary_color]];
+        UIImage *img = [UIImage imageNamed:@"emptycircle48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.eventSelectedImage.image = img;
+        cell.eventNameLabel.textColor = [UIColor dark_txt];
+        [selectedDictionary setValue:@0 forKey:cell.eventId];
     }
-     */
+    else
+    {
+        [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
+        UIImage *img = [UIImage imageNamed:@"check48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.eventSelectedImage.image = img;
+        cell.eventNameLabel.textColor = [UIColor dark_accent];
+        [selectedDictionary setValue:@1 forKey:cell.eventId];
+    }
+    
+    NSLog(@"DIC AT SELECT DATA:%@", selectedDictionary);
+    
+    
+    //check if nothing selected then disable done button
+    int totalSelected = 0;
+    for (NSString *key in selectedDictionary)
+    {
+        int selValue = [[selectedDictionary valueForKey:key] intValue];
+        totalSelected = totalSelected + selValue;
+    }
+    if (totalSelected == 0)
+    {
+        self.doneButton.enabled = NO;
+    }
+    else
+    {
+        self.doneButton.enabled = YES;
+    }
+    NSLog(@"SELECTION COUNT:%i", totalSelected);
 }
 
 - (void)saveEventList: (NSArray *)selectedIndexPaths
 {
     //this will be the array of selected events to save
     NSMutableArray *selectedEvents = [[NSMutableArray alloc] init];
-    
-    /*
-    for (NSInteger i = 0; i < [totalEventArray count]; ++i)   //first get all the events
-    {
-        EventCell *cell = (EventCell *)[self.eventTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        NSString *eid = cell.eventId;   //then grab the object ids of these events
-        if ( [[selectedDictionary valueForKey:eid] intValue] == 1)
-        {
-            //then this event was selected, we add it to the selected events array
-            PFObject *event = [totalEventArray objectAtIndex:i];
-            [selectedEvents addObject:event];
-        }
-    }
-    */
-    /*
-    for (NSIndexPath *indexpath in selectedIndexPaths)
-    {
-        PFObject *event = [totalEventArray objectAtIndex:indexpath.row];
-        [selectedEvents addObject:event];
-    }
-    */
     
     for (PFObject *event in totalEventArray)
     {
@@ -334,8 +331,7 @@ InstructionsViewController *controller;
     [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
 }
 
-
-- (BOOL)checkIfStringArray: (NSArray *)array containsString: (NSString *) string  //utility method
+- (BOOL)checkIfStringArray: (NSArray *)array containsString: (NSString *) string  //utility method, checks an array for a string
 {
     for (NSString *str in array)
     {
@@ -347,7 +343,7 @@ InstructionsViewController *controller;
     return NO;
 }
 
-- (void)setCurrentEventWithSelected: (NSArray *)selectedEvents
+- (void)setCurrentEventWithSelected: (NSArray *)selectedEvents   //sets the current event
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
@@ -376,7 +372,7 @@ InstructionsViewController *controller;
     }
 }
 
-- (void)setupInstructions
+- (void)setupInstructions  //display the instruction overlay
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL alreadySetup = [defaults boolForKey:@"chooseeventsetup"];

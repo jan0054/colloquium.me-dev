@@ -10,14 +10,10 @@
 
 @interface EventListView : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *eventTable;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 - (IBAction)doneButtonTap:(UIBarButtonItem *)sender;
-- (IBAction)cancelButtonTap:(UIBarButtonItem *)sender;
 @property UIRefreshControl *pullrefresh;
-
 - (void)processData: (NSArray *) results;
-
 - (IBAction)instructionTap:(UITapGestureRecognizer *)sender;  //used to dismiss the instruction view
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapOutlet;
 
