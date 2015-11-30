@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,6 +49,9 @@ public class FullscreenReaderActivity extends AppCompatActivity {
     public Button colorToggleButton;
     public int colorMode;   // 0(default) = black text on white background, 1= white text on black background
     private SharedPreferences savedColorMode;
+    private float downX;
+    private float downY;
+    private boolean isOnClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +64,50 @@ public class FullscreenReaderActivity extends AppCompatActivity {
         mContentView = (TextView) findViewById(R.id.fullscreen_textview);
         backgroundFrame = findViewById(R.id.fullscreen_parent);
         controlBar = findViewById(R.id.fullscreen_content_controls);
-
+        mContentView.setMovementMethod(new ScrollingMovementMethod());
         // Set up the user interaction to manually show or hide the system UI.
+
+
+        mContentView.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction() & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_DOWN:
+                        downX = event.getX();
+                        downY = event.getY();
+                        isOnClick = true;
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                    case MotionEvent.ACTION_UP:
+                        if (isOnClick) {
+                            //recognize as tap
+                            toggle();
+                        }
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if (isOnClick && (Math.abs(downX - event.getX()) > 5 || Math.abs(downY - event.getY()) > 5)) {
+                            isOnClick = false;
+                        }
+                        break;
+                    case MotionEvent.ACTION_SCROLL:
+                        //scroll
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+
+        /*
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggle();
             }
         });
+        */
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
