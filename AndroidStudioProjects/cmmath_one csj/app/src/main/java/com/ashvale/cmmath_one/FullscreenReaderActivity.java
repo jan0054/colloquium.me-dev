@@ -64,25 +64,23 @@ public class FullscreenReaderActivity extends AppCompatActivity {
         mContentView = (TextView) findViewById(R.id.fullscreen_textview);
         backgroundFrame = findViewById(R.id.fullscreen_parent);
         controlBar = findViewById(R.id.fullscreen_content_controls);
-        mContentView.setMovementMethod(new ScrollingMovementMethod());
+
         // Set up the user interaction to manually show or hide the system UI.
-
-
         mContentView.setOnTouchListener(new View.OnTouchListener() {
-
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
                         downX = event.getX();
                         downY = event.getY();
                         isOnClick = true;
                         break;
-                    case MotionEvent.ACTION_CANCEL:
                     case MotionEvent.ACTION_UP:
                         if (isOnClick) {
                             //recognize as tap
                             toggle();
+                            return  true;       //return true only when we release our finger, and have not moved more than 5 pixels: we also trigger toggle in this case
                         }
                         break;
                     case MotionEvent.ACTION_MOVE:
@@ -90,16 +88,16 @@ public class FullscreenReaderActivity extends AppCompatActivity {
                             isOnClick = false;
                         }
                         break;
-                    case MotionEvent.ACTION_SCROLL:
-                        //scroll
-                        break;
                     default:
                         break;
                 }
-                return true;
+                return false;     //under most situations we want to return false, so that the scroll can work
             }
         });
 
+        mContentView.setMovementMethod(new ScrollingMovementMethod());      //this is the scroll!
+
+        //old onclick does not work very well, since it is triggered by the scroll
         /*
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
