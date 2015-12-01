@@ -11,6 +11,9 @@
 #import "UIViewController+ParseQueries.h"
 #import "ProgramForumView.h"
 #import "FullScreenTextView.h"
+#import "PdfReaderView.h"
+
+PFFile *pdfFile;
 
 @implementation ProgramDetailView
 @synthesize program;
@@ -30,6 +33,7 @@
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.fullscreenButton setTintColor:[UIColor primary_color]];
     [self.fullscreenButton setImage:img forState:UIControlStateNormal];
+    //self.pdfButton.backgroundColor = [UIColor colorWithRed:170.0 green:170.0 blue:170.0 alpha:0.5];
 }
 
 - (IBAction)fullscreenButtonTap:(UIButton *)sender {
@@ -56,6 +60,12 @@
     }
 }
 
+- (IBAction)pdfButtonTap:(UIButton *)sender {
+    PdfReaderView *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"pdfreaderview"];
+    controller.pdfPFFile = pdfFile;
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 #pragma mark - Data
 
 - (void)fillFieldsWithObject: (PFObject *)object
@@ -77,6 +87,18 @@
     NSString *estr = [dateFormat stringFromDate:edate];
     self.timeLabel.text = [NSString stringWithFormat:@"%@ ~ %@", sstr, estr];
     self.contentTextView.text = object[@"content"];
+    //determine pdf status
+    if ([object objectForKey:@"pdf"])   //there is a pdf file
+    {
+        pdfFile = object[@"pdf"];
+        self.pdfButton.hidden = NO;
+        self.pdfButton.userInteractionEnabled = YES;
+    }
+    else   //pdf isn't set
+    {
+        self.pdfButton.hidden = YES;
+        self.pdfButton.userInteractionEnabled = NO;
+    }
 }
 
 #pragma mark - Navigation
@@ -92,6 +114,5 @@
         controller.content = self.contentTextView.text;
     }
 }
-
 
 @end

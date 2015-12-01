@@ -101,3 +101,7 @@
 //chat
 "person_invite" = "邀請";
 "person_invited" = "已選取";
+
+//pdf
+"open_with" = "開啟..";
+"exit" = "離開";

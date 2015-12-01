@@ -69,6 +69,9 @@
 		B455D7AA1B413B7300DCB6E4 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = B455D7A01B413B7300DCB6E4 /* iTunesArtwork.png */; };
 		B455D7AB1B413B7300DCB6E4 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B455D7A11B413B7300DCB6E4 /* iTunesArtwork@2x.png */; };
 		B455D7AE1B413D4600DCB6E4 /* CareerPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B455D7AD1B413D4600DCB6E4 /* CareerPostCell.m */; };
+		B45877AB1C0D7ECB00EA8091 /* PdfReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B45877AA1C0D7ECB00EA8091 /* PdfReaderView.m */; };
+		B45877AE1C0D893A00EA8091 /* share48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45877AC1C0D893A00EA8091 /* share48@2x.png */; };
+		B45877AF1C0D893A00EA8091 /* share64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B45877AD1C0D893A00EA8091 /* share64@2x.png */; };
 		B46402731B4662B80074DD72 /* addevent48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402511B4662B80074DD72 /* addevent48@2x.png */; };
 		B46402741B4662B80074DD72 /* addevent64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402521B4662B80074DD72 /* addevent64@2x.png */; };
 		B46402751B4662B80074DD72 /* addphoto48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402531B4662B80074DD72 /* addphoto48@2x.png */; };
@@ -264,6 +267,10 @@
 		B455D7A11B413B7300DCB6E4 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		B455D7AC1B413D4600DCB6E4 /* CareerPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerPostCell.h; sourceTree = "<group>"; };
 		B455D7AD1B413D4600DCB6E4 /* CareerPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerPostCell.m; sourceTree = "<group>"; };
+		B45877A91C0D7ECB00EA8091 /* PdfReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdfReaderView.h; sourceTree = "<group>"; };
+		B45877AA1C0D7ECB00EA8091 /* PdfReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PdfReaderView.m; sourceTree = "<group>"; };
+		B45877AC1C0D893A00EA8091 /* share48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share48@2x.png"; sourceTree = "<group>"; };
+		B45877AD1C0D893A00EA8091 /* share64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share64@2x.png"; sourceTree = "<group>"; };
 		B46402511B4662B80074DD72 /* addevent48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addevent48@2x.png"; sourceTree = "<group>"; };
 		B46402521B4662B80074DD72 /* addevent64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addevent64@2x.png"; sourceTree = "<group>"; };
 		B46402531B4662B80074DD72 /* addphoto48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addphoto48@2x.png"; sourceTree = "<group>"; };
@@ -565,6 +572,8 @@
 				B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */,
 				B42C49301BE7612800C7D2E7 /* PasswordResetView.h */,
 				B42C49311BE7612800C7D2E7 /* PasswordResetView.m */,
+				B45877A91C0D7ECB00EA8091 /* PdfReaderView.h */,
+				B45877AA1C0D7ECB00EA8091 /* PdfReaderView.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -572,6 +581,8 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B45877AC1C0D893A00EA8091 /* share48@2x.png */,
+				B45877AD1C0D893A00EA8091 /* share64@2x.png */,
 				B4A223CF1BEC9D4600B9313F /* check48@2x.png */,
 				B4A223D01BEC9D4600B9313F /* check64@2x.png */,
 				B4A223D11BEC9D4600B9313F /* emptycircle48@2x.png */,
@@ -825,6 +836,7 @@
 				B40CCC261B3009B500BB11B9 /* Main.storyboard in Resources */,
 				B40CCC2B1B3009B500BB11B9 /* LaunchScreen.xib in Resources */,
 				B46402851B4662B80074DD72 /* news48@2x.png in Resources */,
+				B45877AE1C0D893A00EA8091 /* share48@2x.png in Resources */,
 				B4F04D411B81BFF300A4FCD3 /* key_down48@2x.png in Resources */,
 				B4A223D31BEC9D4600B9313F /* check48@2x.png in Resources */,
 				B489FEB71B621A8A009BB49A /* followevent48@2x.png in Resources */,
@@ -841,6 +853,7 @@
 				B46402751B4662B80074DD72 /* addphoto48@2x.png in Resources */,
 				B46402881B4662B80074DD72 /* people64@2x.png in Resources */,
 				B46402871B4662B80074DD72 /* people48@2x.png in Resources */,
+				B45877AF1C0D893A00EA8091 /* share64@2x.png in Resources */,
 				B40CCC281B3009B500BB11B9 /* Images.xcassets in Resources */,
 				FDCA8C391BDFC48D009AF220 /* Localizable.strings in Resources */,
 				B46402811B4662B80074DD72 /* mail48@2x.png in Resources */,
@@ -974,6 +987,7 @@
 				B41756101B3030DC00E1E8A5 /* ProgramView.m in Sources */,
 				B42C49321BE7612800C7D2E7 /* PasswordResetView.m in Sources */,
 				B455D7731B41178600DCB6E4 /* CareerPostView.m in Sources */,
+				B45877AB1C0D7ECB00EA8091 /* PdfReaderView.m in Sources */,
 				B455D7941B41331900DCB6E4 /* NewsDetailImageCell.m in Sources */,
 				B4BFB5011B3174830035309E /* ConversationCell.m in Sources */,
 				B4BE911A1B4BACB600A46E4C /* AboutUsView.m in Sources */,

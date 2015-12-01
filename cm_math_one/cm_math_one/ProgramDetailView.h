@@ -23,7 +23,8 @@
 - (IBAction)fullscreenButtonTap:(UIButton *)sender;
 - (IBAction)contentTapped:(UITapGestureRecognizer *)sender;
 - (IBAction)discussButtonTap:(UIBarButtonItem *)sender;
+@property (strong, nonatomic) IBOutlet UIButton *pdfButton;
+- (IBAction)pdfButtonTap:(UIButton *)sender;
 
 @property PFObject *program;
-
 @end

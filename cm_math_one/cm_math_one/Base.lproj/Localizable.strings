@@ -101,3 +101,7 @@
 //chat
 "person_invite" = "Invite";
 "person_invited" = "Selected";
+
+//pdf
+"open_with" = "Open With..";
+"exit" = "Exit";

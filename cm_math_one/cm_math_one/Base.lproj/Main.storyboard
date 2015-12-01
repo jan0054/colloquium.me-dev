@@ -114,6 +114,102 @@
             </objects>
             <point key="canvasLocation" x="2442" y="-2042"/>
         </scene>
+        <!--Pdf Reader View-->
+        <scene sceneID="1dz-OI-9Xw">
+            <objects>
+                <viewController storyboardIdentifier="pdfreaderview" id="0ht-Yg-Qdz" customClass="PdfReaderView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RaB-wZ-5DE"/>
+                        <viewControllerLayoutGuide type="bottom" id="4GX-Fs-Sjd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F3H-PJ-gkj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clo-ne-gjt">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iTJ-le-jjZ" appends="YES" id="9aR-nZ-PmE"/>
+                                </connections>
+                            </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkW-EE-mIS">
+                                <rect key="frame" x="0.0" y="555" width="600" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF2-ks-Nd7">
+                                        <rect key="frame" x="547" y="8" width="45" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Exit">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="exitButtonTap:" destination="0ht-Yg-Qdz" eventType="touchUpInside" id="iqz-Yt-Hqt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Na-DY-KqB">
+                                        <rect key="frame" x="8" y="11" width="122" height="24"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Open With.." image="share48.png">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shareButtonTap:" destination="0ht-Yg-Qdz" eventType="touchUpInside" id="3Db-Jg-Mf1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="16U-s8-EfU"/>
+                                    <constraint firstItem="6Na-DY-KqB" firstAttribute="centerY" secondItem="mkW-EE-mIS" secondAttribute="centerY" id="5sk-Mf-P1n"/>
+                                    <constraint firstItem="NF2-ks-Nd7" firstAttribute="centerY" secondItem="mkW-EE-mIS" secondAttribute="centerY" id="CG2-Hg-QVf"/>
+                                    <constraint firstAttribute="trailing" secondItem="NF2-ks-Nd7" secondAttribute="trailing" constant="8" id="CYH-Oi-5os"/>
+                                    <constraint firstItem="6Na-DY-KqB" firstAttribute="leading" secondItem="mkW-EE-mIS" secondAttribute="leading" constant="8" id="uMQ-NL-uQk"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKa-Nr-4GM">
+                                <rect key="frame" x="206" y="288" width="189" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jKa-Nr-4GM" firstAttribute="centerY" secondItem="F3H-PJ-gkj" secondAttribute="centerY" id="8IR-JY-bmh"/>
+                            <constraint firstItem="4GX-Fs-Sjd" firstAttribute="top" secondItem="mkW-EE-mIS" secondAttribute="bottom" id="L60-dm-rlz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="clo-ne-gjt" secondAttribute="trailing" constant="-20" id="PEc-Hk-uzT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mkW-EE-mIS" secondAttribute="trailing" constant="-20" id="U6l-l5-s69"/>
+                            <constraint firstItem="jKa-Nr-4GM" firstAttribute="centerX" secondItem="F3H-PJ-gkj" secondAttribute="centerX" id="V34-oX-yKw"/>
+                            <constraint firstItem="mkW-EE-mIS" firstAttribute="leading" secondItem="F3H-PJ-gkj" secondAttribute="leadingMargin" constant="-20" id="ZFZ-Pl-Yyq"/>
+                            <constraint firstItem="4GX-Fs-Sjd" firstAttribute="top" secondItem="clo-ne-gjt" secondAttribute="bottom" id="bcb-sU-oCq"/>
+                            <constraint firstItem="clo-ne-gjt" firstAttribute="top" secondItem="RaB-wZ-5DE" secondAttribute="bottom" id="hg5-MO-FfV"/>
+                            <constraint firstItem="clo-ne-gjt" firstAttribute="leading" secondItem="F3H-PJ-gkj" secondAttribute="leadingMargin" constant="-20" id="hzm-bl-oqZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomControlView" destination="mkW-EE-mIS" id="yCZ-lc-8tp"/>
+                        <outlet property="exitButton" destination="NF2-ks-Nd7" id="4ql-6U-dAy"/>
+                        <outlet property="loadingLabel" destination="jKa-Nr-4GM" id="AxF-Zv-6JJ"/>
+                        <outlet property="pdfWebView" destination="clo-ne-gjt" id="V8i-Fe-s4Y"/>
+                        <outlet property="shareButton" destination="6Na-DY-KqB" id="mdO-Kj-jbC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EOS-zf-Z40" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iTJ-le-jjZ">
+                    <connections>
+                        <action selector="webViewTapped:" destination="0ht-Yg-Qdz" id="Iee-UN-2yZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3229" y="-2042"/>
+        </scene>
         <!--Drawer Controller-->
         <scene sceneID="48z-Jj-Bar">
             <objects>
@@ -807,12 +903,29 @@
                                             <action selector="fullscreenButtonTap:" destination="Aa2-37-DCr" eventType="touchUpInside" id="PE0-t8-FpW"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSX-O5-Tp7">
+                                        <rect key="frame" x="8" y="449" width="34" height="24"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="VC8-HE-mlI"/>
+                                            <constraint firstAttribute="width" constant="34" id="rYg-Ou-aR3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="PDF">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pdfButtonTap:" destination="Aa2-37-DCr" eventType="touchUpInside" id="rot-ZA-blB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="323-Ja-bXU"/>
                                     <constraint firstAttribute="trailing" secondItem="oUx-S1-ozy" secondAttribute="trailing" constant="8" id="3Sz-bz-sKZ"/>
+                                    <constraint firstItem="xSX-O5-Tp7" firstAttribute="bottom" secondItem="7zW-bn-m2A" secondAttribute="bottom" id="3cL-cm-Vqj"/>
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="top" secondItem="kjg-DM-CDi" secondAttribute="bottom" constant="8" id="5yb-1i-AWF"/>
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="16" id="6DD-lV-xfl"/>
                                     <constraint firstAttribute="trailing" secondItem="kjg-DM-CDi" secondAttribute="trailing" constant="8" id="6oh-94-TVk"/>
@@ -823,17 +936,24 @@
                                     <constraint firstAttribute="trailing" secondItem="Y8c-Bb-19b" secondAttribute="trailing" constant="8" id="Rao-ve-6tg"/>
                                     <constraint firstItem="BOi-BU-4bS" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" id="Rg3-fU-lUh"/>
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="top" secondItem="kjg-DM-CDi" secondAttribute="bottom" constant="8" id="UHq-J5-CAl"/>
+                                    <constraint firstItem="xSX-O5-Tp7" firstAttribute="top" secondItem="7zW-bn-m2A" secondAttribute="bottom" id="a5d-Jn-hRJ"/>
+                                    <constraint firstItem="xSX-O5-Tp7" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="avY-qk-717"/>
+                                    <constraint firstItem="xSX-O5-Tp7" firstAttribute="leading" secondItem="7zW-bn-m2A" secondAttribute="leading" id="bJI-mR-eVk"/>
                                     <constraint firstItem="oUx-S1-ozy" firstAttribute="top" secondItem="Y8c-Bb-19b" secondAttribute="bottom" constant="8" id="cSv-wp-nr3"/>
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="trailing" secondItem="l2h-6V-xea" secondAttribute="trailing" id="d1B-S7-KxF"/>
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="top" secondItem="BOi-BU-4bS" secondAttribute="bottom" constant="8" id="fhj-6w-J4h"/>
                                     <constraint firstAttribute="trailing" secondItem="BOi-BU-4bS" secondAttribute="trailing" id="jl8-Ex-1Ac"/>
                                     <constraint firstItem="BOi-BU-4bS" firstAttribute="top" secondItem="oUx-S1-ozy" secondAttribute="bottom" constant="24" id="kcr-ev-Npa"/>
+                                    <constraint firstAttribute="bottom" secondItem="xSX-O5-Tp7" secondAttribute="bottom" constant="8" id="nRn-f5-Eyn"/>
                                     <constraint firstItem="kjg-DM-CDi" firstAttribute="top" secondItem="WJf-5P-CQo" secondAttribute="top" constant="16" id="sf6-dD-DaM"/>
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="bottom" secondItem="l2h-6V-xea" secondAttribute="bottom" id="tJe-Xx-zam"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="5yb-1i-AWF"/>
+                                        <exclude reference="3cL-cm-Vqj"/>
+                                        <exclude reference="avY-qk-717"/>
+                                        <exclude reference="nRn-f5-Eyn"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -863,6 +983,7 @@
                         <outlet property="locationLabel" destination="iJi-i5-dd4" id="s98-3T-yci"/>
                         <outlet property="mainBackgroundView" destination="WJf-5P-CQo" id="a2e-eg-99o"/>
                         <outlet property="nameLabel" destination="Y8c-Bb-19b" id="Jaz-C0-Fbk"/>
+                        <outlet property="pdfButton" destination="xSX-O5-Tp7" id="v34-Vy-ZnG"/>
                         <outlet property="sessionLabel" destination="kjg-DM-CDi" id="c3B-83-1JE"/>
                         <outlet property="timeLabel" destination="idi-p9-U5m" id="Nfl-K3-rxp"/>
                         <segue destination="F1S-86-vQv" kind="show" identifier="programforumsegue" id="w0Z-6G-iqL"/>
@@ -4186,6 +4307,7 @@
         <image name="phone48.png" width="24" height="24"/>
         <image name="program48.png" width="24" height="24"/>
         <image name="search48.png" width="24" height="24"/>
+        <image name="share48.png" width="24" height="24"/>
         <image name="timeline48.png" width="24" height="24"/>
         <image name="venue48.png" width="24" height="24"/>
     </resources>
