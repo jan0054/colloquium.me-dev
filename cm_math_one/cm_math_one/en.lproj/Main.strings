@@ -339,10 +339,10 @@
 "ncE-Vq-UH1.text" = "name";
 
 /* Class = "UILabel"; text = "Details.."; ObjectID = "oBd-6z-c95"; */
-"oBd-6z-c95.text" = "Details..";
+"oBd-6z-c95.text" = "Details";
 
 /* Class = "UILabel"; text = "Details..."; ObjectID = "oRe-fi-ylS"; */
-"oRe-fi-ylS.text" = "Details...";
+"oRe-fi-ylS.text" = "Details";
 
 /* Class = "UILabel"; text = "author"; ObjectID = "oUx-S1-ozy"; */
 "oUx-S1-ozy.text" = "author";

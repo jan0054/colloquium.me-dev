@@ -30,6 +30,13 @@ InstructionsViewController *controller;
     [super viewDidLoad];
     //[self setupLeftMenuButton];  //we don't display the drawer button on this page
     
+    //styling
+    self.eventTable.backgroundColor = [UIColor light_primary];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+    
     //init
     totalEventArray = [[NSMutableArray alloc] init];
     selectedDictionary = [[NSMutableDictionary alloc] init];
@@ -129,7 +136,6 @@ InstructionsViewController *controller;
     cell.eventTimeLabel.backgroundColor = [UIColor clearColor];
     cell.eventContentLabel.backgroundColor = [UIColor clearColor];
     cell.eventOrganizerLabel.backgroundColor = [UIColor clearColor];
-    
     [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
     UIImage *imgSelected = [UIImage imageNamed:@"check48"];
     imgSelected = [imgSelected imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -137,8 +143,12 @@ InstructionsViewController *controller;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.eventOrganizerLabel.textColor = [UIColor dark_primary];
     cell.eventTimeLabel.textColor = [UIColor dark_primary];
-    cell.eventNameLabel.layer.cornerRadius = 12.0;
-    cell.eventNameLabel.layer.masksToBounds = YES;
+    cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    cell.backgroundCardView.layer.shadowOpacity = 0.3f;
+    cell.backgroundCardView.layer.shadowRadius = 1.0f;
     
     int sel = [[selectedDictionary valueForKey:event.objectId] intValue];
     if (sel == 1)

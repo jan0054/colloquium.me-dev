@@ -16,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *moreLabel;
 @property NSString *eventId;
 @property (strong, nonatomic) IBOutlet UIImageView *flairImage;
+@property (strong, nonatomic) IBOutlet UIView *backgroundCardView;
 
 @end

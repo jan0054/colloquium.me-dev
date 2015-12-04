@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *eventTimeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *eventContentLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *eventSelectedImage;
+@property (strong, nonatomic) IBOutlet UIView *backgroundCardView;
 
 @property NSString *eventId;
 @property PFObject *eventObject;

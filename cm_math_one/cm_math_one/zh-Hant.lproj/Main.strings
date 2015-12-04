@@ -339,10 +339,10 @@
 "ncE-Vq-UH1.text" = "姓名";
 
 /* Class = "UILabel"; text = "Details.."; ObjectID = "oBd-6z-c95"; */
-"oBd-6z-c95.text" = "細節..";
+"oBd-6z-c95.text" = "細節";
 
 /* Class = "UILabel"; text = "Details..."; ObjectID = "oRe-fi-ylS"; */
-"oRe-fi-ylS.text" = "細節..";
+"oRe-fi-ylS.text" = "細節";
 
 /* Class = "UILabel"; text = "author"; ObjectID = "oUx-S1-ozy"; */
 "oUx-S1-ozy.text" = "講者";

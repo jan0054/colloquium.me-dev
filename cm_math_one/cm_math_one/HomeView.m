@@ -30,11 +30,17 @@ NSMutableArray *selectedEventsArray;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     selectedEventsArray = [[NSMutableArray alloc] init];
+    
+    //styling
     self.homeTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
     self.homeTable.estimatedRowHeight = 200.0;
     self.homeTable.rowHeight = UITableViewAutomaticDimension;
+    self.homeTable.backgroundColor = [UIColor light_primary];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
     
     [self getEventsFromLocalList:self];
     
@@ -106,6 +112,8 @@ NSMutableArray *selectedEventsArray;
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
+    cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
     [cell.flairImage setTintColor:[UIColor dark_accent]];
     cell.nameLabel.backgroundColor = [UIColor clearColor];
     cell.timeLabel.backgroundColor = [UIColor clearColor];
@@ -116,6 +124,11 @@ NSMutableArray *selectedEventsArray;
     cell.moreLabel.textColor = [UIColor dark_accent];
     cell.timeLabel.textColor = [UIColor dark_primary];
     cell.organizerLabel.textColor = [UIColor dark_primary];
+    cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    cell.backgroundCardView.layer.shadowOpacity = 0.3f;
+    cell.backgroundCardView.layer.shadowRadius = 1.0f;
+
     
     UIImage *img = [UIImage imageNamed:@"event48"];
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
