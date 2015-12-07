@@ -33,6 +33,11 @@ PFFile *pdfFile;
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.fullscreenButton setTintColor:[UIColor primary_color]];
     [self.fullscreenButton setImage:img forState:UIControlStateNormal];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+
     //self.pdfButton.backgroundColor = [UIColor colorWithRed:170.0 green:170.0 blue:170.0 alpha:0.5];
 }
 

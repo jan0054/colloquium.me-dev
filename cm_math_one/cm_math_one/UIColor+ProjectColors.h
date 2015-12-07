@@ -20,6 +20,7 @@
 + (UIColor*) light_accent;
 
 + (UIColor*) background;
++ (UIColor*) drawerBackground;
 + (UIColor*) nav_bar;
 + (UIColor*) tab_bar;
 + (UIColor*) light_button_txt;

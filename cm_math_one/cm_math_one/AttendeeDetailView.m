@@ -30,6 +30,11 @@ PFObject *chosenProgram;
     //styling
     self.noProgramLabel.textColor = [UIColor dark_primary];
     self.attendeeBackground.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+
     
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

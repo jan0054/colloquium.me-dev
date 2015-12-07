@@ -26,8 +26,8 @@ NSIndexPath *currentIndex;
     //styling
     [self.tableView setContentInset:UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0)];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.view.backgroundColor = [UIColor dark_primary];
-    self.tableView.backgroundColor = [UIColor dark_primary];
+    self.view.backgroundColor = [UIColor drawerBackground];
+    self.tableView.backgroundColor = [UIColor drawerBackground];
     
     //set default "currentIndex" depending on whether there are already saved events
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -86,11 +86,10 @@ NSIndexPath *currentIndex;
     cell.lowerSeparator.hidden = YES;
     cell.upperSeparator.hidden = YES;
     cell.drawerBackground.backgroundColor = [UIColor clearColor];
-    [cell.drawerImage setTintColor:[UIColor accent_color]];
     UIImage *img = [[UIImage alloc] init];
     cell.drawerTitle.backgroundColor = [UIColor clearColor];
     cell.drawerTitle.textColor = [UIColor light_txt];
-    cell.contentView.backgroundColor = [UIColor dark_primary];
+    cell.contentView.backgroundColor = [UIColor clearColor];
     
     
     //data
@@ -107,6 +106,7 @@ NSIndexPath *currentIndex;
         switch (indexPath.row) {
             case 0:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_chat", nil);
+                [cell.drawerImage setTintColor:[UIColor primary_color]];
                 img = [UIImage imageNamed:@"chat48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -116,6 +116,7 @@ NSIndexPath *currentIndex;
                 break;
             case 1:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_career", nil);
+                [cell.drawerImage setTintColor:[UIColor primary_color]];
                 img = [UIImage imageNamed:@"career48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -123,6 +124,7 @@ NSIndexPath *currentIndex;
                 break;
             case 2:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_settings", nil);
+                [cell.drawerImage setTintColor:[UIColor primary_color]];
                 img = [UIImage imageNamed:@"setting48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -138,6 +140,7 @@ NSIndexPath *currentIndex;
         switch (indexPath.row) {
             case 0:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_edit", nil);
+                [cell.drawerImage setTintColor:[UIColor primary_color]];
                 img = [UIImage imageNamed:@"addevent48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -145,6 +148,7 @@ NSIndexPath *currentIndex;
                 break;
             case 1:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_home", nil);
+                [cell.drawerImage setTintColor:[UIColor dark_accent]];
                 img = [UIImage imageNamed:@"eventhome48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -155,6 +159,7 @@ NSIndexPath *currentIndex;
                 
             default:
                 cell.drawerTitle.text = name;
+                [cell.drawerImage setTintColor:[UIColor dark_accent]];
                 img = [UIImage imageNamed:@"event48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;

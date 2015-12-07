@@ -579,6 +579,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Forum"];
     [query includeKey:@"author"];
     [query includeKey:@"source"];
+    [query whereKey:@"source" equalTo:program];
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

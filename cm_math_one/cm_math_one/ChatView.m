@@ -32,6 +32,7 @@ PFUser *loggedinUser;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.chatTable.estimatedRowHeight = 120.0;
     self.chatTable.rowHeight = UITableViewAutomaticDimension;
+
     
     if ([PFUser currentUser])
     {
@@ -45,7 +46,11 @@ PFUser *loggedinUser;
     //styling
     self.inputBackground.backgroundColor = [UIColor clearColor];
     [self.sendChatButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
-    
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+
 }
 
 - (IBAction)sendChatButtonTap:(UIButton *)sender {

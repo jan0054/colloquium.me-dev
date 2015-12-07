@@ -26,12 +26,18 @@ NSMutableArray *commentArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
     commentArray = [[NSMutableArray alloc] init];
+    
+    //styling
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.commentTable.tableFooterView = [[UIView alloc] init];
     self.commentTable.estimatedRowHeight = 120.0;
     self.commentTable.rowHeight = UITableViewAutomaticDimension;
     self.inputBackgroundView.backgroundColor = [UIColor whiteColor];
     [self.sendButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
     
     //data
     [self getComments:self forPost:currentPost];

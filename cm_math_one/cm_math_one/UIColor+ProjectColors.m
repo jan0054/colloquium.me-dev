@@ -54,6 +54,10 @@
 {
     return [UIColor colorWithRed:158.0/255.0 green:158.0/255.0 blue:158.0/255.0 alpha:1];
 }
++ (UIColor*) drawerBackground
+{
+    return [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1];
+}
 + (UIColor*) nav_bar
 {
     return [UIColor colorWithRed:245.0/255.0 green:124.0/255.0 blue:0.0/255.0 alpha:1];

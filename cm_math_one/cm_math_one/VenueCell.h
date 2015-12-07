@@ -15,7 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *callButton;
 @property (strong, nonatomic) IBOutlet UIButton *webButton;
 @property (strong, nonatomic) IBOutlet UIButton *navButton;
-
-
+@property (strong, nonatomic) IBOutlet UIView *backgroundCardView;
 
 @end

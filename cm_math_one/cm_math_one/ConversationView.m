@@ -30,12 +30,20 @@ NSMutableArray *selectedParticipants;
     [self setupLeftMenuButton];
     conversationArray = [[NSMutableArray alloc] init];
     selectedParticipants = [[NSMutableArray alloc] init];
+    
+    //styling
     self.conversationTable.estimatedRowHeight = 160.0;
     self.conversationTable.rowHeight = UITableViewAutomaticDimension;
     self.conversationTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.noConvLabel.hidden = YES;
+    self.conversationTable.backgroundColor = [UIColor light_primary];
     self.noConvLabel.textColor = [UIColor dark_primary];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+
     
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
@@ -113,6 +121,24 @@ NSMutableArray *selectedParticipants;
     cell.timeLabel.backgroundColor = [UIColor clearColor];
     cell.messageLabel.backgroundColor = [UIColor clearColor];
     cell.participantLabel.backgroundColor = [UIColor clearColor];
+    cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
+    /*
+    cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
+    cell.backgroundCardView.layer.shadowOpacity = 0.3f;
+    cell.backgroundCardView.layer.shadowRadius = 1.0f;
+    */
+
+        cell.backgroundCardView.layer.shouldRasterize = YES;
+        cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+        cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
+        cell.backgroundCardView.layer.shadowOpacity = 0.3f;
+        cell.backgroundCardView.layer.shadowRadius = 1.0f;
+        //UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:cell.backgroundCardView.bounds];
+        //cell.backgroundCardView.layer.shadowPath = shadowPath.CGPath;
+    
     
     PFObject *conversation = [conversationArray objectAtIndex:indexPath.row];
     

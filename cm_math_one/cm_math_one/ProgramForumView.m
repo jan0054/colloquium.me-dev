@@ -33,6 +33,11 @@ NSMutableArray *forumArray;
     self.inputBackgroundView.backgroundColor = [UIColor whiteColor];
     self.noForumLabel.textColor = [UIColor dark_primary];
     [self.sendButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+
     
     //data
     [self getForum:self forProgram:sourceProgram];

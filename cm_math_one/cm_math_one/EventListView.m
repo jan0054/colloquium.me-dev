@@ -145,8 +145,10 @@ InstructionsViewController *controller;
     cell.eventTimeLabel.textColor = [UIColor dark_primary];
     cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundCardView.layer.shouldRasterize = YES;
+    cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
-    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
     

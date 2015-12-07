@@ -106,10 +106,10 @@ public class DiscussionActivity extends AppCompatActivity {
         discussion_msg.put("author", ParseUser.getCurrentUser());
         switch (event_type) {
             case 0:
-                discussion_msg.put("source_talk", event_obj);
+                discussion_msg.put("source", event_obj);
                 break;
             case 1:
-                discussion_msg.put("source_poster", event_obj);
+                discussion_msg.put("source", event_obj);
                 break;
         }
         discussion_msg.saveInBackground(new SaveCallback() {

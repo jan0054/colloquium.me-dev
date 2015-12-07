@@ -124,12 +124,13 @@ NSMutableArray *selectedEventsArray;
     cell.moreLabel.textColor = [UIColor dark_accent];
     cell.timeLabel.textColor = [UIColor dark_primary];
     cell.organizerLabel.textColor = [UIColor dark_primary];
+    cell.backgroundCardView.layer.shouldRasterize = YES;
+    cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
-    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
 
-    
     UIImage *img = [UIImage imageNamed:@"event48"];
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     cell.flairImage.image = img;

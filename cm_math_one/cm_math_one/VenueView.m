@@ -26,9 +26,16 @@ NSMutableArray *venueArray;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     venueArray = [[NSMutableArray alloc] init];
+    
+    //styling
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.venueTable.estimatedRowHeight = 120.0;
     self.venueTable.rowHeight = UITableViewAutomaticDimension;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+    self.venueTable.backgroundColor = [UIColor light_primary];
     
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -155,6 +162,14 @@ NSMutableArray *venueArray;
     [cell.navButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
     cell.venueImage.layer.cornerRadius = 30.0;
     cell.venueImage.clipsToBounds = YES;
+    cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundCardView.layer.shouldRasterize = YES;
+    cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
+    cell.backgroundCardView.layer.shadowOpacity = 0.3f;
+    cell.backgroundCardView.layer.shadowRadius = 1.0f;
     
     return cell;
 }

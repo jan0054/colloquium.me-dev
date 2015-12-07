@@ -25,9 +25,9 @@ public class DiscussionAdapter extends ParseQueryAdapter<ParseObject> {
                 ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Talk");
                 innerQuery.whereEqualTo("objectId", event_objid);
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Forum");
-                query.whereMatchesQuery("source_talk", innerQuery);
+                query.whereMatchesQuery("source", innerQuery);
                 query.include("author");
-                query.include("source_talk");
+                query.include("source");
                 query.orderByAscending("createdAt");
                 return query;
             }

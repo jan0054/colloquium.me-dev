@@ -26,9 +26,16 @@ PFObject *selectedCareer;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     careerArray = [[NSMutableArray alloc] init];
+    
+    //styling
     self.careerTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    self.careerTable.backgroundColor = [UIColor light_primary];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
+    self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+
     //data
     [self getCareer:self];
     
@@ -97,6 +104,14 @@ PFObject *selectedCareer;
     cell.moreLabel.textColor = [UIColor dark_accent];
     cell.typeLabel.textColor = [UIColor dark_primary];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundCardView.layer.shouldRasterize = YES;
+    cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+    cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
+    cell.backgroundCardView.layer.shadowOpacity = 0.3f;
+    cell.backgroundCardView.layer.shadowRadius = 1.0f;
     
     PFObject *career = [careerArray objectAtIndex:indexPath.row];
     
