@@ -157,6 +157,5 @@
     <string name="feedback_email_address">csjan@tapgo.cc</string>
     <string name="privacy_url">http://colloquium.me/?page_id=3348</string>
     <string name="aboutus_url">http://colloquium.me</string>
-    <string name="title_activity_pdf_reader">PdfReaderActivity</string>
 
 </resources>
