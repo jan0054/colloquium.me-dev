@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Data upload</title>
+  <meta name="description" content="CM Web">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+  <script type="text/javascript" src="js/CSJSRequestObject.js"></script>
+  <script type="text/javascript" src="js/lang_zh.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+
+  <script language="javascript">
+  function addPDF()
+  {
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Talk");
+
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo('objectId', talkpdf_id.value);
+	itemcheck.find({
+		success: function(results){
+			var object;
+			if(results.length>0) {
+				object=results[0];	
+
+				if(talkpdf_pdf.value!=""){
+					var fileUploadControl = talkpdf_pdf;
+					if (fileUploadControl.files.length > 0) {
+						var file = fileUploadControl.files[0];
+						var fileName = file.name;
+						var parseFile = new Parse.File(fileName, file);
+						object.set('pdf', parseFile);
+
+						object.save(null, {
+							success: function(object){
+							window.location = "addpdf.html?id=null";
+							parent.listFrame.location = "list.html?type=pdf";
+							},
+							error: function(object, error){
+								alert('Failed to create new object, with error code: ' + error.message);
+							}
+						});
+					}
+				}
+				else {
+					alert(AL_emptyfile);
+				}
+			}
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+  function searchTalk()
+  {
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Talk");
+
+	var itemcheck = new Parse.Query(ListItem);
+    itemcheck.equalTo('objectId', talkpdf_id.value);
+	itemcheck.find({
+		success: function(results){
+			if(results.length>0) {
+				var object=results[0];
+				talkpdf_name.innerHTML = object.get('name');
+				if(object.get('pdf') != null)
+				{
+					alert(STR_6);
+					talkpdf_filename.innerHTML = object.get('pdf').name();
+				}
+			}
+			else {
+				alert('This is a new talk!');
+			}
+		},
+		error: function(error){
+			alert('Failed to search object, with error code: ' + error.message);
+		}
+	});
+  }
+
+  var talkid = Request.QueryString("id");
+
+  function loadTalkId()
+  {
+  	if(talkid != 'null')
+  	{
+  		talkpdf_id.value = talkid;
+  		searchTalk();
+  	}
+  }
+  </script>
+</head>
+
+<body>
+	<h1><script>dw(TT_addtalkpdf)</script></h1>
+	<h2><script>dw(STR_5+"<br>"+STR_filenote);</script></h2>
+	<div id="add_talkpdf">
+		<table align="center">
+			<tr>
+				<td class="tbleft"><script>dw(STR_talk+STR_name)</script></td>
+				<td class="tb1"><div id="talkpdf_name"></div></td>
+			</tr>
+			<tr>
+				<td class="tbleft"><script>dw(STR_pdffile);</script></td>
+				<td><input type="file" class="FileSize" id="talkpdf_pdf"></td>
+			</tr>
+			</tr>
+				<td class="tbleft"><script>dw(STR_pdffilename+'<br>'+STR_filenamenote)</script></td>
+				<td class="tb1"><div id="talkpdf_filename"></div><input class="InputSize" type="hidden" id="talkpdf_id"></td>
+			</tr>
+			<tr>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_talkpdf_submit" value="'+BT_add+'/'+BT_replace+'" onClick="addPDF();">')</script></td>
+			</tr>
+		</table>
+	</div>
+	<div><script>loadTalkId();</script>
+	</div>
+</body>
+ 

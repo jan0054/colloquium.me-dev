@@ -38,12 +38,16 @@
 
 	var itemcheck = new Parse.Query(ListItem);
     itemcheck.equalTo("email", person_email.value);
+    itemcheck.include("events");
 	itemcheck.find({
 		success: function(results){
 			var object;
 			if(results.length>0) {
 				object=results[0];				
 				selected = object.get('events');
+				if(selected == null) {
+					selected = new Array();
+				}
 			}
 			else{
 				object = new ListItem();
@@ -159,7 +163,7 @@
 				<td><input class="InputSize" type="text" id="person_webpage"></td>
 			</tr>
 			<tr>
-			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_person_submit" value="'+BT_add+'" onClick="addPerson();">')</script></td>
+			<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_person_submit" value="'+BT_add+'/'+BT_modify+'" onClick="addPerson();">')</script></td>
 			</tr>
 		</table>
 	</div>

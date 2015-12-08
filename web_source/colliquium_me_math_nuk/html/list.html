@@ -23,6 +23,7 @@
   	else if(type == "venue") title = TT_listvenue;
   	else if(type == "announce") title = TT_listannounce;
   	else if(type == "career") title = TT_listcareer;
+  	else if(type == "pdf") title = TT_listtalkpdf;
   	else title = TT_list;
   }
 
@@ -48,6 +49,9 @@
 	}
   	else if(title == TT_listcareer) {
 	  	listGetCareerWithAuthor('listresult');
+	}
+	else if(title == TT_listtalkpdf) {
+		listGetTalkPdfWithEvent('listresult');
 	}
   }
   </script>

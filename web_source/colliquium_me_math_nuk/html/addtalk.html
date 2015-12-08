@@ -116,10 +116,10 @@
 	event.id = K3;
 
 	var itemcheck = new Parse.Query(ListItem);
-    itemcheck.equalTo("name", talk_name.value);
-	itemcheck.matchesQuery("event", event);
-	itemcheck.include("author");
-	itemcheck.include("session");
+    itemcheck.equalTo('name', talk_name.value);
+	itemcheck.matchesQuery('event', event);
+	itemcheck.include('author');
+	itemcheck.include('session');
 	itemcheck.include('location');
 	itemcheck.find({
 		success: function(results){
@@ -134,7 +134,7 @@
 				talk_timestart.value = (("0"+object.get('start_time').getHours()).substr(-2)+':'+("0"+object.get('start_time').getMinutes()).substr(-2));
 				talk_timeend.value = (("0"+object.get('end_time').getHours()).substr(-2)+':'+("0"+object.get('end_time').getMinutes()).substr(-2));
 			}
-			else{
+			else {
 				alert('This is a new talk!');
 			}
 		},
@@ -197,7 +197,7 @@
 				<td><textarea class="textAreaSize" id="talk_content"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_talk_submit" value="'+BT_add+'" onClick="addTalk();">')</script></td>
+				<td colspan=2 class="ApplyButton"><script>dw('<input type="button" id="add_talk_submit" value="'+BT_add+'/'+BT_modify+'" onClick="addTalk();">')</script></td>
 			</tr>
 
 		</table>

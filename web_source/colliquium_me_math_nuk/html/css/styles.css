@@ -44,7 +44,15 @@ table {
 }
 
 table .tb1 {
-	width: 300px;
+	text-align: left;
+	width: 400px;
+	color: #00F;
+}
+
+table .tbleft {
+	text-align: right;
+	width: 200px;
+	padding-right: 10px;
 }
 
 .ApplyButton {

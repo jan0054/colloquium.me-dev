@@ -189,6 +189,44 @@ function listGetSessionWithEvent(inputID)
 	})
 }
 
+function listGetTalkPdfWithEvent(inputID)
+{
+	Event = Parse.Object.extend("Event");
+	var event = new Event();
+	event.id = K3;
+
+	Parse.initialize(K1, K2);
+	ListItem = Parse.Object.extend("Talk");
+	query = new Parse.Query(ListItem);
+	query.equalTo("event", event);
+	query.limit(1000);
+	query.ascending('name');
+	query.find({
+		success: function(results){
+			var ul=document.getElementById(inputID);
+			for (var i=0; i<results.length; i++){
+				var object=results[i];
+				var li = document.createElement("li");
+				li.appendChild(document.createTextNode(object.get('name')));
+				li.setAttribute("id", object.id);
+				li.page = "addpdf.html";
+				li.type = "id";
+				li.typevalue = object.id;
+				li.style.margin = "2px";
+				li.addEventListener('click', clickItem.click, false);
+				if (object.get('pdf') != null) {
+					li.style.color = "#00D";
+				}
+				ul.appendChild(li);
+			}
+		},
+		error: function(error)
+		{
+			alert("Session Error: "+error.code+" "+error.message);
+		}
+	})
+}
+
 function listGetTalkWithEvent(inputID)
 {
 	Event = Parse.Object.extend("Event");
