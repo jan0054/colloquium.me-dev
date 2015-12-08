@@ -132,6 +132,21 @@
             android:textColor="@color/dark_accent"
             android:textSize="14sp"
             style="?android:attr/borderlessButtonStyle"/>
+        <Button
+            android:id="@+id/talk_pdfbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="@dimen/list_padding"
+            android:layout_marginBottom="@dimen/list_padding"
+            android:layout_marginLeft="@dimen/list_padding"
+            android:layout_below="@+id/talk_calendarbtn"
+            android:padding="0dp"
+            android:gravity="left"
+            android:text="@string/pdf"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/dark_accent"
+            android:textSize="14sp"
+            style="?android:attr/borderlessButtonStyle"/>
 
     </RelativeLayout>
 </RelativeLayout>

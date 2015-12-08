@@ -1,8 +1,10 @@
 package com.ashvale.cmmath_one;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
@@ -18,11 +20,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -65,6 +72,7 @@ public class TalkDetailActivity extends AppCompatActivity{
                     TextView contentLabel = (TextView) findViewById(R.id.talk_content);
                     Button discussBtn = (Button) findViewById(R.id.talk_discussionbtn);
                     Button calendarBtn = (Button) findViewById(R.id.talk_calendarbtn);
+                    Button pdfBtn = (Button) findViewById(R.id.talk_pdfbtn);
                     ImageButton fullscreenBtn = (ImageButton) findViewById(R.id.talk_fullscreen);
 
                     //contentLabel.setMovementMethod(new ScrollingMovementMethod());
@@ -100,6 +108,20 @@ public class TalkDetailActivity extends AppCompatActivity{
                             toCalendar();
                         }
                     });
+                    if (talkObject.getParseFile("pdf") != null)
+                    {
+                        pdfBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                toPdfReader();
+                            }
+                        });
+                    }
+                    else
+                    {
+                        pdfBtn.setEnabled(false);
+                    }
+
 
                 } else {
                     Log.d("cm_app", "postdetail query error: " + e);
@@ -157,6 +179,35 @@ public class TalkDetailActivity extends AppCompatActivity{
         startActivity(intent);
     }
 
+    public void toPdfReader() {
+        if (talkObject.getParseFile("pdf") != null)
+        {
+            //check to see if pdf already exist
+            final ParseFile pdfParseFile = talkObject.getParseFile("pdf");
+            String name = pdfParseFile.getName();
+            File dir = new File("/sdcard/ColloquiumMe/");
+            File outputFile = new File(dir, name);
+            if (outputFile.exists())
+            {
+                openPDF(name);
+            }
+            else
+            {
+                toast(getResources().getString(R.string.alert_download_pdf));
+                pdfParseFile.getDataInBackground(new GetDataCallback() {
+                    public void done(byte[] data, ParseException e) {
+                        if (e == null) {
+                            Log.d("cm_app", "pdf file retrieval done");
+                            savePDF(data, pdfParseFile.getName());
+                        } else {
+                            Log.d("cm_app", "pdf file retrieval error: " + e);
+                        }
+                    }
+                });
+            }
+        }
+    }
+
     public void toAuthor() {
         Intent intent = new Intent(this, PeopleDetailActivity.class);
         intent.putExtra("personID", talkObject.getParseObject("author").getObjectId());
@@ -203,6 +254,64 @@ public class TalkDetailActivity extends AppCompatActivity{
     public <T> void toPage(Intent intent, Class<T> cls) {
         intent.setClass(this, cls); //PeopleDetailsActivity.class);
         startActivity(intent);
+    }
+
+    public void savePDF(byte[] data, String name)
+    {
+        //create the file first
+        //File dir = Environment.getExternalStorageDirectory();  //this is a better way i think...
+        File dir = new File("/sdcard/ColloquiumMe/");
+        dir.mkdirs();
+        String filename = name;
+        File outputFile = new File(dir, filename);
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(outputFile);
+            fos.close();
+        }catch (Exception e) {
+            System.out.println(e);
+            Log.d("cm_app", "pdf file creation error: " + e);
+        }
+
+        //write pdf data
+        String filePath = "/sdcard/ColloquiumMe/"+name;
+        try {
+            OutputStream ops = new FileOutputStream(filePath);
+            ops.write(data);
+            ops.close();
+        }catch (Exception e) {
+            System.out.println(e);
+            Log.d("cm_app", "pdf file write error: " + e);
+        }
+
+        //open the pdf
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(outputFile), "application/pdf");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        Intent intentOpenWith = Intent.createChooser(intent, "Open With");
+        try {
+            startActivity(intentOpenWith);
+        } catch (ActivityNotFoundException e) {
+            Log.d("cm_app", "pdf file open error: " + e);
+            toast(getResources().getString(R.string.alert_no_pdf));
+        }
+    }
+
+    public void openPDF(String name)
+    {
+        File dir = new File("/sdcard/ColloquiumMe/");
+        String filename = name;
+        File outputFile = new File(dir, filename);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(outputFile), "application/pdf");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        Intent intentOpenWith = Intent.createChooser(intent, "Open With");
+        try {
+            startActivity(intentOpenWith);
+        } catch (ActivityNotFoundException e) {
+            Log.d("cm_app", "pdf file open error: " + e);
+            toast(getResources().getString(R.string.alert_no_pdf));
+        }
     }
 
 }

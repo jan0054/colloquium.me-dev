@@ -109,6 +109,7 @@
     <string name="add_calendar">加入行事曆</string>
     <string name="go_discuss_button">討論</string>
     <string name="fullscreen_button">切換顏色</string>
+    <string name="pdf">PDF</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>
@@ -142,6 +143,8 @@
 
     <!-- Alerts -->
     <string name="alert_no_user">請至少選擇一位使用者</string>
+    <string name="alert_no_pdf">您需要先安裝可閱讀PDF之程式</string>
+    <string name="alert_download_pdf">下載PDF檔案中</string>
 
     <!-- Errors -->
     <string name="error_not_login">您必須先登入</string>

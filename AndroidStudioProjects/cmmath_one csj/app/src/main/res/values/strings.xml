@@ -109,6 +109,7 @@
     <string name="add_calendar">Add to Calendar</string>
     <string name="go_discuss_button">Discuss</string>
     <string name="fullscreen_button">Toggle Color</string>
+    <string name="pdf">PDF</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>
@@ -142,6 +143,8 @@
 
     <!-- Alerts -->
     <string name="alert_no_user">Please select at least one person.</string>
+    <string name="alert_no_pdf">Please install a PDF reader app first.</string>
+    <string name="alert_download_pdf">Downloading PDF</string>
 
     <!-- Errors -->
     <string name="error_not_login">You need to log in first</string>
@@ -154,5 +157,6 @@
     <string name="feedback_email_address">csjan@tapgo.cc</string>
     <string name="privacy_url">http://colloquium.me/?page_id=3348</string>
     <string name="aboutus_url">http://colloquium.me</string>
+    <string name="title_activity_pdf_reader">PdfReaderActivity</string>
 
 </resources>
