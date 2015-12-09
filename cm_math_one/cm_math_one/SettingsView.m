@@ -19,6 +19,7 @@
 #import "UserPreferenceView.h"
 #import "InstructionsViewController.h"
 #import "PasswordResetView.h"
+#import "TutorialViewController.h"
 
 @implementation SettingsView
 
@@ -172,6 +173,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+    TutorialViewController *controller2 = [storyboard instantiateViewControllerWithIdentifier:@"tutorialcontroller"];
     //PasswordResetView *controller = (PasswordResetView *)[storyboard instantiateViewControllerWithIdentifier:@"reset_vc"];
     
     switch (indexPath.row) {
@@ -185,7 +187,8 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://colloquium.me/?page_id=3348"]];
             break;
         case 4:
-            [self performSegueWithIdentifier:@"aboutsegue" sender:self];
+            //[self performSegueWithIdentifier:@"aboutsegue" sender:self];
+            [self presentViewController:controller2 animated:YES completion:nil];
             break;
         case 5:
             [self presentViewController:controller animated:YES completion:nil];

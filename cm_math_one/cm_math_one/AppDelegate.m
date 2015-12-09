@@ -70,6 +70,12 @@
         [defaults synchronize];
     }
     
+    //set the page control style
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor dark_accent];
+    pageControl.backgroundColor = [UIColor whiteColor];
+    
     return YES;
 }
 

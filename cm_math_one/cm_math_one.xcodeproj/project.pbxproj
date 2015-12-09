@@ -33,6 +33,15 @@
 		B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */; };
 		B42C49321BE7612800C7D2E7 /* PasswordResetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B42C49311BE7612800C7D2E7 /* PasswordResetView.m */; };
 		B438E58F1B7CBFFE009D753D /* cm_math_one_splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B438E58E1B7CBFFE009D753D /* cm_math_one_splash@2x.png */; };
+		B442B2811C1827860099C257 /* PagedTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B442B2801C1827860099C257 /* PagedTutorialViewController.m */; };
+		B442B2841C1829880099C257 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B442B2831C1829880099C257 /* TutorialViewController.m */; };
+		B442B28C1C182F2F0099C257 /* tut_detail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B442B2851C182F2F0099C257 /* tut_detail.jpg */; };
+		B442B28D1C182F2F0099C257 /* tut_drawer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B442B2861C182F2F0099C257 /* tut_drawer.jpg */; };
+		B442B28E1C182F2F0099C257 /* tut_home.JPG in Resources */ = {isa = PBXBuildFile; fileRef = B442B2871C182F2F0099C257 /* tut_home.JPG */; };
+		B442B28F1C182F2F0099C257 /* tut_overview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B442B2881C182F2F0099C257 /* tut_overview.jpg */; };
+		B442B2901C182F2F0099C257 /* tut_people.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B442B2891C182F2F0099C257 /* tut_people.jpg */; };
+		B442B2911C182F2F0099C257 /* tut_picker.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B442B28A1C182F2F0099C257 /* tut_picker.jpg */; };
+		B442B2921C182F2F0099C257 /* tut_program.JPG in Resources */ = {isa = PBXBuildFile; fileRef = B442B28B1C182F2F0099C257 /* tut_program.JPG */; };
 		B44459A51B42A0CE00B200D0 /* UserPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */; };
 		B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */; };
 		B4475A361B78AE200049559A /* ChatInviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4475A351B78AE200049559A /* ChatInviteView.m */; };
@@ -208,6 +217,17 @@
 		B42C49301BE7612800C7D2E7 /* PasswordResetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordResetView.h; sourceTree = "<group>"; };
 		B42C49311BE7612800C7D2E7 /* PasswordResetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetView.m; sourceTree = "<group>"; };
 		B438E58E1B7CBFFE009D753D /* cm_math_one_splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cm_math_one_splash@2x.png"; sourceTree = "<group>"; };
+		B442B27F1C1827850099C257 /* PagedTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagedTutorialViewController.h; sourceTree = "<group>"; };
+		B442B2801C1827860099C257 /* PagedTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagedTutorialViewController.m; sourceTree = "<group>"; };
+		B442B2821C1829880099C257 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		B442B2831C1829880099C257 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		B442B2851C182F2F0099C257 /* tut_detail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tut_detail.jpg; sourceTree = "<group>"; };
+		B442B2861C182F2F0099C257 /* tut_drawer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tut_drawer.jpg; sourceTree = "<group>"; };
+		B442B2871C182F2F0099C257 /* tut_home.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tut_home.JPG; sourceTree = "<group>"; };
+		B442B2881C182F2F0099C257 /* tut_overview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tut_overview.jpg; sourceTree = "<group>"; };
+		B442B2891C182F2F0099C257 /* tut_people.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tut_people.jpg; sourceTree = "<group>"; };
+		B442B28A1C182F2F0099C257 /* tut_picker.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tut_picker.jpg; sourceTree = "<group>"; };
+		B442B28B1C182F2F0099C257 /* tut_program.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tut_program.JPG; sourceTree = "<group>"; };
 		B44459A31B42A0CE00B200D0 /* UserPreferenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceCell.h; sourceTree = "<group>"; };
 		B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceCell.m; sourceTree = "<group>"; };
 		B44459A61B42A12200B200D0 /* UserPreferenceInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceInputCell.h; sourceTree = "<group>"; };
@@ -577,6 +597,10 @@
 				B42C49311BE7612800C7D2E7 /* PasswordResetView.m */,
 				B45877A91C0D7ECB00EA8091 /* PdfReaderView.h */,
 				B45877AA1C0D7ECB00EA8091 /* PdfReaderView.m */,
+				B442B27F1C1827850099C257 /* PagedTutorialViewController.h */,
+				B442B2801C1827860099C257 /* PagedTutorialViewController.m */,
+				B442B2821C1829880099C257 /* TutorialViewController.h */,
+				B442B2831C1829880099C257 /* TutorialViewController.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -584,6 +608,13 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B442B2851C182F2F0099C257 /* tut_detail.jpg */,
+				B442B2861C182F2F0099C257 /* tut_drawer.jpg */,
+				B442B2871C182F2F0099C257 /* tut_home.JPG */,
+				B442B2881C182F2F0099C257 /* tut_overview.jpg */,
+				B442B2891C182F2F0099C257 /* tut_people.jpg */,
+				B442B28A1C182F2F0099C257 /* tut_picker.jpg */,
+				B442B28B1C182F2F0099C257 /* tut_program.JPG */,
 				B45877AC1C0D893A00EA8091 /* share48@2x.png */,
 				B45877AD1C0D893A00EA8091 /* share64@2x.png */,
 				B4A223CF1BEC9D4600B9313F /* check48@2x.png */,
@@ -800,6 +831,7 @@
 			files = (
 				B455D7A71B413B7300DCB6E4 /* Icon-Small-50@2x.png in Resources */,
 				B46402841B4662B80074DD72 /* nav64@2x.png in Resources */,
+				B442B2921C182F2F0099C257 /* tut_program.JPG in Resources */,
 				B464027D1B4662B80074DD72 /* event48@2x.png in Resources */,
 				B464028A1B4662B80074DD72 /* phone64@2x.png in Resources */,
 				B46402741B4662B80074DD72 /* addevent64@2x.png in Resources */,
@@ -812,12 +844,14 @@
 				B464028F1B4662B80074DD72 /* timeline48@2x.png in Resources */,
 				B464028B1B4662B80074DD72 /* program48@2x.png in Resources */,
 				B464028E1B4662B80074DD72 /* setting64@2x.png in Resources */,
+				B442B28F1C182F2F0099C257 /* tut_overview.jpg in Resources */,
 				B464027A1B4662B80074DD72 /* career64@2x.png in Resources */,
 				FD1FAE801B8CEC1A00771037 /* Icon-76@2x.png in Resources */,
 				B464027E1B4662B80074DD72 /* event64@2x.png in Resources */,
 				B46402941B4662B80074DD72 /* web64@2x.png in Resources */,
 				B46402921B4662B80074DD72 /* venue64@2x.png in Resources */,
 				FD1FAE7F1B8CEC1A00771037 /* Icon-76.png in Resources */,
+				B442B28E1C182F2F0099C257 /* tut_home.JPG in Resources */,
 				B46402771B4662B80074DD72 /* cancel48@2x.png in Resources */,
 				FD1FAE7D1B8CEC1A00771037 /* Icon-40.png in Resources */,
 				B41D57D31B96D86A00F558CF /* fullscreen64@2x.png in Resources */,
@@ -827,7 +861,9 @@
 				B45202ED1B72065E0070EBD7 /* checkevent48@2x.png in Resources */,
 				B4A223D61BEC9D4600B9313F /* emptycircle64@2x.png in Resources */,
 				B455D7A31B413B7300DCB6E4 /* Icon-60.png in Resources */,
+				B442B2911C182F2F0099C257 /* tut_picker.jpg in Resources */,
 				B4BE91171B4BA8AA00A46E4C /* cross64@2x.png in Resources */,
+				B442B2901C182F2F0099C257 /* tut_people.jpg in Resources */,
 				B464028D1B4662B80074DD72 /* setting48@2x.png in Resources */,
 				B46402821B4662B80074DD72 /* mail64@2x.png in Resources */,
 				FD1FAE7E1B8CEC1A00771037 /* Icon-40@2x.png in Resources */,
@@ -844,10 +880,12 @@
 				B4F04D411B81BFF300A4FCD3 /* key_down48@2x.png in Resources */,
 				B4A223D31BEC9D4600B9313F /* check48@2x.png in Resources */,
 				B489FEB71B621A8A009BB49A /* followevent48@2x.png in Resources */,
+				B442B28C1C182F2F0099C257 /* tut_detail.jpg in Resources */,
 				B464028C1B4662B80074DD72 /* program64@2x.png in Resources */,
 				B4A223D41BEC9D4600B9313F /* check64@2x.png in Resources */,
 				B455D7A61B413B7300DCB6E4 /* Icon-Small-50.png in Resources */,
 				B455D7AB1B413B7300DCB6E4 /* iTunesArtwork@2x.png in Resources */,
+				B442B28D1C182F2F0099C257 /* tut_drawer.jpg in Resources */,
 				B46402861B4662B80074DD72 /* news64@2x.png in Resources */,
 				B489FEBE1B6231EE009BB49A /* eventhome48@2x.png in Resources */,
 				B46402831B4662B80074DD72 /* nav48@2x.png in Resources */,
@@ -940,6 +978,7 @@
 				B41756131B3030EF00E1E8A5 /* TimelineView.m in Sources */,
 				B4BFB51A1B31819D0035309E /* AttachmentCell.m in Sources */,
 				B455D7701B41177400DCB6E4 /* TimelinePostView.m in Sources */,
+				B442B2811C1827860099C257 /* PagedTutorialViewController.m in Sources */,
 				B4BFB5231B3181E70035309E /* ChatBroadcastCell.m in Sources */,
 				B417561C1B3031A900E1E8A5 /* UIColor+ProjectColors.m in Sources */,
 				B455D76D1B4113B900DCB6E4 /* AttendeeDetailView.m in Sources */,
@@ -966,6 +1005,7 @@
 				B40CCC1A1B3009B500BB11B9 /* main.m in Sources */,
 				B41755F61B3019E000E1E8A5 /* LaunchView.m in Sources */,
 				B41756061B30269A00E1E8A5 /* DrawerCell.m in Sources */,
+				B442B2841C1829880099C257 /* TutorialViewController.m in Sources */,
 				B455D7881B412AE800DCB6E4 /* TimelineDetailTextCell.m in Sources */,
 				B455D77F1B4122AA00DCB6E4 /* ProgramForumCell.m in Sources */,
 				B4BFB4F81B3174280035309E /* SettingGenericCell.m in Sources */,
