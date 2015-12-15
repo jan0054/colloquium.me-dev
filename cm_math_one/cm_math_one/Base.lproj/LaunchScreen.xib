@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,26 +11,24 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchSplashEvent.png" highlightedImage="launchSplashEvent.png" translatesAutoresizingMaskIntoConstraints="NO" id="3dV-eG-nfs">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Colloquium.me" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
                     <rect key="frame" x="149" y="218" width="182" height="43"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cm_math_one_splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="rJL-wH-6eN">
-                    <rect key="frame" x="210" y="150" width="60" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="2J3-7Q-PCz"/>
-                        <constraint firstAttribute="width" constant="60" id="AkB-jE-T9y"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="rJL-wH-6eN" secondAttribute="centerX" id="5Wi-Jx-Rf8"/>
                 <constraint firstAttribute="centerY" secondItem="kId-c2-rCX" secondAttribute="centerY" id="Bj8-nB-zfl"/>
                 <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="DT9-ok-Pw3"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="rJL-wH-6eN" secondAttribute="bottom" constant="8" id="eQz-Va-tv0"/>
+                <constraint firstAttribute="bottom" secondItem="3dV-eG-nfs" secondAttribute="bottom" id="XLP-ir-1a0"/>
+                <constraint firstItem="3dV-eG-nfs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dUA-6s-wDP"/>
+                <constraint firstItem="3dV-eG-nfs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pRt-xa-l1S"/>
+                <constraint firstAttribute="trailing" secondItem="3dV-eG-nfs" secondAttribute="trailing" id="v7w-ok-gPf"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -37,6 +36,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cm_math_one_splash.png" width="2131" height="2131"/>
+        <image name="launchSplashEvent.png" width="425" height="757"/>
     </resources>
 </document>

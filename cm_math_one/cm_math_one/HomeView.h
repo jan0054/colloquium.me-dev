@@ -12,4 +12,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *homeTable;
 - (void)processData: (NSArray *) results;
 @property UIRefreshControl *pullrefresh;
+@property (strong, nonatomic) IBOutlet UILabel *emptyLabel;
+@property (strong, nonatomic) IBOutlet UIButton *addEventButton;
+- (IBAction)addEventButtonTap:(UIButton *)sender;
+
 @end

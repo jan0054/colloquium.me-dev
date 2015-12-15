@@ -11,12 +11,15 @@
 #import <ParseUI.h>
 #import "UIColor+ProjectColors.h"
 
+UILabel *noticeLabel;
+
 @implementation SignUpView
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor dark_primary];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"launchSplashEvent"]];
     [self.signUpView setLogo:[[UIImageView alloc] initWithImage:nil]];
     
     [self.signUpView.dismissButton setTintColor:[UIColor whiteColor]];
@@ -57,14 +60,18 @@
     //change keyboard type for the email field
     self.signUpView.emailField.keyboardType = UIKeyboardTypeEmailAddress;
     
-    UILabel *notice_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 95, 280, 90)];
-    [notice_label setBackgroundColor:[UIColor clearColor]];
-    [notice_label setTextColor:[UIColor whiteColor]];
-    [notice_label setText:NSLocalizedString(@"signup_welcome", nil)];
-    [notice_label setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
-    [notice_label setLineBreakMode:NSLineBreakByWordWrapping];
-    notice_label.numberOfLines = 0;
-    [self.view addSubview:notice_label];
+
+    
+    noticeLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 90, 320-32, 90)];
+    [noticeLabel setBackgroundColor:[UIColor clearColor]];
+    [noticeLabel setTextColor:[UIColor whiteColor]];
+    [noticeLabel setText:NSLocalizedString(@"signup_welcome", nil)];
+    [noticeLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0]];
+    [noticeLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    noticeLabel.numberOfLines = 0;
+    [self.view addSubview:noticeLabel];
+
+    
 }
 
 - (void)viewDidLayoutSubviews {
@@ -74,12 +81,25 @@
     float signuph = self.signUpView.signUpButton.frame.size.height;
     float signupw = self.signUpView.signUpButton.frame.size.width;
     
-    [self.signUpView.dismissButton setFrame:CGRectMake(signupx+signupw*0.25, signupy+signuph+40, signupw*0.5, signuph*0.75)];
+    float uny = self.signUpView.usernameField.frame.origin.y;
+    float unx = self.signUpView.usernameField.frame.origin.x;
+    float unh = self.signUpView.usernameField.frame.size.height;
+    float unw = self.signUpView.usernameField.frame.size.width;
+    
+    float upy = self.signUpView.passwordField.frame.origin.y;
+    float upx = self.signUpView.passwordField.frame.origin.x;
+    float uph = self.signUpView.passwordField.frame.size.height;
+    float upw = self.signUpView.passwordField.frame.size.width;
+    
+    [self.signUpView.dismissButton setFrame:CGRectMake(16, signupy+44+(signupy-upy-uph), signupw-32, 44)];
+    [self.signUpView.signUpButton setFrame:CGRectMake(16, signupy, signupw-32, 44)];
+    [self.signUpView.usernameField setFrame:CGRectMake(16, uny, unw-32, unh)];
+    [self.signUpView.passwordField setFrame:CGRectMake(16, upy, upw-32, uph)];
     
     [self.signUpView.signUpButton setTitle:NSLocalizedString(@"signup_button", nil) forState:UIControlStateNormal];
     [self.signUpView.signUpButton setTitle:NSLocalizedString(@"signup_button", nil) forState:UIControlStateHighlighted];
-
     
+    [noticeLabel setFrame:CGRectMake(16, uny/2-45, unw-32, 90)];
     
 }
 
