@@ -86,7 +86,7 @@ Parse.Cloud.beforeSave("Talk", function(request, response) {
         }
     });
 });
-  
+
 //set up search words for the class "Person"
 Parse.Cloud.beforeSave("Person", function(request, response) {
     var person = request.object;
@@ -120,9 +120,6 @@ Parse.Cloud.beforeSave("Person", function(request, response) {
     	chname = chname.split(/\b/);
     	chname = _.map(chname, toLowerCase);
     }
-    console.log("after fullname:");
-    console.log(fullname);
-    console.log(chname);
     
     var inststr = person.get("institution");
     if (inststr == null)
@@ -136,25 +133,17 @@ Parse.Cloud.beforeSave("Person", function(request, response) {
     
     var words = fname.concat(lname);
     words = words.concat(inst);
-    console.log("before concat:");
-    console.log(words);
     words = words.concat(fullname);
-    console.log("after concat:");
-    console.log(words);
     words = words.concat(chname);
-    console.log("after ch:");
-    console.log(words);
     words = _.uniq(words);
-    console.log("after unique:");
-    console.log(words);
     person.set("words", words);
     
     response.success();
 });
 
 Parse.Cloud.beforeSave(Parse.User, function(request, response) {
-	//get info of the user
-    var user_username = request.object.get("username");   //basically its the email
+	//get user info
+    var user_username = request.object.get("username");
     var user_fn = request.object.get("first_name");
     var user_ln = request.object.get("last_name");
     var user_inst = request.object.get("institution");
@@ -164,61 +153,59 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
     var user_eventswitch = request.object.get("event_status");
     var user_events = request.object.get("events");
     
-    /*
-	//do the search array (words)
-	var toLowerCase = function(w) { return w.toLowerCase(); };
-	var fullname;
-	var chname;
-	if (user_ln != null && user_fn != null) {
-		var fn = user_fn.split(/\b/);
-		var ln = user_ln.split(/\b/);
-		fullname = ln+fn;
-		fullname = _.map(fullname, toLowerCase);	
-		var cfn = user_fn;
-		var cln = user_ln;
-		chname = cln+cfn;
-		chname = chname.split(/\b/);
-		chname = _.map(chname, toLowerCase);
-	}    
-	var stopWords = ["the", "in", "and"]
-	var words;
-	if(user_fn != null)
-	{
-		words = user_fn.split(/\b/);
-	}
-	if(user_ln != null)
-	{
-		words = words.concat(user_ln.split(/\b/));
-	}
-	if(user_inst != null)
-	{
-		words = words.concat(user_inst.split(/\b/));
-	}
-	if(fullname != null)
-	{
-		words = words.concat(fullname);
-	}
-	if(chname != null)
-	{
-		words = words.concat(chname);
-	}
-	words = _.map(words, toLowerCase);
-	//words = _.filter(words, function(w) { return w.match(/^\w+$/) && ! _.contains(stopWords, w); });
-	words = _.uniq(words);
-	request.object.set("words", words);
-	*/
+    if ( user_fn != null && user_ln != null && user_username != null) 
+    {
+    	//do the search array (words)
+		var toLowerCase = function(w) { return w.toLowerCase(); };
+		var fullname;
+		var chname;
+		if (user_ln != null && user_fn != null) {
+			var fn = user_fn.split(/\b/);
+			var ln = user_ln.split(/\b/);
+			fullname = ln+fn;
+			fullname = _.map(fullname, toLowerCase);	
+			var cfn = user_fn;
+			var cln = user_ln;
+			chname = cln+cfn;
+			chname = chname.split(/\b/);
+			chname = _.map(chname, toLowerCase);
+		}    
+		var stopWords = ["the", "in", "and"]
+		var words;
+		if(user_fn != null)
+		{
+			words = user_fn.split(/\b/);
+		}
+		if(user_ln != null)
+		{
+			words = words.concat(user_ln.split(/\b/));
+		}
+		if(user_inst != null)
+		{
+			words = words.concat(user_inst.split(/\b/));
+		}
+		if(fullname != null)
+		{
+			words = words.concat(fullname);
+		}
+		if(chname != null)
+		{
+			words = words.concat(chname);
+		}
+		words = _.map(words, toLowerCase);
+		words = _.uniq(words);
+		request.object.set("words", words);
     
-    if ( user_fn != null && user_ln != null && user_username != null) {
-    	Parse.Cloud.useMasterKey();
-    	//see if theres already a person with the same email
+    	console.log("Fields present, proceeding");
 		var Person = Parse.Object.extend("Person");
 		var emailquery = new Parse.Query(Person);
+		var linked_person;
 		emailquery.equalTo("email", user_username);
 		emailquery.find().then(function(results) {
 			if (results.length == 0) {   
 					//nothing found, create new person
 					var person_obj = new Person();
-					person_obj.set("user", request.object);
+					//person_obj.set("user", request.object);
 					person_obj.set("is_user", 1);
 					person_obj.set("email", user_username);
 					person_obj.set("first_name", user_fn);
@@ -233,106 +220,68 @@ Parse.Cloud.beforeSave(Parse.User, function(request, response) {
 					return person_obj.save();
 			}
 			else {
-				for (var i = 0; i < results.length; i++) {
-					//for each person found, set his user pointer and update info
-					var person_obj = results[i];
-					person_obj.set("user", request.object);
-					person_obj.set("is_user", 1);
-					person_obj.set("first_name", user_fn);
-					person_obj.set("last_name", user_ln);
-					person_obj.set("institution", user_inst);
-					person_obj.set("link", user_link);
-					person_obj.set("email_status", user_mailswitch);
-					person_obj.set("chat_status", user_chatswitch);
-					person_obj.set("event_status", user_eventswitch);
-					person_obj.set("events", user_events);
-					console.log("Existing Person updated");
-					return person_obj.save();
-				}
+				var person_obj = results[0];
+				//person_obj.set("user", request.object);
+				person_obj.set("is_user", 1);
+				person_obj.set("first_name", user_fn);
+				person_obj.set("last_name", user_ln);
+				person_obj.set("institution", user_inst);
+				person_obj.set("link", user_link);
+				person_obj.set("email_status", user_mailswitch);
+				person_obj.set("chat_status", user_chatswitch);
+				person_obj.set("event_status", user_eventswitch);
+				person_obj.set("events", user_events);
+				console.log("Existing Person updated");
+				return person_obj.save();
 			}
 		},
 		function(error) {
+			//person query error
+			console.log("person query error " + error.code + " " + error.message);
 			response.error(error.code+" : "+error.message);
 		}).then(function(object) {
 			//person object saved successfully
+			Parse.Cloud.useMasterKey();
+			console.log("Person saved success");
+			linked_person = object;
+			request.object.set("is_person", 1);
+			request.object.set("person", linked_person);
 			response.success();
 		}, 
 		function(error) {
+			//person save error
+			console.log("person save error " + error.code + " " + error.message);
 			response.error(error.code+" : "+error.message);
 		});
     }
-    else {
+    else 
+    {
     console.log("Fields missing, skipping");
     	response.success();
     }
 });
- 
-/*
-Parse.Cloud.afterSave(Parse.User, function(request) {
-	//grab info of the user
-    var user_username = request.object.get("username");   //basically its the email
-    var user_fn = request.object.get("first_name");
-    var user_ln = request.object.get("last_name");
-    var user_inst = request.object.get("institution");
-    var user_link = request.object.get("link");
-    var user_mailswitch = request.object.get("email_status");
-    var user_chatswitch = request.object.get("chat_status");
-    var user_eventswitch = request.object.get("event_status");
-    var user_events = request.object.get("events");
-    
-    //see if theres already a person with the same email
-    var Person = Parse.Object.extend("Person");
-    var emailquery = new Parse.Query(Person);
-    emailquery.equalTo("email", user_username);
-    emailquery.find({
-        success: function(results) {
-            Parse.Cloud.useMasterKey();
-            console.log("Person query done:");
-            console.log(results.length);
-            //query done, link the user and person here 
-            if (results.length == 0) {   
-            	//nothing found, create new person
-                var person_obj = new Person();
-                person_obj.set("user", request.object);
-                person_obj.set("is_user", 1);
-                person_obj.set("email", user_username);
-                person_obj.set("first_name", user_fn);
-                person_obj.set("last_name", user_ln);
-                person_obj.set("institution", user_inst);
-                person_obj.set("link", user_link);
-                person_obj.set("email_status", user_mailswitch);
-                person_obj.set("chat_status", user_chatswitch);
-                person_obj.set("event_status", user_eventswitch);
-                person_obj.set("events", user_events);
-                console.log("New Person created");
-            }
-            else {
-            	for (var i = 0; i < results.length; i++) {
-                	//for each person found, set his user pointer and update info
-                	var person_obj = results[i];
-                	person_obj.set("user", request.object);
-                	person_obj.set("is_user", 1);
-                	person_obj.set("first_name", user_fn);
-                	person_obj.set("last_name", user_ln);
-                	person_obj.set("institution", user_inst);
-                	person_obj.set("link", user_link);
-                	person_obj.set("email_status", user_mailswitch);
-                	person_obj.set("chat_status", user_chatswitch);
-                	person_obj.set("event_status", user_eventswitch);
-                	person_obj.set("events", user_events);
-                	person_obj.save();
-                	console.log("Existing Person updated");
-            	}
-            }
-        },
-        error: function(error) {
-            console.error("Got an error " + error.code + " : " + error.message);
-            //something went wrong with the query    
-        }
-    });
-});
-*/
 
+Parse.Cloud.afterSave(Parse.User, function(request) {
+	var user_username = request.object.get("username");
+	var Person = Parse.Object.extend("Person");
+	var query = new Parse.Query(Person);
+	query.equalTo("email", user_username);
+	query.find().then(function(results) {
+		if (results.length == 0) {   
+			//some sort of error handling here?
+		}
+		else {
+			var person_obj = results[0];
+			person_obj.set("user", request.object);
+			console.log("Aftersave Person-user updated");
+			person_obj.save();
+		}
+	},
+	function(error) {
+		console.log("after save person query error " + error.code + " " + error.message);
+	});
+});
+ 
 //refreshes the User class to generate and update search words array
 Parse.Cloud.define("refreshUsers", function(request, response) {
   var query = new Parse.Query(Parse.User);
