@@ -1,15 +1,28 @@
 package com.ashvale.cmmath_one;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.provider.Settings;
+import android.util.Base64;
 import android.util.Log;
 
 import com.ashvale.cmmath_one.data._PARAMS;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
 import com.parse.ParsePush;
 import com.parse.PushService;
 import com.parse.SaveCallback;
+
+import com.facebook.FacebookSdk;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 
 
 public class cmmathApplication extends Application {
@@ -25,11 +38,16 @@ public class cmmathApplication extends Application {
         isVisible = false;
         isChat = false;
         isPerson = false;
-
+        FacebookSdk.sdkInitialize(getApplicationContext());
         Parse.initialize(this, _PARAMS.APPLICATION_ID, _PARAMS.CLIENT_KEY);
         ParseInstallation.getCurrentInstallation().saveInBackground();
         ParsePush.subscribeInBackground("global");
-        PushService.startServiceIfRequired(getApplicationContext());
+        ParseFacebookUtils.initialize(getApplicationContext());
+
+
+
+        //old stuff to fix some bugs?
+        //PushService.startServiceIfRequired(getApplicationContext());
 
         /*
         Parse.initialize(getBaseContext(), _PARAMS.APPLICATION_ID, _PARAMS.CLIENT_KEY);
@@ -46,5 +64,6 @@ public class cmmathApplication extends Application {
         */
 
     }
+
 
 }

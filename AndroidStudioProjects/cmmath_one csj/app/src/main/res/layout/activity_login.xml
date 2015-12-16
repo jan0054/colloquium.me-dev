@@ -17,7 +17,7 @@
               android:gravity="left"
               android:fontFamily="sans-serif"
               android:textColor="@color/light_primary"
-              android:text="@string/login_notice"
+              android:text=""
               android:textSize="16dp"/>
     <EditText  android:id="@+id/username"
                android:layout_width="match_parent"
@@ -63,6 +63,16 @@
               android:fontFamily="sans-serif"
               android:textColor="@color/light_primary"
               android:text="@string/signup_reminder" />
+    <Button android:id="@+id/btn_fb"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="10dp"
+        android:background="@color/facebook_blue"
+        android:onClick="toFBSignup"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/light_button_txt"
+        android:text="@string/use_fb"
+        android:textAllCaps="false"/>
     <Button android:id="@+id/btn_signup"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
