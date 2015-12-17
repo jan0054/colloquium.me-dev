@@ -142,6 +142,16 @@
         <item>Colloquium.me服務的開發團隊</item>
         <item>設定或更改使用者資訊與隱私設定</item>
     </string-array>
+    <string-array name="intro_text_array">
+        <item>Text Page 1</item>
+        <item>Text Page 2</item>
+        <item>Text Page 3</item>
+    </string-array>
+    <string-array name="intro_image_array">
+        <item>@drawable/home</item>
+        <item>@drawable/tut_overview</item>
+        <item>@drawable/tut_detail</item>
+    </string-array>
 
     <!-- Alerts -->
     <string name="alert_no_user">請至少選擇一位使用者</string>
