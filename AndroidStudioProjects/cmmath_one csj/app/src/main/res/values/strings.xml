@@ -140,6 +140,16 @@
         <item>Learn about the team behind Colloquium.me</item>
         <item>Setup or change user info and social options</item>
     </string-array>
+    <string-array name="intro_text_array">
+        <item>Text Page 1</item>
+        <item>Text Page 2</item>
+        <item>Text Page 3</item>
+    </string-array>
+    <string-array name="intro_image_array">
+        <item>@drawable/tut_home</item>
+        <item>@drawable/tut_overview</item>
+        <item>@drawable/tut_detail</item>
+    </string-array>
 
     <!-- Alerts -->
     <string name="alert_no_user">Please select at least one person.</string>

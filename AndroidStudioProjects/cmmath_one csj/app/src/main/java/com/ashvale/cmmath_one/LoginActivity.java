@@ -31,8 +31,10 @@ public class LoginActivity extends Activity {
     private EditText mUsername;
     private EditText mPassword;
     private TextView labelResetPWD;
+    private TextView labelSkip;
     private Button   btnLogin;
     protected cmmathApplication app;
+    private SharedPreferences appStatus;
     private SharedPreferences userStatus;
     private SharedPreferences savedEvents;
 
@@ -44,7 +46,19 @@ public class LoginActivity extends Activity {
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
         labelResetPWD = (TextView) findViewById(R.id.resetpwdLabel);
+        labelSkip = (TextView) findViewById(R.id.skipLabel);
         btnLogin  = (Button) findViewById(R.id.btn_login);
+
+        appStatus = getSharedPreferences("INTRO", 0); //6 = readable+writable by other apps, use 0 for private
+
+        int skipintro = appStatus.getInt("skipintro", 0);
+        if (skipintro == 0)
+        {
+            Intent intent = new Intent(this, IntroActivity.class);
+            intent.putExtra("src", "login");
+            startActivity(intent);
+            finish();
+        }
 
         if (isLogin())
             skip(null);
@@ -53,6 +67,13 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 toResetPwdPage();
+            }
+        });
+
+        labelSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skip(null);
             }
         });
 
@@ -91,6 +112,7 @@ public class LoginActivity extends Activity {
         }
 
     }
+
     public boolean isLogin() {
         ParseUser user = ParseUser.getCurrentUser();
         Log.d(TAG, "User Existing: " + (user != null));

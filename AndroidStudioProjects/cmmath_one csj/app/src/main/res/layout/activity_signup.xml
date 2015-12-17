@@ -7,7 +7,7 @@
               android:paddingTop="20dp"
               android:paddingBottom="10dp"
               android:orientation="vertical"
-              android:background="@color/dark_bg" >
+              android:background="@drawable/launchsplashevent" >
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="20dp"
