@@ -75,13 +75,6 @@
               android:fontFamily="sans-serif"
               android:textColor="@color/light_primary"
               android:text="@string/resetpwd_reminder" />
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:alpha="0.7"
-              android:gravity="center"
-              android:fontFamily="sans-serif"
-              android:textColor="@color/light_primary"
-              android:text="@string/signup_reminder" />
     <Button android:id="@+id/btn_fb"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"

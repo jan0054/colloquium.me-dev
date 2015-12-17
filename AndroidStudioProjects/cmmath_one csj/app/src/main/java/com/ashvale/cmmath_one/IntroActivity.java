@@ -77,6 +77,14 @@ public class IntroActivity extends Activity {
                     btnFinish.setVisibility(View.VISIBLE);
                     btnFinish.setEnabled(true);
                     btnFinish.setClickable(true);
+                } else if (position == 1){
+                    mRadio.check(R.id.radioButton2);
+                    btnLeave.setVisibility(View.INVISIBLE);
+                    btnLeave.setEnabled(false);
+                    btnLeave.setClickable(false);
+                    btnFinish.setVisibility(View.INVISIBLE);
+                    btnFinish.setEnabled(false);
+                    btnFinish.setClickable(false);
                 } else {
                     mRadio.check(R.id.radioButton2);
                     btnLeave.setVisibility(View.INVISIBLE);
