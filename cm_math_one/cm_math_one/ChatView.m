@@ -237,7 +237,7 @@ PFUser *loggedinUser;
 
 - (void)updateConversationObject
 {
-    [self.currentConversation fetchInBackgroundWithBlock:^(PFObject *PF_NULLABLE_S object,  NSError *PF_NULLABLE_S error){
+    [self.currentConversation fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
         self.currentConversation = object;
         [self getChat:self withConversation:self.currentConversation];
         self.participants = self.currentConversation[@"participants"];

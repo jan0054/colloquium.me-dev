@@ -97,6 +97,7 @@
 "reset_welcome" = "請輸入您當初註冊使用的Email，我們將發送信件讓您重新設定密碼。";
 "reset_button" = "重設密碼";
 "reset_cancel" = "取消";
+"fb_login" = "使用Facebook登入";
 
 //chat
 "person_invite" = "邀請";
@@ -105,3 +106,9 @@
 //pdf
 "open_with" = "開啟..";
 "exit" = "離開";
+
+//home
+"empty_label" = "您還沒有關注任何會議！點選下方按鈕來選取會議";
+"add_event" = "新增會議";
+
+

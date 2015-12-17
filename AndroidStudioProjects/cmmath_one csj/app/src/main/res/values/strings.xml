@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Colloquium.me</string>
+    <string name="facebook_app_id">882603405141449</string>
 
     <!-- Activity Titles -->
     <string name="title_activity_chat">Conversation</string>
@@ -61,6 +62,7 @@
     <string name="signup_notice">Your information is stored securely on our servers, and will never be shared with a 3rd party outside of event organizers without your consent.</string>
     <string name="resetpwd_notice">Please enter the email you used to register, we will send you an email to reset your password.</string>
     <string name="resetpwd_message">Please check your email</string>
+    <string name="use_fb">Log in with Facebook</string>
 
     <!--Labels: general -->
     <string name="signout">Sign Out</string>

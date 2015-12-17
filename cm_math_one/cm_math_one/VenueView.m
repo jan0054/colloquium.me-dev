@@ -67,9 +67,10 @@ NSMutableArray *venueArray;
 }
 
 - (IBAction)callButtonTap:(UIButton *)sender {
-    VenueCell *cell = (VenueCell *)[[[[sender superview] superview] superview] superview];
+    VenueCell *cell = (VenueCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
     PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
+    
     NSString *rawphone = venue[@"phone"];
     if (rawphone.length>1)
     {
@@ -79,10 +80,12 @@ NSMutableArray *venueArray;
 }
 
 - (IBAction)webButtonTap:(UIButton *)sender {
-    VenueCell *cell = (VenueCell *)[[[[sender superview] superview] superview] superview];
+    VenueCell *cell = (VenueCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
     PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
     NSString *urlstr = venue[@"url"];
+    
+    NSLog(@"VENUE PATH: %li, %@", (long)tapped_path.row, urlstr);
     if (urlstr.length>1)
     {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlstr]];
@@ -90,7 +93,7 @@ NSMutableArray *venueArray;
 }
 
 - (IBAction)navButtonTap:(UIButton *)sender {
-    VenueCell *cell = (VenueCell *)[[[[sender superview] superview] superview] superview];
+    VenueCell *cell = (VenueCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.venueTable indexPathForCell:cell];
     PFObject *venue = [venueArray objectAtIndex:tapped_path.row];
     PFGeoPoint *location = venue[@"coord"];

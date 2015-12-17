@@ -1,5 +1,14 @@
 PODS:
-  - Bolts/Tasks (1.3.0)
+  - Bolts (1.5.0):
+    - Bolts/AppLinks (= 1.5.0)
+    - Bolts/Tasks (= 1.5.0)
+  - Bolts/AppLinks (1.5.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.5.0)
+  - FBSDKCoreKit (4.9.0-beta2):
+    - Bolts (~> 1.5)
+  - FBSDKLoginKit (4.9.0-beta2):
+    - FBSDKCoreKit (~> 4.9.0-beta)
   - GKImagePicker@robseward (0.0.8)
   - MMDrawerController (0.6.0):
     - MMDrawerController/Core (= 0.6.0)
@@ -13,26 +22,38 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
-  - Parse (1.9.0):
-    - Bolts/Tasks (>= 1.3.0)
-  - ParseUI (1.1.6):
-    - Bolts/Tasks (~> 1.2)
-    - Parse (~> 1.8)
+  - Parse (1.11.0):
+    - Bolts/Tasks (~> 1.5)
+  - ParseFacebookUtilsV4 (1.10.0):
+    - Bolts/Tasks (>= 1.5)
+    - FBSDKCoreKit (~> 4.9.0-beta)
+    - FBSDKLoginKit (~> 4.9.0-beta)
+    - FBSDKTVOSKit (~> 4.9.0-beta)
+    - Parse (~> 1.11)
+  - ParseUI (1.1.7):
+    - Bolts/Tasks (~> 1.3)
+    - Parse (~> 1.9)
   - SZTextView (1.2.1)
 
 DEPENDENCIES:
+  - FBSDKCoreKit (= 4.9.0-beta2)
+  - FBSDKLoginKit (= 4.9.0-beta2)
   - GKImagePicker@robseward (~> 0.0)
   - MMDrawerController
   - Parse
+  - ParseFacebookUtilsV4
   - ParseUI
   - SZTextView
 
 SPEC CHECKSUMS:
-  Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  FBSDKCoreKit: d49cbf69741e3c5732166ec9ff4cbd9b288dd53e
+  FBSDKLoginKit: d32e83c0d2d39ef74a942543cacae2dc4de7d088
   GKImagePicker@robseward: 799e3c8e8aa44991cd40a9fba287f0083931fd7b
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
-  Parse: 712efbc476d4f47b0f96b70db7e53101575753aa
-  ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
+  Parse: 886af46a0a677402f6374bb97ac212e795f70afe
+  ParseFacebookUtilsV4: 3cd2d2d69653bad40c8c58131b935c353a0f3f15
+  ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
   SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
 
 COCOAPODS: 0.39.0

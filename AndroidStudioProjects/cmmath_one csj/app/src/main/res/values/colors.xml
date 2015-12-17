@@ -86,6 +86,7 @@
     <color name="light_blue">#A2B1CC</color>
     <color name="section_background">#DDDDDD</color>
     <color name="section_text">#000000</color>
+    <color name="facebook_blue">#3B5998</color>
 
     <!-- Colors for HEP app -->
     <color name="accent_color">#E19800</color>

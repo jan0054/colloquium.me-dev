@@ -220,7 +220,7 @@
         // Customize the Log In View Controller
         LoginView *logInViewController = [[LoginView alloc] init];
         [logInViewController setDelegate:self];
-        [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword ];
+        [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsFacebook];
         
         // Create the sign up view controller
         SignUpView *signUpViewController = [[SignUpView alloc] init];

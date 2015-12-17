@@ -3,8 +3,12 @@ package com.ashvale.cmmath_one;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +16,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.json.JSONObject;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -41,6 +52,11 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //get the FB login hash key
+        //String keyresult = printKeyHash(this);
+        //Log.d("cm_app", "HASHKEY:"+keyresult);
+
         setContentView(R.layout.activity_login);
 
         mUsername = (EditText) findViewById(R.id.username);
@@ -199,7 +215,7 @@ public class LoginActivity extends Activity {
                     }
                 });
 
-        Log.d(TAG, "U/P: " + mUsername.getText().toString() + ", " + mPassword.getText().toString());
+        //Log.d(TAG, "U/P: " + mUsername.getText().toString() + ", " + mPassword.getText().toString());
     }
 
     public void toSignupPage(View view) {
@@ -216,6 +232,95 @@ public class LoginActivity extends Activity {
         toast("Error (" + code + "): " + msg + "!");
         btnLogin.setEnabled(true);
     }
+
+    public void toFBSignup (View view) {
+        ParseFacebookUtils.logInWithReadPermissionsInBackground(this, null, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException err) {
+                if (user == null) {
+                    Log.d("cm_app", "User cancelled the Facebook login.");
+                } else if (user.isNew()) {
+                    Log.d("cm_app", "User signed up and logged in through Facebook!");
+
+                    userStatus = getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+                    SharedPreferences.Editor editor = userStatus.edit();
+                    editor.putInt("skiplogin", 1);
+                    editor.commit();
+
+                    //after successful login, associate user to installation(this phone), in order to receive push notifications
+                    ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                    installation.put("user", ParseUser.getCurrentUser());
+                    installation.saveInBackground();
+
+                    toPreferencePage();
+                } else {
+                    Log.d("cm_app", "User logged in through Facebook!");
+
+                    userStatus = getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+                    SharedPreferences.Editor editor = userStatus.edit();
+                    editor.putInt("skiplogin", 1);
+                    editor.commit();
+
+                    //after successful login, associate user to installation(this phone), in order to receive push notifications
+                    ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                    installation.put("user", ParseUser.getCurrentUser());
+                    installation.saveInBackground();
+
+                    toPreferencePage();
+                }
+            }
+        });
+    }
+
+    private void toPreferencePage() {
+        Intent intent = new Intent(this, UserPreferenceActivity.class);
+        intent.putExtra("src", "signup");
+        startActivity(intent);
+        finish();
+    }
+
+    //used by Facebook SDK to open the FB app or FB website
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+    }
+
+    //tool to get the app hash key used for FB login ***this is only the dev key, release key needs keystore!
+    /*
+    public static String printKeyHash(Activity context) {
+        PackageInfo packageInfo;
+        String key = null;
+        try {
+            //getting application package name, as defined in manifest
+            String packageName = context.getApplicationContext().getPackageName();
+
+            //Retriving package info
+            packageInfo = context.getPackageManager().getPackageInfo(packageName,
+                    PackageManager.GET_SIGNATURES);
+
+            Log.e("Package Name=", context.getApplicationContext().getPackageName());
+
+            for (Signature signature : packageInfo.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                key = new String(Base64.encode(md.digest(), 0));
+
+                // String key = new String(Base64.encodeBytes(md.digest()));
+                Log.e("Key Hash=", key);
+            }
+        } catch (PackageManager.NameNotFoundException e1) {
+            Log.e("Name not found", e1.toString());
+        }
+        catch (NoSuchAlgorithmException e) {
+            Log.e("No such an algorithm", e.toString());
+        } catch (Exception e) {
+            Log.e("Exception", e.toString());
+        }
+
+        return key;
+    }
+    */
 
 /*    public void saveEvents(ParseUser user)
     {

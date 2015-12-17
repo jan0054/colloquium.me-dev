@@ -30,6 +30,16 @@ NSMutableArray *selectedEventsArray;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     selectedEventsArray = [[NSMutableArray alloc] init];
+    self.emptyLabel.text = NSLocalizedString(@"empty_label", nil);
+    self.emptyLabel.textColor = [UIColor dark_primary];
+    [self.addEventButton setTitle:NSLocalizedString(@"add_event", nil) forState:UIControlStateNormal];
+    [self.addEventButton setTitle:NSLocalizedString(@"add_event", nil) forState:UIControlStateHighlighted];
+    [self.addEventButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    [self.addEventButton setTitleColor:[UIColor dark_accent] forState:UIControlStateHighlighted];
+    self.emptyLabel.hidden = YES;
+    self.emptyLabel.userInteractionEnabled = NO;
+    self.addEventButton.hidden = YES;
+    self.addEventButton.userInteractionEnabled = NO;
     
     //styling
     self.homeTable.tableFooterView = [[UIView alloc] init];
@@ -74,6 +84,12 @@ NSMutableArray *selectedEventsArray;
 
 - (void)leftDrawerButtonPress:(id)leftDrawerButtonPress {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (IBAction)addEventButtonTap:(UIButton *)sender {
+    UIViewController *centerViewController;
+    centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"eventchoose_nc"];
+    [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
 }
 
 #pragma mark - TableView
@@ -153,6 +169,21 @@ NSMutableArray *selectedEventsArray;
     [selectedEventsArray removeAllObjects];
     selectedEventsArray = [results mutableCopy];
     [self.homeTable reloadData];
+    
+    if (selectedEventsArray.count==0)
+    {
+        self.emptyLabel.hidden = NO;
+        self.emptyLabel.userInteractionEnabled = YES;
+        self.addEventButton.hidden = NO;
+        self.addEventButton.userInteractionEnabled = YES;
+    }
+    else
+    {
+        self.emptyLabel.hidden = YES;
+        self.emptyLabel.userInteractionEnabled = NO;
+        self.addEventButton.hidden = YES;
+        self.addEventButton.userInteractionEnabled = NO;
+    }
 }
 
 - (void) setCurrentEventIdForRow: (int)row

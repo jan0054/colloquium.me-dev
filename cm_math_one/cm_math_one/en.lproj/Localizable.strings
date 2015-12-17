@@ -98,6 +98,7 @@
 "reset_welcome" = "Please enter the Email you used to sign up, we will send you the password reset link.";
 "reset_button" = "Reset Password";
 "reset_cancel" = "Cancel";
+"fb_login" = "Log in with Facebook";
 
 //chat
 "person_invite" = "Invite";
@@ -106,3 +107,7 @@
 //pdf
 "open_with" = "Open With..";
 "exit" = "Exit";
+
+//home
+"empty_label" = "You're not following any events yet! Tap the button below to get started";
+"add_event" = "Add Events";
