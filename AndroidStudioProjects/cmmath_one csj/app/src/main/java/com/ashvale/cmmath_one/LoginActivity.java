@@ -65,7 +65,7 @@ public class LoginActivity extends Activity {
         labelSkip = (TextView) findViewById(R.id.skipLabel);
         btnLogin  = (Button) findViewById(R.id.btn_login);
 
-        appStatus = getSharedPreferences("INTRO", 0); //6 = readable+writable by other apps, use 0 for private
+/*        appStatus = getSharedPreferences("INTRO", 0); //6 = readable+writable by other apps, use 0 for private
 
         int skipintro = appStatus.getInt("skipintro", 0);
         if (skipintro == 0)
@@ -75,7 +75,7 @@ public class LoginActivity extends Activity {
             startActivity(intent);
             finish();
         }
-
+*/
         if (isLogin())
             skip(null);
 

@@ -148,7 +148,7 @@
         <item>Text Page 3</item>
     </string-array>
     <string-array name="intro_image_array">
-        <item>@drawable/tut_home</item>
+        <item>@drawable/home</item>
         <item>@drawable/tut_overview</item>
         <item>@drawable/tut_detail</item>
     </string-array>
