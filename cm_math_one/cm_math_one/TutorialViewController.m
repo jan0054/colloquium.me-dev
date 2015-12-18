@@ -15,11 +15,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.exitButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     [self.exitButton setTitleColor:[UIColor dark_accent] forState:UIControlStateHighlighted];
     
-    _pageImages = @[@"tut_picker.jpg", @"tut_home.jpg", @"tut_overview.jpg", @"tut_drawer.jpg", @"tut_program.jpg"];
+    
+    _pageImages = @[@"tut_choose_event", @"tut_home", @"tut_drawer", @"tut_overview"];
+    _pageTitles = @[NSLocalizedString(@"choose_event_title", nil), NSLocalizedString(@"home_title", nil), NSLocalizedString(@"drawer_title", nil), NSLocalizedString(@"overview_title", nil)];
+    _pageContent = @[NSLocalizedString(@"choose_event_content", nil), NSLocalizedString(@"home_content", nil), NSLocalizedString(@"drawer_content", nil), NSLocalizedString(@"overview_content", nil)];
     
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialpvc"];
     self.pageViewController.dataSource = self;
@@ -29,7 +32,7 @@
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
@@ -73,6 +76,8 @@
     
     PagedTutorialViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialpage"];
     controller.imageName = self.pageImages[index];
+    controller.titleText = self.pageTitles[index];
+    controller.contentText = self.pageContent[index];
     controller.pageIndex = index;
     
     return controller;

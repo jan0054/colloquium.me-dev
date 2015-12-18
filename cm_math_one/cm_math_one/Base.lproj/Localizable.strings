@@ -72,6 +72,8 @@
 "web_page" = "Web Page";
 "optional" = "Optional";
 "required" = "Required";
+"tutorial_title" = "Tutorial";
+"tutorial_detail" = "Take a quick tour of major features";
 
 //Timeline/Post
 "post_add_photo" = " Add Photo";
@@ -110,4 +112,14 @@
 //home
 "empty_label" = "You're not following any events yet! Tap the button below to get started";
 "add_event" = "Add Events";
+
+//tutorial
+"choose_event_title" = "Follow events that interest you";
+"choose_event_content" = "Choose events that you want to follow, they'll show up in your home screen and side drawer. You can come back and change your selection at any time.";
+"drawer_title" = "Access common features";
+"drawer_content" = "Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer. Here you'll find access to most common features.";
+"overview_title" = "View event details";
+"overview_content" = "This is the event overview page, to see specific talks or attendees, tap on the different tabs near the bottom of the screen.";
+"home_title" = "View all followed events";
+"home_content" = "This is the home screen, where all the events you are following are displayed. Tap any event to view the details. To change the events displayed here, tap Edit Events from the side drawer.";
 

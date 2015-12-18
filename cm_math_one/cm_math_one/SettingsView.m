@@ -83,12 +83,12 @@
 {
     if (![PFUser currentUser])
     {
-        return 5;
+        return 6;
     }
     else
     {
         //add a user preference row
-        return 6;
+        return 7;
     }
 }
 
@@ -158,6 +158,12 @@
             return genericCell;
             break;
         case 5:
+            genericCell.primaryLabel.text = NSLocalizedString(@"tutorial_title", nil);
+            genericCell.secondaryLabel.text = NSLocalizedString(@"tutorial_detail", nil);
+            genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return genericCell;
+            break;
+        case 6:
             genericCell.primaryLabel.text = NSLocalizedString(@"pref_title", nil);
             genericCell.secondaryLabel.text = NSLocalizedString(@"pref_sub", nil);
             genericCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -187,10 +193,12 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://colloquium.me/?page_id=3348"]];
             break;
         case 4:
-            //[self performSegueWithIdentifier:@"aboutsegue" sender:self];
-            [self presentViewController:controller2 animated:YES completion:nil];
+            [self performSegueWithIdentifier:@"aboutsegue" sender:self];
             break;
         case 5:
+            [self presentViewController:controller2 animated:YES completion:nil];
+            break;
+        case 6:
             [self presentViewController:controller animated:YES completion:nil];
             break;
         default:
@@ -269,12 +277,14 @@
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
+    /*
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:NSLocalizedString(@"alert_sign_later", nil)
                                                    delegate:self
                                           cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
                                           otherButtonTitles:nil];
     [alert show];
+    */
 }
 
 // Sent to the delegate to determine whether the sign up request should be submitted to the server.

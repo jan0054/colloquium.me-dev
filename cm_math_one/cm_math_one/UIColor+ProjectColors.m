@@ -37,7 +37,7 @@
 }
 + (UIColor*) light_primary
 {
-    return [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1];
+    return [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1];
 }
 + (UIColor*) dark_accent
 {

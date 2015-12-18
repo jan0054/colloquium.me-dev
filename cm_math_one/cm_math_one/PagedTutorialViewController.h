@@ -10,7 +10,14 @@
 
 @interface PagedTutorialViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *tutorialImageView;
+
 @property NSString *imageName;
+@property NSString *titleText;
+@property NSString *contentText;
+
 @property int pageIndex;
+@property (strong, nonatomic) IBOutlet UIView *lowerBackgroundView;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *contentLabel;
 
 @end

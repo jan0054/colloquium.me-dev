@@ -7,12 +7,17 @@
 //
 
 #import "PagedTutorialViewController.h"
+#import "UIColor+ProjectColors.h"
 
 @implementation PagedTutorialViewController
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.lowerBackgroundView.backgroundColor = [UIColor whiteColor];
+    self.tutorialImageView.backgroundColor = [UIColor light_primary];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.tutorialImageView.image = [UIImage imageNamed:self.imageName];
+    self.titleLabel.text = self.titleText;
+    self.contentLabel.text = self.contentText;
 }
 @end

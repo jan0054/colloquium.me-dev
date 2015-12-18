@@ -16,7 +16,7 @@
     [super viewDidLoad];
     
     //styling
-    self.view.backgroundColor = [UIColor dark_primary];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"launchSplashEvent"]];
     self.welcomeLabel.textColor = [UIColor whiteColor];
     [self.resetButton setBackgroundColor:[UIColor accent_color]];
     [self.cancelButton setBackgroundColor:[UIColor accent_color]];

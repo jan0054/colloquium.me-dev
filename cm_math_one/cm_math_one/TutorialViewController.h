@@ -11,6 +11,8 @@
 @interface TutorialViewController : UIViewController<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *pageImages;
+@property (strong, nonatomic) NSArray *pageTitles;
+@property (strong, nonatomic) NSArray *pageContent;
 - (IBAction)exitButtonTap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *exitButton;
 
