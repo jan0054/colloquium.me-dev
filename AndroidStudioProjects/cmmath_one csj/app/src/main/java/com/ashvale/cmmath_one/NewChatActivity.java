@@ -140,7 +140,7 @@ public class NewChatActivity extends AppCompatActivity {
     //main method for creating a new conversation
     public void createConversation(List<ParseUser> participants)
     {
-        //save a copy of the original participants without self, for use in broadcast
+        //save a copy of the original participants without self, for use in later push notification
         final List<ParseUser> noSelfParticipants = participants;
 
         //add self to the list of participants
@@ -150,6 +150,7 @@ public class NewChatActivity extends AppCompatActivity {
         //create the conversation object
         final ParseObject conversation = new ParseObject("Conversation");
         conversation.addAll("participants", participants);
+
         //process everybody's names
         String selfName = selfUser.getString("first_name")+" "+selfUser.getString("last_name");
         String nameList = "";
@@ -170,7 +171,7 @@ public class NewChatActivity extends AppCompatActivity {
         }
         final String last_msg = selfName+" created conversation with: "+nameList;
 
-        conversation.put("last_msg", last_msg);  //remove when broadcast is done, since broadcast also does this already
+        conversation.put("last_msg", last_msg);  //broadcast also does this already (redundancy doesn't hurt...i guess?)
         Date date = new Date();
         conversation.put("last_time", date);     //same as above
         conversation.put("is_group", 1);
