@@ -137,20 +137,20 @@ public class NewChatActivity extends AppCompatActivity {
         });
     }
 
+    //main method for creating a new conversation
     public void createConversation(List<ParseUser> participants)
     {
+        //save a copy of the original participants without self, for use in broadcast
+        final List<ParseUser> noSelfParticipants = participants;
+
+        //add self to the list of participants
         final ParseUser selfUser = ParseUser.getCurrentUser();
-        //ParseUser selfPar = ParseUser.getCurrentUser();
-        //Log.d("cm_app", "Before add self: " + participants.size());
         participants.add(selfUser);
-        for (ParseUser someuser : participants)
-        {
-            Log.d("cm_app", "USER LISTING: " + someuser.getObjectId());
-        }
-        //List<ParseUser> finalParts = participants;
-        //Log.d("cm_app", "After add self: " + participants.size());
+
+        //create the conversation object
         final ParseObject conversation = new ParseObject("Conversation");
         conversation.addAll("participants", participants);
+        //process everybody's names
         String selfName = selfUser.getString("first_name")+" "+selfUser.getString("last_name");
         String nameList = "";
         for (ParseUser user : participants)
@@ -169,6 +169,7 @@ public class NewChatActivity extends AppCompatActivity {
             }
         }
         final String last_msg = selfName+" created conversation with: "+nameList;
+
         conversation.put("last_msg", last_msg);  //remove when broadcast is done, since broadcast also does this already
         Date date = new Date();
         conversation.put("last_time", date);     //same as above
@@ -178,14 +179,16 @@ public class NewChatActivity extends AppCompatActivity {
             public void done(com.parse.ParseException e) {
                 if (e == null) {
                     //send broadcast
-                    sendBroadcast(selfUser, last_msg, conversation);
+                    sendBroadcast(selfUser, last_msg, conversation, noSelfParticipants);
                 } else {
+                    //conversation creation error
                 }
             }
         });
     }
 
-    public void sendBroadcast(final ParseUser author, final String content, final ParseObject conversation)
+    //send a broadcast-type chat message to the "conversation", from the "author" user object, with "content" string, also send push notification to participants in the "conversation"
+    public void sendBroadcast(final ParseUser author, final String content, final ParseObject conversation, final List<ParseUser> participants)
     {
         ParseObject chat = new ParseObject("Chat");
         chat.put("author", author);
@@ -210,8 +213,10 @@ public class NewChatActivity extends AppCompatActivity {
                     } catch (JSONException e1) {
                         e1.printStackTrace();
                     }
-                    // Create our Installation query
-                    List<ParseUser> allParticipants = totalInvitees;
+
+                    //we don't need this anymore since participants does not include self now
+                    /*
+                    List<ParseUser> allParticipants = selectedInvitees;
                     int selfIncluded = 0;
                     for (ParseUser user : allParticipants) {
                         if (user.getObjectId().equals(author.getObjectId())) {
@@ -222,9 +227,11 @@ public class NewChatActivity extends AppCompatActivity {
                     {
                         allParticipants.remove(author);
                     }
+                    */
 
+                    // Create our Installation query
                     ParseQuery pushQuery = ParseInstallation.getQuery();
-                    pushQuery.whereContainedIn("user", allParticipants);
+                    pushQuery.whereContainedIn("user", participants);
                     // Send push notification to query
                     ParsePush push = new ParsePush();
                     push.setQuery(pushQuery); // Set our Installation query
@@ -232,7 +239,7 @@ public class NewChatActivity extends AppCompatActivity {
                     push.setData(pn);
                     push.sendInBackground();
 
-                    //go to the chat view, but somehow unload this view...(to-do)
+                    // TO-DO go to the chat view, but somehow unload this view...
                     String convid = conversation.getObjectId();
                     Intent intent = new Intent(NewChatActivity.this, ChatActivity.class);
                     intent.putExtra("convid", convid);
