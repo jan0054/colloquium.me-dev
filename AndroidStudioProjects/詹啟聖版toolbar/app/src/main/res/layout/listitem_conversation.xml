@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_item"
+    android:padding="@dimen/list_margin">
+
+    <TextView
+        android:id="@+id/conversationTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/list_padding"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-light"
+        android:text="last time" />
+
+    <TextView
+        android:id="@+id/conversationName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conversationTime"
+        android:textColor="@color/primary_text"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:text="participant names" />
+
+    <TextView
+        android:id="@+id/conversationMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/list_margin"
+        android:layout_marginTop="@dimen/list_margin"
+        android:layout_below="@+id/conversationName"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/dark_primary"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:text="last message" />
+
+</RelativeLayout>

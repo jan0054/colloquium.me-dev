@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_addevent"
+            android:icon="@drawable/addevent"
+            android:title="@string/title_activity_addevent" />
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/title_home" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_message"
+                android:icon="@drawable/chat"
+                android:title="@string/title_chat" />
+            <item
+                android:id="@+id/nav_career"
+                android:icon="@drawable/career"
+                android:title="@string/title_career" />
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/setting"
+                android:title="@string/title_settings" />
+        </menu>
+    </item>
+
+</menu>

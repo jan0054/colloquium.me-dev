@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/feed_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/list_margin"
+    android:background="@color/light_bg"
+    android:gravity="start"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/listheight_settings">
+        <TextView
+            android:id="@+id/primarylabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User management primary label"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/textSize_subtitle"/>
+        <TextView
+            android:id="@+id/secondarylabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/primarylabel"
+            android:layout_marginTop="@dimen/listicon_margin"
+            android:text="User management secondary label"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/textSize_detail"/>
+        <Button
+            android:id="@+id/userbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:focusable="false"
+            android:background="#00000000"
+            android:text="@string/settingsignup"
+            android:textColor="@color/dark_accent"
+            style="?android:attr/borderlessButtonStyle"/>
+    </RelativeLayout>
+
+</RelativeLayout>
