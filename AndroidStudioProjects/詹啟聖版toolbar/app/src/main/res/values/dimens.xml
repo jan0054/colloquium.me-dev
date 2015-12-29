@@ -1,0 +1,30 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Login -->
+    <dimen name="padding_horizontal">40dp</dimen>
+
+    <dimen name="textSize_title">20dp</dimen>
+    <dimen name="textSize_subtitle">16dp</dimen>
+    <dimen name="textSize_detail">14dp</dimen>
+    <!-- Preference -->
+    <dimen name="preference_title">16sp</dimen>
+    <dimen name="listheight_setup">30dp</dimen>
+    <dimen name="listheight_settings">50dp</dimen>
+    <dimen name="list_margin">14dp</dimen>
+    <dimen name="list_padding">6dp</dimen>
+    <dimen name="listicon_margin">8dp</dimen>
+    <dimen name="listicon_padding">6dp</dimen>
+    <dimen name="listitem_margin">6dp</dimen>
+    <dimen name="listitem_bottom">2dp</dimen>
+    <dimen name="listitembg_right">5dp</dimen>
+    <dimen name="listitembg_bottom">1dp</dimen>
+    <dimen name="corner_size">2dp</dimen>
+
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="drawyericon_size">30dp</dimen>
+    <dimen name="fragmenticon_size">30dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>

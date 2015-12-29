@@ -1,0 +1,173 @@
+<resources>
+    <string name="app_name">Colloquium.me</string>
+    <string name="facebook_app_id">882603405141449</string>
+
+    <!-- Activity Titles -->
+    <string name="title_activity_chat">對話</string>
+    <string name="title_activity_settings">設定</string>
+    <string name="title_activity_user_preference">使用者資訊</string>
+    <string name="title_activity_discussion">討論</string>
+    <string name="title_activity_addevent">選擇會議</string>
+    <string name="title_activity_login">登入</string>
+    <string name="title_activity_signup">註冊</string>
+    <string name="title_activity_resetpassword">重設密碼</string>
+    <string name="title_activity_home">首頁</string>
+    <string name="title_activity_career">職涯機會</string>
+    <string name="title_activity_career_detail">職涯資訊</string>
+    <string name="title_activity_chat_options">邀請加入對話</string>
+    <string name="title_activity_about_us">關於我們</string>
+    <string name="title_activity_post_detail">貼文</string>
+    <string name="title_activity_conversation">對話列表</string>
+    <string name="title_activity_talk_detail">議程細節</string>
+    <string name="title_activity_people_detail">與會者細節</string>
+    <string name="title_activity_newchat">建立新對話</string>
+    <string name="title_activity_new_post">新增貼文</string>
+    <string name="title_activity_fullscreen_reader">閱讀模式</string>
+
+    <!-- Activity Titles (currently not shown) -->
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_event_wrapper">Event Name</string>
+
+    <!-- Fragment Titles (currently not shown) -->
+    <string name="title_overview">Overview</string>
+    <string name="title_program">Program</string>
+    <string name="title_attendee">People</string>
+    <string name="title_timeline">Timeline</string>
+    <string name="title_venue">Venue</string>
+
+    <!-- Drawer -->
+    <string name="title_eventpicker">選擇會議</string>
+    <string name="title_home">首頁</string>
+    <string name="title_chat">訊息</string>
+    <string name="title_career">職涯</string>
+    <string name="title_settings">設定</string>
+
+    <!--Labels: log in and sign up -->
+    <string name="login">登入</string>
+    <string name="back">返回</string>
+    <string name="signup_reminder">還沒有帳號嗎？</string>
+    <string name="signup">註冊</string>
+    <string name="settingsignup">登入</string>
+    <string name="skip">跳過</string>
+    <string name="resetpwd">重設密碼</string>
+    <string name="resetpwd_reminder"><u>忘記密碼？</u></string>
+    <string name="cancel">取消</string>
+    <string name="password">密碼</string>
+    <string name="email">Email</string>
+    <string name="firstname">名</string>
+    <string name="lastname">姓</string>
+    <string name="institution">單位</string>
+    <string name="login_notice">歡迎使用Colloquium.me平台(數學) 您可以選擇登入, 註冊帳號或直接開始瀏覽各會議</string>
+    <string name="signup_notice">您的資訊儲存在我們的伺服器上, 未經您同意絕不會公開或讓我們以及活動主辦單位外的第三方存取</string>
+    <string name="resetpwd_notice">請輸入您當初註冊用的Email，我們將發送信件讓您重新設定密碼</string>
+    <string name="resetpwd_message">請收信並依照連結重置您的密碼</string>
+    <string name="use_fb">使用Facebook登入</string>
+
+    <!--Labels: general -->
+    <string name="signout">登出</string>
+    <string name="signup_as">使用者</string>
+    <string name="sign_title">未登入</string>
+    <string name="sign_detail_not">使用社群功能請先登入</string>
+    <string name="sign_detail_yes">若要切換使用者請登出</string>
+    <string name="more">細節..</string>
+    <string name="save">確定</string>
+    <string name="list_empty_empty"> </string>
+    <string name="empty"></string>
+    <string name="fullscreen_content"> </string>
+    <string name="list_empty_person">該與會者沒有演講</string>
+    <string name="list_empty_event">該會議目前無公告內容</string>
+    <string name="no_result">無搜尋結果</string>
+    <string name="hint_search">搜尋..</string>
+    <string name="hint_comment">回應..</string>
+    <string name="hint_newpost">輸入貼文內容..</string>
+    <string name="emaillabel">讓其他使用者可以發送Email給您</string>
+    <string name="eventlabel">開啟活動主辦單位通知</string>
+    <string name="chatlabel">開啟聊天訊息通知</string>
+    <string name="feedback_title">建議回饋</string>
+    <string name="feedback_detail">將您的建議或任何問題與我們分享</string>
+    <string name="priv_title">隱私權政策</string>
+    <string name="priv_detail">了解我們如何確保您的資料隱私</string>
+    <string name="about_title">關於我們</string>
+    <string name="about_detail">Colloquium.me服務的開發團隊</string>
+    <string name="userpref_title">使用者偏好</string>
+    <string name="userpref_detail">設定或更改使用者資訊與隱私設定</string>
+    <string name="leave_chat">退出對話</string>
+    <string name="invite_chat">邀請他人</string>
+    <string name="details">細節</string>
+    <string name="contact">聯絡</string>
+    <string name="send_email">Email</string>
+    <string name="website">網頁</string>
+    <string name="message">訊息</string>
+    <string name="unknown">(未提供)</string>
+    <string name="date">日期</string>
+    <string name="web">網頁</string>
+    <string name="positiontype">類型</string>
+    <string name="attending">我將出席這場會議： </string>
+    <string name="create_new_chat">確定</string>
+    <string name="invite_existing_chat">確定</string>
+    <string name="career_web_button">開啟網頁</string>
+    <string name="send_chat_button">送出</string>
+    <string name="add_calendar">加入行事曆</string>
+    <string name="go_discuss_button">討論</string>
+    <string name="fullscreen_button">切換顏色</string>
+    <string name="pdf">PDF</string>
+
+    <!-- Labels (not shown) -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <!-- Placeholder strings -->
+    <string name="name_fake"> </string>
+    <string name="author_fake"> </string>
+    <string name="description_fake"> </string>
+    <string name="content_fake"> </string>
+    <string name="organizer_fake"> </string>
+    <string name="start_time_fake"> </string>
+    <string name="position_fake"> </string>
+    <string name="location_fake"> </string>
+    <string name="institution_fake"> </string>
+    <string name="address_fake"> </string>
+
+    <!-- Arrays (settings page) -->
+    <string-array name="setting_primary_label_array">
+        <item>建議回饋</item>
+        <item>隱私權政策</item>
+        <item>關於我們</item>
+        <item>使用者偏好</item>
+    </string-array>
+    <string-array name="setting_secondary_label_array">
+        <item>將您的建議或任何問題與我們分享</item>
+        <item>了解我們如何確保您的資料隱私</item>
+        <item>Colloquium.me服務的開發團隊</item>
+        <item>設定或更改使用者資訊與隱私設定</item>
+    </string-array>
+    <string-array name="intro_text_array">
+        <item>Text Page 1</item>
+        <item>Text Page 2</item>
+        <item>Text Page 3</item>
+    </string-array>
+    <string-array name="intro_image_array">
+        <item>@drawable/home</item>
+        <item>@drawable/tut_overview</item>
+        <item>@drawable/tut_detail</item>
+    </string-array>
+
+    <!-- Alerts -->
+    <string name="alert_no_user">請至少選擇一位使用者</string>
+    <string name="alert_no_pdf">您需要先安裝可閱讀PDF之程式</string>
+    <string name="alert_download_pdf">下載PDF檔案中</string>
+
+    <!-- Errors -->
+    <string name="error_not_login">您必須先登入</string>
+    <string name="error_invalidperson">查無此與會者</string>
+    <string name="error_invalidphone">資料中的電話號碼無效</string>
+    <string name="error_invalidlink">資料中的網址無效</string>
+    <string name="error_invalidgeo">資料中的地圖位置無效</string>
+
+    <!--URLs and emails -->
+    <string name="feedback_email_address">csjan@tapgo.cc</string>
+    <string name="privacy_url">http://colloquium.me/?page_id=3348</string>
+    <string name="aboutus_url">http://colloquium.me</string>
+
+</resources>
