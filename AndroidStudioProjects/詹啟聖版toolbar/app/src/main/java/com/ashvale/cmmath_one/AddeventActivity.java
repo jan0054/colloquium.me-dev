@@ -41,8 +41,8 @@ public class AddeventActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addevent);
 
-        Toolbar mainToolBar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mainToolBar);
+        //Toolbar mainToolBar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(mainToolBar);
         //mainToolBar.setTitle(R.id.title);
 
         super.onCreateDrawer();

@@ -68,21 +68,14 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
     {
 
     }
-/*
-    class IntentReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int itemID = intent.getIntExtra("itemID", 0);
-            Log.d("cm_app", "itemID receive = "+itemID);
-            onOptionsItemSelectedwithID(itemID);
-        }
-    }
-*/
+
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         return super.onCreateOptionsMenu(menu);
     }
+    */
 
 
     public void newPost(View view) {
@@ -128,114 +121,5 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         intent.setClass(this, cls); //PeopleDetailsActivity.class);
         startActivity(intent);
     }
-    /*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        switch (item.getItemId()) {
-            case R.id.action_overview:
-                //Toast.makeText(EventWrapperActivity.this, "action bar program", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                OverviewFragment overviewFragment = new OverviewFragment();
-                fragmentTransaction.replace(R.id.fragmentcontainer, overviewFragment);
-                fragmentTransaction.commit();
-
-                return true;
-            case R.id.action_program:
-                //Toast.makeText(EventWrapperActivity.this, "action bar people", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager2 = getFragmentManager();
-                FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-                ProgramFragment programFragment = new ProgramFragment();
-                fragmentTransaction2.replace(R.id.fragmentcontainer, programFragment);
-                fragmentTransaction2.commit();
-                return true;
-            case R.id.action_attendee:
-                //Toast.makeText(EventWrapperActivity.this, "action bar venue", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager3 = getFragmentManager();
-                FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
-                AttendeeFragment attendeeFragment = new AttendeeFragment();
-                fragmentTransaction3.replace(R.id.fragmentcontainer, attendeeFragment);
-                fragmentTransaction3.commit();
-                return true;
-            case R.id.action_timeline:
-                //Toast.makeText(EventWrapperActivity.this, "action bar wall", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager4 = getFragmentManager();
-                FragmentTransaction fragmentTransaction4 = fragmentManager4.beginTransaction();
-                TimelineFragment timelineFragment = new TimelineFragment();
-                fragmentTransaction4.replace(R.id.fragmentcontainer, timelineFragment);
-                fragmentTransaction4.addToBackStack(null);
-                fragmentTransaction4.commit();
-                return true;
-            case R.id.action_venue:
-                //Toast.makeText(EventWrapperActivity.this, "action bar news", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager5 = getFragmentManager();
-                FragmentTransaction fragmentTransaction5 = fragmentManager5.beginTransaction();
-                VenueFragment venueFragment = new VenueFragment();
-                fragmentTransaction5.replace(R.id.fragmentcontainer, venueFragment);
-                fragmentTransaction5.commit();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
-
-    public boolean onOptionsItemSelectedwithID(int itemID)
-    {
-
-        switch (itemID) {
-            case R.id.action_overview:
-                //Toast.makeText(EventWrapperActivity.this, "action bar program", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                OverviewFragment overviewFragment = new OverviewFragment();
-                fragmentTransaction.replace(R.id.fragmentcontainer, overviewFragment);
-                fragmentTransaction.commit();
-                return true;
-            case R.id.action_program:
-                //Toast.makeText(EventWrapperActivity.this, "action bar people", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager2 = getFragmentManager();
-                FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-                ProgramFragment programFragment = new ProgramFragment();
-                fragmentTransaction2.replace(R.id.fragmentcontainer, programFragment);
-                fragmentTransaction2.commit();
-                return true;
-            case R.id.action_attendee:
-                //Toast.makeText(EventWrapperActivity.this, "action bar venue", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager3 = getFragmentManager();
-                FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
-                AttendeeFragment attendeeFragment = new AttendeeFragment();
-                fragmentTransaction3.replace(R.id.fragmentcontainer, attendeeFragment);
-                fragmentTransaction3.commit();
-                return true;
-            case R.id.action_timeline:
-                //Toast.makeText(EventWrapperActivity.this, "action bar wall", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager4 = getFragmentManager();
-                FragmentTransaction fragmentTransaction4 = fragmentManager4.beginTransaction();
-                TimelineFragment timelineFragment = new TimelineFragment();
-                fragmentTransaction4.replace(R.id.fragmentcontainer, timelineFragment);
-                fragmentTransaction4.commit();
-                return true;
-            case R.id.action_venue:
-                //Toast.makeText(EventWrapperActivity.this, "action bar news", Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager5 = getFragmentManager();
-                FragmentTransaction fragmentTransaction5 = fragmentManager5.beginTransaction();
-                VenueFragment venueFragment = new VenueFragment();
-                fragmentTransaction5.replace(R.id.fragmentcontainer, venueFragment);
-                fragmentTransaction5.commit();
-                return true;
-            default:
-                return false;
-        }
-
-    }
-    */
 }

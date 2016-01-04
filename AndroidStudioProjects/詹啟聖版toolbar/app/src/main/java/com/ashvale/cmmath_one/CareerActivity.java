@@ -24,7 +24,7 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CareerActivity extends Activity
+public class CareerActivity extends BaseActivity
 {
     SwipeRefreshLayout swipeRefresh;
     public  List<ParseObject> careerObjList;
@@ -34,7 +34,7 @@ public class CareerActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_career);
-        //super.onCreateDrawer();
+        super.onCreateDrawer();
 
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.pulltorefresh);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

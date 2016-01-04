@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,7 +40,7 @@ import java.util.Set;
 public class BaseActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
-    public ListView drawerListView;
+    //public ListView drawerListView;
     public String mActivityTitle;
     private SharedPreferences savedEvents;
     public ActionBarDrawerToggle mDrawerToggle;
@@ -46,18 +49,56 @@ public class BaseActivity extends AppCompatActivity {
     public DrawerAdapter drawerAdapter;
     protected cmmathApplication app;
 
-    //@Override
+    public NavigationView leftDrawerView;
+
     protected void onCreateDrawer() {
         mActivityTitle = getTitle().toString();
         context = this;
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerListView = (ListView) findViewById(R.id.left_drawer);
+        //drawerListView = (ListView) findViewById(R.id.left_drawer);
 
         Toolbar mainToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mainToolBar);
-        //mainToolBar.setTitle(R.id.title);
 
+        leftDrawerView = (NavigationView) findViewById(R.id.left_drawer);
 
+        leftDrawerView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                //toggle checked state: current bugged (Google's fault), so we don't use it for now (1/4/2016)
+                //reference: https://code.google.com/p/android/issues/detail?id=176300
+                //if (menuItem.isChecked()) menuItem.setChecked(false);
+                //else menuItem.setChecked(true);
+
+                //determine selected item
+                switch (menuItem.getItemId()) {
+                    case R.id.drawer_choose:
+                        drawerGoTo(0);
+                        return true;
+                    case R.id.drawer_home:
+                        drawerGoTo(1);
+                        return true;
+                    case R.id.drawer_chat:
+                        drawerGoTo(2);
+                        return true;
+                    case R.id.drawer_career:
+                        drawerGoTo(3);
+                        return true;
+                    case R.id.drawer_settings:
+                        drawerGoTo(4);
+                        return true;
+                    default:
+                        ParseObject event = eventObjList.get(menuItem.getItemId());
+                        String eventid = event.getObjectId();
+                        savedEvents = getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
+                        SharedPreferences.Editor editor = savedEvents.edit();
+                        editor.putString("currenteventid", eventid);
+                        editor.commit();
+                        drawerGoTo(5);
+                        return true;
+                }
+            }
+        });
 
         setDrawer();
 
@@ -79,21 +120,33 @@ public class BaseActivity extends AppCompatActivity {
             query.findInBackground(new FindCallback<ParseObject>() {
                 public void done(List<ParseObject> objects, com.parse.ParseException e) {
                     if (e == null) {
+                        Menu drawerMenu = leftDrawerView.getMenu();
+                        SubMenu savedEventsMenu = drawerMenu.addSubMenu(R.id.drawer_events_group,Menu.NONE,1,"Pinned Events");
                         eventObjList = objects;
                         List<String> eventNames = new ArrayList<String>();
+                        int itemCount = 0;
                         for (ParseObject object : objects) {
                             String name = object.getString("name");
                             eventNames.add(name);
+                            savedEventsMenu.add(Menu.NONE,itemCount,Menu.NONE,name);
+                            itemCount = itemCount+1;
                         }
-                        drawerAdapter = new DrawerAdapter(context, eventNames);
-                        drawerListView.setAdapter(drawerAdapter);
+
+                        //this is a temp workaround for adding new items and forcing a refresh (Google's bug) (1/4/2016)
+                        //reference: https://code.google.com/p/android/issues/detail?id=176300
+                        MenuItem mi = drawerMenu.getItem(drawerMenu.size()-1);
+                        mi.setTitle(mi.getTitle());
+
+                        //drawerAdapter = new DrawerAdapter(context, eventNames);
+                        //drawerListView.setAdapter(drawerAdapter);
+                        /*
                         drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                //Toast.makeText(BaseActivity.this, "drawer item selected "+position, Toast.LENGTH_SHORT).show();
                                 startDrawerActivity(position);
                             }
                         });
+                        */
 
                     } else {
                         Log.d("cm_app", "drawer query error: " + e);
@@ -104,8 +157,9 @@ public class BaseActivity extends AppCompatActivity {
         else   //no saved events found
         {
             List<String> eventNames = new ArrayList<>();
-            drawerAdapter = new DrawerAdapter(context, eventNames);
-            drawerListView.setAdapter(drawerAdapter);
+            //drawerAdapter = new DrawerAdapter(context, eventNames);
+            //drawerListView.setAdapter(drawerAdapter);
+            /*
             drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -113,8 +167,8 @@ public class BaseActivity extends AppCompatActivity {
                     startDrawerActivity(position);
                 }
             });
+            */
         }
-
     }
 
     @Override
@@ -139,7 +193,48 @@ public class BaseActivity extends AppCompatActivity {
     {
         //Toast.makeText(BaseActivity.this, "drawer refreshed", Toast.LENGTH_SHORT).show();
         setDrawer();
-        drawerLayout.openDrawer(drawerListView);
+        //drawerLayout.openDrawer(drawerListView);
+    }
+
+    public void drawerGoTo (int selection)
+    {
+        if (selection == 0)
+        {
+            startActivity(new Intent(this, AddeventActivity.class));
+        }
+        else if (selection ==1)
+        {
+            startActivity(new Intent(this, HomeActivity.class));
+        }
+        else if (selection ==2)
+        {
+            ParseUser selfuser = ParseUser.getCurrentUser();
+            if (selfuser == null) {
+                toast(getString(R.string.error_not_login));
+                SharedPreferences userStatus;
+                userStatus = this.getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+                SharedPreferences.Editor editor = userStatus.edit();
+                editor.putInt("skiplogin", 0);
+                editor.commit();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                return;
+            }
+            startActivity(new Intent(this, ConversationActivity.class));
+        }
+        else if (selection ==3)
+        {
+            startActivity(new Intent(this, CareerActivity.class));
+        }
+        else if (selection ==4)
+        {
+            startActivity(new Intent(this, SettingsActivity.class));
+        }
+        else
+        {
+            startActivity(new Intent(this, EventWrapperActivity.class));
+        }
+        drawerLayout.closeDrawers();
     }
 
     public void startDrawerActivity (int position)
@@ -203,13 +298,13 @@ public class BaseActivity extends AppCompatActivity {
 
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle(getString(R.string.app_name));
+                //getSupportActionBar().setTitle(getString(R.string.app_name));
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mActivityTitle);
+                //getSupportActionBar().setTitle(mActivityTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -243,30 +338,6 @@ public class BaseActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-/*
-        switch (item.getItemId()) {
-            case R.id.action_program:
-                Toast.makeText(BaseActivity.this, "action bar program", Toast.LENGTH_SHORT).show();
-
-
-                return true;
-            case R.id.action_people:
-                Toast.makeText(BaseActivity.this, "action bar people", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_venue:
-                Toast.makeText(BaseActivity.this, "action bar venue", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_wall:
-                Toast.makeText(BaseActivity.this, "action bar wall", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_news:
-                Toast.makeText(BaseActivity.this, "action bar news", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-*/
-
     }
 
     public void toast(String message) {

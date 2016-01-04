@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single"
+           android:id="@+id/drawer_events_group">
+        <item android:id="@+id/drawer_home"
+            android:title="Home"
+            android:checked="false"
+            android:orderInCategory="0"
+            android:icon="@drawable/eventhome"/>
+
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/drawer_choose"
+            android:title="Edit Events"
+            android:checked="false"
+            android:orderInCategory="2"
+            android:icon="@drawable/addevent"/>
+        <item android:id="@+id/drawer_chat"
+            android:title="Conversations"
+            android:checked="false"
+            android:orderInCategory="3"
+            android:icon="@drawable/chat"/>
+        <item android:id="@+id/drawer_career"
+            android:title="Career"
+            android:checked="false"
+            android:orderInCategory="4"
+            android:icon="@drawable/career"/>
+        <item android:id="@+id/drawer_settings"
+            android:title="Settings"
+            android:checked="false"
+            android:orderInCategory="5"
+            android:icon="@drawable/setting"/>
+    </group>
+</menu>
