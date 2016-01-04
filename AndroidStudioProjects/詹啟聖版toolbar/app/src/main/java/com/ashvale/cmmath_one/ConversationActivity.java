@@ -30,7 +30,8 @@ public class ConversationActivity extends BaseActivity {
         setContentView(R.layout.activity_conversation);
         super.onCreateDrawer();
 
-        FloatingActionButton newchat_fab = (FloatingActionButton)findViewById(R.id.newchat_fab);
+
+        FloatingActionButton newchat_fab = (FloatingActionButton) findViewById(R.id.newchat_fab);
         newchat_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,6 +39,7 @@ public class ConversationActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.conversation_refresh);
         swipeRefreshLayout.setColorSchemeColors(R.color.dark_accent);
@@ -54,11 +56,11 @@ public class ConversationActivity extends BaseActivity {
                 query.findInBackground(new FindCallback<ParseObject>() {
                     public void done(List<ParseObject> objects, com.parse.ParseException e) {
                         if (e == null) {
-                            Log.d("cm_app", "conversation query results: "+objects.size());
+                            Log.d("cm_app", "conversation query results: " + objects.size());
                             setAdapter(objects);
                             swipeRefreshLayout.setRefreshing(false);
                         } else {
-                            Log.d("cm_app", "conversation query error: "+e);
+                            Log.d("cm_app", "conversation query error: " + e);
                             swipeRefreshLayout.setRefreshing(false);
                         }
                     }
@@ -66,45 +68,6 @@ public class ConversationActivity extends BaseActivity {
             }
         });
 
-        ParseUser selfUser = ParseUser.getCurrentUser();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Conversation");
-        query.whereEqualTo("participants", selfUser);
-        query.include("participants");
-        query.orderByDescending("updatedAt");
-        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    Log.d("cm_app", "conversation query results: "+objects.size());
-                    setAdapter(objects);
-                } else {
-                    Log.d("cm_app", "conversation query error: "+e);
-                }
-            }
-        });
-    }
-
-    public void setAdapter(final List<ParseObject> results)
-    {
-        ConversationAdapter adapter = new ConversationAdapter(this, results);
-        ListView conversationListView = (ListView)findViewById(R.id.conversationListView);
-        conversationListView.setAdapter(adapter);
-        conversationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ParseObject conversation = results.get(position);
-                String convid = conversation.getObjectId();
-                Intent intent = new Intent(ConversationActivity.this, ChatActivity.class);
-                intent.putExtra("convid", convid);
-                startActivity(intent);
-            }
-        });
-    }
-
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
         ParseUser selfUser = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Conversation");
         query.whereEqualTo("participants", selfUser);
@@ -123,27 +86,40 @@ public class ConversationActivity extends BaseActivity {
         });
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_fourth, menu);
-        return false;
+    public void setAdapter(final List<ParseObject> results) {
+        ConversationAdapter adapter = new ConversationAdapter(this, results);
+        ListView conversationListView = (ListView) findViewById(R.id.conversationListView);
+        conversationListView.setAdapter(adapter);
+        conversationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ParseObject conversation = results.get(position);
+                String convid = conversation.getObjectId();
+                Intent intent = new Intent(ConversationActivity.this, ChatActivity.class);
+                intent.putExtra("convid", convid);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    protected void onResume() {
+        super.onResume();
+        ParseUser selfUser = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Conversation");
+        query.whereEqualTo("participants", selfUser);
+        query.include("participants");
+        query.orderByDescending("updatedAt");
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "conversation query results: " + objects.size());
+                    setAdapter(objects);
+                } else {
+                    Log.d("cm_app", "conversation query error: " + e);
+                }
+            }
+        });
     }
-
 }

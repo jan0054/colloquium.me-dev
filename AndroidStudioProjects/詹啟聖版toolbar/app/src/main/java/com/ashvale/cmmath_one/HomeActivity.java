@@ -35,11 +35,6 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        //Toolbar mainToolBar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(mainToolBar);
-        //mainToolBar.setTitle(R.id.title);
-
         super.onCreateDrawer();
 
         savedEvents = getSharedPreferences("EVENTS", 6);
