@@ -1,9 +1,11 @@
 <resources>>
-
-    <style name="CMTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+    <!-- Base application theme. -->
+    <style name="CMTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorAccent">@color/in500</item>
+        <item name="android:statusBarColor">@color/do500</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:colorPrimary">@color/do500</item>
+        <item name="android:colorPrimaryDark">@color/do500</item>
     </style>
 </resources>

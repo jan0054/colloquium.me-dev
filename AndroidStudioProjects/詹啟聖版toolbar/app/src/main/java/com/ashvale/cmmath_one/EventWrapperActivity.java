@@ -53,7 +53,6 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         tabLayout.getTabAt(4).setIcon(R.drawable.venue64);
 
         getEventName();
-
     }
 
     @Override

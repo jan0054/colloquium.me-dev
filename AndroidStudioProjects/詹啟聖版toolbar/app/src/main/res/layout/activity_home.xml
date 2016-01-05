@@ -3,24 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
     <!-- The main content view -->
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="com.ashvale.cmmath_one.HomeActivity">
-            <android.support.v7.widget.Toolbar
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <include
                 android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="?android:attr/actionBarSize"
-                android:background="@color/primary_color" >
-            </android.support.v7.widget.Toolbar>
+                layout="@layout/main_toolbar"/>
             <ListView
                 android:layout_below="@+id/toolbar"
                 android:id="@+id/homeListView"
@@ -34,12 +32,8 @@
     </FrameLayout>
 
     <!-- The navigation drawer -->
-    <android.support.design.widget.NavigationView
+    <include
         android:id="@+id/left_drawer"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/left_drawer"/>
+        layout="@layout/navigation_view_drawer"/>
 
 </android.support.v4.widget.DrawerLayout>

@@ -27,6 +27,7 @@ public class FragmentViewPagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 5;
     private String tabTitles[] = new String[] { "Overview", "Program", "People", "Timeline", "Venue" };
     private Context context;
+    /*
     private int[] imageResId = {
             R.drawable.home64,
             R.drawable.program64,
@@ -34,7 +35,7 @@ public class FragmentViewPagerAdapter extends FragmentPagerAdapter {
             R.drawable.timeline64,
             R.drawable.venue64
     };
-
+    */
     public FragmentViewPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
@@ -75,12 +76,13 @@ public class FragmentViewPagerAdapter extends FragmentPagerAdapter {
         // Generate title based on item position
         //return tabTitles[position];
 
-        Drawable image = context.getResources().getDrawable(imageResId[position]);
-        image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
-        SpannableString sb = new SpannableString(" ");
-        ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
-        sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return sb;
+        //Drawable image = context.getResources().getDrawable(imageResId[position]);
+        //image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
+        //SpannableString sb = new SpannableString(" ");
+        //ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
+        //sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        //return sb;
+        return null;
     }
 
 }

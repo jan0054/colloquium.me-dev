@@ -113,4 +113,21 @@
     <color name="edittext_bgtint">#00000000</color>
 
     <color name="black_overlay">#66000000</color>
+
+    <color name="do900">#BF360C</color>
+    <color name="do700">#E64A19</color>
+    <color name="do500">#FF5722</color>
+    <color name="do200">#FFAB91</color>
+    <color name="doa100">#FF9E80</color>
+    <color name="doa200">#FF6E40</color>
+
+    <color name="bg500">#607D8B</color>
+
+    <color name="in500">#3F51B5</color>
+    <color name="in200">#9FA8DA</color>
+    <color name="in900">#1A237E</color>
+    <color name="in700">#303F9F</color>
+    <color name="ina100">#8C9EFF</color>
+    <color name="ina200">#536DFE</color>
+
 </resources>

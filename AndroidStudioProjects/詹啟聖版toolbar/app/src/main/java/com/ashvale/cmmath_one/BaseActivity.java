@@ -55,12 +55,11 @@ public class BaseActivity extends AppCompatActivity {
         mActivityTitle = getTitle().toString();
         context = this;
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //drawerListView = (ListView) findViewById(R.id.left_drawer);
+        leftDrawerView = (NavigationView) findViewById(R.id.left_drawer);
 
         Toolbar mainToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mainToolBar);
 
-        leftDrawerView = (NavigationView) findViewById(R.id.left_drawer);
 
         leftDrawerView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
