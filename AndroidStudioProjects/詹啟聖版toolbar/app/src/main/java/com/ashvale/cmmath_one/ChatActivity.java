@@ -36,7 +36,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends DetailActivity {
     public ParseObject conversationObject;
     protected cmmathApplication app;
     public String conversationId;
@@ -45,6 +45,8 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        super.onCreateView();
 
         conversationId = this.getIntent().getExtras().getString("convid");
         conversationObject = ParseObject.createWithoutData("Conversation", conversationId);

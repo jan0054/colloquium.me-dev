@@ -6,12 +6,16 @@ import android.content.pm.LabeledIntent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,7 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CareerDetailActivity extends AppCompatActivity {
+public class CareerDetailActivity extends DetailActivity {
 
     public String institute;
     public String contactName;
@@ -38,6 +42,8 @@ public class CareerDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_career_detail);
+
+        super.onCreateView();
 
         institute = this.getIntent().getExtras().getString("inst");
         contactName = this.getIntent().getExtras().getString("name");

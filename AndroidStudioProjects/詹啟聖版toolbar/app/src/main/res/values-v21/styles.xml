@@ -5,7 +5,7 @@
         <item name="colorAccent">@color/in500</item>
         <item name="android:statusBarColor">@color/do500</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:colorPrimary">@color/do500</item>
-        <item name="android:colorPrimaryDark">@color/do500</item>
+        <item name="colorPrimary">@color/do500</item>
+        <item name="colorPrimaryDark">@color/do500</item>
     </style>
 </resources>

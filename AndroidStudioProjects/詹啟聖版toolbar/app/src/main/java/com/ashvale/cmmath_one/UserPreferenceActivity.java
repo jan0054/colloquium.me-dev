@@ -15,7 +15,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 
-public class UserPreferenceActivity extends AppCompatActivity {
+public class UserPreferenceActivity extends DetailActivity {
 
     public ParseUser selfuser;
     public int email_on;
@@ -41,6 +41,8 @@ public class UserPreferenceActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_preference);
+        super.onCreateView();
+
         src_act = this.getIntent().getExtras().getString("src");
 
         //default disable stuff
