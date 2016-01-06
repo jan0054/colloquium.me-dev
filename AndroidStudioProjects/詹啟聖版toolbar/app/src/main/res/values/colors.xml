@@ -130,4 +130,14 @@
     <color name="ina100">#8C9EFF</color>
     <color name="ina200">#536DFE</color>
 
+    <color name="gr900">#212121</color>
+    <color name="gr800">#424242</color>
+    <color name="gr700">#616161</color>
+    <color name="gr600">#757575</color>
+    <color name="gr500">#9E9E9E</color>
+    <color name="gr400">#BDBDBD</color>
+    <color name="gr300">#E0E0E0</color>
+    <color name="gr200">#EEEEEE</color>
+    <color name="gr100">#F5F5F5</color>
+
 </resources>

@@ -90,7 +90,5 @@
               android:gravity="center|right"
               android:layout_weight="1"
               android:text="@string/more"
-              android:textColor="@color/dark_accent"
-              android:maxLines="1"
-              android:textSize="14sp" />
+              style="@style/ListDetail"/>
 </RelativeLayout>

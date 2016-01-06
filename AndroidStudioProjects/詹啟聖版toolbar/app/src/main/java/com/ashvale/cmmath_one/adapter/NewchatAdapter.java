@@ -68,8 +68,8 @@ public class NewchatAdapter extends BaseAdapter {
         if (selected == 1)
         {
             checkbox.setImageResource(R.drawable.check);
-            checkbox.setColorFilter(context.getResources().getColor(R.color.accent_color));
-            nameLabel.setTextColor(context.getResources().getColor(R.color.accent_color));
+            checkbox.setColorFilter(context.getResources().getColor(R.color.do700));
+            nameLabel.setTextColor(context.getResources().getColor(R.color.do700));
         }
         else
         {

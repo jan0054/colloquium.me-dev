@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:paddingLeft="@dimen/padding_horizontal"
               android:paddingRight="@dimen/padding_horizontal"
-              android:paddingTop="20dp"
+              android:paddingTop="70dp"
               android:paddingBottom="10dp"
               android:orientation="vertical"
               android:background="@drawable/launchsplashevent" >

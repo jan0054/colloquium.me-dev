@@ -12,8 +12,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background"
-            >
+            android:background="@color/background">
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/main_toolbar"/>
@@ -80,7 +79,7 @@
                     android:layout_alignParentRight="true"
                     android:gravity="right"
                     android:text="@string/send_email"
-                    android:textColor="@color/dark_accent"
+                    android:textColor="@color/in500"
                     android:textSize="14sp"/>
 
                 <TextView
@@ -116,7 +115,7 @@
                     android:layout_alignParentRight="true"
                     android:gravity="right"
                     android:text="@string/career_web_button"
-                    android:textColor="@color/dark_accent"
+                    android:textColor="@color/in500"
                     android:textSize="14sp"/>
 
                 <TextView

@@ -13,10 +13,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/background">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/main_toolbar"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/list_item">
+                android:background="@drawable/list_item"
+                android:layout_below="@+id/toolbar">
                 <TextView
                     android:id="@+id/pref_emaillabel"
                     android:layout_width="wrap_content"

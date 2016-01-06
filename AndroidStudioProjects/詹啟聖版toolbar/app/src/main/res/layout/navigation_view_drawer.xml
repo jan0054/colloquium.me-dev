@@ -8,6 +8,6 @@
     app:menu="@menu/left_drawer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:itemIconTint="@color/doa200">
+    app:itemIconTint="@color/do500">
 
 </android.support.design.widget.NavigationView>

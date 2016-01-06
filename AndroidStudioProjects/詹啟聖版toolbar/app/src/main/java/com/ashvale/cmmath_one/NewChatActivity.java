@@ -32,7 +32,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class NewChatActivity extends AppCompatActivity {
+public class NewChatActivity extends DetailActivity {
     private NewchatAdapter adapter;
     private int[] selectedPositions;
     public List<ParseUser> totalInvitees;
@@ -45,6 +45,7 @@ public class NewChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_chat);
+        super.onCreateView();
         selectedInvitees = new ArrayList<ParseUser>();
         totalInvitees = new ArrayList<ParseUser>();
         Log.d("cm_app", "I AM : " + ParseUser.getCurrentUser().getObjectId());

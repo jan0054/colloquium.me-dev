@@ -9,7 +9,8 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/background"
@@ -18,7 +19,6 @@
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/main_toolbar"/>
-
             <ListView
                 android:id="@+id/chat_listview"
                 android:layout_width="match_parent"
@@ -30,38 +30,29 @@
                 android:transcriptMode="alwaysScroll"
                 android:layout_height="wrap_content" >
             </ListView>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:layout_marginTop="@dimen/listicon_margin"
                 android:background="@color/light_bg" >
-
                 <EditText
                     android:id="@+id/chat_input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textCursorDrawable="@null"
-                    android:textColor="@color/primary_text"
-                    android:backgroundTint="@color/edittext_bgtint"
+                    style="@style/GreyTextInput"
                     android:ems="10"
                     android:layout_marginLeft="10dp"/>
-
                 <Button
                     android:id="@+id/send_chat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:background="#00000000"
                     android:onClick="sendChat"
-                    android:textColor="@color/dark_accent"
                     android:text="@string/send_chat_button"
-                    />
-
+                    style="@style/SendButton"/>
             </LinearLayout>
-
         </LinearLayout>
     </FrameLayout>
 </android.support.v4.widget.DrawerLayout>

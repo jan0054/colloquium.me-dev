@@ -40,10 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/attendee_name"
         android:layout_below="@+id/attendee_name"
-        android:fontFamily="sans-serif"
         android:gravity="center|right"
         android:text="@string/more"
-        android:textColor="@color/dark_accent"
-        android:textSize="14sp" />
+        style="@style/ListDetail"/>
 
 </RelativeLayout>

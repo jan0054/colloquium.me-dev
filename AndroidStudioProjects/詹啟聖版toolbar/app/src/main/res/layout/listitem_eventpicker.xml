@@ -14,7 +14,7 @@
             android:id="@+id/imageLabel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:tint="@color/dark_accent"
+            android:tint="@color/do700"
             android:src="@drawable/emptycircle"/>
         <TextView
             android:id="@+id/nameLabel"

@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class PostDetailActivity extends AppCompatActivity{
+public class PostDetailActivity extends DetailActivity {
     public static final String TAG = PostDetailActivity.class.getSimpleName();
 
     private SimpleDateFormat sdf;
@@ -51,6 +51,7 @@ public class PostDetailActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
+        super.onCreateView();
 
         sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
         sdf.setTimeZone(TimeZone.getDefault());

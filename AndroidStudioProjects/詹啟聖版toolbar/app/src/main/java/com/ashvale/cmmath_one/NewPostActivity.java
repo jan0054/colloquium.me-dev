@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class NewPostActivity extends AppCompatActivity {
+public class NewPostActivity extends DetailActivity {
     public static final String		TAG = NewPostActivity.class.getSimpleName();
 
     private SharedPreferences savedEvents;
@@ -53,6 +53,7 @@ public class NewPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
+        super.onCreateView();
 
         //default disable stuff
         post_input = (EditText) findViewById(R.id.post_input);

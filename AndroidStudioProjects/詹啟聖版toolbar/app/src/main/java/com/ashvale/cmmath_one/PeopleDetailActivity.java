@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class PeopleDetailActivity extends AppCompatActivity {
+public class PeopleDetailActivity extends DetailActivity {
     public static final String TAG = PeopleDetailActivity.class.getSimpleName();
 
     public String personID;
@@ -50,6 +50,7 @@ public class PeopleDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_people_detail);
+        super.onCreateView();
 
         personID = this.getIntent().getExtras().getString("personID");
         Log.d("cm_app", "personID = " + personID);
@@ -77,7 +78,7 @@ public class PeopleDetailActivity extends AppCompatActivity {
 
                     if(email_status == 1 && emailStr != null) {
                         emailBtn.setEnabled(true);
-                        emailBtn.setTextColor(getResources().getColor(R.color.dark_accent));
+                        emailBtn.setTextColor(getResources().getColor(R.color.in500));
                         emailBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -94,7 +95,7 @@ public class PeopleDetailActivity extends AppCompatActivity {
                     }
                     if(linkStr != null && linkStr.length()!=0) {
                         linkBtn.setEnabled(true);
-                        linkBtn.setTextColor(getResources().getColor(R.color.dark_accent));
+                        linkBtn.setTextColor(getResources().getColor(R.color.in500));
                         linkBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -108,7 +109,7 @@ public class PeopleDetailActivity extends AppCompatActivity {
 
                     if(chat_status == 1) {
                         messageBtn.setEnabled(true);
-                        messageBtn.setTextColor(getResources().getColor(R.color.dark_accent));
+                        messageBtn.setTextColor(getResources().getColor(R.color.in500));
                         messageBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

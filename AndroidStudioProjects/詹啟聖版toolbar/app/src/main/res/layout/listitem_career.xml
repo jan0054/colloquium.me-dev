@@ -46,6 +46,6 @@
         android:layout_marginRight="@dimen/list_margin"
         android:layout_alignParentRight="true"
         android:text="@string/details"
-        android:textColor="@color/dark_accent"/>
+        style="@style/ListDetail"/>
 
 </RelativeLayout>

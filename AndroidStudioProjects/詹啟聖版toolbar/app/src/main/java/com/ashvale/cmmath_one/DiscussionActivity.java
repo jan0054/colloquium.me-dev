@@ -20,7 +20,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 
-public class DiscussionActivity extends AppCompatActivity {
+public class DiscussionActivity extends DetailActivity {
 
     private DiscussionAdapter talk_adapter;
     public String event_objid;
@@ -32,6 +32,8 @@ public class DiscussionActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discussion);
+        super.onCreateView();
+
         event_objid = this.getIntent().getExtras().getString("event_objid");
         event_type = this.getIntent().getExtras().getInt("event_type");
         Log.d("DISCUSS", "DISCUSS: " + event_objid + "TYPE " + event_type);

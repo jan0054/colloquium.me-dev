@@ -36,7 +36,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class ChatOptionsActivity extends AppCompatActivity {
+public class ChatOptionsActivity extends DetailActivity {
     public String conversationId;
     private int[] selectedPositions;
     public List<ParseUser> totalInvitees;
@@ -51,6 +51,7 @@ public class ChatOptionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_options);
+        super.onCreateView();
         selectedInvitees = new ArrayList<ParseUser>();
         totalInvitees = new ArrayList<ParseUser>();
 

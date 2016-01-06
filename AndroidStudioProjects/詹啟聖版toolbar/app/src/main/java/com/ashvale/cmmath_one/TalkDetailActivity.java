@@ -35,7 +35,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class TalkDetailActivity extends AppCompatActivity{
+public class TalkDetailActivity extends DetailActivity {
     public static final String TAG = TalkDetailActivity.class.getSimpleName();
 
     private SimpleDateFormat sdf;
@@ -48,6 +48,7 @@ public class TalkDetailActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk_detail);
+        super.onCreateView();
 
         sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
         sdf.setTimeZone(TimeZone.getDefault());
