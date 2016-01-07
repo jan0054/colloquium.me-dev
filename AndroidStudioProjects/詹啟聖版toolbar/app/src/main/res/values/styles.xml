@@ -19,6 +19,13 @@
         <item name="titleTextColor">@color/white</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">@color/white</item>
+        <item name="actionMenuTextColor">@color/white</item>
+
+    </style>
+
+    <style name="ActionBarMenu" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/gr800</item>
     </style>
 
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">

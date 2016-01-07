@@ -98,7 +98,8 @@
         <activity
             android:name=".UserPreferenceActivity"
             android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            android:parentActivityName=".SettingsActivity"/>
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
@@ -121,7 +122,8 @@
         <activity
             android:name=".ChatOptionsActivity"
             android:label="@string/title_activity_chat_options"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:parentActivityName=".ChatActivity"/>
         <activity
             android:name=".PostDetailActivity"
             android:label="@string/title_activity_post_detail"
@@ -146,7 +148,8 @@
         <activity
             android:name=".NewChatActivity"
             android:label="@string/title_activity_newchat"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:parentActivityName=".ConversationActivity"/>
         <activity
             android:name=".NewPostActivity"
             android:label="@string/title_activity_new_post"

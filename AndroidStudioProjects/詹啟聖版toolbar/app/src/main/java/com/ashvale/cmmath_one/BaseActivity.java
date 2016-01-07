@@ -40,15 +40,12 @@ import java.util.Set;
 public class BaseActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
-    //public ListView drawerListView;
     public String mActivityTitle;
     private SharedPreferences savedEvents;
     public ActionBarDrawerToggle mDrawerToggle;
     private Context context;
     public  List<ParseObject> eventObjList;
-    public DrawerAdapter drawerAdapter;
     protected cmmathApplication app;
-
     public NavigationView leftDrawerView;
 
     protected void onCreateDrawer() {
@@ -59,7 +56,6 @@ public class BaseActivity extends AppCompatActivity {
 
         Toolbar mainToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mainToolBar);
-
 
         leftDrawerView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -120,7 +116,8 @@ public class BaseActivity extends AppCompatActivity {
                 public void done(List<ParseObject> objects, com.parse.ParseException e) {
                     if (e == null) {
                         Menu drawerMenu = leftDrawerView.getMenu();
-                        SubMenu savedEventsMenu = drawerMenu.addSubMenu(R.id.drawer_events_group,Menu.NONE,1,"Pinned Events");
+                        String subTitle = context.getString(R.string.title_pinned);
+                        SubMenu savedEventsMenu = drawerMenu.addSubMenu(R.id.drawer_events_group,Menu.NONE,1,subTitle);
                         eventObjList = objects;
                         List<String> eventNames = new ArrayList<String>();
                         int itemCount = 0;
@@ -135,18 +132,6 @@ public class BaseActivity extends AppCompatActivity {
                         //reference: https://code.google.com/p/android/issues/detail?id=176300
                         MenuItem mi = drawerMenu.getItem(drawerMenu.size()-1);
                         mi.setTitle(mi.getTitle());
-
-                        //drawerAdapter = new DrawerAdapter(context, eventNames);
-                        //drawerListView.setAdapter(drawerAdapter);
-                        /*
-                        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                startDrawerActivity(position);
-                            }
-                        });
-                        */
-
                     } else {
                         Log.d("cm_app", "drawer query error: " + e);
                     }
@@ -155,18 +140,7 @@ public class BaseActivity extends AppCompatActivity {
         }
         else   //no saved events found
         {
-            List<String> eventNames = new ArrayList<>();
-            //drawerAdapter = new DrawerAdapter(context, eventNames);
-            //drawerListView.setAdapter(drawerAdapter);
-            /*
-            drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //Toast.makeText(BaseActivity.this, "drawer item selected", Toast.LENGTH_SHORT).show();
-                    startDrawerActivity(position);
-                }
-            });
-            */
+
         }
     }
 
@@ -190,9 +164,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void refreshDrawer()
     {
-        //Toast.makeText(BaseActivity.this, "drawer refreshed", Toast.LENGTH_SHORT).show();
         setDrawer();
-        //drawerLayout.openDrawer(drawerListView);
     }
 
     public void drawerGoTo (int selection)

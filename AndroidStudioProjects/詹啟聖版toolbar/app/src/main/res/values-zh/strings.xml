@@ -42,6 +42,7 @@
     <string name="title_chat">訊息</string>
     <string name="title_career">職涯</string>
     <string name="title_settings">設定</string>
+    <string name="title_pinned">關注的活動</string>
 
     <!--Labels: log in and sign up -->
     <string name="login">登入</string>
@@ -94,7 +95,7 @@
     <string name="userpref_detail">設定或更改使用者資訊與隱私設定</string>
     <string name="leave_chat">退出對話</string>
     <string name="invite_chat">邀請他人</string>
-    <string name="details">細節</string>
+    <string name="details">細節..</string>
     <string name="contact">聯絡</string>
     <string name="send_email">Email</string>
     <string name="website">網頁</string>

@@ -5,7 +5,7 @@
     tools:context="com.ashvale.cmmath_one.UserPreferenceActivity">
 
     <item android:id="@+id/savepreference"
-        android:title="Save"
+        android:title="@string/save"
         app:showAsAction="ifRoom" />
 
 </menu>

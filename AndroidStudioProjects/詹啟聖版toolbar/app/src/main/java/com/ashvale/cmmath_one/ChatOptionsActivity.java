@@ -78,7 +78,10 @@ public class ChatOptionsActivity extends DetailActivity {
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
                 if (s.length() == 0) {
-                    searcharray.clear();
+                    if (searcharray != null)
+                    {
+                        searcharray.clear();
+                    }
                     getUser();
                 }
             }
@@ -202,19 +205,18 @@ public class ChatOptionsActivity extends DetailActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_invite) {
-            //do invitation then go back
-            inviteSelected();
-            return true;
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();  //this is a workaround: normal back arrow press will destroy() the chatactivity, which when recreated will have no intent and will crash
+                break;
+            case R.id.action_invite:
+                inviteSelected();
+                break;
+            default:
+                break;
         }
-
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     public void sendBroadcast(final ParseUser author, final String content, final ParseObject conversation)
