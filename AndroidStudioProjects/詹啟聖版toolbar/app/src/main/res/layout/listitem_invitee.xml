@@ -18,7 +18,7 @@
         android:layout_marginRight="@dimen/listicon_margin"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/drawer_topdivider"
-        android:padding="2dp"
+        android:padding="@dimen/listicon_padding"
         android:scaleType="centerInside"
         android:src="@drawable/emptycircle"
         android:tint="@color/gr600"/>
