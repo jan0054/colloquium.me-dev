@@ -178,7 +178,7 @@ public class PostDetailActivity extends DetailActivity {
         }
         Log.d(TAG, "getcount "+listView.getAdapter().getCount());
         Log.d(TAG, "totalHeight "+totalHeight);
-        listView.getLayoutParams().height = totalHeight + (listView.getDividerHeight() * listView.getAdapter().getCount());
+        listView.getLayoutParams().height = totalHeight + (listView.getDividerHeight() * listView.getAdapter().getCount()) + (int)getResources().getDimension(R.dimen.listitem_bottom);
         listView.setLayoutParams(listView.getLayoutParams());
         listView.requestLayout();
     }

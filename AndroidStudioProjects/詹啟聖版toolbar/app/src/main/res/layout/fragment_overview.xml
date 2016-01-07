@@ -88,11 +88,15 @@
                     android:layout_marginBottom="10dp"
                     android:layout_toRightOf="@+id/attend_string"
                     android:text=""/>
+                <View android:layout_width="match_parent"
+                      android:layout_height="1dip"
+                      android:layout_below="@id/attend_string"
+                      android:background="@color/divider_color" />
             <ListView android:id="@+id/announceListView"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:layout_below="@+id/attend_string"
-                      android:divider="@color/divider_color"
+                      android:divider="@drawable/list_divider"
                       android:dividerHeight="1dp"
                       android:paddingTop="6dp" />
             <TextView android:id="@+id/announceempty"

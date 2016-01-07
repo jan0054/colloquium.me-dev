@@ -21,7 +21,8 @@
                 android:layout_below="@+id/toolbar"
                 android:id="@+id/pulltorefresh"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_above="@+id/footer">
                 <ScrollView android:id="@+id/scroll"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
@@ -84,13 +85,13 @@
                         <ListView
                             android:id="@+id/commentListView"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:paddingTop="6dp"
                             android:layout_marginBottom="6dp"
                             android:layout_below="@+id/container"
-                            android:background="@color/background"
-                            android:divider="@color/divider_color"
-                            android:dividerHeight="0dp"
+                            android:background="@drawable/list_item"
+                            android:divider="@drawable/list_divider"
+                            android:dividerHeight="1dp"
                             android:scrollbars="none"/>
                         <!--android:scrollbars="vertical"/-->
                         <TextView android:id="@+id/commentempty"
