@@ -122,21 +122,6 @@ public class PostDetailActivity extends DetailActivity {
         CommentAdapter adapter = new CommentAdapter(this, results);
         commentList.setAdapter(adapter);
         getListHeight(commentList);
-        commentList.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem == 0) {
-                    swipeRefresh.setEnabled(true);
-                } else {
-                    swipeRefresh.setEnabled(false);
-                }
-            }
-        });
     }
 
     @Override
