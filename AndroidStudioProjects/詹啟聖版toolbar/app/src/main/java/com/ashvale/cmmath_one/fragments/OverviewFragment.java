@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
@@ -362,6 +363,21 @@ public class OverviewFragment extends BaseFragment {
     {
         AnnounceAdapter adapter = new AnnounceAdapter(getActivity(), results);
         announceList.setAdapter(adapter);
+        announceList.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if(firstVisibleItem == 0) {
+                    swipeRefresh.setEnabled(true);
+                } else {
+                    swipeRefresh.setEnabled(false);
+                }
+            }
+        });
     }
 
     private void sendEmail(String title, String content, String[] emails, Uri imageUri) throws IOException {

@@ -3,14 +3,8 @@
     android:id="@+id/feed_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_item"
+    android:background="@color/light_bg"
     android:orientation="horizontal" >
-
-    <View
-        android:layout_width="3dp"
-        android:layout_height="match_parent"
-        android:background="@color/dark_accent"
-        android:layout_marginBottom="0dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

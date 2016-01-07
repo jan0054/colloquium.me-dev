@@ -93,7 +93,7 @@
                       android:layout_height="wrap_content"
                       android:layout_below="@+id/attend_string"
                       android:divider="@color/divider_color"
-                      android:dividerHeight="0dp"
+                      android:dividerHeight="1dp"
                       android:paddingTop="6dp" />
             <TextView android:id="@+id/announceempty"
                       android:layout_width="match_parent"

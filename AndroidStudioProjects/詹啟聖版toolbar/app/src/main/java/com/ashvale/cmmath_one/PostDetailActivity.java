@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -121,6 +122,21 @@ public class PostDetailActivity extends DetailActivity {
         CommentAdapter adapter = new CommentAdapter(this, results);
         commentList.setAdapter(adapter);
         getListHeight(commentList);
+        commentList.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem == 0) {
+                    swipeRefresh.setEnabled(true);
+                } else {
+                    swipeRefresh.setEnabled(false);
+                }
+            }
+        });
     }
 
     @Override
