@@ -17,10 +17,10 @@
         android:layout_marginRight="@dimen/listicon_margin"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/drawer_topdivider"
-        android:padding="@dimen/listicon_padding"
+        android:padding="2dp"
         android:scaleType="centerInside"
         android:src="@drawable/emptycircle"
-        android:tint="@color/primary_color"/>
+        android:tint="@color/gr600"/>
     <TextView
         android:id="@+id/newchat_name"
         android:layout_width="match_parent"

@@ -115,7 +115,7 @@ public class AddEventAdapter extends BaseAdapter {
         else
         {
             imagelabel.setImageResource(R.drawable.emptycircle);
-            imagelabel.setColorFilter(context.getResources().getColor(R.color.primary_color));
+            imagelabel.setColorFilter(context.getResources().getColor(R.color.gr600));
         }
 
         namelabel.setText(namestr);
