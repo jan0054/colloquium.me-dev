@@ -173,7 +173,7 @@
 
     <!-- Tutorial strings -->
     <string name="choose_event_title">Follow events that interest you</string>
-    <string name="choose_event_content">Choose events that you want to follow, they'll show up in your home screen and side drawer.</string>
+    <string name="choose_event_content">Choose events that you want to follow, they will show up in your home screen and side drawer.</string>
     <string name="drawer_title">Access common features</string>
     <string name="drawer_content">Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer.</string>
     <string name="overview_title">View event details</string>
