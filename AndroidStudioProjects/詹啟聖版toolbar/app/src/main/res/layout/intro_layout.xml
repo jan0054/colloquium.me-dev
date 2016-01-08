@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/list_margin"
     android:orientation="vertical">
 
     <ImageView
@@ -10,13 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginBottom="-14dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/tut_home"/>
-    <TextView
-        android:id="@+id/introText"
+        android:src="@drawable/tut_chooseevent"/>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:background="@color/light_bg"
-        />
+        android:layout_weight="4"
+        android:background="@color/transparent">
+        <TextView
+            android:id="@+id/introTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize_title"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/introContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/introTitle"
+            android:layout_margin="@dimen/list_margin"
+            android:textSize="@dimen/textSize_detail"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
 </LinearLayout>

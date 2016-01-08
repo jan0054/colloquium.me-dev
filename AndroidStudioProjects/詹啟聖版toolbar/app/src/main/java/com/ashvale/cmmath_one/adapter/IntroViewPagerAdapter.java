@@ -1,20 +1,15 @@
 package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ashvale.cmmath_one.LoginActivity;
 import com.ashvale.cmmath_one.R;
-import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,19 +27,33 @@ public class IntroViewPagerAdapter extends PagerAdapter {
         this.pageNumber = pageNumber;
         mListViews = new ArrayList<View>();
 
-        String[] textArray = context.getResources().getStringArray(R.array.intro_text_array);
+        String[] titleArray = context.getResources().getStringArray(R.array.intro_title_array);
+        String[] contentArray = context.getResources().getStringArray(R.array.intro_content_array);
         TypedArray imageArray = context.getResources().obtainTypedArray(R.array.intro_image_array);
 
         for (int i = 0; i<pageNumber; i++) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View v = inflater.inflate(R.layout.intro_layout, null);
             ImageView introImage = (ImageView) v.findViewById(R.id.introImage);
-            TextView introText = (TextView) v.findViewById(R.id.introText);
+            TextView introTitle = (TextView) v.findViewById(R.id.introTitle);
+            TextView introContent = (TextView) v.findViewById(R.id.introContent);
 
-            introImage.setImageDrawable(imageArray.getDrawable(i));
-            introText.setText(textArray[i]);
+//            introImage.setImageResource(imageArray.getResourceId(i, -1));
+            switch (i){
+                case 0:
+                    introImage.setImageResource(R.drawable.tut_chooseevent);
+                case 1:
+                    introImage.setImageResource(R.drawable.tut_home);
+                case 2:
+                    introImage.setImageResource(R.drawable.tut_drawer);
+                case 3:
+                    introImage.setImageResource(R.drawable.tut_overview);
+            }
+            introTitle.setText(titleArray[i]);
+            introContent.setText(contentArray[i]);
             mListViews.add(v);
         }
+        imageArray.recycle();
     }
 
     @Override

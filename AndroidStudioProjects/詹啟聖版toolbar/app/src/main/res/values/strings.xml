@@ -92,7 +92,7 @@
     <string name="about_title">About Us</string>
     <string name="about_detail">Learn about the team behind Colloquium.me</string>
     <string name="tutorial_title">Tutorial</string>
-    <string name="tutorial_detail"></string>
+    <string name="tutorial_detail">Take a quick tour of major features</string>
     <string name="userpref_title">User Preference</string>
     <string name="userpref_detail">Setup or change user info and social options</string>
     <string name="leave_chat">Leave Conversation</string>
@@ -134,26 +134,36 @@
 
     <!-- Arrays (settings page) -->
     <string-array name="setting_primary_label_array">
-        <item>App Feedback</item>
-        <item>Privacy and Terms</item>
-        <item>About Us</item>
-        <item>User Preferences</item>
+        <item>@string/feedback_title</item>
+        <item>@string/priv_title</item>
+        <item>@string/about_title</item>
+        <item>@string/tutorial_title</item>
+        <item>@string/userpref_title</item>
     </string-array>
     <string-array name="setting_secondary_label_array">
-        <item>Share your questions and feedback with us</item>
-        <item>Learn how we protect and secure your data</item>
-        <item>Learn about the team behind Colloquium.me</item>
-        <item>Setup or change user info and social options</item>
+        <item>@string/feedback_detail</item>
+        <item>@string/priv_detail</item>
+        <item>@string/about_detail</item>
+        <item>@string/tutorial_detail</item>
+        <item>@string/userpref_detail</item>
     </string-array>
-    <string-array name="intro_text_array">
-        <item>Text Page 1</item>
-        <item>Text Page 2</item>
-        <item>Text Page 3</item>
+    <string-array name="intro_title_array">
+        <item>@string/choose_event_title</item>
+        <item>@string/home_title</item>
+        <item>@string/drawer_title</item>
+        <item>@string/overview_title</item>
+    </string-array>
+    <string-array name="intro_content_array">
+        <item>@string/choose_event_content</item>
+        <item>@string/home_content</item>
+        <item>@string/drawer_content</item>
+        <item>@string/overview_content</item>
     </string-array>
     <string-array name="intro_image_array">
-        <item>@drawable/home</item>
+        <item>@drawable/tut_chooseevent</item>
+        <item>@drawable/tut_home</item>
+        <item>@drawable/tut_drawer</item>
         <item>@drawable/tut_overview</item>
-        <item>@drawable/tut_detail</item>
     </string-array>
 
     <!-- Alerts -->
@@ -182,7 +192,5 @@
     <string name="overview_content">This is the event overview page, to see specific talks or attendees, tap on the different icons at the top of the screen.</string>
     <string name="home_title">View all followed events</string>
     <string name="home_content">This is the home screen, where all the events you are following are displayed. Tap any event to view the details.</string>
-    <string name="tutorial_title">Tutorial</string>
-    <string name="tutorial_detail">Take a quick tour of major features</string>
 
 </resources>

@@ -46,8 +46,13 @@
             style="@style/Widget.AppCompat.CompoundButton.RadioButton"
             android:layout_margin="@dimen/corner_size"
             android:button="@drawable/radio_background"
-            android:id="@+id/radioButtonEnd" />
+            android:id="@+id/radioButton3" />
 
+        <RadioButton
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:layout_margin="@dimen/corner_size"
+            android:button="@drawable/radio_background"
+            android:id="@+id/radioButtonEnd" />
     </RadioGroup>
     <ImageButton
         android:id="@+id/leaveIntrohBtn"

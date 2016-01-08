@@ -23,7 +23,7 @@ public class IntroActivity extends Activity {
     ImageButton btnFinish;
     public String src_act;
     private SharedPreferences appStatus;
-    int pageNumber = 3;
+    int pageNumber = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +79,14 @@ public class IntroActivity extends Activity {
                     btnFinish.setClickable(true);
                 } else if (position == 1){
                     mRadio.check(R.id.radioButton2);
+                    btnLeave.setVisibility(View.INVISIBLE);
+                    btnLeave.setEnabled(false);
+                    btnLeave.setClickable(false);
+                    btnFinish.setVisibility(View.INVISIBLE);
+                    btnFinish.setEnabled(false);
+                    btnFinish.setClickable(false);
+                } else if (position == 2){
+                    mRadio.check(R.id.radioButton3);
                     btnLeave.setVisibility(View.INVISIBLE);
                     btnLeave.setEnabled(false);
                     btnLeave.setClickable(false);
