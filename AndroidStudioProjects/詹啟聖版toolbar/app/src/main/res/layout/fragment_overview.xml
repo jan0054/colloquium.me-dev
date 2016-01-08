@@ -96,7 +96,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:layout_below="@+id/attend_string"
-                      android:divider="@drawable/list_divider"
+                      android:divider="@drawable/divider_inset"
                       android:dividerHeight="1dp"
                       android:paddingTop="6dp" />
             <TextView android:id="@+id/announceempty"

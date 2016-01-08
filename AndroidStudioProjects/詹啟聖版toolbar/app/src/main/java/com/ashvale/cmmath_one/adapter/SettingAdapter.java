@@ -29,7 +29,11 @@ public class SettingAdapter extends BaseAdapter {
     @Override
     public int getCount()
     {
-        return 5;
+        ParseUser curUser = ParseUser.getCurrentUser();
+        if (ParseUser.getCurrentUser() != null)
+            return 6;
+        else
+            return 5;
     }
 
     @Override
@@ -46,6 +50,7 @@ public class SettingAdapter extends BaseAdapter {
         String[] feedback = {context.getString(R.string.feedback_title), context.getString(R.string.feedback_detail)};
         String[] privacy = {context.getString(R.string.priv_title), context.getString(R.string.priv_detail)};
         String[] about = {context.getString(R.string.about_title), context.getString(R.string.about_detail)};
+        String[] tutorial = {context.getString(R.string.tutorial_title), context.getString(R.string.tutorial_detail)};
         String[] preference = {context.getString(R.string.userpref_title), context.getString(R.string.userpref_detail)};
         String[] returnobject = {""};
         switch (position)
@@ -70,6 +75,9 @@ public class SettingAdapter extends BaseAdapter {
                 returnobject = about;
                 break;
             case 4:
+                returnobject = tutorial;
+                break;
+            case 5:
                 returnobject = preference;
                 break;
         }

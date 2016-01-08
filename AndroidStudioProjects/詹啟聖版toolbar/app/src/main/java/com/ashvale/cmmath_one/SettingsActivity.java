@@ -62,6 +62,13 @@ public class SettingsActivity extends BaseActivity {
                         startActivity(aboutusWeb);
                         break;
                     case 4:
+                        //tutorial page
+                        Intent intentTut = new Intent(SettingsActivity.this, IntroActivity.class);
+                        intentTut.putExtra("src", "settings");
+                        startActivity(intentTut);
+                        finish();
+                        break;
+                    case 5:
                         //preference page
                         Intent intent = new Intent(SettingsActivity.this, UserPreferenceActivity.class);
                         intent.putExtra("src", "settings");

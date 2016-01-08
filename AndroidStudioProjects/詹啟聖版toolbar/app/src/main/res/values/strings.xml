@@ -91,6 +91,8 @@
     <string name="priv_detail">Info on how we protect and secure your data</string>
     <string name="about_title">About Us</string>
     <string name="about_detail">Learn about the team behind Colloquium.me</string>
+    <string name="tutorial_title">Tutorial</string>
+    <string name="tutorial_detail"></string>
     <string name="userpref_title">User Preference</string>
     <string name="userpref_detail">Setup or change user info and social options</string>
     <string name="leave_chat">Leave Conversation</string>

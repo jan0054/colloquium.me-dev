@@ -91,6 +91,8 @@
     <string name="priv_detail">了解我們如何確保您的資料隱私</string>
     <string name="about_title">關於我們</string>
     <string name="about_detail">Colloquium.me服務的開發團隊</string>
+    <string name="tutorial_title">使用說明</string>
+    <string name="tutorial_detail">點擊觀看Colloquium.me的使用教學</string>
     <string name="userpref_title">使用者偏好</string>
     <string name="userpref_detail">設定或更改使用者資訊與隱私設定</string>
     <string name="leave_chat">退出對話</string>
