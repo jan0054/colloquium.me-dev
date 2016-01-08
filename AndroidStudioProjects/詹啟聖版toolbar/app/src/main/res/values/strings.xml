@@ -171,4 +171,14 @@
     <string name="privacy_url">http://colloquium.me/?page_id=3348</string>
     <string name="aboutus_url">http://colloquium.me</string>
 
+    <!-- Tutorial strings -->
+    <string name="choose_event_title">Follow events that interest you</string>
+    <string name="choose_event_content">Choose events that you want to follow, they'll show up in your home screen and side drawer.</string>
+    <string name="drawer_title">Access common features</string>
+    <string name="drawer_content">Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer.</string>
+    <string name="overview_title">View event details</string>
+    <string name="overview_content">This is the event overview page, to see specific talks or attendees, tap on the different icons at the top of the screen.</string>
+    <string name="home_title">View all followed events</string>
+    <string name="home_content">This is the home screen, where all the events you are following are displayed. Tap any event to view the event details.</string>
+
 </resources>

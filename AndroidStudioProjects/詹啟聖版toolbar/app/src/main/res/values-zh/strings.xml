@@ -171,4 +171,14 @@
     <string name="privacy_url">http://colloquium.me/?page_id=3348</string>
     <string name="aboutus_url">http://colloquium.me</string>
 
+    <!-- Tutorial strings -->
+    <string name="choose_event_title">關注您有興趣的活動</string>
+    <string name="choose_event_content">選擇關注的活動會出現在首頁以及左方選單，您隨時可以新增或改變關注的活動。</string>
+    <string name="drawer_title">主選單</string>
+    <string name="drawer_content">點擊左上角的圖示或從螢幕左方往右滑動可開啟主選單，裡面包括大多數常用功能。</string>
+    <string name="overview_title">活動資訊</string>
+    <string name="overview_content">這是活動主頁面，點擊上方各圖示或左右滑動可以使用其它活動功能。</string>
+    <string name="home_title">首頁</string>
+    <string name="home_content">這是首頁，顯示您關注的每一個活動。您可以點擊個別活動以觀看更多資訊。</string>
+
 </resources>
