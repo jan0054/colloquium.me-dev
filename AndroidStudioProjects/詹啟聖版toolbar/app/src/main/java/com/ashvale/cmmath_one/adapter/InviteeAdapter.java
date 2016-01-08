@@ -69,13 +69,13 @@ public class InviteeAdapter extends BaseAdapter {
         if (selected == 1)
         {
             checkbox.setImageResource(R.drawable.check);
-            checkbox.setColorFilter(context.getResources().getColor(R.color.do700));
-            nameLabel.setTextColor(context.getResources().getColor(R.color.do700));
+            checkbox.setColorFilter(context.getResources().getColor(R.color.primary_color_icon));
+            nameLabel.setTextColor(context.getResources().getColor(R.color.primary_color_icon));
         }
         else
         {
             checkbox.setImageResource(R.drawable.emptycircle);
-            checkbox.setColorFilter(context.getResources().getColor(R.color.gr600));
+            checkbox.setColorFilter(context.getResources().getColor(R.color.unselected_icon));
             nameLabel.setTextColor(context.getResources().getColor(R.color.primary_text));
         }
 

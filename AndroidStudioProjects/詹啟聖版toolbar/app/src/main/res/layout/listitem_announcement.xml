@@ -55,7 +55,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center|left"
             android:text="@string/content_fake"
-            android:textColor="@color/dark_primary"
+            android:textColor="@color/primary_text"
             android:textSize="14sp" />
 
     </RelativeLayout>

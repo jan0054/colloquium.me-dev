@@ -24,7 +24,7 @@
         android:layout_below="@+id/chat_time"
         android:layout_marginBottom="@dimen/listicon_margin"
         android:fontFamily="sans-serif"
-        android:textColor="@color/dark_primary"
+        android:textColor="@color/primary_text"
         android:textSize="16sp"
         android:text="content" />
 

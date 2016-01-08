@@ -36,7 +36,7 @@
             android:focusable="false"
             android:background="#00000000"
             android:text="@string/settingsignup"
-            android:textColor="@color/in500"
+            android:textColor="@color/accent_color"
             android:textStyle="bold"
             style="?android:attr/borderlessButtonStyle"/>
     </RelativeLayout>

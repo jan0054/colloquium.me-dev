@@ -25,7 +25,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/conversationListView"
-                    android:background="@color/background"
+                    android:background="@color/light_grey_background"
                     android:divider="@color/divider_color"
                     android:dividerHeight="0dp"/>
             </android.support.v4.widget.SwipeRefreshLayout>
@@ -41,7 +41,7 @@
             android:layout_marginRight="8pt"
             app:elevation="6dp"
             app:pressedTranslationZ="12dp"
-            app:backgroundTint="@color/in500"/>
+            app:backgroundTint="@color/accent_color"/>
     </FrameLayout>
 
     <!-- The navigation drawer -->

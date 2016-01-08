@@ -43,7 +43,7 @@
         android:background="#00000000"
         android:contentDescription="@string/empty"
         android:src="@drawable/phone"
-        android:tint="@color/in500" />
+        android:tint="@color/accent_color" />
     <ImageButton
         android:id="@+id/venueNavigate"
         android:layout_width="24dp"
@@ -55,7 +55,7 @@
         android:background="#00000000"
         android:contentDescription="@string/empty"
         android:src="@drawable/nav"
-        android:tint="@color/in500" />
+        android:tint="@color/accent_color" />
     <Button
         android:id="@+id/venueWebsite"
         android:layout_width="32dp"
@@ -68,7 +68,7 @@
         android:contentDescription="@string/empty"
         android:gravity="center"
         android:text="@string/web"
-        android:textColor="@color/in500"
+        android:textColor="@color/accent_color"
         style="?android:attr/borderlessButtonStyle"/>
 
     <TextView
@@ -86,7 +86,7 @@
         android:maxWidth="300dp"
         android:singleLine="false"
         android:text="@string/description_fake"
-        android:textColor="@color/dark_primary"
+        android:textColor="@color/primary_text"
         android:scrollbars = "vertical"
         android:textSize="12sp" />
 

@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background">
+        android:background="@color/light_grey_background">
         <LinearLayout
             android:id="@+id/search_bar"
             android:orientation="horizontal"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:tint="@color/in500"
+                android:tint="@color/accent_color"
                 android:src="@drawable/search"
                 android:background="#00000000" />
         </LinearLayout>

@@ -78,7 +78,7 @@ public class PeopleDetailActivity extends DetailActivity {
 
                     if(email_status == 1 && emailStr != null) {
                         emailBtn.setEnabled(true);
-                        emailBtn.setTextColor(getResources().getColor(R.color.in500));
+                        emailBtn.setTextColor(getResources().getColor(R.color.accent_color));
                         emailBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -91,11 +91,11 @@ public class PeopleDetailActivity extends DetailActivity {
                         });
                     } else {
                         emailBtn.setEnabled(false);
-                        emailBtn.setTextColor(getResources().getColor(R.color.secondary_text));
+                        emailBtn.setTextColor(getResources().getColor(R.color.unselected_icon));
                     }
                     if(linkStr != null && linkStr.length()!=0) {
                         linkBtn.setEnabled(true);
-                        linkBtn.setTextColor(getResources().getColor(R.color.in500));
+                        linkBtn.setTextColor(getResources().getColor(R.color.accent_color));
                         linkBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -104,12 +104,12 @@ public class PeopleDetailActivity extends DetailActivity {
                         });
                     } else {
                         linkBtn.setEnabled(false);
-                        linkBtn.setTextColor(getResources().getColor(R.color.secondary_text));
+                        linkBtn.setTextColor(getResources().getColor(R.color.unselected_icon));
                     }
 
                     if(chat_status == 1) {
                         messageBtn.setEnabled(true);
-                        messageBtn.setTextColor(getResources().getColor(R.color.in500));
+                        messageBtn.setTextColor(getResources().getColor(R.color.accent_color));
                         messageBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -118,7 +118,7 @@ public class PeopleDetailActivity extends DetailActivity {
                         });
                     } else {
                         messageBtn.setEnabled(false);
-                        messageBtn.setTextColor(getResources().getColor(R.color.secondary_text));
+                        messageBtn.setTextColor(getResources().getColor(R.color.unselected_icon));
                     }
                 } else {
                     Log.d("cm_app", "postdetail query error: " + e);

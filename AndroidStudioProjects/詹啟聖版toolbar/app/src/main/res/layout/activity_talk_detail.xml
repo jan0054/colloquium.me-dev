@@ -12,7 +12,7 @@
         <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background">
+            android:background="@color/light_grey_background">
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/main_toolbar"/>
@@ -60,7 +60,7 @@
                     android:textStyle="bold"
                     android:gravity="left"
                     android:text="@string/author_fake"
-                    android:textColor="@color/in500"
+                    android:textColor="@color/accent_color"
                     android:textSize="14sp"
                     style="?android:attr/borderlessButtonStyle"/>
 
@@ -100,7 +100,7 @@
                     android:padding="0dp"
                     android:maxLines="10"
                     android:text="@string/description_fake"
-                    android:textColor="@color/dark_primary"
+                    android:textColor="@color/primary_text"
                     android:textSize="16sp" />
 
                 <Button
@@ -114,7 +114,7 @@
                     android:padding="0dp"
                     android:gravity="left"
                     android:textStyle="bold"
-                    android:textColor="@color/in500"
+                    android:textColor="@color/accent_color"
                     android:onClick="goDiscuss"
                     android:text="@string/go_discuss_button"
                     android:textSize="14sp"
@@ -128,7 +128,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/fullscreen"
-                    android:tint="@color/background"
+                    android:tint="@color/light_grey_background"
                     android:background="#00000000"/>
 
                 <Button
@@ -143,7 +143,7 @@
                     android:gravity="left"
                     android:text="@string/add_calendar"
                     android:textStyle="bold"
-                    android:textColor="@color/in500"
+                    android:textColor="@color/accent_color"
                     android:textSize="14sp"
                     style="?android:attr/borderlessButtonStyle"/>
                 <Button
@@ -158,7 +158,7 @@
                     android:gravity="left"
                     android:text="@string/pdf"
                     android:textStyle="bold"
-                    android:textColor="@color/in500"
+                    android:textColor="@color/accent_color"
                     android:textSize="14sp"
                     style="?android:attr/borderlessButtonStyle"/>
 

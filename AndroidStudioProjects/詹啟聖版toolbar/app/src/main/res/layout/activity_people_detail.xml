@@ -13,7 +13,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background">
+            android:background="@color/light_grey_background">
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/main_toolbar"/>
@@ -43,7 +43,7 @@
                     android:fontFamily="sans-serif"
                     android:gravity="center|left"
                     android:text="@string/institution_fake"
-                    android:textColor="@color/dark_primary"
+                    android:textColor="@color/primary_text"
                     android:textSize="14sp" />
                 <LinearLayout android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                         android:gravity="center"
                         android:layout_weight="1"
                         android:text="@string/message"
-                        android:textColor="@color/in500"
+                        android:textColor="@color/accent_color"
                         android:textSize="14sp"
                         android:visibility="invisible"
                         android:textStyle="bold"
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/container"
                 android:paddingTop="6dp"
-                android:background="@color/background"
+                android:background="@color/light_grey_background"
                 android:divider="@color/divider_color"
                 android:dividerHeight="0dp"/>
             <TextView android:id="@+id/persontalkempty"

@@ -1,135 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="login_button_background">#0D2449</color>
-    <color name="login_button_text">#FFFFFF</color>
-    <color name="signup_button_background">#5B7198</color>
-    <color name="signup_button_text">#FFFFFF</color>
-    <!-- List -->
-    <color name="stage_background">#48515C</color> <!-- 405372 -->
-    <color name="list_background">#17222A</color>
-    <color name="list_divider">#00000000</color>
-    <color name="list_item_header">#8D9CB9</color>
-    <color name="list_item_background">#2B4674</color>
-    <color name="list_item_level_1">#FFFFFF</color>
-    <color name="list_item_level_2">#DDDDDD</color>
-    <color name="list_action_text">#FF9700</color> <!-- #F6BE12 -->
 
-    <!-- Details -->
-    <color name="details_desc_bg">#33496F</color>
+    <!-- Main project colors for Colloquium.me  -->
+    <color name="accent_color">@color/in500</color>
+    <color name="dark_accent">@color/in700</color>
+    <color name="primary_color">@color/do500</color>
+    <color name="primary_color_icon">@color/do700</color>
+    <color name="unselected_icon">@color/gr600</color>
+    <color name="primary_text">@color/gr900</color>
+    <color name="secondary_text">@color/gr700</color>
+    <color name="divider_color">@color/gr400</color>
+    <color name="light_bg">@color/white</color>
+    <color name="light_button_txt">@color/white</color>
+    <color name="light_grey_background">@color/gr300</color>
+    <color name="shadow_color">@color/gr400</color>
 
-
-    <!-- Popup Menu -->
-    <color name="popup_background">#80000000</color>
-
-
-    <!-- Episode Viewer -->
-    <color name="frame_unselected">#70000000</color>
-
-
-    <color name="comics_item_unselected">#FF4444</color>
-    <color name="comics_item_selected">#4444FF</color>
-
-    <color name="grid_title">#1F3D83</color>
-    <color name="transparent">#00000000</color>
-    <color name="search_container">#C9C9CE</color>
-    <color name="category_background">#FAFAFA</color>
-
-    <!-- Settings -->
-    <color name="pref_title">#FFFFFF</color>
-    <color name="pref_value">#CCCCCC</color>
-    <color name="pref_unselected">#2B4674</color>
-    <color name="pref_selected">#2B4674</color>
-    <color name="pref_divider">#F6BE12</color>
-
-    <!-- Action Bar, Tabs, and Body -->
-    <color name="actionbar_top">#3E5378</color>
-    <color name="actionbar_bottom">#3E5378</color>
-    <color name="actionbar_divider">#2B394F</color>
-    <color name="tab_background">#1F3252</color>
-    <color name="tab_divider">#939393</color>
-    <color name="tab_selected">#FFFFFF</color>
-    <color name="tab_unselected">#929292</color>
-    <color name="body_background">#D3D3D3</color>
-    <color name="button_tint_pressed">#BBDDFF</color>
-    <color name="button_tint_normal">#FFFFFF</color>
-
-    <!-- Text, and Button -->
-    <color name="button_text_enabled">#007AFF</color>
-    <color name="button_text_disabled">#999999</color>
-
-    <color name="button_pressed">#90FFFFFF</color>
-    <color name="button">#FFFFFF</color>
-    <color name="button_title">#666666</color>
-    <color name="button_highlight_pressed">#90007AFF</color>
-    <color name="button_highlight">#FFFFFF</color>
-    <color name="button_highlight_title">#FFFFFF</color>
-    <color name="edittext">#666666</color>
-    <color name="text_subtitle">#999999</color>
-    <color name="text_hint">#999999</color>
-    <color name="text_input">#666666</color>
-    <color name="text_highlight">#157EFB</color>
-
-    <color name="footer_background">#EFEEEF</color>
-
-    <color name="toggle_bar">#CC414042</color>
-    <color name="black">#000000</color>
-    <color name="white">#FFFFFF</color>
-    <color name="red">#DD1111</color>
-    <color name="warning">#DD7777</color>
-    <color name="company_black">#333333</color>
-    <color name="company_green">#33BB33</color>
-    <color name="company_green_dark">#009900</color>
-    <color name="company_gray">#BBBBBB</color>
-    <color name="company_gray_light">#DDDDDD</color>
-    <color name="company_gray_dark">#414042</color>
-    <color name="status_red">#CC3333</color>
-    <color name="light_blue">#A2B1CC</color>
-    <color name="section_background">#DDDDDD</color>
-    <color name="section_text">#000000</color>
-    <color name="facebook_blue">#3B5998</color>
-
-    <!-- Colors for HEP app -->
-    <color name="accent_color">#E19800</color>
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#727272</color>
-    <color name="divider_color">#B6B6B6</color>
-    <color name="primary_color">#9E9E9E</color>
-    <color name="dark_primary">#616161</color>
-    <color name="light_primary">#F5F5F5</color>
-    <color name="dark_accent">#F57C00</color>
-    <color name="light_accent">#E1E0B2</color>
+    <!-- Others (not main project colors) -->
+    <color name="setup_button_background">@color/do800</color>
+    <color name="setup_button_text">@color/white</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="edittext_bgtint">#00000000</color>
     <color name="hint_color">#B6B6B6</color>
 
-    <color name="drawyer_bg">#FFFFFF</color>
-    <color name="background">#E0E0E0</color>
-    <color name="nav_bar">#F57C00</color>
-    <color name="tab_bar">#000000</color>
-    <color name="light_button_txt">#FFFFFF</color>
-    <color name="dark_button_txt">#F57C00</color>
-    <color name="light_bg">#FFFFFF</color>
-    <color name="light_txt">#FFFFFF</color>
-    <color name="dark_bg">#616161</color>
-    <color name="dark_txt">#212121</color>
-    <color name="edittext_bgtint">#00000000</color>
+    <!-- Basic colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="facebook_blue">#3B5998</color>
 
-    <color name="black_overlay">#66000000</color>
-
+    <!-- deep orange -->
     <color name="do900">#BF360C</color>
+    <color name="do800">#D84315</color>
     <color name="do700">#E64A19</color>
     <color name="do500">#FF5722</color>
+    <color name="do400">#FF7043</color>
+    <color name="do300">#FF8A65</color>
     <color name="do200">#FFAB91</color>
-    <color name="doa100">#FF9E80</color>
     <color name="doa200">#FF6E40</color>
+    <color name="doa100">#FF9E80</color>
 
+    <!-- blue grey -->
     <color name="bg500">#607D8B</color>
 
-    <color name="in500">#3F51B5</color>
-    <color name="in200">#9FA8DA</color>
+    <!-- indigo -->
     <color name="in900">#1A237E</color>
     <color name="in700">#303F9F</color>
-    <color name="ina100">#8C9EFF</color>
+    <color name="in500">#3F51B5</color>
+    <color name="in200">#9FA8DA</color>
     <color name="ina200">#536DFE</color>
+    <color name="ina100">#8C9EFF</color>
 
+    <!-- grey -->
     <color name="gr900">#212121</color>
     <color name="gr800">#424242</color>
     <color name="gr700">#616161</color>

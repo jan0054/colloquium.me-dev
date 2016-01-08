@@ -6,7 +6,7 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/background">
+                    android:background="@color/light_grey_background">
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/pulltorefresh"
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                     android:layout_marginBottom="@dimen/list_padding"
                     android:gravity="center"
                     android:text="@string/organizer_fake"
-                    android:textColor="@color/in700"
+                    android:textColor="@color/dark_accent"
                     android:textSize="14sp"/>
                 <TextView
                     android:id="@+id/overview_content"
@@ -67,7 +67,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="sans-serif"
                     android:text="@string/content_fake"
-                    android:textColor="@color/dark_primary"/>
+                    android:textColor="@color/primary_text"/>
                 <TextView
                     android:id="@+id/attend_string"
                     android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="sans-serif"
                     android:text="@string/attending"
-                    android:textColor="@color/dark_primary"/>
+                    android:textColor="@color/primary_text"/>
 
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/attend_switch"
@@ -107,7 +107,7 @@
                       android:layout_marginRight="32dp"
                       android:gravity="center"
                       android:text="@string/list_empty_event"
-                      android:textColor="@color/dark_primary"
+                      android:textColor="@color/primary_text"
                       android:textSize="14sp" />
             </RelativeLayout>
         </android.support.v4.widget.SwipeRefreshLayout>

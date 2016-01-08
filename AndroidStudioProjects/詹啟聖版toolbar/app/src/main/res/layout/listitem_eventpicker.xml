@@ -65,6 +65,6 @@
         android:layout_marginBottom="0dp"
         android:fontFamily="sans-serif"
         android:text="@string/content_fake"
-        android:textColor="@color/dark_primary"
+        android:textColor="@color/primary_text"
         android:textSize="14dp"/>
 </RelativeLayout>

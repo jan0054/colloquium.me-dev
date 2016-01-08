@@ -12,7 +12,7 @@
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background">
+            android:background="@color/light_grey_background">
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/main_toolbar"/>
@@ -43,9 +43,11 @@
                 <View
                     android:id="@+id/div1"
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
                     android:layout_below="@+id/pref_emaillabel"
-                    android:background="@color/light_primary" />
+                    android:background="@color/divider_color"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"/>
                 <TextView
                     android:id="@+id/pref_eventlabel"
                     android:layout_width="wrap_content"
@@ -70,9 +72,11 @@
                 <View
                     android:id="@+id/div2"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
                     android:layout_below="@+id/pref_eventlabel"
-                    android:background="@color/light_primary"/>
+                    android:background="@color/divider_color"/>
                 <TextView
                     android:id="@+id/pref_chatlabel"
                     android:layout_width="wrap_content"
@@ -98,9 +102,11 @@
                 <View
                     android:id="@+id/div3"
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
                     android:layout_below="@+id/pref_chatlabel"
-                    android:background="@color/light_primary"/>
+                    android:background="@color/divider_color"/>
                 <TextView
                     android:id="@+id/pref_fnamelabel"
                     android:layout_width="wrap_content"
@@ -131,9 +137,11 @@
                 <View
                     android:id="@+id/div4"
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
                     android:layout_below="@+id/pref_fnamelabel"
-                    android:background="@color/light_primary" />
+                    android:background="@color/divider_color" />
                 <TextView
                     android:id="@+id/pref_lnamelabel"
                     android:layout_width="wrap_content"
@@ -164,9 +172,11 @@
                 <View
                     android:id="@+id/div5"
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
                     android:layout_below="@+id/pref_lnamelabel"
-                    android:background="@color/light_primary" />
+                    android:background="@color/divider_color" />
                 <TextView
                     android:id="@+id/pref_instlabel"
                     android:layout_width="wrap_content"
@@ -197,9 +207,11 @@
                 <View
                     android:id="@+id/div6"
                     android:layout_width="match_parent"
-                    android:layout_height="1dip"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
                     android:layout_below="@+id/pref_instlabel"
-                    android:background="@color/light_primary" />
+                    android:background="@color/divider_color" />
                 <TextView
                     android:id="@+id/pref_linklabel"
                     android:layout_width="wrap_content"

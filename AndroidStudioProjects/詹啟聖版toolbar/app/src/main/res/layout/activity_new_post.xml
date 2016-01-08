@@ -36,7 +36,7 @@
                     android:layout_marginBottom="@dimen/list_margin"
                     android:hint="@string/hint_newpost"
                     android:background="#00000000"
-                    android:textColorHighlight="@color/background"
+                    android:textColorHighlight="@color/light_grey_background"
                     android:gravity="top"
                     android:layout_gravity="center_horizontal"
                     style="@style/GreyTextInput"
@@ -45,30 +45,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dip"
                     android:layout_below="@+id/post_input"
-                    android:background="@color/background" />
+                    android:background="@color/light_grey_background" />
                 <ImageButton
                     android:id="@+id/btn_photo"
                     android:layout_width="@dimen/fragmenticon_size"
                     android:layout_height="@dimen/fragmenticon_size"
                     android:layout_below="@+id/post_input"
-                    android:padding="@dimen/listicon_padding"
+                    android:padding="2dp"
                     android:background="#00000000"
                     android:scaleType="fitXY"
                     android:onClick="selectPhoto"
                     android:src="@drawable/addphoto"
-                    android:tint="@color/in500"/>
+                    android:tint="@color/accent_color"/>
                 <ImageButton
                     android:id="@+id/btn_camera"
                     android:layout_width="@dimen/fragmenticon_size"
                     android:layout_height="@dimen/fragmenticon_size"
                     android:layout_below="@+id/post_input"
                     android:layout_toRightOf="@+id/btn_photo"
-                    android:padding="@dimen/listicon_margin"
+                    android:layout_marginLeft="12dp"
+                    android:padding="5dp"
                     android:background="#00000000"
                     android:scaleType="fitXY"
                     android:onClick="selectCamera"
                     android:src="@drawable/addcamera"
-                    android:tint="@color/in500"/>
+                    android:tint="@color/accent_color"/>
 
                 <ImageButton
                     android:id="@+id/btn_delete"
@@ -80,7 +81,7 @@
                     android:clickable="false"
                     android:onClick="deleteImage"
                     android:src="@drawable/cancel"
-                    android:tint="@color/in500"/>
+                    android:tint="@color/accent_color"/>
 
                 <com.parse.ParseImageView
                     android:id="@+id/post_image"

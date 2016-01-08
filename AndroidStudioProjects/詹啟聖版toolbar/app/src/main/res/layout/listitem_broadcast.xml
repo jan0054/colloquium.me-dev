@@ -7,7 +7,7 @@
         android:id="@+id/chat_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/primary_color"
+        android:textColor="@color/secondary_text"
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/listicon_margin"
         android:fontFamily="sans-serif"

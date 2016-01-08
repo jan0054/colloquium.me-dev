@@ -1,7 +1,6 @@
 package com.ashvale.cmmath_one;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,9 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -122,7 +118,7 @@ public class FullscreenReaderActivity extends AppCompatActivity {
             mContentView.setTextColor(getResources().getColor(R.color.white));
             mContentView.setBackgroundColor(getResources().getColor(R.color.black));
             backgroundFrame.setBackgroundColor(getResources().getColor(R.color.black));
-            controlBar.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+            controlBar.setBackgroundColor(getResources().getColor(R.color.primary_text));
         }
         else if (colorMode == 0)
         {
@@ -181,7 +177,7 @@ public class FullscreenReaderActivity extends AppCompatActivity {
             mContentView.setTextColor(getResources().getColor(R.color.white));
             mContentView.setBackgroundColor(getResources().getColor(R.color.black));
             backgroundFrame.setBackgroundColor(getResources().getColor(R.color.black));
-            controlBar.setBackgroundColor(getResources().getColor(R.color.dark_primary));
+            controlBar.setBackgroundColor(getResources().getColor(R.color.primary_text));
             colorMode = 1;
         }
         else if (colorMode == 1)

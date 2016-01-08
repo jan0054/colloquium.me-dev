@@ -13,7 +13,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background"
+            android:background="@color/light_grey_background"
             tools:context="com.ashvale.cmmath_one.ChatOptionsActivity">
             <include
                 android:id="@+id/toolbar"
@@ -42,7 +42,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"
                     android:src="@drawable/search"
-                    android:tint="@color/in500"
+                    android:tint="@color/accent_color"
                     android:background="#00000000" />
             </LinearLayout>
             <ListView
@@ -50,7 +50,7 @@
                 android:layout_height="fill_parent"
                 android:layout_below="@+id/search_bar"
                 android:id="@+id/inviteeListView"
-                android:background="@color/background"
+                android:background="@color/light_grey_background"
                 android:divider="@color/divider_color"
                 android:dividerHeight="0dp"/>
 
