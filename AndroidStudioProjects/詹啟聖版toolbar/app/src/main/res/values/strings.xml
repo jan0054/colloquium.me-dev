@@ -179,7 +179,7 @@
     <string name="overview_title">View event details</string>
     <string name="overview_content">This is the event overview page, to see specific talks or attendees, tap on the different icons at the top of the screen.</string>
     <string name="home_title">View all followed events</string>
-    <string name="home_content">This is the home screen, where all the events you are following are displayed. Tap any event to view the event details.</string>
+    <string name="home_content">This is the home screen, where all the events you are following are displayed. Tap any event to view the details.</string>
     <string name="tutorial_title">Tutorial</string>
     <string name="tutorial_detail">Take a quick tour of major features</string>
 

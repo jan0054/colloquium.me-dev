@@ -114,14 +114,14 @@
 "add_event" = "新增會議";
 
 //tutorial
-"choose_event_title" = "Follow events that interest you";
-"choose_event_content" = "Choose events that you want to follow, they'll show up in your home screen and side drawer. You can come back and change your selection at any time.";
-"drawer_title" = "Access common features";
-"drawer_content" = "Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer. Here you'll find access to most common features.";
-"overview_title" = "View event details";
-"overview_content" = "This is the event overview page, to see specific talks or attendees, tap on the different tabs near the bottom of the screen.";
-"home_title" = "View all followed events";
-"home_content" = "This is the home screen, where all the events you are following are displayed. Tap any event to view the details. To change the events displayed here, tap Edit Events from the side drawer.";
+"choose_event_title" = "關注您有興趣的活動";
+"choose_event_content" = "選擇關注的活動會出現在首頁以及左方選單，您隨時可以新增或改變關注的活動。";
+"drawer_title" = "主選單";
+"drawer_content" = "點擊左上角的圖示或從螢幕左方往右滑動可開啟主選單，裡面包括大多數常用功能。";
+"overview_title" = "活動資訊";
+"overview_content" = "這是活動主頁面，點擊上方各圖示或左右滑動可以使用其它活動功能。";
+"home_title" = "首頁";
+"home_content" = "這是首頁，顯示您關注的每一個活動。您可以點擊個別活動以觀看更多資訊。";
 
 
 
