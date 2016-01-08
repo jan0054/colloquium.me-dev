@@ -180,5 +180,7 @@
     <string name="overview_content">這是活動主頁面，點擊上方各圖示或左右滑動可以使用其它活動功能。</string>
     <string name="home_title">首頁</string>
     <string name="home_content">這是首頁，顯示您關注的每一個活動。您可以點擊個別活動以觀看更多資訊。</string>
+    <string name="tutorial_title">使用說明</string>
+    <string name="tutorial_detail">觀看本程式的簡短使用介紹</string>
 
 </resources>
