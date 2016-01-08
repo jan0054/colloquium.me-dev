@@ -6,7 +6,7 @@
     android:layout_margin="@dimen/corner_size"
     android:shape="oval">
 
-    <solid android:color="@color/light_grey_background"/>
+    <solid android:color="@color/divider_color"/>
 
     <size
         android:width="@dimen/listitem_margin"

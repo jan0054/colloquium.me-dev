@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/list_margin"
+    android:background="@color/light_grey_background"
     android:orientation="vertical">
 
     <ImageView
@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginTop="@dimen/list_margin"
         android:layout_marginBottom="-14dp"
         android:scaleType="centerCrop"
         android:src="@drawable/tut_chooseevent"/>
@@ -18,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="4"
-        android:background="@color/transparent">
+        android:background="@color/light_grey_background">
         <TextView
             android:id="@+id/introTitle"
             android:layout_width="match_parent"
