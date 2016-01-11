@@ -13,8 +13,7 @@
         android:layout_weight="1"
         android:layout_marginTop="@dimen/list_margin"
         android:layout_marginBottom="-14dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/tut_chooseevent"/>
+        android:scaleType="centerCrop"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

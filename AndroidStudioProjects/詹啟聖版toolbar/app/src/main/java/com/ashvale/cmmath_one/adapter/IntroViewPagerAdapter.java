@@ -3,6 +3,7 @@ package com.ashvale.cmmath_one.adapter;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,21 +38,12 @@ public class IntroViewPagerAdapter extends PagerAdapter {
             ImageView introImage = (ImageView) v.findViewById(R.id.introImage);
             TextView introTitle = (TextView) v.findViewById(R.id.introTitle);
             TextView introContent = (TextView) v.findViewById(R.id.introContent);
-
-//            introImage.setImageResource(imageArray.getResourceId(i, -1));
-            switch (i){
-                case 0:
-                    introImage.setImageResource(R.drawable.tut_chooseevent);
-                case 1:
-                    introImage.setImageResource(R.drawable.tut_home);
-                case 2:
-                    introImage.setImageResource(R.drawable.tut_drawer);
-                case 3:
-                    introImage.setImageResource(R.drawable.tut_overview);
-            }
+            
+            introImage.setImageResource(imageArray.getResourceId(i, -1));
             introTitle.setText(titleArray[i]);
             introContent.setText(contentArray[i]);
             mListViews.add(v);
+            Log.d("cm_app", "page "+i);
         }
         imageArray.recycle();
     }
