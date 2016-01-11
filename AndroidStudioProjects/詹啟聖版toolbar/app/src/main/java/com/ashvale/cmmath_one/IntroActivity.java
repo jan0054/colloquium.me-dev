@@ -39,15 +39,6 @@ public class IntroActivity extends Activity {
 
         final LayoutInflater mInflater = getLayoutInflater().from(this);
 
-/*        View v1 = mInflater.inflate(R.layout.intro_layout, null);
-        View v2 = mInflater.inflate(R.layout.intro_layout2, null);
-        View vend = mInflater.inflate(R.layout.intro_layoutend, null);
-
-        viewList = new ArrayList<View>();
-        viewList.add(v1);
-        viewList.add(v2);
-        viewList.add(vend);*/
-
         mViewPager.setAdapter(new IntroViewPagerAdapter(this, pageNumber));
         mViewPager.setCurrentItem(0);
         btnFinish.setVisibility(View.INVISIBLE);
