@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -55,8 +54,8 @@ public class IntroActivity extends Activity {
             public void onPageSelected(int position) {
                 if (position == 0) {
                     mRadio.check(R.id.radioButton);
-                    btnLeave.setVisibility(View.VISIBLE);
-                    btnLeave.setEnabled(true);
+                    btnLeave.setVisibility(View.INVISIBLE);
+                    btnLeave.setEnabled(false);
                     btnLeave.setClickable(true);
                     btnFinish.setVisibility(View.INVISIBLE);
                     btnFinish.setEnabled(false);

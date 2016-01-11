@@ -38,7 +38,7 @@ public class IntroViewPagerAdapter extends PagerAdapter {
             ImageView introImage = (ImageView) v.findViewById(R.id.introImage);
             TextView introTitle = (TextView) v.findViewById(R.id.introTitle);
             TextView introContent = (TextView) v.findViewById(R.id.introContent);
-            
+
             introImage.setImageResource(imageArray.getResourceId(i, -1));
             introTitle.setText(titleArray[i]);
             introContent.setText(contentArray[i]);
