@@ -110,7 +110,7 @@ public class ChatActivity extends DetailActivity {
                     edt.setText("");
                     Log.i("sendChat", "save success");
                     getChatList();
-                    sendBroadcast(currentUser, msgContent, conversationObject);
+                    sendNormalMessagePush(currentUser, msgContent, conversationObject);
 
                     //also update the conversation last msg/last msg time/unread count
                     Date date = new Date();
@@ -153,7 +153,7 @@ public class ChatActivity extends DetailActivity {
         this.registerReceiver(mMessageReceiver, new IntentFilter("got_chat_intent"));
         getChatList();
         Log.d("cm_app", "In CHAT push REGISTERED");
-
+        conversationObject.fetchIfNeededInBackground();
     }
 
     @Override
@@ -193,6 +193,40 @@ public class ChatActivity extends DetailActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void sendNormalMessagePush (final ParseUser author, final String content, final ParseObject conversation)
+    {
+        //set payload
+        JSONObject pn = new JSONObject();
+        try {
+            pn.put("alert", content);
+            pn.put("sound", "default");
+            pn.put("badge", "Increment");
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
+        //set receivers
+        List<ParseUser> allParticipants = conversation.getList("participants");
+        int selfIncluded = 0;
+        for (ParseUser user : allParticipants) {
+            if (user.getObjectId().equals(author.getObjectId())) {
+                selfIncluded = 1;
+            }
+        }
+        if (selfIncluded ==1)
+        {
+            allParticipants.remove(author);
+        }
+        ParseQuery pushQuery = ParseInstallation.getQuery();
+        pushQuery.whereContainedIn("user", allParticipants);
+
+        //create push
+        ParsePush push = new ParsePush();
+        push.setQuery(pushQuery);
+        push.setData(pn);
+        push.sendInBackground();
     }
 
     public void sendBroadcast(final ParseUser author, final String content, final ParseObject conversation)
@@ -242,9 +276,6 @@ public class ChatActivity extends DetailActivity {
                     //push.setMessage(message);
                     push.setData(pn);
                     push.sendInBackground();
-
-                    finish();
-
                 } else {
                     Log.d("cm_app", "broadcast error: "+e);
                 }
