@@ -105,11 +105,12 @@ public class ChatActivity extends DetailActivity {
         chatObj.saveInBackground(new SaveCallback() {
             public void done(ParseException e) {
                 if (e == null) {
-                    //saved complete
+                    //saved complete, refresh listview and send the push notification
                     EditText edt = (EditText) findViewById(R.id.chat_input);
                     edt.setText("");
                     Log.i("sendChat", "save success");
                     getChatList();
+                    sendBroadcast(currentUser, msgContent, conversationObject);
 
                     //also update the conversation last msg/last msg time/unread count
                     Date date = new Date();
