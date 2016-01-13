@@ -9,86 +9,177 @@
 #import "UIColor+ProjectColors.h"
 
 @implementation UIColor (ProjectColors)
-//main palette
+
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+//main colors
 
 + (UIColor*) accent_color
 {
-    return [UIColor colorWithRed:225.0/255.0 green:152.0/255.0 blue:0.0/255.0 alpha:1];
-}
-+ (UIColor*) primary_text
-{
-    return [UIColor colorWithRed:33.0/255.0 green:33.0/255.0 blue:33.0/255.0 alpha:1];
-}
-+ (UIColor*) secondary_text
-{
-    return [UIColor colorWithRed:114.0/255.0 green:114.0/255.0 blue:114.0/255.0 alpha:1];
-}
-+ (UIColor*) divider_color
-{
-    return [UIColor colorWithRed:182.0/255.0 green:182.0/255.0 blue:182.0/255.0 alpha:1];
-}
-+ (UIColor*) primary_color
-{
-    return [UIColor colorWithRed:158.0/255.0 green:158.0/255.0 blue:158.0/255.0 alpha:1];
-}
-+ (UIColor*) dark_primary
-{
-    return [UIColor colorWithRed:97.0/255.0 green:97.0/255.0 blue:97.0/255.0 alpha:1];
-}
-+ (UIColor*) light_primary
-{
-    return [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1];
+    return [self in500];
 }
 + (UIColor*) dark_accent
 {
-    return [UIColor colorWithRed:245.0/255.0 green:124.0/255.0 blue:0.0/255.0 alpha:1];
+    return [self in700];
 }
-+ (UIColor*) light_accent
++ (UIColor*) primary_color
 {
-    return [UIColor colorWithRed:225.0/255.0 green:224.0/255.0 blue:178.0/255.0 alpha:1];
+    return [self do500];
 }
-
-//ui elements
-
-+ (UIColor*) background
++ (UIColor*) primary_color_icon
 {
-    return [UIColor colorWithRed:158.0/255.0 green:158.0/255.0 blue:158.0/255.0 alpha:1];
+    return [self do700];
 }
-+ (UIColor*) drawerBackground
++ (UIColor*) unselected_icon
 {
-    return [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1];
+    return [self gr600];
 }
-+ (UIColor*) nav_bar
++ (UIColor*) primary_text
 {
-    return [UIColor colorWithRed:245.0/255.0 green:124.0/255.0 blue:0.0/255.0 alpha:1];
+    return [self gr900];
 }
-+ (UIColor*) tab_bar
++ (UIColor*) secondary_text
 {
-    return [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1];
+    return [self gr700];
 }
-+ (UIColor*) light_button_txt
++ (UIColor*) divider_color
 {
-    return [UIColor whiteColor];
-}
-+ (UIColor*) dark_button_txt
-{
-    return [UIColor colorWithRed:245.0/255.0 green:124.0/255.0 blue:0.0/255.0 alpha:1];
+    return [self gr400];
 }
 + (UIColor*) light_bg
 {
     return [UIColor whiteColor];
 }
-+ (UIColor*) light_txt
++ (UIColor*) light_button_txt
 {
     return [UIColor whiteColor];
 }
-+ (UIColor*) dark_bg
++ (UIColor*) light_grey_background
 {
-    return [UIColor colorWithRed:97.0/255.0 green:97.0/255.0 blue:97.0/255.0 alpha:1];
+    return [self gr300];
 }
-+ (UIColor*) dark_txt
++ (UIColor*) shadow_color
 {
-    return [UIColor colorWithRed:33.0/255.0 green:33.0/255.0 blue:33.0/255.0 alpha:1];
+    return [self gr400];
 }
++ (UIColor*) setup_button_background
+{
+    return [self do800];
+}
++ (UIColor*) setup_button_text
+{
+    return [UIColor whiteColor];
+}
+
+//original colors
+
+//grey
++ (UIColor*) gr100
+{
+    return [self colorFromHexString:@"#F5F5F5"];
+}
++ (UIColor*) gr200
+{
+    return [self colorFromHexString:@"#EEEEEE"];
+}
++ (UIColor*) gr300
+{
+    return [self colorFromHexString:@"#E0E0E0"];
+}
++ (UIColor*) gr400
+{
+    return [self colorFromHexString:@"#BDBDBD"];
+}
++ (UIColor*) gr500
+{
+    return [self colorFromHexString:@"#9E9E9E"];
+}
++ (UIColor*) gr600
+{
+    return [self colorFromHexString:@"#757575"];
+}
++ (UIColor*) gr700
+{
+    return [self colorFromHexString:@"#616161"];
+}
++ (UIColor*) gr800
+{
+    return [self colorFromHexString:@"#424242"];
+}
++ (UIColor*) gr900
+{
+    return [self colorFromHexString:@"#212121"];
+}
+
+//deep orange
++ (UIColor*) do200
+{
+    return [self colorFromHexString:@"#FFAB91"];
+}
++ (UIColor*) do300
+{
+    return [self colorFromHexString:@"#FF8A65"];
+}
++ (UIColor*) do400
+{
+    return [self colorFromHexString:@"#FF7043"];
+}
++ (UIColor*) do500
+{
+    return [self colorFromHexString:@"#FF5722"];
+}
++ (UIColor*) do700
+{
+    return [self colorFromHexString:@"#E64A19"];
+}
++ (UIColor*) do800
+{
+    return [self colorFromHexString:@"#D84315"];
+}
++ (UIColor*) do900
+{
+    return [self colorFromHexString:@"#BF360C"];
+}
++ (UIColor*) doa100
+{
+    return [self colorFromHexString:@"#FF9E80"];
+}
++ (UIColor*) doa200
+{
+    return [self colorFromHexString:@"#FF6E40"];
+}
+
+//indigo
++ (UIColor*) in200
+{
+    return [self colorFromHexString:@"#9FA8DA"];
+}
++ (UIColor*) in500
+{
+    return [self colorFromHexString:@"#3F51B5"];
+}
++ (UIColor*) in700
+{
+    return [self colorFromHexString:@"#303F9F"];
+}
++ (UIColor*) in900
+{
+    return [self colorFromHexString:@"#1A237E"];
+}
++ (UIColor*) ina100
+{
+    return [self colorFromHexString:@"#8C9EFF"];
+}
++ (UIColor*) ina200
+{
+    return [self colorFromHexString:@"#536DFE"];
+}
+
 
 @end

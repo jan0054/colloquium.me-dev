@@ -39,9 +39,6 @@
     <color name="doa200">#FF6E40</color>
     <color name="doa100">#FF9E80</color>
 
-    <!-- blue grey -->
-    <color name="bg500">#607D8B</color>
-
     <!-- indigo -->
     <color name="in900">#1A237E</color>
     <color name="in700">#303F9F</color>
