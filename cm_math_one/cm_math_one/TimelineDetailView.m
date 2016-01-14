@@ -34,7 +34,7 @@ NSMutableArray *commentArray;
     self.commentTable.rowHeight = UITableViewAutomaticDimension;
     self.inputBackgroundView.backgroundColor = [UIColor whiteColor];
     [self.sendButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
@@ -147,13 +147,13 @@ NSMutableArray *commentArray;
     if ([imagecell respondsToSelector:@selector(layoutMargins)]) {
         imagecell.layoutMargins = UIEdgeInsetsZero;
     }
-    emptycell.contentLabel.textColor = [UIColor dark_primary];
+    emptycell.contentLabel.textColor = [UIColor dark_accent];
     
     if (indexPath.section == 0)  //top section with the photo and content
     {
         if (indexPath.row == 0)
         {
-            textcell.timeLabel.textColor = [UIColor dark_primary];
+            textcell.timeLabel.textColor = [UIColor dark_accent];
             
             PFUser *postAuthor = currentPost[@"author"];
             NSDate *date = currentPost.createdAt;
@@ -179,9 +179,9 @@ NSMutableArray *commentArray;
     {
         if (commentArray.count>0)
         {
-            commentcell.timeLabel.textColor = [UIColor dark_primary];
-            commentcell.authorLabel.textColor = [UIColor dark_primary];
-            commentcell.contentLabel.textColor = [UIColor dark_primary];
+            commentcell.timeLabel.textColor = [UIColor dark_accent];
+            commentcell.authorLabel.textColor = [UIColor dark_accent];
+            commentcell.contentLabel.textColor = [UIColor dark_accent];
             
             PFObject *comment = [commentArray objectAtIndex:indexPath.row];
             PFUser *author = comment[@"author"];

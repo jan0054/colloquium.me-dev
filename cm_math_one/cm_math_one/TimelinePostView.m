@@ -39,7 +39,7 @@ BOOL photoSet;
     cancel_img = [cancel_img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.cancelPhotoButton setTintColor:[UIColor whiteColor]];
     [self.cancelPhotoButton setImage:cancel_img forState:UIControlStateNormal];
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
@@ -47,7 +47,7 @@ BOOL photoSet;
     self.horizontalBarBackground.backgroundColor = [UIColor whiteColor];
     self.cancelPhotoButton.backgroundColor = [UIColor dark_accent];
     self.inputTextView.backgroundColor = [UIColor clearColor];
-    [self.addPhotoButton setTitleColor:[UIColor dark_primary] forState:UIControlStateNormal];
+    [self.addPhotoButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     self.cancelPhotoButton.layer.cornerRadius = 16.0;
     self.postImageView.backgroundColor = [UIColor clearColor];
     

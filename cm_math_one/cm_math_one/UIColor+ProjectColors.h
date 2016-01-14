@@ -10,23 +10,17 @@
 
 @interface UIColor (ProjectColors)
 + (UIColor*) accent_color;
++ (UIColor*) dark_accent;
++ (UIColor*) primary_color;
++ (UIColor*) primary_color_icon;
++ (UIColor*) unselected_icon;
 + (UIColor*) primary_text;
 + (UIColor*) secondary_text;
 + (UIColor*) divider_color;
-+ (UIColor*) primary_color;
-+ (UIColor*) dark_primary;
-+ (UIColor*) light_primary;
-+ (UIColor*) dark_accent;
-+ (UIColor*) light_accent;
-
-+ (UIColor*) background;
-+ (UIColor*) drawerBackground;
-+ (UIColor*) nav_bar;
-+ (UIColor*) tab_bar;
-+ (UIColor*) light_button_txt;
-+ (UIColor*) dark_button_txt;
 + (UIColor*) light_bg;
-+ (UIColor*) light_txt;
-+ (UIColor*) dark_bg;
-+ (UIColor*) dark_txt;
++ (UIColor*) light_button_txt;
++ (UIColor*) light_grey_background;
++ (UIColor*) shadow_color;
++ (UIColor*) setup_button_background;
++ (UIColor*) setup_button_text;
 @end

@@ -33,14 +33,14 @@ UIImage *selectedImage;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.timelineTable.tableFooterView = [[UIView alloc] init];
     self.noPostLabel.hidden = YES;
-    self.noPostLabel.textColor = [UIColor dark_primary];
+    self.noPostLabel.textColor = [UIColor dark_accent];
     self.timelineTable.estimatedRowHeight = 200.0;
     self.timelineTable.rowHeight = UITableViewAutomaticDimension;
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
-    self.timelineTable.backgroundColor = [UIColor light_primary];
+    self.timelineTable.backgroundColor = [UIColor light_grey_background];
 
     
     //data
@@ -113,7 +113,7 @@ UIImage *selectedImage;
     
     //styling
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.timeLabel.textColor = [UIColor dark_primary];
+    cell.timeLabel.textColor = [UIColor secondary_text];
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
@@ -121,7 +121,7 @@ UIImage *selectedImage;
     cell.backgroundColor = [UIColor clearColor];
     cell.backgroundCardView.layer.shouldRasterize = YES;
     cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+    cell.backgroundCardView.layer.shadowColor = [UIColor shadow_color].CGColor;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;

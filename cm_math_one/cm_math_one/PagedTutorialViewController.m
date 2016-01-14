@@ -14,7 +14,7 @@
 {
     [super viewDidLoad];
     self.lowerBackgroundView.backgroundColor = [UIColor whiteColor];
-    self.tutorialImageView.backgroundColor = [UIColor light_primary];
+    self.tutorialImageView.backgroundColor = [UIColor light_grey_background];
     self.view.backgroundColor = [UIColor whiteColor];
     self.tutorialImageView.image = [UIImage imageNamed:self.imageName];
     self.titleLabel.text = self.titleText;

@@ -31,8 +31,8 @@ InstructionsViewController *controller;
     //[self setupLeftMenuButton];  //we don't display the drawer button on this page
     
     //styling
-    self.eventTable.backgroundColor = [UIColor light_primary];
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.eventTable.backgroundColor = [UIColor light_grey_background];
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
@@ -141,13 +141,13 @@ InstructionsViewController *controller;
     imgSelected = [imgSelected imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     cell.eventSelectedImage.image = imgSelected;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.eventOrganizerLabel.textColor = [UIColor dark_primary];
-    cell.eventTimeLabel.textColor = [UIColor dark_primary];
+    cell.eventOrganizerLabel.textColor = [UIColor primary_text];
+    cell.eventTimeLabel.textColor = [UIColor primary_text];
     cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
     cell.backgroundCardView.layer.shouldRasterize = YES;
     cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+    cell.backgroundCardView.layer.shadowColor = [UIColor shadow_color].CGColor;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
@@ -167,7 +167,7 @@ InstructionsViewController *controller;
         UIImage *img = [UIImage imageNamed:@"emptycircle48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
-        cell.eventNameLabel.textColor = [UIColor dark_txt];
+        cell.eventNameLabel.textColor = [UIColor primary_text];
     }
     
     return cell;
@@ -239,7 +239,7 @@ InstructionsViewController *controller;
         UIImage *img = [UIImage imageNamed:@"emptycircle48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
-        cell.eventNameLabel.textColor = [UIColor dark_txt];
+        cell.eventNameLabel.textColor = [UIColor primary_text];
         [selectedDictionary setValue:@0 forKey:cell.eventId];
     }
     else
