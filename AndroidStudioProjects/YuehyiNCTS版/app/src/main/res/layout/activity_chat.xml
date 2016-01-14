@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey_background"
+            android:orientation="vertical"
+            android:fitsSystemWindows="true">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/main_toolbar"/>
+            <ListView
+                android:id="@+id/chat_listview"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:background="@color/light_grey_background"
+                android:divider="@color/divider_color"
+                android:dividerHeight="0dp"
+                android:stackFromBottom="true"
+                android:transcriptMode="alwaysScroll"
+                android:layout_height="wrap_content" >
+            </ListView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:layout_marginTop="@dimen/listicon_margin"
+                android:background="@color/light_bg" >
+                <EditText
+                    android:id="@+id/chat_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/GreyTextInput"
+                    android:ems="10"
+                    android:layout_marginLeft="10dp"/>
+                <Button
+                    android:id="@+id/send_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:onClick="sendChat"
+                    android:text="@string/send_chat_button"
+                    style="@style/SendButton"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</android.support.v4.widget.DrawerLayout>

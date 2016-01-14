@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey_background">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/main_toolbar"/>
+            <RelativeLayout
+                android:layout_below="@+id/toolbar"
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/list_margin"
+                android:background="@drawable/list_item"
+                android:orientation="vertical" >
+                <TextView
+                    android:id="@+id/person_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/list_padding"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center|left"
+                    android:text="@string/author_fake"
+                    android:textColor="@color/primary_text"
+                    android:textSize="18sp"/>
+                <TextView android:id="@+id/person_institution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/list_padding"
+                    android:layout_below="@+id/person_name"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center|left"
+                    android:text="@string/institution_fake"
+                    android:textColor="@color/primary_text"
+                    android:textSize="14sp" />
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/person_institution"
+                    android:weightSum="3"
+                    android:orientation="horizontal" >
+                    <Button
+                        android:id="@+id/person_email"
+                        android:background="#FFFFFFFF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/send_email"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="14sp"
+                        style="?android:attr/borderlessButtonStyle"/>
+                    <Button
+                        android:id="@+id/person_link"
+                        android:background="#FFFFFFFF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/website"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="14sp"
+                        style="?android:attr/borderlessButtonStyle"/>
+                    <Button
+                        android:id="@+id/person_message"
+                        android:background="#FFFFFFFF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:text="@string/message"
+                        android:textColor="@color/accent_color"
+                        android:textSize="14sp"
+                        android:visibility="invisible"
+                        android:textStyle="bold"
+                        style="?android:attr/borderlessButtonStyle"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <ListView android:id="@+id/talkListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/container"
+                android:paddingTop="6dp"
+                android:background="@color/light_grey_background"
+                android:divider="@color/divider_color"
+                android:dividerHeight="0dp"/>
+            <TextView android:id="@+id/persontalkempty"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@+id/container"
+                android:gravity="center"
+                android:textColor="@color/secondary_text"
+                android:textSize="14sp"
+                android:text="@string/list_empty_person" />
+        </RelativeLayout>
+    </FrameLayout>
+</android.support.v4.widget.DrawerLayout>

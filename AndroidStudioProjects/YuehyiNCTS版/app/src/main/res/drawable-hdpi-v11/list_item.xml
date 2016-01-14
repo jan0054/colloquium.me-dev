@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item
+		android:left="@dimen/listitem_margin"
+		android:right="@dimen/listitembg_right"
+		android:top="@dimen/listitem_margin"
+		android:bottom="@dimen/listitembg_bottom">
+		<shape
+			android:shape="rectangle"
+			android:id="@+id/toggle_profile_shape">
+			<solid android:color="@color/shadow_color"/>
+			<corners android:radius="@dimen/corner_size"/>
+		</shape>
+	</item>
+	<item
+		android:left="@dimen/listitem_margin"
+		android:right="@dimen/listitem_margin"
+		android:top="@dimen/listitem_margin"
+		android:bottom="@dimen/listitem_bottom">
+		<shape
+			android:shape="rectangle"
+			android:id="@+id/toggle_profile_shape">
+			<padding android:top="@dimen/list_padding"
+					 android:right="@dimen/list_padding"
+					 android:left="@dimen/list_padding"
+					 android:bottom="@dimen/list_padding" />
+			<solid android:color="@color/light_bg"/>
+			<corners android:radius="@dimen/corner_size"/>
+		</shape>
+	</item>
+</layer-list>
+

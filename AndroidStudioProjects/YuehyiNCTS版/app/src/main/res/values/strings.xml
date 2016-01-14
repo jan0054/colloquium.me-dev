@@ -1,0 +1,196 @@
+<resources>
+    <string name="app_name">Colloquium.me</string>
+    <string name="facebook_app_id">882603405141449</string>
+
+    <!-- Activity Titles -->
+    <string name="title_activity_chat">Conversation</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_user_preference">User Preference</string>
+    <string name="title_activity_discussion">Discussion</string>
+    <string name="title_activity_addevent">Choose Events</string>
+    <string name="title_activity_login">Log In</string>
+    <string name="title_activity_signup">Sign Up</string>
+    <string name="title_activity_resetpassword">Reset Password</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_career">Career</string>
+    <string name="title_activity_career_detail">Career</string>
+    <string name="title_activity_chat_options">Invite to Conversation</string>
+    <string name="title_activity_about_us">About Us</string>
+    <string name="title_activity_post_detail">Post</string>
+    <string name="title_activity_conversation">Conversation List</string>
+    <string name="title_activity_talk_detail">Program Details</string>
+    <string name="title_activity_people_detail">Attendee</string>
+    <string name="title_activity_newchat">New Conversation</string>
+    <string name="title_activity_new_post">New Post</string>
+    <string name="title_activity_fullscreen_reader">Reader Mode</string>
+
+    <!-- Activity Titles (currently not shown) -->
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_event_wrapper">Event Name</string>
+
+    <!-- Fragment Titles (currently not shown) -->
+    <string name="title_overview">Overview</string>
+    <string name="title_program">Program</string>
+    <string name="title_attendee">People</string>
+    <string name="title_timeline">Timeline</string>
+    <string name="title_venue">Venue</string>
+
+    <!-- Drawer -->
+    <string name="title_eventpicker">Choose Events</string>
+    <string name="title_home">Home</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_career">Career</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_pinned">Pinned Events</string>
+
+    <!--Labels: log in and sign up -->
+    <string name="login">Log In</string>
+    <string name="back">Back</string>
+    <string name="signup_reminder">No account yet?</string>
+    <string name="signup">Sign Up</string>
+    <string name="settingsignup">Sign In</string>
+    <string name="skip"><u>Skip</u></string>
+    <string name="resetpwd">Reset Password</string>
+    <string name="resetpwd_reminder"><u>Forgot password?</u></string>
+    <string name="cancel">Cancel</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="institution">Institution</string>
+    <string name="login_notice">Thanks for using Colloquium.me Math. Please log in, create an account, or start browsing events right away.</string>
+    <string name="signup_notice">Your information is stored securely on our servers, and will never be shared with a 3rd party outside of event organizers without your consent.</string>
+    <string name="resetpwd_notice">Please enter the email you used to register, we will send you an email to reset your password.</string>
+    <string name="resetpwd_message">Please check your email</string>
+    <string name="use_fb">Log in with Facebook</string>
+
+    <!--Labels: general -->
+    <string name="signout">Sign Out</string>
+    <string name="signup_as">Signed up as</string>
+    <string name="sign_title">Not signed in yet</string>
+    <string name="sign_detail_not">Sign in to access social features</string>
+    <string name="sign_detail_yes">Sign out to switch users</string>
+    <string name="more">more..</string>
+    <string name="save">Done</string>
+    <string name="list_empty_empty"> </string>
+    <string name="empty"></string>
+    <string name="fullscreen_content"> </string>
+    <string name="list_empty_person">This person has no scheduled presentations</string>
+    <string name="list_empty_event">There are no announcements from this event yet</string>
+    <string name="no_result">No results</string>
+    <string name="hint_search">Search..</string>
+    <string name="hint_comment">Comment..</string>
+    <string name="hint_newpost">Share your thoughts..</string>
+    <string name="emaillabel">Allow Other Users to Email You</string>
+    <string name="eventlabel">Receive Event Notifications</string>
+    <string name="chatlabel">Receive Chat Notifications</string>
+    <string name="feedback_title">App Feedback</string>
+    <string name="feedback_detail">Share your questions or feedback with us</string>
+    <string name="priv_title">Privacy and Terms</string>
+    <string name="priv_detail">Info on how we protect and secure your data</string>
+    <string name="about_title">About Us</string>
+    <string name="about_detail">Learn about the team behind Colloquium.me</string>
+    <string name="tutorial_title">Tutorial</string>
+    <string name="tutorial_detail">Take a quick tour of major features</string>
+    <string name="userpref_title">User Preference</string>
+    <string name="userpref_detail">Setup or change user info and social options</string>
+    <string name="leave_chat">Leave Conversation</string>
+    <string name="invite_chat">Invite to Chat</string>
+    <string name="details">details..</string>
+    <string name="contact">Contact</string>
+    <string name="send_email">Email</string>
+    <string name="website">Web</string>
+    <string name="message">Message</string>
+    <string name="unknown">(unknown)</string>
+    <string name="date">Date</string>
+    <string name="web">Web</string>
+    <string name="positiontype">Position type</string>
+    <string name="attending">I am attending this event:</string>
+    <string name="create_new_chat">Done</string>
+    <string name="invite_existing_chat">Done</string>
+    <string name="career_web_button">Open in Browser</string>
+    <string name="send_chat_button">Send</string>
+    <string name="add_calendar">Add to Calendar</string>
+    <string name="go_discuss_button">Discuss</string>
+    <string name="fullscreen_button">Toggle Color</string>
+    <string name="pdf">PDF</string>
+
+    <!-- Labels (not shown) -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <!-- Placeholder strings -->
+    <string name="name_fake"> </string>
+    <string name="author_fake"> </string>
+    <string name="description_fake"> </string>
+    <string name="content_fake"> </string>
+    <string name="organizer_fake"> </string>
+    <string name="start_time_fake"> </string>
+    <string name="position_fake"> </string>
+    <string name="location_fake"> </string>
+    <string name="institution_fake"> </string>
+    <string name="address_fake"> </string>
+
+    <!-- Arrays (settings page) -->
+    <string-array name="setting_primary_label_array">
+        <item>@string/feedback_title</item>
+        <item>@string/priv_title</item>
+        <item>@string/about_title</item>
+        <item>@string/tutorial_title</item>
+        <item>@string/userpref_title</item>
+    </string-array>
+    <string-array name="setting_secondary_label_array">
+        <item>@string/feedback_detail</item>
+        <item>@string/priv_detail</item>
+        <item>@string/about_detail</item>
+        <item>@string/tutorial_detail</item>
+        <item>@string/userpref_detail</item>
+    </string-array>
+    <string-array name="intro_title_array">
+        <item>@string/choose_event_title</item>
+        <item>@string/home_title</item>
+        <item>@string/drawer_title</item>
+        <item>@string/overview_title</item>
+    </string-array>
+    <string-array name="intro_content_array">
+        <item>@string/choose_event_content</item>
+        <item>@string/home_content</item>
+        <item>@string/drawer_content</item>
+        <item>@string/overview_content</item>
+    </string-array>
+    <string-array name="intro_image_array">
+        <item>@drawable/tut_chooseevent</item>
+        <item>@drawable/tut_home</item>
+        <item>@drawable/tut_drawer</item>
+        <item>@drawable/tut_overview</item>
+    </string-array>
+
+    <!-- Alerts -->
+    <string name="alert_no_user">Please select at least one person.</string>
+    <string name="alert_no_pdf">Please install a PDF reader app first.</string>
+    <string name="alert_download_pdf">Downloading PDF</string>
+
+    <!-- Errors -->
+    <string name="error_not_login">You need to log in first</string>
+    <string name="error_invalidperson">Invalid person!</string>
+    <string name="error_invalidphone">Invalid phone number!</string>
+    <string name="error_invalidlink">Invalid link!</string>
+    <string name="error_invalidgeo">Invalid coordinate!</string>
+
+    <!--URLs and emails -->
+    <string name="feedback_email_address">csjan@tapgo.cc</string>
+    <string name="privacy_url">http://colloquium.me/?page_id=3348</string>
+    <string name="aboutus_url">http://colloquium.me</string>
+
+    <!-- Tutorial strings -->
+    <string name="choose_event_title">Follow events that interest you</string>
+    <string name="choose_event_content">Choose events that you want to follow, they will show up in your home screen and side drawer.</string>
+    <string name="drawer_title">Access common features</string>
+    <string name="drawer_content">Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer.</string>
+    <string name="overview_title">View event details</string>
+    <string name="overview_content">This is the event overview page, to see specific talks or attendees, tap on the different icons at the top of the screen.</string>
+    <string name="home_title">View all followed events</string>
+    <string name="home_content">This is the home screen, where all the events you are following are displayed. Tap any event to view the details.</string>
+
+</resources>

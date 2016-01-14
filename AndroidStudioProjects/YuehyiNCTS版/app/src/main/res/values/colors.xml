@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main project colors for Colloquium.me  -->
+    <color name="accent_color">@color/in500</color>
+    <color name="dark_accent">@color/in700</color>
+    <color name="primary_color">@color/do500</color>
+    <color name="primary_color_icon">@color/do700</color>
+    <color name="unselected_icon">@color/gr600</color>
+    <color name="primary_text">@color/gr900</color>
+    <color name="secondary_text">@color/gr700</color>
+    <color name="divider_color">@color/gr400</color>
+    <color name="light_bg">@color/white</color>
+    <color name="light_button_txt">@color/white</color>
+    <color name="light_grey_background">@color/gr300</color>
+    <color name="shadow_color">@color/gr400</color>
+
+    <!-- Others (not main project colors) -->
+    <color name="setup_button_background">@color/do800</color>
+    <color name="setup_button_text">@color/white</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="edittext_bgtint">#00000000</color>
+    <color name="hint_color">#B6B6B6</color>
+
+    <!-- Basic colors -->
+    <color name="transparent">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="facebook_blue">#3B5998</color>
+
+    <!-- deep orange -->
+    <color name="do900">#BF360C</color>
+    <color name="do800">#D84315</color>
+    <color name="do700">#E64A19</color>
+    <color name="do500">#FF5722</color>
+    <color name="do400">#FF7043</color>
+    <color name="do300">#FF8A65</color>
+    <color name="do200">#FFAB91</color>
+    <color name="doa200">#FF6E40</color>
+    <color name="doa100">#FF9E80</color>
+
+    <!-- blue grey -->
+    <color name="bg500">#607D8B</color>
+
+    <!-- indigo -->
+    <color name="in900">#1A237E</color>
+    <color name="in700">#303F9F</color>
+    <color name="in500">#3F51B5</color>
+    <color name="in200">#9FA8DA</color>
+    <color name="ina200">#536DFE</color>
+    <color name="ina100">#8C9EFF</color>
+
+    <!-- grey -->
+    <color name="gr900">#212121</color>
+    <color name="gr800">#424242</color>
+    <color name="gr700">#616161</color>
+    <color name="gr600">#757575</color>
+    <color name="gr500">#9E9E9E</color>
+    <color name="gr400">#BDBDBD</color>
+    <color name="gr300">#E0E0E0</color>
+    <color name="gr200">#EEEEEE</color>
+    <color name="gr100">#F5F5F5</color>
+
+</resources>
