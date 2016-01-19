@@ -26,8 +26,8 @@ NSIndexPath *currentIndex;
     //styling
     [self.tableView setContentInset:UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0)];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.view.backgroundColor = [UIColor drawerBackground];
-    self.tableView.backgroundColor = [UIColor drawerBackground];
+    self.view.backgroundColor = [UIColor drawer_background];
+    self.tableView.backgroundColor = [UIColor drawer_background];
     
     //set default "currentIndex" depending on whether there are already saved events
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -88,7 +88,7 @@ NSIndexPath *currentIndex;
     cell.drawerBackground.backgroundColor = [UIColor clearColor];
     UIImage *img = [[UIImage alloc] init];
     cell.drawerTitle.backgroundColor = [UIColor clearColor];
-    cell.drawerTitle.textColor = [UIColor light_txt];
+    cell.drawerTitle.textColor = [UIColor light_button_txt];
     cell.contentView.backgroundColor = [UIColor clearColor];
     
     
@@ -106,7 +106,7 @@ NSIndexPath *currentIndex;
         switch (indexPath.row) {
             case 0:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_chat", nil);
-                [cell.drawerImage setTintColor:[UIColor primary_color]];
+                [cell.drawerImage setTintColor:[UIColor drawer_icon_primary]];
                 img = [UIImage imageNamed:@"chat48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -116,7 +116,7 @@ NSIndexPath *currentIndex;
                 break;
             case 1:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_career", nil);
-                [cell.drawerImage setTintColor:[UIColor primary_color]];
+                [cell.drawerImage setTintColor:[UIColor drawer_icon_primary]];
                 img = [UIImage imageNamed:@"career48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -124,7 +124,7 @@ NSIndexPath *currentIndex;
                 break;
             case 2:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_settings", nil);
-                [cell.drawerImage setTintColor:[UIColor primary_color]];
+                [cell.drawerImage setTintColor:[UIColor drawer_icon_primary]];
                 img = [UIImage imageNamed:@"setting48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -140,7 +140,7 @@ NSIndexPath *currentIndex;
         switch (indexPath.row) {
             case 0:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_edit", nil);
-                [cell.drawerImage setTintColor:[UIColor primary_color]];
+                [cell.drawerImage setTintColor:[UIColor drawer_icon_primary]];
                 img = [UIImage imageNamed:@"addevent48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -148,7 +148,7 @@ NSIndexPath *currentIndex;
                 break;
             case 1:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_home", nil);
-                [cell.drawerImage setTintColor:[UIColor dark_accent]];
+                [cell.drawerImage setTintColor:[UIColor drawer_icon_primary]];
                 img = [UIImage imageNamed:@"eventhome48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
@@ -159,7 +159,7 @@ NSIndexPath *currentIndex;
                 
             default:
                 cell.drawerTitle.text = name;
-                [cell.drawerImage setTintColor:[UIColor dark_accent]];
+                [cell.drawerImage setTintColor:[UIColor drawer_icon_secondary]];
                 img = [UIImage imageNamed:@"event48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;

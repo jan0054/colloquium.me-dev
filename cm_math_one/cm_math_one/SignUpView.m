@@ -12,6 +12,7 @@
 #import "UIColor+ProjectColors.h"
 
 UILabel *noticeLabel;
+UIImageView *bgView1;
 
 @implementation SignUpView
 
@@ -19,28 +20,24 @@ UILabel *noticeLabel;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"launchSplashEvent"]];
+    
+    bgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50, 50)];
+    [self.view addSubview:bgView1];
+    [self.view sendSubviewToBack:bgView1];
+
     [self.signUpView setLogo:[[UIImageView alloc] initWithImage:nil]];
     
     [self.signUpView.dismissButton setTintColor:[UIColor whiteColor]];
     [self.signUpView.dismissButton setTitle:NSLocalizedString(@"signup_back", nil) forState:UIControlStateNormal];
     [self.signUpView.dismissButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.signUpView.dismissButton setBackgroundColor:[UIColor accent_color]] ;
+    [self.signUpView.dismissButton setBackgroundColor:[UIColor setup_button_background]] ;
     [self.signUpView.dismissButton setImage:nil forState:UIControlStateNormal];
     [self.signUpView.dismissButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0]];
     
-    [self.signUpView.signUpButton setBackgroundColor:[UIColor accent_color]];
+    [self.signUpView.signUpButton setBackgroundColor:[UIColor setup_button_background]];
     [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];
     [self.signUpView.signUpButton setBackgroundImage:nil forState:UIControlStateHighlighted];
     [self.signUpView.signUpButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0]];
-    
-    // Remove text shadow
-    //CALayer *layer = self.signUpView.usernameField.layer;
-    //layer.shadowOpacity = 0.0;
-    //layer = self.signUpView.passwordField.layer;
-    //layer.shadowOpacity = 0.0;
-    //layer = self.signUpView.emailField.layer;
-    //layer.shadowOpacity = 0.0;
     
     [self.signUpView.usernameField setBackgroundColor:[UIColor whiteColor]];
     [self.signUpView.passwordField setBackgroundColor:[UIColor whiteColor]];
@@ -50,17 +47,11 @@ UILabel *noticeLabel;
     [self.signUpView.passwordField setTextColor:[UIColor darkGrayColor]];
     [self.signUpView.emailField setTextColor:[UIColor darkGrayColor]];
     
-    //self.signUpView.usernameField.placeholder= @"Username";
     self.signUpView.emailField.placeholder = NSLocalizedString(@"email", nil);
     self.signUpView.passwordField.placeholder = NSLocalizedString(@"signup_pass_hint", nil);
-    //[self.signUpView.usernameField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
-    //[self.signUpView.passwordField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
-    //[self.signUpView.emailField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
     
     //change keyboard type for the email field
     self.signUpView.emailField.keyboardType = UIKeyboardTypeEmailAddress;
-    
-
     
     noticeLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 90, 320-32, 90)];
     [noticeLabel setBackgroundColor:[UIColor clearColor]];
@@ -70,12 +61,19 @@ UILabel *noticeLabel;
     [noticeLabel setLineBreakMode:NSLineBreakByWordWrapping];
     noticeLabel.numberOfLines = 0;
     [self.view addSubview:noticeLabel];
-
-    
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    
+    //background image stuff
+    [bgView1 setFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIImage *bgRaw = [UIImage imageNamed:@"launchSplashEvent"];
+    UIImage *bgImage = [self imageWithImage:bgRaw convertToSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+    NSLog(@"BG SIZE:%f, %f", self.view.frame.size.width, self.view.frame.size.height);
+    bgView1.image = bgImage;
+    [bgView1 setContentMode:UIViewContentModeScaleToFill];
+    
     float signupy = self.signUpView.signUpButton.frame.origin.y;
     float signupx = self.signUpView.signUpButton.frame.origin.x;
     float signuph = self.signUpView.signUpButton.frame.size.height;
@@ -91,16 +89,23 @@ UILabel *noticeLabel;
     float uph = self.signUpView.passwordField.frame.size.height;
     float upw = self.signUpView.passwordField.frame.size.width;
     
-    [self.signUpView.dismissButton setFrame:CGRectMake(16, signupy+44+(signupy-upy-uph), signupw-32, 44)];
-    [self.signUpView.signUpButton setFrame:CGRectMake(16, signupy, signupw-32, 44)];
-    [self.signUpView.usernameField setFrame:CGRectMake(16, uny, unw-32, unh)];
-    [self.signUpView.passwordField setFrame:CGRectMake(16, upy, upw-32, uph)];
+    float gap = signupy - upy - uph;
+
+    [self.signUpView.dismissButton setFrame:CGRectMake(signupx, signupy+signuph+gap, signupw, signuph)];
+    [noticeLabel setFrame:CGRectMake(unx, uny-90-gap, unw, 90)];
     
     [self.signUpView.signUpButton setTitle:NSLocalizedString(@"signup_button", nil) forState:UIControlStateNormal];
     [self.signUpView.signUpButton setTitle:NSLocalizedString(@"signup_button", nil) forState:UIControlStateHighlighted];
     
-    [noticeLabel setFrame:CGRectMake(16, uny/2-45, unw-32, 90)];
-    
+}
+
+//helper method to resize background image
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
 }
 
 @end

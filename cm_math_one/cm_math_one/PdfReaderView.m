@@ -26,7 +26,7 @@ NSURL *localUrl;
     self.loadingLabel.hidden = NO;
     
     //styling
-    self.bottomControlView.backgroundColor = [UIColor dark_primary];
+    self.bottomControlView.backgroundColor = [UIColor dark_bg];
     [self.exitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.exitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [self.shareButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

@@ -36,7 +36,7 @@ PFObject *selectedAttendee;
     [self.searchButton setTintColor:[UIColor lightGrayColor]];
     [self.searchButton setImage:img forState:UIControlStateNormal];
     self.searchBackgroundView.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
@@ -115,7 +115,7 @@ PFObject *selectedAttendee;
     cell.institutionLabel.backgroundColor = [UIColor clearColor];
     cell.moreLabel.backgroundColor = [UIColor clearColor];
     cell.moreLabel.textColor = [UIColor dark_accent];
-    cell.institutionLabel.textColor = [UIColor dark_primary];
+    cell.institutionLabel.textColor = [UIColor secondary_text];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

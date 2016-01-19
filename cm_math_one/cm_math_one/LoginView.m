@@ -13,12 +13,17 @@
 #import "PasswordResetView.h"
 
 UIButton *resetButton;
+UIImageView *bgView;
+
 @implementation LoginView
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"launchSplashEvent"]];
+    bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50, 50)];
+    [self.view addSubview:bgView];
+    [self.view sendSubviewToBack:bgView];
+
     [self.logInView setLogo:[[UIImageView alloc] initWithImage:nil]];
     
     UIImage *img = [UIImage imageNamed:@"cancel48"];
@@ -37,11 +42,11 @@ UIButton *resetButton;
     [self.logInView.dismissButton.titleLabel setAttributedText:attributeStringSkip];
     self.logInView.dismissButton.titleLabel.textAlignment = NSTextAlignmentRight;
     
-    [self.logInView.signUpButton setBackgroundColor:[UIColor accent_color]];
+    [self.logInView.signUpButton setBackgroundColor:[UIColor setup_button_background]];
     [self.logInView.signUpButton setBackgroundImage:nil forState:UIControlStateNormal];
     [self.logInView.signUpButton setBackgroundImage:nil forState:UIControlStateHighlighted];
     [self.logInView.signUpButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0]];
-    [self.logInView.logInButton setBackgroundColor:[UIColor accent_color]];
+    [self.logInView.logInButton setBackgroundColor:[UIColor setup_button_background]];
     [self.logInView.logInButton setBackgroundImage:nil forState:UIControlStateNormal];
     [self.logInView.logInButton setBackgroundImage:nil forState:UIControlStateHighlighted];
     [self.logInView.logInButton setImage:nil forState:UIControlStateNormal];
@@ -120,6 +125,13 @@ UIButton *resetButton;
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
+    [bgView setFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIImage *bgRaw = [UIImage imageNamed:@"launchSplashEvent"];
+    UIImage *bgImage = [self imageWithImage:bgRaw convertToSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+    NSLog(@"BG SIZE:%f, %f", self.view.frame.size.width, self.view.frame.size.height);
+    bgView.image = bgImage;
+    [bgView setContentMode:UIViewContentModeScaleToFill];
+    
     // Set frame for elements
     float loginy = self.logInView.logInButton.frame.origin.y;
     float loginx = self.logInView.logInButton.frame.origin.x;
@@ -185,5 +197,12 @@ UIButton *resetButton;
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
+}
 
 @end

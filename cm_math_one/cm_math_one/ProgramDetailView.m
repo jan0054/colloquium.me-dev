@@ -26,19 +26,20 @@ PFFile *pdfFile;
     
     //styling
     self.mainBackgroundView.backgroundColor = [UIColor clearColor];
-    self.sessionLabel.textColor = [UIColor dark_primary];
-    self.locationLabel.textColor = [UIColor dark_primary];
-    self.timeLabel.textColor = [UIColor dark_primary];
+    self.sessionLabel.textColor = [UIColor secondary_text];
+    self.locationLabel.textColor = [UIColor secondary_text];
+    self.timeLabel.textColor = [UIColor secondary_text];
     UIImage *img = [UIImage imageNamed:@"fullscreen48@2x"];
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.fullscreenButton setTintColor:[UIColor primary_color]];
+    [self.fullscreenButton setTintColor:[UIColor accent_color]];
     [self.fullscreenButton setImage:img forState:UIControlStateNormal];
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
 
     //self.pdfButton.backgroundColor = [UIColor colorWithRed:170.0 green:170.0 blue:170.0 alpha:0.5];
+    
 }
 
 - (IBAction)fullscreenButtonTap:(UIButton *)sender {
@@ -98,11 +99,15 @@ PFFile *pdfFile;
         pdfFile = object[@"pdf"];
         self.pdfButton.hidden = NO;
         self.pdfButton.userInteractionEnabled = YES;
+        [self.pdfButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+        [self.pdfButton setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     }
     else   //pdf isn't set
     {
         self.pdfButton.hidden = YES;
         self.pdfButton.userInteractionEnabled = NO;
+        [self.pdfButton setTitleColor:[UIColor unselected_icon] forState:UIControlStateNormal];
+        [self.pdfButton setTitleColor:[UIColor unselected_icon] forState:UIControlStateHighlighted];
     }
 }
 

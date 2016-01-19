@@ -54,7 +54,11 @@
 }
 + (UIColor*) light_bg
 {
-    return [UIColor whiteColor];
+    return [self gr300];
+}
++ (UIColor*) dark_bg
+{
+    return [self gr800];
 }
 + (UIColor*) light_button_txt
 {
@@ -66,7 +70,7 @@
 }
 + (UIColor*) shadow_color
 {
-    return [self gr400];
+    return [self gr500];
 }
 + (UIColor*) setup_button_background
 {
@@ -75,6 +79,22 @@
 + (UIColor*) setup_button_text
 {
     return [UIColor whiteColor];
+}
++ (UIColor*) drawer_background
+{
+    return [self gr800];
+}
++ (UIColor*) drawer_icon_primary
+{
+    return [self gr500];
+}
++ (UIColor*) drawer_icon_secondary
+{
+    return [self do500];
+}
++ (UIColor*) tab_background
+{
+    return [self blackColor];
 }
 
 //original colors

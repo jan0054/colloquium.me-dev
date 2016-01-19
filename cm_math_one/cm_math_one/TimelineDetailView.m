@@ -147,13 +147,13 @@ NSMutableArray *commentArray;
     if ([imagecell respondsToSelector:@selector(layoutMargins)]) {
         imagecell.layoutMargins = UIEdgeInsetsZero;
     }
-    emptycell.contentLabel.textColor = [UIColor dark_accent];
+    emptycell.contentLabel.textColor = [UIColor primary_text];
     
     if (indexPath.section == 0)  //top section with the photo and content
     {
         if (indexPath.row == 0)
         {
-            textcell.timeLabel.textColor = [UIColor dark_accent];
+            textcell.timeLabel.textColor = [UIColor secondary_text];
             
             PFUser *postAuthor = currentPost[@"author"];
             NSDate *date = currentPost.createdAt;
@@ -179,9 +179,9 @@ NSMutableArray *commentArray;
     {
         if (commentArray.count>0)
         {
-            commentcell.timeLabel.textColor = [UIColor dark_accent];
-            commentcell.authorLabel.textColor = [UIColor dark_accent];
-            commentcell.contentLabel.textColor = [UIColor dark_accent];
+            commentcell.timeLabel.textColor = [UIColor secondary_text];
+            commentcell.authorLabel.textColor = [UIColor secondary_text];
+            commentcell.contentLabel.textColor = [UIColor primary_text];
             
             PFObject *comment = [commentArray objectAtIndex:indexPath.row];
             PFUser *author = comment[@"author"];

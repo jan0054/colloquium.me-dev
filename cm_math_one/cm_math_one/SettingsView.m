@@ -32,7 +32,7 @@
     //styling
     self.settingTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
@@ -102,8 +102,8 @@
     if ([genericCell respondsToSelector:@selector(layoutMargins)]) {
         genericCell.layoutMargins = UIEdgeInsetsZero;
     }
-    userCell.secondaryLabel.textColor = [UIColor dark_primary];
-    genericCell.secondaryLabel.textColor = [UIColor dark_primary];
+    userCell.secondaryLabel.textColor = [UIColor secondary_text];
+    genericCell.secondaryLabel.textColor = [UIColor secondary_text];
     
     //user account management
     NSString *userStatus = @"";
@@ -130,7 +130,7 @@
             userCell.secondaryLabel.text = secondaryStatus;
             [userCell.userButton setTitle:statusButton forState:UIControlStateNormal];
             userCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [userCell.userButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
+            [userCell.userButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
             return userCell;
             break;
         case 1:

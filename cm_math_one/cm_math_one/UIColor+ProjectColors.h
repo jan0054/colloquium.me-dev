@@ -18,9 +18,14 @@
 + (UIColor*) secondary_text;
 + (UIColor*) divider_color;
 + (UIColor*) light_bg;
++ (UIColor*) dark_bg;
 + (UIColor*) light_button_txt;
 + (UIColor*) light_grey_background;
 + (UIColor*) shadow_color;
 + (UIColor*) setup_button_background;
 + (UIColor*) setup_button_text;
++ (UIColor*) drawer_background;
++ (UIColor*) drawer_icon_primary;
++ (UIColor*) drawer_icon_secondary;
++ (UIColor*) tab_background;
 @end

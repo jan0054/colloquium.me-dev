@@ -10,16 +10,29 @@
 #import "UIColor+ProjectColors.h"
 #import <Parse/Parse.h>
 
+UIImageView *bgImageView;
+
 @implementation PasswordResetView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50, 50)];
+    [self.view addSubview:bgImageView];
+    [self.view sendSubviewToBack:bgImageView];
+    [bgImageView setFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIImage *bgRaw = [UIImage imageNamed:@"launchSplashEvent"];
+    UIImage *bgImage = [self imageWithImage:bgRaw convertToSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+    NSLog(@"BG SIZE:%f, %f", self.view.frame.size.width, self.view.frame.size.height);
+    bgImageView.image = bgImage;
+    [bgImageView setContentMode:UIViewContentModeScaleToFill];
+
+    
     //styling
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"launchSplashEvent"]];
     self.welcomeLabel.textColor = [UIColor whiteColor];
-    [self.resetButton setBackgroundColor:[UIColor accent_color]];
-    [self.cancelButton setBackgroundColor:[UIColor accent_color]];
+    [self.resetButton setBackgroundColor:[UIColor setup_button_background]];
+    [self.cancelButton setBackgroundColor:[UIColor setup_button_background]];
     [self.resetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.resetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [self.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -58,6 +71,15 @@
 - (IBAction)cancelButtonTap:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
+}
+
 
 
 @end

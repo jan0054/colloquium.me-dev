@@ -163,7 +163,7 @@ PFUser *loggedinUser;
     if (bcInt == 1)
     {
         broadcastcell.contentLabel.text = contentString;
-        broadcastcell.contentLabel.textColor = [UIColor primary_color];
+        broadcastcell.contentLabel.textColor = [UIColor secondary_text];
         return broadcastcell;
     }
     else if (theySaid)

@@ -40,7 +40,7 @@ NSMutableDictionary *inviteeDictionary;
     [self.searchButton setTintColor:[UIColor lightGrayColor]];
     [self.searchButton setImage:img forState:UIControlStateNormal];
     self.searchBackgroundView.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
@@ -136,11 +136,11 @@ NSMutableDictionary *inviteeDictionary;
     
     //styling
     //cell.nameLabel.textColor = [UIColor dark_txt];
-    cell.institutionLabel.textColor = [UIColor dark_primary];
+    cell.institutionLabel.textColor = [UIColor secondary_text];
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
-    cell.inviteLabel.textColor = [UIColor dark_accent];
+    cell.inviteLabel.textColor = [UIColor secondary_text];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //data
@@ -163,7 +163,7 @@ NSMutableDictionary *inviteeDictionary;
     if (match == 0)  //no match
     {
         cell.inviteLabel.text = NSLocalizedString(@"person_invite", nil);
-        [cell.selectionImage setTintColor:[UIColor primary_color]];
+        [cell.selectionImage setTintColor:[UIColor unselected_icon]];
         UIImage *img = [UIImage imageNamed:@"emptycircle48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.selectionImage.image = img;
@@ -172,7 +172,7 @@ NSMutableDictionary *inviteeDictionary;
     else if (match == 1)  //matched
     {
         cell.inviteLabel.text = NSLocalizedString(@"person_invited", nil);
-        [cell.selectionImage setTintColor:[UIColor dark_accent]];
+        [cell.selectionImage setTintColor:[UIColor primary_color_icon]];
         UIImage *img = [UIImage imageNamed:@"check48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.selectionImage.image = img;
@@ -211,7 +211,7 @@ NSMutableDictionary *inviteeDictionary;
     {
         cell.inviteLabel.text = NSLocalizedString(@"person_invited", nil);
         [holderArray addObject:cellUser];
-        [cell.selectionImage setTintColor:[UIColor dark_accent]];
+        [cell.selectionImage setTintColor:[UIColor primary_color_icon]];
         UIImage *img = [UIImage imageNamed:@"check48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.selectionImage.image = img;
@@ -229,7 +229,7 @@ NSMutableDictionary *inviteeDictionary;
             }
         }
         [holderArray removeObjectsInArray:toBeDeleted];
-        [cell.selectionImage setTintColor:[UIColor primary_color]];
+        [cell.selectionImage setTintColor:[UIColor unselected_icon]];
         UIImage *img = [UIImage imageNamed:@"emptycircle48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.selectionImage.image = img;

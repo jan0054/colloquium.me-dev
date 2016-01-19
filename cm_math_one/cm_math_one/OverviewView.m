@@ -44,8 +44,8 @@ NSMutableArray *newsArray;
     [self.newsTable addSubview:pullrefresh];
     
     //styling
-    [self.organizerButton setTitleColor:[UIColor dark_button_txt] forState:UIControlStateNormal];
-    self.timeLabel.textColor = [UIColor dark_primary];
+    [self.organizerButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    self.timeLabel.textColor = [UIColor secondary_text];
     self.backgroundView.backgroundColor = [UIColor clearColor];
     self.nameLabel.backgroundColor = [UIColor clearColor];
     self.timeLabel.backgroundColor = [UIColor clearColor];
@@ -57,7 +57,7 @@ NSMutableArray *newsArray;
     self.newsTable.estimatedRowHeight = 44.0;
     self.newsTable.rowHeight = UITableViewAutomaticDimension;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.navigationBar.layer.shadowColor = [UIColor dark_primary].CGColor;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
@@ -142,8 +142,8 @@ NSMutableArray *newsArray;
 {
     AnnouncementCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newscell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.contentLabel.textColor = [UIColor dark_primary];
-    cell.authorLabel.textColor = [UIColor primary_color];
+    cell.contentLabel.textColor = [UIColor primary_text];
+    cell.authorLabel.textColor = [UIColor secondary_text];
     if ([cell respondsToSelector:@selector(layoutMargins)])
     {
         cell.layoutMargins = UIEdgeInsetsZero;

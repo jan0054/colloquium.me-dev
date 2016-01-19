@@ -47,14 +47,14 @@
 
     //styling
     // This sets the background color of the navigation
-    [[UINavigationBar appearance] setBarTintColor:[UIColor nav_bar]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor primary_color]];
     // This sets the text color of the navigation links
     [[UINavigationBar appearance] setTintColor:[UIColor light_button_txt]];
     // This sets the title color of the navigation bar
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:19.0]}];
     
     [[UITabBar appearance] setTintColor:[UIColor light_button_txt]];
-    [[UITabBar appearance] setBarTintColor:[UIColor tab_bar]];
+    [[UITabBar appearance] setBarTintColor:[UIColor tab_background]];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor lightGrayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, nil] forState:UIControlStateHighlighted];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor light_button_txt], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];

@@ -28,13 +28,13 @@ PFObject *chosenProgram;
     self.noProgramLabel.hidden = YES;
     
     //styling
-    self.noProgramLabel.textColor = [UIColor dark_accent];
+    self.noProgramLabel.textColor = [UIColor secondary_text];
     self.attendeeBackground.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
-
+    
     
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

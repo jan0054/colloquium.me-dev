@@ -136,7 +136,7 @@ InstructionsViewController *controller;
     cell.eventTimeLabel.backgroundColor = [UIColor clearColor];
     cell.eventContentLabel.backgroundColor = [UIColor clearColor];
     cell.eventOrganizerLabel.backgroundColor = [UIColor clearColor];
-    [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
+    [cell.eventSelectedImage setTintColor:[UIColor primary_color_icon]];
     UIImage *imgSelected = [UIImage imageNamed:@"check48"];
     imgSelected = [imgSelected imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     cell.eventSelectedImage.image = imgSelected;
@@ -155,15 +155,15 @@ InstructionsViewController *controller;
     int sel = [[selectedDictionary valueForKey:event.objectId] intValue];
     if (sel == 1)
     {
-        [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
+        [cell.eventSelectedImage setTintColor:[UIColor primary_color_icon]];
         UIImage *img = [UIImage imageNamed:@"check48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
-        cell.eventNameLabel.textColor = [UIColor dark_accent];
+        cell.eventNameLabel.textColor = [UIColor primary_text];
     }
     else
     {
-        [cell.eventSelectedImage setTintColor:[UIColor primary_color]];
+        [cell.eventSelectedImage setTintColor:[UIColor unselected_icon]];
         UIImage *img = [UIImage imageNamed:@"emptycircle48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
@@ -235,7 +235,7 @@ InstructionsViewController *controller;
     int selectedStatus = [[selectedDictionary valueForKey:cell.eventId] intValue];
     if (selectedStatus == 1)
     {
-        [cell.eventSelectedImage setTintColor:[UIColor primary_color]];
+        [cell.eventSelectedImage setTintColor:[UIColor unselected_icon]];
         UIImage *img = [UIImage imageNamed:@"emptycircle48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
@@ -244,11 +244,11 @@ InstructionsViewController *controller;
     }
     else
     {
-        [cell.eventSelectedImage setTintColor:[UIColor dark_accent]];
+        [cell.eventSelectedImage setTintColor:[UIColor primary_color_icon]];
         UIImage *img = [UIImage imageNamed:@"check48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
-        cell.eventNameLabel.textColor = [UIColor dark_accent];
+        cell.eventNameLabel.textColor = [UIColor primary_text];
         [selectedDictionary setValue:@1 forKey:cell.eventId];
     }
     
