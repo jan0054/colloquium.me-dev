@@ -222,8 +222,10 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         
         //pop up the user preference controller to setup stuff
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
-        controller.data_delegate = self;
+        //UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+        UINavigationController *controller = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"preference_nc"];
+        UserPreferenceView *prefController =  controller.viewControllers[0];
+        prefController.data_delegate = self;
         [self presentViewController:controller animated:YES completion:nil];
     }];
 }
