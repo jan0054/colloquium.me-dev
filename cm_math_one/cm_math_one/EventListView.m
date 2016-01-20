@@ -31,7 +31,8 @@ InstructionsViewController *controller;
     //[self setupLeftMenuButton];  //we don't display the drawer button on this page
     
     //styling
-    self.eventTable.backgroundColor = [UIColor light_grey_background];
+    self.eventTable.backgroundColor = [UIColor light_bg];
+    self.view.backgroundColor = [UIColor light_bg];
     self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
@@ -384,8 +385,10 @@ InstructionsViewController *controller;
     }
 }
 
-- (void)setupInstructions  //display the instruction overlay
+- (void)setupInstructions  //display the instruction overlay (disabled for now!)
 {
+    [self.view removeGestureRecognizer:self.tapOutlet];
+    /*
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL alreadySetup = [defaults boolForKey:@"chooseeventsetup"];
     if (!alreadySetup)
@@ -400,6 +403,7 @@ InstructionsViewController *controller;
     {
         [self.view removeGestureRecognizer:self.tapOutlet];
     }
+     */
 }
 
 @end

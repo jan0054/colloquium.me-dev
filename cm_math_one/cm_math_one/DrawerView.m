@@ -77,20 +77,13 @@ NSIndexPath *currentIndex;
     DrawerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"drawercell"];
     
     //styling
-    /*
-    if ([cell respondsToSelector:@selector(layoutMargins)]) {
-        cell.layoutMargins = UIEdgeInsetsZero;
-    }
-     */
-    //cell.separatorInset = UIEdgeInsetsMake(0, CGRectGetWidth(cell.bounds)/2.0, 0, CGRectGetWidth(cell.bounds)/2.0);
     cell.lowerSeparator.hidden = YES;
     cell.upperSeparator.hidden = YES;
     cell.drawerBackground.backgroundColor = [UIColor clearColor];
     UIImage *img = [[UIImage alloc] init];
     cell.drawerTitle.backgroundColor = [UIColor clearColor];
     cell.drawerTitle.textColor = [UIColor light_button_txt];
-    cell.contentView.backgroundColor = [UIColor clearColor];
-    
+    cell.contentView.backgroundColor = [UIColor drawer_background];
     
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

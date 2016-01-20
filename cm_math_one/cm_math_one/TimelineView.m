@@ -40,7 +40,8 @@ UIImage *selectedImage;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
-    self.timelineTable.backgroundColor = [UIColor light_grey_background];
+    self.timelineTable.backgroundColor = [UIColor light_bg];
+    self.view.backgroundColor = [UIColor light_bg];
 
     
     //data

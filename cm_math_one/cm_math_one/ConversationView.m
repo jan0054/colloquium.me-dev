@@ -38,6 +38,7 @@ NSMutableArray *selectedParticipants;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.noConvLabel.hidden = YES;
     self.conversationTable.backgroundColor = [UIColor light_bg];
+    self.view.backgroundColor = [UIColor light_bg];
     self.noConvLabel.textColor = [UIColor primary_text];
     self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
@@ -123,6 +124,7 @@ NSMutableArray *selectedParticipants;
     cell.participantLabel.backgroundColor = [UIColor clearColor];
     cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     /*
     cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);

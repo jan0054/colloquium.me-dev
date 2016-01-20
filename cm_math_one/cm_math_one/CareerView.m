@@ -31,6 +31,7 @@ PFObject *selectedCareer;
     self.careerTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.careerTable.backgroundColor = [UIColor light_bg];
+    self.view.backgroundColor = [UIColor light_bg];
     self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;

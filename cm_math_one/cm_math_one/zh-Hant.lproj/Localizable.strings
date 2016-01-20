@@ -74,6 +74,7 @@
 "required" = "必填";
 "tutorial_title" = "導覽";
 "tutorial_detail" = "認識Colloquium.me的主要功能";
+"done" = "完成";
 
 //Timeline/Post
 "post_add_photo" = " 新增照片";

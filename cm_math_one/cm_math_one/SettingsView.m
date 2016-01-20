@@ -178,7 +178,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+    //UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+    UINavigationController *controller = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"preference_nc"];
+
     TutorialViewController *controller2 = [storyboard instantiateViewControllerWithIdentifier:@"tutorialcontroller"];
     //PasswordResetView *controller = (PasswordResetView *)[storyboard instantiateViewControllerWithIdentifier:@"reset_vc"];
     

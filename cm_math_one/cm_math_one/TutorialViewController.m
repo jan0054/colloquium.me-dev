@@ -10,6 +10,8 @@
 #import "PagedTutorialViewController.h"
 #import "UIColor+ProjectColors.h"
 
+int currentPage;
+
 @implementation TutorialViewController
 
 - (void)viewDidLoad
@@ -19,6 +21,11 @@
     [self.exitButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     [self.exitButton setTitleColor:[UIColor dark_accent] forState:UIControlStateHighlighted];
     
+    [self.exitButton setTitle:NSLocalizedString(@"done", nil) forState:UIControlStateNormal];
+    [self.exitButton setTitle:NSLocalizedString(@"done", nil) forState:UIControlStateHighlighted];
+    
+    self.exitButton.hidden = YES;
+    self.exitButton.userInteractionEnabled = NO;
     
     _pageImages = @[@"tut_choose_event", @"tut_home", @"tut_drawer", @"tut_overview"];
     _pageTitles = @[NSLocalizedString(@"choose_event_title", nil), NSLocalizedString(@"home_title", nil), NSLocalizedString(@"drawer_title", nil), NSLocalizedString(@"overview_title", nil)];
@@ -26,6 +33,7 @@
     
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialpvc"];
     self.pageViewController.dataSource = self;
+    self.pageViewController.delegate = self;
     
     PagedTutorialViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
@@ -39,7 +47,11 @@
     [self.pageViewController didMoveToParentViewController:self];
 }
 
-#pragma mark - Page View Controller Data Source
+- (IBAction)exitButtonTap:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Page View Controller Data Source & Delegate
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
@@ -93,8 +105,26 @@
     return 0;
 }
 
-- (IBAction)exitButtonTap:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    NSLog(@"PAGE FLIP");
+    if (completed)
+    {
+        PagedTutorialViewController *controller =  pageViewController.viewControllers[0];
+        currentPage = controller.pageIndex;
+        NSLog(@"PAGE:%i", currentPage);
+        if (currentPage == [self.pageImages count]-1)
+        {
+            self.exitButton.hidden = NO;
+            self.exitButton.userInteractionEnabled = YES;
+        }
+        else
+        {
+            self.exitButton.hidden = YES;
+            self.exitButton.userInteractionEnabled = NO;
+        }
+    }
 }
 
 @end

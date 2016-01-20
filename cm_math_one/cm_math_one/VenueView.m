@@ -36,6 +36,7 @@ NSMutableArray *venueArray;
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
     self.venueTable.backgroundColor = [UIColor light_bg];
+    self.view.backgroundColor = [UIColor light_bg];
     
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

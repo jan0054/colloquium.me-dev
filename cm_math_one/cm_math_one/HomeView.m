@@ -47,6 +47,7 @@ NSMutableArray *selectedEventsArray;
     self.homeTable.estimatedRowHeight = 200.0;
     self.homeTable.rowHeight = UITableViewAutomaticDimension;
     self.homeTable.backgroundColor = [UIColor light_bg];
+    self.view.backgroundColor = [UIColor light_bg];
     self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;

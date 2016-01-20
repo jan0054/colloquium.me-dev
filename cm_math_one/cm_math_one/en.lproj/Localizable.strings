@@ -74,7 +74,7 @@
 "required" = "Required";
 "tutorial_title" = "Tutorial";
 "tutorial_detail" = "Take a quick tour of major features";
-
+"done" = "Done";
 
 //Timeline/Post
 "post_add_photo" = " Add Photo";
