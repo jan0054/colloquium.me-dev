@@ -29,6 +29,7 @@
 		B41756221B3052E600E1E8A5 /* EventListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B41756211B3052E600E1E8A5 /* EventListView.m */; };
 		B41D57D21B96D86A00F558CF /* fullscreen48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B41D57D01B96D86A00F558CF /* fullscreen48@2x.png */; };
 		B41D57D31B96D86A00F558CF /* fullscreen64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B41D57D11B96D86A00F558CF /* fullscreen64@2x.png */; };
+		B42299DB1C50C7B700C94603 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B42299DD1C50C7B700C94603 /* InfoPlist.strings */; };
 		B4296F671C2041EC00D2C4D4 /* launchSplashEvent.png in Resources */ = {isa = PBXBuildFile; fileRef = B4296F661C2041EC00D2C4D4 /* launchSplashEvent.png */; };
 		B42BBEE51B4A8A28005CAAB1 /* search48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE31B4A8A28005CAAB1 /* search48@2x.png */; };
 		B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */; };
@@ -210,6 +211,7 @@
 		B41756211B3052E600E1E8A5 /* EventListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListView.m; sourceTree = "<group>"; };
 		B41D57D01B96D86A00F558CF /* fullscreen48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fullscreen48@2x.png"; sourceTree = "<group>"; };
 		B41D57D11B96D86A00F558CF /* fullscreen64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fullscreen64@2x.png"; sourceTree = "<group>"; };
+		B42299DC1C50C7B700C94603 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B4296F661C2041EC00D2C4D4 /* launchSplashEvent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchSplashEvent.png; sourceTree = "<group>"; };
 		B42BBEE31B4A8A28005CAAB1 /* search48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search48@2x.png"; sourceTree = "<group>"; };
 		B42BBEE41B4A8A28005CAAB1 /* search64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search64@2x.png"; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 		B40CCC171B3009B500BB11B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B42299DD1C50C7B700C94603 /* InfoPlist.strings */,
 				B40CCC181B3009B500BB11B9 /* Info.plist */,
 				B40CCC191B3009B500BB11B9 /* main.m */,
 			);
@@ -836,6 +839,7 @@
 				B4A223D51BEC9D4600B9313F /* emptycircle48@2x.png in Resources */,
 				B464028F1B4662B80074DD72 /* timeline48@2x.png in Resources */,
 				B464028B1B4662B80074DD72 /* program48@2x.png in Resources */,
+				B42299DB1C50C7B700C94603 /* InfoPlist.strings in Resources */,
 				B464028E1B4662B80074DD72 /* setting64@2x.png in Resources */,
 				B4296F671C2041EC00D2C4D4 /* launchSplashEvent.png in Resources */,
 				B4F66BD61C2411C000DB87DE /* tut_choose_event.png in Resources */,
@@ -1054,6 +1058,14 @@
 				FDCA8C361BDFBF29009AF220 /* zh-Hant */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		B42299DD1C50C7B700C94603 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B42299DC1C50C7B700C94603 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		FDCA8C3B1BDFC48D009AF220 /* Localizable.strings */ = {

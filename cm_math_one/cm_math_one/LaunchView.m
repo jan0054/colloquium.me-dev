@@ -22,6 +22,13 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL alreadySetup = [defaults boolForKey:@"chooseeventsetup"];
+    if (!alreadySetup)
+    {
+        //to-do: go to tutorial
+    }
+
     if (![PFUser currentUser])
     {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

@@ -1,4 +1,3 @@
-
 /* Class = "UIBarButtonItem"; title = "New"; ObjectID = "2Kd-3h-Eqc"; */
 "2Kd-3h-Eqc.title" = "新增";
 
@@ -23,13 +22,10 @@
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "5sU-59-O1y"; */
 "5sU-59-O1y.normalTitle" = "送出";
 
-/* Class = "UIBarButtonItem"; title = "Discuss"; ObjectID = "670-fW-Dmj"; */
-"670-fW-Dmj.title" = "討論";
-
 /* Class = "UILabel"; text = "seek or hire"; ObjectID = "6BD-NL-CdE"; */
 "6BD-NL-CdE.text" = "類型";
 
-/* Class = "UILabel"; text = "Attend:"; ObjectID = "6Kg-Zc-1iQ"; */
+/* (No Commment) */
 "6Kg-Zc-1iQ.text" = "參與:";
 
 /* Class = "UILabel"; text = "participants"; ObjectID = "7fx-IC-g8z"; */
@@ -40,9 +36,6 @@
 
 /* Class = "UITextView"; text = "content"; ObjectID = "7zW-bn-m2A"; */
 "7zW-bn-m2A.text" = "內容";
-
-/* Class = "UINavigationItem"; title = "Conversations"; ObjectID = "811-W3-APC"; */
-"811-W3-APC.title" = "對話";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "8a7-q3-qB2"; */
 "8a7-q3-qB2.text" = "Label";
@@ -55,6 +48,12 @@
 
 /* Class = "UILabel"; text = "Institution"; ObjectID = "9dW-It-oEf"; */
 "9dW-It-oEf.text" = "單位";
+
+/* Class = "UIBarButtonItem"; title = "Discuss"; ObjectID = "670-fW-Dmj"; */
+"670-fW-Dmj.title" = "討論";
+
+/* Class = "UINavigationItem"; title = "Conversations"; ObjectID = "811-W3-APC"; */
+"811-W3-APC.title" = "對話";
 
 /* Class = "UILabel"; text = "content"; ObjectID = "AQM-6S-QUq"; */
 "AQM-6S-QUq.text" = "內容";
@@ -119,7 +118,7 @@
 /* Class = "UILabel"; text = "program"; ObjectID = "LYf-dH-u8h"; */
 "LYf-dH-u8h.text" = "演講";
 
-/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "Ldj-aj-fWM"; */
+/* (No Commment) */
 "Ldj-aj-fWM.title" = "確定";
 
 /* Class = "UITabBarItem"; title = "Announcement"; ObjectID = "M6Q-w3-1xY"; */
@@ -218,7 +217,7 @@
 /* Class = "UIButton"; normalTitle = "Invite"; ObjectID = "Yk8-mi-4mx"; */
 "Yk8-mi-4mx.normalTitle" = "邀請";
 
-/* Class = "UINavigationItem"; title = "User Setup"; ObjectID = "ZCh-eo-PDO"; */
+/* (No Commment) */
 "ZCh-eo-PDO.title" = "使用者設定";
 
 /* Class = "UILabel"; text = "There are no announcements for this event yet"; ObjectID = "ZGh-qH-g8f"; */
@@ -232,6 +231,9 @@
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "ZXP-S8-6K9"; */
 "ZXP-S8-6K9.title" = "設定";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "a9a-vk-HTx"; */
+"a9a-vk-HTx.normalTitle" = "完成";
 
 /* Class = "UIButton"; normalTitle = "Chat"; ObjectID = "alf-Ms-Gv5"; */
 "alf-Ms-Gv5.normalTitle" = "訊息";
@@ -293,6 +295,9 @@
 /* Class = "UILabel"; text = "Institution"; ObjectID = "hiQ-Bj-wRc"; */
 "hiQ-Bj-wRc.text" = "單位";
 
+/* Class = "UINavigationItem"; title = "User Setup"; ObjectID = "iDK-PV-TRH"; */
+"iDK-PV-TRH.title" = "使用者設定";
+
 /* Class = "UILabel"; text = "location"; ObjectID = "iJi-i5-dd4"; */
 "iJi-i5-dd4.text" = "位置";
 
@@ -314,13 +319,16 @@
 /* Class = "UIButton"; normalTitle = "Web"; ObjectID = "k4g-Uh-pXA"; */
 "k4g-Uh-pXA.normalTitle" = "網頁";
 
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "kez-oq-J1x"; */
+"kez-oq-J1x.title" = "完成";
+
 /* Class = "UILabel"; text = "session"; ObjectID = "kjg-DM-CDi"; */
 "kjg-DM-CDi.text" = "領域";
 
 /* Class = "UILabel"; text = "Time"; ObjectID = "kkl-fL-SWm"; */
 "kkl-fL-SWm.text" = "時間";
 
-/* Class = "UILabel"; text = "Detail"; ObjectID = "la6-tu-h1k"; */
+/* (No Commment) */
 "la6-tu-h1k.text" = "細節";
 
 /* Class = "UIBarButtonItem"; title = "New"; ObjectID = "lh1-SS-rdy"; */
@@ -419,8 +427,9 @@
 /* Class = "UINavigationItem"; title = "Discussion"; ObjectID = "yG1-qN-r0I"; */
 "yG1-qN-r0I.title" = "討論";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "yUi-hy-sa2"; */
+/* (No Commment) */
 "yUi-hy-sa2.text" = "Title";
 
 /* Class = "UILabel"; text = "Organizer"; ObjectID = "zAh-hr-zUA"; */
 "zAh-hr-zUA.text" = "主辦單位";
+

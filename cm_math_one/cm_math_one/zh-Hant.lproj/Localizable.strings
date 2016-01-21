@@ -1,128 +1,276 @@
-/* 
-  Localizable.strings
-  cm_math_one
-
-  Created by Chi-sheng Jan on 10/27/15.
-  Copyright © 2015 tapgo. All rights reserved.
-*/
-
-//NSLocalizedString(@"", nil)
-
-//alert dialog
-"alert_error" = "錯誤";
-"alert_please_fill" = "請填寫所有必要欄位";
-"alert_done" = "完成";
-"alert_success" = "成功";
-"alert_event_update" = "您的活動已更新";
-"alert_need_account" = "無使用者帳號";
-"alert_sign_in" = "請先登入或註冊";
-"alert_leave_title" = "確認";
-"alert_leave_detail" = "離開對話後您將無法瀏覽這些訊息";
-"alert_cancel" = "取消";
-"alert_leave" = "離開";
-"alert_career_title" = "權限不足";
-"alert_career_detail" = "請聯絡我們協助張貼職涯機會";
-"alert_career_contact" = "聯絡";
-"alert_sign_later" = "您之後可以在設定頁面登入";
-"alert_reset_done" = "請檢查您的信箱以設定新密碼";
-"alert_empty_chat" = "別自言自語！請至少選擇一個人";
-
-//drawer labels
-"drawer_chat" = "訊息";
-"drawer_career" = "職涯";
-"drawer_settings" = "設定";
-"drawer_edit" = "選擇會議";
-"drawer_home" = "首頁";
-
-//chat&conversation
-"conv_nobody" = "該對話目前無參與者";
-"nav_back" = "返回";
-"chat_input_holder" = "輸入訊息..";
-
-//career
-"type_hiring" = "職缺";
-"type_seeking" = "求職";
-"inst_title" = "服務/就學單位：";
-"contact_title" = "聯絡人：";
-"job_content_title" = "內容描述：";
-
-//settings
-"sign_as" = "使用者";
-"sign_out_switch" = "若要切換使用者請登出";
-"sign_out" = "登出";
-"no_sign_yet" = "尚未登入";
-"sign_in_detail" = "登入以使用社群功能";
-"sign_in" = "登入";
-"feedback_title" = "建議回饋";
-"feedback_sub" = "將您的建議或任何問題與我們分享";
-"admin_title" = "活動支援";
-"admin_sub" = "對於會議或活動的問題";
-"privacy_title" = "隱私權政策";
-"privacy_sub" = "了解我們如何確保您的資料隱私";
-"about_title" = "關於我們";
+/* No comment provided by engineer. */
 "about_sub" = "Colloquium.me服務的開發團隊";
-"pref_title" = "使用者偏好";
-"pref_sub" = "設定或更改使用者資訊與隱私設定";
-"email_switch" = "其他使用者可Email您";
-"event_switch" = "接收會議主辦通知";
-"chat_switch" = "其他使用者可邀您對話";
-"first_name" = "名";
-"last_name" = "姓";
-"inst" = "服務單位";
-"web_page" = "個人網頁";
-"optional" = "選填";
-"required" = "必填";
-"tutorial_title" = "導覽";
-"tutorial_detail" = "認識Colloquium.me的主要功能";
-"done" = "完成";
 
-//Timeline/Post
-"post_add_photo" = " 新增照片";
-"post_remove_photo" = " 移除照片";
+/* No comment provided by engineer. */
+"about_title" = "關於我們";
 
-//Overview
-"overview_attend" = "我將出席這場會議：";
-
-//login and signup
-"pass_reset" = "忘記密碼？";
-"login_welcome" = "歡迎使用Colloquium.me平台(數學)，您可以選擇登入，註冊帳號，或直接開始瀏覽所有會議活動。";
-"login_mail_hint" = "Email";
-"login_pass_hint" = "密碼";
-"login_button" = "登入";
-"skip_button" = "跳過";
-"to_signup" = "註冊";
-"signup_welcome" = "您的資訊儲存在我們的伺服器上，未經您同意絕不會公開或讓我們以及活動主辦單位外的第三方存取。";
-"signup_mail_hint" = "Email";
-"signup_pass_hint" = "密碼";
-"signup_button" = "註冊";
-"signup_back" = "返回";
-"email" = "Email";
-"reset_welcome" = "請輸入您當初註冊使用的Email，我們將發送信件讓您重新設定密碼。";
-"reset_button" = "重設密碼";
-"reset_cancel" = "取消";
-"fb_login" = "使用Facebook登入";
-
-//chat
-"person_invite" = "邀請";
-"person_invited" = "已選取";
-
-//pdf
-"open_with" = "開啟..";
-"exit" = "離開";
-
-//home
-"empty_label" = "您還沒有關注任何會議！點選下方按鈕來選取會議";
+/* No comment provided by engineer. */
 "add_event" = "新增會議";
 
-//tutorial
-"choose_event_title" = "關注您有興趣的活動";
+/* No comment provided by engineer. */
+"admin_sub" = "對於會議或活動的問題";
+
+/* No comment provided by engineer. */
+"admin_title" = "活動支援";
+
+/* No comment provided by engineer. */
+"alert_cancel" = "取消";
+
+/* No comment provided by engineer. */
+"alert_career_contact" = "聯絡";
+
+/* No comment provided by engineer. */
+"alert_career_detail" = "請聯絡我們協助張貼職涯機會";
+
+/* No comment provided by engineer. */
+"alert_career_title" = "權限不足";
+
+/* No comment provided by engineer. */
+"alert_done" = "完成";
+
+/* (No Commment) */
+"alert_empty_chat" = "別自言自語！請至少選擇一個人";
+
+/* No comment provided by engineer. */
+"alert_error" = "錯誤";
+
+/* No comment provided by engineer. */
+"alert_event_update" = "您的活動已更新";
+
+/* No comment provided by engineer. */
+"alert_leave" = "離開";
+
+/* No comment provided by engineer. */
+"alert_leave_detail" = "離開對話後您將無法瀏覽這些訊息";
+
+/* No comment provided by engineer. */
+"alert_leave_title" = "確認";
+
+/* No comment provided by engineer. */
+"alert_need_account" = "無使用者帳號";
+
+/* No comment provided by engineer. */
+"alert_please_fill" = "請填寫所有必要欄位";
+
+/* No comment provided by engineer. */
+"alert_reset_done" = "請檢查您的信箱以設定新密碼";
+
+/* No comment provided by engineer. */
+"alert_sign_in" = "請先登入或註冊";
+
+/* No comment provided by engineer. */
+"alert_sign_later" = "您之後可以在設定頁面登入";
+
+/* No comment provided by engineer. */
+"alert_success" = "成功";
+
+/* No comment provided by engineer. */
+"chat_input_holder" = "輸入訊息..";
+
+/* No comment provided by engineer. */
+"chat_switch" = "其他使用者可邀您對話";
+
+/* No comment provided by engineer. */
 "choose_event_content" = "選擇關注的活動會出現在首頁以及左方選單，您隨時可以新增或改變關注的活動。";
-"drawer_title" = "主選單";
+
+/* No comment provided by engineer. */
+"choose_event_title" = "關注您有興趣的活動";
+
+/* No comment provided by engineer. */
+"contact_title" = "聯絡人：";
+
+/* No comment provided by engineer. */
+"conv_nobody" = "該對話目前無參與者";
+
+/* No comment provided by engineer. */
+"done" = "完成";
+
+/* No comment provided by engineer. */
+"drawer_career" = "職涯";
+
+/* No comment provided by engineer. */
+"drawer_chat" = "訊息";
+
+/* No comment provided by engineer. */
 "drawer_content" = "點擊左上角的圖示或從螢幕左方往右滑動可開啟主選單，裡面包括大多數常用功能。";
-"overview_title" = "活動資訊";
-"overview_content" = "這是活動主頁面，點擊上方各圖示或左右滑動可以使用其它活動功能。";
-"home_title" = "首頁";
+
+/* No comment provided by engineer. */
+"drawer_edit" = "選擇會議";
+
+/* No comment provided by engineer. */
+"drawer_home" = "首頁";
+
+/* No comment provided by engineer. */
+"drawer_settings" = "設定";
+
+/* No comment provided by engineer. */
+"drawer_title" = "主選單";
+
+/* No comment provided by engineer. */
+"email" = "Email";
+
+/* No comment provided by engineer. */
+"email_switch" = "其他使用者可Email您";
+
+/* No comment provided by engineer. */
+"empty_label" = "您還沒有關注任何會議！點選下方按鈕來選取會議";
+
+/* No comment provided by engineer. */
+"event_switch" = "接收會議主辦通知";
+
+/* No comment provided by engineer. */
+"exit" = "離開";
+
+/* No comment provided by engineer. */
+"fb_login" = "使用Facebook登入";
+
+/* No comment provided by engineer. */
+"feedback_sub" = "將您的建議或任何問題與我們分享";
+
+/* No comment provided by engineer. */
+"feedback_title" = "建議回饋";
+
+/* No comment provided by engineer. */
+"first_name" = "名";
+
+/* No comment provided by engineer. */
 "home_content" = "這是首頁，顯示您關注的每一個活動。您可以點擊個別活動以觀看更多資訊。";
 
+/* No comment provided by engineer. */
+"home_title" = "首頁";
 
+/* No comment provided by engineer. */
+"inst" = "服務單位";
+
+/* No comment provided by engineer. */
+"inst_title" = "服務/就學單位：";
+
+/* No comment provided by engineer. */
+"job_content_title" = "內容描述：";
+
+/* No comment provided by engineer. */
+"last_name" = "姓";
+
+/* No comment provided by engineer. */
+"login_button" = "登入";
+
+/* (No Commment) */
+"login_mail_hint" = "Email";
+
+/* No comment provided by engineer. */
+"login_pass_hint" = "密碼";
+
+/* No comment provided by engineer. */
+"login_welcome" = "歡迎使用Colloquium.me平台(數學)，您可以選擇登入，註冊帳號，或直接開始瀏覽所有會議活動。";
+
+/* No comment provided by engineer. */
+"nav_back" = "返回";
+
+/* No comment provided by engineer. */
+"no_sign_yet" = "尚未登入";
+
+/* No comment provided by engineer. */
+"open_with" = "開啟..";
+
+/* No comment provided by engineer. */
+"optional" = "選填";
+
+/* No comment provided by engineer. */
+"overview_attend" = "我將出席這場會議：";
+
+/* No comment provided by engineer. */
+"overview_content" = "這是活動主頁面，點擊上方各圖示或左右滑動可以使用其它活動功能。";
+
+/* No comment provided by engineer. */
+"overview_title" = "活動資訊";
+
+/* No comment provided by engineer. */
+"pass_reset" = "忘記密碼？";
+
+/* No comment provided by engineer. */
+"person_invite" = "邀請";
+
+/* No comment provided by engineer. */
+"person_invited" = "已選取";
+
+/* No comment provided by engineer. */
+"post_add_photo" = " 新增照片";
+
+/* No comment provided by engineer. */
+"post_remove_photo" = " 移除照片";
+
+/* No comment provided by engineer. */
+"pref_sub" = "設定或更改使用者資訊與隱私設定";
+
+/* No comment provided by engineer. */
+"pref_title" = "使用者偏好";
+
+/* No comment provided by engineer. */
+"privacy_sub" = "了解我們如何確保您的資料隱私";
+
+/* No comment provided by engineer. */
+"privacy_title" = "隱私權政策";
+
+/* No comment provided by engineer. */
+"required" = "必填";
+
+/* No comment provided by engineer. */
+"reset_button" = "重設密碼";
+
+/* No comment provided by engineer. */
+"reset_cancel" = "取消";
+
+/* No comment provided by engineer. */
+"reset_welcome" = "請輸入您當初註冊使用的Email，我們將發送信件讓您重新設定密碼。";
+
+/* No comment provided by engineer. */
+"sign_as" = "使用者";
+
+/* No comment provided by engineer. */
+"sign_in" = "登入";
+
+/* No comment provided by engineer. */
+"sign_in_detail" = "登入以使用社群功能";
+
+/* No comment provided by engineer. */
+"sign_out" = "登出";
+
+/* No comment provided by engineer. */
+"sign_out_switch" = "若要切換使用者請登出";
+
+/* No comment provided by engineer. */
+"signup_back" = "返回";
+
+/* No comment provided by engineer. */
+"signup_button" = "註冊";
+
+/* (No Commment) */
+"signup_mail_hint" = "Email";
+
+/* No comment provided by engineer. */
+"signup_pass_hint" = "密碼";
+
+/* No comment provided by engineer. */
+"signup_welcome" = "您的資訊儲存在我們的伺服器上，未經您同意絕不會公開或讓我們以及活動主辦單位外的第三方存取。";
+
+/* No comment provided by engineer. */
+"skip_button" = "跳過";
+
+/* No comment provided by engineer. */
+"to_signup" = "註冊";
+
+/* No comment provided by engineer. */
+"tutorial_detail" = "認識Colloquium.me的主要功能";
+
+/* No comment provided by engineer. */
+"tutorial_title" = "導覽";
+
+/* No comment provided by engineer. */
+"type_hiring" = "職缺";
+
+/* No comment provided by engineer. */
+"type_seeking" = "求職";
+
+/* No comment provided by engineer. */
+"web_page" = "個人網頁";
 

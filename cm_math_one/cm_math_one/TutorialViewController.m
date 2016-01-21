@@ -48,6 +48,11 @@ int currentPage;
 }
 
 - (IBAction)exitButtonTap:(UIButton *)sender {
+    //set "already setup" flag
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"chooseeventsetup"];
+    [defaults synchronize];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

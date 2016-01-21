@@ -105,7 +105,7 @@ NSIndexPath *currentIndex;
                 cell.drawerImage.image = img;
                 cell.upperSeparator.hidden = NO;
                 cell.upperSeparator.backgroundColor = [UIColor divider_color];
-                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0]];
+                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0]];
                 break;
             case 1:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_career", nil);
@@ -113,7 +113,7 @@ NSIndexPath *currentIndex;
                 img = [UIImage imageNamed:@"career48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
-                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0]];
+                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0]];
                 break;
             case 2:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_settings", nil);
@@ -121,7 +121,7 @@ NSIndexPath *currentIndex;
                 img = [UIImage imageNamed:@"setting48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
-                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0]];
+                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0]];
                 break;
             default:
                 break;
@@ -137,7 +137,7 @@ NSIndexPath *currentIndex;
                 img = [UIImage imageNamed:@"addevent48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
-                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0]];
+                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0]];
                 break;
             case 1:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_home", nil);
@@ -147,7 +147,7 @@ NSIndexPath *currentIndex;
                 cell.drawerImage.image = img;
                 cell.lowerSeparator.hidden = NO;
                 cell.lowerSeparator.backgroundColor = [UIColor divider_color];
-                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17.0]];
+                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0]];
                 break;
                 
             default:
@@ -156,7 +156,7 @@ NSIndexPath *currentIndex;
                 img = [UIImage imageNamed:@"event48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
-                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0]];
+                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:12.0]];
                 
                 break;
         }
