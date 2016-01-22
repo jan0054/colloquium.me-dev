@@ -10,7 +10,8 @@
 #import <Parse/Parse.h>
 #import <ParseUI.h>
 #import "UserPreferenceView.h"
+#import "TutorialViewController.h"
 
-@interface LaunchView : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, delegateProtocol>
+@interface LaunchView : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, prefDelegateProtocol, tutorialDelegateProtocol>
 
 @end

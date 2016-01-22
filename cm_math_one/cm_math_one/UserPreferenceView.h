@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol delegateProtocol <NSObject>
+@protocol prefDelegateProtocol <NSObject>
 -(void)prefDone;
 @end
 

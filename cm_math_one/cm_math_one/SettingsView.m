@@ -182,6 +182,7 @@
     UINavigationController *controller = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"preference_nc"];
 
     TutorialViewController *controller2 = [storyboard instantiateViewControllerWithIdentifier:@"tutorialcontroller"];
+    controller2.signupAfter = NO;
     //PasswordResetView *controller = (PasswordResetView *)[storyboard instantiateViewControllerWithIdentifier:@"reset_vc"];
     
     switch (indexPath.row) {

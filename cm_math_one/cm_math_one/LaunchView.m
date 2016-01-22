@@ -13,6 +13,7 @@
 #import "UserPreferenceView.h"
 #import "UIViewController+ParseQueries.h"
 #import "MMDrawerVisualState.h"
+#import "TutorialViewController.h"
 
 BOOL waitForPreference;  //used to pause launching the drawersegue to wait for the user preference view
 
@@ -26,7 +27,11 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
     BOOL alreadySetup = [defaults boolForKey:@"chooseeventsetup"];
     if (!alreadySetup)
     {
-        //to-do: go to tutorial
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TutorialViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"tutorialcontroller"];
+        controller.signupAfter = YES;
+        controller.data_delegate = self;
+        [self presentViewController:controller animated:NO completion:nil];
     }
 
     if (![PFUser currentUser])
@@ -110,6 +115,37 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
 }
 
 #pragma mark - User Management
+
+- (void)goToLogin
+{
+    if (![PFUser currentUser])
+    {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        int skiplogin = [[defaults valueForKey:@"skiplogin"] intValue];
+        if (skiplogin == 1)
+        {
+        
+        }
+        else
+        {
+            // Customize the Log In View Controller
+            LoginView *logInViewController = [[LoginView alloc] init];
+            [logInViewController setDelegate:self];
+            [logInViewController setFields: PFLogInFieldsDismissButton | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsFacebook];
+            
+            // Create the sign up view controller
+            SignUpView *signUpViewController = [[SignUpView alloc] init];
+            [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+            signUpViewController.emailAsUsername = YES;
+            // Assign our sign up controller to be displayed from the login controller
+            [logInViewController setSignUpController:signUpViewController];
+            
+            // Present the log in view controller
+            [self presentViewController:logInViewController animated:YES completion:NULL];
+        }
+    }
+
+}
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
@@ -233,13 +269,18 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         UINavigationController *controller = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"preference_nc"];
         UserPreferenceView *prefController =  controller.viewControllers[0];
         prefController.data_delegate = self;
-        [self presentViewController:controller animated:YES completion:nil];
+        [self presentViewController:controller animated:NO completion:nil];
     }];
 }
 
 - (void)prefDone
 {
     [self performSelector:@selector(doDrawer) withObject:nil afterDelay:0.1];
+}
+
+- (void)tutorialDone
+{
+    [self goToLogin];
 }
 
 @end

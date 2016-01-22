@@ -9,10 +9,14 @@
 #import "TutorialViewController.h"
 #import "PagedTutorialViewController.h"
 #import "UIColor+ProjectColors.h"
+#import "LoginView.h"
+#import "SignUpView.h"
 
 int currentPage;
 
 @implementation TutorialViewController
+@synthesize signupAfter;
+@synthesize data_delegate;
 
 - (void)viewDidLoad
 {
@@ -52,6 +56,11 @@ int currentPage;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"chooseeventsetup"];
     [defaults synchronize];
+    
+    if (signupAfter)
+    {
+        [data_delegate tutorialDone];
+    }
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
