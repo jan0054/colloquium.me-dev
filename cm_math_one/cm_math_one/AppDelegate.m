@@ -75,7 +75,7 @@
     //set the page control style
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor dark_accent];
+    pageControl.currentPageIndicatorTintColor = [UIColor primary_color_icon];
     pageControl.backgroundColor = [UIColor whiteColor];
 
     //Facebook SDK

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LaunchView.h"
 
-@protocol tutorialDelegateProtocol <NSObject>
--(void)tutorialDone;
+@protocol tutorialDelegate <NSObject>
+- (void)tutDone;
 @end
+
 
 @interface TutorialViewController : UIViewController<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (strong, nonatomic) UIPageViewController *pageViewController;
@@ -22,6 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *exitButton;
 
 @property BOOL signupAfter;
-@property id data_delegate;
+@property id tutDelegate;
 
 @end

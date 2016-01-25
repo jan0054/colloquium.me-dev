@@ -16,7 +16,7 @@ int currentPage;
 
 @implementation TutorialViewController
 @synthesize signupAfter;
-@synthesize data_delegate;
+@synthesize tutDelegate;
 
 - (void)viewDidLoad
 {
@@ -59,7 +59,7 @@ int currentPage;
     
     if (signupAfter)
     {
-        [data_delegate tutorialDone];
+        [tutDelegate tutDone];
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -12,6 +12,6 @@
 #import "UserPreferenceView.h"
 #import "TutorialViewController.h"
 
-@interface LaunchView : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, prefDelegateProtocol, tutorialDelegateProtocol>
+@interface LaunchView : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, prefDelegateProtocol, tutorialDelegate>
 
 @end

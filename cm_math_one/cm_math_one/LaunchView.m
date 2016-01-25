@@ -15,7 +15,7 @@
 #import "MMDrawerVisualState.h"
 #import "TutorialViewController.h"
 
-BOOL waitForPreference;  //used to pause launching the drawersegue to wait for the user preference view
+BOOL waitForPreference;  //used to pause launching the drawersegue to wait for the user preference view or the signup/login view (i.e. don't load drawer yet)
 
 @implementation LaunchView
 
@@ -30,7 +30,7 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         TutorialViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"tutorialcontroller"];
         controller.signupAfter = YES;
-        controller.data_delegate = self;
+        controller.tutDelegate = self;
         [self presentViewController:controller animated:NO completion:nil];
     }
 
@@ -278,9 +278,11 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
     [self performSelector:@selector(doDrawer) withObject:nil afterDelay:0.1];
 }
 
-- (void)tutorialDone
+- (void)tutDone
 {
-    [self goToLogin];
+    NSLog(@"TUTORIAL DELEGATE CALLED");
+    waitForPreference = YES;
+    [self performSelector:@selector(goToLogin) withObject:nil afterDelay:0.1];  //this weird delay thing is required...
 }
 
 @end
