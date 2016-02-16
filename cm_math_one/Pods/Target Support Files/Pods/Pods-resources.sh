@@ -68,6 +68,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetDoneButtonPressed@2x.png"
   install_resource "Parse/Parse/Resources/en.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
+  install_resource "ParseUI/ParseUI/Resources/Localization/fr.lproj"
+  install_resource "ParseUI/ParseUI/Resources/Localization/pt-BR.lproj"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetButton.png"
@@ -80,6 +82,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetDoneButtonPressed@2x.png"
   install_resource "Parse/Parse/Resources/en.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
+  install_resource "ParseUI/ParseUI/Resources/Localization/fr.lproj"
+  install_resource "ParseUI/ParseUI/Resources/Localization/pt-BR.lproj"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

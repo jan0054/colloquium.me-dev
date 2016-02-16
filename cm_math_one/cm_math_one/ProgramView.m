@@ -15,8 +15,13 @@
 #import "ProgramCell.h"
 #import "ProgramDetailView.h"
 
+#import "DropDownMenuCell.h"
+
 NSMutableArray *programArray;
 PFObject *selectedProgram;
+NSMutableArray *sessionArray;
+PFObject *currentFilter;
+PFObject *selectedEvent;
 
 @implementation ProgramView
 @synthesize pullrefresh;
@@ -27,11 +32,14 @@ PFObject *selectedProgram;
     [super viewDidLoad];
     [self setupLeftMenuButton];
     programArray = [[NSMutableArray alloc] init];
+    sessionArray = [[NSMutableArray alloc] init];
+    self.menuTitles = [[NSMutableArray alloc] init];
     self.programTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.programTable.estimatedRowHeight = 220.0;
     self.programTable.rowHeight = UITableViewAutomaticDimension;
     self.searchInput.delegate = self;
+    self.filterButton.enabled = NO;   //we turn it back on when the session list is available;
     
     //styling
     UIImage *img = [UIImage imageNamed:@"search48"];
@@ -48,20 +56,28 @@ PFObject *selectedProgram;
     //data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *eventid = [defaults objectForKey:@"currentEventId"];
-    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-    [self getProgram:self ofType:0 withOrder:0 forEvent:event];
+    selectedEvent = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
+    [self getProgram:self ofType:0 withOrder:0 forEvent:selectedEvent];
+    [self getSessions:self forEvent:selectedEvent];
     
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.programTable addSubview:pullrefresh];
+    
+    
 }
 
 - (void)refreshctrl:(id)sender
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *eventid = [defaults objectForKey:@"currentEventId"];
-    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-    [self getProgram:self ofType:0 withOrder:0 forEvent:event];
+    if (currentFilter == nil)
+    {
+        [self getProgram:self ofType:0 withOrder:0 forEvent:selectedEvent];
+    }
+    else
+    {
+        [self getFilteredProgram:self ofType:0 withOrder:0 forEvent:selectedEvent forSession:currentFilter];
+    }
+    
     [(UIRefreshControl *)sender endRefreshing];
 }
 
@@ -120,6 +136,28 @@ PFObject *selectedProgram;
     return YES;
 }
 
+- (IBAction)filterButtonTap:(UIBarButtonItem *)sender {
+    // init YALContextMenuTableView tableView
+    if (!self.contextMenuTableView) {
+        self.contextMenuTableView.tag = 2;
+        self.contextMenuTableView = [[YALContextMenuTableView alloc]initWithTableViewDelegateDataSource:self];
+        self.contextMenuTableView.animationDuration = 0.05;
+        //optional - implement custom YALContextMenuTableView custom protocol
+        self.contextMenuTableView.yalDelegate = self;
+        //optional - implement menu items layout
+        self.contextMenuTableView.menuItemsSide = Right;
+        self.contextMenuTableView.menuItemsAppearanceDirection = FromTopToBottom;
+        
+        //register nib
+        UINib *cellNib = [UINib nibWithNibName:@"DropDownMenuCell" bundle:nil];
+        [self.contextMenuTableView registerNib:cellNib forCellReuseIdentifier:@"dropdownmenucell"];
+    }
+    
+    float barH = self.navigationController.navigationBar.frame.size.height;
+    float paddingTop = 20.0;
+    [self.contextMenuTableView showInView:self.view withEdgeInsets:UIEdgeInsetsMake(barH + paddingTop, 0, 0, 0) animated:YES];
+}
+
 #pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -129,70 +167,112 @@ PFObject *selectedProgram;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [programArray count];
+    if (tableView.tag==1)
+    {
+        return [programArray count];
+    }
+    else   //dropdown menu table
+    {
+        return self.menuTitles.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProgramCell *cell = [tableView dequeueReusableCellWithIdentifier:@"programcell"];
+    DropDownMenuCell *menucell = [tableView dequeueReusableCellWithIdentifier:@"dropdownmenucell"];
     
-    //styling
-    if ([cell respondsToSelector:@selector(layoutMargins)]) {
-        cell.layoutMargins = UIEdgeInsetsZero;
+    if (tableView.tag == 1)   //program cell
+    {
+        //styling
+        if ([cell respondsToSelector:@selector(layoutMargins)]) {
+            cell.layoutMargins = UIEdgeInsetsZero;
+        }
+        cell.nameLabel.backgroundColor = [UIColor clearColor];
+        cell.timeLabel.backgroundColor = [UIColor clearColor];
+        cell.authorLabel.backgroundColor = [UIColor clearColor];
+        cell.bottomView.backgroundColor = [UIColor clearColor];
+        cell.contentLabel.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.moreLabel.textColor = [UIColor dark_accent];
+        cell.timeLabel.textColor = [UIColor secondary_text];
+        cell.locationLabel.textColor = [UIColor secondary_text];
+        
+        //data
+        PFObject *program = [programArray objectAtIndex:indexPath.row];
+        PFObject *author = program[@"author"];
+        PFObject *location = program[@"location"];
+        NSString *locationName = (location[@"name"]!=NULL) ? location[@"name"] : @"";
+        cell.nameLabel.text = program[@"name"];
+        cell.contentLabel.text = program[@"content"];
+        cell.locationLabel.text = locationName;
+        cell.authorLabel.text = [NSString stringWithFormat:@"%@, %@", author[@"last_name"], author[@"first_name"]];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
+        [dateFormat setDateFormat: @"MMM-d HH:mm"];
+        NSDate *sdate = program[@"start_time"];
+        NSString *sstr = [dateFormat stringFromDate:sdate];
+        cell.timeLabel.text = sstr;
+        
+        return cell;
     }
-    cell.nameLabel.backgroundColor = [UIColor clearColor];
-    cell.timeLabel.backgroundColor = [UIColor clearColor];
-    cell.authorLabel.backgroundColor = [UIColor clearColor];
-    cell.bottomView.backgroundColor = [UIColor clearColor];
-    cell.contentLabel.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.moreLabel.textColor = [UIColor dark_accent];
-    cell.timeLabel.textColor = [UIColor secondary_text];
-    cell.locationLabel.textColor = [UIColor secondary_text];
-    
-    //data
-    PFObject *program = [programArray objectAtIndex:indexPath.row];
-    PFObject *author = program[@"author"];
-    PFObject *location = program[@"location"];
-    NSString *locationName = (location[@"name"]!=NULL) ? location[@"name"] : @"";
-    cell.nameLabel.text = program[@"name"];
-    cell.contentLabel.text = program[@"content"];
-    cell.locationLabel.text = locationName;
-    cell.authorLabel.text = [NSString stringWithFormat:@"%@, %@", author[@"last_name"], author[@"first_name"]];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormat setDateFormat: @"MMM-d HH:mm"];
-    NSDate *sdate = program[@"start_time"];
-    NSString *sstr = [dateFormat stringFromDate:sdate];
-    cell.timeLabel.text = sstr;
-    
-    return cell;
+    else   //dropdown menu cell
+    {
+        menucell.backgroundColor = [UIColor clearColor];
+        menucell.menuTitleLabel.textColor = [UIColor primary_text];
+        menucell.menuTitleLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
+        return menucell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView.tag == 1)
+    {
     selectedProgram = [programArray objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"programdetailsegue" sender:self];
+    }
+    else
+    {
+        YALContextMenuTableView *tablemenu = tableView;
+        [tablemenu dismisWithIndexPath:indexPath];
+    }
 }
 
 #pragma mark - Data
 
+- (void)processSessions: (NSArray *) results   //receives a list of all the sessions to use for filtering
+{
+    [sessionArray removeAllObjects];
+    [self.menuTitles removeAllObjects];
+    [self.menuTitles addObject:@"All"];
+    sessionArray = [results mutableCopy];
+    for (PFObject *session in sessionArray)
+    {
+        NSString *nameStr = session[@"name"];
+        [self.menuTitles addObject:nameStr];
+    }
+    self.filterButton.enabled = YES;
+}
+
 - (void)resetSearch
 {
     NSLog(@"Search reset called");
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *eventid = [defaults objectForKey:@"currentEventId"];
-    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-    [self getProgram:self ofType:0 withOrder:0 forEvent:event];
+    if (currentFilter == nil)
+    {
+        [self getProgram:self ofType:0 withOrder:0 forEvent:selectedEvent];
+    }
+    else
+    {
+        [self getFilteredProgram:self ofType:0 withOrder:0 forEvent:selectedEvent forSession:currentFilter];
+    }
 }
 
 - (void)doSearchWithArray: (NSArray *)searchArray
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *eventid = [defaults objectForKey:@"currentEventId"];
-    PFObject *event = [PFObject objectWithoutDataWithClassName:@"Event" objectId:eventid];
-    [self getProgram:self ofType:0 withOrder:0 withSearch:searchArray forEvent:event];
+    currentFilter = nil;
+    [self getProgram:self ofType:0 withOrder:0 withSearch:searchArray forEvent:selectedEvent];
 }
 
 - (void)processData: (NSArray *) results
@@ -208,6 +288,50 @@ PFObject *selectedProgram;
     if ([segue.identifier isEqualToString:@"programdetailsegue"]) {
         ProgramDetailView *controller = (ProgramDetailView *) segue.destinationViewController;
         controller.program = selectedProgram;
+    }
+}
+
+#pragma mark - Dropdown Menu
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    //should be called after rotation animation completed
+    [self.contextMenuTableView reloadData];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    [self.contextMenuTableView updateAlongsideRotation];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    
+    [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        //should be called after rotation animation completed
+        [self.contextMenuTableView reloadData];
+    }];
+    [self.contextMenuTableView updateAlongsideRotation];
+    
+}
+
+- (void)contextMenuTableView:(YALContextMenuTableView *)contextMenuTableView didDismissWithIndexPath:(NSIndexPath *)indexPath   //callback for menu tap
+{
+    NSLog(@"Menu dismissed with indexpath = %li", (long)indexPath.row);
+    if (indexPath.row == 0)
+    {
+        currentFilter = nil;
+        self.searchInput.text = @"";
+        [self getProgram:self ofType:0 withOrder:0 forEvent:selectedEvent];
+    }
+    else
+    {
+        currentFilter = [sessionArray objectAtIndex: (indexPath.row - 1)];
+        self.searchInput.text = @"";
+        [self getFilteredProgram:self ofType:0 withOrder:0 forEvent:selectedEvent forSession:currentFilter];
     }
 }
 

@@ -154,6 +154,8 @@
 		B4BFB5261B3181F40035309E /* ChatYouCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB5251B3181F40035309E /* ChatYouCell.m */; };
 		B4BFB5291B3182030035309E /* ChatMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BFB5281B3182030035309E /* ChatMeCell.m */; };
 		B4CE361A1B79D1A2008CB21F /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */; };
+		B4CE65181C73142E0087F61E /* DropDownMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CE65161C73142E0087F61E /* DropDownMenuCell.m */; };
+		B4CE65191C73142E0087F61E /* DropDownMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4CE65171C73142E0087F61E /* DropDownMenuCell.xib */; };
 		B4E0BC4A1C15939800276A7B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E0BC491C15939800276A7B /* CoreGraphics.framework */; };
 		B4F04D3F1B81BFED00A4FCD3 /* camera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */; };
 		B4F04D411B81BFF300A4FCD3 /* key_down48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */; };
@@ -392,6 +394,9 @@
 		B4BFB5281B3182030035309E /* ChatMeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMeCell.m; sourceTree = "<group>"; };
 		B4CE36181B79D1A2008CB21F /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionsViewController.h; sourceTree = "<group>"; };
 		B4CE36191B79D1A2008CB21F /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
+		B4CE65151C73142E0087F61E /* DropDownMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownMenuCell.h; sourceTree = "<group>"; };
+		B4CE65161C73142E0087F61E /* DropDownMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownMenuCell.m; sourceTree = "<group>"; };
+		B4CE65171C73142E0087F61E /* DropDownMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownMenuCell.xib; sourceTree = "<group>"; };
 		B4E0BC491C15939800276A7B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera48@2x.png"; sourceTree = "<group>"; };
 		B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_down48@2x.png"; sourceTree = "<group>"; };
@@ -561,6 +566,9 @@
 				B44459A41B42A0CE00B200D0 /* UserPreferenceCell.m */,
 				B44459A61B42A12200B200D0 /* UserPreferenceInputCell.h */,
 				B44459A71B42A12200B200D0 /* UserPreferenceInputCell.m */,
+				B4CE65151C73142E0087F61E /* DropDownMenuCell.h */,
+				B4CE65161C73142E0087F61E /* DropDownMenuCell.m */,
+				B4CE65171C73142E0087F61E /* DropDownMenuCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -897,6 +905,7 @@
 				B49573631C562AAF00D76F2C /* tut_choose_event.png in Resources */,
 				B46402801B4662B80074DD72 /* kbdown64@2x.png in Resources */,
 				B46402791B4662B80074DD72 /* career48@2x.png in Resources */,
+				B4CE65191C73142E0087F61E /* DropDownMenuCell.xib in Resources */,
 				B495735E1C5624A300D76F2C /* tut_home.png in Resources */,
 				B464027F1B4662B80074DD72 /* kbdown48@2x.png in Resources */,
 				B46402891B4662B80074DD72 /* phone48@2x.png in Resources */,
@@ -1028,6 +1037,7 @@
 				B42C49321BE7612800C7D2E7 /* PasswordResetView.m in Sources */,
 				B455D7731B41178600DCB6E4 /* CareerPostView.m in Sources */,
 				B45877AB1C0D7ECB00EA8091 /* PdfReaderView.m in Sources */,
+				B4CE65181C73142E0087F61E /* DropDownMenuCell.m in Sources */,
 				B455D7941B41331900DCB6E4 /* NewsDetailImageCell.m in Sources */,
 				B4BFB5011B3174830035309E /* ConversationCell.m in Sources */,
 				B4BE911A1B4BACB600A46E4C /* AboutUsView.m in Sources */,

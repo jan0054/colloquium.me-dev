@@ -456,6 +456,79 @@
     }];
 }
 
+- (void)getSessions: (id)caller forEvent: (PFObject *)event
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Session"];
+    [query whereKey:@"event" equalTo:event];
+    [query orderByDescending:@"name"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu sessions for the event %@", (unsigned long)objects.count, event.objectId);
+        [caller processSessions: objects];
+    }];
+}
+
+- (void)getFilteredProgram: (id)caller ofType: (int)type withOrder: (int)order forEvent: (PFObject *)event forSession: (PFObject *)session
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
+    [query whereKey:@"event" equalTo:event];
+    [query whereKey:@"session" equalTo:session];
+    [query includeKey:@"author"];
+    [query includeKey:@"session"];
+    [query includeKey:@"location"];
+    //type = 0 for talk, =1 for poster, can add others in future if needed
+    [query whereKey:@"type" equalTo:[NSNumber numberWithInt:type]];
+    
+    //order = 0 start_time, order = 1 name, can add others in future if needed
+    if (order ==0)
+    {
+        [query orderByDescending:@"start_time"];
+    }
+    else if (order ==1)
+    {
+        [query orderByDescending:@"name"];
+    }
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu programs for type: %i", (unsigned long)objects.count, type);
+        [caller processData:objects];
+    }];
+}
+
+- (void)getFilteredProgram: (id)caller ofType: (int)type withOrder: (int)order withSearch: (NSArray *)searchArray forEvent: (PFObject *)event forSession: (PFObject *)session
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Talk"];
+    [query whereKey:@"event" equalTo:event];
+    [query whereKey:@"session" equalTo:session];
+    [query includeKey:@"author"];
+    [query includeKey:@"session"];
+    [query includeKey:@"location"];
+    //type = 0 for talk, =1 for poster, can add others in future if needed
+    [query whereKey:@"type" equalTo:[NSNumber numberWithInt:type]];
+    
+    //order = 0 start_time, order = 1 name, can add others in future if needed
+    if (order ==0)
+    {
+        [query orderByDescending:@"start_time"];
+    }
+    else if (order ==1)
+    {
+        [query orderByDescending:@"name"];
+    }
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    if (searchArray.count >=1)
+    {
+        [query whereKey:@"words" containsAllObjectsInArray:searchArray];
+        NSLog(@"program query search array not empty");
+    }
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu programs for type: %i with search", (unsigned long)objects.count, type);
+        [caller processData:objects];
+    }];
+}
+
+
 #pragma mark - Event
 
 - (void)getEvents: (id)caller

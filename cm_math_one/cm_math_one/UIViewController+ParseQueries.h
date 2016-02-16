@@ -39,6 +39,9 @@
 - (void)getProgram: (id)caller ofType: (int)type withOrder: (int)order forEvent: (PFObject *)event;
 - (void)getProgram: (id)caller ofType: (int)type withOrder: (int)order withSearch: (NSArray *)searchArray forEvent: (PFObject *)event;
 - (void)getProgram: (id)caller forAuthor: (PFObject *)person forEvent: (PFObject *)event;
+- (void)getSessions: (id)caller forEvent: (PFObject *)event;
+- (void)getFilteredProgram: (id)caller ofType: (int)type withOrder: (int)order forEvent: (PFObject *)event forSession: (PFObject *)session;
+- (void)getFilteredProgram: (id)caller ofType: (int)type withOrder: (int)order withSearch: (NSArray *)searchArray forEvent: (PFObject *)event forSession: (PFObject *)session;
 
 //event
 - (void)getEvents: (id)caller;
