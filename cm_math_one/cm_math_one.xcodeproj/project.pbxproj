@@ -119,6 +119,7 @@
 		B489FEBB1B621AF1009BB49A /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B489FEBA1B621AF1009BB49A /* HomeCell.m */; };
 		B489FEBE1B6231EE009BB49A /* eventhome48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489FEBC1B6231EE009BB49A /* eventhome48@2x.png */; };
 		B489FEBF1B6231EE009BB49A /* eventhome64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B489FEBD1B6231EE009BB49A /* eventhome64@2x.png */; };
+		B48A08181C7490BE0049991D /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B48A08171C7490BE0049991D /* CalendarView.m */; };
 		B48A4B1B1B3AB79700250BFF /* UserPreferenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B48A4B1A1B3AB79700250BFF /* UserPreferenceView.m */; };
 		B495735D1C5624A300D76F2C /* tut_drawer.png in Resources */ = {isa = PBXBuildFile; fileRef = B49573591C5624A300D76F2C /* tut_drawer.png */; };
 		B495735E1C5624A300D76F2C /* tut_home.png in Resources */ = {isa = PBXBuildFile; fileRef = B495735A1C5624A300D76F2C /* tut_home.png */; };
@@ -337,6 +338,8 @@
 		B489FEBA1B621AF1009BB49A /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
 		B489FEBC1B6231EE009BB49A /* eventhome48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eventhome48@2x.png"; sourceTree = "<group>"; };
 		B489FEBD1B6231EE009BB49A /* eventhome64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eventhome64@2x.png"; sourceTree = "<group>"; };
+		B48A08161C7490BE0049991D /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		B48A08171C7490BE0049991D /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
 		B48A4B191B3AB79700250BFF /* UserPreferenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferenceView.h; sourceTree = "<group>"; };
 		B48A4B1A1B3AB79700250BFF /* UserPreferenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferenceView.m; sourceTree = "<group>"; };
 		B49573591C5624A300D76F2C /* tut_drawer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tut_drawer.png; sourceTree = "<group>"; };
@@ -492,6 +495,8 @@
 				B41755F81B301A9800E1E8A5 /* SettingsView.m */,
 				B4BE91181B4BACB600A46E4C /* AboutUsView.h */,
 				B4BE91191B4BACB600A46E4C /* AboutUsView.m */,
+				B48A08161C7490BE0049991D /* CalendarView.h */,
+				B48A08171C7490BE0049991D /* CalendarView.m */,
 				B40CCC271B3009B500BB11B9 /* Images.xcassets */,
 				B40CCC291B3009B500BB11B9 /* LaunchScreen.xib */,
 				B40CCC171B3009B500BB11B9 /* Supporting Files */,
@@ -1038,6 +1043,7 @@
 				B455D7731B41178600DCB6E4 /* CareerPostView.m in Sources */,
 				B45877AB1C0D7ECB00EA8091 /* PdfReaderView.m in Sources */,
 				B4CE65181C73142E0087F61E /* DropDownMenuCell.m in Sources */,
+				B48A08181C7490BE0049991D /* CalendarView.m in Sources */,
 				B455D7941B41331900DCB6E4 /* NewsDetailImageCell.m in Sources */,
 				B4BFB5011B3174830035309E /* ConversationCell.m in Sources */,
 				B4BE911A1B4BACB600A46E4C /* AboutUsView.m in Sources */,

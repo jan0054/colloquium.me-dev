@@ -141,7 +141,7 @@ PFObject *selectedEvent;
     if (!self.contextMenuTableView) {
         self.contextMenuTableView.tag = 2;
         self.contextMenuTableView = [[YALContextMenuTableView alloc]initWithTableViewDelegateDataSource:self];
-        self.contextMenuTableView.animationDuration = 0.05;
+        self.contextMenuTableView.animationDuration = 0.0;
         //optional - implement custom YALContextMenuTableView custom protocol
         self.contextMenuTableView.yalDelegate = self;
         //optional - implement menu items layout
@@ -309,13 +309,11 @@ PFObject *selectedEvent;
     
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
-    
     [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         //should be called after rotation animation completed
         [self.contextMenuTableView reloadData];
     }];
     [self.contextMenuTableView updateAlongsideRotation];
-    
 }
 
 - (void)contextMenuTableView:(YALContextMenuTableView *)contextMenuTableView didDismissWithIndexPath:(NSIndexPath *)indexPath   //callback for menu tap

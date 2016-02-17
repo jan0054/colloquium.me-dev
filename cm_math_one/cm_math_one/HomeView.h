@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface HomeView : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *homeTable;
@@ -16,4 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *addEventButton;
 - (IBAction)addEventButtonTap:(UIButton *)sender;
 
+@property BOOL isSecondLevelEvent;
+@property PFObject *parentEvent;
 @end

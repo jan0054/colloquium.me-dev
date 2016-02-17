@@ -7,7 +7,6 @@
 //
 
 #import "HomeView.h"
-#import <Parse/Parse.h>
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
 #import "UIColor+ProjectColors.h"
@@ -27,6 +26,7 @@ NSMutableArray *selectedEventsArray;
 #pragma mark - Interface
 
 - (void)viewDidLoad {
+    //init
     [super viewDidLoad];
     [self setupLeftMenuButton];
     selectedEventsArray = [[NSMutableArray alloc] init];
@@ -53,7 +53,15 @@ NSMutableArray *selectedEventsArray;
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
     
-    [self getEventsFromLocalList:self];
+    //data
+    if (!self.isSecondLevelEvent)   //normal home screen
+    {
+        [self getEventsFromLocalList:self];
+    }
+    else   //second level event screen
+    {
+        [self getChildrenEvents:self withParent:self.parentEvent];
+    }
     
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
@@ -62,7 +70,15 @@ NSMutableArray *selectedEventsArray;
 
 - (void)refreshctrl:(id)sender
 {
-    [self getEventsFromLocalList:self];
+    if (!self.isSecondLevelEvent)
+    {
+        [self getEventsFromLocalList:self];
+    }
+    else
+    {
+        [self getChildrenEvents:self withParent:self.parentEvent];
+    }
+
     [(UIRefreshControl *)sender endRefreshing];
 }
 
@@ -147,7 +163,7 @@ NSMutableArray *selectedEventsArray;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
-
+    
     UIImage *img = [UIImage imageNamed:@"event48"];
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     cell.flairImage.image = img;
@@ -157,10 +173,22 @@ NSMutableArray *selectedEventsArray;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self setCurrentEventIdForRow:indexPath.row];
-    UIViewController *centerViewController;
-    centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
-    [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
+    PFObject *selectedEventObject = [selectedEventsArray objectAtIndex:indexPath.row];
+    if (selectedEventObject[@"childrenEvent"]==nil)   //this is not a parent event
+    {
+        [self setCurrentEventIdForRow:indexPath.row];
+        UIViewController *centerViewController;
+        centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+        [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
+    }
+    else   //this IS a parent event, and we reload the homeview controller to get the children list
+    {
+        NSString *title = selectedEventObject[@"name"];
+        self.isSecondLevelEvent = YES;
+        self.parentEvent = selectedEventObject;
+        self.navigationItem.title = title;
+        [self getChildrenEvents:self withParent:self.parentEvent];
+    }
 }
 
 #pragma mark - Data

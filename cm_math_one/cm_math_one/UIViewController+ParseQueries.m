@@ -534,11 +534,23 @@
 - (void)getEvents: (id)caller
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-    [query includeKey:@"admin"];
+    [query whereKeyDoesNotExist:@"parentEvent"];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query orderByDescending:@"start_time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"Successfully retrieved %lu events", (unsigned long)objects.count);
+        [caller processData:objects];
+    }];
+}
+
+- (void)getChildrenEvents: (id)caller withParent: (PFObject *)parentEvent
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    [query whereKey:@"parentEvent" equalTo:parentEvent];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query orderByDescending:@"start_time"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu child events", (unsigned long)objects.count);
         [caller processData:objects];
     }];
 }
