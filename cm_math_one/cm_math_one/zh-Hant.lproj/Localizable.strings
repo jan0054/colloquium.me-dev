@@ -274,3 +274,8 @@
 /* No comment provided by engineer. */
 "web_page" = "個人網頁";
 
+//program
+"about_to_start" = "即將開始";
+"reminder_title" = "活動提醒";
+"reminder_done" = "確認";
+

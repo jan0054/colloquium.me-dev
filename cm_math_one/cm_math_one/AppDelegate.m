@@ -27,7 +27,7 @@
     [PFUser enableRevocableSessionInBackground];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    // Register for Push Notitications, if running iOS 8
+    //Register for push, if running iOS 8
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                         UIUserNotificationTypeBadge |
@@ -44,7 +44,16 @@
                                                          UIRemoteNotificationTypeSound)];
         NSLog(@"iOS<=7 Push registration");
     }
-
+    
+    //Register for local notifications
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *mySettings =
+        [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    }
+    
     //styling
     // This sets the background color of the navigation
     [[UINavigationBar appearance] setBarTintColor:[UIColor primary_color]];
@@ -101,10 +110,20 @@
     NSLog(@"Did fail to register for remote notifications (callback) error:%@", error);
 }
 
-- (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo {
+//Receive push while app open
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     //[PFPush handlePush:userInfo];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"gotchatinapp" object:nil];
+}
+
+//Receive local reminder while app open
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"reminder_title", nil)
+                                message:notification.alertBody
+                               delegate:nil
+                      cancelButtonTitle:NSLocalizedString(@"reminder_done", nil)
+                      otherButtonTitles:nil] show];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -124,3 +124,7 @@
 "home_title" = "View all followed events";
 "home_content" = "This is the home screen, where all the events you are following are displayed. Tap any event to view the details.";
 
+//program
+"about_to_start" = "is about to start";
+"reminder_title" = "Event reminder";
+"reminder_done" = "Done";

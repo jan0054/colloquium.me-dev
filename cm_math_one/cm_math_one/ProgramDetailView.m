@@ -111,6 +111,22 @@ PFFile *pdfFile;
     }
 }
 
+- (void)setReminderForDate: (NSDate *)startDate withTitle: (NSString *)title
+{
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    localNotif.fireDate = [startDate dateByAddingTimeInterval:-300];
+    localNotif.timeZone = [NSTimeZone systemTimeZone];
+    NSString *fullMsg = [NSString stringWithFormat:@"%@ %@", title, NSLocalizedString(@"about_to_start", nil)];
+    localNotif.alertBody = fullMsg;
+    localNotif.alertAction = NSLocalizedString(@"reminder_done", nil);
+    localNotif.alertTitle = NSLocalizedString(@"reminder_title", nil);
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    
+    NSLog(@"Reminder Set");
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

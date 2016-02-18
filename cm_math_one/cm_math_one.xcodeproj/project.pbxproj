@@ -110,6 +110,12 @@
 		B46402921B4662B80074DD72 /* venue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402701B4662B80074DD72 /* venue64@2x.png */; };
 		B46402931B4662B80074DD72 /* web48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402711B4662B80074DD72 /* web48@2x.png */; };
 		B46402941B4662B80074DD72 /* web64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402721B4662B80074DD72 /* web64@2x.png */; };
+		B469E92A1C75C04D009291BB /* alarm48.png in Resources */ = {isa = PBXBuildFile; fileRef = B469E9241C75C04D009291BB /* alarm48.png */; };
+		B469E92B1C75C04D009291BB /* alarm64.png in Resources */ = {isa = PBXBuildFile; fileRef = B469E9251C75C04D009291BB /* alarm64.png */; };
+		B469E92C1C75C04D009291BB /* avatar48.png in Resources */ = {isa = PBXBuildFile; fileRef = B469E9261C75C04D009291BB /* avatar48.png */; };
+		B469E92D1C75C04D009291BB /* avatar64.png in Resources */ = {isa = PBXBuildFile; fileRef = B469E9271C75C04D009291BB /* avatar64.png */; };
+		B469E92E1C75C04D009291BB /* avatarlight48.png in Resources */ = {isa = PBXBuildFile; fileRef = B469E9281C75C04D009291BB /* avatarlight48.png */; };
+		B469E92F1C75C04D009291BB /* avatarlight64.png in Resources */ = {isa = PBXBuildFile; fileRef = B469E9291C75C04D009291BB /* avatarlight64.png */; };
 		B481BB8D1B73542A00FC9133 /* CareerDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B481BB8C1B73542A00FC9133 /* CareerDetailTableViewController.m */; };
 		B484678A1B68C79000C1A563 /* FullScreenTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B48467891B68C79000C1A563 /* FullScreenTextView.m */; };
 		B487C8F41B5F8BB7005F211E /* OverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = B487C8F31B5F8BB7005F211E /* OverviewView.m */; };
@@ -323,6 +329,12 @@
 		B46402701B4662B80074DD72 /* venue64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "venue64@2x.png"; sourceTree = "<group>"; };
 		B46402711B4662B80074DD72 /* web48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web48@2x.png"; sourceTree = "<group>"; };
 		B46402721B4662B80074DD72 /* web64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web64@2x.png"; sourceTree = "<group>"; };
+		B469E9241C75C04D009291BB /* alarm48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm48.png; sourceTree = "<group>"; };
+		B469E9251C75C04D009291BB /* alarm64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm64.png; sourceTree = "<group>"; };
+		B469E9261C75C04D009291BB /* avatar48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar48.png; sourceTree = "<group>"; };
+		B469E9271C75C04D009291BB /* avatar64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar64.png; sourceTree = "<group>"; };
+		B469E9281C75C04D009291BB /* avatarlight48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatarlight48.png; sourceTree = "<group>"; };
+		B469E9291C75C04D009291BB /* avatarlight64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatarlight64.png; sourceTree = "<group>"; };
 		B46EBA8A1BE3775A00F99C07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B481BB8B1B73542A00FC9133 /* CareerDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerDetailTableViewController.h; sourceTree = "<group>"; };
 		B481BB8C1B73542A00FC9133 /* CareerDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerDetailTableViewController.m; sourceTree = "<group>"; };
@@ -620,6 +632,12 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B469E9241C75C04D009291BB /* alarm48.png */,
+				B469E9251C75C04D009291BB /* alarm64.png */,
+				B469E9261C75C04D009291BB /* avatar48.png */,
+				B469E9271C75C04D009291BB /* avatar64.png */,
+				B469E9281C75C04D009291BB /* avatarlight48.png */,
+				B469E9291C75C04D009291BB /* avatarlight64.png */,
 				B49573621C562AAF00D76F2C /* tut_choose_event.png */,
 				B49573591C5624A300D76F2C /* tut_drawer.png */,
 				B495735A1C5624A300D76F2C /* tut_home.png */,
@@ -842,7 +860,10 @@
 				B455D7A71B413B7300DCB6E4 /* Icon-Small-50@2x.png in Resources */,
 				B46402841B4662B80074DD72 /* nav64@2x.png in Resources */,
 				B464027D1B4662B80074DD72 /* event48@2x.png in Resources */,
+				B469E92B1C75C04D009291BB /* alarm64.png in Resources */,
 				B464028A1B4662B80074DD72 /* phone64@2x.png in Resources */,
+				B469E92F1C75C04D009291BB /* avatarlight64.png in Resources */,
+				B469E92C1C75C04D009291BB /* avatar48.png in Resources */,
 				B46402741B4662B80074DD72 /* addevent64@2x.png in Resources */,
 				B46402931B4662B80074DD72 /* web48@2x.png in Resources */,
 				B46402731B4662B80074DD72 /* addevent48@2x.png in Resources */,
@@ -875,6 +896,7 @@
 				B464028D1B4662B80074DD72 /* setting48@2x.png in Resources */,
 				B46402821B4662B80074DD72 /* mail64@2x.png in Resources */,
 				FD1FAE7E1B8CEC1A00771037 /* Icon-40@2x.png in Resources */,
+				B469E92A1C75C04D009291BB /* alarm48.png in Resources */,
 				B455D7A21B413B7300DCB6E4 /* AppIcon.appiconset in Resources */,
 				B4BE91161B4BA8AA00A46E4C /* cross48@2x.png in Resources */,
 				B455D7A91B413B7300DCB6E4 /* Icon@2x.png in Resources */,
@@ -910,12 +932,14 @@
 				B49573631C562AAF00D76F2C /* tut_choose_event.png in Resources */,
 				B46402801B4662B80074DD72 /* kbdown64@2x.png in Resources */,
 				B46402791B4662B80074DD72 /* career48@2x.png in Resources */,
+				B469E92E1C75C04D009291BB /* avatarlight48.png in Resources */,
 				B4CE65191C73142E0087F61E /* DropDownMenuCell.xib in Resources */,
 				B495735E1C5624A300D76F2C /* tut_home.png in Resources */,
 				B464027F1B4662B80074DD72 /* kbdown48@2x.png in Resources */,
 				B46402891B4662B80074DD72 /* phone48@2x.png in Resources */,
 				B46402761B4662B80074DD72 /* addphoto64@2x.png in Resources */,
 				B42BBEE61B4A8A28005CAAB1 /* search64@2x.png in Resources */,
+				B469E92D1C75C04D009291BB /* avatar64.png in Resources */,
 				B42BBEE51B4A8A28005CAAB1 /* search48@2x.png in Resources */,
 				B489FEBF1B6231EE009BB49A /* eventhome64@2x.png in Resources */,
 				B464027C1B4662B80074DD72 /* chat64@2x.png in Resources */,
