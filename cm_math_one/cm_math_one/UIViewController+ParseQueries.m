@@ -626,8 +626,12 @@
 
 - (void) removeLocalStorage
 {
+    UIApplication *app = [UIApplication sharedApplication];
+    [app cancelAllLocalNotifications];
+    
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:NO forKey:@"chooseeventsetup"];
     [defaults setBool:NO forKey:@"homesetup"];

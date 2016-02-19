@@ -14,6 +14,10 @@
 #import "PdfReaderView.h"
 
 PFFile *pdfFile;
+BOOL reminderSet;
+NSDate *startTime;
+NSString *programName;
+NSString *programId;
 
 @implementation ProgramDetailView
 @synthesize program;
@@ -22,33 +26,42 @@ PFFile *pdfFile;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //init
     [self fillFieldsWithObject:self.program];
+    programId = self.program.objectId;
+    [self determineReminderStatusForObjectID:programId];
     
     //styling
     self.mainBackgroundView.backgroundColor = [UIColor clearColor];
     self.sessionLabel.textColor = [UIColor secondary_text];
     self.locationLabel.textColor = [UIColor secondary_text];
     self.timeLabel.textColor = [UIColor secondary_text];
-    UIImage *img = [UIImage imageNamed:@"fullscreen48@2x"];
-    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.fullscreenButton setTintColor:[UIColor accent_color]];
-    [self.fullscreenButton setImage:img forState:UIControlStateNormal];
     self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
-
-    //self.pdfButton.backgroundColor = [UIColor colorWithRed:170.0 green:170.0 blue:170.0 alpha:0.5];
+    
+    UIImage *img = [UIImage imageNamed:@"fullscreen48@2x"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.fullscreenButton setTintColor:[UIColor accent_color]];
+    [self.fullscreenButton setImage:img forState:UIControlStateNormal];
+    
+    [self.fullscreenButton setTitle:NSLocalizedString(@"fullscreen_button", nil) forState:UIControlStateNormal];
+    [self.fullscreenButton setTitle:NSLocalizedString(@"fullscreen_button", nil) forState:UIControlStateHighlighted];
+    [self.reminderButton setTitle:NSLocalizedString(@"reminder_button", nil) forState:UIControlStateNormal];
+    [self.reminderButton setTitle:NSLocalizedString(@"reminder_button", nil) forState:UIControlStateHighlighted];
+    
+    [self.fullscreenButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.fullscreenButton setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
+    [self.reminderButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.reminderButton setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     
 }
 
 - (IBAction)fullscreenButtonTap:(UIButton *)sender {
     [self performSegueWithIdentifier:@"fullscreensegue" sender:self];
     NSLog(@"FULL SCREEN BUTTON TAPPED");
-}
-
-- (IBAction)contentTapped:(UITapGestureRecognizer *)sender {
-    [self performSegueWithIdentifier:@"fullscreensegue" sender:self];
 }
 
 - (IBAction)discussButtonTap:(UIBarButtonItem *)sender {
@@ -72,6 +85,30 @@ PFFile *pdfFile;
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+- (IBAction)reminderButtonTap:(UIButton *)sender {
+    NSTimeInterval secs = [[NSDate date] timeIntervalSinceDate:startTime];
+    if (reminderSet)
+    {
+        NSLog(@"reminder canceled");
+        [self deleteReminderForObjectID:programId];
+        reminderSet = NO;
+        UIImage *img = [UIImage imageNamed:@"alarm48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.reminderButton setTintColor:[UIColor light_bg]];
+        [self.reminderButton setImage:img forState:UIControlStateNormal];
+    }
+    else
+    {
+        NSLog(@"reminder set");
+        [self setReminderForDate:startTime withTitle:programName withObjectId:programId];
+        reminderSet = YES;
+        UIImage *img = [UIImage imageNamed:@"alarm48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.reminderButton setTintColor:[UIColor primary_color_icon]];
+        [self.reminderButton setImage:img forState:UIControlStateNormal];
+    }
+}
+
 #pragma mark - Data
 
 - (void)fillFieldsWithObject: (PFObject *)object
@@ -81,6 +118,7 @@ PFFile *pdfFile;
     PFObject *session = object[@"session"];
     self.sessionLabel.text = session[@"name"];
     self.nameLabel.text = object[@"name"];
+    programName = object[@"name"];
     self.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
     self.locationLabel.text = location[@"name"];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -88,6 +126,7 @@ PFFile *pdfFile;
     [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
     [dateFormat setDateFormat: @"MMM-d HH:mm"];
     NSDate *sdate = object[@"start_time"];
+    startTime = sdate;
     NSString *sstr = [dateFormat stringFromDate:sdate];
     NSDate *edate = object[@"end_time"];
     NSString *estr = [dateFormat stringFromDate:edate];
@@ -111,7 +150,42 @@ PFFile *pdfFile;
     }
 }
 
-- (void)setReminderForDate: (NSDate *)startDate withTitle: (NSString *)title
+- (void)determineReminderStatusForObjectID: (NSString *)objId
+{
+    BOOL match = NO;
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *reminderArray = [app scheduledLocalNotifications];
+    for (int i=0; i<[reminderArray count]; i++)
+    {
+        UILocalNotification* reminder = [reminderArray objectAtIndex:i];
+        NSDictionary *userInfo = reminder.userInfo;
+        NSString *reminderId=[NSString stringWithFormat:@"%@",[userInfo valueForKey:@"objid"]];
+        if ([reminderId isEqualToString:objId])
+        {
+            match = YES;
+        }
+    }
+    
+    if (match)   //reminder was set
+    {
+        reminderSet = YES;
+        UIImage *img = [UIImage imageNamed:@"alarm48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.reminderButton setTintColor:[UIColor primary_color_icon]];
+        [self.reminderButton setImage:img forState:UIControlStateNormal];
+    }
+    else   //reminder was not set
+    {
+        reminderSet = NO;
+        UIImage *img = [UIImage imageNamed:@"alarm48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.reminderButton setTintColor:[UIColor light_bg]];
+        [self.reminderButton setImage:img forState:UIControlStateNormal];
+    }
+
+}
+
+- (void)setReminderForDate: (NSDate *)startDate withTitle: (NSString *)title withObjectId: (NSString *)objId
 {
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     localNotif.fireDate = [startDate dateByAddingTimeInterval:-300];
@@ -121,10 +195,30 @@ PFFile *pdfFile;
     localNotif.alertAction = NSLocalizedString(@"reminder_done", nil);
     localNotif.alertTitle = NSLocalizedString(@"reminder_title", nil);
     localNotif.soundName = UILocalNotificationDefaultSoundName;
+    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:objId forKey:@"objid"];
+    localNotif.userInfo = infoDict;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     
     NSLog(@"Reminder Set");
+}
+
+- (void)deleteReminderForObjectID: (NSString *)objId
+{
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *reminderArray = [app scheduledLocalNotifications];
+    for (int i=0; i<[reminderArray count]; i++)
+    {
+        UILocalNotification* reminderEvent = [reminderArray objectAtIndex:i];
+        NSDictionary *userInfoCurrent = reminderEvent.userInfo;
+        NSString *reminderId=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"objid"]];
+        if ([reminderId isEqualToString:objId])
+        {
+            //Cancel the notification
+            [app cancelLocalNotification:reminderEvent];
+            break;
+        }
+    }
 }
 
 #pragma mark - Navigation
