@@ -19,8 +19,10 @@ BOOL barIsVisible;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    barIsVisible = NO;
-    self.controlBar.hidden = YES;
+    
+    //initial state of the bottom control bar
+    barIsVisible = YES;
+    self.controlBar.hidden = NO;
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.lineSpacing = 8;

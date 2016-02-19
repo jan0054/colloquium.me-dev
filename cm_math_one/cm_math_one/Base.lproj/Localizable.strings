@@ -128,3 +128,5 @@
 "about_to_start" = "is about to start";
 "reminder_title" = "Event reminder";
 "reminder_done" = "Done";
+"fullscreen_button" = "Fullscreen Reader";
+"reminder_button" = "Set Reminder";

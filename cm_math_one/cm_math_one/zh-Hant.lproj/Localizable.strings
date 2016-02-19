@@ -278,4 +278,5 @@
 "about_to_start" = "即將開始";
 "reminder_title" = "活動提醒";
 "reminder_done" = "確認";
-
+"fullscreen_button" = "全螢幕閱讀";
+"reminder_button" = "設定提醒";

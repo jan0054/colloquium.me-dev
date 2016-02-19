@@ -28,7 +28,15 @@ NSMutableArray *selectedEventsArray;
 - (void)viewDidLoad {
     //init
     [super viewDidLoad];
-    [self setupLeftMenuButton];
+    if (!self.isSecondLevelEvent)
+    {
+        [self setupLeftMenuButton];
+    }
+    else
+    {
+        self.navigationItem.title = self.parentEvent[@"name"];
+    }
+    
     selectedEventsArray = [[NSMutableArray alloc] init];
     self.emptyLabel.text = NSLocalizedString(@"empty_label", nil);
     self.emptyLabel.textColor = [UIColor primary_text];
@@ -183,11 +191,16 @@ NSMutableArray *selectedEventsArray;
     }
     else   //this IS a parent event, and we reload the homeview controller to get the children list
     {
-        NSString *title = selectedEventObject[@"name"];
-        self.isSecondLevelEvent = YES;
-        self.parentEvent = selectedEventObject;
-        self.navigationItem.title = title;
-        [self getChildrenEvents:self withParent:self.parentEvent];
+        //NSString *title = selectedEventObject[@"name"];
+        //self.isSecondLevelEvent = YES;
+        //self.parentEvent = selectedEventObject;
+        //self.navigationItem.title = title;
+        //[self getChildrenEvents:self withParent:self.parentEvent];
+        //instead of updating itself (see above), we push a new instance, to minimize user confusion and make the ux better (see below)
+        HomeView *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"home_vc"];
+        controller.isSecondLevelEvent = YES;
+        controller.parentEvent = selectedEventObject;
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 
