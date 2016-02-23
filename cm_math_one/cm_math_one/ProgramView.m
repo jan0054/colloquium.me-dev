@@ -18,10 +18,13 @@
 #import "DropDownMenuCell.h"
 
 NSMutableArray *programArray;
+NSMutableArray *sectionedProgramArray;
 PFObject *selectedProgram;
 NSMutableArray *sessionArray;
 PFObject *currentFilter;
 PFObject *selectedEvent;
+NSMutableArray *dayArray;
+NSMutableArray *headerTitleArray;
 
 @implementation ProgramView
 @synthesize pullrefresh;
@@ -33,11 +36,15 @@ PFObject *selectedEvent;
     [self setupLeftMenuButton];
     programArray = [[NSMutableArray alloc] init];
     sessionArray = [[NSMutableArray alloc] init];
+    sectionedProgramArray = [[NSMutableArray alloc] init];
+    dayArray = [[NSMutableArray alloc] init];
+    headerTitleArray = [[NSMutableArray alloc] init];
     self.menuTitles = [[NSMutableArray alloc] init];
     self.programTable.tableFooterView = [[UIView alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.programTable.estimatedRowHeight = 220.0;
     self.programTable.rowHeight = UITableViewAutomaticDimension;
+    self.filterButton.title = NSLocalizedString(@"filter_button", nil);
     self.searchInput.delegate = self;
     self.filterButton.enabled = NO;   //we turn it back on when the session list is available;
     
@@ -162,18 +169,39 @@ PFObject *selectedEvent;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if (tableView.tag==1)
+    {
+        NSArray* uniqueDays = [dayArray valueForKeyPath:[NSString stringWithFormat:@"@distinctUnionOfObjects.%@", @"integerValue"]];
+        return uniqueDays.count;
+    }
+    else   //dropdown menu table
+    {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView.tag==1)
     {
-        return [programArray count];
+        NSMutableArray *oneDayArray = [sectionedProgramArray objectAtIndex:section];
+        return oneDayArray.count;
     }
     else   //dropdown menu table
     {
         return self.menuTitles.count;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (tableView.tag==1)
+    {
+        return [headerTitleArray objectAtIndex:section];
+    }
+    else   //dropdown menu table
+    {
+        return nil;
     }
 }
 
@@ -199,7 +227,8 @@ PFObject *selectedEvent;
         cell.locationLabel.textColor = [UIColor secondary_text];
         
         //data
-        PFObject *program = [programArray objectAtIndex:indexPath.row];
+        NSMutableArray *oneDayArray = [sectionedProgramArray objectAtIndex:indexPath.section];
+        PFObject *program = [oneDayArray objectAtIndex:indexPath.row];
         PFObject *author = program[@"author"];
         PFObject *location = program[@"location"];
         NSString *locationName = (location[@"name"]!=NULL) ? location[@"name"] : @"";
@@ -222,6 +251,21 @@ PFObject *selectedEvent;
         menucell.backgroundColor = [UIColor clearColor];
         menucell.menuTitleLabel.textColor = [UIColor primary_text];
         menucell.menuTitleLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
+        if (currentFilter == nil)
+        {
+            if (indexPath.row == 0)
+            {
+                menucell.menuTitleLabel.textColor = [UIColor primary_color_icon];
+            }
+        }
+        else
+        {
+            NSString *currentTitle = currentFilter[@"name"];
+            if ([currentTitle isEqualToString:[self.menuTitles objectAtIndex:indexPath.row]])
+            {
+                menucell.menuTitleLabel.textColor = [UIColor primary_color_icon];
+            }
+        }
         return menucell;
     }
 }
@@ -246,7 +290,7 @@ PFObject *selectedEvent;
 {
     [sessionArray removeAllObjects];
     [self.menuTitles removeAllObjects];
-    [self.menuTitles addObject:@"All"];
+    [self.menuTitles addObject:NSLocalizedString(@"menu_all", nil)];
     sessionArray = [results mutableCopy];
     for (PFObject *session in sessionArray)
     {
@@ -275,11 +319,56 @@ PFObject *selectedEvent;
     [self getProgram:self ofType:0 withOrder:0 withSearch:searchArray forEvent:selectedEvent];
 }
 
+//main results for the program data
 - (void)processData: (NSArray *) results
 {
-    [programArray removeAllObjects];
+    [programArray removeAllObjects];            //all the result objects
+    [dayArray removeAllObjects];                //nsnumber values of day components
+    [sectionedProgramArray removeAllObjects];   //array of arrays with result objects, grouped by day
+    [headerTitleArray removeAllObjects];        //header titles array
+    
     programArray = [results mutableCopy];
+    
+    for (PFObject *prog in programArray)
+    {
+        NSInteger dayComp = [self getStartDayfromProgram:prog];
+        NSNumber *dayCompNSNum = [NSNumber numberWithInteger:dayComp];
+        [dayArray addObject:dayCompNSNum];
+    }
+    NSArray* uniqueDays = [dayArray valueForKeyPath:[NSString stringWithFormat:@"@distinctUnionOfObjects.%@", @"integerValue"]];
+    for (NSNumber *dayNum in uniqueDays)
+    {
+        NSInteger dayInt = dayNum.integerValue;
+        NSMutableArray *arrayForDay = [[NSMutableArray alloc] init];
+        NSDate *sampleDate;
+        for (PFObject *obj in programArray)
+        {
+            NSInteger objDayInt = [self getStartDayfromProgram:obj];
+            if (dayInt == objDayInt)
+            {
+                [arrayForDay addObject:obj];
+                sampleDate = obj[@"start_time"];
+            }
+        }
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
+        [dateFormat setDateFormat: @"yyyy-MMM-d"];
+        NSString *headerTitle = [dateFormat stringFromDate:sampleDate];
+        
+        [sectionedProgramArray addObject:arrayForDay];
+        [headerTitleArray addObject:headerTitle];
+    }
+    
     [self.programTable reloadData];
+}
+
+- (NSInteger)getStartDayfromProgram: (PFObject *)obj
+{
+    NSDate *startDate = obj[@"start_time"];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:startDate];
+    NSInteger day = [components day];
+    return day;
 }
 
 #pragma mark - Navigation
@@ -316,18 +405,21 @@ PFObject *selectedEvent;
     [self.contextMenuTableView updateAlongsideRotation];
 }
 
-- (void)contextMenuTableView:(YALContextMenuTableView *)contextMenuTableView didDismissWithIndexPath:(NSIndexPath *)indexPath   //callback for menu tap
+//callback for menu tap
+- (void)contextMenuTableView:(YALContextMenuTableView *)contextMenuTableView didDismissWithIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Menu dismissed with indexpath = %li", (long)indexPath.row);
     if (indexPath.row == 0)
     {
         currentFilter = nil;
+        self.navigationItem.title = NSLocalizedString(@"title_all", nil);
         self.searchInput.text = @"";
         [self getProgram:self ofType:0 withOrder:0 forEvent:selectedEvent];
     }
     else
     {
         currentFilter = [sessionArray objectAtIndex: (indexPath.row - 1)];
+        self.navigationItem.title = currentFilter[@"name"];
         self.searchInput.text = @"";
         [self getFilteredProgram:self ofType:0 withOrder:0 forEvent:selectedEvent forSession:currentFilter];
     }

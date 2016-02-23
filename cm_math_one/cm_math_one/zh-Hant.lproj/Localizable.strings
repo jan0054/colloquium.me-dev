@@ -280,6 +280,9 @@
 "reminder_done" = "確認";
 "fullscreen_button" = " 全螢幕閱讀";
 "reminder_button" = " 活動提醒";
+"title_all" = "演講";
+"menu_all" = "所有演講";
+"filter_button" = "分類";
 
 //fullscreen
 "fullscreen_toast" = "點擊任一處以顯示/隱藏控制列";

@@ -395,7 +395,7 @@
     //order = 0 start_time, order = 1 name, can add others in future if needed
     if (order ==0)
     {
-        [query orderByDescending:@"start_time"];
+        [query orderByAscending:@"start_time"];
     }
     else if (order ==1)
     {
@@ -421,7 +421,7 @@
     //order = 0 start_time, order = 1 name, can add others in future if needed
     if (order ==0)
     {
-        [query orderByDescending:@"start_time"];
+        [query orderByAscending:@"start_time"];
     }
     else if (order ==1)
     {
@@ -482,7 +482,7 @@
     //order = 0 start_time, order = 1 name, can add others in future if needed
     if (order ==0)
     {
-        [query orderByDescending:@"start_time"];
+        [query orderByAscending:@"start_time"];
     }
     else if (order ==1)
     {
@@ -509,7 +509,7 @@
     //order = 0 start_time, order = 1 name, can add others in future if needed
     if (order ==0)
     {
-        [query orderByDescending:@"start_time"];
+        [query orderByAscending:@"start_time"];
     }
     else if (order ==1)
     {
