@@ -279,4 +279,11 @@
 "reminder_title" = "活動提醒";
 "reminder_done" = "確認";
 "fullscreen_button" = " 全螢幕閱讀";
-"reminder_button" = " 設定提醒";
+"reminder_button" = " 活動提醒";
+
+//fullscreen
+"fullscreen_toast" = "點擊任一處以顯示/隱藏控制列";
+
+"alert_passed_title" = "";
+"alert_passed_detail" = "該活動日期已過";
+"alert_passed_done" = "確定";

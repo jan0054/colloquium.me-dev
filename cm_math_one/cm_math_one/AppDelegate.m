@@ -78,6 +78,7 @@
         [defaults setValue:@1 forKey:@"appsetup"];
         [defaults setValue:@0 forKey:@"skiplogin"];
         [defaults setBool:YES forKey:@"preferblack"];
+        [defaults setBool:YES forKey:@"to_toast"];
         [defaults synchronize];
     }
     

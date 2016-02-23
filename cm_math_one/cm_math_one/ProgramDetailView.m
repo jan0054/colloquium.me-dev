@@ -53,10 +53,8 @@ NSString *programId;
     [self.reminderButton setTitle:NSLocalizedString(@"reminder_button", nil) forState:UIControlStateHighlighted];
     
     [self.fullscreenButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [self.fullscreenButton setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
     [self.reminderButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [self.reminderButton setTitleColor:[UIColor accent_color] forState:UIControlStateHighlighted];
-    
+    [self.reminderButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
 }
 
 - (IBAction)fullscreenButtonTap:(UIButton *)sender {
@@ -87,25 +85,36 @@ NSString *programId;
 
 - (IBAction)reminderButtonTap:(UIButton *)sender {
     NSTimeInterval secs = [[NSDate date] timeIntervalSinceDate:startTime];
-    if (reminderSet)
+    if (secs < 0)  //start time is in the future
     {
-        NSLog(@"reminder canceled");
-        [self deleteReminderForObjectID:programId];
-        reminderSet = NO;
-        UIImage *img = [UIImage imageNamed:@"alarm48"];
-        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [self.reminderButton setTintColor:[UIColor light_bg]];
-        [self.reminderButton setImage:img forState:UIControlStateNormal];
+        if (reminderSet)
+        {
+            NSLog(@"reminder canceled");
+            [self deleteReminderForObjectID:programId];
+            reminderSet = NO;
+            UIImage *img = [UIImage imageNamed:@"alarm48"];
+            img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.reminderButton setTintColor:[UIColor light_bg]];
+            [self.reminderButton setImage:img forState:UIControlStateNormal];
+        }
+        else
+        {
+            NSLog(@"reminder set");
+            [self setReminderForDate:startTime withTitle:programName withObjectId:programId];
+            reminderSet = YES;
+            UIImage *img = [UIImage imageNamed:@"alarm48"];
+            img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.reminderButton setTintColor:[UIColor primary_color_icon]];
+            [self.reminderButton setImage:img forState:UIControlStateNormal];
+        }
     }
-    else
+    else   //start time has passed
     {
-        NSLog(@"reminder set");
-        [self setReminderForDate:startTime withTitle:programName withObjectId:programId];
-        reminderSet = YES;
-        UIImage *img = [UIImage imageNamed:@"alarm48"];
-        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [self.reminderButton setTintColor:[UIColor primary_color_icon]];
-        [self.reminderButton setImage:img forState:UIControlStateNormal];
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_passed_title", nil)
+                                    message:NSLocalizedString(@"alert_passed_detail", nil)
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"alert_passed_done", nil)
+                          otherButtonTitles:nil] show];
     }
 }
 

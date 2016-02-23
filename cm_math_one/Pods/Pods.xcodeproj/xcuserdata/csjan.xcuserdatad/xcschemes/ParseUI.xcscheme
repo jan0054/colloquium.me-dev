@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D20D9EF24F86F75B322F8FCE'
+               BlueprintIdentifier = '5F76E30D05577F5B7FEF2641'
                BlueprintName = 'ParseUI'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libParseUI.a'>

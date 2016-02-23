@@ -7,6 +7,7 @@
 //
 
 #import "FullScreenTextView.h"
+#import "UIView+Toast.h"
 
 @interface FullScreenTextView ()
 
@@ -19,10 +20,20 @@ BOOL barIsVisible;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     //initial state of the bottom control bar
     barIsVisible = YES;
     self.controlBar.hidden = NO;
+    
+    //determine status of initial toast and display if needed
+    BOOL toToast = [defaults boolForKey:@"to_toast"];
+    if (toToast)
+    {
+        [self.view makeToast:NSLocalizedString(@"fullscreen_toast", nil) duration:5.0 position:CSToastPositionCenter];
+        [defaults setBool:NO forKey:@"to_toast"];
+        [defaults synchronize];
+    }
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.lineSpacing = 8;
@@ -33,7 +44,6 @@ BOOL barIsVisible;
                                                         NSFontAttributeName : font }];
     self.contentTextView.text = self.content;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL preferBlack = [defaults boolForKey:@"preferblack"];
     if (preferBlack)
     {

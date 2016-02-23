@@ -835,7 +835,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-6V-xea">
-                                        <rect key="frame" x="8" y="455" width="154" height="24"/>
+                                        <rect key="frame" x="8" y="359" width="154" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="fullscreen" image="fullscreen48.png">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -846,7 +846,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3f-DP-yIp">
-                                        <rect key="frame" x="438" y="455" width="154" height="24"/>
+                                        <rect key="frame" x="438" y="359" width="154" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <state key="normal" title="reminder" image="alarm48.png">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -855,8 +855,8 @@
                                             <action selector="reminderButtonTap:" destination="Aa2-37-DCr" eventType="touchUpInside" id="cek-9E-BYw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSX-O5-Tp7">
-                                        <rect key="frame" x="283" y="455" width="34" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSX-O5-Tp7">
+                                        <rect key="frame" x="8" y="399" width="34" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="VC8-HE-mlI"/>
@@ -883,6 +883,7 @@
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="323-Ja-bXU"/>
                                     <constraint firstAttribute="trailing" secondItem="oUx-S1-ozy" secondAttribute="trailing" constant="8" id="3Sz-bz-sKZ"/>
                                     <constraint firstItem="xSX-O5-Tp7" firstAttribute="bottom" secondItem="7zW-bn-m2A" secondAttribute="bottom" id="3cL-cm-Vqj"/>
+                                    <constraint firstItem="xSX-O5-Tp7" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="5rb-qZ-1UN"/>
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="top" secondItem="kjg-DM-CDi" secondAttribute="bottom" constant="8" id="5yb-1i-AWF"/>
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="16" id="6DD-lV-xfl"/>
                                     <constraint firstAttribute="trailing" secondItem="kjg-DM-CDi" secondAttribute="trailing" constant="8" id="6oh-94-TVk"/>
@@ -898,6 +899,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Y8c-Bb-19b" secondAttribute="trailing" constant="8" id="Rao-ve-6tg"/>
                                     <constraint firstItem="BOi-BU-4bS" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" id="Rg3-fU-lUh"/>
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="top" secondItem="kjg-DM-CDi" secondAttribute="bottom" constant="8" id="UHq-J5-CAl"/>
+                                    <constraint firstItem="b3f-DP-yIp" firstAttribute="top" secondItem="7zW-bn-m2A" secondAttribute="bottom" constant="16" id="ZYF-l8-Dt5"/>
                                     <constraint firstItem="xSX-O5-Tp7" firstAttribute="top" secondItem="7zW-bn-m2A" secondAttribute="bottom" id="a5d-Jn-hRJ"/>
                                     <constraint firstItem="xSX-O5-Tp7" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="avY-qk-717"/>
                                     <constraint firstItem="xSX-O5-Tp7" firstAttribute="leading" secondItem="7zW-bn-m2A" secondAttribute="leading" id="bJI-mR-eVk"/>
@@ -914,8 +916,10 @@
                                     <constraint firstAttribute="bottom" secondItem="xSX-O5-Tp7" secondAttribute="bottom" constant="8" id="nws-36-e1f"/>
                                     <constraint firstAttribute="trailing" secondItem="b3f-DP-yIp" secondAttribute="trailing" constant="8" id="oVc-XX-nhp"/>
                                     <constraint firstItem="l2h-6V-xea" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="r64-1V-Hbe"/>
+                                    <constraint firstItem="xSX-O5-Tp7" firstAttribute="top" secondItem="l2h-6V-xea" secondAttribute="bottom" constant="16" id="sE2-aX-02t"/>
                                     <constraint firstItem="kjg-DM-CDi" firstAttribute="top" secondItem="WJf-5P-CQo" secondAttribute="top" constant="16" id="sf6-dD-DaM"/>
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="bottom" secondItem="l2h-6V-xea" secondAttribute="bottom" id="tJe-Xx-zam"/>
+                                    <constraint firstItem="l2h-6V-xea" firstAttribute="top" secondItem="7zW-bn-m2A" secondAttribute="bottom" constant="16" id="wcL-gI-T3z"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -923,17 +927,22 @@
                                         <exclude reference="Gjb-QW-1hE"/>
                                         <exclude reference="d1B-S7-KxF"/>
                                         <exclude reference="tJe-Xx-zam"/>
+                                        <exclude reference="QTe-XS-791"/>
                                         <exclude reference="mG9-Du-HT4"/>
                                         <exclude reference="r64-1V-Hbe"/>
                                         <exclude reference="3cL-cm-Vqj"/>
                                         <exclude reference="LNE-ca-Jn6"/>
+                                        <exclude reference="OKj-Zo-1pR"/>
                                         <exclude reference="a5d-Jn-hRJ"/>
                                         <exclude reference="avY-qk-717"/>
                                         <exclude reference="bJI-mR-eVk"/>
                                         <exclude reference="fud-aU-iBO"/>
                                         <exclude reference="nRn-f5-Eyn"/>
+                                        <exclude reference="nws-36-e1f"/>
+                                        <exclude reference="LgY-A8-s0Y"/>
                                         <exclude reference="QTh-Se-Vg3"/>
                                         <exclude reference="jyW-6x-XUi"/>
+                                        <exclude reference="noT-cN-E52"/>
                                     </mask>
                                 </variation>
                             </view>
