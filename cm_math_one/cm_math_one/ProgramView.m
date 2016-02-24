@@ -197,11 +197,24 @@ NSMutableArray *headerTitleArray;
 {
     if (tableView.tag==1)
     {
-        return [headerTitleArray objectAtIndex:section];
+        NSString *title = [headerTitleArray objectAtIndex:section];
+        return [NSString stringWithFormat:@"  %@", title];
     }
     else   //dropdown menu table
     {
         return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (tableView.tag==1)
+    {
+        return 40;
+    }
+    else
+    {
+        return 0;
     }
 }
 

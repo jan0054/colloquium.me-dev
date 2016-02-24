@@ -135,6 +135,7 @@ NSMutableArray *selectedEventsArray;
     
     //data
     PFObject *event = [selectedEventsArray objectAtIndex:indexPath.row];
+    cell.homeObject = event;
     cell.nameLabel.text = event[@"name"];
     cell.contentLabel.text = event[@"content"];
     cell.organizerLabel.text = event[@"organizer"];
@@ -181,7 +182,10 @@ NSMutableArray *selectedEventsArray;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFObject *selectedEventObject = [selectedEventsArray objectAtIndex:indexPath.row];
+    //PFObject *selectedEventObject = [selectedEventsArray objectAtIndex:indexPath.row];
+    HomeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    PFObject *selectedEventObject = cell.homeObject;
+    NSLog(@"TAPPED ROW: %@", selectedEventObject.objectId);
     if (selectedEventObject[@"childrenEvent"]==nil)   //this is not a parent event
     {
         [self setCurrentEventIdForRow:indexPath.row];

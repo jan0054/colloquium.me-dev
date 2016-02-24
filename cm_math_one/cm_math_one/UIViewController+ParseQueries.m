@@ -543,6 +543,30 @@
     }];
 }
 
+- (void)getCurrentEvents: (id)caller
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    [query whereKeyDoesNotExist:@"parentEvent"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query orderByDescending:@"start_time"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu current events", (unsigned long)objects.count);
+        [caller processData:objects];
+    }];
+}
+
+- (void)getPastEvents: (id)caller
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    [query whereKeyDoesNotExist:@"parentEvent"];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query orderByDescending:@"start_time"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"Successfully retrieved %lu past events", (unsigned long)objects.count);
+        [caller processData:objects];
+    }];
+}
+
 - (void)getChildrenEvents: (id)caller withParent: (PFObject *)parentEvent
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];

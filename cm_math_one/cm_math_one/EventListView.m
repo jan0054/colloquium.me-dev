@@ -37,8 +37,14 @@ InstructionsViewController *controller;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+    [self.eventFilterSeg setTintColor:[UIColor primary_color]];
     
     //init
+    self.navigationItem.title = NSLocalizedString(@"events_title", nil);
+    [self.eventFilterSeg setTitle:NSLocalizedString(@"seg_current", nil) forSegmentAtIndex:0];
+    [self.eventFilterSeg setTitle:NSLocalizedString(@"seg_past", nil) forSegmentAtIndex:1];
+    [self.eventFilterSeg setTitle:NSLocalizedString(@"seg_fav", nil) forSegmentAtIndex:2];
+    
     totalEventArray = [[NSMutableArray alloc] init];
     selectedDictionary = [[NSMutableDictionary alloc] init];
     selectedEventArray = [[NSMutableArray alloc] init];
@@ -95,6 +101,21 @@ InstructionsViewController *controller;
     [self.view removeGestureRecognizer:self.tapOutlet];
     self.doneButton.enabled = YES;
     NSLog(@"Instructions removed");
+}
+
+- (IBAction)segChanged:(UISegmentedControl *)sender {
+    if (self.eventFilterSeg.selectedSegmentIndex == 0)   //current
+    {
+        
+    }
+    else if (self.eventFilterSeg.selectedSegmentIndex == 1)   //past
+    {
+        
+    }
+    else if (self.eventFilterSeg.selectedSegmentIndex == 2)   //fav
+    {
+        
+    }
 }
 
 #pragma mark - TableView
@@ -405,5 +426,6 @@ InstructionsViewController *controller;
     }
      */
 }
+
 
 @end

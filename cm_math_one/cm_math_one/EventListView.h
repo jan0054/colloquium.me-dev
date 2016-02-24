@@ -16,5 +16,7 @@
 - (void)processData: (NSArray *) results;
 - (IBAction)instructionTap:(UITapGestureRecognizer *)sender;  //used to dismiss the instruction view
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapOutlet;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *eventFilterSeg;
+- (IBAction)segChanged:(UISegmentedControl *)sender;
 
 @end

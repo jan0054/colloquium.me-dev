@@ -139,3 +139,10 @@
 
 //fullscreen
 "fullscreen_toast" = "Tap anywhere to toggle control bar";
+
+//choose event
+"seg_current" = "Current";
+"seg_past" = "Past";
+"seg_fav" = "Followed";
+"events_title" = "Events";
+

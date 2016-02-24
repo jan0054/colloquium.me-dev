@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface HomeCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *contentLabel;
@@ -17,5 +18,5 @@
 @property NSString *eventId;
 @property (strong, nonatomic) IBOutlet UIImageView *flairImage;
 @property (strong, nonatomic) IBOutlet UIView *backgroundCardView;
-
+@property PFObject *homeObject;
 @end

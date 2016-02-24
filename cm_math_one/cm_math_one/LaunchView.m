@@ -90,9 +90,10 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
         // Instantitate and set the center view controller. (i.e. the default first view shown) depending on if there are events already chosen
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSArray *eventNames = [defaults objectForKey:@"eventNames"];
-        if (eventNames.count >=1)  //already exist previously selected events, show the tab controller
+        if (eventNames.count >=1)  //already exist previously selected events, show the tab controller (update: we go to the event picker anyway since we're deprecating the home view)
         {
-            UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"home_nc"];
+            //UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"home_nc"];
+            UIViewController *centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"eventchoose_nc"];
             [destinationViewController setCenterViewController:centerViewController];
         }
         else  //no existing selected events, show the event picker

@@ -45,6 +45,8 @@
 
 //event
 - (void)getEvents: (id)caller;
+- (void)getCurrentEvents: (id)caller;
+- (void)getPastEvents: (id)caller;
 - (void)getChildrenEvents: (id)caller withParent: (PFObject *)parentEvent;
 - (void)getEventsFromLocalList: (id)caller;
 - (void)getEvent: (id)caller withId: (NSString *)eventId;
