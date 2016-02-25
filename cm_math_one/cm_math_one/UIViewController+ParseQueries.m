@@ -547,6 +547,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query whereKeyDoesNotExist:@"parentEvent"];
+    [query whereKey:@"end_time" greaterThan:[NSDate date]];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query orderByDescending:@"start_time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -559,6 +560,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     [query whereKeyDoesNotExist:@"parentEvent"];
+    [query whereKey:@"end_time" lessThan:[NSDate date]];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query orderByDescending:@"start_time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

@@ -296,4 +296,6 @@
 "seg_past" = "過去";
 "seg_fav" = "追蹤";
 "events_title" = "會議活動";
+"fav_button" = "追蹤活動";
+"more_button" = "更多資訊..";
 

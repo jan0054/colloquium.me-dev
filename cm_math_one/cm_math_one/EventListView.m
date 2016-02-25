@@ -28,7 +28,7 @@ InstructionsViewController *controller;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self setupLeftMenuButton];  //we don't display the drawer button on this page
+    [self setupLeftMenuButton];
     
     //styling
     self.eventTable.backgroundColor = [UIColor light_bg];
@@ -43,8 +43,6 @@ InstructionsViewController *controller;
     self.navigationItem.title = NSLocalizedString(@"events_title", nil);
     [self.eventFilterSeg setTitle:NSLocalizedString(@"seg_current", nil) forSegmentAtIndex:0];
     [self.eventFilterSeg setTitle:NSLocalizedString(@"seg_past", nil) forSegmentAtIndex:1];
-    [self.eventFilterSeg setTitle:NSLocalizedString(@"seg_fav", nil) forSegmentAtIndex:2];
-    
     totalEventArray = [[NSMutableArray alloc] init];
     selectedDictionary = [[NSMutableDictionary alloc] init];
     selectedEventArray = [[NSMutableArray alloc] init];
@@ -60,7 +58,8 @@ InstructionsViewController *controller;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self getEvents:self];      //get events list, callback method is processData
+    [self getCurrentEvents:self];      //get events list, callback method is processData
+    [self.eventFilterSeg setSelectedSegmentIndex:0];
     [self setupInstructions];   //instruction overlay
 }
 
@@ -89,33 +88,33 @@ InstructionsViewController *controller;
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
-//save button
-- (IBAction)doneButtonTap:(UIBarButtonItem *)sender {
-    NSArray *selected =  self.eventTable.indexPathsForSelectedRows;
-    [self saveEventList:selected];
-}
-
 //remove instruction overlay
 - (IBAction)instructionTap:(UITapGestureRecognizer *)sender {
     [controller.view removeFromSuperview];
     [self.view removeGestureRecognizer:self.tapOutlet];
-    self.doneButton.enabled = YES;
     NSLog(@"Instructions removed");
 }
 
 - (IBAction)segChanged:(UISegmentedControl *)sender {
     if (self.eventFilterSeg.selectedSegmentIndex == 0)   //current
     {
-        
+        [self getCurrentEvents:self];
     }
     else if (self.eventFilterSeg.selectedSegmentIndex == 1)   //past
     {
-        
+        [self getPastEvents:self];
     }
-    else if (self.eventFilterSeg.selectedSegmentIndex == 2)   //fav
-    {
-        
-    }
+}
+
+- (IBAction)favoriteButtonTap:(UIButton *)sender {
+    EventCell *cell = (EventCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.eventTable indexPathForCell:cell];
+    [self favButtonForTable:self.eventTable wasTappedAt:tapped_path];
+}
+- (IBAction)moreButtonTap:(UIButton *)sender {
+    EventCell *cell = (EventCell *)[[[sender superview] superview] superview];
+    NSIndexPath *tapped_path = [self.eventTable indexPathForCell:cell];
+    [self moreButtonForTable:self.eventTable wasTappedAt:tapped_path];
 }
 
 #pragma mark - TableView
@@ -173,12 +172,18 @@ InstructionsViewController *controller;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
+    [cell.favoriteButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
+    [cell.moreButton setTitle:NSLocalizedString(@"more_button", nil) forState:UIControlStateNormal];
+    [cell.favoriteButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [cell.moreButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [cell.favoriteButton setTitleColor:[UIColor light_accent] forState:UIControlStateHighlighted];
+    [cell.moreButton setTitleColor:[UIColor light_accent] forState:UIControlStateHighlighted];
     
     int sel = [[selectedDictionary valueForKey:event.objectId] intValue];
     if (sel == 1)
     {
         [cell.eventSelectedImage setTintColor:[UIColor primary_color_icon]];
-        UIImage *img = [UIImage imageNamed:@"check48"];
+        UIImage *img = [UIImage imageNamed:@"star_full48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
         cell.eventNameLabel.textColor = [UIColor primary_text];
@@ -186,7 +191,7 @@ InstructionsViewController *controller;
     else
     {
         [cell.eventSelectedImage setTintColor:[UIColor unselected_icon]];
-        UIImage *img = [UIImage imageNamed:@"emptycircle48"];
+        UIImage *img = [UIImage imageNamed:@"star_empty48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
         cell.eventNameLabel.textColor = [UIColor primary_text];
@@ -239,16 +244,37 @@ InstructionsViewController *controller;
         totalSelected = totalSelected + selValue;
         NSLog(@"TOTALVALUE:%i, %i", totalSelected, selValue);
     }
-    //check if nothing selected then disable done button
-    if (totalSelected == 0)
+
+}
+
+- (void)favButtonForTable: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
+{
+    EventCell *cell = (EventCell *)[tableView cellForRowAtIndexPath:indexPath];
+    int selectedStatus = [[selectedDictionary valueForKey:cell.eventId] intValue];
+    if (selectedStatus == 1)
     {
-        self.doneButton.enabled = NO;
+        [cell.eventSelectedImage setTintColor:[UIColor unselected_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_empty48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.eventSelectedImage.image = img;
+        cell.eventNameLabel.textColor = [UIColor primary_text];
+        [selectedDictionary setValue:@0 forKey:cell.eventId];
     }
     else
     {
-        self.doneButton.enabled = YES;
+        [cell.eventSelectedImage setTintColor:[UIColor primary_color_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_full48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.eventSelectedImage.image = img;
+        cell.eventNameLabel.textColor = [UIColor primary_text];
+        [selectedDictionary setValue:@1 forKey:cell.eventId];
     }
-    NSLog(@"SELECTION COUNT:%i", totalSelected);
+
+}
+
+- (void)moreButtonForTable: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
+{
+    
 }
 
 - (void)tableView: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
@@ -258,7 +284,7 @@ InstructionsViewController *controller;
     if (selectedStatus == 1)
     {
         [cell.eventSelectedImage setTintColor:[UIColor unselected_icon]];
-        UIImage *img = [UIImage imageNamed:@"emptycircle48"];
+        UIImage *img = [UIImage imageNamed:@"star_empty48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
         cell.eventNameLabel.textColor = [UIColor primary_text];
@@ -267,7 +293,7 @@ InstructionsViewController *controller;
     else
     {
         [cell.eventSelectedImage setTintColor:[UIColor primary_color_icon]];
-        UIImage *img = [UIImage imageNamed:@"check48"];
+        UIImage *img = [UIImage imageNamed:@"star_full48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
         cell.eventNameLabel.textColor = [UIColor primary_text];
@@ -276,28 +302,18 @@ InstructionsViewController *controller;
     
     NSLog(@"DIC AT SELECT DATA:%@", selectedDictionary);
     
-    
-    //check if nothing selected then disable done button
     int totalSelected = 0;
     for (NSString *key in selectedDictionary)
     {
         int selValue = [[selectedDictionary valueForKey:key] intValue];
         totalSelected = totalSelected + selValue;
     }
-    if (totalSelected == 0)
-    {
-        self.doneButton.enabled = NO;
-    }
-    else
-    {
-        self.doneButton.enabled = YES;
-    }
     NSLog(@"SELECTION COUNT:%i", totalSelected);
 }
 
 - (void)saveEventList: (NSArray *)selectedIndexPaths
 {
-    //this will be the array of selected events to save
+    //this will hold the array of selected event objects that we want to save
     NSMutableArray *selectedEvents = [[NSMutableArray alloc] init];
     
     for (PFObject *event in totalEventArray)
@@ -426,6 +442,7 @@ InstructionsViewController *controller;
     }
      */
 }
+
 
 
 @end

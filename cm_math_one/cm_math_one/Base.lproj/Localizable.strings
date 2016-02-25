@@ -145,4 +145,6 @@
 "seg_past" = "Past";
 "seg_fav" = "Followed";
 "events_title" = "Events";
+"fav_button" = "Follow Event";
+"more_button" = "Details..";
 

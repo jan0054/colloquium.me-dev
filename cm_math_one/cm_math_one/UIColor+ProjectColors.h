@@ -10,6 +10,7 @@
 
 @interface UIColor (ProjectColors)
 + (UIColor*) accent_color;
++ (UIColor*) light_accent;
 + (UIColor*) dark_accent;
 + (UIColor*) primary_color;
 + (UIColor*) primary_color_icon;

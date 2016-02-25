@@ -28,7 +28,8 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     //Register for push, if running iOS 8
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                         UIUserNotificationTypeBadge |
                                                         UIUserNotificationTypeSound);
@@ -37,12 +38,6 @@
         [application registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
         NSLog(@"iOS8 Push registration");
-    } else {
-        // Register for Push Notifications before iOS 8
-        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                         UIRemoteNotificationTypeAlert |
-                                                         UIRemoteNotificationTypeSound)];
-        NSLog(@"iOS<=7 Push registration");
     }
     
     //Register for local notifications

@@ -24,6 +24,10 @@
 {
     return [self in500];
 }
++ (UIColor*) light_accent
+{
+    return [self in200];
+}
 + (UIColor*) dark_accent
 {
     return [self in700];
