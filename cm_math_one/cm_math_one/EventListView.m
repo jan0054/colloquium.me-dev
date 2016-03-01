@@ -15,6 +15,7 @@
 #import "EventCell.h"
 #import "DrawerView.h"
 #import "InstructionsViewController.h"
+#import "HomeView.h"
 
 NSMutableArray *totalEventArray;           //hold all event pfobjects from query
 NSMutableDictionary *selectedDictionary;   //object id and selection(0/1) key value pair
@@ -148,6 +149,8 @@ InstructionsViewController *controller;
     NSString *estr = [dateFormat stringFromDate:edate];
     cell.eventTimeLabel.text = [NSString stringWithFormat:@"%@ ~ %@", sstr, estr];
     cell.eventId = event.objectId;
+    cell.eventName = event[@"name"];
+    cell.eventObject = event;
     
     //styling
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
@@ -200,16 +203,6 @@ InstructionsViewController *controller;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self tableView:tableView wasTappedAt:indexPath];
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self tableView:tableView wasTappedAt:indexPath];
-}
-
 #pragma mark - Data
 
 - (void)processData: (NSArray *) results  //callback for the query to get all existing events
@@ -228,30 +221,22 @@ InstructionsViewController *controller;
         if ([self checkIfStringArray:eventIds containsString:eid])
         {
             [selectedDictionary setValue:@1 forKey:eid];
+            [selectedEventArray addObject:event];
         }
         else
         {
             [selectedDictionary setValue:@0 forKey:eid];
         }
     }
-    NSLog(@"DIC AT PROCESS DATA:%@", selectedDictionary);
     [self.eventTable reloadData];
-    
-    int totalSelected = 0;
-    for (NSString *key in selectedDictionary)
-    {
-        int selValue = [[selectedDictionary valueForKey:key] intValue];
-        totalSelected = totalSelected + selValue;
-        NSLog(@"TOTALVALUE:%i, %i", totalSelected, selValue);
-    }
-
 }
 
 - (void)favButtonForTable: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
 {
+    //process select and unselect, change tint color/image icon
     EventCell *cell = (EventCell *)[tableView cellForRowAtIndexPath:indexPath];
     int selectedStatus = [[selectedDictionary valueForKey:cell.eventId] intValue];
-    if (selectedStatus == 1)
+    if (selectedStatus == 1)   //selected->unselected
     {
         [cell.eventSelectedImage setTintColor:[UIColor unselected_icon]];
         UIImage *img = [UIImage imageNamed:@"star_empty48"];
@@ -259,8 +244,9 @@ InstructionsViewController *controller;
         cell.eventSelectedImage.image = img;
         cell.eventNameLabel.textColor = [UIColor primary_text];
         [selectedDictionary setValue:@0 forKey:cell.eventId];
+        [self tappedFavoriteButtonWithId:cell.eventId withName:cell.eventName withObject:cell.eventObject toSave:NO];
     }
-    else
+    else   //unselected->selected
     {
         [cell.eventSelectedImage setTintColor:[UIColor primary_color_icon]];
         UIImage *img = [UIImage imageNamed:@"star_full48"];
@@ -268,15 +254,101 @@ InstructionsViewController *controller;
         cell.eventSelectedImage.image = img;
         cell.eventNameLabel.textColor = [UIColor primary_text];
         [selectedDictionary setValue:@1 forKey:cell.eventId];
+        [self tappedFavoriteButtonWithId:cell.eventId withName:cell.eventName withObject:cell.eventObject toSave:YES];
     }
+}
 
+- (void)tappedFavoriteButtonWithId: (NSString *)eventId withName: (NSString *)eventName withObject: (PFObject *)eventObject toSave: (BOOL)saving
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if (saving)
+    {
+        NSMutableArray *eventIds = [[NSMutableArray alloc] init];
+        [eventIds addObjectsFromArray:[defaults objectForKey:@"eventIds"]];
+        [eventIds addObject:eventId];
+        [defaults setObject:eventIds forKey:@"eventIds"];
+        
+        NSMutableArray *eventNames = [[NSMutableArray alloc] init];
+        [eventNames addObjectsFromArray:[defaults objectForKey:@"eventNames"]];
+        [eventNames addObject:eventName];
+        [defaults setObject:eventNames forKey:@"eventNames"];
+        [defaults synchronize];
+        
+        //save to parse
+        if ([PFUser currentUser])
+        {
+            PFUser *user = [PFUser currentUser];
+            [user addUniqueObject:eventObject forKey:@"events"];
+            [user saveInBackground];
+        }
+    }
+    else
+    {
+        NSMutableArray *eventIds = [[NSMutableArray alloc] init];
+        [eventIds addObjectsFromArray:[defaults objectForKey:@"eventIds"]];
+        if ([eventIds containsObject:eventId])
+        {
+            [eventIds removeObject:eventId];
+        }
+        [defaults setObject:eventIds forKey:@"eventIds"];
+        
+        NSMutableArray *eventNames = [[NSMutableArray alloc] init];
+        [eventNames addObjectsFromArray:[defaults objectForKey:@"eventNames"]];
+        if ([eventNames containsObject:eventName])
+        {
+            [eventNames removeObject:eventName];
+        }
+        [defaults setObject:eventNames forKey:@"eventNames"];
+        [defaults synchronize];
+        
+        //save to parse
+        if ([PFUser currentUser])
+        {
+            PFUser *user = [PFUser currentUser];
+            [user removeObject:eventObject forKey:@"events"];
+            [user saveInBackground];
+        }
+    }
+    
+    NSMutableDictionary *eventDictionary = [[NSMutableDictionary alloc] init];
+    [eventDictionary addEntriesFromDictionary:[defaults objectForKey:@"eventDictionary"]];
+    if ([eventDictionary objectForKey:eventName] == nil)
+    {
+        [eventDictionary setObject:eventId forKey:eventName];
+        [defaults setObject:eventDictionary forKey:@"eventDictionary"];
+    }
+    [defaults synchronize];
+    
+    //update drawer
+    DrawerView *drawerViewController = (DrawerView *) self.mm_drawerController.leftDrawerViewController;
+    [drawerViewController updateEvents];
 }
 
 - (void)moreButtonForTable: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
 {
+    EventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *tappedId = cell.eventId;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:tappedId forKey:@"currentEventId"];
+    [defaults synchronize];
     
+    PFObject *selectedEventObject = cell.eventObject;
+    if (selectedEventObject[@"childrenEvent"]==nil)   //this is not a parent event
+    {
+        UITabBarController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    else   //this is a parent event
+    {
+        HomeView *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"home_vc"];
+        controller.isSecondLevelEvent = YES;
+        controller.parentEvent = selectedEventObject;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
+/*
 - (void)tableView: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
 {
     EventCell *cell = (EventCell *)[tableView cellForRowAtIndexPath:indexPath];
@@ -310,6 +382,7 @@ InstructionsViewController *controller;
     }
     NSLog(@"SELECTION COUNT:%i", totalSelected);
 }
+*/
 
 - (void)saveEventList: (NSArray *)selectedIndexPaths
 {

@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIView *lowerSeparator;
 @property (weak, nonatomic) IBOutlet UIView *upperSeparator;
 
+@property NSString *eventName;
+
 @end

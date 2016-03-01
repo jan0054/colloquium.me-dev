@@ -31,6 +31,7 @@ NSMutableArray *selectedEventsArray;
     if (!self.isSecondLevelEvent)
     {
         [self setupLeftMenuButton];
+        self.navigationItem.title = NSLocalizedString(@"homescreen_title", nil);
     }
     else
     {
@@ -182,16 +183,19 @@ NSMutableArray *selectedEventsArray;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //PFObject *selectedEventObject = [selectedEventsArray objectAtIndex:indexPath.row];
     HomeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     PFObject *selectedEventObject = cell.homeObject;
     NSLog(@"TAPPED ROW: %@", selectedEventObject.objectId);
     if (selectedEventObject[@"childrenEvent"]==nil)   //this is not a parent event
     {
-        [self setCurrentEventIdForRow:indexPath.row];
-        UIViewController *centerViewController;
-        centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
-        [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
+        [self setCurrentEventForObject:selectedEventObject];
+        //UIViewController *centerViewController;
+        //centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+        //[self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
+        
+        //For a better UX, we push the tabbar controller instead of setting it as a drawer, can change in the future if need (original code above)
+        UITabBarController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+        [self.navigationController pushViewController:controller animated:YES];
     }
     else   //this IS a parent event, and we reload the homeview controller to get the children list
     {
@@ -200,7 +204,7 @@ NSMutableArray *selectedEventsArray;
         //self.parentEvent = selectedEventObject;
         //self.navigationItem.title = title;
         //[self getChildrenEvents:self withParent:self.parentEvent];
-        //instead of updating itself (see above), we push a new instance, to minimize user confusion and make the ux better (see below)
+        //instead of updating itself (see above), we push a new instance, to minimize user confusion and make the UX better (see below)
         HomeView *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"home_vc"];
         controller.isSecondLevelEvent = YES;
         controller.parentEvent = selectedEventObject;
@@ -232,16 +236,12 @@ NSMutableArray *selectedEventsArray;
     }
 }
 
-- (void) setCurrentEventIdForRow: (int)row
+- (void)setCurrentEventForObject: (PFObject *)object
 {
+    NSString *eventId = object.objectId;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *eventNames = [defaults objectForKey:@"eventNames"];
-    NSString *name = [eventNames objectAtIndex:row];
-    NSDictionary *eventDictionary = [defaults objectForKey:@"eventDictionary"];
-    NSString *eid = [eventDictionary objectForKey:name];
-    [defaults setObject:eid forKey:@"currentEventId"];
+    [defaults setObject:eventId forKey:@"currentEventId"];
     [defaults synchronize];
-    NSLog(@"Current event id set to: %@", eid);
 }
 
 @end

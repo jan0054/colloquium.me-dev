@@ -95,10 +95,10 @@
 "drawer_content" = "點擊左上角的圖示或從螢幕左方往右滑動可開啟主選單，裡面包括大多數常用功能。";
 
 /* No comment provided by engineer. */
-"drawer_edit" = "選擇會議";
+"drawer_edit" = "會議";
 
 /* No comment provided by engineer. */
-"drawer_home" = "首頁";
+"drawer_home" = "追蹤";
 
 /* No comment provided by engineer. */
 "drawer_settings" = "設定";
@@ -299,3 +299,5 @@
 "fav_button" = "追蹤活動";
 "more_button" = "更多資訊..";
 
+//home
+"homescreen_title" = "追蹤的活動";

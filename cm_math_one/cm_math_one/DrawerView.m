@@ -20,6 +20,8 @@ NSIndexPath *currentIndex;
 
 @implementation DrawerView
 
+#pragma mark - Interface
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -151,13 +153,13 @@ NSIndexPath *currentIndex;
                 break;
                 
             default:
+                cell.eventName = name;
                 cell.drawerTitle.text = name;
                 [cell.drawerImage setTintColor:[UIColor drawer_icon_secondary]];
                 img = [UIImage imageNamed:@"event48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                 cell.drawerImage.image = img;
                 [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:12.0]];
-                
                 break;
         }
     }
@@ -167,7 +169,7 @@ NSIndexPath *currentIndex;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"DRAWER: selected indexpath %li - %li", (long)indexPath.section, (long)indexPath.row);
-    
+    DrawerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     /*
     if (currentIndex.row == indexPath.row && currentIndex.section == indexPath.section) //close drawer if we're already on whatever page we tapped
     {
@@ -207,7 +209,7 @@ NSIndexPath *currentIndex;
                 NSLog(@"Open Home");
                 break;
             default:
-                [self setCurrentEventIdForRow:indexPath.row-2];
+                [self setCurrentEventForName:cell.eventName];
                 centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
                 NSLog(@"Open Main Tab Controller");
                 break;
@@ -222,16 +224,15 @@ NSIndexPath *currentIndex;
     }
 }
 
-- (void) setCurrentEventIdForRow: (int)row
+#pragma mark - Data
+
+- (void)setCurrentEventForName: (NSString *)eventName
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *eventNames = [defaults objectForKey:@"eventNames"];
-    NSString *name = [eventNames objectAtIndex:row];
     NSDictionary *eventDictionary = [defaults objectForKey:@"eventDictionary"];
-    NSString *eid = [eventDictionary objectForKey:name];
+    NSString *eid = [eventDictionary objectForKey:eventName];
     [defaults setObject:eid forKey:@"currentEventId"];
     [defaults synchronize];
-    NSLog(@"Current event id set to: %@", eid);
 }
 
 - (void)updateEvents

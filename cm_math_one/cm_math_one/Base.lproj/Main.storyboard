@@ -1381,7 +1381,7 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Av-vl-llQ">
                                                             <rect key="frame" x="465" y="153" width="111" height="30"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                             <state key="normal" title="more.."/>
                                                             <connections>
                                                                 <action selector="moreButtonTap:" destination="Cja-wm-aRs" eventType="touchUpInside" id="gY2-RM-wdp"/>

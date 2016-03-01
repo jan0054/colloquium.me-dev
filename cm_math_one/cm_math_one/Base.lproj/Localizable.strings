@@ -34,8 +34,8 @@
 "drawer_chat" = "Chat";
 "drawer_career" = "Career";
 "drawer_settings" = "Settings";
-"drawer_edit" = "Edit Events";
-"drawer_home" = "Home";
+"drawer_edit" = "Events";
+"drawer_home" = "Followed";
 
 //chat&conversation
 "conv_nobody" = "No participants in conversation";
@@ -116,6 +116,7 @@
 //home
 "empty_label" = "You're not following any events yet! Tap the button below to get started";
 "add_event" = "Add Events";
+"homescreen_title" = "Followed Events";
 
 //tutorial
 "choose_event_title" = "Follow events that interest you";

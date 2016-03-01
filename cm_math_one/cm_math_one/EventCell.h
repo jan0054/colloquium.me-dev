@@ -21,5 +21,5 @@
 
 @property NSString *eventId;
 @property PFObject *eventObject;
-
+@property NSString *eventName;
 @end
