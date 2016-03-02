@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface DrawerCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *drawerTitle;
@@ -16,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *upperSeparator;
 
 @property NSString *eventName;
+@property NSString *eventId;
+@property PFObject *eventObject;
 
 @end

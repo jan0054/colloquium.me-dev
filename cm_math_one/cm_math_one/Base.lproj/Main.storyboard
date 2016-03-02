@@ -1373,7 +1373,7 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSS-Cb-7ov">
                                                             <rect key="frame" x="34" y="153" width="95" height="30"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                                             <state key="normal" title="add_fav"/>
                                                             <connections>
                                                                 <action selector="favoriteButtonTap:" destination="Cja-wm-aRs" eventType="touchUpInside" id="56C-bc-bkj"/>
@@ -1381,7 +1381,7 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Av-vl-llQ">
                                                             <rect key="frame" x="465" y="153" width="111" height="30"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                                             <state key="normal" title="more.."/>
                                                             <connections>
                                                                 <action selector="moreButtonTap:" destination="Cja-wm-aRs" eventType="touchUpInside" id="gY2-RM-wdp"/>
@@ -1540,15 +1540,15 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LYb-HZ-Ud1">
                                                     <rect key="frame" x="8" y="8" width="584" height="192"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event48.png" translatesAutoresizingMaskIntoConstraints="NO" id="vFG-9h-6IO">
-                                                            <rect key="frame" x="8" y="8" width="24" height="24"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_empty48.png" translatesAutoresizingMaskIntoConstraints="NO" id="vFG-9h-6IO">
+                                                            <rect key="frame" x="8" y="160" width="18" height="18"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="24" id="T54-VW-hzo"/>
-                                                                <constraint firstAttribute="height" constant="24" id="VRa-P8-J5Q"/>
+                                                                <constraint firstAttribute="width" constant="18" id="T54-VW-hzo"/>
+                                                                <constraint firstAttribute="height" constant="18" id="VRa-P8-J5Q"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wES-do-GWD">
-                                                            <rect key="frame" x="40" y="8" width="536" height="36"/>
+                                                            <rect key="frame" x="8" y="8" width="568" height="36"/>
                                                             <color key="backgroundColor" red="0.50196078430000002" green="0.68235294120000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1575,23 +1575,40 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Details..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRe-fi-ylS">
-                                                            <rect key="frame" x="522" y="154" width="54" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Details..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRe-fi-ylS">
+                                                            <rect key="frame" x="500" y="154" width="76" height="30"/>
                                                             <color key="backgroundColor" red="0.96470588239999999" green="0.74509803919999995" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="ceS-l8-vwk"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArV-6F-eDh">
+                                                            <rect key="frame" x="34" y="154" width="102" height="30"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                                            <state key="normal" title="Follow Event"/>
+                                                            <connections>
+                                                                <action selector="favoriteButtonTap:" destination="Ugv-pG-EjT" eventType="touchUpInside" id="mZh-Bb-tjt"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="xwo-9F-2bE" firstAttribute="leading" secondItem="LYb-HZ-Ud1" secondAttribute="leading" constant="8" id="1Mh-So-PRm"/>
                                                         <constraint firstItem="oRe-fi-ylS" firstAttribute="top" secondItem="xwo-9F-2bE" secondAttribute="bottom" constant="8" id="3A9-Ii-pIL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ArV-6F-eDh" secondAttribute="bottom" constant="8" id="3RM-jL-SQr"/>
                                                         <constraint firstAttribute="trailing" secondItem="oRe-fi-ylS" secondAttribute="trailing" constant="8" id="6e1-gX-M8Y"/>
                                                         <constraint firstItem="vFG-9h-6IO" firstAttribute="leading" secondItem="LYb-HZ-Ud1" secondAttribute="leading" constant="8" id="Ftu-UD-Xkm"/>
                                                         <constraint firstItem="FP5-wx-o0E" firstAttribute="top" secondItem="wES-do-GWD" secondAttribute="bottom" constant="8" id="HHq-BV-j57"/>
+                                                        <constraint firstItem="wES-do-GWD" firstAttribute="leading" secondItem="LYb-HZ-Ud1" secondAttribute="leading" constant="8" id="JLl-qP-h0z"/>
+                                                        <constraint firstItem="ArV-6F-eDh" firstAttribute="top" secondItem="xwo-9F-2bE" secondAttribute="bottom" constant="8" id="Jfd-9J-X2x"/>
                                                         <constraint firstItem="wES-do-GWD" firstAttribute="top" secondItem="LYb-HZ-Ud1" secondAttribute="top" constant="8" id="LGJ-tZ-fvo"/>
+                                                        <constraint firstItem="vFG-9h-6IO" firstAttribute="centerY" secondItem="LYb-HZ-Ud1" secondAttribute="centerY" id="LP6-hj-8l4"/>
                                                         <constraint firstItem="vFG-9h-6IO" firstAttribute="top" secondItem="LYb-HZ-Ud1" secondAttribute="top" constant="8" id="SG4-9d-VzU"/>
+                                                        <constraint firstItem="ArV-6F-eDh" firstAttribute="leading" secondItem="vFG-9h-6IO" secondAttribute="trailing" constant="8" id="Sv7-1e-21b"/>
+                                                        <constraint firstItem="vFG-9h-6IO" firstAttribute="centerY" secondItem="ArV-6F-eDh" secondAttribute="centerY" id="UDB-uY-Z8n"/>
                                                         <constraint firstAttribute="trailing" secondItem="xwo-9F-2bE" secondAttribute="trailing" constant="8" id="XRt-58-Dph"/>
                                                         <constraint firstAttribute="bottom" secondItem="oRe-fi-ylS" secondAttribute="bottom" constant="8" id="cQa-dW-ytH"/>
                                                         <constraint firstItem="FP5-wx-o0E" firstAttribute="trailing" secondItem="wES-do-GWD" secondAttribute="trailing" id="e8B-kH-98X"/>
@@ -1603,10 +1620,15 @@
                                                         <constraint firstItem="FP5-wx-o0E" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cO2-uH-MJA" secondAttribute="trailing" id="tGx-Sa-Gb7"/>
                                                         <constraint firstItem="cO2-uH-MJA" firstAttribute="leading" secondItem="LYb-HZ-Ud1" secondAttribute="leading" constant="8" id="vZz-AO-kcd"/>
                                                         <constraint firstItem="cO2-uH-MJA" firstAttribute="top" secondItem="wES-do-GWD" secondAttribute="bottom" constant="8" id="x2z-xG-KcP"/>
+                                                        <constraint firstItem="ArV-6F-eDh" firstAttribute="centerY" secondItem="LYb-HZ-Ud1" secondAttribute="centerY" id="xtF-oh-Uge"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="eoe-Ql-9zX"/>
                                                             <exclude reference="qxS-FY-0n5"/>
+                                                            <exclude reference="xtF-oh-Uge"/>
+                                                            <exclude reference="LP6-hj-8l4"/>
+                                                            <exclude reference="SG4-9d-VzU"/>
                                                         </mask>
                                                     </variation>
                                                 </view>
@@ -1628,6 +1650,7 @@
                                         <connections>
                                             <outlet property="backgroundCardView" destination="LYb-HZ-Ud1" id="6Zq-Ov-yjL"/>
                                             <outlet property="contentLabel" destination="xwo-9F-2bE" id="dgG-vA-Wm4"/>
+                                            <outlet property="favoriteButton" destination="ArV-6F-eDh" id="HQv-jT-1Dh"/>
                                             <outlet property="flairImage" destination="vFG-9h-6IO" id="BNd-ih-4EJ"/>
                                             <outlet property="moreLabel" destination="oRe-fi-ylS" id="mcL-7C-eol"/>
                                             <outlet property="nameLabel" destination="wES-do-GWD" id="Kkx-5V-ahG"/>

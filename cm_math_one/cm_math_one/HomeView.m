@@ -18,7 +18,9 @@
 
 @end
 
-NSMutableArray *selectedEventsArray;
+NSMutableArray *followedEventsArray;
+NSMutableDictionary *favedDictionary;   //object id and selection(0/1) key value pair
+BOOL disableFav;
 
 @implementation HomeView
 @synthesize pullrefresh;
@@ -28,6 +30,9 @@ NSMutableArray *selectedEventsArray;
 - (void)viewDidLoad {
     //init
     [super viewDidLoad];
+    favedDictionary = [[NSMutableDictionary alloc] init];
+    followedEventsArray = [[NSMutableArray alloc] init];
+    disableFav = NO;
     if (!self.isSecondLevelEvent)
     {
         [self setupLeftMenuButton];
@@ -36,9 +41,13 @@ NSMutableArray *selectedEventsArray;
     else
     {
         self.navigationItem.title = self.parentEvent[@"name"];
+        if (self.showDrawer)
+        {
+            [self setupLeftMenuButton];
+        }
     }
     
-    selectedEventsArray = [[NSMutableArray alloc] init];
+    
     self.emptyLabel.text = NSLocalizedString(@"empty_label", nil);
     self.emptyLabel.textColor = [UIColor primary_text];
     [self.addEventButton setTitle:NSLocalizedString(@"add_event", nil) forState:UIControlStateNormal];
@@ -94,6 +103,15 @@ NSMutableArray *selectedEventsArray;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    if (!self.isSecondLevelEvent)   //normal home screen
+    {
+        [self getEventsFromLocalList:self];
+    }
+    else   //second level event screen
+    {
+        [self getChildrenEvents:self withParent:self.parentEvent];
+    }
+
 }
 
 - (void) viewDidLayoutSubviews
@@ -118,6 +136,15 @@ NSMutableArray *selectedEventsArray;
     [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
 }
 
+- (IBAction)favoriteButtonTap:(UIButton *)sender {
+    if (!disableFav)
+    {
+        HomeCell *cell = (HomeCell *)[[[sender superview] superview] superview];
+        NSIndexPath *tapped_path = [self.homeTable indexPathForCell:cell];
+        [self favButtonForTable:self.homeTable wasTappedAt:tapped_path];
+    }
+}
+
 #pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -127,7 +154,7 @@ NSMutableArray *selectedEventsArray;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [selectedEventsArray count];
+    return [followedEventsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -135,7 +162,7 @@ NSMutableArray *selectedEventsArray;
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"homecell"];
     
     //data
-    PFObject *event = [selectedEventsArray objectAtIndex:indexPath.row];
+    PFObject *event = [followedEventsArray objectAtIndex:indexPath.row];
     cell.homeObject = event;
     cell.nameLabel.text = event[@"name"];
     cell.contentLabel.text = event[@"content"];
@@ -150,6 +177,7 @@ NSMutableArray *selectedEventsArray;
     NSString *estr = [dateFormat stringFromDate:edate];
     cell.timeLabel.text = [NSString stringWithFormat:@"%@ ~ %@", sstr, estr];
     cell.eventId = event.objectId;
+    cell.eventName = event[@"name"];
     
     //styling
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
@@ -173,11 +201,29 @@ NSMutableArray *selectedEventsArray;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
+    [cell.favoriteButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [cell.favoriteButton setTitleColor:[UIColor light_accent] forState:UIControlStateHighlighted];
+    cell.moreLabel.text = NSLocalizedString(@"more_button", nil);
     
-    UIImage *img = [UIImage imageNamed:@"event48"];
-    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    cell.flairImage.image = img;
-    
+    //determine selected status
+    int sel = [[favedDictionary valueForKey:event.objectId] intValue];
+    if (sel == 1)
+    {
+        [cell.flairImage setTintColor:[UIColor primary_color_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_full48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.flairImage.image = img;
+        [cell.favoriteButton setTitle:NSLocalizedString(@"unfollow_button", nil) forState:UIControlStateNormal];
+    }
+    else
+    {
+        [cell.flairImage setTintColor:[UIColor unselected_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_empty48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.flairImage.image = img;
+        [cell.favoriteButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
+    }
+
     return cell;
 }
 
@@ -208,6 +254,7 @@ NSMutableArray *selectedEventsArray;
         HomeView *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"home_vc"];
         controller.isSecondLevelEvent = YES;
         controller.parentEvent = selectedEventObject;
+        controller.showDrawer = NO;
         [self.navigationController pushViewController:controller animated:YES];
     }
 }
@@ -216,11 +263,30 @@ NSMutableArray *selectedEventsArray;
 
 - (void)processData: (NSArray *) results
 {
-    [selectedEventsArray removeAllObjects];
-    selectedEventsArray = [results mutableCopy];
+    disableFav = NO;
+    [followedEventsArray removeAllObjects];
+    [favedDictionary removeAllObjects];
+    followedEventsArray = [results mutableCopy];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *eventIds = [defaults objectForKey:@"eventIds"];
+    for (PFObject *event in followedEventsArray)
+    {
+        NSString *eid = event.objectId;
+        if ([self checkIfStringArray:eventIds containsString:eid])
+        {
+            [favedDictionary setValue:@1 forKey:eid];
+        }
+        else
+        {
+            [favedDictionary setValue:@0 forKey:eid];
+        }
+    }
+    
     [self.homeTable reloadData];
     
-    if (selectedEventsArray.count==0)
+    //check if empty
+    if (followedEventsArray.count==0)
     {
         self.emptyLabel.hidden = NO;
         self.emptyLabel.userInteractionEnabled = YES;
@@ -242,6 +308,124 @@ NSMutableArray *selectedEventsArray;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:eventId forKey:@"currentEventId"];
     [defaults synchronize];
+}
+
+- (void)favButtonForTable: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
+{
+    HomeCell *cell = (HomeCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    int selectedStatus = [[favedDictionary valueForKey:cell.eventId] intValue];
+    if (selectedStatus == 1)   //selected->unselected
+    {
+        [cell.flairImage setTintColor:[UIColor unselected_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_empty48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.flairImage.image = img;
+        [favedDictionary setValue:@0 forKey:cell.eventId];
+        [cell.favoriteButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
+        [self tappedFavoriteButtonWithId:cell.eventId withName:cell.eventName withObject:cell.homeObject toSave:NO];
+    }
+    else   //unselected->selected
+    {
+        [cell.flairImage setTintColor:[UIColor primary_color_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_full48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.flairImage.image = img;
+        [favedDictionary setValue:@1 forKey:cell.eventId];
+        [cell.favoriteButton setTitle:NSLocalizedString(@"unfollow_button", nil) forState:UIControlStateNormal];
+        [self tappedFavoriteButtonWithId:cell.eventId withName:cell.eventName withObject:cell.homeObject toSave:YES];
+    }
+}
+
+- (void)tappedFavoriteButtonWithId: (NSString *)eventId withName: (NSString *)eventName withObject: (PFObject *)eventObject toSave: (BOOL)saving
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if (saving)
+    {
+        NSMutableArray *eventIds = [[NSMutableArray alloc] init];
+        [eventIds addObjectsFromArray:[defaults objectForKey:@"eventIds"]];
+        [eventIds addObject:eventId];
+        [defaults setObject:eventIds forKey:@"eventIds"];
+        
+        NSMutableArray *eventNames = [[NSMutableArray alloc] init];
+        [eventNames addObjectsFromArray:[defaults objectForKey:@"eventNames"]];
+        [eventNames addObject:eventName];
+        [defaults setObject:eventNames forKey:@"eventNames"];
+        [defaults synchronize];
+        
+        //save to parse
+        if ([PFUser currentUser])
+        {
+            PFUser *user = [PFUser currentUser];
+            [user addUniqueObject:eventObject forKey:@"events"];
+            [user saveInBackground];
+        }
+    }
+    else
+    {
+        NSMutableArray *eventIds = [[NSMutableArray alloc] init];
+        [eventIds addObjectsFromArray:[defaults objectForKey:@"eventIds"]];
+        if ([eventIds containsObject:eventId])
+        {
+            [eventIds removeObject:eventId];
+        }
+        [defaults setObject:eventIds forKey:@"eventIds"];
+        
+        NSMutableArray *eventNames = [[NSMutableArray alloc] init];
+        [eventNames addObjectsFromArray:[defaults objectForKey:@"eventNames"]];
+        if ([eventNames containsObject:eventName])
+        {
+            [eventNames removeObject:eventName];
+        }
+        [defaults setObject:eventNames forKey:@"eventNames"];
+        [defaults synchronize];
+        
+        //save to parse
+        if ([PFUser currentUser])
+        {
+            PFUser *user = [PFUser currentUser];
+            [user removeObject:eventObject forKey:@"events"];
+            [user saveInBackground];
+        }
+    }
+    
+    NSMutableDictionary *eventDictionary = [[NSMutableDictionary alloc] init];
+    [eventDictionary addEntriesFromDictionary:[defaults objectForKey:@"eventDictionary"]];
+    if ([eventDictionary objectForKey:eventName] == nil)
+    {
+        [eventDictionary setObject:eventId forKey:eventName];
+        [defaults setObject:eventDictionary forKey:@"eventDictionary"];
+    }
+    [defaults synchronize];
+    
+    //update drawer
+    DrawerView *drawerViewController = (DrawerView *) self.mm_drawerController.leftDrawerViewController;
+    [drawerViewController updateEvents];
+    
+    //update this view
+    disableFav = YES;
+    if (!self.isSecondLevelEvent)   //normal home screen
+    {
+        [self getEventsFromLocalList:self];
+    }
+    else   //second level event screen
+    {
+        [self getChildrenEvents:self withParent:self.parentEvent];
+    }
+}
+
+
+- (BOOL)checkIfStringArray: (NSArray *)array containsString: (NSString *) string  //utility method, checks an array for a string
+{
+    for (NSString *str in array)
+    {
+        if ([str isEqualToString:string])
+        {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

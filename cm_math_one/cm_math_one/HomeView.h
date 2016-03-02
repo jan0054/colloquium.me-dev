@@ -16,7 +16,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *emptyLabel;
 @property (strong, nonatomic) IBOutlet UIButton *addEventButton;
 - (IBAction)addEventButtonTap:(UIButton *)sender;
+- (IBAction)favoriteButtonTap:(UIButton *)sender;
 
 @property BOOL isSecondLevelEvent;
+@property BOOL showDrawer;
 @property PFObject *parentEvent;
 @end

@@ -117,6 +117,7 @@
 "empty_label" = "You're not following any events yet! Tap the button below to get started";
 "add_event" = "Add Events";
 "homescreen_title" = "Followed Events";
+"unfollow_button" = "Unfollow";
 
 //tutorial
 "choose_event_title" = "Follow events that interest you";

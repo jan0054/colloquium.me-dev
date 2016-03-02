@@ -16,7 +16,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *organizerLabel;
 @property (strong, nonatomic) IBOutlet UILabel *moreLabel;
 @property NSString *eventId;
+@property NSString *eventName;
 @property (strong, nonatomic) IBOutlet UIImageView *flairImage;
 @property (strong, nonatomic) IBOutlet UIView *backgroundCardView;
 @property PFObject *homeObject;
+@property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
+
 @end

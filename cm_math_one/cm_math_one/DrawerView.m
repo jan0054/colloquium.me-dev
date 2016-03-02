@@ -11,12 +11,15 @@
 #import <Parse/Parse.h>
 #import "DrawerCell.h"
 #import "UIColor+ProjectColors.h"
+#import "UIViewController+ParseQueries.h"
+#import "HomeView.h"
 
 @interface DrawerView ()
 
 @end
 
 NSIndexPath *currentIndex;
+NSMutableArray *favoriteEventsArray;
 
 @implementation DrawerView
 
@@ -24,6 +27,7 @@ NSIndexPath *currentIndex;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    favoriteEventsArray = [[NSMutableArray alloc] init];
     
     //styling
     [self.tableView setContentInset:UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0)];
@@ -42,6 +46,15 @@ NSIndexPath *currentIndex;
     {
         currentIndex = [NSIndexPath indexPathForRow:0 inSection:0];
     }
+    
+    //init data
+    [self getEventsFromLocalList:self];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self getEventsFromLocalList:self];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -61,12 +74,12 @@ NSIndexPath *currentIndex;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *eventNames = [defaults objectForKey:@"eventNames"];
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSArray *eventNames = [defaults objectForKey:@"eventNames"];
 
     if (section == 0)
     {
-        return 2 + [eventNames count];
+        return 2 + [favoriteEventsArray count];
     }
     else
     {
@@ -88,12 +101,16 @@ NSIndexPath *currentIndex;
     cell.contentView.backgroundColor = [UIColor drawer_background];
     
     //data
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *eventNames = [defaults objectForKey:@"eventNames"];
-    NSString *name = @"";
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSArray *eventNames = [defaults objectForKey:@"eventNames"];
+    //NSString *name = @"";
+    
     if (indexPath.section == 0 && indexPath.row != 0 && indexPath.row != 1)  //if dynamic event row, set name
     {
-        name = [eventNames objectAtIndex:indexPath.row-2];
+        PFObject *eventObj = [favoriteEventsArray objectAtIndex:indexPath.row-2];
+        cell.eventObject = eventObj;
+        cell.eventId = eventObj.objectId;
+        cell.eventName = eventObj[@"name"];
     }
     
     if (indexPath.section == 1)   //bottom 3 fixed rows
@@ -153,8 +170,7 @@ NSIndexPath *currentIndex;
                 break;
                 
             default:
-                cell.eventName = name;
-                cell.drawerTitle.text = name;
+                cell.drawerTitle.text = cell.eventName;
                 [cell.drawerImage setTintColor:[UIColor drawer_icon_secondary]];
                 img = [UIImage imageNamed:@"event48"];
                 img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -170,6 +186,8 @@ NSIndexPath *currentIndex;
 {
     NSLog(@"DRAWER: selected indexpath %li - %li", (long)indexPath.section, (long)indexPath.row);
     DrawerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    
     /*
     if (currentIndex.row == indexPath.row && currentIndex.section == indexPath.section) //close drawer if we're already on whatever page we tapped
     {
@@ -199,7 +217,8 @@ NSIndexPath *currentIndex;
     }
     else     //dynamic event rows + first edit event row + second home row
     {
-        switch (indexPath.row) {
+        switch (indexPath.row)
+        {
             case 0:
                 centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"eventchoose_nc"];
                 NSLog(@"Open Event Chooser");
@@ -209,9 +228,24 @@ NSIndexPath *currentIndex;
                 NSLog(@"Open Home");
                 break;
             default:
-                [self setCurrentEventForName:cell.eventName];
-                centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
-                NSLog(@"Open Main Tab Controller");
+                if (cell.eventObject != nil)
+                {
+                    PFObject *event = cell.eventObject;
+                    if (event[@"childrenEvent"]==nil)   //this is not a parent event
+                    {
+                        [self setCurrentEventForObject:event];
+                        centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+                    }
+                    else   //this is a parent event
+                    {
+                        UINavigationController *navCon = (UINavigationController *)[self.storyboard instantiateViewControllerWithIdentifier:@"home_nc"];
+                        HomeView *controller = [navCon.viewControllers objectAtIndex:0];
+                        controller.isSecondLevelEvent = YES;
+                        controller.parentEvent = event;
+                        controller.showDrawer = YES;
+                        centerViewController = navCon;
+                    }
+                }
                 break;
         }
     }
@@ -225,7 +259,7 @@ NSIndexPath *currentIndex;
 }
 
 #pragma mark - Data
-
+/*
 - (void)setCurrentEventForName: (NSString *)eventName
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -234,10 +268,26 @@ NSIndexPath *currentIndex;
     [defaults setObject:eid forKey:@"currentEventId"];
     [defaults synchronize];
 }
+*/
+- (void)setCurrentEventForObject: (PFObject *)object
+{
+    NSString *eventId = object.objectId;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:eventId forKey:@"currentEventId"];
+    [defaults synchronize];
+}
+
+- (void)processData: (NSArray *) results
+{
+    [favoriteEventsArray removeAllObjects];
+    favoriteEventsArray = [results mutableCopy];
+    [self.tableView reloadData];
+}
 
 - (void)updateEvents
 {
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
+    [self getEventsFromLocalList:self];
 }
 
 @end

@@ -112,6 +112,7 @@ InstructionsViewController *controller;
     NSIndexPath *tapped_path = [self.eventTable indexPathForCell:cell];
     [self favButtonForTable:self.eventTable wasTappedAt:tapped_path];
 }
+
 - (IBAction)moreButtonTap:(UIButton *)sender {
     EventCell *cell = (EventCell *)[[[sender superview] superview] superview];
     NSIndexPath *tapped_path = [self.eventTable indexPathForCell:cell];
@@ -181,6 +182,7 @@ InstructionsViewController *controller;
     [cell.moreButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
     [cell.favoriteButton setTitleColor:[UIColor light_accent] forState:UIControlStateHighlighted];
     [cell.moreButton setTitleColor:[UIColor light_accent] forState:UIControlStateHighlighted];
+    cell.eventNameLabel.textColor = [UIColor primary_text];
     
     int sel = [[selectedDictionary valueForKey:event.objectId] intValue];
     if (sel == 1)
@@ -189,7 +191,8 @@ InstructionsViewController *controller;
         UIImage *img = [UIImage imageNamed:@"star_full48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
-        cell.eventNameLabel.textColor = [UIColor primary_text];
+        [cell.favoriteButton setTitle:NSLocalizedString(@"unfollow_button", nil) forState:UIControlStateNormal];
+        
     }
     else
     {
@@ -197,7 +200,7 @@ InstructionsViewController *controller;
         UIImage *img = [UIImage imageNamed:@"star_empty48"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.eventSelectedImage.image = img;
-        cell.eventNameLabel.textColor = [UIColor primary_text];
+        [cell.favoriteButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
     }
     
     return cell;
@@ -244,6 +247,7 @@ InstructionsViewController *controller;
         cell.eventSelectedImage.image = img;
         cell.eventNameLabel.textColor = [UIColor primary_text];
         [selectedDictionary setValue:@0 forKey:cell.eventId];
+        [cell.favoriteButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
         [self tappedFavoriteButtonWithId:cell.eventId withName:cell.eventName withObject:cell.eventObject toSave:NO];
     }
     else   //unselected->selected
@@ -254,6 +258,7 @@ InstructionsViewController *controller;
         cell.eventSelectedImage.image = img;
         cell.eventNameLabel.textColor = [UIColor primary_text];
         [selectedDictionary setValue:@1 forKey:cell.eventId];
+        [cell.favoriteButton setTitle:NSLocalizedString(@"unfollow_button", nil) forState:UIControlStateNormal];
         [self tappedFavoriteButtonWithId:cell.eventId withName:cell.eventName withObject:cell.eventObject toSave:YES];
     }
 }
@@ -344,6 +349,7 @@ InstructionsViewController *controller;
         HomeView *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"home_vc"];
         controller.isSecondLevelEvent = YES;
         controller.parentEvent = selectedEventObject;
+        controller.showDrawer = NO;
         [self.navigationController pushViewController:controller animated:YES];
     }
 }
