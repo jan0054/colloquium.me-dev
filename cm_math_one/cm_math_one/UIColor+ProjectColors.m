@@ -22,23 +22,28 @@
 
 + (UIColor*) accent_color
 {
-    return [self in500];
+    //return [self in500];
+    return [self test_gr];
 }
 + (UIColor*) light_accent
 {
-    return [self in200];
+    //return [self in200];
+    return [self test_ye];
 }
 + (UIColor*) dark_accent
 {
-    return [self in700];
+    //return [self in700];
+    return [self test_dg];
 }
 + (UIColor*) primary_color
 {
-    return [self do500];
+    //return [self do500];
+    return [self test_bg];
 }
 + (UIColor*) primary_color_icon
 {
-    return [self do700];
+    //return [self do700];
+    return [self test_ye];
 }
 + (UIColor*) unselected_icon
 {
@@ -94,7 +99,8 @@
 }
 + (UIColor*) drawer_icon_secondary
 {
-    return [self do500];
+    //return [self do500];
+    return [self test_ye];
 }
 + (UIColor*) tab_background
 {
@@ -205,5 +211,22 @@
     return [self colorFromHexString:@"#536DFE"];
 }
 
+//test1
++ (UIColor*) test_dg
+{
+    return [self colorFromHexString:@"#505160"];
+}
++ (UIColor*) test_bg
+{
+    return [self colorFromHexString:@"#68829E"];
+}
++ (UIColor*) test_ye
+{
+    return [self colorFromHexString:@"#AEBD38"];
+}
++ (UIColor*) test_gr
+{
+    return [self colorFromHexString:@"#598234"];
+}
 
 @end

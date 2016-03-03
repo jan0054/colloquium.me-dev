@@ -225,11 +225,11 @@
                         <viewControllerLayoutGuide type="bottom" id="7bJ-vJ-2kf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Drs-AB-zef">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="O2j-tP-u6k">
-                                <rect key="frame" x="0.0" y="344" width="600" height="207"/>
+                                <rect key="frame" x="0.0" y="280" width="600" height="207"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -282,7 +282,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hh9-qG-M3M">
-                                <rect key="frame" x="0.0" y="64" width="600" height="280"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="280"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpd-SN-8eg">
                                         <rect key="frame" x="8" y="8" width="584" height="49"/>
@@ -409,6 +409,7 @@
                             <constraint firstItem="ZGh-qH-g8f" firstAttribute="top" secondItem="hh9-qG-M3M" secondAttribute="bottom" constant="20" id="zkv-4r-Uq6"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="wSI-BH-vE8"/>
                     <connections>
                         <outlet property="attendanceBackground" destination="YCZ-2r-83J" id="UpZ-kB-ODR"/>
@@ -437,11 +438,11 @@
                         <viewControllerLayoutGuide type="bottom" id="bo5-sE-TC5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AXJ-je-NWI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R4o-VE-klm">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search.." minimumFontSize="15" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Den-6p-jsE">
                                         <rect key="frame" x="8" y="7" width="530" height="30"/>
@@ -473,7 +474,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XdA-Lz-9rI">
-                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -587,6 +588,7 @@
                             <constraint firstItem="bo5-sE-TC5" firstAttribute="top" secondItem="XdA-Lz-9rI" secondAttribute="bottom" id="fse-A8-8my"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Program" id="c4D-oH-Wr4">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="YzB-L6-oX4">
                             <connections>
@@ -772,11 +774,11 @@
                         <viewControllerLayoutGuide type="bottom" id="XlS-yU-fge"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="40q-Ej-9Ea">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJf-5P-CQo">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="1" width="600" height="487"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8c-Bb-19b">
                                         <rect key="frame" x="8" y="37" width="584" height="42"/>
@@ -961,6 +963,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="pUC-gL-jAh">
                         <barButtonItem key="rightBarButtonItem" title="Discuss" id="670-fW-Dmj">
                             <connections>
@@ -1145,8 +1148,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9a-vk-HTx">
-                                <rect key="frame" x="534" y="554" width="46" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <rect key="frame" x="524" y="554" width="56" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="exitButtonTap:" destination="Gjc-86-eSw" eventType="touchUpInside" id="lRi-gS-p0A"/>
@@ -2341,11 +2344,11 @@
                         <viewControllerLayoutGuide type="bottom" id="U6F-cA-CzR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="egV-l5-Kpg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsr-Fw-419">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search.." minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="SJy-5Z-MUg">
                                         <rect key="frame" x="8" y="7" width="530" height="30"/>
@@ -2377,7 +2380,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AFd-ut-sje">
-                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="attendeecell" rowHeight="60" id="EVZ-fZ-HQv" customClass="AttendeeCell">
@@ -2446,6 +2449,7 @@
                             <constraint firstItem="AFd-ut-sje" firstAttribute="top" secondItem="Vsr-Fw-419" secondAttribute="bottom" id="tdW-4m-t3R"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="People" id="NUL-l3-wzU"/>
                     <connections>
                         <outlet property="attendeeTable" destination="AFd-ut-sje" id="NZg-LD-ZIP"/>
@@ -2558,11 +2562,11 @@
                         <viewControllerLayoutGuide type="bottom" id="95n-Vf-tgH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4nP-jR-g3i">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WDm-pE-ZuP">
-                                <rect key="frame" x="0.0" y="298" width="600" height="253"/>
+                                <rect key="frame" x="0.0" y="233" width="600" height="253"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="attendeeprogramcell" rowHeight="62" id="7wm-9k-PpM" customClass="AttendeeProgramCell">
@@ -2597,7 +2601,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ub7-ts-S8s">
-                                <rect key="frame" x="0.0" y="64" width="600" height="234"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="234"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nze-6d-q4R">
                                         <rect key="frame" x="0.0" y="126" width="600" height="45"/>
@@ -2695,6 +2699,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="WDm-pE-ZuP" secondAttribute="trailing" constant="-16" id="wqV-ag-LBI"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="attendeeBackground" destination="ub7-ts-S8s" id="1cz-6N-XCD"/>
                         <outlet property="attendeeProgramTable" destination="WDm-pE-ZuP" id="Kah-dw-N3a"/>
@@ -2782,16 +2787,16 @@
                         <viewControllerLayoutGuide type="bottom" id="RiI-tp-u8Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="S96-NF-g36">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="220" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AKB-je-MYk">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="timelinecell" rowHeight="220" id="UuG-Oj-3Yp" customClass="TimelineCell">
-                                        <rect key="frame" x="0.0" y="86" width="600" height="220"/>
+                                        <rect key="frame" x="0.0" y="22" width="600" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="UuG-Oj-3Yp" id="Edz-TX-sae">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="219"/>
@@ -2890,6 +2895,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="AKB-je-MYk" secondAttribute="trailing" constant="-16" id="ZFS-wE-YiO"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Wall" id="Fcg-wf-vB9">
                         <barButtonItem key="rightBarButtonItem" title="New" id="RI3-Dp-OGI">
                             <connections>
@@ -2918,11 +2924,11 @@
                         <viewControllerLayoutGuide type="bottom" id="F32-on-JnX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Huj-w8-rgx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCS-6r-WNh">
-                                <rect key="frame" x="0.0" y="506" width="600" height="45"/>
+                                <rect key="frame" x="0.0" y="442" width="600" height="45"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a comment.." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r7r-4c-Llu">
                                         <rect key="frame" x="8" y="8" width="494" height="30"/>
@@ -2953,7 +2959,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mbw-5L-eQs">
-                                <rect key="frame" x="0.0" y="64" width="600" height="442"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="442"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -3113,6 +3119,7 @@
                             <constraint firstItem="F32-on-JnX" firstAttribute="top" secondItem="hCS-6r-WNh" secondAttribute="bottom" id="zVx-ri-qNM"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="commentTable" destination="mbw-5L-eQs" id="wzu-ma-WNb"/>
                         <outlet property="inputBackgroundView" destination="hCS-6r-WNh" id="DmX-O5-CLE"/>
@@ -3365,16 +3372,16 @@
                         <viewControllerLayoutGuide type="bottom" id="al9-dl-0E1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="q5o-7E-xb7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bIX-61-3CS">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <color key="backgroundColor" red="0.1764705882" green="0.27450980390000002" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="venuecell" rowHeight="200" id="DF8-zj-th9" customClass="VenueCell">
-                                        <rect key="frame" x="0.0" y="86" width="600" height="200"/>
+                                        <rect key="frame" x="0.0" y="22" width="600" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DF8-zj-th9" id="407-ci-3At">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
@@ -3488,14 +3495,23 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.082320259039999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="bIX-61-3CS" firstAttribute="top" secondItem="q5o-7E-xb7" secondAttribute="topMargin" constant="64" id="5Al-yy-Cuj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bIX-61-3CS" secondAttribute="trailing" constant="-16" id="QZC-7T-A6H"/>
                             <constraint firstItem="bIX-61-3CS" firstAttribute="top" secondItem="O0m-AH-RDO" secondAttribute="bottom" id="R9h-4N-O6C"/>
+                            <constraint firstItem="bIX-61-3CS" firstAttribute="top" secondItem="O0m-AH-RDO" secondAttribute="bottom" id="Vb3-J0-TLw"/>
                             <constraint firstItem="bIX-61-3CS" firstAttribute="leading" secondItem="q5o-7E-xb7" secondAttribute="leadingMargin" constant="-16" id="ZSF-bb-LkB"/>
                             <constraint firstItem="al9-dl-0E1" firstAttribute="top" secondItem="bIX-61-3CS" secondAttribute="bottom" id="fwp-zM-iJZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5Al-yy-Cuj"/>
+                                <exclude reference="R9h-4N-O6C"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Venue" id="lvM-r7-eR6"/>
                     <connections>
                         <outlet property="venueTable" destination="bIX-61-3CS" id="asZ-oi-kuS"/>
@@ -3768,7 +3784,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Details.." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBd-6z-c95">
                                                             <rect key="frame" x="523" y="107" width="53" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -4465,6 +4481,6 @@
         <image name="venue48.png" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TKo-6E-Ppi"/>
+        <segue reference="20g-Ac-w6B"/>
     </inferredMetricsTieBreakers>
 </document>

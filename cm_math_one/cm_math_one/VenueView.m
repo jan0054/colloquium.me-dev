@@ -49,6 +49,13 @@ NSMutableArray *venueArray;
     [self.venueTable addSubview:pullrefresh];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //NSLayoutConstraint *tableTopConstraint = [NSLayoutConstraint constraintWithItem:self.venueTable attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    //[self.view addConstraint:tableTopConstraint];
+}
+
 - (void)refreshctrl:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

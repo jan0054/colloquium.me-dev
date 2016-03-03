@@ -119,6 +119,7 @@ PFObject *selectedCareer;
     cell.typeLabel.text = [career[@"hiring"] intValue] == 1 ? NSLocalizedString(@"type_hiring", nil) : NSLocalizedString(@"type_seeking", nil);
     cell.institutionLabel.text = career[@"institution"];
     cell.contentLabel.text = career[@"content"];
+    cell.moreLabel.text = NSLocalizedString(@"more_button", nil);
     
     return cell;
 }

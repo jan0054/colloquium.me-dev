@@ -235,13 +235,14 @@ BOOL disableFav;
     if (selectedEventObject[@"childrenEvent"]==nil)   //this is not a parent event
     {
         [self setCurrentEventForObject:selectedEventObject];
-        //UIViewController *centerViewController;
-        //centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
-        //[self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
+        UIViewController *centerViewController;
+        centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+        [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
         
         //For a better UX, we push the tabbar controller instead of setting it as a drawer, can change in the future if need (original code above)
-        UITabBarController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
-        [self.navigationController pushViewController:controller animated:YES];
+        //BUT...pushing a tabbar controller causes some issues, so we're disabling this again :(
+        //UITabBarController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+        //[self.navigationController pushViewController:controller animated:YES];
     }
     else   //this IS a parent event, and we reload the homeview controller to get the children list
     {

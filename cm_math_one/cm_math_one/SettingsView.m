@@ -280,14 +280,6 @@
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
-    /*
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:NSLocalizedString(@"alert_sign_later", nil)
-                                                   delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"alert_done", nil)
-                                          otherButtonTitles:nil];
-    [alert show];
-    */
 }
 
 // Sent to the delegate to determine whether the sign up request should be submitted to the server.
@@ -348,7 +340,7 @@
         NSLog(@"sign up / login controller dismissed");
         //pop up the user preference controller to setup stuff
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UserPreferenceView *controller = (UserPreferenceView *)[storyboard instantiateViewControllerWithIdentifier:@"userpreferenceview"];
+        UINavigationController *controller = (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"preference_nc"];
         [self presentViewController:controller animated:YES completion:nil];
     }];
 }

@@ -341,8 +341,11 @@ InstructionsViewController *controller;
     PFObject *selectedEventObject = cell.eventObject;
     if (selectedEventObject[@"childrenEvent"]==nil)   //this is not a parent event
     {
-        UITabBarController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
-        [self.navigationController pushViewController:controller animated:YES];
+        //UITabBarController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+        //[self.navigationController pushViewController:controller animated:YES];
+        UIViewController *centerViewController;
+        centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"main_tc"];
+        [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
     }
     else   //this is a parent event
     {
