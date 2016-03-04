@@ -21,6 +21,7 @@ NSMutableArray *totalEventArray;           //hold all event pfobjects from query
 NSMutableDictionary *selectedDictionary;   //object id and selection(0/1) key value pair
 NSMutableArray *selectedEventArray;        //pfobject array for selected events
 InstructionsViewController *controller;
+BOOL savingInProgress;
 
 @implementation EventListView
 @synthesize pullrefresh;
@@ -59,6 +60,7 @@ InstructionsViewController *controller;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    savingInProgress = NO;
     [self getCurrentEvents:self];      //get events list, callback method is processData
     [self.eventFilterSeg setSelectedSegmentIndex:0];
     [self setupInstructions];   //instruction overlay
@@ -108,9 +110,13 @@ InstructionsViewController *controller;
 }
 
 - (IBAction)favoriteButtonTap:(UIButton *)sender {
-    EventCell *cell = (EventCell *)[[[sender superview] superview] superview];
-    NSIndexPath *tapped_path = [self.eventTable indexPathForCell:cell];
-    [self favButtonForTable:self.eventTable wasTappedAt:tapped_path];
+    if (!savingInProgress)
+    {
+        savingInProgress = YES;
+        EventCell *cell = (EventCell *)[[[sender superview] superview] superview];
+        NSIndexPath *tapped_path = [self.eventTable indexPathForCell:cell];
+        [self favButtonForTable:self.eventTable wasTappedAt:tapped_path];
+    }
 }
 
 - (IBAction)moreButtonTap:(UIButton *)sender {
@@ -179,7 +185,7 @@ InstructionsViewController *controller;
     [cell.favoriteButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
     [cell.moreButton setTitle:NSLocalizedString(@"more_button", nil) forState:UIControlStateNormal];
     [cell.favoriteButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [cell.moreButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [cell.moreButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
     [cell.favoriteButton setTitleColor:[UIColor light_accent] forState:UIControlStateHighlighted];
     [cell.moreButton setTitleColor:[UIColor light_accent] forState:UIControlStateHighlighted];
     cell.eventNameLabel.textColor = [UIColor primary_text];
@@ -285,7 +291,9 @@ InstructionsViewController *controller;
         {
             PFUser *user = [PFUser currentUser];
             [user addUniqueObject:eventObject forKey:@"events"];
-            [user saveInBackground];
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                savingInProgress = NO;
+            }];
         }
     }
     else
@@ -312,7 +320,9 @@ InstructionsViewController *controller;
         {
             PFUser *user = [PFUser currentUser];
             [user removeObject:eventObject forKey:@"events"];
-            [user saveInBackground];
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                savingInProgress = NO;
+            }];
         }
     }
     

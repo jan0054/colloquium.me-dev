@@ -121,26 +121,18 @@ NSMutableArray *selectedParticipants;
     cell.timeLabel.textColor = [UIColor secondary_text];
     cell.timeLabel.backgroundColor = [UIColor clearColor];
     cell.messageLabel.backgroundColor = [UIColor clearColor];
+    cell.messageLabel.textColor = [UIColor secondary_text];
     cell.participantLabel.backgroundColor = [UIColor clearColor];
     cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    /*
-    cell.backgroundCardView.layer.shadowColor = [UIColor dark_primary].CGColor;
+
+    cell.backgroundCardView.layer.shouldRasterize = YES;
+    cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    cell.backgroundCardView.layer.shadowColor = [UIColor shadow_color].CGColor;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
-    */
-
-        cell.backgroundCardView.layer.shouldRasterize = YES;
-        cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        cell.backgroundCardView.layer.shadowColor = [UIColor shadow_color].CGColor;
-        cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
-        cell.backgroundCardView.layer.shadowOpacity = 0.3f;
-        cell.backgroundCardView.layer.shadowRadius = 1.0f;
-        //UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:cell.backgroundCardView.bounds];
-        //cell.backgroundCardView.layer.shadowPath = shadowPath.CGPath;
-    
     
     PFObject *conversation = [conversationArray objectAtIndex:indexPath.row];
     

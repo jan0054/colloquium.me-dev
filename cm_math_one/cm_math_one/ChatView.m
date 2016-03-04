@@ -44,8 +44,8 @@ PFUser *loggedinUser;
     [self.chatTable addSubview:pullrefresh];
     
     //styling
-    self.inputBackground.backgroundColor = [UIColor clearColor];
-    [self.sendChatButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    self.inputBackground.backgroundColor = [UIColor light_bg];
+    [self.sendChatButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
     self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;

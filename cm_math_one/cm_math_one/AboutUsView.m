@@ -24,8 +24,8 @@ NSMutableArray *testlist;
     testlist = [[NSMutableArray alloc] init];
     
     //styling
-    [self.doneButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
-    [self.contactButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    [self.doneButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.contactButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
 }
 
 - (IBAction)contactButtonTap:(UIButton *)sender {

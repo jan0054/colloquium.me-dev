@@ -22,8 +22,8 @@ int currentPage;
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.exitButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
-    [self.exitButton setTitleColor:[UIColor dark_accent] forState:UIControlStateHighlighted];
+    [self.exitButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    //[self.exitButton setTitleColor:[UIColor dark_accent] forState:UIControlStateHighlighted];
     
     [self.exitButton setTitle:NSLocalizedString(@"done", nil) forState:UIControlStateNormal];
     [self.exitButton setTitle:NSLocalizedString(@"done", nil) forState:UIControlStateHighlighted];

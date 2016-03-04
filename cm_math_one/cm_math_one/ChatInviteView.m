@@ -140,7 +140,7 @@ NSMutableDictionary *inviteeDictionary;
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
-    cell.inviteLabel.textColor = [UIColor secondary_text];
+    cell.inviteLabel.textColor = [UIColor accent_color];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //data

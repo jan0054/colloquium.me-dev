@@ -128,7 +128,7 @@ NSString *programId;
     self.sessionLabel.text = session[@"name"];
     self.nameLabel.text = object[@"name"];
     programName = object[@"name"];
-    self.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+    self.authorLabel.text = [NSString stringWithFormat:@"%@, %@", author[@"last_name"], author[@"first_name"]];
     self.locationLabel.text = location[@"name"];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterMediumStyle];

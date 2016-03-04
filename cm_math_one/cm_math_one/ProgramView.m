@@ -268,7 +268,7 @@ NSMutableArray *headerTitleArray;
         {
             if (indexPath.row == 0)
             {
-                menucell.menuTitleLabel.textColor = [UIColor primary_color_icon];
+                menucell.menuTitleLabel.textColor = [UIColor accent_color];
             }
         }
         else
@@ -276,7 +276,7 @@ NSMutableArray *headerTitleArray;
             NSString *currentTitle = currentFilter[@"name"];
             if ([currentTitle isEqualToString:[self.menuTitles objectAtIndex:indexPath.row]])
             {
-                menucell.menuTitleLabel.textColor = [UIColor primary_color_icon];
+                menucell.menuTitleLabel.textColor = [UIColor accent_color];
             }
         }
         return menucell;
@@ -287,8 +287,9 @@ NSMutableArray *headerTitleArray;
 {
     if (tableView.tag == 1)
     {
-    selectedProgram = [programArray objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"programdetailsegue" sender:self];
+        NSMutableArray *oneDayArray = [sectionedProgramArray objectAtIndex:indexPath.section];
+        selectedProgram = [oneDayArray objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"programdetailsegue" sender:self];
     }
     else
     {
@@ -348,7 +349,9 @@ NSMutableArray *headerTitleArray;
         NSNumber *dayCompNSNum = [NSNumber numberWithInteger:dayComp];
         [dayArray addObject:dayCompNSNum];
     }
-    NSArray* uniqueDays = [dayArray valueForKeyPath:[NSString stringWithFormat:@"@distinctUnionOfObjects.%@", @"integerValue"]];
+    NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:dayArray];
+    NSSet *uniqueDaysSet = [orderedSet set];
+    NSArray *uniqueDays = [uniqueDaysSet allObjects];
     for (NSNumber *dayNum in uniqueDays)
     {
         NSInteger dayInt = dayNum.integerValue;

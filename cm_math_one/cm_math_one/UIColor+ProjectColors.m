@@ -23,7 +23,7 @@
 + (UIColor*) accent_color
 {
     //return [self in500];
-    return [self test_gr];
+    return [self burgandy];
 }
 + (UIColor*) light_accent
 {
@@ -33,17 +33,17 @@
 + (UIColor*) dark_accent
 {
     //return [self in700];
-    return [self test_dg];
+    return [self darkGrey];
 }
 + (UIColor*) primary_color
 {
     //return [self do500];
-    return [self test_bg];
+    return [self blugGrey];
 }
 + (UIColor*) primary_color_icon
 {
     //return [self do700];
-    return [self test_ye];
+    return [self test_lr];
 }
 + (UIColor*) unselected_icon
 {
@@ -83,7 +83,8 @@
 }
 + (UIColor*) setup_button_background
 {
-    return [self do800];
+    //return [self do800];
+    return [self burgandy];
 }
 + (UIColor*) setup_button_text
 {
@@ -91,7 +92,7 @@
 }
 + (UIColor*) drawer_background
 {
-    return [self gr800];
+    return [self gr900];
 }
 + (UIColor*) drawer_icon_primary
 {
@@ -100,7 +101,7 @@
 + (UIColor*) drawer_icon_secondary
 {
     //return [self do500];
-    return [self test_ye];
+    return [self test_br];
 }
 + (UIColor*) tab_background
 {
@@ -212,11 +213,11 @@
 }
 
 //test1
-+ (UIColor*) test_dg
++ (UIColor*) darkGrey
 {
     return [self colorFromHexString:@"#505160"];
 }
-+ (UIColor*) test_bg
++ (UIColor*) blugGrey
 {
     return [self colorFromHexString:@"#68829E"];
 }
@@ -227,6 +228,19 @@
 + (UIColor*) test_gr
 {
     return [self colorFromHexString:@"#598234"];
+}
++ (UIColor*) burgandy
+{
+    return [self colorFromHexString:@"#882426"];
+}
++ (UIColor*) test_lr
+{
+    return [self colorFromHexString:@"#E29930"];
+}
++ (UIColor*) test_br
+{
+    return [self colorFromHexString:@"#E8A735"];
+    //return [self colorFromHexString:@"#D97072"];
 }
 
 @end

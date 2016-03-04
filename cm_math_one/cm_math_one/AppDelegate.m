@@ -64,6 +64,12 @@
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue" size:10.0f], NSFontAttributeName, [UIColor light_button_txt], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarHidden:false];
+
+
+
+    
     //track first open for instruction page
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"appsetup"])
@@ -77,10 +83,10 @@
         [defaults synchronize];
     }
     
-    //set the page control style
+    //set the page control style (tutorial page)
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor primary_color_icon];
+    pageControl.currentPageIndicatorTintColor = [UIColor accent_color];
     pageControl.backgroundColor = [UIColor whiteColor];
 
     //Facebook SDK

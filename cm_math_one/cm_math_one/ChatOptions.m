@@ -145,7 +145,7 @@ BOOL isGroup;
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
-    [cell.inviteButton setTitleColor:[UIColor dark_accent] forState:UIControlStateNormal];
+    [cell.inviteButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //data
