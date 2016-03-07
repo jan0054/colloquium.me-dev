@@ -26,6 +26,7 @@
 + (UIColor*) setup_button_background;
 + (UIColor*) setup_button_text;
 + (UIColor*) drawer_background;
++ (UIColor*) drawer_selection_background;
 + (UIColor*) drawer_icon_primary;
 + (UIColor*) drawer_icon_secondary;
 + (UIColor*) tab_background;

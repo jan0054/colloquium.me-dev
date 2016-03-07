@@ -2143,8 +2143,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Is-Qr-aQ9">
-                                            <rect key="frame" x="150" y="0.0" width="300" height="44"/>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Is-Qr-aQ9">
+                                            <rect key="frame" x="150" y="5" width="300" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a7-q3-qB2">
                                                     <rect key="frame" x="115" y="11" width="168" height="21"/>
@@ -2189,13 +2189,27 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="YGv-6a-y2f" secondAttribute="trailing" constant="-8" id="4Xl-b3-jfw"/>
                                         <constraint firstItem="YGv-6a-y2f" firstAttribute="leading" secondItem="ih7-hg-2yE" secondAttribute="leadingMargin" constant="-8" id="5Uq-ca-A3K"/>
                                         <constraint firstItem="XCu-jw-oYr" firstAttribute="leading" secondItem="ih7-hg-2yE" secondAttribute="leadingMargin" constant="-8" id="Hon-c2-EnF"/>
+                                        <constraint firstItem="YGv-6a-y2f" firstAttribute="top" secondItem="2Is-Qr-aQ9" secondAttribute="bottom" id="JT8-sw-Zlz"/>
+                                        <constraint firstAttribute="trailing" secondItem="2Is-Qr-aQ9" secondAttribute="trailing" id="KR7-wh-147"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="2Is-Qr-aQ9" secondAttribute="trailing" id="OaQ-d8-7da"/>
+                                        <constraint firstItem="2Is-Qr-aQ9" firstAttribute="leading" secondItem="ih7-hg-2yE" secondAttribute="leading" id="Sxx-hd-Vkr"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="XCu-jw-oYr" secondAttribute="trailing" constant="-8" id="WJa-wK-d1Q"/>
                                         <constraint firstItem="2Is-Qr-aQ9" firstAttribute="leading" secondItem="ih7-hg-2yE" secondAttribute="leadingMargin" id="Xtr-Hm-CaP"/>
+                                        <constraint firstItem="2Is-Qr-aQ9" firstAttribute="top" secondItem="XCu-jw-oYr" secondAttribute="bottom" id="c0Z-us-MqM"/>
                                         <constraint firstItem="XCu-jw-oYr" firstAttribute="top" secondItem="ih7-hg-2yE" secondAttribute="topMargin" constant="-6" id="iXW-gD-MSo"/>
                                         <constraint firstAttribute="centerY" secondItem="2Is-Qr-aQ9" secondAttribute="centerY" id="juP-0C-mVd"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="YGv-6a-y2f" secondAttribute="bottom" id="pkO-8y-mes"/>
+                                        <constraint firstAttribute="trailing" secondItem="2Is-Qr-aQ9" secondAttribute="trailing" id="wGy-0v-Ou0"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="4Ci-LV-jTz"/>
+                                            <exclude reference="OaQ-d8-7da"/>
+                                            <exclude reference="Xtr-Hm-CaP"/>
+                                            <exclude reference="juP-0C-mVd"/>
+                                            <exclude reference="wGy-0v-Ou0"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>

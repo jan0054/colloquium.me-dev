@@ -120,6 +120,15 @@
 "unfollow_button" = "Unfollow";
 
 //tutorial
+"tut_p1_title" = "Access common features";
+"tut_p1_content" = "Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer.";
+"tut_p2_title" = "View all events";
+"tut_p2_content" = "All available events are here, grouped by current or past. Tap follow on events you're interested in.";
+"tut_p3_title" = "View event program";
+"tut_p3_content" = "To see other event info, such as venue or attendees, select the different tabs on the bottom.";
+"tut_p4_title" = "In a specific talk..";
+"tut_p4_content" = "You can ask questions in the discussion page, read the full abstract, or set an alarm for the talk.";
+
 "choose_event_title" = "Follow events that interest you";
 "choose_event_content" = "Choose events that you want to follow, they'll show up in your home screen and side drawer.";
 "drawer_title" = "Access common features";

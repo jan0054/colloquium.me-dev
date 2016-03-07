@@ -31,9 +31,9 @@ int currentPage;
     self.exitButton.hidden = YES;
     self.exitButton.userInteractionEnabled = NO;
     
-    _pageImages = @[@"tut_choose_event", @"tut_home", @"tut_drawer", @"tut_overview"];
-    _pageTitles = @[NSLocalizedString(@"choose_event_title", nil), NSLocalizedString(@"home_title", nil), NSLocalizedString(@"drawer_title", nil), NSLocalizedString(@"overview_title", nil)];
-    _pageContent = @[NSLocalizedString(@"choose_event_content", nil), NSLocalizedString(@"home_content", nil), NSLocalizedString(@"drawer_content", nil), NSLocalizedString(@"overview_content", nil)];
+    _pageImages = @[@"ios_drawer", @"ios_event", @"ios_program", @"ios_talk"];
+    _pageTitles = @[NSLocalizedString(@"tut_p1_title", nil), NSLocalizedString(@"tut_p2_title", nil), NSLocalizedString(@"tut_p3_title", nil), NSLocalizedString(@"tut_p4_title", nil)];
+    _pageContent = @[NSLocalizedString(@"tut_p1_content", nil), NSLocalizedString(@"tut_p2_content", nil), NSLocalizedString(@"tut_p3_content", nil), NSLocalizedString(@"tut_p4_content", nil)];
     
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tutorialpvc"];
     self.pageViewController.dataSource = self;

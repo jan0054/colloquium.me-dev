@@ -295,6 +295,10 @@ BOOL savingInProgress;
                 savingInProgress = NO;
             }];
         }
+        else
+        {
+            savingInProgress = NO;
+        }
     }
     else
     {
@@ -323,6 +327,10 @@ BOOL savingInProgress;
             [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 savingInProgress = NO;
             }];
+        }
+        else
+        {
+            savingInProgress = NO;
         }
     }
     

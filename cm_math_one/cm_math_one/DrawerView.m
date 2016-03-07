@@ -18,7 +18,7 @@
 
 @end
 
-NSIndexPath *currentIndex;
+NSIndexPath *currentSelectedIndex;
 NSMutableArray *favoriteEventsArray;
 
 @implementation DrawerView
@@ -35,19 +35,8 @@ NSMutableArray *favoriteEventsArray;
     self.view.backgroundColor = [UIColor drawer_background];
     self.tableView.backgroundColor = [UIColor drawer_background];
     
-    //set default "currentIndex" depending on whether there are already saved events
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *eventNames = [defaults objectForKey:@"eventNames"];
-    if (eventNames.count >=1)  //already exist previously selected events
-    {
-        currentIndex = [NSIndexPath indexPathForRow:1 inSection:0];
-    }
-    else  //no existing selected events
-    {
-        currentIndex = [NSIndexPath indexPathForRow:0 inSection:0];
-    }
-    
     //init data
+    currentSelectedIndex = [NSIndexPath indexPathForRow:0 inSection:0];  //default selection on app open
     [self getEventsFromLocalList:self];
 }
 
@@ -55,6 +44,7 @@ NSMutableArray *favoriteEventsArray;
 {
     [super viewDidAppear:animated];
     [self getEventsFromLocalList:self];
+    NSLog(@"Drawer current index:%ld, %ld", (long)currentSelectedIndex.row, (long)currentSelectedIndex.section);
 }
 
 - (void)viewDidLayoutSubviews {
@@ -99,12 +89,12 @@ NSMutableArray *favoriteEventsArray;
     cell.drawerTitle.backgroundColor = [UIColor clearColor];
     cell.drawerTitle.textColor = [UIColor light_button_txt];
     cell.contentView.backgroundColor = [UIColor drawer_background];
+    if (indexPath.row == currentSelectedIndex.row && indexPath.section == currentSelectedIndex.section)   //selected cell background color
+    {
+        cell.drawerBackground.backgroundColor = [UIColor drawer_selection_background];
+    }
     
     //data
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //NSArray *eventNames = [defaults objectForKey:@"eventNames"];
-    //NSString *name = @"";
-    
     if (indexPath.section == 0 && indexPath.row != 0 && indexPath.row != 1)  //if dynamic event row, set name
     {
         PFObject *eventObj = [favoriteEventsArray objectAtIndex:indexPath.row-2];
@@ -187,7 +177,6 @@ NSMutableArray *favoriteEventsArray;
     NSLog(@"DRAWER: selected indexpath %li - %li", (long)indexPath.section, (long)indexPath.row);
     DrawerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    
     /*
     if (currentIndex.row == indexPath.row && currentIndex.section == indexPath.section) //close drawer if we're already on whatever page we tapped
     {
@@ -250,10 +239,14 @@ NSMutableArray *favoriteEventsArray;
         }
     }
     
-    if (centerViewController) {
-        currentIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+    if (centerViewController)
+    {
+        currentSelectedIndex = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+        [self.tableView reloadData];   //reload the tableview here so that the selected row will already be colored when we next open the drawer
         [self.mm_drawerController setCenterViewController:centerViewController withCloseAnimation:YES completion:nil];
-    } else {
+    }
+    else
+    {
         [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
     }
 }

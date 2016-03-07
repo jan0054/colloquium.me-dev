@@ -94,6 +94,10 @@
 {
     return [self gr900];
 }
++ (UIColor*) drawer_selection_background
+{
+    return [self dark_burgandy];
+}
 + (UIColor*) drawer_icon_primary
 {
     return [self gr500];
@@ -240,7 +244,9 @@
 + (UIColor*) test_br
 {
     return [self colorFromHexString:@"#E8A735"];
-    //return [self colorFromHexString:@"#D97072"];
 }
-
++ (UIColor*) dark_burgandy
+{
+    return [self colorFromHexString:@"#495c71"];
+}
 @end
