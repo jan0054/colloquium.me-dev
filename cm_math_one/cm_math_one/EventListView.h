@@ -18,5 +18,6 @@
 - (IBAction)segChanged:(UISegmentedControl *)sender;
 - (IBAction)favoriteButtonTap:(UIButton *)sender;
 - (IBAction)moreButtonTap:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIView *filterBackgroundView;
 
 @end

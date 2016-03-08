@@ -39,6 +39,10 @@ BOOL savingInProgress;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+    self.filterBackgroundView.layer.shadowColor = [UIColor shadow_color].CGColor;
+    self.filterBackgroundView.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
+    self.filterBackgroundView.layer.shadowOpacity = 0.3f;
+    self.filterBackgroundView.layer.shadowRadius = 2.0f;
     [self.eventFilterSeg setTintColor:[UIColor primary_color]];
     
     //init
