@@ -179,6 +179,7 @@
 		FD1FAE7E1B8CEC1A00771037 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7A1B8CEC1A00771037 /* Icon-40@2x.png */; };
 		FD1FAE7F1B8CEC1A00771037 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7B1B8CEC1A00771037 /* Icon-76.png */; };
 		FD1FAE801B8CEC1A00771037 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7C1B8CEC1A00771037 /* Icon-76@2x.png */; };
+		FD75DDA71C8F466500F27250 /* Icon-167.png in Resources */ = {isa = PBXBuildFile; fileRef = FD75DDA61C8F466500F27250 /* Icon-167.png */; };
 		FDCA8C391BDFC48D009AF220 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDCA8C3B1BDFC48D009AF220 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -435,6 +436,7 @@
 		FD1FAE7A1B8CEC1A00771037 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
 		FD1FAE7B1B8CEC1A00771037 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		FD1FAE7C1B8CEC1A00771037 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		FD75DDA61C8F466500F27250 /* Icon-167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-167.png"; sourceTree = "<group>"; };
 		FDCA8C351BDFBF29009AF220 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		FDCA8C361BDFBF29009AF220 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FDCA8C3A1BDFC48D009AF220 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FD75DDA61C8F466500F27250 /* Icon-167.png */,
 				B43129FC1C8D920400B6A66F /* ios_program@2x.png */,
 				B43129FD1C8D920400B6A66F /* ios_talk@2x.png */,
 				B43129F81C8D91F800B6A66F /* ios_drawer@2x.png */,
@@ -949,6 +952,7 @@
 				B46402831B4662B80074DD72 /* nav48@2x.png in Resources */,
 				B4F04D3F1B81BFED00A4FCD3 /* camera48@2x.png in Resources */,
 				B46402911B4662B80074DD72 /* venue48@2x.png in Resources */,
+				FD75DDA71C8F466500F27250 /* Icon-167.png in Resources */,
 				B46402901B4662B80074DD72 /* timeline64@2x.png in Resources */,
 				B46402751B4662B80074DD72 /* addphoto48@2x.png in Resources */,
 				B46402881B4662B80074DD72 /* people64@2x.png in Resources */,

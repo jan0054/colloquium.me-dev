@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>ContextMenu.iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -84,6 +89,11 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>Toast.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -142,6 +152,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>574849513807F5E7339C157C33FD192D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5CE59F443EFDB1077DFC36AE</key>
 		<dict>
 			<key>primary</key>
@@ -162,6 +177,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7C35BB95D9B36EDB125F7EC46F23E87B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>81D7FE2A0FD9258247B1232874B837DA</key>
 		<dict>
 			<key>primary</key>
@@ -177,6 +197,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8CFD52B9E3BF91F68D70C59370B0B5DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8E4CCBB02ADD9B82529601B1</key>
 		<dict>
 			<key>primary</key>
@@ -188,6 +213,11 @@
 			<true/>
 		</dict>
 		<key>9919E6CD990DC38A1CD20234897AB430</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B916844F33E8D3CF7BC18CE424E9721</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -253,6 +283,16 @@
 			<true/>
 		</dict>
 		<key>DE6CBE05930707C777FEB410</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F12A60070FE3F4332320A2A920D1BD32</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F21523DE0EE1E35B265242490D97EE4C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
