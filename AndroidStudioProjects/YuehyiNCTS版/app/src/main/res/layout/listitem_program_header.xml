@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/feed_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/list_margin"
+    android:background="@drawable/list_item"
+    android:gravity="start"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/date_label"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:gravity="center|left"
+        android:singleLine="true"
+        android:text="@string/name_fake"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp"
+        />
+
+</RelativeLayout>

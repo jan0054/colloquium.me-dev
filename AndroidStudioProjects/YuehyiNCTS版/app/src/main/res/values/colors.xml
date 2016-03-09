@@ -2,13 +2,13 @@
 <resources>
 
     <!-- Main project colors for Colloquium.me  -->
-    <color name="accent_color">@color/in500</color>
-    <color name="dark_accent">@color/in700</color>
-    <color name="primary_color">@color/do500</color>
-    <color name="primary_color_icon">@color/do700</color>
+    <color name="accent_color">@color/burgandy</color>
+    <color name="dark_accent">@color/dark_burgandy</color>
+    <color name="primary_color">@color/blue_grey</color>
+    <color name="primary_color_icon">@color/deeper_yellow</color>
     <color name="unselected_icon">@color/gr600</color>
     <color name="primary_text">@color/gr900</color>
-    <color name="secondary_text">@color/gr700</color>
+    <color name="secondary_text">@color/gr600</color>
     <color name="divider_color">@color/gr400</color>
     <color name="light_bg">@color/white</color>
     <color name="light_button_txt">@color/white</color>
@@ -16,7 +16,7 @@
     <color name="shadow_color">@color/gr400</color>
 
     <!-- Others (not main project colors) -->
-    <color name="setup_button_background">@color/do800</color>
+    <color name="setup_button_background">@color/burgandy</color>
     <color name="setup_button_text">@color/white</color>
     <color name="black_overlay">#66000000</color>
     <color name="edittext_bgtint">#00000000</color>
@@ -60,5 +60,14 @@
     <color name="gr300">#E0E0E0</color>
     <color name="gr200">#EEEEEE</color>
     <color name="gr100">#F5F5F5</color>
+
+    <!-- 1.6 new theme colors -->
+    <color name="burgandy">#882426</color>
+    <color name="blue_grey">#68829E</color>
+    <color name="dark_burgandy">#495c71</color>
+    <color name="dark_grey">#505160</color>
+    <color name="lighter_yellow">#AEBD38</color>
+    <color name="deeper_yellow">#E29930</color>
+
 
 </resources>

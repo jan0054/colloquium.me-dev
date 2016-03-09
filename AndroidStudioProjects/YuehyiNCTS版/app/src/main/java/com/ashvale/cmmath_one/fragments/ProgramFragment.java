@@ -30,7 +30,13 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,11 +89,12 @@ public class ProgramFragment extends BaseFragment {
         //loadProgram();
     }
 
-    public void setAdapter(final List results)
+    public void setAdapter(final Map results, final Map rawMap, final List<Integer> uniqueDays)
     {
-        ProgramAdapter adapter = new ProgramAdapter(getActivity(), results);
+        ProgramAdapter adapter = new ProgramAdapter(getActivity(), results, rawMap, uniqueDays);
         talkList.setAdapter(adapter);
-
+        //TO-DO: redo the onclick stuff :(
+        /*
         talkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -99,6 +106,7 @@ public class ProgramFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
+        */
     }
 
     @Override
@@ -171,7 +179,8 @@ public class ProgramFragment extends BaseFragment {
         loadProgram();
     }
 
-    public void loadProgram() {
+    public void loadProgram()
+    {
         talkList = (ListView)getActivity().findViewById(R.id.programListView);
         searcharray = new ArrayList<String>();
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
@@ -189,20 +198,56 @@ public class ProgramFragment extends BaseFragment {
         query.include("location");
         //type = 0 for talk, =1 for poster, can add others in future if needed
         query.whereEqualTo("type", 0);
-        query.orderByDescending("start_time");
+        query.orderByAscending("start_time");
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     Log.d("cm_app", "program query result: " + objects.size());
-                    talkObjList = objects;
-                    setAdapter(objects);
+                    //talkObjList = objects;
+                    //setAdapter(objects);
+                    processPrograms(objects);
                     swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
                 }
             }
         });
+    }
+
+    public void processPrograms(List<ParseObject> programs)
+    {
+        List<Integer> allDaysInt = new ArrayList<>();
+        Map<ParseObject, Integer> programDaysMap = new HashMap<>();
+        Map<Integer, List<ParseObject>> sectionDayMap = new HashMap<>();
+        for (ParseObject program : programs)
+        {
+            Date startDate = program.getDate("start_time");
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(startDate);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+            allDaysInt.add(day);
+            programDaysMap.put(program, day);
+        }
+        Set<Integer> uniqueDaysSet = new LinkedHashSet<>(allDaysInt);
+        List<Integer> uniqueDaysList = new ArrayList<>();
+        uniqueDaysList.addAll(uniqueDaysSet);
+
+        for (Integer day : uniqueDaysList)
+        {
+            List<ParseObject> programsForThisDay = new ArrayList<>();
+            for (ParseObject program : programs)
+            {
+                Integer programDayComponent = programDaysMap.get(program);
+                if (programDayComponent == day)
+                {
+                    programsForThisDay.add(program);
+                }
+            }
+            sectionDayMap.put(day, programsForThisDay);
+        }
+        Log.d("cm_app", "processPrograms: HashMap" + sectionDayMap);
+        setAdapter(sectionDayMap, programDaysMap, uniqueDaysList);
     }
 
     public void setSearchString()
@@ -239,8 +284,8 @@ public class ProgramFragment extends BaseFragment {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     Log.d("cm_app", "program query result: "+ objects.size());
-                    talkObjList = objects;
-                    setAdapter(objects);
+                    //talkObjList = objects;
+                    //setAdapter(objects);
                     swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
@@ -279,8 +324,8 @@ public class ProgramFragment extends BaseFragment {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     Log.d("cm_app", "program query result: " + objects.size());
-                    talkObjList = objects;
-                    setAdapter(objects);
+                    //talkObjList = objects;
+                    //setAdapter(objects);
                     swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
