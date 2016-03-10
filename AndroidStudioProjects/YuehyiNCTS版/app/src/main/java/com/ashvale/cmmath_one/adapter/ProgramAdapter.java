@@ -26,25 +26,20 @@ import java.util.TimeZone;
  */
 public class ProgramAdapter extends BaseAdapter {
     private final Context context;
-    //private final List talks;
-    private final Map<Integer, List<ParseObject>> sectionDayMap;
-    private final Map<ParseObject, Integer> originalProgramDayMap;
-    private final List<Integer> uniqueDays;
+    private final List<Integer> headerPositions;
+    private final List<ParseObject> finalObjectList;
     private SimpleDateFormat sdf;
 
-
-    public ProgramAdapter(Context context, Map map, Map rawMap, List<Integer> uniqueDays) {
+    public ProgramAdapter(Context context, List<Integer> headers, List<ParseObject> objects) {
         this.context = context;
-        //this.talks = queryresults;
-        this.sectionDayMap = map;
-        this.originalProgramDayMap = rawMap;
-        this.uniqueDays = uniqueDays;
+        this.headerPositions = headers;
+        this.finalObjectList = objects;
     }
 
     @Override
     public int getCount()
     {
-        return originalProgramDayMap.size()+uniqueDays.size();
+        return finalObjectList.size();
     }
 
     @Override
@@ -56,43 +51,19 @@ public class ProgramAdapter extends BaseAdapter {
     @Override
     public Object getItem(int position)
     {
-        ParseObject returnProgram = new ParseObject("Talk");
-        int currentPosition = position;
-        for (Integer day : uniqueDays)
-        {
-            int dayProgramCount = sectionDayMap.get(day).size();
-            if (currentPosition > dayProgramCount)  //look in the next day
-            {
-                currentPosition = currentPosition - dayProgramCount - 1;
-            }
-            else   //the talk we want to return is on this day
-            {
-                if (currentPosition == 0)   //header
-                {
-                    List<ParseObject> programsOnThisDay = sectionDayMap.get(day);
-                    ParseObject program = programsOnThisDay.get(0);
-                    returnProgram = program;
-                }
-                else   //non-header object
-                {
-                    List<ParseObject> programsOnThisDay = sectionDayMap.get(day);
-                    ParseObject program = programsOnThisDay.get(currentPosition-1);
-                    returnProgram = program;
-                }
-            }
-        }
-        return returnProgram;
+        return finalObjectList.get(position);
     }
 
     @Override
-    public int getViewTypeCount() {
+    public int getViewTypeCount()
+    {
         return 2;
     }
 
     @Override
-    public int getItemViewType(int position) {
-        List<Integer> headers = setSectionHeaderPositions();
-        if (headers.contains(position))
+    public int getItemViewType(int position)
+    {
+        if (headerPositions.contains(position))
         {
             return 0;
         }
@@ -101,6 +72,7 @@ public class ProgramAdapter extends BaseAdapter {
             return 1;
         }
     }
+
     @Override
     public View getView(int position, View view, ViewGroup vg)
     {
@@ -123,7 +95,7 @@ public class ProgramAdapter extends BaseAdapter {
         if (type==0)
         {
             TextView headerLabel = (TextView)view.findViewById(R.id.date_label);
-            sdf = new SimpleDateFormat("MM/dd/YYYY", Locale.getDefault());
+            sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault());
             sdf.setTimeZone(TimeZone.getDefault());
             headerLabel.setText(getStartTime(talk));
         }
@@ -136,7 +108,6 @@ public class ProgramAdapter extends BaseAdapter {
             TextView starttimeLabel = (TextView)view.findViewById(R.id.program_starttime);
 
             sdf = new SimpleDateFormat("MM/dd hh:mm a", Locale.getDefault());
-            //sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
             sdf.setTimeZone(TimeZone.getDefault());
             nameLabel.setText(talk.getString("name"));
             authornameLabel.setText(getAuthor(talk));
@@ -161,20 +132,4 @@ public class ProgramAdapter extends BaseAdapter {
     private String getStartTime(ParseObject object) {
         return sdf.format(object.getDate("start_time"));
     }
-
-    private List<Integer> setSectionHeaderPositions()
-    {
-        List<Integer> headerPositions = new ArrayList<>();
-        headerPositions.add(0);
-        int totalRows = 1;
-        for (Integer day : uniqueDays)
-        {
-            int dayProgramCount = sectionDayMap.get(day).size();
-            totalRows = totalRows+dayProgramCount;
-            Integer nextHeader = totalRows;
-            headerPositions.add(nextHeader);
-        }
-        return  headerPositions;
-    }
-
 }

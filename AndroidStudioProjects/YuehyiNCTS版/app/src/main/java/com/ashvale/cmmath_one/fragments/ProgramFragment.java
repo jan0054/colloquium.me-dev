@@ -89,24 +89,25 @@ public class ProgramFragment extends BaseFragment {
         //loadProgram();
     }
 
-    public void setAdapter(final Map results, final Map rawMap, final List<Integer> uniqueDays)
+    public void setAdapter(final List<Integer> headers, final List<ParseObject> objects)
     {
-        ProgramAdapter adapter = new ProgramAdapter(getActivity(), results, rawMap, uniqueDays);
+        ProgramAdapter adapter = new ProgramAdapter(getActivity(), headers, objects);
         talkList.setAdapter(adapter);
-        //TO-DO: redo the onclick stuff :(
-        /*
+
         talkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(HomeActivity.this, "home event item selected " + position, Toast.LENGTH_SHORT).show();
-
-                ParseObject talk = talkObjList.get(position);
-                Intent intent = new Intent(getActivity(), TalkDetailActivity.class);
-                intent.putExtra("talkID", talk.getObjectId());
-                startActivity(intent);
+                if (headers.contains(position)) {
+                    // Is header, do nothing
+                } else   // Normal row
+                {
+                    ParseObject talk = objects.get(position);
+                    Intent intent = new Intent(getActivity(), TalkDetailActivity.class);
+                    intent.putExtra("talkID", talk.getObjectId());
+                    startActivity(intent);
+                }
             }
         });
-        */
     }
 
     @Override
@@ -121,7 +122,7 @@ public class ProgramFragment extends BaseFragment {
             public void onClick(View v) {
                 setSearchString();
                 event = ParseObject.createWithoutData("Event", currentId);
-                getProgramSearch(event, 0, searcharray, 0);
+                getProgramSearch(0, searcharray, 0);
             }
         });
         searchinput.addTextChangedListener(new TextWatcher() {
@@ -139,8 +140,7 @@ public class ProgramFragment extends BaseFragment {
                                       int before, int count) {
                 if (s.length() == 0) {
                     searcharray.clear();
-                    event = ParseObject.createWithoutData("Event", currentId);
-                    getProgram(event, 0, 0);
+                    loadProgram();
                 }
             }
         });
@@ -204,8 +204,6 @@ public class ProgramFragment extends BaseFragment {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
                     Log.d("cm_app", "program query result: " + objects.size());
-                    //talkObjList = objects;
-                    //setAdapter(objects);
                     processPrograms(objects);
                     swipeRefresh.setRefreshing(false);
                 } else {
@@ -217,37 +215,41 @@ public class ProgramFragment extends BaseFragment {
 
     public void processPrograms(List<ParseObject> programs)
     {
-        List<Integer> allDaysInt = new ArrayList<>();
-        Map<ParseObject, Integer> programDaysMap = new HashMap<>();
-        Map<Integer, List<ParseObject>> sectionDayMap = new HashMap<>();
+        List<ParseObject> finalOutput = new ArrayList<>();
+        List<Integer> finalHeaderPositions = new ArrayList<>();
+        ParseObject previousProgramHolder = new ParseObject("talk");
+
+        if (programs.size()>0)
+        {
+            previousProgramHolder = programs.get(0);
+            finalOutput.add(programs.get(0));
+            finalHeaderPositions.add(0);
+        }
+
         for (ParseObject program : programs)
         {
             Date startDate = program.getDate("start_time");
             Calendar cal = Calendar.getInstance();
             cal.setTime(startDate);
             int day = cal.get(Calendar.DAY_OF_MONTH);
-            allDaysInt.add(day);
-            programDaysMap.put(program, day);
-        }
-        Set<Integer> uniqueDaysSet = new LinkedHashSet<>(allDaysInt);
-        List<Integer> uniqueDaysList = new ArrayList<>();
-        uniqueDaysList.addAll(uniqueDaysSet);
 
-        for (Integer day : uniqueDaysList)
-        {
-            List<ParseObject> programsForThisDay = new ArrayList<>();
-            for (ParseObject program : programs)
+            Date prevDate = previousProgramHolder.getDate("start_time");
+            cal.setTime(prevDate);
+            int prevDay = cal.get(Calendar.DAY_OF_MONTH);
+
+            if (day != prevDay)
             {
-                Integer programDayComponent = programDaysMap.get(program);
-                if (programDayComponent == day)
-                {
-                    programsForThisDay.add(program);
-                }
+                finalHeaderPositions.add(finalOutput.size());
+                finalOutput.add(program);
             }
-            sectionDayMap.put(day, programsForThisDay);
+            finalOutput.add(program);
+
+            previousProgramHolder = program;
         }
-        Log.d("cm_app", "processPrograms: HashMap" + sectionDayMap);
-        setAdapter(sectionDayMap, programDaysMap, uniqueDaysList);
+
+        Log.d("cm_app", "processPrograms: finalOutputList" + finalOutput);
+        Log.d("cm_app", "processPrograms: finalHeaderPositions" + finalHeaderPositions);
+        setAdapter(finalHeaderPositions, finalOutput);
     }
 
     public void setSearchString()
@@ -256,9 +258,10 @@ public class ProgramFragment extends BaseFragment {
         String lower_raw = raw_input.toLowerCase();
         String [] split_string = lower_raw.split("\\s+");
         searcharray = new ArrayList<String>(Arrays.asList(split_string));
+        Log.d("cm_app", "Search array constructed as: " + searcharray);
     }
 
-    public void getProgram(ParseObject event, int type, int order)
+    public void getProgramSearch(int type, List<String> searchArray, int order)
     {
         ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
         innerQuery.whereEqualTo("objectId", currentId);
@@ -273,43 +276,7 @@ public class ProgramFragment extends BaseFragment {
         //order = 0 start_time, order = 1 name, can add others in future if needed
         if (order == 0)
         {
-            query.orderByDescending("start_time");
-        }
-        else if (order==1)
-        {
-            query.orderByDescending("name");
-        }
-        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, com.parse.ParseException e) {
-                if (e == null) {
-                    Log.d("cm_app", "program query result: "+ objects.size());
-                    //talkObjList = objects;
-                    //setAdapter(objects);
-                    swipeRefresh.setRefreshing(false);
-                } else {
-                    Log.d("cm_app", "program query error: " + e);
-                }
-            }
-        });
-    }
-
-    public void getProgramSearch(ParseObject event, int type, List<String> searchArray, int order)
-    {
-        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
-        innerQuery.whereEqualTo("objectId", currentId);
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Talk");
-        query.whereMatchesQuery("event", innerQuery);
-        query.include("author");
-        query.include("session");
-        query.include("location");
-        //type = 0 for talk, =1 for poster, can add others in future if needed
-        query.whereEqualTo("type", type);
-        //order = 0 start_time, order = 1 name, can add others in future if needed
-        if (order == 0)
-        {
-            query.orderByDescending("start_time");
+            query.orderByAscending("start_time");
         }
         else if (order==1)
         {
@@ -323,27 +290,14 @@ public class ProgramFragment extends BaseFragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
                 if (e == null) {
-                    Log.d("cm_app", "program query result: " + objects.size());
-                    //talkObjList = objects;
-                    //setAdapter(objects);
+                    Log.d("cm_app", "program query result (with search): " + objects.size());
+                    processPrograms(objects);
                     swipeRefresh.setRefreshing(false);
                 } else {
-                    Log.d("cm_app", "program query error: " + e);
+                    Log.d("cm_app", "program query error (with search): " + e);
                 }
             }
         });
     }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-
 
 }

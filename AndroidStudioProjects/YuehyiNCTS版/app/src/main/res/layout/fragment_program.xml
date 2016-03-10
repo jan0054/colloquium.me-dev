@@ -29,7 +29,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:src="@drawable/search"
-                android:tint="@color/accent_color"
+                android:tint="@color/hint_color"
                 android:background="#00000000" />
         </LinearLayout>
         <android.support.v4.widget.SwipeRefreshLayout

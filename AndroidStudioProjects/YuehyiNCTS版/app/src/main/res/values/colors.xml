@@ -4,10 +4,12 @@
     <!-- Main project colors for Colloquium.me  -->
     <color name="accent_color">@color/burgandy</color>
     <color name="dark_accent">@color/dark_burgandy</color>
+    <color name="secondary_accent">@color/dark_grey</color>
     <color name="primary_color">@color/blue_grey</color>
     <color name="primary_color_icon">@color/deeper_yellow</color>
     <color name="unselected_icon">@color/gr600</color>
     <color name="primary_text">@color/gr900</color>
+    <color name="sub_primary_text">@color/dark_grey</color>
     <color name="secondary_text">@color/gr600</color>
     <color name="divider_color">@color/gr400</color>
     <color name="light_bg">@color/white</color>
