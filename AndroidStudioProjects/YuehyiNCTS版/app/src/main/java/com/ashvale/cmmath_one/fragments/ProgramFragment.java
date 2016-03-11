@@ -11,6 +11,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.PostDetailActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.TalkDetailActivity;
@@ -56,6 +60,9 @@ public class ProgramFragment extends BaseFragment {
     public ArrayList<String> searcharray;
     public String currentId;
     public ParseObject event;
+    private List<ParseObject> sessionList;
+    private ParseObject currentFilter;
+    private Menu filterMenu;
     SwipeRefreshLayout swipeRefresh;
     ListView talkList;
 
@@ -87,6 +94,8 @@ public class ProgramFragment extends BaseFragment {
         if (getArguments() != null) {
         }
         //loadProgram();
+        setHasOptionsMenu(true);
+        currentFilter = null;
     }
 
     public void setAdapter(final List<Integer> headers, final List<ParseObject> objects)
@@ -179,6 +188,15 @@ public class ProgramFragment extends BaseFragment {
         loadProgram();
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((EventWrapperActivity) getActivity()).setTitleByFragment(1, null);
+        }
+    }
+
     public void loadProgram()
     {
         talkList = (ListView)getActivity().findViewById(R.id.programListView);
@@ -199,6 +217,10 @@ public class ProgramFragment extends BaseFragment {
         //type = 0 for talk, =1 for poster, can add others in future if needed
         query.whereEqualTo("type", 0);
         query.orderByAscending("start_time");
+        if (currentFilter != null)
+        {
+            query.whereEqualTo("session", currentFilter);
+        }
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
@@ -286,6 +308,10 @@ public class ProgramFragment extends BaseFragment {
         {
             query.whereContainsAll("words", searchArray);
         }
+        if (currentFilter != null)
+        {
+            query.whereEqualTo("session", currentFilter);
+        }
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
@@ -298,6 +324,79 @@ public class ProgramFragment extends BaseFragment {
                 }
             }
         });
+    }
+
+    private void getSessions()
+    {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Session");
+        query.whereEqualTo("event", event);
+        query.orderByDescending("name");
+        query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("cm_app", "session query result: " + objects.size());
+                    constructFilterMenu(objects);
+                    sessionList = objects;
+                } else {
+                    Log.d("cm_app", "session query error: " + e);
+                }
+            }
+        });
+    }
+
+    private void constructFilterMenu(List<ParseObject> sessions)
+    {
+        int sessionCount = sessions.size();
+         for (int i = 0 ; i < sessionCount ; i++ )
+         {
+             ParseObject session = sessions.get(i);
+             String name = session.getString("name");
+             filterMenu.add(0, i, i+1, name);
+         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_program_filter, menu);
+        this.filterMenu = menu;
+        getSessions();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.filter_all:
+                Log.d("cm_app", "Menu id: all");
+                currentFilter = null;
+                if (searcharray.size() > 0)
+                {
+                    getProgramSearch(0, searcharray, 0);
+                }
+                else
+                {
+                    loadProgram();
+                }
+                ((EventWrapperActivity) getActivity()).setTitleByFragment(1, null);
+                return true;
+
+            default:
+                Log.d("cm_app", "Menu id: " + item.getItemId());
+                currentFilter = sessionList.get(item.getItemId());
+                if (searcharray.size() > 0)
+                {
+                    getProgramSearch(0, searcharray, 0);
+                }
+                else
+                {
+                    loadProgram();
+                }
+                String name = currentFilter.getString("name");
+                ((EventWrapperActivity) getActivity()).setTitleByFragment(1, name);
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

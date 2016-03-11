@@ -30,11 +30,11 @@
     <string name="title_activity_event_wrapper">Event Name</string>
 
     <!-- Fragment Titles (currently not shown) -->
-    <string name="title_overview">Overview</string>
-    <string name="title_program">Program</string>
-    <string name="title_attendee">People</string>
-    <string name="title_timeline">Timeline</string>
-    <string name="title_venue">Venue</string>
+    <string name="title_fragment_overview">Overview</string>
+    <string name="title_fragment_program">Filter by session:</string>
+    <string name="title_fragment_attendee">People</string>
+    <string name="title_fragment_timeline">Timeline</string>
+    <string name="title_fragment_venue">Venue</string>
 
     <!-- Drawer -->
     <string name="title_eventpicker">Choose Events</string>
@@ -115,6 +115,7 @@
     <string name="go_discuss_button">Discuss</string>
     <string name="fullscreen_button">Toggle Color</string>
     <string name="pdf">PDF</string>
+    <string name="title_filter_all">All</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

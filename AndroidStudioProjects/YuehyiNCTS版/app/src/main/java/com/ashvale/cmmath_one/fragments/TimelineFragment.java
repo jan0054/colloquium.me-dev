@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.PostDetailActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.TimelineAdapter;
@@ -123,6 +124,15 @@ public class TimelineFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         loadTimeline();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((EventWrapperActivity) getActivity()).setTitleByFragment(3, null);
+        }
     }
 
     public void loadTimeline() {

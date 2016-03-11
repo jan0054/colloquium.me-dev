@@ -18,6 +18,7 @@ import android.webkit.URLUtil;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.ConversationAdapter;
 import com.ashvale.cmmath_one.adapter.VenueAdapter;
@@ -120,6 +121,15 @@ public class VenueFragment extends BaseFragment {
         if (receiver == null) receiver = new IntentReceiver();
         getActivity().registerReceiver(receiver, getIntentFilter());
         loadVenue();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((EventWrapperActivity) getActivity()).setTitleByFragment(4, null);
+        }
     }
 
     @Override

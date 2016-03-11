@@ -24,6 +24,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.LoginActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.AnnounceAdapter;
@@ -140,6 +141,16 @@ public class OverviewFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         loadOverview();
+
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((EventWrapperActivity) getActivity()).setTitleByFragment(0, null);
+        }
     }
 
     public void loadOverview() {

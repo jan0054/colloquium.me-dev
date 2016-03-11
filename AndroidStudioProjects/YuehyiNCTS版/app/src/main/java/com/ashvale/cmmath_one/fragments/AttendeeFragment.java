@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.PeopleDetailActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.AttendeeAdapter;
@@ -165,6 +166,15 @@ public class AttendeeFragment extends BaseFragment{
     public void onResume() {
         super.onResume();
         loadAttendee();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((EventWrapperActivity) getActivity()).setTitleByFragment(2, null);
+        }
     }
 
     public void loadAttendee() {

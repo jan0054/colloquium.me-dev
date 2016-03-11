@@ -52,7 +52,7 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         tabLayout.getTabAt(3).setIcon(R.drawable.timeline64);
         tabLayout.getTabAt(4).setIcon(R.drawable.venue64);
 
-        getEventName();
+        //getEventName();
     }
 
     @Override
@@ -102,15 +102,51 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
         query.getInBackground(currentId, new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject parseObject, ParseException e) {
-                if(e == null) {
+                if (e == null) {
                     mActivityTitle = parseObject.getString("name");
-                    Log.d("cm_app", "event name: "+mActivityTitle);
+                    Log.d("cm_app", "event name: " + mActivityTitle);
                     getSupportActionBar().setTitle(mActivityTitle);
+
+
                 } else {
                     Log.d("cm_app", "get event name error: no event");
                 }
             }
         });
+    }
+
+    public void setTitleByFragment(final int fragIndex, final String eventName)
+    {
+        Log.d("cm_app", "Set Title Called: "+ fragIndex);
+        if (fragIndex == 0)
+        {
+            getSupportActionBar().setTitle(R.string.title_fragment_overview);
+        }
+        else if (fragIndex == 1)
+        {
+            if (eventName == null)
+            {
+                getSupportActionBar().setTitle(R.string.title_fragment_program);
+            }
+            else
+            {
+                getSupportActionBar().setTitle(eventName);
+            }
+
+        }
+        else if (fragIndex == 2)
+        {
+            getSupportActionBar().setTitle(R.string.title_fragment_attendee);
+        }
+        else if (fragIndex == 3)
+        {
+            getSupportActionBar().setTitle(R.string.title_fragment_timeline);
+        }
+        else if (fragIndex == 4)
+        {
+            getSupportActionBar().setTitle(R.string.title_fragment_venue);
+        }
+
     }
 
     public void toast(String message) {
