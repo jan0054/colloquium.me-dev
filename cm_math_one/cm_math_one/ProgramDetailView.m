@@ -12,6 +12,8 @@
 #import "ProgramForumView.h"
 #import "FullScreenTextView.h"
 #import "PdfReaderView.h"
+#import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
 
 PFFile *pdfFile;
 BOOL reminderSet;
@@ -37,6 +39,7 @@ NSString *programId;
     self.sessionLabel.textColor = [UIColor secondary_text];
     self.locationLabel.textColor = [UIColor secondary_text];
     self.timeLabel.textColor = [UIColor secondary_text];
+    
     self.navigationController.navigationBar.layer.shadowColor = [UIColor shadow_color].CGColor;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
@@ -47,14 +50,24 @@ NSString *programId;
     [self.fullscreenButton setTintColor:[UIColor accent_color]];
     [self.fullscreenButton setImage:img forState:UIControlStateNormal];
     
+    UIImage *calImg = [UIImage imageNamed:@"calendar48@2x"];
+    calImg = [calImg imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.calendarButton setTintColor:[UIColor accent_color]];
+    [self.calendarButton setImage:calImg forState:UIControlStateNormal];
+
+    
     [self.fullscreenButton setTitle:NSLocalizedString(@"fullscreen_button", nil) forState:UIControlStateNormal];
     [self.fullscreenButton setTitle:NSLocalizedString(@"fullscreen_button", nil) forState:UIControlStateHighlighted];
     [self.reminderButton setTitle:NSLocalizedString(@"reminder_button", nil) forState:UIControlStateNormal];
     [self.reminderButton setTitle:NSLocalizedString(@"reminder_button", nil) forState:UIControlStateHighlighted];
+    [self.calendarButton setTitle:NSLocalizedString(@"calendar_button", nil) forState:UIControlStateNormal];
+    [self.calendarButton setTitle:NSLocalizedString(@"calendar_button", nil) forState:UIControlStateHighlighted];
     
     [self.fullscreenButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
     [self.reminderButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
     [self.reminderButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.calendarButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    [self.calendarButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
 }
 
 - (IBAction)fullscreenButtonTap:(UIButton *)sender {
@@ -118,7 +131,37 @@ NSString *programId;
     }
 }
 
+- (IBAction)calendarButtonTap:(UIButton *)sender {
+    NSString *name = program[@"name"];
+    NSDate *startDate = program[@"start_time"];
+    NSDate *endDate = program[@"end_time"];
+    
+    EKEventStore *store = [[EKEventStore alloc] init];
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (!granted) { return; }
+        EKEvent *event = [EKEvent eventWithEventStore:store];
+        event.title = name;
+        event.startDate = startDate;
+        event.endDate = endDate;
+        event.calendar = [store defaultCalendarForNewEvents];
+        NSError *err = nil;
+        //[store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+        EKEventEditViewController* controller = [[EKEventEditViewController alloc] init];
+        controller.eventStore = store;
+        controller.event = event;
+        controller.editViewDelegate = self;
+        [self presentViewController:controller animated:YES completion:nil];
+        //self.savedEventId = event.eventIdentifier;  //save the event id to access later
+    }];
+}
+
 #pragma mark - Data
+
+- (void)eventEditViewController:(EKEventEditViewController *)controller
+          didCompleteWithAction:(EKEventEditViewAction)action
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)fillFieldsWithObject: (PFObject *)object
 {
@@ -243,5 +286,6 @@ NSString *programId;
         controller.content = self.contentTextView.text;
     }
 }
+
 
 @end

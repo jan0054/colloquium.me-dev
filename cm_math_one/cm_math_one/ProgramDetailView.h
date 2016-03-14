@@ -27,4 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *reminderButton;
 - (IBAction)reminderButtonTap:(UIButton *)sender;
 @property PFObject *program;
+@property (strong, nonatomic) IBOutlet UIButton *calendarButton;
+- (IBAction)calendarButtonTap:(UIButton *)sender;
+
 @end

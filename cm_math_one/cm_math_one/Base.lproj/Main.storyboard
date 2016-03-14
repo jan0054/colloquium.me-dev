@@ -376,23 +376,52 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGc-lj-f3H">
+                                        <rect key="frame" x="40" y="249" width="107" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                        <state key="normal" title="Follow"/>
+                                        <connections>
+                                            <action selector="followButtonTap:" destination="9Os-wT-2gV" eventType="touchUpInside" id="VtW-ny-EhR"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="star_empty48.png" translatesAutoresizingMaskIntoConstraints="NO" id="O1c-Kd-ecj">
+                                        <rect key="frame" x="8" y="252" width="18" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="18" id="eU1-PS-1hM"/>
+                                            <constraint firstAttribute="height" constant="18" id="jml-l7-hb6"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="pYp-W9-eki" firstAttribute="top" secondItem="wpd-SN-8eg" secondAttribute="bottom" constant="8" id="01U-m1-fEe"/>
                                     <constraint firstItem="YCZ-2r-83J" firstAttribute="top" secondItem="Jzj-cE-qGh" secondAttribute="bottom" constant="8" id="3pX-RS-xmZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="bGc-lj-f3H" secondAttribute="bottom" constant="8" id="5qZ-qn-hud"/>
                                     <constraint firstItem="Jzj-cE-qGh" firstAttribute="leading" secondItem="hh9-qG-M3M" secondAttribute="leading" constant="8" id="632-VH-0WI"/>
                                     <constraint firstItem="YCZ-2r-83J" firstAttribute="leading" secondItem="hh9-qG-M3M" secondAttribute="leading" id="E9k-tZ-6lW"/>
                                     <constraint firstItem="wpd-SN-8eg" firstAttribute="leading" secondItem="hh9-qG-M3M" secondAttribute="leading" constant="8" id="HkR-3x-gDX"/>
+                                    <constraint firstItem="bGc-lj-f3H" firstAttribute="centerY" secondItem="O1c-Kd-ecj" secondAttribute="centerY" id="P3C-go-hKQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="O1c-Kd-ecj" secondAttribute="bottom" constant="8" id="Sh0-LC-1Ne"/>
+                                    <constraint firstItem="bGc-lj-f3H" firstAttribute="leading" secondItem="O1c-Kd-ecj" secondAttribute="trailing" constant="8" id="WkX-su-CMf"/>
+                                    <constraint firstItem="O1c-Kd-ecj" firstAttribute="top" secondItem="YCZ-2r-83J" secondAttribute="bottom" constant="8" id="cTs-jv-Mgf"/>
+                                    <constraint firstItem="O1c-Kd-ecj" firstAttribute="leading" secondItem="hh9-qG-M3M" secondAttribute="leading" constant="8" id="drt-n8-Dxa"/>
                                     <constraint firstAttribute="bottom" secondItem="YCZ-2r-83J" secondAttribute="bottom" constant="8" id="j4D-TV-LMR"/>
                                     <constraint firstItem="pYp-W9-eki" firstAttribute="leading" secondItem="hh9-qG-M3M" secondAttribute="leading" id="kdc-tz-p1U"/>
                                     <constraint firstAttribute="trailing" secondItem="Jzj-cE-qGh" secondAttribute="trailing" constant="8" id="m5n-Qz-EWv"/>
                                     <constraint firstAttribute="trailing" secondItem="wpd-SN-8eg" secondAttribute="trailing" constant="8" id="mYS-x9-OvY"/>
                                     <constraint firstAttribute="trailing" secondItem="pYp-W9-eki" secondAttribute="trailing" id="oXF-yY-Ips"/>
+                                    <constraint firstItem="bGc-lj-f3H" firstAttribute="top" secondItem="YCZ-2r-83J" secondAttribute="bottom" constant="8" id="xtB-h7-aQZ"/>
                                     <constraint firstItem="Jzj-cE-qGh" firstAttribute="top" secondItem="pYp-W9-eki" secondAttribute="bottom" constant="8" id="yIB-Te-I1l"/>
                                     <constraint firstAttribute="trailing" secondItem="YCZ-2r-83J" secondAttribute="trailing" id="yYw-o8-Wg5"/>
                                     <constraint firstItem="wpd-SN-8eg" firstAttribute="top" secondItem="hh9-qG-M3M" secondAttribute="top" constant="8" id="zxI-9C-iRi"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="j4D-TV-LMR"/>
+                                        <exclude reference="Sh0-LC-1Ne"/>
+                                        <exclude reference="cTs-jv-Mgf"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -418,6 +447,8 @@
                         <outlet property="attendanceSwitch" destination="Rgz-b8-5B0" id="axC-QW-OHk"/>
                         <outlet property="backgroundView" destination="hh9-qG-M3M" id="ZA9-mV-E0C"/>
                         <outlet property="contentLabel" destination="Jzj-cE-qGh" id="chZ-kd-8jP"/>
+                        <outlet property="followButton" destination="bGc-lj-f3H" id="liB-wN-32w"/>
+                        <outlet property="followImage" destination="O1c-Kd-ecj" id="LaG-Za-Sd5"/>
                         <outlet property="nameLabel" destination="wpd-SN-8eg" id="0zh-up-0Fp"/>
                         <outlet property="newsTable" destination="O2j-tP-u6k" id="2GB-ti-vHe"/>
                         <outlet property="noNewsLabel" destination="ZGh-qH-g8f" id="ZeV-LI-2ZH"/>
@@ -839,7 +870,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-6V-xea">
                                         <rect key="frame" x="8" y="359" width="154" height="24"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                         <state key="normal" title="fullscreen" image="fullscreen48.png">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -850,7 +881,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3f-DP-yIp">
                                         <rect key="frame" x="438" y="359" width="154" height="24"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                         <state key="normal" title="reminder" image="alarm48.png">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -865,7 +896,7 @@
                                             <constraint firstAttribute="height" constant="24" id="VC8-HE-mlI"/>
                                             <constraint firstAttribute="width" constant="34" id="rYg-Ou-aR3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                         <state key="normal" title="PDF">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -879,9 +910,18 @@
                                             <action selector="pdfButtonTap:" destination="Aa2-37-DCr" eventType="touchUpInside" id="rot-ZA-blB"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh9-cs-HgN">
+                                        <rect key="frame" x="438" y="399" width="154" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                        <state key="normal" title="Calendar" image="calendar48.png"/>
+                                        <connections>
+                                            <action selector="calendarButtonTap:" destination="Aa2-37-DCr" eventType="touchUpInside" id="16w-w2-yUS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="jh9-cs-HgN" firstAttribute="top" secondItem="b3f-DP-yIp" secondAttribute="bottom" constant="16" id="0E2-tV-MsJ"/>
                                     <constraint firstItem="l2h-6V-xea" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="2Ux-0o-4mx"/>
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="323-Ja-bXU"/>
                                     <constraint firstAttribute="trailing" secondItem="oUx-S1-ozy" secondAttribute="trailing" constant="8" id="3Sz-bz-sKZ"/>
@@ -890,6 +930,7 @@
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="top" secondItem="kjg-DM-CDi" secondAttribute="bottom" constant="8" id="5yb-1i-AWF"/>
                                     <constraint firstItem="Y8c-Bb-19b" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="16" id="6DD-lV-xfl"/>
                                     <constraint firstAttribute="trailing" secondItem="kjg-DM-CDi" secondAttribute="trailing" constant="8" id="6oh-94-TVk"/>
+                                    <constraint firstItem="jh9-cs-HgN" firstAttribute="leading" secondItem="b3f-DP-yIp" secondAttribute="leading" id="90e-hP-f2P"/>
                                     <constraint firstAttribute="trailing" secondItem="7zW-bn-m2A" secondAttribute="trailing" constant="8" id="Bgz-9f-bPp"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7zW-bn-m2A" secondAttribute="bottom" constant="8" id="Gjb-QW-1hE"/>
                                     <constraint firstItem="xSX-O5-Tp7" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="LNE-ca-Jn6"/>
@@ -910,6 +951,7 @@
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="trailing" secondItem="l2h-6V-xea" secondAttribute="trailing" id="d1B-S7-KxF"/>
                                     <constraint firstItem="7zW-bn-m2A" firstAttribute="top" secondItem="BOi-BU-4bS" secondAttribute="bottom" constant="8" id="fhj-6w-J4h"/>
                                     <constraint firstItem="xSX-O5-Tp7" firstAttribute="top" secondItem="b3f-DP-yIp" secondAttribute="bottom" constant="16" id="fud-aU-iBO"/>
+                                    <constraint firstAttribute="trailing" secondItem="jh9-cs-HgN" secondAttribute="trailing" constant="8" id="h67-19-2ZK"/>
                                     <constraint firstAttribute="trailing" secondItem="BOi-BU-4bS" secondAttribute="trailing" id="jl8-Ex-1Ac"/>
                                     <constraint firstItem="b3f-DP-yIp" firstAttribute="leading" secondItem="WJf-5P-CQo" secondAttribute="leading" constant="8" id="jyW-6x-XUi"/>
                                     <constraint firstItem="BOi-BU-4bS" firstAttribute="top" secondItem="oUx-S1-ozy" secondAttribute="bottom" constant="24" id="kcr-ev-Npa"/>
@@ -975,6 +1017,7 @@
                     <connections>
                         <outlet property="authorLabel" destination="oUx-S1-ozy" id="F08-4F-VeP"/>
                         <outlet property="barBackgroundView" destination="BOi-BU-4bS" id="R0D-nc-wbs"/>
+                        <outlet property="calendarButton" destination="jh9-cs-HgN" id="4Vg-dL-2oT"/>
                         <outlet property="contentTextView" destination="7zW-bn-m2A" id="Xa8-Ln-yY8"/>
                         <outlet property="discussButton" destination="670-fW-Dmj" id="qak-7c-RDa"/>
                         <outlet property="fullscreenButton" destination="l2h-6V-xea" id="SRy-Pb-aQN"/>
@@ -4531,6 +4574,7 @@
     </scenes>
     <resources>
         <image name="alarm48.png" width="24" height="24"/>
+        <image name="calendar48.png" width="24" height="24"/>
         <image name="camera48.png" width="24" height="24"/>
         <image name="cm_math_one_splash.png" width="2131" height="2131"/>
         <image name="cross64.png" width="32" height="32"/>

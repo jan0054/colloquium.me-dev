@@ -124,6 +124,10 @@
 		B46402921B4662B80074DD72 /* venue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402701B4662B80074DD72 /* venue64@2x.png */; };
 		B46402931B4662B80074DD72 /* web48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402711B4662B80074DD72 /* web48@2x.png */; };
 		B46402941B4662B80074DD72 /* web64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402721B4662B80074DD72 /* web64@2x.png */; };
+		B47537C01C96B403002D96E5 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47537BF1C96B403002D96E5 /* EventKit.framework */; };
+		B47537C21C96BA73002D96E5 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47537C11C96BA73002D96E5 /* EventKitUI.framework */; };
+		B47537C51C96C3B7002D96E5 /* calendar48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47537C31C96C3B7002D96E5 /* calendar48@2x.png */; };
+		B47537C61C96C3B7002D96E5 /* calendar64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47537C41C96C3B7002D96E5 /* calendar64@2x.png */; };
 		B481BB8D1B73542A00FC9133 /* CareerDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B481BB8C1B73542A00FC9133 /* CareerDetailTableViewController.m */; };
 		B484678A1B68C79000C1A563 /* FullScreenTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B48467891B68C79000C1A563 /* FullScreenTextView.m */; };
 		B487C8F41B5F8BB7005F211E /* OverviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = B487C8F31B5F8BB7005F211E /* OverviewView.m */; };
@@ -353,6 +357,10 @@
 		B46402711B4662B80074DD72 /* web48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web48@2x.png"; sourceTree = "<group>"; };
 		B46402721B4662B80074DD72 /* web64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web64@2x.png"; sourceTree = "<group>"; };
 		B46EBA8A1BE3775A00F99C07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B47537BF1C96B403002D96E5 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		B47537C11C96BA73002D96E5 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		B47537C31C96C3B7002D96E5 /* calendar48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar48@2x.png"; sourceTree = "<group>"; };
+		B47537C41C96C3B7002D96E5 /* calendar64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar64@2x.png"; sourceTree = "<group>"; };
 		B481BB8B1B73542A00FC9133 /* CareerDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerDetailTableViewController.h; sourceTree = "<group>"; };
 		B481BB8C1B73542A00FC9133 /* CareerDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerDetailTableViewController.m; sourceTree = "<group>"; };
 		B48467881B68C79000C1A563 /* FullScreenTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenTextView.h; sourceTree = "<group>"; };
@@ -449,6 +457,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B47537C21C96BA73002D96E5 /* EventKitUI.framework in Frameworks */,
+				B47537C01C96B403002D96E5 /* EventKit.framework in Frameworks */,
 				B4E0BC4A1C15939800276A7B /* CoreGraphics.framework in Frameworks */,
 				B4BE91201B4BC3AC00A46E4C /* CoreLocation.framework in Frameworks */,
 				B4BE911E1B4BC39100A46E4C /* QuartzCore.framework in Frameworks */,
@@ -650,6 +660,8 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B47537C31C96C3B7002D96E5 /* calendar48@2x.png */,
+				B47537C41C96C3B7002D96E5 /* calendar64@2x.png */,
 				FD75DDA61C8F466500F27250 /* Icon-167.png */,
 				B43129FC1C8D920400B6A66F /* ios_program@2x.png */,
 				B43129FD1C8D920400B6A66F /* ios_talk@2x.png */,
@@ -814,6 +826,8 @@
 		ECA16371415E814C8D58DD93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B47537C11C96BA73002D96E5 /* EventKitUI.framework */,
+				B47537BF1C96B403002D96E5 /* EventKit.framework */,
 				B4E0BC491C15939800276A7B /* CoreGraphics.framework */,
 				B4BE911F1B4BC3AC00A46E4C /* CoreLocation.framework */,
 				B4BE911D1B4BC39100A46E4C /* QuartzCore.framework */,
@@ -904,6 +918,7 @@
 				B464027A1B4662B80074DD72 /* career64@2x.png in Resources */,
 				B4484AD01C77228600AB7C86 /* alarm48@2x.png in Resources */,
 				FD1FAE801B8CEC1A00771037 /* Icon-76@2x.png in Resources */,
+				B47537C51C96C3B7002D96E5 /* calendar48@2x.png in Resources */,
 				B464027E1B4662B80074DD72 /* event64@2x.png in Resources */,
 				B43129FB1C8D91F900B6A66F /* ios_event@2x.png in Resources */,
 				B46402941B4662B80074DD72 /* web64@2x.png in Resources */,
@@ -934,6 +949,7 @@
 				B41D57D21B96D86A00F558CF /* fullscreen48@2x.png in Resources */,
 				B40CCC261B3009B500BB11B9 /* Main.storyboard in Resources */,
 				B40CCC2B1B3009B500BB11B9 /* LaunchScreen.xib in Resources */,
+				B47537C61C96C3B7002D96E5 /* calendar64@2x.png in Resources */,
 				B495735F1C5624A300D76F2C /* tut_overview.png in Resources */,
 				B46402851B4662B80074DD72 /* news48@2x.png in Resources */,
 				B45877AE1C0D893A00EA8091 /* share48@2x.png in Resources */,

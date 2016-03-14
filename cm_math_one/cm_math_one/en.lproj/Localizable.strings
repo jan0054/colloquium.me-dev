@@ -147,6 +147,7 @@
 "title_all" = "Program";
 "menu_all" = "All";
 "filter_button" = "Filter";
+"calendar_button" = " Calendar";
 
 //fullscreen
 "fullscreen_toast" = "Tap anywhere to toggle control bar";
