@@ -25,8 +25,12 @@
 @property (strong, nonatomic) IBOutlet UITableView *newsTable;
 @property (strong, nonatomic) IBOutlet UILabel *noNewsLabel;
 
-
 - (void)processEvent: (PFObject *) object;
 - (void)processData: (NSArray *) results;
 @property UIRefreshControl *pullrefresh;
+
+@property (strong, nonatomic) IBOutlet UIImageView *followImage;
+@property (strong, nonatomic) IBOutlet UIButton *followButton;
+- (IBAction)followButtonTap:(UIButton *)sender;
+
 @end

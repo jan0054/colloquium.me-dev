@@ -47,7 +47,6 @@ BOOL disableFav;
         }
     }
     
-    
     self.emptyLabel.text = NSLocalizedString(@"empty_label", nil);
     self.emptyLabel.textColor = [UIColor primary_text];
     [self.addEventButton setTitle:NSLocalizedString(@"add_event", nil) forState:UIControlStateNormal];
@@ -427,5 +426,7 @@ BOOL disableFav;
     }
     return NO;
 }
+
+
 
 @end

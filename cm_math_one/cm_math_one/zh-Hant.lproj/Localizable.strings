@@ -283,6 +283,7 @@
 "title_all" = "演講";
 "menu_all" = "所有演講";
 "filter_button" = "分類";
+"calendar_button" = " 行事曆";
 
 //fullscreen
 "fullscreen_toast" = "點擊任一處以顯示/隱藏控制列";

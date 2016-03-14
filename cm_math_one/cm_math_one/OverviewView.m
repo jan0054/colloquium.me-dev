@@ -12,6 +12,7 @@
 #import "UIColor+ProjectColors.h"
 #import "UIViewController+ParseQueries.h"
 #import "AnnouncementCell.h"
+#import "DrawerView.h"
 
 @interface OverviewView ()
 
@@ -21,6 +22,7 @@ PFUser *admin;
 PFUser *eventSelf;
 PFObject *currentEvent;
 NSMutableArray *newsArray;
+BOOL isFollowing;
 
 @implementation OverviewView
 @synthesize pullrefresh;
@@ -42,6 +44,7 @@ NSMutableArray *newsArray;
     self.pullrefresh = [[UIRefreshControl alloc] init];
     [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
     [self.newsTable addSubview:pullrefresh];
+    self.followButton.userInteractionEnabled = NO;
     
     //styling
     [self.organizerButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
@@ -61,6 +64,12 @@ NSMutableArray *newsArray;
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 2.0f);
     self.navigationController.navigationBar.layer.shadowOpacity = 0.3f;
     self.navigationController.navigationBar.layer.shadowRadius = 2.0f;
+    [self.followImage setTintColor:[UIColor unselected_icon]];
+    UIImage *img = [UIImage imageNamed:@"star_empty48"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.followImage.image = img;
+    [self.followButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
+    [self.followButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
 
 }
 
@@ -158,6 +167,10 @@ NSMutableArray *newsArray;
     return cell;
 }
 
+- (IBAction)followButtonTap:(UIButton *)sender {
+    [self changeFollowState];
+}
+
 #pragma mark - Data
 
 - (void)processEvent: (PFObject *) object  //callback for the event query
@@ -187,6 +200,8 @@ NSMutableArray *newsArray;
     //followup stuff now that we have the event
     [self setupAttendance];
     [self getAnnouncements:self forEvent:currentEvent];
+    [self setInitialFollowState];
+    self.followButton.userInteractionEnabled = YES;
 }
 
 - (void)processData: (NSArray *) results  //callback for the news/announcement query
@@ -291,6 +306,118 @@ NSMutableArray *newsArray;
             NSLog(@"DONE: Error saving user attendance remove: %@", error);
         }
     }];
+}
+
+- (void) setInitialFollowState
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *eventIds = [defaults objectForKey:@"eventIds"];
+    NSString *currentId = currentEvent.objectId;
+    if ( [self checkIfStringArray:eventIds containsString:currentId] )   //followed
+    {
+        isFollowing = YES;
+        [self.followImage setTintColor:[UIColor primary_color_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_full48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.followImage.image = img;
+        [self.followButton setTitle:NSLocalizedString(@"unfollow_button", nil) forState:UIControlStateNormal];
+        [self.followButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    }
+    else   //not followed
+    {
+        isFollowing = NO;
+        [self.followImage setTintColor:[UIColor unselected_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_empty48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.followImage.image = img;
+        [self.followButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
+        [self.followButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
+    }
+}
+
+-(void) changeFollowState
+{
+    NSString *currentId = currentEvent.objectId;
+    NSString *currentName = currentEvent[@"name"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (isFollowing)
+    {
+        NSMutableArray *eventIds = [[NSMutableArray alloc] init];
+        [eventIds addObjectsFromArray:[defaults objectForKey:@"eventIds"]];
+        if ([eventIds containsObject:currentId])
+        {
+            [eventIds removeObject:currentId];
+        }
+        [defaults setObject:eventIds forKey:@"eventIds"];
+        
+        NSMutableArray *eventNames = [[NSMutableArray alloc] init];
+        [eventNames addObjectsFromArray:[defaults objectForKey:@"eventNames"]];
+        if ([eventNames containsObject:currentName])
+        {
+            [eventNames removeObject:currentName];
+        }
+        [defaults setObject:eventNames forKey:@"eventNames"];
+        [defaults synchronize];
+        
+        //save to parse
+        if ([PFUser currentUser])
+        {
+            PFUser *user = [PFUser currentUser];
+            [user removeObject:currentEvent forKey:@"events"];
+            [user saveInBackground];
+        }
+
+        isFollowing = NO;
+        [self.followImage setTintColor:[UIColor unselected_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_empty48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.followImage.image = img;
+        [self.followButton setTitle:NSLocalizedString(@"fav_button", nil) forState:UIControlStateNormal];
+    }
+    else
+    {
+        NSMutableArray *eventIds = [[NSMutableArray alloc] init];
+        [eventIds addObjectsFromArray:[defaults objectForKey:@"eventIds"]];
+        [eventIds addObject:currentId];
+        [defaults setObject:eventIds forKey:@"eventIds"];
+        
+        NSMutableArray *eventNames = [[NSMutableArray alloc] init];
+        [eventNames addObjectsFromArray:[defaults objectForKey:@"eventNames"]];
+        [eventNames addObject:currentName];
+        [defaults setObject:eventNames forKey:@"eventNames"];
+        [defaults synchronize];
+        
+        //save to parse
+        if ([PFUser currentUser])
+        {
+            PFUser *user = [PFUser currentUser];
+            [user addUniqueObject:currentEvent forKey:@"events"];
+            [user saveInBackground];
+        }
+
+        isFollowing = YES;
+        [self.followImage setTintColor:[UIColor primary_color_icon]];
+        UIImage *img = [UIImage imageNamed:@"star_full48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.followImage.image = img;
+        [self.followButton setTitle:NSLocalizedString(@"unfollow_button", nil) forState:UIControlStateNormal];
+
+    }
+    //update drawer
+    DrawerView *drawerViewController = (DrawerView *) self.mm_drawerController.leftDrawerViewController;
+    [drawerViewController updateEvents];
+}
+
+- (BOOL)checkIfStringArray: (NSArray *)array containsString: (NSString *) string  //utility method, checks an array for a string
+{
+    for (NSString *str in array)
+    {
+        if ([str isEqualToString:string])
+        {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end
