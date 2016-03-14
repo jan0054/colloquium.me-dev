@@ -81,8 +81,6 @@ public class BaseActivity extends AppCompatActivity {
                         if (children == null || children.size()==0) { //no childrenEvent
                             drawerGoTo(5);
                         } else {
-                            app=(cmmathApplication)getApplication();
-                            app.eventNest = 1;
                             drawerGoTo(6);
                         }
                         return true;
@@ -204,7 +202,9 @@ public class BaseActivity extends AppCompatActivity {
         }
         else
         {
-            startActivity(new Intent(this, EventWrapperActivity.class));
+            Intent intentHome = new Intent(this, HomeActivity.class);
+            intentHome.putExtra("eventNest", 1);
+            startActivity(intentHome);
         }
         drawerLayout.closeDrawers();
     }

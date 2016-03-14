@@ -31,7 +31,6 @@ public class cmmathApplication extends Application {
     public boolean isChat;
     public boolean isPerson;
     public int whereToLogin;
-    public int eventNest;
 
     @Override
     public void onCreate() {
@@ -39,7 +38,6 @@ public class cmmathApplication extends Application {
         isVisible = false;
         isChat = false;
         isPerson = false;
-        eventNest = 0;
         FacebookSdk.sdkInitialize(getApplicationContext());
         Parse.initialize(this, _PARAMS.APPLICATION_ID, _PARAMS.CLIENT_KEY);
         ParseInstallation.getCurrentInstallation().saveInBackground();

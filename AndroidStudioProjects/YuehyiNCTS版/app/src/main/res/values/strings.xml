@@ -116,6 +116,8 @@
     <string name="fullscreen_button">Toggle Color</string>
     <string name="pdf">PDF</string>
     <string name="title_filter_all">All</string>
+    <string name="follow_event">Follow</string>
+    <string name="unfollow_event">Unfollow</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

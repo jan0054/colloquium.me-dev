@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.CareerAdapter;
+import com.ashvale.cmmath_one.adapter.EventAdapter;
 import com.ashvale.cmmath_one.adapter.HomeAdapter;
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -32,6 +33,7 @@ public class HomeActivity extends BaseActivity {
     private List<ParseObject> eventObjects;
     private ParseUser curuser;
     private String eventId;
+    private EventAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,13 @@ public class HomeActivity extends BaseActivity {
         savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventset = savedEvents.getStringSet("eventids", null);
 
-        app=(cmmathApplication)getApplication();
+        int eventNest = 0;
+        if(this.getIntent().getExtras() != null) {
+            eventNest = this.getIntent().getExtras().getInt("eventNest");
+        }
 
-        if (app.eventNest == 1)
+        if (eventNest == 1)
         {
-            app.eventNest = 0;
             eventId = savedEvents.getString("currenteventid", "");
 
             ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
@@ -85,6 +89,62 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void setAdapter(final List results)
+    {
+        adapter = new EventAdapter(this, results);
+        ListView homeListView = (ListView)findViewById(R.id.homeListView);
+        homeListView.setAdapter(adapter);
+
+    }
+
+    public void refreshList()
+    {
+        savedEvents = getSharedPreferences("EVENTS", 6);
+        Set<String> eventset = savedEvents.getStringSet("eventids", null);
+
+        int eventNest = 0;
+        if(this.getIntent().getExtras() != null) {
+            eventNest = this.getIntent().getExtras().getInt("eventNest");
+        }
+
+        if (eventNest == 1)
+        {
+            eventId = savedEvents.getString("currenteventid", "");
+
+            ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
+            innerQuery.whereEqualTo("objectId", eventId);
+
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
+            query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+            query.whereMatchesQuery("parentEvent", innerQuery);
+            query.orderByDescending("start_time");
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                    if (e == null) {
+                        eventObjects = objects;
+                        setAdapter(objects);
+                    } else {
+                        Log.d("cm_app", "home query error: " + e);
+                    }
+                }
+            });
+        } else {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
+            query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+            query.whereContainedIn("objectId", eventset);
+            query.orderByDescending("start_time");
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                    if (e == null) {
+                        eventObjects = objects;
+                        setAdapter(objects);
+                    } else {
+                        Log.d("cm_app", "home query error: " + e);
+                    }
+                }
+            });
+        }
+    }
+/*    public void setAdapter(final List results)
     {
         HomeAdapter adapter = new HomeAdapter(this, results);
         ListView homeListView = (ListView)findViewById(R.id.homeListView);

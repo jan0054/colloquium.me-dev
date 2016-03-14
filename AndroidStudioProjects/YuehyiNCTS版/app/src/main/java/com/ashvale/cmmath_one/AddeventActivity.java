@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.ashvale.cmmath_one.adapter.AddEventAdapter;
+import com.ashvale.cmmath_one.adapter.EventAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -33,7 +34,7 @@ public class AddeventActivity extends BaseActivity {
     private List<ParseObject> totalEvents;
     private int[] selectedPositions;
     private SharedPreferences savedEvents;
-    private AddEventAdapter adapter;
+    private EventAdapter adapter;
     SwipeRefreshLayout swipeRefresh;
 
     @Override
@@ -88,6 +89,18 @@ public class AddeventActivity extends BaseActivity {
             processExisting(results);
         }
 
+        adapter = new EventAdapter(this, results, selectedPositions);
+        ListView eventlist = (ListView)findViewById(R.id.eventListView);
+        eventlist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        eventlist.setAdapter(adapter);
+    }
+/*    public void setAdapter(final List<ParseObject> results)
+    {
+        if(results != null) {
+            Log.d("cm_app", "Event Result have " + results.size() + " events.");
+            processExisting(results);
+        }
+
         adapter = new AddEventAdapter(this, results, selectedPositions);
         ListView eventlist = (ListView)findViewById(R.id.eventListView);
         eventlist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -123,7 +136,7 @@ public class AddeventActivity extends BaseActivity {
                 //Toast.makeText(AddeventActivity.this, "eventID: " + eventid + " count: " + selectedEventIds.size(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 
     public void saveEvents(List eventids, List eventnames)
     {
@@ -213,4 +226,8 @@ public class AddeventActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void refreshList()
+    {
+        ;
+    }
 }
