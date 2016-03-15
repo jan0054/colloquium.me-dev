@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B40298E81C980C6A001178F3 /* StreamPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B40298E71C980C6A001178F3 /* StreamPlayerView.m */; };
+		B40298EB1C9810DE001178F3 /* vidcamera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B40298E91C9810DE001178F3 /* vidcamera48@2x.png */; };
+		B40298EC1C9810DE001178F3 /* vidcamera64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B40298EA1C9810DE001178F3 /* vidcamera64@2x.png */; };
 		B406365D1B83122200D3A042 /* TimelineCommentEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B406365C1B83122200D3A042 /* TimelineCommentEmptyCell.m */; };
 		B40CCC1A1B3009B500BB11B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B40CCC191B3009B500BB11B9 /* main.m */; };
 		B40CCC1D1B3009B500BB11B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40CCC1C1B3009B500BB11B9 /* AppDelegate.m */; };
@@ -124,6 +127,8 @@
 		B46402921B4662B80074DD72 /* venue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402701B4662B80074DD72 /* venue64@2x.png */; };
 		B46402931B4662B80074DD72 /* web48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402711B4662B80074DD72 /* web48@2x.png */; };
 		B46402941B4662B80074DD72 /* web64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B46402721B4662B80074DD72 /* web64@2x.png */; };
+		B466EDE41C98036E00DB7485 /* StreamListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B466EDE31C98036E00DB7485 /* StreamListView.m */; };
+		B466EDE71C9804A600DB7485 /* StreamLinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B466EDE61C9804A600DB7485 /* StreamLinkCell.m */; };
 		B47537C01C96B403002D96E5 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47537BF1C96B403002D96E5 /* EventKit.framework */; };
 		B47537C21C96BA73002D96E5 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B47537C11C96BA73002D96E5 /* EventKitUI.framework */; };
 		B47537C51C96C3B7002D96E5 /* calendar48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B47537C31C96C3B7002D96E5 /* calendar48@2x.png */; };
@@ -191,6 +196,10 @@
 		007110BB53EB649131D36947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		97193DA692AC81F9F66B1E3B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9F8508E468F3460D0EDF3BFC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B40298E61C980C6A001178F3 /* StreamPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamPlayerView.h; sourceTree = "<group>"; };
+		B40298E71C980C6A001178F3 /* StreamPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamPlayerView.m; sourceTree = "<group>"; };
+		B40298E91C9810DE001178F3 /* vidcamera48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vidcamera48@2x.png"; sourceTree = "<group>"; };
+		B40298EA1C9810DE001178F3 /* vidcamera64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vidcamera64@2x.png"; sourceTree = "<group>"; };
 		B406365B1B83122200D3A042 /* TimelineCommentEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCommentEmptyCell.h; sourceTree = "<group>"; };
 		B406365C1B83122200D3A042 /* TimelineCommentEmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCommentEmptyCell.m; sourceTree = "<group>"; };
 		B40CCC141B3009B500BB11B9 /* cm_math_one.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cm_math_one.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,6 +365,10 @@
 		B46402701B4662B80074DD72 /* venue64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "venue64@2x.png"; sourceTree = "<group>"; };
 		B46402711B4662B80074DD72 /* web48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web48@2x.png"; sourceTree = "<group>"; };
 		B46402721B4662B80074DD72 /* web64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web64@2x.png"; sourceTree = "<group>"; };
+		B466EDE21C98036E00DB7485 /* StreamListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamListView.h; sourceTree = "<group>"; };
+		B466EDE31C98036E00DB7485 /* StreamListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamListView.m; sourceTree = "<group>"; };
+		B466EDE51C9804A600DB7485 /* StreamLinkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamLinkCell.h; sourceTree = "<group>"; };
+		B466EDE61C9804A600DB7485 /* StreamLinkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamLinkCell.m; sourceTree = "<group>"; };
 		B46EBA8A1BE3775A00F99C07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B47537BF1C96B403002D96E5 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		B47537C11C96BA73002D96E5 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
@@ -535,6 +548,10 @@
 				B41755F81B301A9800E1E8A5 /* SettingsView.m */,
 				B4BE91181B4BACB600A46E4C /* AboutUsView.h */,
 				B4BE91191B4BACB600A46E4C /* AboutUsView.m */,
+				B466EDE21C98036E00DB7485 /* StreamListView.h */,
+				B466EDE31C98036E00DB7485 /* StreamListView.m */,
+				B40298E61C980C6A001178F3 /* StreamPlayerView.h */,
+				B40298E71C980C6A001178F3 /* StreamPlayerView.m */,
 				B48A08161C7490BE0049991D /* CalendarView.h */,
 				B48A08171C7490BE0049991D /* CalendarView.m */,
 				B40CCC271B3009B500BB11B9 /* Images.xcassets */,
@@ -614,6 +631,8 @@
 				B4CE65151C73142E0087F61E /* DropDownMenuCell.h */,
 				B4CE65161C73142E0087F61E /* DropDownMenuCell.m */,
 				B4CE65171C73142E0087F61E /* DropDownMenuCell.xib */,
+				B466EDE51C9804A600DB7485 /* StreamLinkCell.h */,
+				B466EDE61C9804A600DB7485 /* StreamLinkCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -660,6 +679,8 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B40298E91C9810DE001178F3 /* vidcamera48@2x.png */,
+				B40298EA1C9810DE001178F3 /* vidcamera64@2x.png */,
 				B47537C31C96C3B7002D96E5 /* calendar48@2x.png */,
 				B47537C41C96C3B7002D96E5 /* calendar64@2x.png */,
 				FD75DDA61C8F466500F27250 /* Icon-167.png */,
@@ -901,6 +922,7 @@
 				B455D7A71B413B7300DCB6E4 /* Icon-Small-50@2x.png in Resources */,
 				B46402841B4662B80074DD72 /* nav64@2x.png in Resources */,
 				B464027D1B4662B80074DD72 /* event48@2x.png in Resources */,
+				B40298EC1C9810DE001178F3 /* vidcamera64@2x.png in Resources */,
 				B464028A1B4662B80074DD72 /* phone64@2x.png in Resources */,
 				B46402741B4662B80074DD72 /* addevent64@2x.png in Resources */,
 				B46402931B4662B80074DD72 /* web48@2x.png in Resources */,
@@ -985,6 +1007,7 @@
 				B46402801B4662B80074DD72 /* kbdown64@2x.png in Resources */,
 				B46402791B4662B80074DD72 /* career48@2x.png in Resources */,
 				B4CE65191C73142E0087F61E /* DropDownMenuCell.xib in Resources */,
+				B40298EB1C9810DE001178F3 /* vidcamera48@2x.png in Resources */,
 				B495735E1C5624A300D76F2C /* tut_home.png in Resources */,
 				B464027F1B4662B80074DD72 /* kbdown48@2x.png in Resources */,
 				B46402891B4662B80074DD72 /* phone48@2x.png in Resources */,
@@ -1078,6 +1101,7 @@
 				B455D76A1B4113A700DCB6E4 /* NewsDetailView.m in Sources */,
 				B41756031B30201900E1E8A5 /* ConversationView.m in Sources */,
 				B4BFB4FB1B31743C0035309E /* DrawerEventCell.m in Sources */,
+				B466EDE71C9804A600DB7485 /* StreamLinkCell.m in Sources */,
 				B41755FC1B301DE600E1E8A5 /* DrawerView.m in Sources */,
 				B4BFB5041B31748E0035309E /* CareerCell.m in Sources */,
 				B4BFB5291B3182030035309E /* ChatMeCell.m in Sources */,
@@ -1085,6 +1109,7 @@
 				B4BFB50B1B31810E0035309E /* VenueCell.m in Sources */,
 				B4CE361A1B79D1A2008CB21F /* InstructionsViewController.m in Sources */,
 				B455D7971B4137B500DCB6E4 /* CareerDetailCell.m in Sources */,
+				B466EDE41C98036E00DB7485 /* StreamListView.m in Sources */,
 				B455D7911B41330900DCB6E4 /* NewsDetailTextCell.m in Sources */,
 				B4BFB5141B31814A0035309E /* NewsCell.m in Sources */,
 				B484678A1B68C79000C1A563 /* FullScreenTextView.m in Sources */,
@@ -1125,6 +1150,7 @@
 				B4BE911A1B4BACB600A46E4C /* AboutUsView.m in Sources */,
 				B455D7821B41245500DCB6E4 /* ProgramForumView.m in Sources */,
 				B489FEB41B621688009BB49A /* HomeView.m in Sources */,
+				B40298E81C980C6A001178F3 /* StreamPlayerView.m in Sources */,
 				B4BFB4E91B316D210035309E /* SignUpView.m in Sources */,
 				B4BFB50E1B31812C0035309E /* AttendeeCell.m in Sources */,
 			);

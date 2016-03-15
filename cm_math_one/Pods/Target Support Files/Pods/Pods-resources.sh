@@ -70,6 +70,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/fr.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/pt-BR.lproj"
+  install_resource "youtube-ios-player-helper/youtube-ios-player-helper/Assets.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "GKImagePicker@robseward/GKImages/PLCameraSheetButton.png"
@@ -84,6 +85,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/fr.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/pt-BR.lproj"
+  install_resource "youtube-ios-player-helper/youtube-ios-player-helper/Assets.bundle"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

@@ -313,3 +313,13 @@
 "tut_p3_content" = "點擊螢幕底端不同分頁可查詢活動其他資訊，如交通住宿或與會者清單。";
 "tut_p4_title" = "點擊進入一場特定演講後..";
 "tut_p4_content" = "可從右上角按鈕進入討論區，閱讀摘要全文，或設定鬧鈴提醒演講開始。";
+
+//streaming
+"view_stream_button" = "前往觀看";
+"stream_status_future" = "直播尚未開始";
+"stream_status_current" = "直播中";
+"open_channel_button" = "開啟Colloquium.me頻道";
+"stream_empty_label" = "目前排程中沒有直播";
+
+"drawer_stream" = "會議直播";
+

@@ -73,7 +73,7 @@ NSMutableArray *favoriteEventsArray;
     }
     else
     {
-        return 3;
+        return 4;
     }
 }
 
@@ -125,6 +125,14 @@ NSMutableArray *favoriteEventsArray;
                 [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0]];
                 break;
             case 2:
+                cell.drawerTitle.text = NSLocalizedString(@"drawer_stream", nil);
+                [cell.drawerImage setTintColor:[UIColor drawer_icon_primary]];
+                img = [UIImage imageNamed:@"vidcamera48"];
+                img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                cell.drawerImage.image = img;
+                [cell.drawerTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0]];
+                break;
+            case 3:
                 cell.drawerTitle.text = NSLocalizedString(@"drawer_settings", nil);
                 [cell.drawerImage setTintColor:[UIColor drawer_icon_primary]];
                 img = [UIImage imageNamed:@"setting48"];
@@ -198,6 +206,9 @@ NSMutableArray *favoriteEventsArray;
                 centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"career_nc"];
                 break;
             case 2:
+                centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"streamlist_nc"];
+                break;
+            case 3:
                 centerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settings_nc"];
                 break;
             default:

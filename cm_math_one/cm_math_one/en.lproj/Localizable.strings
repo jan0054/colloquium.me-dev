@@ -36,6 +36,7 @@
 "drawer_settings" = "Settings";
 "drawer_edit" = "Events";
 "drawer_home" = "Followed";
+"drawer_stream" = "Video Streams";
 
 //chat&conversation
 "conv_nobody" = "No participants in conversation";
@@ -159,3 +160,10 @@
 "events_title" = "Events";
 "fav_button" = "Follow Event";
 "more_button" = "Details..";
+
+//streaming
+"view_stream_button" = "View Stream";
+"stream_status_future" = "Stream starts in";
+"stream_status_current" = "Stream is live";
+"open_channel_button" = "Go to Colloquium.me channel";
+"stream_empty_label" = "No scheduled streams found";
