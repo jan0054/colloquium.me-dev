@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AFNetworking.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -59,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SZTextView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,7 +77,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0864016FC10344172B749028CFD62CE5</key>
+		<key>0306DE3EF9AEB08DA4CC979A9EF545D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1BBD9A478F62415405CAB8F2E90A048A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,16 +97,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>56ACCC6D2491C95B4E37E2F442A95C9E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>58DA5478724588825431092CA6F6AF40</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>7C35BB95D9B36EDB125F7EC46F23E87B</key>
 		<dict>
 			<key>primary</key>
@@ -112,12 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>928353533005A4198EBDA5B700D37B64</key>
+		<key>9B916844F33E8D3CF7BC18CE424E9721</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B916844F33E8D3CF7BC18CE424E9721</key>
+		<key>9BAD93C97DD3886DA32BDC7C6A054B73</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,7 +122,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBD861FBC595F64E5EA5486CCDF1BA19</key>
+		<key>B226D59352E1741059D2FA5B2705C456</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -143,6 +138,11 @@
 			<true/>
 		</dict>
 		<key>F21523DE0EE1E35B265242490D97EE4C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FADEEB3757F8B149D22D86AB7485240C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

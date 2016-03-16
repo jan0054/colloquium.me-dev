@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6AA1859AD015081EF90FBB49'
+               BlueprintIdentifier = '91E8711382F7AB3B73C39899'
                BlueprintName = 'ContextMenu.iOS'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libContextMenu.iOS.a'>

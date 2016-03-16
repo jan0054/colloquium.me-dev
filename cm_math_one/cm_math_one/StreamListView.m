@@ -10,26 +10,61 @@
 #import "StreamPlayerView.h"
 #import "UIColor+ProjectColors.h"
 #import "StreamLinkCell.h"
+#import "MMDrawerBarButtonItem.h"
+#import "UIViewController+MMDrawerController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 NSString *selectedId;
-
+NSMutableArray *videoItems;
 
 @interface StreamListView ()
 
 @end
 
 @implementation StreamListView
+@synthesize pullrefresh;
 
 #pragma mark - Interface
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //init
+    videoItems = [[NSMutableArray alloc] init];
+    [self setupLeftMenuButton];
+    self.pullrefresh = [[UIRefreshControl alloc] init];
+    [pullrefresh addTarget:self action:@selector(refreshctrl:) forControlEvents:UIControlEventValueChanged];
+    [self.streamTable addSubview:pullrefresh];
+    self.empty_label.textColor = [UIColor dark_accent];
+    self.empty_label.text = NSLocalizedString(@"stream_empty_label", nil);
     
     //styling
     [self.openChannelButton setTitle:NSLocalizedString(@"open_channel_button", nil) forState:UIControlStateNormal];
     [self.openChannelButton setTitleColor:[UIColor accent_color] forState:UIControlStateNormal];
-    [self callYoutubeApi];
+    self.streamTable.backgroundColor = [UIColor light_bg];
+    self.view.backgroundColor = [UIColor light_bg];
+    self.topBarBackground.backgroundColor = [UIColor light_bg];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self callYoutubeApi];
+}
+
+- (void)refreshctrl:(id)sender
+{
+    [self callYoutubeApi];
+    [(UIRefreshControl *)sender endRefreshing];
+}
+
+- (void)setupLeftMenuButton {
+    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton];
+}
+
+- (void)leftDrawerButtonPress:(id)leftDrawerButtonPress {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 - (IBAction)openChannelButtonTap:(UIButton *)sender {
@@ -40,12 +75,10 @@ NSString *selectedId;
     
     if ([[UIApplication sharedApplication] canOpenURL:linkToAppURL]) {
         // Can open the youtube app URL so launch the youTube app with this URL
-        NSLog(@"native open YT");
         [[UIApplication sharedApplication] openURL:linkToAppURL];
     }
     else{
         // Can't open the youtube app URL so launch Safari instead
-        NSLog(@"web open YT");
         [[UIApplication sharedApplication] openURL:linkToWebURL];
     }
 }
@@ -60,7 +93,7 @@ NSString *selectedId;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 0;
+    return [videoItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,10 +104,8 @@ NSString *selectedId;
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor clearColor];
-    /*
     cell.backgroundCardView.backgroundColor = [UIColor whiteColor];
     cell.backgroundCardView.layer.shouldRasterize = YES;
     cell.backgroundCardView.layer.rasterizationScale = [UIScreen mainScreen].scale;
@@ -82,14 +113,43 @@ NSString *selectedId;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
-     */
+    cell.viewLabel.textColor = [UIColor dark_accent];
+    cell.viewLabel.text = NSLocalizedString(@"view_stream_button", nil);
+    cell.descriptionLabel.textColor = [UIColor secondary_text];
+    cell.statusLabel.textColor = [UIColor redColor];
+    
+    //data
+    NSDictionary *videoDictionary = [videoItems objectAtIndex:indexPath.row];
+    NSDictionary *vidDictionary = [videoDictionary objectForKey:@"id"];
+    NSString *vid = [vidDictionary objectForKey:@"videoId"];
+    cell.videoId = vid;
+    NSDictionary *snippetDictionary = [videoDictionary objectForKey:@"snippet"];
+    NSDictionary *thumbnailsDictionary = [snippetDictionary objectForKey:@"thumbnails"];
+    NSDictionary *smallThumbnailDictionary = [thumbnailsDictionary objectForKey:@"default"];
+    NSString *imageUrl = [smallThumbnailDictionary objectForKey:@"url"];
+    NSString *videoTitle = [snippetDictionary objectForKey:@"title"];
+    NSString *videoDecription = [snippetDictionary objectForKey:@"description"];
+    NSString *videoStatus = [snippetDictionary objectForKey:@"liveBroadcastContent"];
+    if ([videoStatus isEqualToString:@"none"])
+    {
+        cell.statusLabel.text = NSLocalizedString(@"stream_status_none", nil);
+    }
+    else if ([videoStatus isEqualToString:@"live"])
+    {
+        cell.statusLabel.text = NSLocalizedString(@"stream_status_live", nil);
+    }
+    cell.titleLabel.text = videoTitle;
+    cell.descriptionLabel.text = videoDecription;
+    [cell.videoThumbnail sd_setImageWithURL:[NSURL URLWithString:imageUrl]
+                      placeholderImage:[UIImage imageNamed:@"stream_default"]];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO: set selectedId
+    StreamLinkCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    selectedId = cell.videoId;
     [self performSegueWithIdentifier:@"stream_player_segue" sender:self];
 }
 
@@ -107,16 +167,15 @@ NSString *selectedId;
 
 - (void)callYoutubeApi
 {
-    NSLog(@"Started youtube api call");
-    // Set up your URL
-    NSString *youtubeApi = @"https://www.googleapis.com/youtube/v3/channels?part=contentDetails,snippet&id=UC4xO15BR3bk0ZO5Jr-X7zeA&key=AIzaSyCyA3EXv5cl3bMfnFvwhg5SNRT5cjExb0c";
+    // Set up api query URL
+    NSString *youtubeApi = @"https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCqiUSoddzJL3MZqr_Wr_96w&maxResults=50&order=date&type=video&key=AIzaSyCyA3EXv5cl3bMfnFvwhg5SNRT5cjExb0c";
     youtubeApi = [youtubeApi stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [[NSURL alloc] initWithString:youtubeApi];
     
-    // Create your request
+    // Create request
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    // Send the request asynchronously
+    // Send the request
     [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSLog(@"Async request done, response: %@", response);
         NSLog(@"Async request done, data: %@", data);
@@ -129,6 +188,20 @@ NSString *selectedId;
             if (!jsonError)
             {
                 NSLog(@"Response from YouTube: %@", jsonResult);
+                [videoItems removeAllObjects];
+                videoItems = [jsonResult objectForKey:@"items"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.streamTable reloadData];
+                    if (videoItems.count > 0)
+                    {
+                        self.empty_label.hidden = YES;
+                    }
+                    else
+                    {
+                        self.empty_label.hidden = NO;
+                    }
+
+                });
             }
             else
             {

@@ -316,8 +316,8 @@
 
 //streaming
 "view_stream_button" = "前往觀看";
-"stream_status_future" = "直播尚未開始";
-"stream_status_current" = "直播中";
+"stream_status_none" = "";
+"stream_status_live" = "Live 直播中";
 "open_channel_button" = "開啟Colloquium.me頻道";
 "stream_empty_label" = "目前排程中沒有直播";
 

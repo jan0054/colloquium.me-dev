@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *openChannelButton;
 - (IBAction)openChannelButtonTap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UITableView *streamTable;
-
+@property (strong, nonatomic) IBOutlet UILabel *empty_label;
+@property UIRefreshControl *pullrefresh;
 @end

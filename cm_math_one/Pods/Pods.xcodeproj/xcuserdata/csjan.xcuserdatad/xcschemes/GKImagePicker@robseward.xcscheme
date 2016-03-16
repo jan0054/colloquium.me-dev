@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D77F999203522F20521073DA'
+               BlueprintIdentifier = 'A9080D0034061BA6B43CAA09'
                BlueprintName = 'GKImagePicker@robseward'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libGKImagePicker@robseward.a'>

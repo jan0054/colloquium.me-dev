@@ -163,7 +163,7 @@
 
 //streaming
 "view_stream_button" = "View Stream";
-"stream_status_future" = "Stream starts in";
-"stream_status_current" = "Stream is live";
+"stream_status_none" = "";
+"stream_status_live" = "Stream is live";
 "open_channel_button" = "Go to Colloquium.me channel";
 "stream_empty_label" = "No scheduled streams found";
