@@ -228,6 +228,37 @@ public class AddeventActivity extends BaseActivity {
 
     public void refreshList()
     {
-        ;
+        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.pulltorefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ParseQuery query = new ParseQuery("Event");
+                query.whereDoesNotExist("parentEvent");
+                query.orderByDescending("start_time");
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> list, ParseException e) {
+                        setAdapter(list);
+                        swipeRefresh.setRefreshing(false);
+                    }
+                });
+
+            }
+        });
+
+        selectedEvents = new ArrayList<ParseObject>();
+        selectedEventIds = new ArrayList<String>();
+        selectedEventNames = new ArrayList<String>();
+
+        ParseQuery query = new ParseQuery("Event");
+        query.whereDoesNotExist("parentEvent");
+        query.orderByDescending("start_time");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> list, ParseException e) {
+                setAdapter(list);
+                swipeRefresh.setRefreshing(false);
+            }
+        });
     }
 }
