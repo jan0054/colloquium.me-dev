@@ -86,10 +86,10 @@ public class AddeventActivity extends BaseActivity {
     {
         if(results != null) {
             Log.d("cm_app", "Event Result have " + results.size() + " events.");
-            processExisting(results);
+            //processExisting(results);
         }
 
-        adapter = new EventAdapter(this, results, selectedPositions);
+        adapter = new EventAdapter(this, results);
         ListView eventlist = (ListView)findViewById(R.id.eventListView);
         eventlist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         eventlist.setAdapter(adapter);
@@ -157,7 +157,8 @@ public class AddeventActivity extends BaseActivity {
         }
         refreshDrawer();   //method in BaseActivity that refreshes and then open the drawer
     }
-
+    //舊的, 應該用不到了
+    /*
     public void processExisting(List<ParseObject> results)   //read local storage for selected events and select them
     {
         selectedPositions = new int[results.size()];
@@ -200,7 +201,8 @@ public class AddeventActivity extends BaseActivity {
             }
         }
     }
-
+    */
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -225,6 +227,7 @@ public class AddeventActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    */
 
     public void refreshList()
     {
@@ -242,7 +245,6 @@ public class AddeventActivity extends BaseActivity {
                         swipeRefresh.setRefreshing(false);
                     }
                 });
-
             }
         });
 

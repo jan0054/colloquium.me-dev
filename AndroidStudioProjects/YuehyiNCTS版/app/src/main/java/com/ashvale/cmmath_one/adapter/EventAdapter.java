@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.HomeActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.cmmathApplication;
+import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -34,34 +36,24 @@ import java.util.Set;
 public class EventAdapter extends BaseAdapter {
     private SharedPreferences savedEvents;
     private List<ParseObject> selectedEvents;
-    private List<String> selectedEventIds;
-    private List<String> selectedEventNames;
     private final Context context;
     private final List<ParseObject> events;
-    private final int[] selectedPositions;
 
+
+    /*
     public EventAdapter(Context context, List<ParseObject> queryresults, int[] selectedpositions) {
         this.context = context;
         this.events = queryresults;
         this.selectedPositions = selectedpositions;
         selectedEvents = new ArrayList<ParseObject>();
-        selectedEventIds = new ArrayList<String>();
-        selectedEventNames = new ArrayList<String>();
         Log.d("cm_app", "array :"+this.events.size());
     }
+    */
 
-    public EventAdapter(Context context, List queryresults) {
+    public EventAdapter(Context context, List<ParseObject> queryresults) {
         this.context = context;
         this.events = queryresults;
-        int arraySize = queryresults.size();
-        this.selectedPositions = new int[arraySize];
-        for (int i = 0; i < arraySize; i++) {
-            this.selectedPositions[i] = 1;
-        }
-        selectedEvents = new ArrayList<ParseObject>();
-        selectedEventIds = new ArrayList<String>();
-        selectedEventNames = new ArrayList<String>();
-        Log.d("cm_app", "array :"+this.events.size());
+        selectedEvents = new ArrayList<>();
     }
 
     @Override
@@ -88,21 +80,20 @@ public class EventAdapter extends BaseAdapter {
         if (view == null)
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
             view = inflater.inflate(R.layout.listitem_event, vg, false);
         }
 
-        ParseObject event = (ParseObject)events.get(position);
-
+        //UI
         ImageView followImage = (ImageView)view.findViewById(R.id.followImage);
-        TextView followString = (TextView)view.findViewById(R.id.followString);
+        Button followButton = (Button)view.findViewById(R.id.followButton);
         TextView nameLabel = (TextView)view.findViewById(R.id.eventName);
         TextView timeLabel = (TextView)view.findViewById(R.id.eventTime);
         TextView organizerLabel = (TextView)view.findViewById(R.id.eventOrg);
         TextView contentLabel = (TextView)view.findViewById(R.id.eventContent);
         TextView detailsLabel = (TextView)view.findViewById(R.id.details);
-        LinearLayout followLabel = (LinearLayout)view.findViewById(R.id.followLabel);
 
+        //Data
+        ParseObject event = events.get(position);
         Date startdate = event.getDate("start_time");
         Date enddate = event.getDate("end_time");
         Format dateformatter = new SimpleDateFormat("MM/dd");
@@ -112,77 +103,143 @@ public class EventAdapter extends BaseAdapter {
         String namestr = event.getString("name");
         String orgstr = event.getString("organizer");
 
-        final int selected = selectedPositions[position];
-        if (selected == 1)
+        //Determine follow status
+        if (isSelected(event))
         {
             followImage.setImageResource(R.drawable.star_full64);
             followImage.setColorFilter(context.getResources().getColor(R.color.primary_color_icon));
-            followString.setText(R.string.unfollow_event);
-/*            if(!selectedEventIds.contains(event.getObjectId())) {
-                selectedEventIds.add(event.getObjectId());
-                selectedEventNames.add(event.getString("name"));
-                selectedEvents.add(event);
-            }*/
+            followButton.setText(R.string.unfollow_event);
+            selectedEvents.add(event);
         }
         else
         {
             followImage.setImageResource(R.drawable.star_empty64);
             followImage.setColorFilter(context.getResources().getColor(R.color.unselected_icon));
-            followString.setText(R.string.follow_event);
+            followButton.setText(R.string.follow_event);
         }
 
+        //Write data to UI
         nameLabel.setText(namestr);
         organizerLabel.setText(orgstr);
         contentLabel.setText(contentstr);
         timeLabel.setText(startstr+" ~ "+endstr);
         detailsLabel.setTag(position);
-        followLabel.setTag(position);
+        followButton.setTag(position);
 
+        //Detail button tap
         detailsLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                savedEvents = context.getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
+                savedEvents = context.getSharedPreferences("EVENTS", 0);
                 SharedPreferences.Editor editor = savedEvents.edit();
                 int itemPosition = (int) v.getTag();
-                ParseObject curEvent = events.get(itemPosition);
-                editor.putString("currenteventid", curEvent.getObjectId());
+                ParseObject event = events.get(itemPosition);
+                editor.putString("currenteventid", event.getObjectId());
                 editor.commit();
-                List<ParseObject> children = curEvent.getList("childrenEvent");
+                List<ParseObject> children = event.getList("childrenEvent");
                 if (children == null || children.size() == 0) { //no childrenEvent
                     context.startActivity(new Intent(context, EventWrapperActivity.class));
                 } else {
                     Intent intentHome = new Intent(context, HomeActivity.class);
-                    intentHome.putExtra("eventNest", 1);
+                    intentHome.putExtra("nestedView", true);
+                    intentHome.putExtra("parentName", event.getString("name"));
                     context.startActivity(intentHome);
                 }
             }
         });
 
-        followLabel.setOnClickListener(new View.OnClickListener() {
+        //Follow button tap
+        followButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int itemPosition = (int) v.getTag();
-                ParseObject curEvent = events.get(itemPosition);
+                Button followButton = (Button)v;
+                View parent = (View)v.getParent();
+                ImageView followImage = (ImageView)parent.findViewById(R.id.followImage);
+                ParseObject event = (ParseObject)getItem(itemPosition);
 
-                saveEvents(selectedPositions[itemPosition], curEvent);
-                if(selectedPositions[itemPosition] == 1) //need unfollow
+                Log.d("cm_app", "Event follow/unfollow tap at position: " + itemPosition + " with id: " + event.getObjectId());
+
+                if(isSelected(event))   //need to unfollow
                 {
-                    selectedPositions[itemPosition] = 0;
-                    saveEvents(1, curEvent);
-                } else { //new follow
-                    selectedPositions[itemPosition] = 1;
-                    saveEvents(0, curEvent);
+                    changeFollowStatus(false, event);
+
+                    //UI change
+                    followButton.setText(R.string.follow_event);
+                    followImage.setImageResource(R.drawable.star_empty64);
+                    followImage.setColorFilter(context.getResources().getColor(R.color.unselected_icon));
                 }
-//                saveEvents();
+                else   //need to follow
+                {
+                    changeFollowStatus(true, event);
+
+                    //UI change
+                    followButton.setText(R.string.unfollow_event);
+                    followImage.setImageResource(R.drawable.star_full64);
+                    followImage.setColorFilter(context.getResources().getColor(R.color.primary_color_icon));
+                }
             }
         });
 
         return view;
     }
 
+    public void changeFollowStatus(boolean doFollow, ParseObject selectedEvent)
+    {
+        String selectedId = selectedEvent.getObjectId();
+        String selectedName = selectedEvent.getString("name");
+
+        //Write to shared preferences
+        savedEvents = context.getSharedPreferences("EVENTS", 0);
+        SharedPreferences.Editor editor = savedEvents.edit();
+        Set<String> eventIdSet = savedEvents.getStringSet("eventids", new HashSet<String>());
+        Set<String> eventNameSet = savedEvents.getStringSet("eventnames", new HashSet<String>());
+
+        if (doFollow)
+        {
+            eventIdSet.add(selectedId);
+            eventNameSet.add(selectedName);
+            selectedEvents.add(selectedEvent);
+        }
+        else
+        {
+            eventIdSet.remove(selectedId);
+            eventNameSet.remove(selectedName);
+            selectedEvents.remove(selectedEvent);
+        }
+        editor.putStringSet("eventids", eventIdSet);
+        editor.putStringSet("eventnames", eventNameSet);
+        editor.commit();
+
+        //Update drawer and refresh list if needed
+        if(context instanceof HomeActivity) {
+            ((HomeActivity)context).updateList();
+            ((HomeActivity)context).refreshDrawer();
+        } else if(context instanceof AddeventActivity) {
+            ((AddeventActivity)context).refreshDrawer();
+        }
+
+        //Upload to Parse
+        if(ParseUser.getCurrentUser()!=null) {
+            ParseUser user = ParseUser.getCurrentUser();
+            user.put("events", selectedEvents);
+            user.saveInBackground();
+        }
+    }
+
+    public boolean isSelected(ParseObject event)
+    {
+        savedEvents = context.getSharedPreferences("EVENTS", 0);
+        Set<String> eventIdSet = savedEvents.getStringSet("eventids", new HashSet<String>());
+        String eventId = event.getObjectId();
+        return eventIdSet.contains(eventId);
+    }
+
+    //底下是yuehyi寫的不知所云版本:
+    /*
     public void saveEvents(int positionValue, ParseObject curEvent)
     {
-        savedEvents = context.getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
+        savedEvents = context.getSharedPreferences("EVENTS", 0); //6 = readable+writable by other apps, use 0 for private
         SharedPreferences.Editor editor = savedEvents.edit();
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
         if (eventIdSet != null)   //there were some saved events
@@ -235,11 +292,12 @@ public class EventAdapter extends BaseAdapter {
             user.saveInBackground();
         }
         if(context instanceof HomeActivity) {
-            ((HomeActivity)context).refreshList();
+            //((HomeActivity)context).refreshList();
             ((HomeActivity)context).refreshDrawer();
         } else if(context instanceof AddeventActivity) {
-            ((AddeventActivity)context).refreshList();
+            //((AddeventActivity)context).refreshList();
             ((AddeventActivity)context).refreshDrawer();
         }
     }
+    */
 }

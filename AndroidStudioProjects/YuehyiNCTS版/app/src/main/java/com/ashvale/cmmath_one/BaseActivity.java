@@ -35,6 +35,7 @@ public class BaseActivity extends AppCompatActivity {
     public  List<ParseObject> eventObjList;
     protected cmmathApplication app;
     public NavigationView leftDrawerView;
+    private String selectedParentEventName;
 
     protected void onCreateDrawer() {
         mActivityTitle = getTitle().toString();
@@ -73,14 +74,18 @@ public class BaseActivity extends AppCompatActivity {
                     default:
                         ParseObject event = eventObjList.get(menuItem.getItemId());
                         String eventid = event.getObjectId();
-                        savedEvents = getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
+                        savedEvents = getSharedPreferences("EVENTS", 6);
                         SharedPreferences.Editor editor = savedEvents.edit();
                         editor.putString("currenteventid", eventid);
                         editor.commit();
                         List <ParseObject> children = event.getList("childrenEvent");
-                        if (children == null || children.size()==0) { //no childrenEvent
+                        if (children == null || children.size()==0)   //no children event
+                        {
                             drawerGoTo(5);
-                        } else {
+                        }
+                        else   //has children event
+                        {
+                            selectedParentEventName = event.getString("name");
                             drawerGoTo(6);
                         }
                         return true;
@@ -111,8 +116,9 @@ public class BaseActivity extends AppCompatActivity {
                 public void done(List<ParseObject> objects, com.parse.ParseException e) {
                     if (e == null) {
                         Menu drawerMenu = leftDrawerView.getMenu();
+                        drawerMenu.removeItem(999);
                         String subTitle = context.getString(R.string.title_pinned);
-                        SubMenu savedEventsMenu = drawerMenu.addSubMenu(R.id.drawer_events_group,Menu.NONE,1,subTitle);
+                        SubMenu savedEventsMenu = drawerMenu.addSubMenu(R.id.drawer_events_group,999,1,subTitle);
                         eventObjList = objects;
                         List<String> eventNames = new ArrayList<String>();
                         int itemCount = 0;
@@ -125,8 +131,8 @@ public class BaseActivity extends AppCompatActivity {
 
                         //this is a temp workaround for adding new items and forcing a refresh (Google's bug) (1/4/2016)
                         //reference: https://code.google.com/p/android/issues/detail?id=176300
-                        MenuItem mi = drawerMenu.getItem(drawerMenu.size()-1);
-                        mi.setTitle(mi.getTitle());
+                        //MenuItem mi = drawerMenu.getItem(drawerMenu.size()-1);
+                        //mi.setTitle(mi.getTitle());
                     } else {
                         Log.d("cm_app", "drawer query error: " + e);
                     }
@@ -178,7 +184,7 @@ public class BaseActivity extends AppCompatActivity {
             if (selfuser == null) {
                 toast(getString(R.string.error_not_login));
                 SharedPreferences userStatus;
-                userStatus = this.getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+                userStatus = this.getSharedPreferences("LOGIN", 0);
                 SharedPreferences.Editor editor = userStatus.edit();
                 editor.putInt("skiplogin", 0);
                 editor.commit();
@@ -196,19 +202,22 @@ public class BaseActivity extends AppCompatActivity {
         {
             startActivity(new Intent(this, SettingsActivity.class));
         }
-        else if (selection == 6)
+        else if (selection == 5)   //no children events, just show event pages
         {
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, EventWrapperActivity.class));
         }
-        else
+        else if (selection == 6)   //go show children events
         {
             Intent intentHome = new Intent(this, HomeActivity.class);
-            intentHome.putExtra("eventNest", 1);
+            intentHome.putExtra("nestedView", true);
+            intentHome.putExtra("parentName", selectedParentEventName);
             startActivity(intentHome);
         }
+
         drawerLayout.closeDrawers();
     }
-
+    //
+    /*舊的
     public void startDrawerActivity (int position)
     {
         savedEvents = getSharedPreferences("EVENTS", 6);
@@ -263,6 +272,7 @@ public class BaseActivity extends AppCompatActivity {
             startActivity(new Intent(this, EventWrapperActivity.class));
         }
     }
+    */
 
     private void setupDrawerAndActionbar() {
         mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,

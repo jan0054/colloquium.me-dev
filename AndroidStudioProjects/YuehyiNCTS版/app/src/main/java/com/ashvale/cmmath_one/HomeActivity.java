@@ -34,6 +34,7 @@ public class HomeActivity extends BaseActivity {
     private ParseUser curuser;
     private String eventId;
     private EventAdapter adapter;
+    private boolean nestedView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +42,24 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
         super.onCreateDrawer();
 
-        savedEvents = getSharedPreferences("EVENTS", 6);
-        Set<String> eventset = savedEvents.getStringSet("eventids", null);
+        savedEvents = getSharedPreferences("EVENTS", 0);
+        Set<String> eventSet = savedEvents.getStringSet("eventids", null);
 
-        int eventNest = 0;
-        if(this.getIntent().getExtras() != null) {
-            eventNest = this.getIntent().getExtras().getInt("eventNest");
+        if (this.getIntent().getExtras() != null)
+        {
+            nestedView = this.getIntent().getExtras().getBoolean("nestedView", false);
         }
 
-        if (eventNest == 1)
+        if (nestedView)   //display the children of the parent event
         {
+            //set title as the name of the parent event
+            String title = this.getIntent().getExtras().getString("parentName");
+            getSupportActionBar().setTitle(title);
+
             eventId = savedEvents.getString("currenteventid", "");
 
             ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("Event");
             innerQuery.whereEqualTo("objectId", eventId);
-
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
             query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
             query.whereMatchesQuery("parentEvent", innerQuery);
@@ -70,10 +74,12 @@ public class HomeActivity extends BaseActivity {
                     }
                 }
             });
-        } else {
+        }
+        else   //display all the followed events in "eventset"
+        {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
             query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
-            query.whereContainedIn("objectId", eventset);
+            query.whereContainedIn("objectId", eventSet);
             query.orderByDescending("start_time");
             query.findInBackground(new FindCallback<ParseObject>() {
                 public void done(List<ParseObject> objects, com.parse.ParseException e) {
@@ -93,12 +99,34 @@ public class HomeActivity extends BaseActivity {
         adapter = new EventAdapter(this, results);
         ListView homeListView = (ListView)findViewById(R.id.homeListView);
         homeListView.setAdapter(adapter);
+    }
 
+    public void updateList()
+    {
+        if (!nestedView)   //we only need to remove the unfollowed event if we are not in nested view
+        {
+            savedEvents = getSharedPreferences("EVENTS", 0);
+            Set<String> eventSet = savedEvents.getStringSet("eventids", null);
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
+            query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+            query.whereContainedIn("objectId", eventSet);
+            query.orderByDescending("start_time");
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                    if (e == null) {
+                        eventObjects = objects;
+                        setAdapter(objects);
+                    } else {
+                        Log.d("cm_app", "home query error: " + e);
+                    }
+                }
+            });
+        }
     }
 
     public void refreshList()
     {
-        savedEvents = getSharedPreferences("EVENTS", 6);
+        savedEvents = getSharedPreferences("EVENTS", 0);
         Set<String> eventset = savedEvents.getStringSet("eventids", null);
 
         int eventNest = 0;
