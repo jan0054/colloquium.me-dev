@@ -137,10 +137,11 @@ public class AddeventActivity extends BaseActivity {
             }
         });
     }*/
-
+    //舊的
+    /*
     public void saveEvents(List eventids, List eventnames)
     {
-        savedEvents = getSharedPreferences("EVENTS", 6); //6 = readable+writable by other apps, use 0 for private
+        savedEvents = getSharedPreferences("EVENTS", 0); //6 = readable+writable by other apps, use 0 for private
         SharedPreferences.Editor editor = savedEvents.edit();
         Set<String> setId = new HashSet<String>();
         Set<String> setName = new HashSet<String>();
@@ -157,6 +158,7 @@ public class AddeventActivity extends BaseActivity {
         }
         refreshDrawer();   //method in BaseActivity that refreshes and then open the drawer
     }
+    */
     //舊的, 應該用不到了
     /*
     public void processExisting(List<ParseObject> results)   //read local storage for selected events and select them

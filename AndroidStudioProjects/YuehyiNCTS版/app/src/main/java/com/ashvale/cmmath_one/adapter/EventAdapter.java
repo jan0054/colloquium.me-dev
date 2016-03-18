@@ -39,7 +39,6 @@ public class EventAdapter extends BaseAdapter {
     private final Context context;
     private final List<ParseObject> events;
 
-
     /*
     public EventAdapter(Context context, List<ParseObject> queryresults, int[] selectedpositions) {
         this.context = context;
@@ -83,14 +82,14 @@ public class EventAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.listitem_event, vg, false);
         }
 
-        //UI
+        //UI elements
         ImageView followImage = (ImageView)view.findViewById(R.id.followImage);
         Button followButton = (Button)view.findViewById(R.id.followButton);
         TextView nameLabel = (TextView)view.findViewById(R.id.eventName);
         TextView timeLabel = (TextView)view.findViewById(R.id.eventTime);
         TextView organizerLabel = (TextView)view.findViewById(R.id.eventOrg);
         TextView contentLabel = (TextView)view.findViewById(R.id.eventContent);
-        TextView detailsLabel = (TextView)view.findViewById(R.id.details);
+        Button detailButton = (Button)view.findViewById(R.id.detailButton);
 
         //Data
         ParseObject event = events.get(position);
@@ -123,11 +122,11 @@ public class EventAdapter extends BaseAdapter {
         organizerLabel.setText(orgstr);
         contentLabel.setText(contentstr);
         timeLabel.setText(startstr+" ~ "+endstr);
-        detailsLabel.setTag(position);
+        detailButton.setTag(position);
         followButton.setTag(position);
 
         //Detail button tap
-        detailsLabel.setOnClickListener(new View.OnClickListener() {
+        detailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 savedEvents = context.getSharedPreferences("EVENTS", 0);

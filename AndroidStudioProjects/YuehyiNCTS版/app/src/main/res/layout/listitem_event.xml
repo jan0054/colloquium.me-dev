@@ -13,7 +13,6 @@
         android:id="@+id/eventName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/titleLabel"
         android:fontFamily="sans-serif"
         android:gravity="center|left"
         android:text="@string/name_fake"
@@ -24,26 +23,26 @@
         android:id="@+id/eventTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/titleLabel"
         android:layout_below="@+id/eventName"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif"
         android:gravity="center|start"
         android:text="@string/date"
         android:textColor="@color/secondary_text"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        />
     <TextView
         android:id="@+id/eventOrg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/details"
         android:layout_below="@+id/eventName"
         android:gravity="center|bottom"
         android:paddingLeft="16dp"
         android:paddingRight="12dp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif"
         android:text="@string/organizer_fake"
         android:textColor="@color/secondary_text"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:layout_alignParentRight="true"/>
 
     <TextView
         android:id="@+id/eventContent"
@@ -58,16 +57,16 @@
         android:textColor="@color/primary_text"
         android:textSize="14sp"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/followLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/eventContent"
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/followImage"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scaleType="centerInside"
             android:src="@drawable/star_empty64"
             android:tint="@color/primary_color_icon" />
@@ -83,15 +82,17 @@
             android:textColor="@color/accent_color"
             android:gravity="center|left"
             android:textSize="12sp"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/eventContent"
-        android:gravity="end"
-        android:text="@string/details"
-        style="@style/ListDetail"/>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details"
+            android:id="@+id/detailButton"
+            android:textColor="@color/secondary_accent"
+            android:textSize="12sp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
 
 </RelativeLayout>

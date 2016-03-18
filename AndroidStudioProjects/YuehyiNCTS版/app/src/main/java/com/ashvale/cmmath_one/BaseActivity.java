@@ -45,7 +45,11 @@ public class BaseActivity extends AppCompatActivity {
 
         Toolbar mainToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mainToolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        setupDrawerAndActionbar();
 
+        //Drawer selection listener
         leftDrawerView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -74,16 +78,15 @@ public class BaseActivity extends AppCompatActivity {
                     default:
                         ParseObject event = eventObjList.get(menuItem.getItemId());
                         String eventid = event.getObjectId();
-                        savedEvents = getSharedPreferences("EVENTS", 6);
+                        savedEvents = getSharedPreferences("EVENTS", 0);
                         SharedPreferences.Editor editor = savedEvents.edit();
                         editor.putString("currenteventid", eventid);
-                        editor.commit();
-                        List <ParseObject> children = event.getList("childrenEvent");
-                        if (children == null || children.size()==0)   //no children event
+                        editor.commit();   //must use sync method here, .apply() is async
+                        List<ParseObject> children = event.getList("childrenEvent");
+                        if (children == null || children.size() == 0)   //no children event
                         {
                             drawerGoTo(5);
-                        }
-                        else   //has children event
+                        } else   //has children event
                         {
                             selectedParentEventName = event.getString("name");
                             drawerGoTo(6);
@@ -94,15 +97,11 @@ public class BaseActivity extends AppCompatActivity {
         });
 
         setDrawer();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        setupDrawerAndActionbar();
     }
 
     public void setDrawer()
     {
-        savedEvents = getSharedPreferences("EVENTS", 6);
+        savedEvents = getSharedPreferences("EVENTS", 0);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
         if (eventIdSet != null)   //there were some saved events
         {
@@ -114,7 +113,8 @@ public class BaseActivity extends AppCompatActivity {
             query.include("childrenEvent");
             query.findInBackground(new FindCallback<ParseObject>() {
                 public void done(List<ParseObject> objects, com.parse.ParseException e) {
-                    if (e == null) {
+                    if (e == null)
+                    {
                         Menu drawerMenu = leftDrawerView.getMenu();
                         drawerMenu.removeItem(999);
                         String subTitle = context.getString(R.string.title_pinned);
@@ -122,7 +122,8 @@ public class BaseActivity extends AppCompatActivity {
                         eventObjList = objects;
                         List<String> eventNames = new ArrayList<String>();
                         int itemCount = 0;
-                        for (ParseObject object : objects) {
+                        for (ParseObject object : objects)
+                        {
                             String name = object.getString("name");
                             eventNames.add(name);
                             savedEventsMenu.add(Menu.NONE,itemCount,Menu.NONE,name);
@@ -133,13 +134,15 @@ public class BaseActivity extends AppCompatActivity {
                         //reference: https://code.google.com/p/android/issues/detail?id=176300
                         //MenuItem mi = drawerMenu.getItem(drawerMenu.size()-1);
                         //mi.setTitle(mi.getTitle());
-                    } else {
+                    }
+                    else
+                    {
                         Log.d("cm_app", "drawer query error: " + e);
                     }
                 }
             });
         }
-        else   //no saved events found
+        else   //no saved events found, we don't have to do anything
         {
 
         }
@@ -151,7 +154,6 @@ public class BaseActivity extends AppCompatActivity {
         super.onResume();
         app=(cmmathApplication)getApplication();
         app.isVisible = true;
-        Log.d("cm_app", "APP visible now");
     }
 
     @Override
@@ -160,7 +162,6 @@ public class BaseActivity extends AppCompatActivity {
         super.onPause();
         app=(cmmathApplication)getApplication();
         app.isVisible = false;
-        Log.d("cm_app", "APP not visible");
     }
 
     public void refreshDrawer()
@@ -216,7 +217,7 @@ public class BaseActivity extends AppCompatActivity {
 
         drawerLayout.closeDrawers();
     }
-    //
+
     /*舊的
     public void startDrawerActivity (int position)
     {
@@ -280,13 +281,11 @@ public class BaseActivity extends AppCompatActivity {
 
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                //getSupportActionBar().setTitle(getString(R.string.app_name));
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                //getSupportActionBar().setTitle(mActivityTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -300,6 +299,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
     }
+
     /*
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
@@ -311,16 +311,16 @@ public class BaseActivity extends AppCompatActivity {
             return super.onCreateOptionsMenu(menu);
         }
     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     public void toast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
