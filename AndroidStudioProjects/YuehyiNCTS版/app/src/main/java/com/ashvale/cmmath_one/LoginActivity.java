@@ -115,7 +115,7 @@ public class LoginActivity extends Activity {
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
         if (eventIdSet != null)   //there were some saved events
         {
-            Intent intent = new Intent(this, HomeActivity.class);
+            Intent intent = new Intent(this, AddeventActivity.class);
             startActivity(intent);
             finish();
         }
@@ -176,7 +176,6 @@ public class LoginActivity extends Activity {
         String username = mUsername.getText().toString();
         String password = mPassword.getText().toString();
 
-        // TODO: Add more check-out for username and password!
         if (username.length() == 0 || password.length() == 0) {
             toast("Wrong username and/or password!");
             btnLogin.setEnabled(true);

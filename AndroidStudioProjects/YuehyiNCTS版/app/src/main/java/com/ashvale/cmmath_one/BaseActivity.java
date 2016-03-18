@@ -75,6 +75,9 @@ public class BaseActivity extends AppCompatActivity {
                     case R.id.drawer_settings:
                         drawerGoTo(4);
                         return true;
+                    case R.id.drawer_stream:
+                        drawerGoTo(7);
+                        return true;
                     default:
                         ParseObject event = eventObjList.get(menuItem.getItemId());
                         String eventid = event.getObjectId();
@@ -213,6 +216,10 @@ public class BaseActivity extends AppCompatActivity {
             intentHome.putExtra("nestedView", true);
             intentHome.putExtra("parentName", selectedParentEventName);
             startActivity(intentHome);
+        }
+        else if (selection == 7)
+        {
+            startActivity(new Intent(this, StreamListActivity.class));
         }
 
         drawerLayout.closeDrawers();
