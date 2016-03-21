@@ -23,6 +23,7 @@
     <color name="black_overlay">#66000000</color>
     <color name="edittext_bgtint">#00000000</color>
     <color name="hint_color">#B6B6B6</color>
+    <color name="live_video_red">#FF0000</color>
 
     <!-- Basic colors -->
     <color name="transparent">#00000000</color>

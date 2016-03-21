@@ -119,6 +119,8 @@
     <string name="title_filter_all">全部類別</string>
     <string name="follow_event">追蹤活動</string>
     <string name="unfollow_event">取消追蹤</string>
+    <string name="stream_live">實況直播</string>
+    <string name="stream_archive">錄製影片</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

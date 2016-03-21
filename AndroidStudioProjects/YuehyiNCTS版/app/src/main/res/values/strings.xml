@@ -119,6 +119,8 @@
     <string name="title_filter_all">All</string>
     <string name="follow_event">Follow</string>
     <string name="unfollow_event">Unfollow</string>
+    <string name="stream_live">Live broadcast</string>
+    <string name="stream_archive">Archived video</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

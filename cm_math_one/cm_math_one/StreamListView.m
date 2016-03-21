@@ -130,13 +130,13 @@ NSMutableArray *videoItems;
     NSString *videoTitle = [snippetDictionary objectForKey:@"title"];
     NSString *videoDecription = [snippetDictionary objectForKey:@"description"];
     NSString *videoStatus = [snippetDictionary objectForKey:@"liveBroadcastContent"];
-    if ([videoStatus isEqualToString:@"none"])
-    {
-        cell.statusLabel.text = NSLocalizedString(@"stream_status_none", nil);
-    }
-    else if ([videoStatus isEqualToString:@"live"])
+    if ([videoStatus isEqualToString:@"live"])
     {
         cell.statusLabel.text = NSLocalizedString(@"stream_status_live", nil);
+    }
+    else
+    {
+        cell.statusLabel.text = NSLocalizedString(@"stream_status_none", nil);
     }
     cell.titleLabel.text = videoTitle;
     cell.descriptionLabel.text = videoDecription;

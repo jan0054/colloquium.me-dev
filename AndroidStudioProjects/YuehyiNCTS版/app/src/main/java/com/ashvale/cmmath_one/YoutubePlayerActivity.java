@@ -15,10 +15,14 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class YoutubePlayerActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     private static final int RECOVERY_REQUEST = 1;
     private YouTubePlayerView youTubeView;
+    public String videoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +30,17 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity implements YouTub
         setContentView(R.layout.activity_youtube_player);
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         youTubeView.initialize("AIzaSyD1Awr7r-xKJy7g2sJdV8bXmbsQ7zL13Fs", this);
+
+        if (this.getIntent().getExtras() != null)
+        {
+            videoId = this.getIntent().getExtras().getString("selectedId", "");
+        }
     }
 
     @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
-            player.cueVideo("_YKh0_8UewA");
+            player.cueVideo(videoId);
         }
     }
 
