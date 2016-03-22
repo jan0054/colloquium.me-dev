@@ -3,19 +3,20 @@
 
     <group android:checkableBehavior="single"
            android:id="@+id/drawer_events_group">
-        <item android:id="@+id/drawer_home"
-            android:title="@string/title_home"
-            android:checked="false"
-            android:orderInCategory="0"
-            android:icon="@drawable/eventhome"/>
-
-    </group>
-    <group android:checkableBehavior="single">
         <item android:id="@+id/drawer_choose"
             android:title="@string/title_eventpicker"
             android:checked="false"
-            android:orderInCategory="2"
+            android:orderInCategory="0"
+            android:icon="@drawable/eventhome"/>
+        <item android:id="@+id/drawer_home"
+            android:title="@string/title_home"
+            android:checked="false"
+            android:orderInCategory="1"
             android:icon="@drawable/addevent"/>
+
+    </group>
+    <group android:checkableBehavior="single">
+
         <item android:id="@+id/drawer_chat"
             android:title="@string/title_chat"
             android:checked="false"
@@ -26,10 +27,15 @@
             android:checked="false"
             android:orderInCategory="4"
             android:icon="@drawable/career"/>
+        <item android:id="@+id/drawer_stream"
+            android:title="@string/title_stream"
+            android:checked="false"
+            android:orderInCategory="5"
+            android:icon="@drawable/vidcamera64"/>
         <item android:id="@+id/drawer_settings"
             android:title="@string/title_settings"
             android:checked="false"
-            android:orderInCategory="5"
+            android:orderInCategory="6"
             android:icon="@drawable/setting"/>
     </group>
 </menu>
