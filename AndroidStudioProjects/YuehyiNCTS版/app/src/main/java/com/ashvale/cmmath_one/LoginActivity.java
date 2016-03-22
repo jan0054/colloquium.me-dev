@@ -115,7 +115,8 @@ public class LoginActivity extends Activity {
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
         if (eventIdSet != null)   //there were some saved events
         {
-            Intent intent = new Intent(this, HomeActivity.class);
+//            Intent intent = new Intent(this, HomeActivity.class);
+            Intent intent = new Intent(this, AddeventActivity.class);
             startActivity(intent);
             finish();
         }

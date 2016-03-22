@@ -10,15 +10,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ashvale.cmmath_one.AddeventActivity;
 import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.HomeActivity;
 import com.ashvale.cmmath_one.R;
-import com.ashvale.cmmath_one.cmmathApplication;
-import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 

@@ -8,4 +8,9 @@
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryDark">@color/primary_color</item>
     </style>
+
+    <style name="buttonAsText" parent="android:Widget.Material.Button">
+        <item name="colorButtonNormal">@color/light_bg</item>
+        <item name="android:textColor">@color/accent_color</item>
+    </style>
 </resources>

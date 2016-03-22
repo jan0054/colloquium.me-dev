@@ -57,22 +57,18 @@
         android:textColor="@color/primary_text"
         android:textSize="14sp"/>
 
-    <RelativeLayout
-        android:id="@+id/followLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/eventContent"
-        android:orientation="horizontal">
         <ImageView
             android:id="@+id/followImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/eventContent"
             android:scaleType="centerInside"
             android:src="@drawable/star_empty64"
             android:tint="@color/primary_color_icon" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
+            android:layout_below="@+id/eventContent"
             android:layout_marginLeft="3dp"
             android:layout_toRightOf="@+id/followImage"
             android:layout_width="wrap_content"
@@ -84,6 +80,7 @@
             android:textSize="12sp"/>
         <Button
             style="?android:attr/buttonStyleSmall"
+            android:layout_below="@+id/eventContent"
             android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -92,7 +89,6 @@
             android:textColor="@color/secondary_accent"
             android:textSize="12sp"
             android:layout_alignParentRight="true"/>
-    </RelativeLayout>
 
 
 </RelativeLayout>
