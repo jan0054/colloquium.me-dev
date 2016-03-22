@@ -2,6 +2,7 @@ package com.ashvale.cmmath_one;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -22,20 +23,16 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class AddeventActivity extends BaseActivity {
 
-    private List<ParseObject> selectedEvents;
-    private List<String> selectedEventIds;
-    private List<String> selectedEventNames;
-    private List<ParseObject> totalEvents;
-    private int[] selectedPositions;
-    private SharedPreferences savedEvents;
     private EventAdapter adapter;
     SwipeRefreshLayout swipeRefresh;
+    private int currentTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,31 +45,63 @@ public class AddeventActivity extends BaseActivity {
 
         super.onCreateDrawer();
 
+        //current+past tabs
+        currentTab = 1;
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.event_filter_tabs);
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        TabLayout.Tab tabCurrent = tabLayout.newTab();
+        tabCurrent.setText(R.string.tab_current_events);
+        tabCurrent.setTag(1);
+        TabLayout.Tab tabPast = tabLayout.newTab();
+        tabPast.setText(R.string.tab_past_events);
+        tabPast.setTag(2);
+
+        tabLayout.addTab(tabCurrent);
+        tabLayout.addTab(tabPast);
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if ((Integer)tab.getTag() == 1 )   //current
+                {
+                    currentTab = 1;
+                }
+                else   //past
+                {
+                    currentTab = 2;
+                }
+                getEventQuery();
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
+
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.pulltorefresh);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ParseQuery query = new ParseQuery("Event");
-                query.whereDoesNotExist("parentEvent");
-                query.orderByDescending("start_time");
-                query.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> list, ParseException e) {
-                        setAdapter(list);
-                        swipeRefresh.setRefreshing(false);
-                    }
-                });
-
+                getEventQuery();
             }
         });
 
-        selectedEvents = new ArrayList<ParseObject>();
-        selectedEventIds = new ArrayList<String>();
-        selectedEventNames = new ArrayList<String>();
+        getEventQuery();
+    }
 
+    public void getEventQuery()
+    {
         ParseQuery query = new ParseQuery("Event");
         query.whereDoesNotExist("parentEvent");
         query.orderByDescending("start_time");
+        Date date = new Date();
+        if (currentTab ==1)
+        {
+            query.whereGreaterThan("end_time", date);
+        }
+        else
+        {
+            query.whereLessThan("end_time", date);
+        }
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> list, ParseException e) {
@@ -94,6 +123,7 @@ public class AddeventActivity extends BaseActivity {
         eventlist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         eventlist.setAdapter(adapter);
     }
+
 /*    public void setAdapter(final List<ParseObject> results)
     {
         if(results != null) {
@@ -230,7 +260,7 @@ public class AddeventActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
     */
-
+    /*
     public void refreshList()
     {
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.pulltorefresh);
@@ -265,4 +295,5 @@ public class AddeventActivity extends BaseActivity {
             }
         });
     }
+    */
 }
