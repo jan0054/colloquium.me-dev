@@ -55,7 +55,7 @@ NSMutableArray *videoItems;
 - (void)refreshctrl:(id)sender
 {
     [self callYoutubeApi];
-    [(UIRefreshControl *)sender endRefreshing];
+    //[(UIRefreshControl *)sender endRefreshing];
 }
 
 - (void)setupLeftMenuButton {
@@ -176,10 +176,8 @@ NSMutableArray *videoItems;
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     // Send the request
-    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        NSLog(@"Async request done, response: %@", response);
-        NSLog(@"Async request done, data: %@", data);
-        NSLog(@"Async request done, error: %@", connectionError);
+    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+    {
         // Callback, parse the data and check for errors
         if (data && !connectionError) {
             NSError *jsonError;
