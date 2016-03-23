@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ashvale.cmmath_one.adapter.CareerAdapter;
 import com.ashvale.cmmath_one.adapter.ConversationAdapter;
@@ -87,19 +88,27 @@ public class ConversationActivity extends BaseActivity {
     }
 
     public void setAdapter(final List<ParseObject> results) {
-        ConversationAdapter adapter = new ConversationAdapter(this, results);
         ListView conversationListView = (ListView) findViewById(R.id.conversationListView);
-        conversationListView.setAdapter(adapter);
-        conversationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ParseObject conversation = results.get(position);
-                String convid = conversation.getObjectId();
-                Intent intent = new Intent(ConversationActivity.this, ChatActivity.class);
-                intent.putExtra("convid", convid);
-                startActivity(intent);
-            }
-        });
+        TextView emptyLabel = (TextView) findViewById(R.id.conversationempty);
+        if (results.size()!=0) {
+            conversationListView.setVisibility(View.VISIBLE);
+            emptyLabel.setVisibility(View.INVISIBLE);
+            ConversationAdapter adapter = new ConversationAdapter(this, results);
+            conversationListView.setAdapter(adapter);
+            conversationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    ParseObject conversation = results.get(position);
+                    String convid = conversation.getObjectId();
+                    Intent intent = new Intent(ConversationActivity.this, ChatActivity.class);
+                    intent.putExtra("convid", convid);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            conversationListView.setVisibility(View.INVISIBLE);
+            emptyLabel.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

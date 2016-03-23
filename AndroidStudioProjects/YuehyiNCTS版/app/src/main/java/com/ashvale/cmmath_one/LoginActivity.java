@@ -41,9 +41,9 @@ public class LoginActivity extends Activity {
     public static final String TAG = LoginActivity.class.getSimpleName();
     private EditText mUsername;
     private EditText mPassword;
-    private TextView labelResetPWD;
-    private TextView labelSkip;
-    private Button   btnLogin;
+    private Button  labelResetPWD;
+    private Button  labelSkip;
+    private Button  btnLogin;
     protected cmmathApplication app;
     private SharedPreferences appStatus;
     private SharedPreferences userStatus;
@@ -61,8 +61,8 @@ public class LoginActivity extends Activity {
 
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
-        labelResetPWD = (TextView) findViewById(R.id.resetpwdLabel);
-        labelSkip = (TextView) findViewById(R.id.skipLabel);
+        labelResetPWD = (Button) findViewById(R.id.resetpwdLabel);
+        labelSkip = (Button) findViewById(R.id.skipLabel);
         btnLogin  = (Button) findViewById(R.id.btn_login);
 
         appStatus = getSharedPreferences("INTRO", 6); //6 = readable+writable by other apps, use 0 for private
