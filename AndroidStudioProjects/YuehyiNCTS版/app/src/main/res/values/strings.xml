@@ -77,6 +77,7 @@
     <string name="list_empty_empty"> </string>
     <string name="empty"></string>
     <string name="fullscreen_content"> </string>
+    <string name="list_empty_conversation">Choose someone to start chat</string>
     <string name="list_empty_person">This person has no scheduled presentations</string>
     <string name="list_empty_event">There are no announcements from this event yet</string>
     <string name="list_empty_followed">There are no events followed</string>

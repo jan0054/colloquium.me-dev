@@ -77,10 +77,11 @@
     <string name="list_empty_empty"> </string>
     <string name="empty"></string>
     <string name="fullscreen_content"> </string>
+    <string name="list_empty_conversation">目前沒有聊天訊息</string>
     <string name="list_empty_person">該與會者沒有演講</string>
     <string name="list_empty_event">該會議目前無公告內容</string>
-    <string name="list_empty_followed">沒有已追蹤的會議</string>
-    <string name="list_empty_stream">沒有影片</string>
+    <string name="list_empty_followed">請新增追蹤的會議</string>
+    <string name="list_empty_stream">目前沒有影片</string>
     <string name="no_result">無搜尋結果</string>
     <string name="hint_search">搜尋..</string>
     <string name="hint_comment">回應..</string>
