@@ -29,6 +29,14 @@
                     android:divider="@color/divider_color"
                     android:dividerHeight="0dp"/>
             </android.support.v4.widget.SwipeRefreshLayout>
+            <TextView android:id="@+id/streamempty"
+                      android:layout_width="match_parent"
+                      android:layout_height="120dp"
+                      android:layout_below="@+id/toolbar"
+                      android:gravity="center"
+                      android:textColor="@color/secondary_text"
+                      android:textSize="14sp"
+                      android:text="@string/list_empty_stream" />
         </RelativeLayout>
     </FrameLayout>
     <!-- The navigation drawer -->

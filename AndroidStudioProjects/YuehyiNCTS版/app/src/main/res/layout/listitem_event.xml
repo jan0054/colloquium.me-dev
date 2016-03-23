@@ -57,36 +57,38 @@
         android:textColor="@color/primary_text"
         android:textSize="14sp"/>
 
-        <ImageView
+        <ImageButton
+            style="@style/buttonAsText"
             android:id="@+id/followImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/drawyericon_size"
+            android:layout_height="@dimen/fragmenticon_size"
             android:layout_below="@+id/eventContent"
             android:scaleType="centerInside"
             android:src="@drawable/star_empty64"
             android:tint="@color/primary_color_icon" />
 
         <Button
-            style="?android:attr/buttonStyleSmall"
+            style="@style/buttonAsText"
             android:layout_below="@+id/eventContent"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="@dimen/listicon_margin"
             android:layout_toRightOf="@+id/followImage"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/fragmenticon_size"
             android:text="@string/follow_event"
             android:id="@+id/followButton"
             android:textColor="@color/accent_color"
             android:gravity="center|left"
             android:textSize="12sp"/>
         <Button
-            style="?android:attr/buttonStyleSmall"
+            style="@style/buttonAsText"
             android:layout_below="@+id/eventContent"
             android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/fragmenticon_size"
             android:text="@string/details"
             android:id="@+id/detailButton"
             android:textColor="@color/secondary_accent"
+            android:gravity="center|right"
             android:textSize="12sp"
             android:layout_alignParentRight="true"/>
 

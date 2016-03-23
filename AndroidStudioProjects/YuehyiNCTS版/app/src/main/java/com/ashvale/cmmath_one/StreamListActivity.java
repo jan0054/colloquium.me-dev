@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ashvale.cmmath_one.adapter.StreamListAdapter;
 import com.ashvale.cmmath_one.data.YoutubeHelper;
@@ -57,17 +58,25 @@ public class StreamListActivity extends BaseActivity {
 
     private void setAdapter(final List<YoutubeVideoItem> results)
     {
-        StreamListAdapter adapter = new StreamListAdapter(this, results);
-        ListView streamListView = (ListView)findViewById(R.id.streamListView);
-        streamListView.setAdapter(adapter);
-        streamListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                YoutubeVideoItem videoItem = results.get(position);
-                String vid = videoItem.getId();
-                openPlayerWithId(vid);
-            }
-        });
+        ListView streamListView = (ListView) findViewById(R.id.streamListView);
+        TextView emptyLabel = (TextView) findViewById(R.id.streamempty);
+        if (results.size()!=0) {
+            emptyLabel.setVisibility(View.INVISIBLE);
+            streamListView.setVisibility(View.VISIBLE);
+            StreamListAdapter adapter = new StreamListAdapter(this, results);
+            streamListView.setAdapter(adapter);
+            streamListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    YoutubeVideoItem videoItem = results.get(position);
+                    String vid = videoItem.getId();
+                    openPlayerWithId(vid);
+                }
+            });
+        } else {
+            streamListView.setVisibility(View.INVISIBLE);
+            emptyLabel.setVisibility(View.VISIBLE);
+        }
     }
 
     private void openPlayerWithId(String videoId)

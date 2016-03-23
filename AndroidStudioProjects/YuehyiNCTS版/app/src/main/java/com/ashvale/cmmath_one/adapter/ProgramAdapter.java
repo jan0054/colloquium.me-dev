@@ -1,7 +1,6 @@
 package com.ashvale.cmmath_one.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +10,9 @@ import android.widget.TextView;
 import com.ashvale.cmmath_one.R;
 import com.parse.ParseObject;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.TimeZone;
 
 /**
@@ -114,6 +108,7 @@ public class ProgramAdapter extends BaseAdapter {
             contentLabel.setText(talk.getString("content"));
             locationLabel.setText(getLocationName(talk));
             starttimeLabel.setText(getStartTime(talk));
+
         }
 
         return view;
@@ -132,4 +127,5 @@ public class ProgramAdapter extends BaseAdapter {
     private String getStartTime(ParseObject object) {
         return sdf.format(object.getDate("start_time"));
     }
+
 }

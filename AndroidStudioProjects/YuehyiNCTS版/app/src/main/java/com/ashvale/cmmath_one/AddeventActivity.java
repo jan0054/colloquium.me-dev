@@ -48,6 +48,10 @@ public class AddeventActivity extends BaseActivity {
 
         super.onCreateDrawer();
 
+        savedEvents = getSharedPreferences("EVENTS", 0);
+        Set<String> eventSet = savedEvents.getStringSet("eventids", null);
+        Log.d("cm_app", "AddEvent eventid: " + eventSet);
+
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.pulltorefresh);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

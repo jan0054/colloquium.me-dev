@@ -26,7 +26,14 @@
                 android:background="@color/light_grey_background"
                 android:divider="@color/divider_color"
                 android:dividerHeight="0dp"/>
-
+            <TextView android:id="@+id/homeempty"
+                      android:layout_width="match_parent"
+                      android:layout_height="120dp"
+                      android:layout_below="@+id/toolbar"
+                      android:gravity="center"
+                      android:textColor="@color/secondary_text"
+                      android:textSize="14sp"
+                      android:text="@string/list_empty_followed" />
         </RelativeLayout>
     </FrameLayout>
 

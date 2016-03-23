@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ashvale.cmmath_one.R;
@@ -44,6 +45,7 @@ public class HomeActivity extends BaseActivity {
 
         savedEvents = getSharedPreferences("EVENTS", 0);
         Set<String> eventSet = savedEvents.getStringSet("eventids", null);
+        Log.d("cm_app", "Home eventid: "+eventSet);
 
         if (this.getIntent().getExtras() != null)
         {
@@ -96,9 +98,17 @@ public class HomeActivity extends BaseActivity {
 
     public void setAdapter(final List results)
     {
-        adapter = new EventAdapter(this, results);
-        ListView homeListView = (ListView)findViewById(R.id.homeListView);
-        homeListView.setAdapter(adapter);
+        ListView homeListView = (ListView) findViewById(R.id.homeListView);
+        TextView emptyLabel = (TextView) findViewById(R.id.homeempty);
+        if (results.size()!= 0) {
+            homeListView.setVisibility(View.VISIBLE);
+            emptyLabel.setVisibility(View.INVISIBLE);
+            adapter = new EventAdapter(this, results);
+            homeListView.setAdapter(adapter);
+        } else {
+            homeListView.setVisibility(View.INVISIBLE);
+            emptyLabel.setVisibility(View.VISIBLE);
+        }
     }
 
     public void updateList()
