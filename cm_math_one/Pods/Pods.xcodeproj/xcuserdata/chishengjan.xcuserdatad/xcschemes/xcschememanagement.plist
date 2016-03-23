@@ -84,6 +84,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
 		<key>SZTextView.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -94,10 +99,25 @@
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
+		<key>youtube-ios-player-helper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0306DE3EF9AEB08DA4CC979A9EF545D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0C26FBAD15FA7261765EAFA0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1BBD9A478F62415405CAB8F2E90A048A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -222,6 +242,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9BAD93C97DD3886DA32BDC7C6A054B73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A3157A68FA226A7DEC362B03</key>
 		<dict>
 			<key>primary</key>
@@ -233,6 +258,11 @@
 			<true/>
 		</dict>
 		<key>A8526AA34ABFB99A5D4677997F6CC1B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B226D59352E1741059D2FA5B2705C456</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -293,6 +323,11 @@
 			<true/>
 		</dict>
 		<key>F21523DE0EE1E35B265242490D97EE4C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FADEEB3757F8B149D22D86AB7485240C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -65,7 +65,7 @@ public class LoginActivity extends Activity {
         labelSkip = (TextView) findViewById(R.id.skipLabel);
         btnLogin  = (Button) findViewById(R.id.btn_login);
 
-        appStatus = getSharedPreferences("INTRO", 0); //6 = readable+writable by other apps, use 0 for private
+        appStatus = getSharedPreferences("INTRO", 6); //6 = readable+writable by other apps, use 0 for private
 
         int skipintro = appStatus.getInt("skipintro", 0);
         if (skipintro == 0)
@@ -106,12 +106,12 @@ public class LoginActivity extends Activity {
     }
 
     public void skip(View view) {
-        userStatus = getSharedPreferences("LOGIN", 0); //6 = readable+writable by other apps, use 0 for private
+        userStatus = getSharedPreferences("LOGIN", 6); //6 = readable+writable by other apps, use 0 for private
         SharedPreferences.Editor editor = userStatus.edit();
         editor.putInt("skiplogin", 1);
         editor.commit();
 
-        savedEvents = getSharedPreferences("EVENTS", 0);
+        savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
         if (eventIdSet != null)   //there were some saved events
         {

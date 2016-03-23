@@ -42,7 +42,7 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
         super.onCreateDrawer();
 
-        savedEvents = getSharedPreferences("EVENTS", 0);
+        savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventSet = savedEvents.getStringSet("eventids", null);
 
         if (this.getIntent().getExtras() != null)
@@ -75,7 +75,7 @@ public class HomeActivity extends BaseActivity {
                 }
             });
         }
-        else   //display all the followed events in "eventset"
+        else if (eventSet.size()>0)  //display all the followed events in "eventset"
         {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
             query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
@@ -92,13 +92,20 @@ public class HomeActivity extends BaseActivity {
                 }
             });
         }
+        else
+        {
+            //TODO display empty message
+        }
     }
 
     public void setAdapter(final List results)
     {
-        adapter = new EventAdapter(this, results);
-        ListView homeListView = (ListView)findViewById(R.id.homeListView);
-        homeListView.setAdapter(adapter);
+        if (results.size()>0)
+        {
+            adapter = new EventAdapter(this, results);
+            ListView homeListView = (ListView)findViewById(R.id.homeListView);
+            homeListView.setAdapter(adapter);
+        }
     }
 
     public void updateList()
@@ -126,7 +133,7 @@ public class HomeActivity extends BaseActivity {
 
     public void refreshList()
     {
-        savedEvents = getSharedPreferences("EVENTS", 0);
+        savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventset = savedEvents.getStringSet("eventids", null);
 
         int eventNest = 0;

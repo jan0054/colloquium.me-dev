@@ -126,7 +126,7 @@ public class EventAdapter extends BaseAdapter {
         detailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                savedEvents = context.getSharedPreferences("EVENTS", 0);
+                savedEvents = context.getSharedPreferences("EVENTS", 6);
                 SharedPreferences.Editor editor = savedEvents.edit();
                 int itemPosition = (int) v.getTag();
                 ParseObject event = events.get(itemPosition);
@@ -186,10 +186,10 @@ public class EventAdapter extends BaseAdapter {
         String selectedName = selectedEvent.getString("name");
 
         //Write to shared preferences
-        savedEvents = context.getSharedPreferences("EVENTS", 0);
+        savedEvents = context.getSharedPreferences("EVENTS", 6);
         SharedPreferences.Editor editor = savedEvents.edit();
-        Set<String> eventIdSet = savedEvents.getStringSet("eventids", new HashSet<String>());
-        Set<String> eventNameSet = savedEvents.getStringSet("eventnames", new HashSet<String>());
+        Set<String> eventIdSet = new HashSet<String>(savedEvents.getStringSet("eventids", new HashSet<String>()));
+        Set<String> eventNameSet = new HashSet<String>(savedEvents.getStringSet("eventnames", new HashSet<String>()));
 
         if (doFollow)
         {
@@ -225,7 +225,7 @@ public class EventAdapter extends BaseAdapter {
 
     public boolean isSelected(ParseObject event)
     {
-        savedEvents = context.getSharedPreferences("EVENTS", 0);
+        savedEvents = context.getSharedPreferences("EVENTS", 6);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", new HashSet<String>());
         String eventId = event.getObjectId();
         return eventIdSet.contains(eventId);

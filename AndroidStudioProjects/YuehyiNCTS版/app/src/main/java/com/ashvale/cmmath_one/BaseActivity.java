@@ -104,8 +104,14 @@ public class BaseActivity extends AppCompatActivity {
 
     public void setDrawer()
     {
-        savedEvents = getSharedPreferences("EVENTS", 0);
+        savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventIdSet = savedEvents.getStringSet("eventids", null);
+        if (eventIdSet != null)
+        {
+            Log.d("cm_app", "Shared preference query for drawer: "+ eventIdSet.size());
+            Log.d("cm_app", eventIdSet.toString());
+        }
+
         if (eventIdSet != null)   //there were some saved events
         {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
