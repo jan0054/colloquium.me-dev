@@ -159,22 +159,22 @@
         <item>@string/userpref_detail</item>
     </string-array>
     <string-array name="intro_title_array">
-        <item>@string/choose_event_title</item>
-        <item>@string/home_title</item>
-        <item>@string/drawer_title</item>
-        <item>@string/overview_title</item>
+        <item>@string/p1_title</item>
+        <item>@string/p2_title</item>
+        <item>@string/p3_title</item>
+        <item>@string/p4_title</item>
     </string-array>
     <string-array name="intro_content_array">
-        <item>@string/choose_event_content</item>
-        <item>@string/home_content</item>
-        <item>@string/drawer_content</item>
-        <item>@string/overview_content</item>
+        <item>@string/p1_content</item>
+        <item>@string/p2_content</item>
+        <item>@string/p3_content</item>
+        <item>@string/p4_content</item>
     </string-array>
     <string-array name="intro_image_array">
-        <item>@drawable/tut_chooseevent</item>
-        <item>@drawable/tut_home</item>
-        <item>@drawable/tut_drawer</item>
-        <item>@drawable/tut_overview</item>
+        <item>@drawable/p1</item>
+        <item>@drawable/p2</item>
+        <item>@drawable/p3</item>
+        <item>@drawable/p4</item>
     </string-array>
 
     <!-- Alerts -->
@@ -195,13 +195,13 @@
     <string name="aboutus_url">http://colloquium.me</string>
 
     <!-- Tutorial strings -->
-    <string name="choose_event_title">關注您有興趣的活動</string>
-    <string name="choose_event_content">選擇關注的活動會出現在首頁以及左方選單，您隨時可以新增或改變關注的活動。</string>
-    <string name="drawer_title">主選單</string>
-    <string name="drawer_content">點擊左上角的圖示或從螢幕左方往右滑動可開啟主選單，裡面包括大多數常用功能。</string>
-    <string name="overview_title">活動資訊</string>
-    <string name="overview_content">這是活動主頁面，點擊上方各圖示或左右滑動可以使用其它活動功能。</string>
-    <string name="home_title">首頁</string>
-    <string name="home_content">這是首頁，顯示您關注的每一個活動。您可以點擊個別活動以觀看更多資訊。</string>
+    <string name="p1_title">存取主要功能</string>
+    <string name="p1_content">點擊左上角抽屜圖示，或從螢幕左側往右滑以開起抽屜選單。</string>
+    <string name="p2_title">所有會議活動</string>
+    <string name="p2_content">起始畫面顯示的是所有會議，依照時間分為當前與過去會議。您可以在有興趣的活動上點擊追蹤。</string>
+    <string name="p3_title">活動議程</string>
+    <string name="p3_content">點擊螢幕底端不同分頁可查詢活動其他資訊，如交通住宿或與會者清單。</string>
+    <string name="p4_title">點擊進入一場特定演講後..</string>
+    <string name="p4_content">可從右上角按鈕進入討論區，閱讀摘要全文，或匯出至手機行事曆。</string>
 
 </resources>

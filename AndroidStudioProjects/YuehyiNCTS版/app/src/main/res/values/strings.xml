@@ -159,22 +159,22 @@
         <item>@string/userpref_detail</item>
     </string-array>
     <string-array name="intro_title_array">
-        <item>@string/choose_event_title</item>
-        <item>@string/home_title</item>
-        <item>@string/drawer_title</item>
-        <item>@string/overview_title</item>
+        <item>@string/p1_title</item>
+        <item>@string/p2_title</item>
+        <item>@string/p3_title</item>
+        <item>@string/p4_title</item>
     </string-array>
     <string-array name="intro_content_array">
-        <item>@string/choose_event_content</item>
-        <item>@string/home_content</item>
-        <item>@string/drawer_content</item>
-        <item>@string/overview_content</item>
+        <item>@string/p1_content</item>
+        <item>@string/p2_content</item>
+        <item>@string/p3_content</item>
+        <item>@string/p4_content</item>
     </string-array>
     <string-array name="intro_image_array">
-        <item>@drawable/tut_chooseevent</item>
-        <item>@drawable/tut_home</item>
-        <item>@drawable/tut_drawer</item>
-        <item>@drawable/tut_overview</item>
+        <item>@drawable/p1</item>
+        <item>@drawable/p2</item>
+        <item>@drawable/p3</item>
+        <item>@drawable/p4</item>
     </string-array>
 
     <!-- Alerts -->
@@ -195,13 +195,13 @@
     <string name="aboutus_url">http://colloquium.me</string>
 
     <!-- Tutorial strings -->
-    <string name="choose_event_title">Follow events that interest you</string>
-    <string name="choose_event_content">Choose events that you want to follow, they will show up in your home screen and side drawer.</string>
-    <string name="drawer_title">Access common features</string>
-    <string name="drawer_content">Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer.</string>
-    <string name="overview_title">View event details</string>
-    <string name="overview_content">This is the event overview page, to see specific talks or attendees, tap on the different icons at the top of the screen.</string>
-    <string name="home_title">View all followed events</string>
-    <string name="home_content">This is the home screen, where all the events you are following are displayed. Tap any event to view the details.</string>
+    <string name="p1_title">Access common features</string>
+    <string name="p1_content">Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer.</string>
+    <string name="p2_title">View all events</string>
+    <string name="p2_content">All available events are here, grouped by current or past. Tap follow on events you are interested in.</string>
+    <string name="p3_title">View event program</string>
+    <string name="p3_content">To see other event info, such as venue or attendees, select the different tabs on the bottom.</string>
+    <string name="p4_title">In a specific talk..</string>
+    <string name="p4_content">You can ask questions in the discussion page, read the full abstract, or export to your phone calendar.</string>
 
 </resources>
