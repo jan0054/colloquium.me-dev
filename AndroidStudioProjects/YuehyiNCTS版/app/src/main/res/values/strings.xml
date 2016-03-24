@@ -80,8 +80,8 @@
     <string name="list_empty_conversation">Choose someone to start chat</string>
     <string name="list_empty_person">This person has no scheduled presentations</string>
     <string name="list_empty_event">There are no announcements from this event yet</string>
-    <string name="list_empty_followed">There are no events followed</string>
-    <string name="list_empty_stream">There are no streams</string>
+    <string name="list_empty_followed">No followed events</string>
+    <string name="list_empty_stream">No scheduled streams found</string>
     <string name="no_result">No results</string>
     <string name="hint_search">Search..</string>
     <string name="hint_comment">Comment..</string>
