@@ -238,6 +238,7 @@ NSMutableArray *headerTitleArray;
         cell.moreLabel.textColor = [UIColor dark_accent];
         cell.timeLabel.textColor = [UIColor secondary_text];
         cell.locationLabel.textColor = [UIColor secondary_text];
+        cell.moreLabel.text = NSLocalizedString(@"more_button", nil);
         
         //data
         NSMutableArray *oneDayArray = [sectionedProgramArray objectAtIndex:indexPath.section];

@@ -117,6 +117,7 @@ PFObject *selectedAttendee;
     cell.moreLabel.textColor = [UIColor dark_accent];
     cell.institutionLabel.textColor = [UIColor secondary_text];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.moreLabel.text = NSLocalizedString(@"more_button", nil);
     
     return cell;
 }
