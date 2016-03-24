@@ -59,7 +59,6 @@ public class AnnounceAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup vg)
     {
-        Log.d("cm_app", "view announce set " + position);
         if (view == null)
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

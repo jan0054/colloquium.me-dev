@@ -76,6 +76,7 @@ public class AddeventActivity extends BaseActivity {
     {
         ParseQuery query = new ParseQuery("Event");
         query.whereDoesNotExist("parentEvent");
+        query.whereEqualTo("published", 1);
         query.orderByDescending("start_time");
         Date date = new Date();
         if (currentTab ==1)

@@ -64,6 +64,7 @@ public class HomeActivity extends BaseActivity {
             innerQuery.whereEqualTo("objectId", eventId);
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
             query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+            query.whereEqualTo("published", 1);
             query.whereMatchesQuery("parentEvent", innerQuery);
             query.orderByDescending("start_time");
             query.findInBackground(new FindCallback<ParseObject>() {
@@ -81,6 +82,7 @@ public class HomeActivity extends BaseActivity {
         {
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
             query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+            query.whereEqualTo("published", 1);
             query.whereContainedIn("objectId", eventSet);
             query.orderByDescending("start_time");
             query.findInBackground(new FindCallback<ParseObject>() {
