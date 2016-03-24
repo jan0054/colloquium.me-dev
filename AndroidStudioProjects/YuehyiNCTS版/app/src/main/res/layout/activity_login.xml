@@ -29,7 +29,7 @@
             android:alpha="0.7"
             android:gravity="right"
             android:fontFamily="sans-serif"
-            android:textSize="@dimen/textSize_title"
+            android:textSize="@dimen/textSize_subtitle"
             android:textColor="@color/light_bg"
             android:text="@string/skip" />
     <EditText  android:id="@+id/username"
