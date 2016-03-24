@@ -106,10 +106,13 @@ public class ProgramFragment extends BaseFragment {
         talkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("cm_app", "Adapter onclick: " + position);
                 if (headers.contains(position)) {
                     // Is header, do nothing
+                    Log.d("cm_app", "Adapter onclick header: " + position);
                 } else   // Normal row
                 {
+                    Log.d("cm_app", "Adapter onclick normal row: " + position);
                     ParseObject talk = objects.get(position);
                     Intent intent = new Intent(getActivity(), TalkDetailActivity.class);
                     intent.putExtra("talkID", talk.getObjectId());
