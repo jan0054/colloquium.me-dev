@@ -18,13 +18,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ashvale.cmmath_one.AddeventActivity;
 import com.ashvale.cmmath_one.EventWrapperActivity;
+import com.ashvale.cmmath_one.HomeActivity;
 import com.ashvale.cmmath_one.LoginActivity;
 import com.ashvale.cmmath_one.R;
 import com.ashvale.cmmath_one.adapter.AnnounceAdapter;
@@ -42,7 +46,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,6 +78,8 @@ public class OverviewFragment extends BaseFragment {
     TextView organizerLabel;
     TextView contentLabel;
     SwipeRefreshLayout swipeRefresh;
+    Button followButton;
+    ImageButton followImage;
 
     // TODO: Rename and change types of parameters
 
@@ -162,14 +170,15 @@ public class OverviewFragment extends BaseFragment {
         organizerLabel = (TextView) getView().findViewById(R.id.overview_organizer);
         contentLabel = (TextView) getView().findViewById(R.id.overview_content);
         attendEventswitch = (android.support.v7.widget.SwitchCompat) getView().findViewById(R.id.attend_switch);
+        followImage = (ImageButton)getView().findViewById(R.id.followImage);
+        followButton = (Button)getView().findViewById(R.id.followButton);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
         query.include("admin");
         query.getInBackground(currentId, new GetCallback<ParseObject>() {
             @Override
             public void done(final ParseObject obj, ParseException e) {
-                if (e==null)
-                {
+                if (e == null) {
                     currenteventObject = obj;
                     String eventName = currenteventObject.getString("name");
                     Date startdate = currenteventObject.getDate("start_time");
@@ -180,12 +189,12 @@ public class OverviewFragment extends BaseFragment {
                     String eventOrganizer = currenteventObject.getString("organizer");
                     String eventContent = currenteventObject.getString("content");
                     boolean adminexist = currenteventObject.has("admin");
-                    if(adminexist) {
+                    if (adminexist) {
                         contactMail = currenteventObject.getParseUser("admin").getUsername().toString();
                     }
 
                     nameLabel.setText(eventName);
-                    dateLabel.setText(startstr+" ~ "+endstr);
+                    dateLabel.setText(startstr + " ~ " + endstr);
                     organizerLabel.setText(eventOrganizer);
                     contentLabel.setText(eventContent);
 
@@ -193,17 +202,44 @@ public class OverviewFragment extends BaseFragment {
                         @Override
                         public void onClick(View v) {
                             try {
-                                if(contactMail!=null && contactMail.length()!=0) {
+                                if (contactMail != null && contactMail.length() != 0) {
                                     sendEmail("", "", new String[]{contactMail}, null);
                                 }
-                            } catch (Exception e){
+                            } catch (Exception e) {
                                 e.getStackTrace();
                             }
                         }
                     });
+                    //Follow button tap
+                    if (isSelected(currenteventObject))
+                    {
+                        //UI change
+                        followButton.setText(R.string.unfollow_event);
+                        followImage.setImageResource(R.drawable.star_full64);
+                        followImage.setColorFilter(getActivity().getResources().getColor(R.color.primary_color_icon));
+                    } else   //need to follow
+                    {
+                        //UI change
+                        followButton.setText(R.string.follow_event);
+                        followImage.setImageResource(R.drawable.star_empty64);
+                        followImage.setColorFilter(getActivity().getResources().getColor(R.color.unselected_icon));
+                    }
+
+                    followButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            clickFollow(v);
+                        }
+                    });
+                    followImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            clickFollow(v);
+                        }
+                    });
                     //attendance not prepared
                     final ParseUser curuser = ParseUser.getCurrentUser();
-                    if(curuser == null) {
+                    if (curuser == null) {
                         attendEventswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                                 toast(getString(R.string.error_not_login));
@@ -213,31 +249,26 @@ public class OverviewFragment extends BaseFragment {
                                 editor.putInt("skiplogin", 0);
                                 editor.commit();
                                 Intent intent = new Intent(getActivity(), LoginActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                             }
                         });
-                    }
-                    else
-                    {
+                    } else {
                         eventAttending = new ArrayList<>();
                         eventAttending = curuser.getList("attendance");
 
                         attendEvent_on = 0;
-                        if(eventAttending == null)
-                        {
+                        if (eventAttending == null) {
                             Log.d("cm_app", "attendance is null");
                             eventAttending = new ArrayList<>();
                             attendEvent_on = 0;
-                        }
-                        else {
+                        } else {
                             Log.d("cm_app", "event number: " + eventAttending.size());
                             for (ParseObject eventobject : eventAttending) {
                                 if (eventobject.getObjectId().equals(currenteventObject.getObjectId())) {
                                     attendEvent_on = 1;
                                     break;
-                                }
-                                else {
+                                } else {
                                     Log.d("cm_app", "not this event");
                                 }
                             }
@@ -253,7 +284,7 @@ public class OverviewFragment extends BaseFragment {
                                     //email set to public
                                     if (attendEvent_on == 0) {
                                         eventAttending = curuser.getList("attendance");
-                                        if(eventAttending == null) {
+                                        if (eventAttending == null) {
                                             eventAttending = Arrays.asList(currenteventObject);
                                         } else {
                                             eventAttending.add(currenteventObject);
@@ -262,10 +293,10 @@ public class OverviewFragment extends BaseFragment {
                                         curuser.saveInBackground(new SaveCallback() {
                                             @Override
                                             public void done(ParseException e) {
-                                                if(e == null) {
-                                                    if(currenteventObject != null) {
+                                                if (e == null) {
+                                                    if (currenteventObject != null) {
                                                         List<ParseUser> userAttending = currenteventObject.getList("attendees");
-                                                        if(userAttending == null) {
+                                                        if (userAttending == null) {
                                                             userAttending = Arrays.asList(curuser);
                                                         } else {
                                                             userAttending.add(curuser);
@@ -276,7 +307,7 @@ public class OverviewFragment extends BaseFragment {
                                                         Log.d("cm_app", "error: currentevent == null");
                                                     }
                                                 } else {
-                                                    Log.d("cm_app", "write to user failed: "+e);
+                                                    Log.d("cm_app", "write to user failed: " + e);
                                                 }
                                             }
                                         });
@@ -289,15 +320,15 @@ public class OverviewFragment extends BaseFragment {
                                         curuser.saveInBackground(new SaveCallback() {
                                             @Override
                                             public void done(ParseException e) {
-                                                if(e == null) {
-                                                    if(currenteventObject !=null) {
+                                                if (e == null) {
+                                                    if (currenteventObject != null) {
                                                         currenteventObject.removeAll("attendees", Arrays.asList(curuser));
                                                         currenteventObject.saveInBackground();
                                                     } else {
                                                         Log.d("cm_app", "error: currentevent == null");
                                                     }
                                                 } else {
-                                                    Log.d("cm_app", "write to user failed"+e);
+                                                    Log.d("cm_app", "write to user failed" + e);
                                                 }
                                             }
                                         });
@@ -322,12 +353,11 @@ public class OverviewFragment extends BaseFragment {
                     query.findInBackground(new FindCallback<ParseObject>() {
                         public void done(List<ParseObject> objects, com.parse.ParseException e) {
                             if (e == null) {
-                                if(objects.size()!=0) {
+                                if (objects.size() != 0) {
                                     setAdapter(objects);
                                     swipeRefresh.setRefreshing(false);
                                     emptyText.setVisibility(View.INVISIBLE);
-                                }
-                                else {
+                                } else {
                                     announceList.setVisibility(View.INVISIBLE);
                                 }
                             } else {
@@ -337,13 +367,12 @@ public class OverviewFragment extends BaseFragment {
                     });
 
                     //to-do: get all other data and put into UI..
-                }
-                else
-                {
+                } else {
                     Log.d("cm_app", "overview event query error: " + e);
                 }
             }
         });
+
     }
     /**
      * This interface must be implemented by activities that contain this
@@ -382,7 +411,7 @@ public class OverviewFragment extends BaseFragment {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(firstVisibleItem == 0) {
+                if (firstVisibleItem == 0) {
                     swipeRefresh.setEnabled(true);
                 } else {
                     swipeRefresh.setEnabled(false);
@@ -438,4 +467,85 @@ public class OverviewFragment extends BaseFragment {
         startActivity(openInChooser);
 
     }
+    public void clickFollow(View v)
+    {
+        Button followButton;
+        ImageButton followImage;
+        if (v instanceof Button) {
+            followButton = (Button) v;
+            View parent = (View) v.getParent();
+            followImage = (ImageButton) parent.findViewById(R.id.followImage);
+        } else {
+            followImage = (ImageButton) v;
+            View parent = (View) v.getParent();
+            followButton = (Button) parent.findViewById(R.id.followButton);
+        }
+        ParseObject event = currenteventObject;
+
+        Log.d("cm_app", "Event follow/unfollow tap with id: " + event.getObjectId());
+
+        if(isSelected(event))   //need to unfollow
+        {
+            changeFollowStatus(false, event);
+
+            //UI change
+            followButton.setText(R.string.follow_event);
+            followImage.setImageResource(R.drawable.star_empty64);
+            followImage.setColorFilter(getActivity().getResources().getColor(R.color.unselected_icon));
+        }
+        else   //need to follow
+        {
+            changeFollowStatus(true, event);
+
+            //UI change
+            followButton.setText(R.string.unfollow_event);
+            followImage.setImageResource(R.drawable.star_full64);
+            followImage.setColorFilter(getActivity().getResources().getColor(R.color.primary_color_icon));
+        }
+    }
+
+    public void changeFollowStatus(boolean doFollow, ParseObject selectedEvent)
+    {
+        String selectedId = selectedEvent.getObjectId();
+        String selectedName = selectedEvent.getString("name");
+
+        //Write to shared preferences
+        savedEvents = getActivity().getSharedPreferences("EVENTS", 6);
+        SharedPreferences.Editor editor = savedEvents.edit();
+        Set<String> eventIdSet = new HashSet<String>(savedEvents.getStringSet("eventids", new HashSet<String>()));
+        Set<String> eventNameSet = new HashSet<String>(savedEvents.getStringSet("eventnames", new HashSet<String>()));
+
+        if (doFollow)
+        {
+            eventIdSet.add(selectedId);
+            eventNameSet.add(selectedName);
+//            selectedEvents.add(selectedEvent);
+        }
+        else
+        {
+            eventIdSet.remove(selectedId);
+            eventNameSet.remove(selectedName);
+//            selectedEvents.remove(selectedEvent);
+        }
+        editor.putStringSet("eventids", eventIdSet);
+        editor.putStringSet("eventnames", eventNameSet);
+        Log.d("cm_app", "id: "+eventIdSet);
+        editor.commit();
+
+        //Upload to Parse
+/*        if(ParseUser.getCurrentUser()!=null) {
+            ParseUser user = ParseUser.getCurrentUser();
+            user.put("events", selectedEvents);
+            user.saveInBackground();
+        }*/
+    }
+
+    public boolean isSelected(ParseObject event)
+    {
+        savedEvents = getActivity().getSharedPreferences("EVENTS", 6);
+        Set<String> eventIdSet = savedEvents.getStringSet("eventids", new HashSet<String>());
+        String eventId = event.getObjectId();
+        return eventIdSet.contains(eventId);
+    }
+
 }

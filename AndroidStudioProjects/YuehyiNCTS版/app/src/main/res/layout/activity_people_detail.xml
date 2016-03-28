@@ -52,7 +52,6 @@
                     android:orientation="horizontal" >
                     <Button
                         android:id="@+id/person_email"
-                        android:background="#FFFFFFFF"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -60,10 +59,9 @@
                         android:text="@string/send_email"
                         android:textColor="@color/secondary_text"
                         android:textSize="14sp"
-                        style="?android:attr/borderlessButtonStyle"/>
+                        style="@style/buttonAsText"/>
                     <Button
                         android:id="@+id/person_link"
-                        android:background="#FFFFFFFF"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -71,10 +69,9 @@
                         android:text="@string/website"
                         android:textColor="@color/secondary_text"
                         android:textSize="14sp"
-                        style="?android:attr/borderlessButtonStyle"/>
+                        style="@style/buttonAsText"/>
                     <Button
                         android:id="@+id/person_message"
-                        android:background="#FFFFFFFF"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -84,7 +81,7 @@
                         android:textSize="14sp"
                         android:visibility="invisible"
                         android:textStyle="bold"
-                        style="?android:attr/borderlessButtonStyle"/>
+                        style="@style/buttonAsText"/>
                 </LinearLayout>
             </RelativeLayout>
             <ListView android:id="@+id/talkListView"

@@ -62,7 +62,7 @@
                     android:text="@string/author_fake"
                     android:textColor="@color/accent_color"
                     android:textSize="14sp"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    style="@style/buttonAsText"/>
 
                 <TextView
                     android:id="@+id/talk_location"
@@ -118,7 +118,7 @@
                     android:onClick="goDiscuss"
                     android:text="@string/go_discuss_button"
                     android:textSize="14sp"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    style="@style/buttonAsText"/>
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -145,7 +145,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/accent_color"
                     android:textSize="14sp"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    style="@style/buttonAsText"/>
                 <Button
                     android:id="@+id/talk_pdfbtn"
                     android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/accent_color"
                     android:textSize="14sp"
-                    style="?android:attr/borderlessButtonStyle"/>
+                    style="@style/buttonAsText"/>
 
             </RelativeLayout>
         </RelativeLayout>
