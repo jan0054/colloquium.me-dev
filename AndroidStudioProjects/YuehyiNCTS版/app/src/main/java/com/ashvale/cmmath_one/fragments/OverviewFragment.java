@@ -210,9 +210,9 @@ public class OverviewFragment extends BaseFragment {
                             }
                         }
                     });
+
                     //Follow button tap
-                    if (isSelected(currenteventObject))
-                    {
+                    if (isSelected(currenteventObject)) {
                         //UI change
                         followButton.setText(R.string.unfollow_event);
                         followImage.setImageResource(R.drawable.star_full64);
@@ -366,7 +366,6 @@ public class OverviewFragment extends BaseFragment {
                         }
                     });
 
-                    //to-do: get all other data and put into UI..
                 } else {
                     Log.d("cm_app", "overview event query error: " + e);
                 }
@@ -510,7 +509,7 @@ public class OverviewFragment extends BaseFragment {
         String selectedName = selectedEvent.getString("name");
 
         //Write to shared preferences
-        savedEvents = getActivity().getSharedPreferences("EVENTS", 6);
+        savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         SharedPreferences.Editor editor = savedEvents.edit();
         Set<String> eventIdSet = new HashSet<String>(savedEvents.getStringSet("eventids", new HashSet<String>()));
         Set<String> eventNameSet = new HashSet<String>(savedEvents.getStringSet("eventnames", new HashSet<String>()));
@@ -519,25 +518,38 @@ public class OverviewFragment extends BaseFragment {
         {
             eventIdSet.add(selectedId);
             eventNameSet.add(selectedName);
-//            selectedEvents.add(selectedEvent);
         }
         else
         {
             eventIdSet.remove(selectedId);
             eventNameSet.remove(selectedName);
-//            selectedEvents.remove(selectedEvent);
         }
         editor.putStringSet("eventids", eventIdSet);
         editor.putStringSet("eventnames", eventNameSet);
-        Log.d("cm_app", "id: "+eventIdSet);
+        Log.d("cm_app", "id: " + eventIdSet);
         editor.commit();
 
+        EventWrapperActivity activity = (EventWrapperActivity)getActivity();
+        activity.refreshDrawer();
+
         //Upload to Parse
-/*        if(ParseUser.getCurrentUser()!=null) {
+        uploadToParse(doFollow, selectedEvent);
+    }
+
+    private void uploadToParse(boolean doFollow, ParseObject selectedEvent)
+    {
+        if(ParseUser.getCurrentUser()!=null) {
             ParseUser user = ParseUser.getCurrentUser();
-            user.put("events", selectedEvents);
+            if (doFollow)
+            {
+                user.addUnique("events", selectedEvent);
+            }
+            else
+            {
+                user.removeAll("events", Arrays.asList(selectedEvent));
+            }
             user.saveInBackground();
-        }*/
+        }
     }
 
     public boolean isSelected(ParseObject event)
