@@ -108,6 +108,10 @@ NSMutableArray *forumArray;
     //styling
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.timeLabel.textColor = [UIColor secondary_text];
+    [cell.avatarImageView setTintColor:[UIColor shadow_color]];
+    UIImage *img = [UIImage imageNamed:@"avatarlight48"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    cell.avatarImageView.image = img;
     
     //data
     PFObject *forum = [forumArray objectAtIndex:indexPath.row];

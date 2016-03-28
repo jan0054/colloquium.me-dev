@@ -172,6 +172,10 @@ PFUser *loggedinUser;
         youcell.contentLabel.text = contentString;
         youcell.timeLabel.text = dateString;
         youcell.authorLabel.text = [NSString stringWithFormat:@"%@ %@", author[@"first_name"], author[@"last_name"]];
+        [youcell.avatarImageView setTintColor:[UIColor shadow_color]];
+        UIImage *img = [UIImage imageNamed:@"avatarlight48"];
+        img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        youcell.avatarImageView.image = img;
         return youcell;
     }
     else

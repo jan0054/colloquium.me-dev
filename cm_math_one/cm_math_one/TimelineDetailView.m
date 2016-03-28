@@ -154,6 +154,10 @@ NSMutableArray *commentArray;
         if (indexPath.row == 0)
         {
             textcell.timeLabel.textColor = [UIColor secondary_text];
+            [textcell.avatarImageView setTintColor:[UIColor shadow_color]];
+            UIImage *img = [UIImage imageNamed:@"avatarlight48"];
+            img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            textcell.avatarImageView.image = img;
             
             PFUser *postAuthor = currentPost[@"author"];
             NSDate *date = currentPost.createdAt;

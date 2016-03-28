@@ -190,6 +190,7 @@ NSMutableArray *videoItems;
                 videoItems = [jsonResult objectForKey:@"items"];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.streamTable reloadData];
+                    [self.pullrefresh endRefreshing];
                     if (videoItems.count > 0)
                     {
                         self.empty_label.hidden = YES;

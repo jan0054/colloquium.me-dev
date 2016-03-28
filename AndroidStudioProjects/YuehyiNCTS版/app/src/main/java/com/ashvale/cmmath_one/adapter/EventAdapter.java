@@ -190,7 +190,8 @@ public class EventAdapter extends BaseAdapter {
                     followImage.setColorFilter(context.getResources().getColor(R.color.primary_color_icon));
                 }
             }
-        });*/
+        });
+        */
 
         return view;
     }
@@ -284,6 +285,5 @@ public class EventAdapter extends BaseAdapter {
         String eventId = event.getObjectId();
         return eventIdSet.contains(eventId);
     }
-
-
+    
 }

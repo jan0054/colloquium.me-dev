@@ -126,6 +126,10 @@ UIImage *selectedImage;
     cell.backgroundCardView.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
     cell.backgroundCardView.layer.shadowOpacity = 0.3f;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
+    [cell.avatarImageView setTintColor:[UIColor shadow_color]];
+    UIImage *img = [UIImage imageNamed:@"avatarlight48"];
+    img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    cell.avatarImageView.image = img;
     
     //data
     PFObject *post = [postArray objectAtIndex:indexPath.row];
