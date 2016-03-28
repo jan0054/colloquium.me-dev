@@ -36,19 +36,29 @@
                             android:layout_height="wrap_content"
                             android:padding="@dimen/list_margin"
                             android:background="@drawable/list_item">
+                            <ImageView
+                                android:layout_width="17sp"
+                                android:layout_height="17sp"
+                                android:id="@+id/avatarImageView"
+                                android:src="@drawable/avatarlight64"
+                                android:scaleType="fitCenter"
+                                android:layout_marginLeft="8sp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:tint="@color/secondary_text"/>
                             <TextView
                                 android:id="@+id/post_authorname"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
+                                android:layout_toRightOf="@+id/avatarImageView"
                                 android:layout_toLeftOf="@+id/post_createdAt"
-                                android:paddingLeft="@dimen/list_margin"
-                                android:fontFamily="sans-serif-light"
+                                android:paddingLeft="6sp"
+                                android:layout_alignParentTop="true"
+                                android:fontFamily="sans-serif"
                                 android:gravity="center|left"
                                 android:text="@string/author_fake"
                                 android:textColor="@color/secondary_text"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
+                                android:textSize="14sp" />
 
                             <TextView android:id="@+id/post_createdAt"
                                 android:layout_width="wrap_content"

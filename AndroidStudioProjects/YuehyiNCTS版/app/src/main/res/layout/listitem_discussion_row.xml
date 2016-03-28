@@ -2,12 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
+    <ImageView
+        android:layout_width="18sp"
+        android:layout_height="18sp"
+        android:id="@+id/avatarImageView"
+        android:src="@drawable/avatarlight64"
+        android:scaleType="fitCenter"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:tint="@color/secondary_text"
+        android:layout_marginLeft="8sp"/>
+
     <TextView
         android:id="@+id/discussion_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="13dp"
-        android:layout_alignParentLeft="true"
+        android:layout_toRightOf="@+id/avatarImageView"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="6sp"
         android:textColor="@color/secondary_text"
         android:textSize="16sp"
         android:fontFamily="sans-serif"
