@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.ashvale.cmmath_one.LoginActivity;
 import com.ashvale.cmmath_one.R;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 
 /**
@@ -149,6 +150,9 @@ public class SettingAdapter extends BaseAdapter {
                         context.startActivity(new Intent(context, LoginActivity.class));
                     } else//log out
                     {
+                        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                        installation.remove("user");
+                        installation.saveInBackground();
                         ParseUser.logOut();
                         notifyDataSetChanged();
                     }

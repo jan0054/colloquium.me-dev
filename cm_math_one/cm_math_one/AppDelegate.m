@@ -27,7 +27,7 @@
     [PFUser enableRevocableSessionInBackground];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    //Register for push, if running iOS 8
+    //Register for local and remote (push) notifications, first chekcing if running iOS 8
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
     {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
@@ -38,15 +38,6 @@
         [application registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
         NSLog(@"iOS8 Push registration");
-    }
-    
-    //Register for local notifications
-    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
-    {
-        UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-        UIUserNotificationSettings *mySettings =
-        [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
     }
     
     //styling
@@ -67,9 +58,6 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UIApplication sharedApplication] setStatusBarHidden:false];
 
-
-
-    
     //track first open for instruction page
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"appsetup"])
@@ -94,7 +82,6 @@
                              didFinishLaunchingWithOptions:launchOptions];
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
 
-    
     return YES;
 }
 
