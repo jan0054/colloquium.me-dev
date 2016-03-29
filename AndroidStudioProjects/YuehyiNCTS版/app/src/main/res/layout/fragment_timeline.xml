@@ -4,21 +4,32 @@
              android:layout_height="match_parent"
              xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context="com.ashvale.cmmath_one.fragments.TimelineFragment">
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/pulltorefresh"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/timelineListView"
-            android:background="@color/light_grey_background"
-            android:divider="@color/divider_color"
-            android:dividerHeight="0dp"
-            android:layout_gravity="center_horizontal|top"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent"
+        android:background="@color/light_grey_background">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/pulltorefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/timelineListView"
+                android:background="@color/light_grey_background"
+                android:divider="@color/divider_color"
+                android:dividerHeight="0dp"
+                android:layout_gravity="center_horizontal|top"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView android:id="@+id/timelineempty"
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:gravity="center"
+                  android:textColor="@color/secondary_text"
+                  android:textSize="14sp"
+                  android:text="@string/list_empty_timeline" />
 
+    </RelativeLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/newpost_fab"
         android:layout_width="wrap_content"
@@ -31,5 +42,4 @@
         android:onClick="newPost"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"/>
-
 </FrameLayout>

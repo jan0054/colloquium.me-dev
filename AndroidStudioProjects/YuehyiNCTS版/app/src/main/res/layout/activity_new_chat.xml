@@ -18,33 +18,9 @@
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/main_toolbar"/>
-            <LinearLayout
+            <include
                 android:id="@+id/search_bar"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/list_item"
-                android:layout_below="@+id/toolbar">
-                <EditText
-                    android:id="@+id/searchinput"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:layout_marginLeft="@dimen/list_margin"
-                    android:singleLine="true"
-                    android:hint="@string/hint_search"
-                    style="@style/GreyTextInput"/>
-                <ImageButton
-                    android:id="@+id/dosearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:src="@drawable/search"
-                    android:tint="@color/accent_color"
-                    android:background="#00000000" />
-            </LinearLayout>
+                layout="@layout/search_bar"/>
             <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"

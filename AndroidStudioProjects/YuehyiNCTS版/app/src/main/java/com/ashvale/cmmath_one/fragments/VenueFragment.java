@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ashvale.cmmath_one.EventWrapperActivity;
@@ -46,6 +47,7 @@ public class VenueFragment extends BaseFragment {
     public  List<ParseObject> venueObjList;
     SwipeRefreshLayout swipeRefresh;
     ListView venueList;
+    TextView venueEmptyText;
 
     // TODO: Rename and change types of parameters
 
@@ -79,6 +81,13 @@ public class VenueFragment extends BaseFragment {
 
     public void setAdapter(final List results)
     {
+        if(results.size() == 0)
+        {
+            listEmpty();
+            return;
+        }
+        venueList.setVisibility(View.VISIBLE);
+        venueEmptyText.setVisibility(View.INVISIBLE);
         VenueAdapter adapter = new VenueAdapter(getActivity(), results);
         venueList.setAdapter(adapter);
     }
@@ -140,6 +149,7 @@ public class VenueFragment extends BaseFragment {
 
     public void loadVenue() {
         venueList = (ListView)getActivity().findViewById(R.id.venueListView);
+        venueEmptyText = (TextView)getActivity().findViewById(R.id.venueempty);
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         String currentId = savedEvents.getString("currenteventid", "");
 
@@ -159,9 +169,16 @@ public class VenueFragment extends BaseFragment {
                     swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "venue query error: " + e);
+                    listEmpty();
                 }
             }
         });
+    }
+
+    public void listEmpty()
+    {
+        venueEmptyText.setVisibility(View.VISIBLE);
+        venueList.setVisibility(View.INVISIBLE);
     }
 
     private void getCall(String number) {

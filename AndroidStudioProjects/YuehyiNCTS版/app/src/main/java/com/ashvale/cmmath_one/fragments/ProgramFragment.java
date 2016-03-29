@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.PostDetailActivity;
@@ -65,6 +66,7 @@ public class ProgramFragment extends BaseFragment {
     private Menu filterMenu;
     SwipeRefreshLayout swipeRefresh;
     ListView talkList;
+    TextView talkEmptyText;
 
     // TODO: Rename and change types of parameters
 
@@ -100,6 +102,12 @@ public class ProgramFragment extends BaseFragment {
 
     public void setAdapter(final List<Integer> headers, final List<ParseObject> objects)
     {
+        if (objects.size() == 0) {
+            listEmpty();
+            return;
+        }
+        talkList.setVisibility(View.VISIBLE);
+        talkEmptyText.setVisibility(View.INVISIBLE);
         ProgramAdapter adapter = new ProgramAdapter(getActivity(), headers, objects);
         talkList.setAdapter(adapter);
 
@@ -203,6 +211,7 @@ public class ProgramFragment extends BaseFragment {
     public void loadProgram()
     {
         talkList = (ListView)getActivity().findViewById(R.id.programListView);
+        talkEmptyText = (TextView)getActivity().findViewById(R.id.programempty);
         searcharray = new ArrayList<String>();
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         currentId = savedEvents.getString("currenteventid", "");
@@ -233,9 +242,16 @@ public class ProgramFragment extends BaseFragment {
                     swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "program query error: " + e);
+                    listEmpty();
                 }
             }
         });
+    }
+
+    public void listEmpty()
+    {
+        talkEmptyText.setVisibility(View.VISIBLE);
+        talkList.setVisibility(View.INVISIBLE);
     }
 
     public void processPrograms(List<ParseObject> programs)

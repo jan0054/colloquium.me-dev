@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.PostDetailActivity;
@@ -39,6 +40,7 @@ public class TimelineFragment extends BaseFragment {
     public  List<ParseObject> postObjList;
     SwipeRefreshLayout swipeRefresh;
     ListView postList;
+    TextView postEmptyText;
 
     // TODO: Rename and change types of parameters
 
@@ -72,6 +74,12 @@ public class TimelineFragment extends BaseFragment {
 
     public void setAdapter(final List results)
     {
+        if(results.size()==0) {
+            listEmpty();
+            return;
+        }
+        postList.setVisibility(View.VISIBLE);
+        postEmptyText.setVisibility(View.INVISIBLE);
         TimelineAdapter adapter = new TimelineAdapter(getActivity(), results);
         postList.setAdapter(adapter);
 
@@ -137,6 +145,7 @@ public class TimelineFragment extends BaseFragment {
 
     public void loadTimeline() {
         postList = (ListView)getActivity().findViewById(R.id.timelineListView);
+        postEmptyText = (TextView)getActivity().findViewById(R.id.timelineempty);
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         String currentId = savedEvents.getString("currenteventid", "");
 
@@ -158,9 +167,15 @@ public class TimelineFragment extends BaseFragment {
                     swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "timeline query error: " + e);
+                    listEmpty();
                 }
             }
         });
     }
 
+    public void listEmpty()
+    {
+        postEmptyText.setVisibility(View.VISIBLE);
+        postList.setVisibility(View.INVISIBLE);
+    }
 }

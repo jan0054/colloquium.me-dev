@@ -13,10 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ashvale.cmmath_one.EventWrapperActivity;
 import com.ashvale.cmmath_one.PeopleDetailActivity;
@@ -50,6 +50,7 @@ public class AttendeeFragment extends BaseFragment{
     public ParseObject event;
     SwipeRefreshLayout swipeRefresh;
     ListView attendeeList;
+    TextView attendeeEmptyText;
 
     // TODO: Rename and change types of parameters
 
@@ -83,7 +84,13 @@ public class AttendeeFragment extends BaseFragment{
 
     public void setAdapter(final List results)
     {
+        if(results.size() == 0) {
+            listEmpty();
+            return;
+        }
         AttendeeAdapter adapter = new AttendeeAdapter(getActivity(), results);
+        attendeeEmptyText.setVisibility(View.INVISIBLE);
+        attendeeList.setVisibility(View.VISIBLE);
         attendeeList.setAdapter(adapter);
 
         attendeeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -179,6 +186,7 @@ public class AttendeeFragment extends BaseFragment{
 
     public void loadAttendee() {
         attendeeList = (ListView)getActivity().findViewById(R.id.attendeeListView);
+        attendeeEmptyText = (TextView) getActivity().findViewById(R.id.attendeeempty);
         searcharray = new ArrayList<String>();
         savedEvents = getActivity().getSharedPreferences("EVENTS", 0);
         currentId = savedEvents.getString("currenteventid", "");
@@ -200,9 +208,16 @@ public class AttendeeFragment extends BaseFragment{
                     swipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("cm_app", "attendee query error: " + e);
+                    listEmpty();
                 }
             }
         });
+    }
+
+    public void listEmpty()
+    {
+        attendeeEmptyText.setVisibility(View.VISIBLE);
+        attendeeList.setVisibility(View.INVISIBLE);
     }
 
     public void setSearchString()

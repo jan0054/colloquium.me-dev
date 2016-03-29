@@ -24,7 +24,9 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -36,6 +38,8 @@ public class HomeActivity extends BaseActivity {
     private String eventId;
     private EventAdapter adapter;
     private boolean nestedView;
+    ListView homeListView;
+    TextView emptyLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,9 @@ public class HomeActivity extends BaseActivity {
         savedEvents = getSharedPreferences("EVENTS", 6);
         Set<String> eventSet = savedEvents.getStringSet("eventids", null);
         Log.d("cm_app", "Home eventid: "+eventSet);
+
+        homeListView = (ListView) findViewById(R.id.homeListView);
+        emptyLabel = (TextView) findViewById(R.id.homeempty);
 
         if (this.getIntent().getExtras() != null)
         {
@@ -78,43 +85,52 @@ public class HomeActivity extends BaseActivity {
                 }
             });
         }
-        else if (eventSet.size()>0)  //display all the followed events in "eventset"
+        else if (eventSet!=null)
         {
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
-            query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
-            query.whereEqualTo("published", 1);
-            query.whereContainedIn("objectId", eventSet);
-            query.orderByDescending("start_time");
-            query.findInBackground(new FindCallback<ParseObject>() {
-                public void done(List<ParseObject> objects, com.parse.ParseException e) {
-                    if (e == null) {
-                        eventObjects = objects;
-                        setAdapter(objects);
-                    } else {
-                        Log.d("cm_app", "home query error: " + e);
+            if (eventSet.size() > 0)  //display all the followed events in "eventset"
+            {
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Event");
+                query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+                query.whereEqualTo("published", 1);
+                query.whereContainedIn("objectId", eventSet);
+                query.orderByDescending("start_time");
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> objects, com.parse.ParseException e) {
+                        if (e == null) {
+                            eventObjects = objects;
+                            setAdapter(objects);
+                        } else {
+                            Log.d("cm_app", "home query error: " + e);
+                            listEmpty();
+                        }
                     }
-                }
-            });
+                });
+            } else {
+                listEmpty();
+            }
         }
         else
         {
-            //TODO display empty message
+            listEmpty();
         }
     }
 
     public void setAdapter(final List results)
     {
-        ListView homeListView = (ListView) findViewById(R.id.homeListView);
-        TextView emptyLabel = (TextView) findViewById(R.id.homeempty);
         if (results.size()!= 0) {
             homeListView.setVisibility(View.VISIBLE);
             emptyLabel.setVisibility(View.INVISIBLE);
             adapter = new EventAdapter(this, results);
             homeListView.setAdapter(adapter);
         } else {
-            homeListView.setVisibility(View.INVISIBLE);
-            emptyLabel.setVisibility(View.VISIBLE);
+            listEmpty();
         }
+    }
+
+    public void listEmpty()
+    {
+        emptyLabel.setVisibility(View.VISIBLE);
+        homeListView.setVisibility(View.INVISIBLE);
     }
 
     public void updateList()

@@ -6,32 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_grey_background">
-        <LinearLayout
+        <include
             android:id="@+id/search_bar"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/list_item">
-            <EditText
-                android:id="@+id/searchinput"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="6"
-                android:layout_marginLeft="@dimen/list_margin"
-                android:hint="@string/hint_search"
-                android:backgroundTint="@color/edittext_bgtint"
-                style="@style/GreyTextInput"/>
-            <ImageButton
-                android:id="@+id/dosearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:src="@drawable/search"
-                android:tint="@color/hint_color"
-                android:background="#00000000" />
-        </LinearLayout>
+            layout="@layout/search_bar"/>
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/pulltorefresh"
             android:layout_width="match_parent"
@@ -44,5 +21,13 @@
                 android:divider="@color/divider_color"
                 android:dividerHeight="0dp"/>
         </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView android:id="@+id/programempty"
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:layout_below="@+id/search_bar"
+                  android:gravity="center"
+                  android:textColor="@color/secondary_text"
+                  android:textSize="14sp"
+                  android:text="@string/list_empty_program" />
     </RelativeLayout>
 </FrameLayout>
