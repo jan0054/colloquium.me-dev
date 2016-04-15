@@ -148,6 +148,11 @@
 		B495735E1C5624A300D76F2C /* tut_home.png in Resources */ = {isa = PBXBuildFile; fileRef = B495735A1C5624A300D76F2C /* tut_home.png */; };
 		B495735F1C5624A300D76F2C /* tut_overview.png in Resources */ = {isa = PBXBuildFile; fileRef = B495735B1C5624A300D76F2C /* tut_overview.png */; };
 		B49573631C562AAF00D76F2C /* tut_choose_event.png in Resources */ = {isa = PBXBuildFile; fileRef = B49573621C562AAF00D76F2C /* tut_choose_event.png */; };
+		B496F72D1CC0D4E200DCCBCF /* WordSharingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B496F72C1CC0D4E200DCCBCF /* WordSharingView.m */; };
+		B496F7301CC0DD2B00DCCBCF /* WordSharingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B496F72F1CC0DD2B00DCCBCF /* WordSharingCell.m */; };
+		B496F7331CC0F19B00DCCBCF /* WordSharingInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B496F7321CC0F19B00DCCBCF /* WordSharingInputCell.m */; };
+		B496F7361CC0FBDA00DCCBCF /* sharelink48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B496F7341CC0FBDA00DCCBCF /* sharelink48@2x.png */; };
+		B496F7371CC0FBDA00DCCBCF /* sharelink64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B496F7351CC0FBDA00DCCBCF /* sharelink64@2x.png */; };
 		B4996E3C1BF0892900B109E9 /* AnnouncementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B4996E3B1BF0892900B109E9 /* AnnouncementCell.m */; };
 		B49F40151C996D8A00CCAE85 /* stream_default.png in Resources */ = {isa = PBXBuildFile; fileRef = B49F40141C996D8A00CCAE85 /* stream_default.png */; };
 		B4A223D31BEC9D4600B9313F /* check48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4A223CF1BEC9D4600B9313F /* check48@2x.png */; };
@@ -397,6 +402,14 @@
 		B495735A1C5624A300D76F2C /* tut_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tut_home.png; sourceTree = "<group>"; };
 		B495735B1C5624A300D76F2C /* tut_overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tut_overview.png; sourceTree = "<group>"; };
 		B49573621C562AAF00D76F2C /* tut_choose_event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tut_choose_event.png; sourceTree = "<group>"; };
+		B496F72B1CC0D4E200DCCBCF /* WordSharingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSharingView.h; sourceTree = "<group>"; };
+		B496F72C1CC0D4E200DCCBCF /* WordSharingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSharingView.m; sourceTree = "<group>"; };
+		B496F72E1CC0DD2B00DCCBCF /* WordSharingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSharingCell.h; sourceTree = "<group>"; };
+		B496F72F1CC0DD2B00DCCBCF /* WordSharingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSharingCell.m; sourceTree = "<group>"; };
+		B496F7311CC0F19B00DCCBCF /* WordSharingInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSharingInputCell.h; sourceTree = "<group>"; };
+		B496F7321CC0F19B00DCCBCF /* WordSharingInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSharingInputCell.m; sourceTree = "<group>"; };
+		B496F7341CC0FBDA00DCCBCF /* sharelink48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharelink48@2x.png"; sourceTree = "<group>"; };
+		B496F7351CC0FBDA00DCCBCF /* sharelink64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharelink64@2x.png"; sourceTree = "<group>"; };
 		B4996E3A1BF0892900B109E9 /* AnnouncementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementCell.h; sourceTree = "<group>"; };
 		B4996E3B1BF0892900B109E9 /* AnnouncementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementCell.m; sourceTree = "<group>"; };
 		B49F40141C996D8A00CCAE85 /* stream_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stream_default.png; sourceTree = "<group>"; };
@@ -556,6 +569,8 @@
 				B40298E71C980C6A001178F3 /* StreamPlayerView.m */,
 				B48A08161C7490BE0049991D /* CalendarView.h */,
 				B48A08171C7490BE0049991D /* CalendarView.m */,
+				B496F72B1CC0D4E200DCCBCF /* WordSharingView.h */,
+				B496F72C1CC0D4E200DCCBCF /* WordSharingView.m */,
 				B40CCC271B3009B500BB11B9 /* Images.xcassets */,
 				B40CCC291B3009B500BB11B9 /* LaunchScreen.xib */,
 				B40CCC171B3009B500BB11B9 /* Supporting Files */,
@@ -635,6 +650,10 @@
 				B4CE65171C73142E0087F61E /* DropDownMenuCell.xib */,
 				B466EDE51C9804A600DB7485 /* StreamLinkCell.h */,
 				B466EDE61C9804A600DB7485 /* StreamLinkCell.m */,
+				B496F72E1CC0DD2B00DCCBCF /* WordSharingCell.h */,
+				B496F72F1CC0DD2B00DCCBCF /* WordSharingCell.m */,
+				B496F7311CC0F19B00DCCBCF /* WordSharingInputCell.h */,
+				B496F7321CC0F19B00DCCBCF /* WordSharingInputCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -681,6 +700,8 @@
 		B41756001B301F8200E1E8A5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B496F7341CC0FBDA00DCCBCF /* sharelink48@2x.png */,
+				B496F7351CC0FBDA00DCCBCF /* sharelink64@2x.png */,
 				B49F40141C996D8A00CCAE85 /* stream_default.png */,
 				B40298E91C9810DE001178F3 /* vidcamera48@2x.png */,
 				B40298EA1C9810DE001178F3 /* vidcamera64@2x.png */,
@@ -997,6 +1018,7 @@
 				B46402911B4662B80074DD72 /* venue48@2x.png in Resources */,
 				FD75DDA71C8F466500F27250 /* Icon-167.png in Resources */,
 				B46402901B4662B80074DD72 /* timeline64@2x.png in Resources */,
+				B496F7371CC0FBDA00DCCBCF /* sharelink64@2x.png in Resources */,
 				B46402751B4662B80074DD72 /* addphoto48@2x.png in Resources */,
 				B46402881B4662B80074DD72 /* people64@2x.png in Resources */,
 				B46402871B4662B80074DD72 /* people48@2x.png in Resources */,
@@ -1023,6 +1045,7 @@
 				B489FEBF1B6231EE009BB49A /* eventhome64@2x.png in Resources */,
 				B4484AD21C77228600AB7C86 /* avatar48@2x.png in Resources */,
 				B464027C1B4662B80074DD72 /* chat64@2x.png in Resources */,
+				B496F7361CC0FBDA00DCCBCF /* sharelink48@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,11 +1114,13 @@
 				B4BFB4F21B31740C0035309E /* SettingUserCell.m in Sources */,
 				B41756131B3030EF00E1E8A5 /* TimelineView.m in Sources */,
 				B4BFB51A1B31819D0035309E /* AttachmentCell.m in Sources */,
+				B496F7301CC0DD2B00DCCBCF /* WordSharingCell.m in Sources */,
 				B455D7701B41177400DCB6E4 /* TimelinePostView.m in Sources */,
 				B442B2811C1827860099C257 /* PagedTutorialViewController.m in Sources */,
 				B4BFB5231B3181E70035309E /* ChatBroadcastCell.m in Sources */,
 				B417561C1B3031A900E1E8A5 /* UIColor+ProjectColors.m in Sources */,
 				B455D76D1B4113B900DCB6E4 /* AttendeeDetailView.m in Sources */,
+				B496F72D1CC0D4E200DCCBCF /* WordSharingView.m in Sources */,
 				B41756221B3052E600E1E8A5 /* EventListView.m in Sources */,
 				B455D7611B4112C100DCB6E4 /* ChatView.m in Sources */,
 				B455D78B1B412AF600DCB6E4 /* TimelineDetailImageCell.m in Sources */,
@@ -1136,6 +1161,7 @@
 				B487C8F41B5F8BB7005F211E /* OverviewView.m in Sources */,
 				B406365D1B83122200D3A042 /* TimelineCommentEmptyCell.m in Sources */,
 				B4996E3C1BF0892900B109E9 /* AnnouncementCell.m in Sources */,
+				B496F7331CC0F19B00DCCBCF /* WordSharingInputCell.m in Sources */,
 				B41756191B30318F00E1E8A5 /* UIImage+ImageTint.m in Sources */,
 				B4BFB5261B3181F40035309E /* ChatYouCell.m in Sources */,
 				B455D78E1B4132A900DCB6E4 /* AttendeeProgramCell.m in Sources */,

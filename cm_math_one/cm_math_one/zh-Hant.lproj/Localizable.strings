@@ -323,3 +323,14 @@
 
 "drawer_stream" = "會議直播";
 
+//Sharing
+"type_url" = "網址";
+"type_file" = "檔案";
+"empty_search" = "搜尋無結果";
+"drawer_share" = "分享檔案連結";
+"search_hint_1" = "請輸入第一串搜尋詞";
+"search_hint_2" = "請輸入第二串搜尋詞";
+"search_hint_3" = "請輸入第三串搜尋詞";
+"action_button_search" = "搜尋";
+"action_button_upload" = "上傳";
+
