@@ -2013,33 +2013,33 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJ9-IA-cAY">
                                 <rect key="frame" x="20" y="117" width="560" height="463"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-oJ-HM5">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-oJ-HM5">
                                         <rect key="frame" x="0.0" y="-21" width="560" height="484"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordsharingcell" rowHeight="76" id="bTS-sr-bea" customClass="WordSharingCell">
-                                                <rect key="frame" x="0.0" y="92" width="560" height="76"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordsharingcell" rowHeight="70" id="bTS-sr-bea" customClass="WordSharingCell">
+                                                <rect key="frame" x="0.0" y="92" width="560" height="70"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bTS-sr-bea" id="MdS-kG-eY0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="76"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="share_type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCk-j5-ljF">
                                                             <rect key="frame" x="8" y="8" width="83" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="url_or_filename" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85g-Wv-rjz">
                                                             <rect key="frame" x="8" y="37" width="544" height="31"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f6-6I-cyQ">
                                                             <rect key="frame" x="445" y="8" width="107" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -2076,11 +2076,11 @@
                                                     <outlet property="shareTypeLabel" destination="DCk-j5-ljF" id="l5Q-81-waq"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordsharinginputcell" rowHeight="80" id="IRi-XK-RGp" customClass="WordSharingInputCell">
-                                                <rect key="frame" x="0.0" y="168" width="560" height="80"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordsharinginputcell" rowHeight="70" id="IRi-XK-RGp" customClass="WordSharingInputCell">
+                                                <rect key="frame" x="0.0" y="162" width="560" height="70"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IRi-XK-RGp" id="Fhx-pw-rKc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7c3-HP-GP6">
@@ -2100,6 +2100,39 @@
                                                     <outlet property="sharingInput" destination="7c3-HP-GP6" id="Wzt-8T-Zqk"/>
                                                 </connections>
                                             </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="urluploadcell" id="CGu-ee-neH" customClass="UrlUploadCell">
+                                                <rect key="frame" x="0.0" y="232" width="560" height="70"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CGu-ee-neH" id="KOB-x4-SeP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="url_to_share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIj-js-8iq">
+                                                            <rect key="frame" x="8" y="8" width="544" height="21"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hdq-PD-hnd">
+                                                            <rect key="frame" x="8" y="32" width="544" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="hdq-PD-hnd" firstAttribute="leading" secondItem="KOB-x4-SeP" secondAttribute="leadingMargin" id="1Yp-5X-nlY"/>
+                                                        <constraint firstItem="hdq-PD-hnd" firstAttribute="trailing" secondItem="KOB-x4-SeP" secondAttribute="trailingMargin" id="7Ba-zr-f2y"/>
+                                                        <constraint firstItem="iIj-js-8iq" firstAttribute="leading" secondItem="KOB-x4-SeP" secondAttribute="leadingMargin" id="Aov-mE-Ghe"/>
+                                                        <constraint firstItem="iIj-js-8iq" firstAttribute="top" secondItem="KOB-x4-SeP" secondAttribute="topMargin" id="GsO-xM-kw8"/>
+                                                        <constraint firstItem="iIj-js-8iq" firstAttribute="trailing" secondItem="KOB-x4-SeP" secondAttribute="trailingMargin" id="LHj-ce-3a3"/>
+                                                        <constraint firstItem="hdq-PD-hnd" firstAttribute="bottom" secondItem="KOB-x4-SeP" secondAttribute="bottomMargin" id="qLR-4e-YZr"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="promptLabel" destination="iIj-js-8iq" id="T5J-jt-rKs"/>
+                                                    <outlet property="urlInput" destination="hdq-PD-hnd" id="ebz-jx-SPn"/>
+                                                </connections>
+                                            </tableViewCell>
                                         </prototypes>
                                         <connections>
                                             <outlet property="dataSource" destination="Jj4-zG-J8w" id="WNw-4h-Wgv"/>
@@ -2109,7 +2142,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bng-0Y-09Z">
                                         <rect key="frame" x="190" y="211" width="200" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>

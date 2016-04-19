@@ -328,9 +328,17 @@
 "type_file" = "檔案";
 "empty_search" = "搜尋無結果";
 "drawer_share" = "分享檔案連結";
-"search_hint_1" = "請輸入第一串搜尋詞";
-"search_hint_2" = "請輸入第二串搜尋詞";
-"search_hint_3" = "請輸入第三串搜尋詞";
+"search_hint_1" = "一";
+"search_hint_2" = "二";
+"search_hint_3" = "三";
+"upload_hint_1" = "設定搜尋字串一(必填)";
+"upload_hint_2" = "設定搜尋字串二";
+"upload_hint_3" = "設定搜尋字串三";
 "action_button_search" = "搜尋";
 "action_button_upload" = "上傳";
+"url_prompt" = "請輸入您要分享的連結：";
+"url_placeholder" = "網址";
+"alert_upload_success" = "輸入的連結現在可以透過您選擇的三個字串分享了！";
+"alert_please_fill_one" = "請至少填寫第一個字串";
+
 

@@ -18,4 +18,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *emptyLabel;
 @property (strong, nonatomic) IBOutlet UIView *segBackgroundView;
 
+
 @end

@@ -30,6 +30,8 @@
 		B417561C1B3031A900E1E8A5 /* UIColor+ProjectColors.m in Sources */ = {isa = PBXBuildFile; fileRef = B417561B1B3031A900E1E8A5 /* UIColor+ProjectColors.m */; };
 		B417561F1B3031D400E1E8A5 /* UIViewController+ParseQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = B417561E1B3031D400E1E8A5 /* UIViewController+ParseQueries.m */; };
 		B41756221B3052E600E1E8A5 /* EventListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B41756211B3052E600E1E8A5 /* EventListView.m */; };
+		B418ACB51CC61ECC00316E20 /* UrlUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B418ACB41CC61ECC00316E20 /* UrlUploadCell.m */; };
+		B418ACB81CC61F0400316E20 /* PhotoUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B418ACB71CC61F0400316E20 /* PhotoUploadCell.m */; };
 		B41D57D21B96D86A00F558CF /* fullscreen48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B41D57D01B96D86A00F558CF /* fullscreen48@2x.png */; };
 		B41D57D31B96D86A00F558CF /* fullscreen64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B41D57D11B96D86A00F558CF /* fullscreen64@2x.png */; };
 		B42299DB1C50C7B700C94603 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B42299DD1C50C7B700C94603 /* InfoPlist.strings */; };
@@ -246,6 +248,10 @@
 		B417561E1B3031D400E1E8A5 /* UIViewController+ParseQueries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ParseQueries.m"; sourceTree = "<group>"; };
 		B41756201B3052E600E1E8A5 /* EventListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListView.h; sourceTree = "<group>"; };
 		B41756211B3052E600E1E8A5 /* EventListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListView.m; sourceTree = "<group>"; };
+		B418ACB31CC61ECC00316E20 /* UrlUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlUploadCell.h; sourceTree = "<group>"; };
+		B418ACB41CC61ECC00316E20 /* UrlUploadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlUploadCell.m; sourceTree = "<group>"; };
+		B418ACB61CC61F0400316E20 /* PhotoUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoUploadCell.h; sourceTree = "<group>"; };
+		B418ACB71CC61F0400316E20 /* PhotoUploadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUploadCell.m; sourceTree = "<group>"; };
 		B41D57D01B96D86A00F558CF /* fullscreen48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fullscreen48@2x.png"; sourceTree = "<group>"; };
 		B41D57D11B96D86A00F558CF /* fullscreen64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fullscreen64@2x.png"; sourceTree = "<group>"; };
 		B42299DC1C50C7B700C94603 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -654,6 +660,10 @@
 				B496F72F1CC0DD2B00DCCBCF /* WordSharingCell.m */,
 				B496F7311CC0F19B00DCCBCF /* WordSharingInputCell.h */,
 				B496F7321CC0F19B00DCCBCF /* WordSharingInputCell.m */,
+				B418ACB31CC61ECC00316E20 /* UrlUploadCell.h */,
+				B418ACB41CC61ECC00316E20 /* UrlUploadCell.m */,
+				B418ACB61CC61F0400316E20 /* PhotoUploadCell.h */,
+				B418ACB71CC61F0400316E20 /* PhotoUploadCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1112,6 +1122,7 @@
 				B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */,
 				B455D7AE1B413D4600DCB6E4 /* CareerPostCell.m in Sources */,
 				B4BFB4F21B31740C0035309E /* SettingUserCell.m in Sources */,
+				B418ACB51CC61ECC00316E20 /* UrlUploadCell.m in Sources */,
 				B41756131B3030EF00E1E8A5 /* TimelineView.m in Sources */,
 				B4BFB51A1B31819D0035309E /* AttachmentCell.m in Sources */,
 				B496F7301CC0DD2B00DCCBCF /* WordSharingCell.m in Sources */,
@@ -1156,6 +1167,7 @@
 				B417561F1B3031D400E1E8A5 /* UIViewController+ParseQueries.m in Sources */,
 				B4BFB4EC1B316D410035309E /* LoginView.m in Sources */,
 				B455D7761B4117C200DCB6E4 /* ChatOptions.m in Sources */,
+				B418ACB81CC61F0400316E20 /* PhotoUploadCell.m in Sources */,
 				B417560A1B3030B300E1E8A5 /* VenueView.m in Sources */,
 				B489FEBB1B621AF1009BB49A /* HomeCell.m in Sources */,
 				B487C8F41B5F8BB7005F211E /* OverviewView.m in Sources */,
