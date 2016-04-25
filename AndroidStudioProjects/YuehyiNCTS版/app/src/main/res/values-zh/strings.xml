@@ -44,6 +44,7 @@
     <string name="title_settings">設定</string>
     <string name="title_pinned">追蹤的活動</string>
     <string name="title_stream">影片直播</string>
+    <string name="title_sharing">分享</string>
 
     <!--Labels: log in and sign up -->
     <string name="login">登入</string>

@@ -60,14 +60,6 @@ public class EventWrapperActivity extends BaseActivity implements BaseFragment.O
     {
         Toast.makeText(EventWrapperActivity.this, "Fragment Passed Data: " + fragmentstring, Toast.LENGTH_SHORT).show();
     }
-    public void functionone()
-    {
-
-    }
-    public void functiontwo()
-    {
-
-    }
 
     /*
     @Override

@@ -44,6 +44,7 @@
     <string name="title_settings">Settings</string>
     <string name="title_pinned">Followed Events</string>
     <string name="title_stream">Video Streams</string>
+    <string name="title_sharing">Sharing</string>
 
     <!--Labels: log in and sign up -->
     <string name="login">Log In</string>
@@ -207,5 +208,9 @@
     <string name="p3_content">To see other event info, such as venue or attendees, select the different tabs on the bottom.</string>
     <string name="p4_title">In a specific talk..</string>
     <string name="p4_content">You can ask questions in the discussion page, read the full abstract, or export to your phone calendar.</string>
+    <string name="title_activity_word_sharing">WordSharingActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -99,8 +99,6 @@ public class BaseFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(String string, String tag);
-        public void functionone();
-        public void functiontwo();
     }
 
 }

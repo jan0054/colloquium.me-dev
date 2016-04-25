@@ -18,6 +18,7 @@ import com.ashvale.cmmath_one.fragments.OverviewFragment;
 import com.ashvale.cmmath_one.fragments.ProgramFragment;
 import com.ashvale.cmmath_one.fragments.TimelineFragment;
 import com.ashvale.cmmath_one.fragments.VenueFragment;
+import com.ashvale.cmmath_one.fragments.WordReceiveFragment;
 
 
 /**

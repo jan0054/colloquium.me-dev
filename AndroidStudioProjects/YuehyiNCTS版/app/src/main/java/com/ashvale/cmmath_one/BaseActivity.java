@@ -78,6 +78,9 @@ public class BaseActivity extends AppCompatActivity {
                     case R.id.drawer_stream:
                         drawerGoTo(7);
                         return true;
+                    case R.id.drawer_sharing:
+                        drawerGoTo(8);
+                        return true;
                     default:
                         ParseObject event = eventObjList.get(menuItem.getItemId());
                         String eventid = event.getObjectId();
@@ -226,6 +229,10 @@ public class BaseActivity extends AppCompatActivity {
         else if (selection == 7)
         {
             startActivity(new Intent(this, StreamListActivity.class));
+        }
+        else if (selection == 8)
+        {
+            startActivity(new Intent(this, WordSharingActivity.class));
         }
 
         drawerLayout.closeDrawers();

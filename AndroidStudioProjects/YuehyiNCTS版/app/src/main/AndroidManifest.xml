@@ -194,7 +194,11 @@
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".StreamListActivity" />
-        <activity android:name=".YoutubePlayerActivity"></activity>
+        <activity android:name=".YoutubePlayerActivity" />
+        <activity
+            android:name=".WordSharingActivity"
+            android:label="@string/title_activity_word_sharing"
+            android:theme="@style/CMTheme"></activity>
     </application>
 
 </manifest>
