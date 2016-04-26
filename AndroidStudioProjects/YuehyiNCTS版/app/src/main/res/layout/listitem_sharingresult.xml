@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_item"
+    android:padding="@dimen/list_margin">
+
+    <TextView
+        android:id="@+id/sharing_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/list_padding"
+        android:textColor="@color/secondary_text"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif"
+        android:text="type" />
+
+    <TextView
+        android:id="@+id/sharing_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sharing_type"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:text="time" />
+
+    <TextView
+        android:id="@+id/sharing_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/list_margin"
+        android:layout_marginTop="@dimen/list_margin"
+        android:layout_below="@+id/sharing_time"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:text="url"/>
+
+</RelativeLayout>

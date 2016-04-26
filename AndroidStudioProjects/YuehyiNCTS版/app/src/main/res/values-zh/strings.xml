@@ -131,6 +131,11 @@
     <string name="stream_archive">錄製影片</string>
     <string name="tab_current_events">當前</string>
     <string name="tab_past_events">過去</string>
+    <string name="upload_success">上傳成功</string>
+    <string name="share_type_url">網址</string>
+    <string name="share_type_file">檔案</string>
+    <string name="share_search_button">搜尋</string>
+    <string name="share_upload_button">上傳</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

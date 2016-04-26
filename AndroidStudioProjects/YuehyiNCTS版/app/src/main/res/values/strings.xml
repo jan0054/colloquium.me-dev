@@ -131,6 +131,11 @@
     <string name="stream_archive">Archived video</string>
     <string name="tab_current_events">Current</string>
     <string name="tab_past_events">Past</string>
+    <string name="upload_success">Upload Success</string>
+    <string name="share_type_url">URL</string>
+    <string name="share_type_file">File</string>
+    <string name="share_search_button">Search</string>
+    <string name="share_upload_button">Upload</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

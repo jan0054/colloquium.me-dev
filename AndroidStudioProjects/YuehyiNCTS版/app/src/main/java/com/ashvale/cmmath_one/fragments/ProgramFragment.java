@@ -43,17 +43,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ProgramFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ProgramFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProgramFragment extends BaseFragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private SharedPreferences savedEvents;
     public  List<ParseObject> talkObjList;
     public EditText searchinput;
@@ -68,17 +60,8 @@ public class ProgramFragment extends BaseFragment {
     ListView talkList;
     TextView talkEmptyText;
 
-    // TODO: Rename and change types of parameters
-
     private OnFragmentInteractionListener mListener;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment ProgramFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ProgramFragment newInstance(String param1, String param2) {
         ProgramFragment fragment = new ProgramFragment();
         Bundle args = new Bundle();
@@ -173,8 +156,6 @@ public class ProgramFragment extends BaseFragment {
         });
         return view;
     }
-
-
 
     @Override
     public void onAttach(Activity activity) {

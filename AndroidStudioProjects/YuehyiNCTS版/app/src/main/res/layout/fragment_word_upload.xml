@@ -2,12 +2,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ashvale.cmmath_one.fragments.WordUploadFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:context="com.ashvale.cmmath_one.fragments.WordReceiveFragment">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="uploader fragment" />
-
+        android:background="@color/light_grey_background">
+        <EditText  android:id="@+id/upload_input_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/list_margin"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="bottom"
+            android:hint="1"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:minWidth="120dp"
+            android:maxWidth="260dp"
+            style="@style/GreyTextInput"/>
+        <EditText  android:id="@+id/upload_input_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/list_margin"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="bottom"
+            android:hint="2"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:minWidth="120dp"
+            android:maxWidth="260dp"
+            style="@style/GreyTextInput"
+            android:layout_below="@+id/upload_input_1"/>
+        <EditText  android:id="@+id/upload_input_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/list_margin"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="bottom"
+            android:hint="3"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:minWidth="120dp"
+            android:maxWidth="260dp"
+            style="@style/GreyTextInput"
+            android:layout_below="@+id/upload_input_2"/>
+        <EditText  android:id="@+id/upload_input_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/list_margin"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="bottom"
+            android:hint="3"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:minWidth="120dp"
+            android:maxWidth="260dp"
+            style="@style/GreyTextInput"
+            android:layout_below="@+id/upload_input_3"/>
+    </RelativeLayout>
 </FrameLayout>
