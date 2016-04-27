@@ -136,6 +136,13 @@
     <string name="share_type_file">檔案</string>
     <string name="share_search_button">搜尋</string>
     <string name="share_upload_button">上傳</string>
+    <string name="upload_hint">輸入您要分享的連結</string>
+    <string name="share_title">分享</string>
+    <string name="share_search_tab">接收</string>
+    <string name="share_upload_tab">上傳</string>
+    <string name="upload_hint_1">設定搜尋字串一 (必填)</string>
+    <string name="upload_hint_2">設定搜尋字串二</string>
+    <string name="upload_hint_3">設定搜尋字串三</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

@@ -23,7 +23,7 @@ public class WordSharingActivity extends BaseActivity implements BaseFragment.On
         setContentView(R.layout.activity_word_sharing);
         super.onCreateDrawer();
 
-        getSupportActionBar().setTitle("Sharing");
+        getSupportActionBar().setTitle(getString(R.string.share_title));
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new SharingViewPagerAdapter(getFragmentManager(), WordSharingActivity.this));
@@ -31,8 +31,8 @@ public class WordSharingActivity extends BaseActivity implements BaseFragment.On
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setText("Receive");
-        tabLayout.getTabAt(1).setText("Upload");
+        tabLayout.getTabAt(0).setText(getString(R.string.share_search_tab));
+        tabLayout.getTabAt(1).setText(getString(R.string.share_upload_tab));
     }
 
     @Override

@@ -198,7 +198,8 @@
         <activity
             android:name=".WordSharingActivity"
             android:label="@string/title_activity_word_sharing"
-            android:theme="@style/CMTheme"></activity>
+            android:theme="@style/CMTheme"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>
