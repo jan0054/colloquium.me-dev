@@ -1,6 +1,7 @@
 package com.ashvale.cmmath_one;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -81,8 +82,16 @@ public class StreamListActivity extends BaseActivity {
 
     private void openPlayerWithId(String videoId)
     {
+        /*
+        //String placeholder = "UUFlgARr_pQ";
         Intent intent = new Intent(this, YoutubePlayerActivity.class);
         intent.putExtra("selectedId", videoId);
+        //intent.putExtra("selectedId", placeholder);
+        Log.d("cm_app", "streaming video id: "+videoId);
+        startActivity(intent);
+        */
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));
+        intent.putExtra("VIDEO_ID", videoId);
         startActivity(intent);
     }
 }

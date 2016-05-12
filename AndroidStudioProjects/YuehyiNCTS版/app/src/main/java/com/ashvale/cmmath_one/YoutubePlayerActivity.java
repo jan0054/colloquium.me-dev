@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity implements YouTub
 
     @Override
     public void onInitializationFailure(Provider provider, YouTubeInitializationResult errorReason) {
+        Log.d("cm_app", "init failure: " + errorReason);
         if (errorReason.isUserRecoverableError()) {
             errorReason.getErrorDialog(this, RECOVERY_REQUEST).show();
         } else {
