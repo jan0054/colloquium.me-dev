@@ -75,9 +75,9 @@
     <string name="sign_detail_yes">若要切換使用者請登出</string>
     <string name="more">細節..</string>
     <string name="save">確定</string>
-    <string name="list_empty_empty"> </string>
-    <string name="empty"></string>
-    <string name="fullscreen_content"> </string>
+    <string name="list_empty_empty">empty</string>
+    <string name="empty">empty</string>
+    <string name="fullscreen_content">content</string>
     <string name="list_empty_attendee">該會議目前沒有與會者</string>
     <string name="list_empty_conversation">目前沒有聊天訊息</string>
     <string name="list_empty_event">該會議目前無公告內容</string>
@@ -149,16 +149,16 @@
     <string name="drawer_close">Close navigation drawer</string>
 
     <!-- Placeholder strings -->
-    <string name="name_fake"> </string>
-    <string name="author_fake"> </string>
-    <string name="description_fake"> </string>
-    <string name="content_fake"> </string>
-    <string name="organizer_fake"> </string>
-    <string name="start_time_fake"> </string>
-    <string name="position_fake"> </string>
-    <string name="location_fake"> </string>
-    <string name="institution_fake"> </string>
-    <string name="address_fake"> </string>
+    <string name="name_fake">name</string>
+    <string name="author_fake">author</string>
+    <string name="description_fake">desc</string>
+    <string name="content_fake">content</string>
+    <string name="organizer_fake">organizer</string>
+    <string name="start_time_fake">time</string>
+    <string name="position_fake">position</string>
+    <string name="location_fake">location</string>
+    <string name="institution_fake">inst</string>
+    <string name="address_fake">address</string>
 
     <!-- Arrays (settings page) -->
     <string-array name="setting_primary_label_array">
@@ -220,5 +220,7 @@
     <string name="p3_content">點擊螢幕底端不同分頁可查詢活動其他資訊，如交通住宿或與會者清單。</string>
     <string name="p4_title">點擊進入一場特定演講後..</string>
     <string name="p4_content">可從右上角按鈕進入討論區，閱讀摘要全文，或匯出至手機行事曆。</string>
+    <string name="title_activity_word_sharing">WordSharingActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

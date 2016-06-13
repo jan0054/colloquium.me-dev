@@ -75,9 +75,9 @@
     <string name="sign_detail_yes">Sign out to switch users</string>
     <string name="more">more</string>
     <string name="save">Done</string>
-    <string name="list_empty_empty"> </string>
-    <string name="empty"></string>
-    <string name="fullscreen_content"> </string>
+    <string name="list_empty_empty">empty</string>
+    <string name="empty">empty</string>
+    <string name="fullscreen_content">content</string>
     <string name="list_empty_attendee">No attendees yet</string>
     <string name="list_empty_conversation">Choose someone to start chat</string>
     <string name="list_empty_event">There are no announcements from this event yet</string>
@@ -149,16 +149,16 @@
     <string name="drawer_close">Close navigation drawer</string>
 
     <!-- Placeholder strings -->
-    <string name="name_fake"> </string>
-    <string name="author_fake"> </string>
-    <string name="description_fake"> </string>
-    <string name="content_fake"> </string>
-    <string name="organizer_fake"> </string>
-    <string name="start_time_fake"> </string>
-    <string name="position_fake"> </string>
-    <string name="location_fake"> </string>
-    <string name="institution_fake"> </string>
-    <string name="address_fake"> </string>
+    <string name="name_fake">name</string>
+    <string name="author_fake">author</string>
+    <string name="description_fake">desc</string>
+    <string name="content_fake">content</string>
+    <string name="organizer_fake">organizer</string>
+    <string name="start_time_fake">time</string>
+    <string name="position_fake">position</string>
+    <string name="location_fake">location</string>
+    <string name="institution_fake">inst</string>
+    <string name="address_fake">address</string>
 
     <!-- Arrays (settings page) -->
     <string-array name="setting_primary_label_array">
