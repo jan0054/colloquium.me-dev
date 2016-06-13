@@ -192,12 +192,12 @@
 		B4E0BC4A1C15939800276A7B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E0BC491C15939800276A7B /* CoreGraphics.framework */; };
 		B4F04D3F1B81BFED00A4FCD3 /* camera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */; };
 		B4F04D411B81BFF300A4FCD3 /* key_down48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */; };
-		C36C9C5FCF3D705D97086C73 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 007110BB53EB649131D36947 /* libPods.a */; };
 		FD1FAE7D1B8CEC1A00771037 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE791B8CEC1A00771037 /* Icon-40.png */; };
 		FD1FAE7E1B8CEC1A00771037 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7A1B8CEC1A00771037 /* Icon-40@2x.png */; };
 		FD1FAE7F1B8CEC1A00771037 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7B1B8CEC1A00771037 /* Icon-76.png */; };
 		FD1FAE801B8CEC1A00771037 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1FAE7C1B8CEC1A00771037 /* Icon-76@2x.png */; };
 		FD75DDA71C8F466500F27250 /* Icon-167.png in Resources */ = {isa = PBXBuildFile; fileRef = FD75DDA61C8F466500F27250 /* Icon-167.png */; };
+		FD9B235E1D0EB1CE006E076A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9B235D1D0EB1CE006E076A /* Event.m */; };
 		FDCA8C391BDFC48D009AF220 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDCA8C3B1BDFC48D009AF220 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -483,6 +483,8 @@
 		FD1FAE7B1B8CEC1A00771037 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		FD1FAE7C1B8CEC1A00771037 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
 		FD75DDA61C8F466500F27250 /* Icon-167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-167.png"; sourceTree = "<group>"; };
+		FD9B235C1D0EB1CE006E076A /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		FD9B235D1D0EB1CE006E076A /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		FDCA8C351BDFBF29009AF220 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		FDCA8C361BDFBF29009AF220 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FDCA8C3A1BDFC48D009AF220 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -501,7 +503,6 @@
 				B4BE91201B4BC3AC00A46E4C /* CoreLocation.framework in Frameworks */,
 				B4BE911E1B4BC39100A46E4C /* QuartzCore.framework in Frameworks */,
 				B4BE911C1B4BC32E00A46E4C /* MapKit.framework in Frameworks */,
-				C36C9C5FCF3D705D97086C73 /* libPods.a in Frameworks */,
 				0883284E9FB5635289BD3AED /* libPods-cm_math_one.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +543,7 @@
 		B40CCC161B3009B500BB11B9 /* cm_math_one */ = {
 			isa = PBXGroup;
 			children = (
+				FD9B235B1D0EB1B1006E076A /* LocalData */,
 				B41755FE1B301F5D00E1E8A5 /* Resources */,
 				B41755FF1B301F6500E1E8A5 /* Utilities */,
 				B41755FD1B301F5500E1E8A5 /* Cells */,
@@ -900,6 +902,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD9B235B1D0EB1B1006E076A /* LocalData */ = {
+			isa = PBXGroup;
+			children = (
+				FD9B235C1D0EB1CE006E076A /* Event.h */,
+				FD9B235D1D0EB1CE006E076A /* Event.m */,
+			);
+			name = LocalData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1130,6 +1141,7 @@
 				B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */,
 				B455D7AE1B413D4600DCB6E4 /* CareerPostCell.m in Sources */,
 				B4BFB4F21B31740C0035309E /* SettingUserCell.m in Sources */,
+				FD9B235E1D0EB1CE006E076A /* Event.m in Sources */,
 				B418ACB51CC61ECC00316E20 /* UrlUploadCell.m in Sources */,
 				B41756131B3030EF00E1E8A5 /* TimelineView.m in Sources */,
 				B4BFB51A1B31819D0035309E /* AttachmentCell.m in Sources */,

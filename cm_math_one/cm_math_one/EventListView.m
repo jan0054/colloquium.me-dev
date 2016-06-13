@@ -16,6 +16,8 @@
 #import "DrawerView.h"
 #import "InstructionsViewController.h"
 #import "HomeView.h"
+#import <Realm/Realm.h>
+#import "Event.h"
 
 NSMutableArray *totalEventArray;           //hold all event pfobjects from query
 NSMutableDictionary *selectedDictionary;   //object id and selection(0/1) key value pair
@@ -242,6 +244,33 @@ BOOL savingInProgress;
         }
     }
     [self.eventTable reloadData];
+    [self saveDataToRealm];  //save a copy of the data for offline access
+}
+
+- (void)saveDataToRealm
+{
+    NSLog(@"Saving event data to Realm");
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    for (PFObject *object in totalEventArray)
+    {
+        Event *event = [[Event alloc] init];
+        event.objectId = object.objectId;
+        event.name = object[@"name"];
+        event.content = object[@"content"];
+        event.organizer = object[@"organizer"];
+        event.startDate = object[@"start_time"];
+        event.endDate = object[@"end_time"];
+        event.isParentEvent = YES;
+        [realm addOrUpdateObject:event];
+    }
+    [realm commitWriteTransaction];
+    NSLog(@"Finished saving event data");
+}
+
+- (void)noCloudData  //callback if Parse request returned error
+{
+    
 }
 
 - (void)favButtonForTable: (UITableView *)tableView wasTappedAt: (NSIndexPath *)indexPath
