@@ -1,0 +1,22 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'UIUC Taiwan Alumni Club' do
+  # Uncomment this line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for UIUC Taiwan Alumni Club
+  pod 'Parse'
+  pod 'ParseUI'
+  pod 'MMDrawerController'
+  pod 'SZTextView'
+  pod 'GKImagePicker@robseward', '~> 0.0'
+  pod 'ParseFacebookUtilsV4'
+  pod 'FBSDKCoreKit', '4.9.0-beta2'
+  pod 'FBSDKLoginKit', '4.9.0-beta2'
+  pod 'ContextMenu.iOS', '~> 1.1'
+  pod 'Toast', '~> 3.0'
+  pod 'youtube-ios-player-helper', :git=>'https://github.com/youtube/youtube-ios-player-helper', :commit=>'head'
+  pod 'SDWebImage', '~> 3.7'
+  pod 'Realm'
+end

@@ -1,0 +1,344 @@
+/* No comment provided by engineer. */
+"about_sub" = "Colloquium.me服務的開發團隊";
+
+/* No comment provided by engineer. */
+"about_title" = "關於我們";
+
+/* No comment provided by engineer. */
+"add_event" = "新增會議";
+
+/* No comment provided by engineer. */
+"admin_sub" = "對於會議或活動的問題";
+
+/* No comment provided by engineer. */
+"admin_title" = "活動支援";
+
+/* No comment provided by engineer. */
+"alert_cancel" = "取消";
+
+/* No comment provided by engineer. */
+"alert_career_contact" = "聯絡";
+
+/* No comment provided by engineer. */
+"alert_career_detail" = "請聯絡我們協助張貼職涯機會";
+
+/* No comment provided by engineer. */
+"alert_career_title" = "權限不足";
+
+/* No comment provided by engineer. */
+"alert_done" = "完成";
+
+/* (No Commment) */
+"alert_empty_chat" = "別自言自語！請至少選擇一個人";
+
+/* No comment provided by engineer. */
+"alert_error" = "錯誤";
+
+/* No comment provided by engineer. */
+"alert_event_update" = "您的活動已更新";
+
+/* No comment provided by engineer. */
+"alert_leave" = "離開";
+
+/* No comment provided by engineer. */
+"alert_leave_detail" = "離開對話後您將無法瀏覽這些訊息";
+
+/* No comment provided by engineer. */
+"alert_leave_title" = "確認";
+
+/* No comment provided by engineer. */
+"alert_need_account" = "無使用者帳號";
+
+/* No comment provided by engineer. */
+"alert_please_fill" = "請填寫所有必要欄位";
+
+/* No comment provided by engineer. */
+"alert_reset_done" = "請檢查您的信箱以設定新密碼";
+
+/* No comment provided by engineer. */
+"alert_sign_in" = "請先登入或註冊";
+
+/* No comment provided by engineer. */
+"alert_sign_later" = "您之後可以在設定頁面登入";
+
+/* No comment provided by engineer. */
+"alert_success" = "成功";
+
+/* No comment provided by engineer. */
+"chat_input_holder" = "輸入訊息..";
+
+/* No comment provided by engineer. */
+"chat_switch" = "其他使用者可邀您對話";
+
+/* No comment provided by engineer. */
+"choose_event_content" = "選擇關注的活動會出現在首頁以及左方選單，您隨時可以新增或改變關注的活動。";
+
+/* No comment provided by engineer. */
+"choose_event_title" = "關注您有興趣的活動";
+
+/* No comment provided by engineer. */
+"contact_title" = "聯絡人：";
+
+/* No comment provided by engineer. */
+"conv_nobody" = "該對話目前無參與者";
+
+/* No comment provided by engineer. */
+"done" = "完成";
+
+/* No comment provided by engineer. */
+"drawer_career" = "職涯";
+
+/* No comment provided by engineer. */
+"drawer_chat" = "訊息";
+
+/* No comment provided by engineer. */
+"drawer_content" = "點擊左上角的圖示或從螢幕左方往右滑動可開啟主選單，裡面包括大多數常用功能。";
+
+/* No comment provided by engineer. */
+"drawer_edit" = "會議";
+
+/* No comment provided by engineer. */
+"drawer_home" = "追蹤";
+
+/* No comment provided by engineer. */
+"drawer_settings" = "設定";
+
+/* No comment provided by engineer. */
+"drawer_title" = "主選單";
+
+/* No comment provided by engineer. */
+"email" = "Email";
+
+/* No comment provided by engineer. */
+"email_switch" = "其他使用者可Email您";
+
+/* No comment provided by engineer. */
+"empty_label" = "您還沒有關注任何會議！點選下方按鈕來選取會議";
+
+/* No comment provided by engineer. */
+"event_switch" = "接收會議主辦通知";
+
+/* No comment provided by engineer. */
+"exit" = "離開";
+
+/* No comment provided by engineer. */
+"fb_login" = "使用Facebook登入";
+
+/* No comment provided by engineer. */
+"feedback_sub" = "將您的建議或任何問題與我們分享";
+
+/* No comment provided by engineer. */
+"feedback_title" = "建議回饋";
+
+/* No comment provided by engineer. */
+"first_name" = "名";
+
+/* No comment provided by engineer. */
+"home_content" = "這是首頁，顯示您關注的每一個活動。您可以點擊個別活動以觀看更多資訊。";
+
+/* No comment provided by engineer. */
+"home_title" = "首頁";
+
+/* No comment provided by engineer. */
+"inst" = "服務單位";
+
+/* No comment provided by engineer. */
+"inst_title" = "服務/就學單位：";
+
+/* No comment provided by engineer. */
+"job_content_title" = "內容描述：";
+
+/* No comment provided by engineer. */
+"last_name" = "姓";
+
+/* No comment provided by engineer. */
+"login_button" = "登入";
+
+/* (No Commment) */
+"login_mail_hint" = "Email";
+
+/* No comment provided by engineer. */
+"login_pass_hint" = "密碼";
+
+/* No comment provided by engineer. */
+"login_welcome" = "歡迎使用Colloquium.me平台(數學)，您可以選擇登入，註冊帳號，或直接開始瀏覽所有會議活動。";
+
+/* No comment provided by engineer. */
+"nav_back" = "返回";
+
+/* No comment provided by engineer. */
+"no_sign_yet" = "尚未登入";
+
+/* No comment provided by engineer. */
+"open_with" = "開啟..";
+
+/* No comment provided by engineer. */
+"optional" = "選填";
+
+/* No comment provided by engineer. */
+"overview_attend" = "我將出席這場會議：";
+
+/* No comment provided by engineer. */
+"overview_content" = "這是活動主頁面，點擊上方各圖示或左右滑動可以使用其它活動功能。";
+
+/* No comment provided by engineer. */
+"overview_title" = "活動資訊";
+
+/* No comment provided by engineer. */
+"pass_reset" = "忘記密碼？";
+
+/* No comment provided by engineer. */
+"person_invite" = "邀請";
+
+/* No comment provided by engineer. */
+"person_invited" = "已選取";
+
+/* No comment provided by engineer. */
+"post_add_photo" = " 新增照片";
+
+/* No comment provided by engineer. */
+"post_remove_photo" = " 移除照片";
+
+/* No comment provided by engineer. */
+"pref_sub" = "設定或更改使用者資訊與隱私設定";
+
+/* No comment provided by engineer. */
+"pref_title" = "使用者偏好";
+
+/* No comment provided by engineer. */
+"privacy_sub" = "了解我們如何確保您的資料隱私";
+
+/* No comment provided by engineer. */
+"privacy_title" = "隱私權政策";
+
+/* No comment provided by engineer. */
+"required" = "必填";
+
+/* No comment provided by engineer. */
+"reset_button" = "重設密碼";
+
+/* No comment provided by engineer. */
+"reset_cancel" = "取消";
+
+/* No comment provided by engineer. */
+"reset_welcome" = "請輸入您當初註冊使用的Email，我們將發送信件讓您重新設定密碼。";
+
+/* No comment provided by engineer. */
+"sign_as" = "使用者";
+
+/* No comment provided by engineer. */
+"sign_in" = "登入";
+
+/* No comment provided by engineer. */
+"sign_in_detail" = "登入以使用社群功能";
+
+/* No comment provided by engineer. */
+"sign_out" = "登出";
+
+/* No comment provided by engineer. */
+"sign_out_switch" = "若要切換使用者請登出";
+
+/* No comment provided by engineer. */
+"signup_back" = "返回";
+
+/* No comment provided by engineer. */
+"signup_button" = "註冊";
+
+/* (No Commment) */
+"signup_mail_hint" = "Email";
+
+/* No comment provided by engineer. */
+"signup_pass_hint" = "密碼";
+
+/* No comment provided by engineer. */
+"signup_welcome" = "您的資訊儲存在我們的伺服器上，未經您同意絕不會公開或讓我們以及活動主辦單位外的第三方存取。";
+
+/* No comment provided by engineer. */
+"skip_button" = "跳過";
+
+/* No comment provided by engineer. */
+"to_signup" = "註冊";
+
+/* No comment provided by engineer. */
+"tutorial_detail" = "認識Colloquium.me的主要功能";
+
+/* No comment provided by engineer. */
+"tutorial_title" = "導覽";
+
+/* No comment provided by engineer. */
+"type_hiring" = "職缺";
+
+/* No comment provided by engineer. */
+"type_seeking" = "求職";
+
+/* No comment provided by engineer. */
+"web_page" = "個人網頁";
+
+//program
+"about_to_start" = "即將開始";
+"reminder_title" = "活動提醒";
+"reminder_done" = "確認";
+"fullscreen_button" = " 全螢幕閱讀";
+"reminder_button" = " 活動提醒";
+"title_all" = "演講";
+"menu_all" = "所有演講";
+"filter_button" = "分類";
+"calendar_button" = " 行事曆";
+
+//fullscreen
+"fullscreen_toast" = "點擊任一處以顯示/隱藏控制列";
+
+"alert_passed_title" = "";
+"alert_passed_detail" = "該活動日期已過";
+"alert_passed_done" = "確定";
+
+//choose event
+"seg_current" = "當前";
+"seg_past" = "過去";
+"seg_fav" = "追蹤";
+"events_title" = "會議活動";
+"fav_button" = "追蹤活動";
+"more_button" = "細節";
+
+//home
+"homescreen_title" = "追蹤的活動";
+"unfollow_button" = "取消追蹤";
+
+//tutorial
+"tut_p1_title" = "存取主要功能";
+"tut_p1_content" = "點擊左上角抽屜圖示，或從螢幕左側往右滑以開起抽屜選單。";
+"tut_p2_title" = "所有會議活動";
+"tut_p2_content" = "起始畫面顯示的是所有會議，依照時間分為當前與過去會議。您可以在有興趣的活動上點擊追蹤。";
+"tut_p3_title" = "活動議程";
+"tut_p3_content" = "點擊螢幕底端不同分頁可查詢活動其他資訊，如交通住宿或與會者清單。";
+"tut_p4_title" = "點擊進入一場特定演講後..";
+"tut_p4_content" = "可從右上角按鈕進入討論區，閱讀摘要全文，或設定鬧鈴提醒演講開始。";
+
+//streaming
+"view_stream_button" = "前往觀看";
+"stream_status_none" = "";
+"stream_status_live" = "Live 直播中";
+"open_channel_button" = "開啟Colloquium.me頻道";
+"stream_empty_label" = "目前排程中沒有直播";
+
+"drawer_stream" = "會議直播";
+
+//Sharing
+"type_url" = "網址";
+"type_file" = "檔案";
+"empty_search" = "搜尋無結果";
+"drawer_share" = "分享檔案連結";
+"search_hint_1" = "一";
+"search_hint_2" = "二";
+"search_hint_3" = "三";
+"upload_hint_1" = "設定搜尋字串一(必填)";
+"upload_hint_2" = "設定搜尋字串二";
+"upload_hint_3" = "設定搜尋字串三";
+"action_button_search" = "搜尋";
+"action_button_upload" = "上傳";
+"url_prompt" = "請輸入您要分享的連結：";
+"url_placeholder" = "網址";
+"alert_upload_success" = "輸入的連結現在可以透過您選擇的三個字串分享了！";
+"alert_please_fill_one" = "請至少填寫第一個字串";
+
+

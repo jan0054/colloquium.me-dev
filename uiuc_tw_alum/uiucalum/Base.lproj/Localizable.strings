@@ -1,0 +1,188 @@
+/* 
+  Localizable.strings
+  cm_math_one
+
+  Created by Chi-sheng Jan on 10/27/15.
+  Copyright © 2015 tapgo. All rights reserved.
+*/
+
+//NSLocalizedString(@"", nil)
+
+//alert dialog
+"alert_error" = "Error";
+"alert_please_fill" = "Please fill in all fields";
+"alert_done" = "Done";
+"alert_success" = "Success";
+"alert_event_update" = "Your events have been updated!";
+"alert_need_account" = "You need a user account";
+"alert_sign_in" = "Please sign in first";
+"alert_leave_title" = "Confirm leave";
+"alert_leave_detail" = "You will not be able to view these messages or receive new ones after you leave the conversation";
+"alert_cancel" = "Cancel";
+"alert_leave" = "Leave";
+"alert_career_title" = "Account privilege required";
+"alert_career_detail" = "Please contact us to request a career posting";
+"alert_career_contact" = "Contact";
+"alert_sign_later" = "You can log in later under Settings";
+"alert_reset_done" = "Please check your inbox to setup your new password";
+"alert_empty_chat" = "Don't talk to yourself! Please select at least one other user";
+"alert_passed_title" = "";
+"alert_passed_detail" = "This event has already passed";
+"alert_passed_done" = "Done";
+"alert_upload_success" = "Your link can now be shared and accessed with the three phrases you set!";
+"alert_please_fill_one" = "Please fill out the first word at least";
+
+//drawer labels
+"drawer_chat" = "Chat";
+"drawer_career" = "Career";
+"drawer_settings" = "Settings";
+"drawer_edit" = "Events";
+"drawer_home" = "Followed";
+"drawer_stream" = "Video Streams";
+"drawer_share" = "Sharing";
+
+//chat&conversation
+"conv_nobody" = "No participants in conversation";
+"nav_back" = "Back";
+"chat_input_holder" = "Type message here..";
+
+//career
+"type_hiring" = "Position Available";
+"type_seeking" = "Seeking Job";
+"inst_title" = "Institution:";
+"contact_title" = "Contact:";
+"job_content_title" = "Description:";
+
+//settings
+"sign_as" = "Signed in as";
+"sign_out_switch" = "Sign out to switch users";
+"sign_out" = "Sign Out";
+"no_sign_yet" = "Not signed in yet";
+"sign_in_detail" = "Sign in to access social features";
+"sign_in" = "Sign In";
+"feedback_title" = "App Feedback";
+"feedback_sub" = "Email us with app questions or feedback";
+"admin_title" = "Administrative Assistance";
+"admin_sub" = "Email us with event questions";
+"privacy_title" = "Privacy & Terms";
+"privacy_sub" = "Info on how we protect and secure your data";
+"about_title" = "About Us";
+"about_sub" = "The team behind Colloquium.me";
+"pref_title" = "User Preference";
+"pref_sub" = "Setup or change user info and social options";
+"email_switch" = "Allow other users to email you";
+"event_switch" = "Receive event announcements";
+"chat_switch" = "Receive chat invites";
+"first_name" = "First Name";
+"last_name" = "Last Name";
+"inst" = "Institution";
+"web_page" = "Web Page";
+"optional" = "Optional";
+"required" = "Required";
+"tutorial_title" = "Tutorial";
+"tutorial_detail" = "Take a quick tour of major features";
+"done" = "Done";
+
+//Timeline/Post
+"post_add_photo" = " Add Photo";
+"post_remove_photo" = " Remove Photo";
+
+//Overview
+"overview_attend" = "I am attending this event:";
+
+//login and signup
+"pass_reset" = "Forgot password?";
+"login_welcome" = "Welcome to Colloquium.me for Mathematics! Please sign up, log in, or just start browsing all the events.";
+"login_mail_hint" = "Email";
+"login_pass_hint" = "Password";
+"login_button" = "Log In";
+"skip_button" = "Skip";
+"to_signup" = "Sign Up";
+"signup_welcome" = "Your information is kept secure and private on our servers. To view our privacy policy please go to Privacy&Terms under Settings, or contact us if you have any further questions.";
+"signup_mail_hint" = "Email";
+"signup_pass_hint" = "Password";
+"signup_button" = "Sign Up";
+"signup_back" = "Back";
+"email" = "Email";
+"reset_welcome" = "Please enter the Email you used to sign up, we will send you the password reset link.";
+"reset_button" = "Reset Password";
+"reset_cancel" = "Cancel";
+"fb_login" = "Log in with Facebook";
+
+//chat
+"person_invite" = "Invite";
+"person_invited" = "Selected";
+
+//pdf
+"open_with" = "Open With..";
+"exit" = "Exit";
+
+//home
+"empty_label" = "You're not following any events yet! Tap the button below to get started";
+"add_event" = "Add Events";
+"homescreen_title" = "Followed Events";
+"unfollow_button" = "Unfollow";
+
+//tutorial
+"tut_p1_title" = "Access common features";
+"tut_p1_content" = "Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer.";
+"tut_p2_title" = "View all events";
+"tut_p2_content" = "All available events are here, grouped by current or past. Tap follow on events you're interested in.";
+"tut_p3_title" = "View event program";
+"tut_p3_content" = "To see other event info, such as venue or attendees, select the different tabs on the bottom.";
+"tut_p4_title" = "In a specific talk..";
+"tut_p4_content" = "You can ask questions in the discussion page, read the full abstract, or set an alarm for the talk.";
+
+"choose_event_title" = "Follow events that interest you";
+"choose_event_content" = "Choose events that you want to follow, they'll show up in your home screen and side drawer.";
+"drawer_title" = "Access common features";
+"drawer_content" = "Tap the drawer icon on the top-left corner, or swipe in from the left screen edge, to access the drawer.";
+"overview_title" = "View event details";
+"overview_content" = "This is the event overview page, to see specific talks or attendees, tap on the different tabs near the bottom of the screen.";
+"home_title" = "View all followed events";
+"home_content" = "This is the home screen, where all the events you are following are displayed. Tap any event to view the details.";
+
+//program
+"about_to_start" = "is about to start";
+"reminder_title" = "Event reminder";
+"reminder_done" = "Done";
+"fullscreen_button" = " Fullscreen Reader";
+"reminder_button" = " Reminder";
+"title_all" = "Program";
+"menu_all" = "All";
+"filter_button" = "Filter";
+"calendar_button" = " Calendar";
+
+//fullscreen
+"fullscreen_toast" = "Tap anywhere to toggle control bar";
+
+//choose event
+"seg_current" = "Current";
+"seg_past" = "Past";
+"seg_fav" = "Followed";
+"events_title" = "Events";
+"fav_button" = "Follow Event";
+"more_button" = "Details..";
+
+//streaming
+"view_stream_button" = "View Stream";
+"stream_status_none" = "";
+"stream_status_live" = "Stream is live";
+"open_channel_button" = "Go to Colloquium.me channel";
+"stream_empty_label" = "No scheduled streams found";
+
+//Sharing
+"type_url" = "URL";
+"type_file" = "File";
+"empty_search" = "No results found";
+"search_hint_1" = "1";
+"search_hint_2" = "2";
+"search_hint_3" = "3";
+"upload_hint_1" = "Set search string 1 (Required)";
+"upload_hint_2" = "Set search string 2";
+"upload_hint_3" = "Set search string 3";
+"action_button_search" = "Search";
+"action_button_upload" = "Upload";
+"url_prompt" = "Enter the link you wish to share:";
+"url_placeholder" = "URL";
+
