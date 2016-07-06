@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ashvale.uiucalum.SettingsActivity">
+    <item android:id="@+id/action_program"
+        android:title="AAA"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_people"
+        android:title="BBB"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_venue"
+        android:title="CCC"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_wall"
+        android:title="DDD"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_news"
+        android:title="EEE"
+        app:showAsAction="never" />
+</menu>

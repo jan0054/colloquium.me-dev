@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ashvale.uiucalum.NewChatActivity">
+    <item android:id="@+id/createchat"
+        android:title="@string/create_new_chat"
+        app:showAsAction="always" />
+</menu>
