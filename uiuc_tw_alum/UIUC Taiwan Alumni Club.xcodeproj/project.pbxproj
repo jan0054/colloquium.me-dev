@@ -212,8 +212,6 @@
 		B40CCC251B3009B500BB11B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B40CCC271B3009B500BB11B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B40CCC2A1B3009B500BB11B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		B40CCC351B3009B500BB11B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B40CCC361B3009B500BB11B9 /* cm_math_oneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cm_math_oneTests.m; sourceTree = "<group>"; };
 		B41755F41B3019E000E1E8A5 /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchView.h; sourceTree = "<group>"; };
 		B41755F51B3019E000E1E8A5 /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchView.m; sourceTree = "<group>"; };
 		B41755F71B301A9800E1E8A5 /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
@@ -504,7 +502,6 @@
 			isa = PBXGroup;
 			children = (
 				B40CCC161B3009B500BB11B9 /* uiucalum */,
-				B40CCC331B3009B500BB11B9 /* cm_math_oneTests */,
 				B40CCC151B3009B500BB11B9 /* Products */,
 				767FEB44415F8FB720573BBD /* Pods */,
 				ECA16371415E814C8D58DD93 /* Frameworks */,
@@ -579,23 +576,6 @@
 				B42299DD1C50C7B700C94603 /* InfoPlist.strings */,
 				B40CCC181B3009B500BB11B9 /* Info.plist */,
 				B40CCC191B3009B500BB11B9 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B40CCC331B3009B500BB11B9 /* cm_math_oneTests */ = {
-			isa = PBXGroup;
-			children = (
-				B40CCC361B3009B500BB11B9 /* cm_math_oneTests.m */,
-				B40CCC341B3009B500BB11B9 /* Supporting Files */,
-			);
-			path = cm_math_oneTests;
-			sourceTree = "<group>";
-		};
-		B40CCC341B3009B500BB11B9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B40CCC351B3009B500BB11B9 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

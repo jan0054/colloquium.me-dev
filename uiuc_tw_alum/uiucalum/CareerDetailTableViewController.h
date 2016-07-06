@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *contactLabel;
 @property (strong, nonatomic) IBOutlet UILabel *linkLabel;
 @property (strong, nonatomic) IBOutlet UIButton *contactButton;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
 - (IBAction)contactButtonTap:(UIButton *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *linkButton;
 - (IBAction)linkButtonTap:(UIButton *)sender;

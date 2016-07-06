@@ -22,27 +22,22 @@
 
 + (UIColor*) accent_color
 {
-    //return [self in500];
-    return [self burgandy];
+    return [self uiuc_orange_menu];
 }
 + (UIColor*) light_accent
 {
-    //return [self in200];
     return [self test_ye];
 }
 + (UIColor*) dark_accent
 {
-    //return [self in700];
     return [self darkGrey];
 }
 + (UIColor*) primary_color
 {
-    //return [self do500];
-    return [self blugGrey];
+    return [self uiuc_blue];
 }
 + (UIColor*) primary_color_icon
 {
-    //return [self do700];
     return [self test_lr];
 }
 + (UIColor*) unselected_icon
@@ -83,8 +78,7 @@
 }
 + (UIColor*) setup_button_background
 {
-    //return [self do800];
-    return [self burgandy];
+    return [self uiuc_orange_menu];
 }
 + (UIColor*) setup_button_text
 {
@@ -96,7 +90,7 @@
 }
 + (UIColor*) drawer_selection_background
 {
-    return [self dark_burgandy];
+    return [self uiuc_orange_menu];
 }
 + (UIColor*) drawer_icon_primary
 {
@@ -104,7 +98,6 @@
 }
 + (UIColor*) drawer_icon_secondary
 {
-    //return [self do500];
     return [self test_br];
 }
 + (UIColor*) tab_background
@@ -255,9 +248,17 @@
 {
     return [self colorFromHexString:@"#003466"];
 }
+
 + (UIColor*) uiuc_orange
 {
     return [self colorFromHexString:@"#ff6600"];
 }
+
++ (UIColor*) uiuc_orange_menu
+{
+    return [self colorFromHexString:@"#CB5200"];
+}
+
+
 
 @end

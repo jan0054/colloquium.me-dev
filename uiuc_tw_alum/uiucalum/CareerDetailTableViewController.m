@@ -34,10 +34,12 @@
     NSString *inst_title = NSLocalizedString(@"inst_title", nil);
     NSString *contact_title = NSLocalizedString(@"contact_title", nil);
     NSString *job_content_title = NSLocalizedString(@"job_content_title", nil);
+    NSString *typeText = [currentCareer[@"hiring"] intValue] == 1 ? NSLocalizedString(@"type_hiring", nil) : NSLocalizedString(@"type_seeking", nil);
     
     self.institutionLabel.text = [NSString stringWithFormat:@"%@ %@", inst_title, currentCareer[@"institution"]];
     self.contentLabel.text = [NSString stringWithFormat:@"%@ %@", job_content_title, currentCareer[@"content"]];
     self.contactLabel.text = [NSString stringWithFormat:@"%@ %@", contact_title, currentCareer[@"contact_name"]];
+    self.typeLabel.text = [NSString stringWithFormat:@"%@: %@", typeText, currentCareer[@"position"]];
 
     self.tableView.estimatedRowHeight = 250.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -59,11 +61,11 @@
     }
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewAutomaticDimension;
 }
+
 #pragma mark - Table view data source
 /*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

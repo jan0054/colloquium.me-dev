@@ -115,8 +115,8 @@ PFObject *selectedCareer;
     cell.backgroundCardView.layer.shadowRadius = 1.0f;
     
     PFObject *career = [careerArray objectAtIndex:indexPath.row];
-    
-    cell.typeLabel.text = [career[@"hiring"] intValue] == 1 ? NSLocalizedString(@"type_hiring", nil) : NSLocalizedString(@"type_seeking", nil);
+    NSString *typeText = [career[@"hiring"] intValue] == 1 ? NSLocalizedString(@"type_hiring", nil) : NSLocalizedString(@"type_seeking", nil);
+    cell.typeLabel.text = [NSString stringWithFormat:@"%@: %@", typeText, career[@"position"]];
     cell.institutionLabel.text = career[@"institution"];
     cell.contentLabel.text = career[@"content"];
     cell.moreLabel.text = NSLocalizedString(@"more_button", nil);
