@@ -143,6 +143,8 @@
     <string name="upload_hint_1">設定搜尋字串一 (必填)</string>
     <string name="upload_hint_2">設定搜尋字串二</string>
     <string name="upload_hint_3">設定搜尋字串三</string>
+    <string name="career_available">職缺</string>
+    <string name="career_seeking">求職</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

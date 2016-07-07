@@ -143,6 +143,8 @@
     <string name="upload_hint_1">Set search string 1 (required)</string>
     <string name="upload_hint_2">Set search string 2</string>
     <string name="upload_hint_3">Set search string 3</string>
+    <string name="career_available">Position available</string>
+    <string name="career_seeking">Seeking job</string>
 
     <!-- Labels (not shown) -->
     <string name="drawer_open">Open navigation drawer</string>

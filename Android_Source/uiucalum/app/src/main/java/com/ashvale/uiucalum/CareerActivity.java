@@ -81,7 +81,7 @@ public class CareerActivity extends BaseActivity
                 String name = career.getString("contact_name");
                 String mail = career.getString("contact_email");
                 String link = career.getString("link");
-                String typestr = career.getInt("hiring") == 1 ? "Position Available" : "Seeking Job";
+                String typestr = career.getInt("hiring") == 1 ? getResources().getString(R.string.career_available) : getResources().getString(R.string.career_seeking);
                 String positionstr = career.getString("position");
                 Intent intent = new Intent(CareerActivity.this, CareerDetailActivity.class);
                 intent.putExtra("inst", inst);

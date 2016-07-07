@@ -37,7 +37,7 @@
                     android:id="@+id/type_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/inst_str"
+                    android:layout_toRightOf="@+id/type_str"
                     android:layout_marginLeft="@dimen/list_padding"
                     android:fontFamily="sans-serif"
                     android:gravity="left"
