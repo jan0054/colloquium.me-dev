@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Colloquium.me</string>
-    <string name="facebook_app_id">882603405141449</string>
+    <string name="app_name">UIUC Taiwan Alumni club</string>
+    <string name="facebook_app_id">908713425903909</string>
 
     <!-- Activity Titles -->
     <string name="title_activity_chat">對話</string>
@@ -223,6 +223,5 @@
     <string name="p4_title">點擊進入一場特定演講後..</string>
     <string name="p4_content">可從右上角按鈕進入討論區，閱讀摘要全文，或匯出至手機行事曆。</string>
     <string name="title_activity_word_sharing">WordSharingActivity</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

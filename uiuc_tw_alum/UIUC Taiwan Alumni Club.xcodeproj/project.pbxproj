@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		04F4DA3B2C053837BD2BE348 /* libPods-UIUC Taiwan Alumni Club.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D186719A1B24EC52EE6F961 /* libPods-UIUC Taiwan Alumni Club.a */; };
-		0883284E9FB5635289BD3AED /* libPods-cm_math_one.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2575FF0C2A531AB93857318 /* libPods-cm_math_one.a */; };
 		B40298E81C980C6A001178F3 /* StreamPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B40298E71C980C6A001178F3 /* StreamPlayerView.m */; };
 		B40298EB1C9810DE001178F3 /* vidcamera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B40298E91C9810DE001178F3 /* vidcamera48@2x.png */; };
 		B40298EC1C9810DE001178F3 /* vidcamera64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B40298EA1C9810DE001178F3 /* vidcamera64@2x.png */; };
@@ -477,7 +476,6 @@
 				B4BE91201B4BC3AC00A46E4C /* CoreLocation.framework in Frameworks */,
 				B4BE911E1B4BC39100A46E4C /* QuartzCore.framework in Frameworks */,
 				B4BE911C1B4BC32E00A46E4C /* MapKit.framework in Frameworks */,
-				0883284E9FB5635289BD3AED /* libPods-cm_math_one.a in Frameworks */,
 				04F4DA3B2C053837BD2BE348 /* libPods-UIUC Taiwan Alumni Club.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1211,8 +1209,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1236,7 +1234,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "eac57c6a-1a29-42d2-a91a-0fb88cfed27d";
+				PROVISIONING_PROFILE = "b21fc373-0ac5-4c0f-8de9-8c9063dd8721";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1258,8 +1256,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1275,7 +1273,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "eac57c6a-1a29-42d2-a91a-0fb88cfed27d";
+				PROVISIONING_PROFILE = "b21fc373-0ac5-4c0f-8de9-8c9063dd8721";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1286,13 +1284,13 @@
 			baseConfigurationReference = 6C915A32A8BFC8BC168E4AE5 /* Pods-UIUC Taiwan Alumni Club.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				INFOPLIST_FILE = uiucalum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapgo.uiucalum;
 				PRODUCT_NAME = "UIUC Taiwan Alumni Club";
-				PROVISIONING_PROFILE = "eac57c6a-1a29-42d2-a91a-0fb88cfed27d";
+				PROVISIONING_PROFILE = "b21fc373-0ac5-4c0f-8de9-8c9063dd8721";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1302,13 +1300,13 @@
 			baseConfigurationReference = 15711241783F12947B0E08DE /* Pods-UIUC Taiwan Alumni Club.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
 				INFOPLIST_FILE = uiucalum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapgo.uiucalum;
 				PRODUCT_NAME = "UIUC Taiwan Alumni Club";
-				PROVISIONING_PROFILE = "eac57c6a-1a29-42d2-a91a-0fb88cfed27d";
+				PROVISIONING_PROFILE = "b21fc373-0ac5-4c0f-8de9-8c9063dd8721";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

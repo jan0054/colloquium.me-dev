@@ -1,0 +1,435 @@
+/* Class = "UIBarButtonItem"; title = "New"; ObjectID = "2Kd-3h-Eqc"; */
+"2Kd-3h-Eqc.title" = "新增";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "2Lg-HQ-7CG"; */
+"2Lg-HQ-7CG.text" = "內容";
+
+/* Class = "UINavigationItem"; title = "Choose Events"; ObjectID = "2gr-M2-fyf"; */
+"2gr-M2-fyf.title" = "選取會議";
+
+/* Class = "UILabel"; text = "Institution"; ObjectID = "2wd-9g-8v2"; */
+"2wd-9g-8v2.text" = "單位";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "4Qi-N5-eDY"; */
+"4Qi-N5-eDY.text" = "講者";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "4wS-lA-aYN"; */
+"4wS-lA-aYN.text" = "時間";
+
+/* Class = "UILabel"; text = "Web Page"; ObjectID = "5gM-9u-IE5"; */
+"5gM-9u-IE5.text" = "網頁";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "5sU-59-O1y"; */
+"5sU-59-O1y.normalTitle" = "送出";
+
+/* Class = "UILabel"; text = "seek or hire"; ObjectID = "6BD-NL-CdE"; */
+"6BD-NL-CdE.text" = "類型";
+
+/* (No Commment) */
+"6Kg-Zc-1iQ.text" = "參與:";
+
+/* Class = "UILabel"; text = "participants"; ObjectID = "7fx-IC-g8z"; */
+"7fx-IC-g8z.text" = "與會者";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "7mI-JN-UfL"; */
+"7mI-JN-UfL.normalTitle" = "A";
+
+/* Class = "UITextView"; text = "content"; ObjectID = "7zW-bn-m2A"; */
+"7zW-bn-m2A.text" = "內容";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8a7-q3-qB2"; */
+"8a7-q3-qB2.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Refresh"; ObjectID = "8kv-lp-d08"; */
+"8kv-lp-d08.title" = "重整";
+
+/* Class = "UIButton"; normalTitle = "Email"; ObjectID = "9Hq-kU-DKZ"; */
+"9Hq-kU-DKZ.normalTitle" = "Email";
+
+/* Class = "UILabel"; text = "Institution"; ObjectID = "9dW-It-oEf"; */
+"9dW-It-oEf.text" = "單位";
+
+/* Class = "UIBarButtonItem"; title = "Discuss"; ObjectID = "670-fW-Dmj"; */
+"670-fW-Dmj.title" = "討論";
+
+/* Class = "UINavigationItem"; title = "Conversations"; ObjectID = "811-W3-APC"; */
+"811-W3-APC.title" = "對話";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "AQM-6S-QUq"; */
+"AQM-6S-QUq.text" = "內容";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "AtV-bl-4Et"; */
+"AtV-bl-4Et.text" = "時間";
+
+/* Class = "UIButton"; normalTitle = "Send email"; ObjectID = "CWQ-fz-iUu"; */
+"CWQ-fz-iUu.normalTitle" = "發送Email";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "CdD-cP-GfH"; */
+"CdD-cP-GfH.text" = "講者";
+
+/* Class = "UILabel"; text = "broadcast"; ObjectID = "DF0-sT-Cta"; */
+"DF0-sT-Cta.text" = "broadcast";
+
+/* Class = "UITextField"; placeholder = "Search.."; ObjectID = "Den-6p-jsE"; */
+"Den-6p-jsE.placeholder" = "搜尋..";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Dg7-tx-MQ2"; */
+"Dg7-tx-MQ2.text" = "名稱";
+
+/* Class = "UILabel"; text = "input description"; ObjectID = "E5M-OT-K3v"; */
+"E5M-OT-K3v.text" = "input description";
+
+/* Class = "UIBarButtonItem"; title = "Post"; ObjectID = "EPY-2q-X9T"; */
+"EPY-2q-X9T.title" = "送出";
+
+/* Class = "UITextField"; placeholder = "Type message here.."; ObjectID = "Epg-Kq-Vkw"; */
+"Epg-Kq-Vkw.placeholder" = "輸入訊息..";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "FCW-jk-t7o"; */
+"FCW-jk-t7o.text" = "時間";
+
+/* Class = "UILabel"; text = "organizer"; ObjectID = "FP5-wx-o0E"; */
+"FP5-wx-o0E.text" = "主辦單位";
+
+/* Class = "UINavigationItem"; title = "Wall"; ObjectID = "Fcg-wf-vB9"; */
+"Fcg-wf-vB9.title" = "塗鴉牆";
+
+/* Class = "UIButton"; normalTitle = "Open in browser"; ObjectID = "GEd-hE-q8d"; */
+"GEd-hE-q8d.normalTitle" = "開啟";
+
+/* Class = "UINavigationItem"; title = "Add Career Opportunity"; ObjectID = "Hdx-a6-yj7"; */
+"Hdx-a6-yj7.title" = "新增";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "IhO-0w-XIw"; */
+"IhO-0w-XIw.text" = "作者";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "IsV-CQ-oBG"; */
+"IsV-CQ-oBG.text" = "姓名";
+
+/* Class = "UINavigationItem"; title = "Career"; ObjectID = "Jc5-Ne-ZH7"; */
+"Jc5-Ne-ZH7.title" = "職涯機會";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "KBn-zX-2Ow"; */
+"KBn-zX-2Ow.text" = "時間";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "L6G-4N-dZf"; */
+"L6G-4N-dZf.text" = "名稱";
+
+/* Class = "UILabel"; text = "program"; ObjectID = "LYf-dH-u8h"; */
+"LYf-dH-u8h.text" = "演講";
+
+/* (No Commment) */
+"Ldj-aj-fWM.title" = "確定";
+
+/* Class = "UITabBarItem"; title = "Announcement"; ObjectID = "M6Q-w3-1xY"; */
+"M6Q-w3-1xY.title" = "公告";
+
+/* Class = "UILabel"; text = "Description:"; ObjectID = "MS5-g2-Mis"; */
+"MS5-g2-Mis.text" = "描述:";
+
+/* Class = "UILabel"; text = "Institution:"; ObjectID = "MaE-w2-2zP"; */
+"MaE-w2-2zP.text" = "單位：";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "NAS-Lm-fYj"; */
+"NAS-Lm-fYj.text" = "講者";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "NEd-jQ-cYK"; */
+"NEd-jQ-cYK.title" = "首頁";
+
+/* Class = "UINavigationItem"; title = "People"; ObjectID = "NUL-l3-wzU"; */
+"NUL-l3-wzU.title" = "與會者";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "NUk-Iq-rFK"; */
+"NUk-Iq-rFK.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Program"; ObjectID = "Ndp-O9-ENd"; */
+"Ndp-O9-ENd.title" = "演講";
+
+/* Class = "UITabBarItem"; title = "Overview"; ObjectID = "NrJ-YC-Mxf"; */
+"NrJ-YC-Mxf.title" = "基本資訊";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "P9T-Rx-GYb"; */
+"P9T-Rx-GYb.text" = "內容";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "PWa-Lo-tlL"; */
+"PWa-Lo-tlL.normalTitle" = "A";
+
+/* Class = "UINavigationItem"; title = "New Post"; ObjectID = "PcR-6E-m1f"; */
+"PcR-6E-m1f.title" = "新增貼文";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QsV-LD-7aa"; */
+"QsV-LD-7aa.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Announcements"; ObjectID = "R0K-1k-L0f"; */
+"R0K-1k-L0f.title" = "公告";
+
+/* Class = "UITextView"; text = "Loading.."; ObjectID = "R4n-jn-dfz"; */
+"R4n-jn-dfz.text" = "載入中..";
+
+/* Class = "UIBarButtonItem"; title = "New"; ObjectID = "RI3-Dp-OGI"; */
+"RI3-Dp-OGI.title" = "新增";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "RJf-3R-JFQ"; */
+"RJf-3R-JFQ.text" = "內容";
+
+/* Class = "UITextField"; placeholder = "Search.."; ObjectID = "SJy-5Z-MUg"; */
+"SJy-5Z-MUg.placeholder" = "搜尋..";
+
+/* Class = "UINavigationItem"; title = "Invite"; ObjectID = "T2e-ao-qtw"; */
+"T2e-ao-qtw.title" = "邀請";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "TS4-he-O9s"; */
+"TS4-he-O9s.text" = "內容";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "U2O-Iq-Zms"; */
+"U2O-Iq-Zms.normalTitle" = "送出";
+
+/* Class = "UILabel"; text = "Contact:"; ObjectID = "UTA-mB-xdQ"; */
+"UTA-mB-xdQ.text" = "聯絡人:";
+
+/* Class = "UILabel"; text = "last message"; ObjectID = "V4x-i2-JPu"; */
+"V4x-i2-JPu.text" = "最後訊息";
+
+/* Class = "UILabel"; text = "more.."; ObjectID = "VXx-Xg-n0w"; */
+"VXx-Xg-n0w.text" = "更多..";
+
+/* Class = "UINavigationItem"; title = "Invite"; ObjectID = "WQ9-Wt-a23"; */
+"WQ9-Wt-a23.title" = "邀請";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "X5J-5I-LkI"; */
+"X5J-5I-LkI.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "People"; ObjectID = "X7D-SS-aAf"; */
+"X7D-SS-aAf.title" = "與會者";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "XwE-Ib-949"; */
+"XwE-Ib-949.text" = "講者";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "Y1S-Km-PVf"; */
+"Y1S-Km-PVf.text" = "時間";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "Y8c-Bb-19b"; */
+"Y8c-Bb-19b.text" = "姓名";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "Yje-VV-nFH"; */
+"Yje-VV-nFH.text" = "時間";
+
+/* Class = "UIButton"; normalTitle = "Invite"; ObjectID = "Yk8-mi-4mx"; */
+"Yk8-mi-4mx.normalTitle" = "邀請";
+
+/* (No Commment) */
+"ZCh-eo-PDO.title" = "使用者設定";
+
+/* Class = "UILabel"; text = "There are no announcements for this event yet"; ObjectID = "ZGh-qH-g8f"; */
+"ZGh-qH-g8f.text" = "該會議尚無公告";
+
+/* Class = "UILabel"; text = "Institution"; ObjectID = "ZJZ-Mq-4sv"; */
+"ZJZ-Mq-4sv.text" = "單位";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZSA-GH-28s"; */
+"ZSA-GH-28s.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "ZXP-S8-6K9"; */
+"ZXP-S8-6K9.title" = "設定";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "a9a-vk-HTx"; */
+"a9a-vk-HTx.normalTitle" = "完成";
+
+/* Class = "UIButton"; normalTitle = "Chat"; ObjectID = "alf-Ms-Gv5"; */
+"alf-Ms-Gv5.normalTitle" = "訊息";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "bBi-fn-VZr"; */
+"bBi-fn-VZr.title" = "確定";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "ba7-d5-NAc"; */
+"ba7-d5-NAc.text" = "內容";
+
+/* Class = "UILabel"; text = "Colloquium.me is a conference platform designed to help event organizers and attendees stay up-to-date and connect with each other. We offer a variety of features and customizations to fit the needs of each conference. If you host an academic conference or workshop and think this app is useful, contact us below to see how we can help you roll out your own solution."; ObjectID = "bh3-JS-aa9"; */
+"bh3-JS-aa9.text" = "會議小冊子由Colloquium.me平台提供。 Colloquium.me是一個專業會議用的工具兼社群平台，我們協助主辦單位和與會者有效溝通並且延續會議的生命週期。若您是專業會議或學術研討會的主辦單位，歡迎聯絡我們一起為您的活動開發加值App服務。";
+
+/* Class = "UIButton"; normalTitle = "Contact Us"; ObjectID = "bwj-pq-rdP"; */
+"bwj-pq-rdP.normalTitle" = "聯絡我們";
+
+/* Class = "UINavigationItem"; title = "Program"; ObjectID = "c4D-oH-Wr4"; */
+"c4D-oH-Wr4.title" = "演講";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "cO2-uH-MJA"; */
+"cO2-uH-MJA.text" = "時間";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "cc8-7z-6fm"; */
+"cc8-7z-6fm.text" = "描述";
+
+/* Class = "UILabel"; text = "location"; ObjectID = "ceE-ms-Y4J"; */
+"ceE-ms-Y4J.text" = "位置";
+
+/* Class = "UITabBarItem"; title = "Venue"; ObjectID = "dnR-Pz-cQQ"; */
+"dnR-Pz-cQQ.title" = "地點";
+
+/* Class = "UILabel"; text = "switch description"; ObjectID = "dyb-6I-XZ0"; */
+"dyb-6I-XZ0.text" = "switch description";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "eiU-5U-OnX"; */
+"eiU-5U-OnX.text" = "內容";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "exb-ik-P1E"; */
+"exb-ik-P1E.text" = "姓名";
+
+/* Class = "UIBarButtonItem"; title = "Leave"; ObjectID = "fIW-ui-sNZ"; */
+"fIW-ui-sNZ.title" = "離開對話";
+
+/* Class = "UIButton"; normalTitle = "Website"; ObjectID = "faj-tw-BdA"; */
+"faj-tw-BdA.normalTitle" = "網站";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "flb-3g-RRC"; */
+"flb-3g-RRC.text" = "時間";
+
+/* Class = "UILabel"; text = "No posts here yet, why not make yours the first?"; ObjectID = "gaP-td-OXl"; */
+"gaP-td-OXl.text" = "還沒有任何文章，何不貼點東西呢？";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "h2s-og-ILr"; */
+"h2s-og-ILr.text" = "講者";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "h5O-iS-Pzw"; */
+"h5O-iS-Pzw.normalTitle" = "送出";
+
+/* Class = "UILabel"; text = "Institution"; ObjectID = "hiQ-Bj-wRc"; */
+"hiQ-Bj-wRc.text" = "單位";
+
+/* Class = "UINavigationItem"; title = "User Setup"; ObjectID = "iDK-PV-TRH"; */
+"iDK-PV-TRH.title" = "使用者設定";
+
+/* Class = "UILabel"; text = "location"; ObjectID = "iJi-i5-dd4"; */
+"iJi-i5-dd4.text" = "位置";
+
+/* Class = "UIButton"; normalTitle = "Exit Fullscreen"; ObjectID = "iUF-En-97z"; */
+"iUF-En-97z.normalTitle" = "離開全螢幕模式";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "idi-p9-U5m"; */
+"idi-p9-U5m.text" = "時間";
+
+/* Class = "UILabel"; text = "Colloquium.me by Ashvale Tech"; ObjectID = "ie3-PK-uUN"; */
+"ie3-PK-uUN.text" = "Colloquium.me 由梣股科技開發";
+
+/* Class = "UILabel"; text = "No comments yet"; ObjectID = "iwA-wV-q3h"; */
+"iwA-wV-q3h.text" = "沒有任何回覆";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "jzZ-k1-FCg"; */
+"jzZ-k1-FCg.text" = "時間";
+
+/* Class = "UIButton"; normalTitle = "Web"; ObjectID = "k4g-Uh-pXA"; */
+"k4g-Uh-pXA.normalTitle" = "網頁";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "kez-oq-J1x"; */
+"kez-oq-J1x.title" = "完成";
+
+/* Class = "UILabel"; text = "session"; ObjectID = "kjg-DM-CDi"; */
+"kjg-DM-CDi.text" = "領域";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "kkl-fL-SWm"; */
+"kkl-fL-SWm.text" = "時間";
+
+/* (No Commment) */
+"la6-tu-h1k.text" = "細節";
+
+/* Class = "UIBarButtonItem"; title = "New"; ObjectID = "lh1-SS-rdy"; */
+"lh1-SS-rdy.title" = "新增";
+
+/* Class = "UINavigationItem"; title = "Venue"; ObjectID = "lvM-r7-eR6"; */
+"lvM-r7-eR6.title" = "地點";
+
+/* Class = "UILabel"; text = "Invite"; ObjectID = "myw-vf-B9I"; */
+"myw-vf-B9I.text" = "邀請";
+
+/* Class = "UITabBarItem"; title = "Wall"; ObjectID = "nab-a1-Ze9"; */
+"nab-a1-Ze9.title" = "塗鴉牆";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "ncE-Vq-UH1"; */
+"ncE-Vq-UH1.text" = "姓名";
+
+/* Class = "UILabel"; text = "Details.."; ObjectID = "oBd-6z-c95"; */
+"oBd-6z-c95.text" = "細節";
+
+/* Class = "UILabel"; text = "Details..."; ObjectID = "oRe-fi-ylS"; */
+"oRe-fi-ylS.text" = "細節";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "oUx-S1-ozy"; */
+"oUx-S1-ozy.text" = "講者";
+
+/* Class = "UILabel"; text = "No Conversations yet! Start one by tapping \"New\" in the top right corner."; ObjectID = "oo8-ws-nrL"; */
+"oo8-ws-nrL.text" = "沒有任何對話！請由右上角新增對話";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "qAb-La-KDl"; */
+"qAb-La-KDl.text" = "內容";
+
+/* Class = "UILabel"; text = "Content"; ObjectID = "qDi-t5-UZH"; */
+"qDi-t5-UZH.text" = "內容";
+
+/* Class = "UIBarButtonItem"; title = "Post"; ObjectID = "qgF-Fz-hwI"; */
+"qgF-Fz-hwI.title" = "送出";
+
+/* Class = "UITextField"; placeholder = "Write a comment.."; ObjectID = "r7r-4c-Llu"; */
+"r7r-4c-Llu.placeholder" = "回覆..";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "rEv-hg-sxR"; */
+"rEv-hg-sxR.text" = "姓名";
+
+/* Class = "UILabel"; text = "No discussions here yet! Feel free to ask questions or share your thoughts on this talk."; ObjectID = "rPL-q7-mei"; */
+"rPL-q7-mei.text" = "沒有貼文。歡迎在此發問或分享您的看法！";
+
+/* Class = "UIButton"; normalTitle = " Add Photo"; ObjectID = "rkv-04-sIi"; */
+"rkv-04-sIi.normalTitle" = " 加入照片";
+
+/* Class = "UILabel"; text = "institution"; ObjectID = "tZx-qH-0J1"; */
+"tZx-qH-0J1.text" = "單位";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ue1-oT-Fi6"; */
+"ue1-oT-Fi6.normalTitle" = "完成";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "uiV-2e-e8n"; */
+"uiV-2e-e8n.title" = "編輯";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "uxG-sD-bDK"; */
+"uxG-sD-bDK.text" = "講者";
+
+/* Class = "UILabel"; text = "more.."; ObjectID = "v1p-cB-OyC"; */
+"v1p-cB-OyC.text" = "更多..";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "v8p-Tn-jH8"; */
+"v8p-Tn-jH8.title" = "完成";
+
+/* Class = "UILabel"; text = "time"; ObjectID = "v9W-H0-Q2O"; */
+"v9W-H0-Q2O.text" = "時間";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "vgM-K8-USZ"; */
+"vgM-K8-USZ.text" = "內容";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "wES-do-GWD"; */
+"wES-do-GWD.text" = "姓名";
+
+/* Class = "UILabel"; text = "Let's start by choosing a few events that you're interested in, then tap \"Done\" in the top right corner. You can come back and change your choices anytime, so don't worry if you're not quite sure."; ObjectID = "wi3-TN-MHm"; */
+"wi3-TN-MHm.text" = "歡迎使用Colloquium.me。我們先選取幾個看起來有趣的會議，然後在右上角點擊完成吧！別擔心，您隨時都可以回到這個畫面選取更多會議。";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "x9V-ME-ubb"; */
+"x9V-ME-ubb.text" = "姓名";
+
+/* Class = "UILabel"; text = "Person has no presentations in this event"; ObjectID = "xIP-DG-S9V"; */
+"xIP-DG-S9V.text" = "該與會者在此會議中無演講";
+
+/* Class = "UIButton"; normalTitle = "button"; ObjectID = "xie-zI-t7e"; */
+"xie-zI-t7e.normalTitle" = "button";
+
+/* Class = "UILabel"; text = "Hi there!"; ObjectID = "xuL-pa-SOj"; */
+"xuL-pa-SOj.text" = "歡迎！";
+
+/* Class = "UILabel"; text = "content"; ObjectID = "xwo-9F-2bE"; */
+"xwo-9F-2bE.text" = "內容";
+
+/* Class = "UINavigationItem"; title = "Discussion"; ObjectID = "yG1-qN-r0I"; */
+"yG1-qN-r0I.title" = "討論";
+
+/* (No Commment) */
+"yUi-hy-sa2.text" = "Title";
+
+/* Class = "UILabel"; text = "Organizer"; ObjectID = "zAh-hr-zUA"; */
+"zAh-hr-zUA.text" = "主辦單位";
+

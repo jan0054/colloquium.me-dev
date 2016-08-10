@@ -224,7 +224,4 @@
     <string name="p4_content">You can ask questions in the discussion page, read the full abstract, or export to your phone calendar.</string>
     <string name="title_activity_word_sharing">WordSharingActivity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

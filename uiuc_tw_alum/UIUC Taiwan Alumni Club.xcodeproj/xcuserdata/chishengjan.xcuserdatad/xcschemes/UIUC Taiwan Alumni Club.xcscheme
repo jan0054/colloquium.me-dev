@@ -61,7 +61,8 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40CCC131B3009B500BB11B9"
@@ -69,7 +70,7 @@
             BlueprintName = "UIUC Taiwan Alumni Club"
             ReferencedContainer = "container:UIUC Taiwan Alumni Club.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
