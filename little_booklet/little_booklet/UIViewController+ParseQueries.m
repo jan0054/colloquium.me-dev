@@ -78,8 +78,6 @@
     }];
 }
 
-//[{"__type":"Pointer","className":"Event","objectId":"VQ4JMnRMRy"}]
-
 #pragma mark - Timeline
 
 - (void)getPosts: (id)caller forEvent: (PFObject *)event
