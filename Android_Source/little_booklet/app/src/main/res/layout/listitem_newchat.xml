@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/newchat_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/list_margin"
+    android:background="@drawable/list_item"
+    android:gravity="start"
+    android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/checkbox"
+        android:layout_width="@dimen/fragmenticon_size"
+        android:layout_height="@dimen/fragmenticon_size"
+        android:layout_marginTop="@dimen/listicon_margin"
+        android:layout_marginBottom="@dimen/listicon_margin"
+        android:layout_marginRight="@dimen/listicon_margin"
+        android:layout_alignParentLeft="true"
+
+        android:padding="@dimen/listicon_padding"
+        android:scaleType="centerInside"
+        android:src="@drawable/emptycircle"
+        android:tint="@color/gr600"/>
+    <TextView
+        android:id="@+id/newchat_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/checkbox"
+        android:fontFamily="sans-serif"
+        android:text="@string/name_fake"
+        android:textColor="@color/primary_text"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/newchat_institution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/checkbox"
+        android:layout_below="@+id/newchat_name"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center|left"
+        android:text="@string/institution_fake"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp" />
+
+
+
+
+</RelativeLayout>

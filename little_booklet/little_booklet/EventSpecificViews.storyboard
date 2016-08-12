@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--About App View Controller-->
+        <scene sceneID="EZj-w6-gg8">
+            <objects>
+                <viewController id="0iG-fH-gmJ" customClass="AboutAppViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AEo-wo-CNs"/>
+                        <viewControllerLayoutGuide type="bottom" id="iyv-Mh-sZu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4tZ-dY-lYb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="about_title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItO-ft-vUP">
+                                <rect key="frame" x="20" y="80" width="560" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="about_content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVb-KC-M2X">
+                                <rect key="frame" x="20" y="141" width="560" height="82"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMj-BO-H9j">
+                                <rect key="frame" x="239" y="263" width="122" height="30"/>
+                                <state key="normal" title="about_contact"/>
+                                <connections>
+                                    <action selector="contactButtonTap:" destination="0iG-fH-gmJ" eventType="touchUpInside" id="WYG-Wf-QMj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAl-g0-8CK">
+                                <rect key="frame" x="247" y="343" width="107" height="30"/>
+                                <state key="normal" title="about_done"/>
+                                <connections>
+                                    <action selector="doneButtonTap:" destination="0iG-fH-gmJ" eventType="touchUpInside" id="oKQ-6I-8hz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sAl-g0-8CK" firstAttribute="centerX" secondItem="4tZ-dY-lYb" secondAttribute="centerX" id="4rr-fw-fsZ"/>
+                            <constraint firstItem="ItO-ft-vUP" firstAttribute="trailing" secondItem="4tZ-dY-lYb" secondAttribute="trailingMargin" id="9Xh-cW-3Ng"/>
+                            <constraint firstItem="sAl-g0-8CK" firstAttribute="top" secondItem="FMj-BO-H9j" secondAttribute="bottom" constant="50" id="A4T-ER-IxJ"/>
+                            <constraint firstItem="bVb-KC-M2X" firstAttribute="trailing" secondItem="4tZ-dY-lYb" secondAttribute="trailingMargin" id="HjG-oE-6c9"/>
+                            <constraint firstItem="ItO-ft-vUP" firstAttribute="leading" secondItem="4tZ-dY-lYb" secondAttribute="leadingMargin" id="LBO-sD-Cpd"/>
+                            <constraint firstItem="ItO-ft-vUP" firstAttribute="top" secondItem="AEo-wo-CNs" secondAttribute="bottom" constant="60" id="LTM-pD-em6"/>
+                            <constraint firstItem="FMj-BO-H9j" firstAttribute="top" secondItem="bVb-KC-M2X" secondAttribute="bottom" constant="40" id="T16-LF-JyD"/>
+                            <constraint firstItem="bVb-KC-M2X" firstAttribute="leading" secondItem="4tZ-dY-lYb" secondAttribute="leadingMargin" id="VtV-kN-Rgz"/>
+                            <constraint firstItem="bVb-KC-M2X" firstAttribute="centerX" secondItem="4tZ-dY-lYb" secondAttribute="centerX" id="bFC-yp-lz1"/>
+                            <constraint firstItem="ItO-ft-vUP" firstAttribute="centerX" secondItem="4tZ-dY-lYb" secondAttribute="centerX" id="g59-ud-lzg"/>
+                            <constraint firstItem="bVb-KC-M2X" firstAttribute="top" secondItem="ItO-ft-vUP" secondAttribute="bottom" constant="40" id="gRy-XG-SoW"/>
+                            <constraint firstItem="FMj-BO-H9j" firstAttribute="centerX" secondItem="4tZ-dY-lYb" secondAttribute="centerX" id="lMR-Zq-DMR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contactButton" destination="FMj-BO-H9j" id="XgM-wl-aJe"/>
+                        <outlet property="contentLabel" destination="bVb-KC-M2X" id="wmY-2i-1Ar"/>
+                        <outlet property="doneButton" destination="sAl-g0-8CK" id="jkH-Pg-bDY"/>
+                        <outlet property="titleLabel" destination="ItO-ft-vUP" id="RUQ-0S-w6r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzE-oW-JWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384" y="374"/>
+        </scene>
+    </scenes>
+</document>

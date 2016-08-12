@@ -182,6 +182,8 @@
 		B4E0BC4A1C15939800276A7B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E0BC491C15939800276A7B /* CoreGraphics.framework */; };
 		B4F04D3F1B81BFED00A4FCD3 /* camera48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */; };
 		B4F04D411B81BFF300A4FCD3 /* key_down48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */; };
+		FD1CAAF11D5DCFA5000A10DE /* EventSpecificViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1CAAF01D5DCFA5000A10DE /* EventSpecificViews.storyboard */; };
+		FD1CAAF41D5DD13C000A10DE /* AboutAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1CAAF31D5DD13C000A10DE /* AboutAppViewController.m */; };
 		FD1F153A1D2A6290009ACE8A /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = FD1F15391D2A6290009ACE8A /* AppIcon.appiconset */; };
 		FD9B235E1D0EB1CE006E076A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9B235D1D0EB1CE006E076A /* Event.m */; };
 		FDCA8C391BDFC48D009AF220 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDCA8C3B1BDFC48D009AF220 /* Localizable.strings */; };
@@ -458,6 +460,9 @@
 		B4F04D3E1B81BFED00A4FCD3 /* camera48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera48@2x.png"; sourceTree = "<group>"; };
 		B4F04D401B81BFF300A4FCD3 /* key_down48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_down48@2x.png"; sourceTree = "<group>"; };
 		BFE4E5B5C7A0B4AECEA3CAAF /* libPods-Little Booklet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Little Booklet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD1CAAF01D5DCFA5000A10DE /* EventSpecificViews.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventSpecificViews.storyboard; sourceTree = "<group>"; };
+		FD1CAAF21D5DD13C000A10DE /* AboutAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutAppViewController.h; sourceTree = "<group>"; };
+		FD1CAAF31D5DD13C000A10DE /* AboutAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutAppViewController.m; sourceTree = "<group>"; };
 		FD1F15391D2A6290009ACE8A /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
 		FD9B235C1D0EB1CE006E076A /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		FD9B235D1D0EB1CE006E076A /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
@@ -530,6 +535,7 @@
 				B40CCC1B1B3009B500BB11B9 /* AppDelegate.h */,
 				B40CCC1C1B3009B500BB11B9 /* AppDelegate.m */,
 				B40CCC241B3009B500BB11B9 /* Main.storyboard */,
+				FD1CAAF01D5DCFA5000A10DE /* EventSpecificViews.storyboard */,
 				FDCA8C3B1BDFC48D009AF220 /* Localizable.strings */,
 				B41755F41B3019E000E1E8A5 /* LaunchView.h */,
 				B41755F51B3019E000E1E8A5 /* LaunchView.m */,
@@ -675,6 +681,8 @@
 				B442B2801C1827860099C257 /* PagedTutorialViewController.m */,
 				B442B2821C1829880099C257 /* TutorialViewController.h */,
 				B442B2831C1829880099C257 /* TutorialViewController.m */,
+				FD1CAAF21D5DD13C000A10DE /* AboutAppViewController.h */,
+				FD1CAAF31D5DD13C000A10DE /* AboutAppViewController.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -940,6 +948,7 @@
 				B464028E1B4662B80074DD72 /* setting64@2x.png in Resources */,
 				B4296F671C2041EC00D2C4D4 /* launchSplashEvent.png in Resources */,
 				B464027A1B4662B80074DD72 /* career64@2x.png in Resources */,
+				FD1CAAF11D5DCFA5000A10DE /* EventSpecificViews.storyboard in Resources */,
 				B4484AD01C77228600AB7C86 /* alarm48@2x.png in Resources */,
 				B47537C51C96C3B7002D96E5 /* calendar48@2x.png in Resources */,
 				B464027E1B4662B80074DD72 /* event64@2x.png in Resources */,
@@ -1075,6 +1084,7 @@
 				B41756161B30310400E1E8A5 /* NewsView.m in Sources */,
 				B481BB8D1B73542A00FC9133 /* CareerDetailTableViewController.m in Sources */,
 				B44459A81B42A12200B200D0 /* UserPreferenceInputCell.m in Sources */,
+				FD1CAAF41D5DD13C000A10DE /* AboutAppViewController.m in Sources */,
 				B455D7AE1B413D4600DCB6E4 /* CareerPostCell.m in Sources */,
 				B4BFB4F21B31740C0035309E /* SettingUserCell.m in Sources */,
 				FD9B235E1D0EB1CE006E076A /* Event.m in Sources */,

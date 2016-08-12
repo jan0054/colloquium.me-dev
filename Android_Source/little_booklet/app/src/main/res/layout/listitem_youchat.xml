@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/chat_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/listicon_margin"
+        android:layout_marginBottom="@dimen/listitem_bottom"
+        android:textColor="@color/secondary_text"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-light"
+        android:text="time" />
+
+    <ImageView
+        android:layout_width="16sp"
+        android:layout_height="16sp"
+        android:id="@+id/avatarImageView"
+        android:src="@drawable/avatarlight64"
+        android:scaleType="fitCenter"
+        android:layout_alignTop="@+id/chat_time"
+        android:layout_marginLeft="@dimen/list_margin"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/listicon_margin"
+        android:layout_alignParentTop="true"
+        android:tint="@color/secondary_text"/>
+
+    <TextView
+        android:id="@+id/chat_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/chat_time"
+        android:layout_toRightOf="@+id/avatarImageView"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/listicon_margin"
+        android:layout_marginBottom="@dimen/listitem_bottom"
+        android:textColor="@color/secondary_text"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif"
+        android:text="author" />
+
+    <TextView
+        android:id="@+id/chat_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_text"
+        android:layout_marginBottom="@dimen/listicon_margin"
+        android:layout_marginLeft="13dp"
+        android:layout_below="@+id/chat_author"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:text="content" />
+
+</RelativeLayout>

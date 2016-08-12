@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ashvale.littlebooklet.ChatActivity">
+    <item android:id="@+id/invite_chat" android:title="@string/invite_chat"
+          android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/leave_chat" android:title="@string/leave_chat"
+          android:orderInCategory="100" app:showAsAction="never" />
+</menu>

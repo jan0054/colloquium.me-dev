@@ -186,3 +186,8 @@
 "url_prompt" = "Enter the link you wish to share:";
 "url_placeholder" = "URL";
 
+//About App
+"about_title" = "Little Booklet";
+"about_content" = "Little Booklet is powered by Colloquium.me. Colloquium.me is a conference platform designed to help event organizers and attendees stay up-to-date and connect with each other. We offer a variety of features and customizations to fit the needs of each conference. If you host an academic conference or seminar and think this app is useful, contact us below to see how we can help you roll out your own solution.";
+"about_done_button" = "Done";
+"about_contact_button" = "Contact";

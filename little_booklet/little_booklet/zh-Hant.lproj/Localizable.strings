@@ -341,4 +341,8 @@
 "alert_upload_success" = "輸入的連結現在可以透過您選擇的三個字串分享了！";
 "alert_please_fill_one" = "請至少填寫第一個字串";
 
-
+//About App
+"about_title" = "會議小冊子";
+"about_content" = "會議小冊子由Colloquium.me平台提供。 Colloquium.me是一個專業會議用的工具兼社群平台，我們協助主辦單位和與會者有效溝通並且延續會議的生命週期。若您是專業會議或學術研討會的主辦單位，歡迎聯絡我們一起為您的活動開發加值App服務。";
+"about_done_button" = "確定";
+"about_contact_button" = "聯絡我們";

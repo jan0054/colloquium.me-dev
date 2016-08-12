@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             tools:context="com.ashvale.littlebooklet.fragments.TimelineFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey_background">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/pulltorefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/timelineListView"
+                android:background="@color/light_grey_background"
+                android:divider="@color/divider_color"
+                android:dividerHeight="0dp"
+                android:layout_gravity="center_horizontal|top"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView android:id="@+id/timelineempty"
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:gravity="center"
+                  android:textColor="@color/secondary_text"
+                  android:textSize="14sp"
+                  android:text="@string/list_empty_timeline" />
+
+    </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/newpost_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pen"
+        android:tint="@color/light_button_txt"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="24pt"
+        android:layout_marginRight="@dimen/list_margin"
+        android:onClick="newPost"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"/>
+</FrameLayout>
