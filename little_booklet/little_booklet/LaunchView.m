@@ -282,7 +282,8 @@ BOOL waitForPreference;  //used to pause launching the drawersegue to wait for t
 - (void)tutDone
 {
     NSLog(@"TUTORIAL DELEGATE CALLED");
-    waitForPreference = YES;
+    //waitForPreference = YES;
+    waitForPreference = NO;  //when we don't prompt signup/login at the beginning
     [self performSelector:@selector(goToLogin) withObject:nil afterDelay:0.1];  //this weird delay thing is required...
 }
 

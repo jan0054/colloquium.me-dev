@@ -6,6 +6,9 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
   - ContextMenu.iOS (1.1.0)
+  - Crashlytics (3.7.3):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
   - FBSDKCoreKit (4.9.0-beta2):
     - Bolts (~> 1.5)
   - FBSDKLoginKit (4.9.0-beta2):
@@ -46,6 +49,8 @@ PODS:
 
 DEPENDENCIES:
   - ContextMenu.iOS (~> 1.1)
+  - Crashlytics
+  - Fabric
   - FBSDKCoreKit (= 4.9.0-beta2)
   - FBSDKLoginKit (= 4.9.0-beta2)
   - GKImagePicker@robseward (~> 0.0)
@@ -72,6 +77,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   ContextMenu.iOS: 7f3b63915e660f51aada2c4285c40a837b2c9737
+  Crashlytics: 76f6beaff70acf226139582c09c78461597c2b98
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: d49cbf69741e3c5732166ec9ff4cbd9b288dd53e
   FBSDKLoginKit: d32e83c0d2d39ef74a942543cacae2dc4de7d088
   GKImagePicker@robseward: 799e3c8e8aa44991cd40a9fba287f0083931fd7b
@@ -85,6 +92,6 @@ SPEC CHECKSUMS:
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 4de66bf6c4fe408c105a0e8b2c2f777ddbef4fe3
+PODFILE CHECKSUM: 94a9964c72781d32038c1826689d40eee6bfe040
 
 COCOAPODS: 1.0.1

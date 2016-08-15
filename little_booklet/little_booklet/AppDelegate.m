@@ -11,6 +11,8 @@
 #import "UIColor+ProjectColors.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -26,6 +28,9 @@
                   clientKey:@"OXMdgcBHAGfCMIPyXCbr2RGZShlJSp3hS9s4G3hL"];
     [PFUser enableRevocableSessionInBackground];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    //Fabric
+    [Fabric with:@[[Crashlytics class]]];
     
     //Register for local and remote (push) notifications, first chekcing if running iOS 8 & above
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])

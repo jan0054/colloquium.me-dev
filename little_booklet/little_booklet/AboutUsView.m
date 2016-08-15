@@ -9,6 +9,7 @@
 #import "AboutUsView.h"
 #import "UIColor+ProjectColors.h"
 #import <Parse/Parse.h>
+//#import <Crashlytics/Crashlytics.h>
 
 NSMutableArray *testlist;
 
@@ -33,6 +34,8 @@ NSMutableArray *testlist;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://jan0054@gmail.com"]];
     //[self getTalkList];
     //[PFCloud callFunctionInBackground:@"refreshUsers" withParameters:NULL];
+    //[[Crashlytics sharedInstance] crash];
+    
 }
 
 - (IBAction)doneButtonTap:(UIButton *)sender {

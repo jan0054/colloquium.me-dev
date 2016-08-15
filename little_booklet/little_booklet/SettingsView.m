@@ -20,6 +20,7 @@
 #import "InstructionsViewController.h"
 #import "PasswordResetView.h"
 #import "TutorialViewController.h"
+#import "AboutAppViewController.h"
 
 @implementation SettingsView
 
@@ -185,6 +186,10 @@
     controller2.signupAfter = NO;
     //PasswordResetView *controller = (PasswordResetView *)[storyboard instantiateViewControllerWithIdentifier:@"reset_vc"];
     
+    UIStoryboard *eventBoard = [UIStoryboard storyboardWithName:@"EventSpecificViews" bundle:nil];
+    AboutAppViewController *aboutController = [eventBoard instantiateViewControllerWithIdentifier:@"about_vc"];
+    
+    
     switch (indexPath.row) {
         case 1:
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://csjan@tapgo.cc"]];
@@ -196,7 +201,8 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://colloquium.me/?page_id=3348"]];
             break;
         case 4:
-            [self performSegueWithIdentifier:@"aboutsegue" sender:self];
+            //[self performSegueWithIdentifier:@"aboutsegue" sender:self];
+            [self presentViewController:aboutController animated:YES completion:nil];
             break;
         case 5:
             [self presentViewController:controller2 animated:YES completion:nil];

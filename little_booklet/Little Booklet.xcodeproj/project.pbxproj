@@ -882,6 +882,7 @@
 				B40CCC121B3009B500BB11B9 /* Resources */,
 				9A5502033597ADF570E759B2 /* [CP] Copy Pods Resources */,
 				3C3F05F5D487212DDDEC5A8E /* [CP] Embed Pods Frameworks */,
+				FDEA62B51D61A9C500AD994D /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -1071,6 +1072,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Little Booklet/Pods-Little Booklet-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FDEA62B51D61A9C500AD994D /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" d29c817e8baf17103fb609a33d40006bdc6129e3 0153fad43d0521973e765574d6afbaab43784d38676b1f2b8fa1cce186f8ed1b";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1225,8 +1240,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1250,7 +1265,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "df3c40bc-6410-41b5-9c25-8a18df432967";
+				PROVISIONING_PROFILE = "317032b6-3c9a-4879-b6a7-108ca40c7bc1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1272,8 +1287,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1289,7 +1304,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "df3c40bc-6410-41b5-9c25-8a18df432967";
+				PROVISIONING_PROFILE = "317032b6-3c9a-4879-b6a7-108ca40c7bc1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1299,14 +1314,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 45C1A8EE1ACB75E4424349FC /* Pods-Little Booklet.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				INFOPLIST_FILE = little_booklet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapgo.littlebooklet;
 				PRODUCT_NAME = "Little Booklet";
-				PROVISIONING_PROFILE = "df3c40bc-6410-41b5-9c25-8a18df432967";
+				PROVISIONING_PROFILE = "317032b6-3c9a-4879-b6a7-108ca40c7bc1";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1315,14 +1330,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 73658DEFC4DF5C820D0DC3F6 /* Pods-Little Booklet.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tapgo Inc. (GW5Z7US9NS)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kuochuan Wu (6Q632PS3WC)";
 				INFOPLIST_FILE = little_booklet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tapgo.littlebooklet;
 				PRODUCT_NAME = "Little Booklet";
-				PROVISIONING_PROFILE = "df3c40bc-6410-41b5-9c25-8a18df432967";
+				PROVISIONING_PROFILE = "317032b6-3c9a-4879-b6a7-108ca40c7bc1";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
